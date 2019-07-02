@@ -1,0 +1,105 @@
+.backToTopBtn {
+    display: block;
+    margin: 5px auto 15px auto;
+}
+
+.bookList {
+    margin-top: 45px;
+    width: 1200px;
+}
+
+.container {
+    margin: 0px 250px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.content {
+    margin: 0px 250px;
+    min-height: calc(100vh - 70px);
+}
+
+.filterString {
+    font-weight: 700;
+}
+
+.resultsSummary {
+    background: white;
+    box-shadow: 0px 0px 2px 0px;
+    color: black;
+    font-size: 14px;
+    height: 40px;
+    left: 0;
+    margin: 0;
+    margin-top: -45px;
+    padding: 10px 20px;
+    position: absolute;
+    width: 100%;
+}
+
+.sortBy {
+    font-size: 12px; 
+    height: 20px;
+    position: absolute;
+    right: 196px;
+    width: 200px;
+}
+
+.scrollToTopHomeBtn {
+    border: 1px solid darkgray;
+    border-radius: 4px;
+    color: black;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 0px auto;
+    padding: 5px;
+    position: fixed;
+    right: 600px;
+    top: 225px;
+    width: 90px;
+}
+
+@media only screen and (max-width: 1325px) {
+    .bookList {
+        width: 75vw;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .bookList {
+        width: 650px;
+    }
+
+    .content {
+        margin-left: 15px;
+    }
+}
+
+@media only screen and (max-width: 670px) {
+    .bookList {
+        width: 600px;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .bookList {
+        left: 15px;
+        margin-top: 25px;
+        max-width: 100%;
+        top: 160px;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .resultsSummary {
+        display: none;
+    }
+
+    .underConstruction {
+        display: none;
+    }
+}
