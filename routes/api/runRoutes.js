@@ -6,16 +6,20 @@ router.get("/getRun", (req, res) => {
     controller.getRun(req, res);
 });
 
+router.get("/getRunsByUser", (req, res) => {
+    controller.getRunsByUser(req, res);
+});
+
 router.post("/createRun", (req, res) => {
     controller.createRun(req, res);
 });
 
-router.put("/updateRun", (req, res) => {
-    controller.updateRun(req, res);
+router.put("/updateRunById", (req, res) => {
+    controller.updateRunById(req, res);
 });
 
-router.delete("/deleteRun", (req, res) => {
-    controller.deleteRun(req, res);
+router.delete("/deleteRunById", (req, res) => {
+    controller.deleteRunById(req, res);
 });
 
 module.exports = router;
