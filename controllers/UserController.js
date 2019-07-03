@@ -32,6 +32,20 @@ class UserController {
         });
     }
 
+    getUserById(req, res) {
+        db.Users.findOne({
+            where: {
+                userId: req.body.userId,
+            }
+        })
+        .then((user) => {
+            res.json(user);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    }
+
     createUser(req, res) {
         // bcrypt.genSalt(11, function (err, salt) {
         //     if (err) {
@@ -96,7 +110,10 @@ class UserController {
 
     deleteUser(req, res) {
         db.Users.destroy({
-
+            where: {
+                userId: req.body.userId,
+                email: req.body.email,
+            }
         })
         .then((user) => {
             res.json(user);

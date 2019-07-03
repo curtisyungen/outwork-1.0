@@ -2,8 +2,8 @@ const router = require("express").Router();
 const RunController = require("../../controllers/RunController");
 const controller = new RunController();
 
-router.get("/getRun", (req, res) => {
-    controller.getRun(req, res);
+router.get("/getRunById", (req, res) => {
+    controller.getRunById(req, res);
 });
 
 router.get("/getRunsByUser", (req, res) => {

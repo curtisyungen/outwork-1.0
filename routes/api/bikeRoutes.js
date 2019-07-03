@@ -2,8 +2,8 @@ const router = require("express").Router();
 const BikeController = require("../../controllers/BikeController");
 const controller = new BikeController();
 
-router.get("/getBike", (req, res) => {
-    controller.getBike(req, res);
+router.get("/getBikeById", (req, res) => {
+    controller.getBikeById(req, res);
 });
 
 router.get("/getBikesByUser", (req, res) => {

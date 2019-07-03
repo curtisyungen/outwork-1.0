@@ -11,12 +11,12 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: true,
         },
         // Main muscle group targeted
-        mainMuscleGroup: {
+        primaryMG: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         // Secondary muscle group targeted
-        secondaryMuscleGroup: {
+        secondaryMG: {
             type: DataTypes.STRING,
             allowNull: true,
         },

@@ -2,7 +2,7 @@ const db = require("../models/index.js");
 
 class SwimController {
 
-    getSwim(req, res) {
+    getSwimById(req, res) {
         db.Swims.findOne({
             where: {
 

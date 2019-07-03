@@ -2,8 +2,8 @@ const router = require("express").Router();
 const SwimController = require("../../controllers/SwimController");
 const controller = new SwimController();
 
-router.get("/getSwim", (req, res) => {
-    controller.getSwim(req, res);
+router.get("/getSwimById", (req, res) => {
+    controller.getSwimById(req, res);
 });
 
 router.get("/getSwimsByUser", (req, res) => {

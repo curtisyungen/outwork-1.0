@@ -2,10 +2,10 @@ const db = require("../models/index.js");
 
 class RunController {
 
-    getRun(req, res) {
+    getRunById(req, res) {
         db.Runs.findOne({
             where: {
-                userId: req.body.userId,
+                id: req.body.id,
             }
         })
         .then((run) => {
@@ -32,7 +32,7 @@ class RunController {
 
     createRun(req, res) {
         db.Runs.create({
-
+            
         })
         .then((run) => {
             res.json(run);

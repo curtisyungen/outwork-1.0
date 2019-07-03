@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar/navbar";
 import Home from "./pages/Home";
 import userAPI from "./utils/userAPI";
 import actAPI from "./utils/actAPI";
+import exerAPI from "./utils/exerAPI";
 import './App.css';
 
 class App extends Component {

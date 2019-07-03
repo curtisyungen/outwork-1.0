@@ -2,7 +2,7 @@ const db = require("../models/index.js");
 
 class LiftController {
 
-    getLift(req, res) {
+    getLiftById(req, res) {
         db.Lifts.findOne({
             where: {
                 userId: req.body.userId,
