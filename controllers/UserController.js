@@ -1,4 +1,5 @@
 const db = require("../models/index.js");
+// const bcrypt = require("bcrypt");
 
 class UserController {
 
