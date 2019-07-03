@@ -1,9 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
     let Users = sequelize.define("Users", {
         // Unique userID
-        userID: {
+        userId: {
             type: DataTypes.STRING,
-            allwNull: false,
+            allowNull: false,
         },
         // User's first name
         firstName: {
@@ -33,6 +33,11 @@ module.exports = function(sequelize, DataTypes) {
         // User's account privacy setting: public or private
         privacy: {
             type: DataTypes.STRING,
+            allowNull: true,
+        },
+        // Array of users being followed by subject user, stored as string
+        following: {
+            type: DataTypes.STRING(1000),
             allowNull: true,
         }
     });
