@@ -49,7 +49,7 @@ class ExerciseController {
                 [Op.or]: [
                     {
                         equipment: {
-                            [Op.like]: '%' + req.body.equipment + '%'
+                            [Op.like]: '%' + req.body.equip + '%'
                         }
                     }
                 ]

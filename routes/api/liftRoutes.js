@@ -2,8 +2,8 @@ const router = require("express").Router();
 const LiftController = require("../../controllers/LiftController");
 const controller = new LiftController();
 
-router.get("/getLift", (req, res) => {
-    controller.getLift(req, res);
+router.get("/getLiftById", (req, res) => {
+    controller.getLiftById(req, res);
 });
 
 router.get("/getLiftsByUser", (req, res) => {

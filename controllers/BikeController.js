@@ -2,7 +2,7 @@ const db = require("../models/index.js");
 
 class BikeController {
 
-    getBike(req, res) {
+    getBikeById(req, res) {
         db.Bikes.findOne({
             where: {
 
