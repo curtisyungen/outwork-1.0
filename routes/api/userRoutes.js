@@ -14,8 +14,12 @@ router.post("/createUser", (req, res) => {
     controller.createUser(req, res);
 });
 
-router.put("/updateUser", (req, res) => {
-    controller.updateUser(req, res);
+router.put("/updatePassword", (req, res) => {
+    controller.updatePassword(req, res);
+});
+
+router.put("/updateWeight", (req, res) => {
+    controller.updateWeight(req, res);
 });
 
 router.delete("/deleteUser", (req, res) => {
