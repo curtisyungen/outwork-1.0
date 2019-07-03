@@ -1,9 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
     let Users = sequelize.define("Users", {
         // Unique userID
-        userID: {
+        userId: {
             type: DataTypes.STRING,
-            allwNull: false,
+            allowNull: false,
         },
         // User's first name
         firstName: {
