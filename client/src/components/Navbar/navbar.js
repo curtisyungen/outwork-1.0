@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import userAPI from "./utils/userAPI";
-import actAPI from "./utils/actAPI";
-import exerAPI from "./utils/exerAPI";
+import userAPI from "../../utils/userAPI";
+import actAPI from "../../utils/actAPI";
+import exerAPI from "../../utils/exerAPI";
 import "./navbar.css";
 
 class Navbar extends Component {
