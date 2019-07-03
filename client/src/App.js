@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Navbar from "./components/Navbar/navbar";
 import Home from "./pages/Home";
-import API from "./utils/API";
+import userAPI from "./utils/userAPI";
+import actAPI from "./utils/actAPI";
 import './App.css';
 
 class App extends Component {
