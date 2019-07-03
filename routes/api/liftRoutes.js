@@ -6,16 +6,20 @@ router.get("/getLift", (req, res) => {
     controller.getLift(req, res);
 });
 
+router.get("/getLiftsByUser", (req, res) => {
+    controller.getLiftsByUser(req, res);
+});
+
 router.post("/createLift", (req, res) => {
     controller.createLift(req, res);
 });
 
-router.put("/updateLift", (req, res) => {
-    controller.updateLift(req, res);
+router.put("/updateLiftById", (req, res) => {
+    controller.updateLiftById(req, res);
 });
 
-router.delete("/deleteLift", (req, res) => {
-    controller.deleteLift(req, res);
+router.delete("/deleteLiftById", (req, res) => {
+    controller.deleteLiftById(req, res);
 });
 
 module.exports = router;
