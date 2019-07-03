@@ -6,4 +6,20 @@ router.get("/loginUser", (req, res) => {
     controller.loginUser(req, res);
 });
 
+router.get("/getUser", (req, res) => {
+    controller.getUser(req, res);
+});
+
+router.post("/createUser", (req, res) => {
+    controller.createUser(req, res);
+});
+
+router.put("/updateUser", (req, res) => {
+    controller.updateUser(req, res);
+});
+
+router.delete("/deleteUser", (req, res) => {
+    controller.deleteUser(req, res);
+});
+
 module.exports = router;

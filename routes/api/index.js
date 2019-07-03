@@ -1,9 +1,29 @@
 const path = require("path");
 const router = require("express").Router();
 const userRoutes = require("./userRoutes");
+const runRoutes = require("./runRoutes");
+const bikeRoutes = require("./bikeRoutes");
+const swimRoutes = require("./swimRoutes");
+const liftRoutes = require("./liftRoutes");
+const exerciseRoutes = require("./exerciseRoutes");
 
 // User routes
 router.use("/users", userRoutes);
+
+// Run routes
+router.use("/runs", runRoutes);
+
+// Bike routes
+router.use("/bikes", bikeRoutes);
+
+// Swim routes
+router.use("/swims", swimRoutes);
+
+// Lift routes
+router.use("/lifts", liftRoutes);
+
+// Exercise routes
+router.use("/exercises", exerciseRoutes);
 
 // For anything else, render the html page
 router.use((req, res) => {
