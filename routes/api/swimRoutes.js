@@ -6,16 +6,20 @@ router.get("/getSwim", (req, res) => {
     controller.getSwim(req, res);
 });
 
+router.get("/getSwimsByUser", (req, res) => {
+    controller.getSwimsByUser(req, res);
+});
+
 router.post("/createSwim", (req, res) => {
     controller.createSwim(req, res);
 });
 
-router.put("/updateSwim", (req, res) => {
-    controller.updateSwim(req, res);
+router.put("/updateSwimById", (req, res) => {
+    controller.updateSwimById(req, res);
 });
 
-router.delete("/deleteSwim", (req, res) => {
-    controller.deleteSwim(req, res);
+router.delete("/deleteSwimById", (req, res) => {
+    controller.deleteSwimById(req, res);
 });
 
 module.exports = router;

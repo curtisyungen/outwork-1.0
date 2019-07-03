@@ -6,16 +6,20 @@ router.get("/getBike", (req, res) => {
     controller.getBike(req, res);
 });
 
+router.get("/getBikesByUser", (req, res) => {
+    controller.getBikesByUser(req, res);
+});
+
 router.post("/createBike", (req, res) => {
     controller.createBike(req, res);
 });
 
-router.put("/updateBike", (req, res) => {
-    controller.updateBike(req, res);
+router.put("/updateBikeById", (req, res) => {
+    controller.updateBikeById(req, res);
 });
 
-router.delete("/deleteBike", (req, res) => {
-    controller.deleteBike(req, res);
+router.delete("/deleteBikeById", (req, res) => {
+    controller.deleteBikeById(req, res);
 });
 
 module.exports = router;
