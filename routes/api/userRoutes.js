@@ -14,6 +14,10 @@ router.post("/createUser", (req, res) => {
     controller.createUser(req, res);
 });
 
+router.post("/followUser", (req, res) => {
+    controller.followUser(req, res);
+});
+
 router.put("/updatePassword", (req, res) => {
     controller.updatePassword(req, res);
 });

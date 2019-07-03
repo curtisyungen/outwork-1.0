@@ -34,6 +34,11 @@ module.exports = function(sequelize, DataTypes) {
         privacy: {
             type: DataTypes.STRING,
             allowNull: true,
+        },
+        // Array of users being followed by subject user, stored as string
+        following: {
+            type: DataTypes.STRING(1000),
+            allowNull: true,
         }
     });
     

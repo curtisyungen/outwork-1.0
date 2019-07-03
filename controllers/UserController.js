@@ -105,6 +105,20 @@ class UserController {
             console.log(err);
         });
     }
+
+    followUser(req, res) {
+        db.Users.update(
+            {following: req.body.following},
+            {where: {
+                userId: req.body.userId,
+            }})
+            .then((user) => {
+                res.json(user);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
 }
 
 module.exports = UserController;
