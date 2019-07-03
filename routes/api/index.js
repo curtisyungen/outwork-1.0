@@ -6,6 +6,7 @@ const bikeRoutes = require("./bikeRoutes");
 const swimRoutes = require("./swimRoutes");
 const liftRoutes = require("./liftRoutes");
 const exerciseRoutes = require("./exerciseRoutes");
+const resetRoutes = require("./resetRoutes");
 
 // User routes
 router.use("/users", userRoutes);
@@ -24,6 +25,9 @@ router.use("/lifts", liftRoutes);
 
 // Exercise routes
 router.use("/exercises", exerciseRoutes);
+
+// Reset routes
+router.use("/reset", resetRoutes);
 
 // For anything else, render the html page
 router.use((req, res) => {
