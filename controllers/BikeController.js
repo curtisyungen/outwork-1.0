@@ -31,9 +31,7 @@ class BikeController {
     }
 
     createBike(req, res) {
-        db.Bikes.create({
-
-        })
+        db.Bikes.create(req.body.bikeData)
         .then((bike) => {
             res.json(bike);
         })

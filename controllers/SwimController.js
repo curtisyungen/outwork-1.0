@@ -31,9 +31,7 @@ class SwimController {
     }
 
     createSwim(req, res) {
-        db.Swims.create({
-
-        })
+        db.Swims.create(req.body.swimData)
         .then((swim) => {
             res.json(swim);
         })
