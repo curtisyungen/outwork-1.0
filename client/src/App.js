@@ -7,6 +7,13 @@ import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
+import Profile from "./pages/Profile";
+import MyActivity from "./pages/MyActivity";
+import LogActivity from "./pages/LogActivity";
+import Generator from "./pages/Generator";
+import Metrics from "./pages/Metrics";
+import FindUsers from "./pages/FindUsers";
+import Settings from "./pages/Settings";
 
 import userAPI from "./utils/userAPI";
 // import actAPI from "./utils/actAPI";
@@ -37,7 +44,7 @@ class App extends Component {
       this.setState({
         isLoggedIn: loginStatus,
       });
-    } 
+    }
 
     this.setState({
       redirectToSignUp: false,
@@ -105,7 +112,7 @@ class App extends Component {
   createUser = (firstName, lastName, email, password) => {
 
     // Check if email already exists in database
-    userAPI.getUser(email) 
+    userAPI.getUser(email)
       .then((res) => {
         if (res.data.length === 0) {
           let weight = 150;
@@ -123,7 +130,7 @@ class App extends Component {
           alert("Account already exists for this email address.");
           this.setRedirectToLogin();
         }
-      });    
+      });
   }
 
   loginUser = (email, password) => {
@@ -141,7 +148,7 @@ class App extends Component {
               if (res.data.length === 0) {
                 alert("Incorrect password.");
               }
-              else { 
+              else {
                 // Store login status and userId in local storage
                 localStorage.setItem("isLoggedIn", "true");
                 localStorage.setItem("userId", res.data[0].userId);
@@ -186,43 +193,44 @@ class App extends Component {
           {this.state.redirectToLanding ? (
             this.redirectToLanding()
           ) : (
-            <></>
-          )}
+              <></>
+            )}
 
           {/* Redirect to Login Page */}
 
           {this.state.redirectToLogin ? (
             this.redirectToLogin()
           ) : (
-            <></>
-          )}
+              <></>
+            )}
 
           {/* Redirect to Sign Up Page */}
 
           {this.state.redirectToSignUp ? (
             this.redirectToSignUp()
           ) : (
-            <></>
-          )}   
+              <></>
+            )}
 
           {/* Redirect to Home */}
 
           {this.state.redirectToHome ? (
             this.redirectToHome()
           ) : (
-            <></>
-          )}       
+              <></>
+            )}
 
-          {/* Render Navbar */}
-          <Navbar 
+          {/* Navbar */}
+          <Navbar
             logoutUser={this.logoutUser}
           />
 
           <Switch>
             {/* Home Page */}
-            <Route exact path="/" render={() => 
-              <Home 
+            <Route exact path="/" render={() =>
+              <Home
                 updateParentState={this.updateParentState}
+                setRedirectToLanding={this.setRedirectToLanding}
               />
             } />
 
@@ -235,7 +243,7 @@ class App extends Component {
             } />
 
             {/* Login Page */}
-            <Route exact path="/login" render={() => 
+            <Route exact path="/login" render={() =>
               <Login
                 setRedirectToSignUp={this.setRedirectToSignUp}
                 setRedirectToHome={this.setRedirectToHome}
@@ -244,12 +252,47 @@ class App extends Component {
             } />
 
             {/* Sign Up Page */}
-            <Route exact path="/signUp" render={() => 
+            <Route exact path="/signUp" render={() =>
               <SignUp
                 setRedirectToLogin={this.setRedirectToLogin}
                 setRedirectToHome={this.setRedirectToHome}
                 createUser={this.createUser}
               />
+            } />
+
+            {/* Profile Page */}
+            <Route exact path="/profile" render={() =>
+              <Profile />
+            } />
+
+            {/* My Activity Page */}
+            <Route exact path="/myActivity" render={() =>
+              <MyActivity />
+            } />
+
+            {/* Log Activity Page */}
+            <Route exact path="/logActivity" render={() =>
+              <LogActivity />
+            } />
+
+            {/* Generator Page */}
+            <Route exact path="/generator" render={() =>
+              <Generator />
+            } />
+
+            {/* Metrics Page */}
+            <Route exact path="/metrics" render={() =>
+              <Metrics />
+            } />
+
+            {/* Find Users Page */}
+            <Route exact path="/findUsers" render={() =>
+              <FindUsers />
+            } />
+
+            {/* Settings Page */}
+            <Route exact path="/settings" render={() =>
+              <Settings />
             } />
           </Switch>
         </span>

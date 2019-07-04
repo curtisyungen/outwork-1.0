@@ -17,9 +17,6 @@ class Landing extends Component {
 
     render() {
         return (
-
-
-
             <span>
                 <div className="jumbotron jumbotron-fluid text-center">
                     <div>
