@@ -46,6 +46,9 @@ class Run extends Component {
     }
 
     submitRun = () => {
+
+        this.props.checkValidUser();
+
         let runData = {
             userId: this.state.userId,
             date: this.state.date,

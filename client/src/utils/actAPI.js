@@ -43,7 +43,7 @@ export default {
     },
 
     createBike: function(bikeData) {
-        return axios.post("/api/bikes/createBike", bikeData);
+        return axios.post("/api/bikes/createBike", {bikeData: bikeData});
     },
 
     updateBikeById: function(bikeId) {
@@ -66,7 +66,7 @@ export default {
     },
 
     createSwim: function(swimData) {
-        return axios.post("/api/swims/createSwim", swimData);
+        return axios.post("/api/swims/createSwim", {swimData: swimData});
     },
 
     updateSwimById: function(swimId) {
