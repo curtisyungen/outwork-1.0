@@ -20,10 +20,14 @@ class Navbar extends Component {
 
     render() {
         return (
-            window.location.pathname !== "/" &&
-            window.location.pathname.toLowerCase() !== "/login" &&
-            window.location.pathname.toLowerCase() !== "/signup" &&
-            window.location.pathname.toLowerCase() !== "/error" ? (
+            window.location.pathname.toLowerCase() === "/home" ||
+            window.location.pathname.toLowerCase() === "/profile" ||
+            window.location.pathname.toLowerCase() === "/myActivity" ||
+            window.location.pathname.toLowerCase() === "/logActivity" ||
+            window.location.pathname.toLowerCase() === "/generator" ||
+            window.location.pathname.toLowerCase() === "/metrics" ||
+            window.location.pathname.toLowerCase() === "/findUsers" ||
+            window.location.pathname.toLowerCase() === "/settings" ? (
 
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <a className="navbar-brand" href="/">Outwork</a>
@@ -33,8 +37,7 @@ class Navbar extends Component {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <a className="nav-link" href="/">Home
-                            </a>
+                            <a className="nav-link" href="/">Home</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="/profile">Profile</a>
