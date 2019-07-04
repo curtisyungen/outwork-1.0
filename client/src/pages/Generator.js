@@ -13,7 +13,7 @@ class Generator extends Component {
     }
 
     componentDidMount = () => {
-
+        this.props.checkValidUser();
     }
 
     render() {

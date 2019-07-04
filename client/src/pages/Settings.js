@@ -13,7 +13,7 @@ class Settings extends Component {
     }
 
     componentDidMount = () => {
-
+        this.props.checkValidUser();
     }
 
     render() {

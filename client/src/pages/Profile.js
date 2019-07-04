@@ -8,12 +8,12 @@ class Profile extends Component {
         super(props);
 
         this.state = {
-            
+
         }
     }
 
     componentDidMount = () => {
-
+        this.props.checkValidUser();
     }
 
     render() {

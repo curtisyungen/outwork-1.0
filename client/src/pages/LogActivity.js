@@ -13,7 +13,7 @@ class LogActivity extends Component {
     }
 
     componentDidMount = () => {
-
+        this.props.checkValidUser();
     }
 
     render() {

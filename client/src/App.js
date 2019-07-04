@@ -181,7 +181,23 @@ class App extends Component {
     });
   }
 
+  // Called on each page load
+  // Checks userId in local storage to see if it exists in database
+  // If it doesn't/it is a fake userId, automatically logs out user and redirects to landing page
+  // This prevents users from navigating to pages without being properly logged in
+  checkValidUser = () => {
+    let userId;
+    if (localStorage.getItem("userId") && localStorage.getItem("userId") !== null) {
+      userId = localStorage.getItem("userId");
 
+      userAPI.getUserById(userId)
+        .then((res) => {
+          if (res.data.length === 0) {
+            this.logoutUser();
+          }
+        });
+    }
+  }
 
   render() {
     return (
@@ -262,37 +278,51 @@ class App extends Component {
 
             {/* Profile Page */}
             <Route exact path="/profile" render={() =>
-              <Profile />
+              <Profile 
+                checkValidUser={this.checkValidUser}
+              />
             } />
 
             {/* My Activity Page */}
             <Route exact path="/myActivity" render={() =>
-              <MyActivity />
+              <MyActivity 
+                checkValidUser={this.checkValidUser}
+              />
             } />
 
             {/* Log Activity Page */}
             <Route exact path="/logActivity" render={() =>
-              <LogActivity />
+              <LogActivity 
+                checkValidUser={this.checkValidUser}
+              />
             } />
 
             {/* Generator Page */}
             <Route exact path="/generator" render={() =>
-              <Generator />
+              <Generator 
+                checkValidUser={this.checkValidUser}
+              />
             } />
 
             {/* Metrics Page */}
             <Route exact path="/metrics" render={() =>
-              <Metrics />
+              <Metrics 
+                checkValidUser={this.checkValidUser}
+              />
             } />
 
             {/* Find Users Page */}
             <Route exact path="/findUsers" render={() =>
-              <FindUsers />
+              <FindUsers 
+                checkValidUser={this.checkValidUser}
+              />
             } />
 
             {/* Settings Page */}
             <Route exact path="/settings" render={() =>
-              <Settings />
+              <Settings 
+                checkValidUser={this.checkValidUser}
+              />
             } />
           </Switch>
         </span>
