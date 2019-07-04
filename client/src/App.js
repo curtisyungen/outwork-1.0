@@ -14,6 +14,7 @@ import Generator from "./pages/Generator";
 import Metrics from "./pages/Metrics";
 import FindUsers from "./pages/FindUsers";
 import Settings from "./pages/Settings";
+import Error from "./pages/Error";
 
 import userAPI from "./utils/userAPI";
 // import actAPI from "./utils/actAPI";
@@ -333,6 +334,8 @@ class App extends Component {
                 checkValidUser={this.checkValidUser}
               />
             } />
+
+            <Route component={Error} />
           </Switch>
         </span>
       </Router>
