@@ -12,7 +12,7 @@ class Home extends Component {
     }
 
     componentDidMount = () => {
-
+        this.props.updateParentState();
     }
 
     render() {

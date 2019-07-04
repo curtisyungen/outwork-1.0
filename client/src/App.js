@@ -20,15 +20,31 @@ class App extends Component {
     super(props);
 
     this.state = {
-      isLoggedIn: true,
       redirectToSignUp: false,
       redirectToLogin: false,
       redirectToHome: false,
+      redirectToLanding: false,
+      userId: null,
     }
   }
 
   componentDidMount = () => {
 
+    let loginStatus;
+    if (localStorage.getItem("isLoggedIn")) {
+      loginStatus = JSON.parse(localStorage.getItem("isLoggedIn"));
+
+      this.setState({
+        isLoggedIn: loginStatus,
+      });
+    } 
+
+    this.setState({
+      redirectToSignUp: false,
+      redirectToLogin: false,
+      redirectToHome: false,
+      redirectToLanding: false,
+    });
   }
 
   // REDIRECTS
@@ -52,6 +68,16 @@ class App extends Component {
     });
   }
 
+  setRedirectToLanding = () => {
+    this.setState({
+      redirectToLanding: true,
+    });
+  }
+
+  redirectToLanding = () => {
+    return <Redirect to="/landing" />
+  }
+
   redirectToSignUp = () => {
     return <Redirect to="/signUp" />
   }
@@ -62,6 +88,15 @@ class App extends Component {
 
   redirectToHome = () => {
     return <Redirect to="/" />
+  }
+
+  updateParentState = () => {
+    this.setState({
+      redirectToHome: false,
+      redirectToLogin: false,
+      redirectToSignup: false,
+      redirectToLanding: false,
+    });
   }
 
   // USER
@@ -103,18 +138,43 @@ class App extends Component {
         else {
           userAPI.loginUser(email, password)
             .then((res) => {
-
               if (res.data.length === 0) {
                 alert("Incorrect password.");
               }
-              else {
-                alert("Successful login.");
-                this.setRedirectToHome();
+              else { 
+                // Store login status and userId in local storage
+                localStorage.setItem("isLoggedIn", "true");
+                localStorage.setItem("userId", res.data[0].userId);
+
+                // Store login data and userId in state
+                this.setState({
+                  isLoggedIn: "true",
+                  userId: res.data.userId,
+                }, () => {
+
+                  // Redirect to home page
+                  alert("Successful login.");
+                  this.setRedirectToHome();
+                });
               }
             });
         }
       });
   }
+
+  logoutUser = () => {
+    localStorage.setItem("isLoggedIn", "false");
+    localStorage.setItem("userId", null);
+
+    this.setState({
+      isLoggedIn: "false",
+      userId: null,
+    }, () => {
+      this.setRedirectToLanding();
+    });
+  }
+
+
 
   render() {
     return (
@@ -123,10 +183,10 @@ class App extends Component {
 
           {/* Redirect To Landing Page */}
 
-          {!this.state.isLoggedIn ? (
-            <Redirect to="/landing" />
+          {this.state.redirectToLanding ? (
+            this.redirectToLanding()
           ) : (
-            <></>            
+            <></>
           )}
 
           {/* Redirect to Login Page */}
@@ -159,7 +219,7 @@ class App extends Component {
            window.location.pathname !== "/login" &&
            window.location.pathname !== "/signUp" ? (
             <Navbar 
-            
+              logoutUser={this.logoutUser}
             />
            ) : (
              <></>
@@ -167,7 +227,11 @@ class App extends Component {
 
           <Switch>
             {/* Home Page */}
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" render={() => 
+              <Home 
+                updateParentState={this.updateParentState}
+              />
+            } />
 
             {/* Landing Page */}
             <Route exact path="/landing" render={() =>
