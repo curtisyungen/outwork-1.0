@@ -1,0 +1,17 @@
+.activity {
+    background: rgb(242, 242, 242);
+    border: 1px solid black;
+    cursor: pointer;
+    display: inline-block;
+    height: 150px;
+    margin: 5px;
+    padding-top: 60px;
+    text-align: center;
+    width: 150px;
+}
+
+.logActivity {
+    height: auto;
+    margin-top: 150px;
+    text-align: center;
+}
