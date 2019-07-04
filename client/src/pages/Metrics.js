@@ -13,7 +13,7 @@ class Metrics extends Component {
     }
 
     componentDidMount = () => {
-
+        this.props.checkValidUser();
     }
 
     render() {

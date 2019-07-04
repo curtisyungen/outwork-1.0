@@ -19,7 +19,7 @@ export default {
     },
 
     getUserById: function(userId) {
-        return axios.get("/api/users/getUserById", {userId: userId});
+        return axios.get("/api/users/getUserById/" + userId);
     },
 
     createUser: function(firstName, lastName, email, password, weight, privacy) {

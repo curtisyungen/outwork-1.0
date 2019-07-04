@@ -12,7 +12,7 @@ class Landing extends Component {
     }
 
     componentDidMount = () => {
-
+        
     }
 
     render() {

@@ -13,7 +13,7 @@ class MyActivity extends Component {
     }
 
     componentDidMount = () => {
-
+        this.props.checkValidUser();
     }
 
     render() {

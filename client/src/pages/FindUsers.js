@@ -13,7 +13,7 @@ class FindUsers extends Component {
     }
 
     componentDidMount = () => {
-
+        this.props.checkValidUser();
     }
 
     render() {
