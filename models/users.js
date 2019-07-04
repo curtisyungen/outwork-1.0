@@ -30,6 +30,11 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             allowNull: true,
         },
+        // Array of user's equipment stored as string
+        equipment: {
+            type: DataTypes.STRING(1500),
+            allowNull: true,
+        },
         // User's account privacy setting: public or private
         privacy: {
             type: DataTypes.STRING,
