@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import Container from "../components/Container/container";
 import actAPI from "../utils/actAPI";
 // import "./Swim.css";
 
@@ -39,25 +38,24 @@ class Swim extends Component {
     }
 
     submitSwim = () => {
+        if(this.props.checkValidUser()) {
+            let swimData = {
+                userId: this.state.userId,
+                date: this.state.date,
+                distance: this.state.distance,
+                duration: this.state.duration,
+                laps: this.state.laps,
+                location: this.state.location,
+                waterType: this.state.waterType,
+                swimWorkout: this.state.swimWorkout,
+                notes: this.state.notes,
+            }
 
-        this.props.checkValidUser();
-
-        let swimData = {
-            userId: this.state.userId,
-            date: this.state.date,
-            distance: this.state.distance,
-            duration: this.state.duration,
-            laps: this.state.laps,
-            location: this.state.location,
-            waterType: this.state.waterType,
-            swimWorkout: this.state.swimWorkout,
-            notes: this.state.notes,
+            actAPI.createSwim(swimData)
+                .then((res) => {
+                    console.log(res);
+                });
         }
-
-        actAPI.createSwim(swimData)
-            .then((res) => {
-                console.log(res);
-            });
     }
 
     render() {

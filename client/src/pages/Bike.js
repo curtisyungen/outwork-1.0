@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import Container from "../components/Container/container";
 import actAPI from "../utils/actAPI";
 // import "./Bike.css";
 
@@ -42,28 +41,27 @@ class Bike extends Component {
     }
 
     submitBike = () => {
+        if(this.props.checkValidUser()) {
+            let bikeData = {
+                userId: this.state.userId,
+                date: this.state.date,
+                distance: this.state.distance,
+                duration: this.state.duration,
+                location: this.state.location,
+                surface: this.state.surface,
+                weather: "sunny",
+                climb: this.state.climb,
+                grade: this.state.grade,
+                bike: this.state.shoe,
+                notes: this.state.notes,
+                map: this.state.map,
+            }
 
-        this.props.checkValidUser();
-
-        let bikeData = {
-            userId: this.state.userId,
-            date: this.state.date,
-            distance: this.state.distance,
-            duration: this.state.duration,
-            location: this.state.location,
-            surface: this.state.surface,
-            weather: "sunny",
-            climb: this.state.climb,
-            grade: this.state.grade,
-            bike: this.state.shoe,
-            notes: this.state.notes,
-            map: this.state.map,
+            actAPI.createBike(bikeData)
+                .then((res) => {
+                    console.log(res);
+                });
         }
-
-        actAPI.createBike(bikeData)
-            .then((res) => {
-                console.log(res);
-            });
     }
 
     render() {
