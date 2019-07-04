@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
     let Runs = sequelize.define("Runs", {
         // UserID of user who submitted run
-        userID: {
+        userId: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -48,7 +48,7 @@ module.exports = function(sequelize, DataTypes) {
         // Primary weather condition for run (sunny, rainy, cloudy, windy, etc.)
         weather: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         // Elevation gain over entire run in feet (optional)
         climb: {
