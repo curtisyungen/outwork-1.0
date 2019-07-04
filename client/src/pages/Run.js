@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import actAPI from "../utils/actAPI";
-// import userAPI from "../utils/userAPI";
 import "./Run.css";
 
 class Run extends Component {
@@ -45,31 +44,30 @@ class Run extends Component {
     }
 
     submitRun = () => {
+        if(this.props.checkValidUser()) {
+            let runData = {
+                userId: this.state.userId,
+                date: this.state.date,
+                distance: this.state.distance,
+                duration: this.state.duration,
+                type: this.state.type,
+                repeats: this.state.repeats,
+                race: this.state.race,
+                location: this.state.location,
+                surface: this.state.surface,
+                weather: "sunny",
+                climb: this.state.climb,
+                grade: this.state.grade,
+                shoe: this.state.shoe,
+                notes: this.state.notes,
+                map: this.state.map,
+            }
 
-        this.props.checkValidUser();
-
-        let runData = {
-            userId: this.state.userId,
-            date: this.state.date,
-            distance: this.state.distance,
-            duration: this.state.duration,
-            type: this.state.type,
-            repeats: this.state.repeats,
-            race: this.state.race,
-            location: this.state.location,
-            surface: this.state.surface,
-            weather: "sunny",
-            climb: this.state.climb,
-            grade: this.state.grade,
-            shoe: this.state.shoe,
-            notes: this.state.notes,
-            map: this.state.map,
+            actAPI.createRun(runData)
+                .then((res) => {
+                    console.log(res);
+                });
         }
-
-        actAPI.createRun(runData)
-            .then((res) => {
-                console.log(res);
-            });
     }
 
     render() {

@@ -53,26 +53,26 @@ class Lift extends Component {
 
     submitLift = () => {
 
-        this.props.checkValidUser();
-
-        let liftData = {
-            userId: this.state.userId,
-            date: this.state.date,
-            duration: this.state.duration,
-            location: this.state.location,
-            generator: this.state.generator,
-            sets: this.state.sets,
-            pushups: this.state.pushups,
-            pullups: this.state.pullups,
-            workout: this.state.workout,
-            muscleGroups: this.state.muscleGroups,
-            notes: this.state.notes,
+        if(this.props.checkValidUser()) {
+            let liftData = {
+                userId: this.state.userId,
+                date: this.state.date,
+                duration: this.state.duration,
+                location: this.state.location,
+                generator: this.state.generator,
+                sets: this.state.sets,
+                pushups: this.state.pushups,
+                pullups: this.state.pullups,
+                workout: this.state.workout,
+                muscleGroups: this.state.muscleGroups,
+                notes: this.state.notes,
+            }
+    
+            actAPI.createLift(liftData)
+                .then((res) => {
+                    console.log(res);
+                });
         }
-
-        actAPI.createLift(liftData)
-            .then((res) => {
-                console.log(res);
-            });
     }
 
     render() {

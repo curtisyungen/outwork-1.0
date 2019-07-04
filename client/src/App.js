@@ -209,6 +209,9 @@ class App extends Component {
           if (res.data.length === 0) {
             this.logoutUser();
           }
+          else {
+            return true;
+          }
         });
     }
   }
