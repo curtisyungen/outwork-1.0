@@ -31,9 +31,7 @@ class LiftController {
     }
 
     createLift(req, res) {
-        db.Lifts.create({
-
-        })
+        db.Lifts.create(req.body.liftData)
         .then((lift) => {
             res.json(lift);
         })
