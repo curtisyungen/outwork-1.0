@@ -19,7 +19,8 @@ export default {
     },
 
     createRun: function(runData) {
-        return axios.post("/api/runs/createRun", runData);
+        console.log(runData);
+        return axios.post("/api/runs/createRun", {runData: runData});
     },
 
     updateRunById: function(runId) {

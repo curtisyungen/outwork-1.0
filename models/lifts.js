@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
     let Lifts = sequelize.define("Lifts", {
         // UserID of user who submitted workout
-        userID: {
+        userId: {
             type: DataTypes.STRING,
             allowNull: false,
         },

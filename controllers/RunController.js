@@ -31,9 +31,7 @@ class RunController {
     }
 
     createRun(req, res) {
-        db.Runs.create({
-            
-        })
+        db.Runs.create(req.body.runData)
         .then((run) => {
             res.json(run);
         })
