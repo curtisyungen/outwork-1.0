@@ -18,7 +18,7 @@ class Landing extends Component {
     render() {
         return (
 
-            
+
 
             <span>
                 <div class="jumbotron jumbotron-fluid text-center">
@@ -35,7 +35,7 @@ class Landing extends Component {
                         </button>
                         <button 
                             className="btn btn-outline-dark btn-sm" 
-                            onClick={this.props.setRedirectToSignIn}
+                            onClick={this.props.setRedirectToLogin}
                         >
                             Sign In
                         </button>

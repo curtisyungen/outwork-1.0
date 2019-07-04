@@ -9,8 +9,8 @@ import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 
 import userAPI from "./utils/userAPI";
-import actAPI from "./utils/actAPI";
-import exerAPI from "./utils/exerAPI";
+// import actAPI from "./utils/actAPI";
+// import exerAPI from "./utils/exerAPI";
 
 import './App.css';
 
@@ -64,10 +64,28 @@ class App extends Component {
     return <Redirect to="/" />
   }
 
-  // 
+  // LOGIN
   // ==================================
 
+  loginUser = (email, password) => {
 
+    // Check if email exists in database
+    userAPI.getUser(email)
+      .then((res) => {
+        console.log("Login User", res);
+      });
+  }
+
+  createUser = (firstName, lastName, email, password) => {
+
+    let weight = 150;
+    let privacy = "public";
+
+    userAPI.createUser(firstName, lastName, email, password, weight, privacy)
+      .then((res) => {
+        console.log("Create User", res);
+      });
+  }
 
   render() {
     return (
@@ -135,6 +153,7 @@ class App extends Component {
               <Login
                 setRedirectToSignUp={this.setRedirectToSignUp}
                 setRedirectToHome={this.setRedirectToHome}
+                loginUser={this.loginUser}
               />
             } />
 
@@ -143,6 +162,7 @@ class App extends Component {
               <SignUp
                 setRedirectToLogin={this.setRedirectToLogin}
                 setRedirectToHome={this.setRedirectToHome}
+                createUser={this.createUser}
               />
             } />
           </Switch>
