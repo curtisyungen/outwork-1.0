@@ -64,17 +64,8 @@ class App extends Component {
     return <Redirect to="/" />
   }
 
-  // LOGIN
+  // USER
   // ==================================
-
-  loginUser = (email, password) => {
-
-    // Check if email exists in database
-    userAPI.getUser(email)
-      .then((res) => {
-        console.log("Login User", res);
-      });
-  }
 
   createUser = (firstName, lastName, email, password) => {
 
@@ -88,16 +79,41 @@ class App extends Component {
           userAPI.createUser(firstName, lastName, email, password, weight, privacy)
             .then((res) => {
               if (res.status === 200) {
-                console.log("yes");
+                alert("User created.");
+                this.setRedirectToHome();
               }
             });
         }
         else {
           alert("Account already exists for this email address.");
-
           this.setRedirectToLogin();
         }
       });    
+  }
+
+  loginUser = (email, password) => {
+
+    // Check if email exists in database
+    userAPI.getUser(email)
+      .then((res) => {
+        if (res.data.length === 0) {
+          alert("No account exists for this email address.");
+          this.setRedirectToSignUp();
+        }
+        else {
+          userAPI.loginUser(email, password)
+            .then((res) => {
+
+              if (res.data.length === 0) {
+                alert("Incorrect password.");
+              }
+              else {
+                alert("Successful login.");
+                this.setRedirectToHome();
+              }
+            });
+        }
+      });
   }
 
   render() {

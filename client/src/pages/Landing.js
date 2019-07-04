@@ -21,10 +21,10 @@ class Landing extends Component {
 
 
             <span>
-                <div class="jumbotron jumbotron-fluid text-center">
+                <div className="jumbotron jumbotron-fluid text-center">
                     <div>
-                        <h1 class="display-12">Outwork</h1>
-                        <p class="lead">Welcome.</p>
+                        <h1 className="display-12">Outwork</h1>
+                        <p className="lead">Welcome.</p>
                     </div>
                     <div className="loginBtns btn-group col-lg-2 text-center">
                         <button 
