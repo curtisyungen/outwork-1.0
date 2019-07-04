@@ -89,7 +89,7 @@ export default {
     },
 
     createLift: function(liftData) {
-        return axios.post("/api/lifts/createLift", liftData);
+        return axios.post("/api/lifts/createLift", {liftData: liftData});
     },
 
     updateLiftById: function(liftId) {
