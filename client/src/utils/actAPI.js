@@ -15,7 +15,7 @@ export default {
     },
 
     getRunsByUser: function(userId) {
-        return axios.get("/api/runs/getRunsByUser", {userId: userId});
+        return axios.get("/api/runs/getRunsByUser/" + userId);
     },
 
     createRun: function(runData) {
@@ -39,7 +39,7 @@ export default {
     },
 
     getBikesByUser: function(userId) {
-        return axios.get("/api/bikes/getBikesByUser", {userId: userId});
+        return axios.get("/api/bikes/getBikesByUser/" + userId);
     },
 
     createBike: function(bikeData) {
@@ -62,7 +62,7 @@ export default {
     },
 
     getSwimsByUser: function(userId) {
-        return axios.get("/api/swims/getSwimsByUser", {userId: userId});
+        return axios.get("/api/swims/getSwimsByUser/" + userId);
     },
 
     createSwim: function(swimData) {
@@ -85,7 +85,7 @@ export default {
     },
 
     getLiftsByUser: function(userId) {
-        return axios.get("/api/lifts/getLiftsByUser", {userId: userId});
+        return axios.get("/api/lifts/getLiftsByUser/" + userId);
     },
 
     createLift: function(liftData) {
