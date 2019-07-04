@@ -126,7 +126,7 @@ class App extends Component {
             <Route exact path="/landing" render={() =>
               <Landing
                 setRedirectToSignUp={this.setRedirectToSignUp}
-                setRedirectToSignIn={this.setRedirectToSignIn}
+                setRedirectToLogin={this.setRedirectToLogin}
               />
             } />
 
