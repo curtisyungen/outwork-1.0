@@ -13,6 +13,10 @@ class Home extends Component {
 
     componentDidMount = () => {
         this.props.updateParentState();
+
+        if (!(localStorage.getItem("isLoggedIn") && localStorage.getItem("isLoggedIn") === "true")) {
+            this.props.setRedirectToLanding();
+        }
     }
 
     render() {
