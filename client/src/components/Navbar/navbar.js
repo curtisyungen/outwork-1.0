@@ -20,6 +20,10 @@ class Navbar extends Component {
 
     render() {
         return (
+            window.location.pathname !== "/landing" &&
+            window.location.pathname !== "/login" &&
+            window.location.pathname !== "/signUp" ? (
+
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <a className="navbar-brand" href="/">Outwork</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +36,25 @@ class Navbar extends Component {
                             </a>
                         </li>
                         <li className="nav-item">
+                            <a className="nav-link" href="/">My Activity</a>
+                        </li>
+                        <li className="nav-item">
                             <a className="nav-link" href="/">Log Activity</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/">Generator</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/">Metrics</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/">Users</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/">Settings</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/">Profile</a>
                         </li>
                         <li className="nav-item">
                             <button className="" onClick={this.props.logoutUser}>Logout</button>
@@ -40,6 +62,9 @@ class Navbar extends Component {
                     </ul>
                 </div>
             </nav>
+            ) : (
+                <></>
+            )
         )
     }
 }
