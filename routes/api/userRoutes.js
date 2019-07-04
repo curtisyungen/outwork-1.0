@@ -10,7 +10,7 @@ router.get("/getUser/:email", (req, res) => {
     controller.getUser(req, res);
 });
 
-router.get("/getUserById", (req, res) => {
+router.get("/getUserById/:userId", (req, res) => {
     controller.getUserById(req, res);
 });
 
