@@ -214,16 +214,9 @@ class App extends Component {
           )}       
 
           {/* Render Navbar */}
-
-          {window.location.pathname !== "/landing" &&
-           window.location.pathname !== "/login" &&
-           window.location.pathname !== "/signUp" ? (
-            <Navbar 
-              logoutUser={this.logoutUser}
-            />
-           ) : (
-             <></>
-           )}
+          <Navbar 
+            logoutUser={this.logoutUser}
+          />
 
           <Switch>
             {/* Home Page */}
