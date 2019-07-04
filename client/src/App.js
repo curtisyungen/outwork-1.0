@@ -82,7 +82,7 @@ class App extends Component {
   }
 
   redirectToLanding = () => {
-    return <Redirect to="/landing" />
+    return <Redirect to="/" />
   }
 
   redirectToSignUp = () => {
@@ -94,7 +94,7 @@ class App extends Component {
   }
 
   redirectToHome = () => {
-    return <Redirect to="/" />
+    return <Redirect to="/home" />
   }
 
   updateParentState = () => {
@@ -242,16 +242,8 @@ class App extends Component {
           />
 
           <Switch>
-            {/* Home Page */}
-            <Route exact path="/" render={() =>
-              <Home
-                updateParentState={this.updateParentState}
-                setRedirectToLanding={this.setRedirectToLanding}
-              />
-            } />
-
             {/* Landing Page */}
-            <Route exact path="/landing" render={() =>
+            <Route exact path="/" render={() =>
               <Landing
                 setRedirectToSignUp={this.setRedirectToSignUp}
                 setRedirectToLogin={this.setRedirectToLogin}
@@ -276,51 +268,59 @@ class App extends Component {
               />
             } />
 
+            {/* Home Page */}
+            <Route exact path="/home" render={() =>
+              <Home
+                updateParentState={this.updateParentState}
+                setRedirectToLanding={this.setRedirectToLanding}
+              />
+            } />
+
             {/* Profile Page */}
             <Route exact path="/profile" render={() =>
-              <Profile 
+              <Profile
                 checkValidUser={this.checkValidUser}
               />
             } />
 
             {/* My Activity Page */}
             <Route exact path="/myActivity" render={() =>
-              <MyActivity 
+              <MyActivity
                 checkValidUser={this.checkValidUser}
               />
             } />
 
             {/* Log Activity Page */}
             <Route exact path="/logActivity" render={() =>
-              <LogActivity 
+              <LogActivity
                 checkValidUser={this.checkValidUser}
               />
             } />
 
             {/* Generator Page */}
             <Route exact path="/generator" render={() =>
-              <Generator 
+              <Generator
                 checkValidUser={this.checkValidUser}
               />
             } />
 
             {/* Metrics Page */}
             <Route exact path="/metrics" render={() =>
-              <Metrics 
+              <Metrics
                 checkValidUser={this.checkValidUser}
               />
             } />
 
             {/* Find Users Page */}
             <Route exact path="/findUsers" render={() =>
-              <FindUsers 
+              <FindUsers
                 checkValidUser={this.checkValidUser}
               />
             } />
 
             {/* Settings Page */}
             <Route exact path="/settings" render={() =>
-              <Settings 
+              <Settings
                 checkValidUser={this.checkValidUser}
               />
             } />

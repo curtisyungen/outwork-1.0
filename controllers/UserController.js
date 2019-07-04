@@ -33,9 +33,9 @@ class UserController {
     }
 
     getUserById(req, res) {
-        db.Users.findOne({
+        db.Users.findAll({
             where: {
-                userId: req.body.userId,
+                userId: req.params.userId,
             }
         })
         .then((user) => {
