@@ -20,7 +20,7 @@ class Navbar extends Component {
 
     render() {
         return (
-            window.location.pathname !== "/landing" &&
+            window.location.pathname !== "/" &&
             window.location.pathname !== "/login" &&
             window.location.pathname !== "/signUp" ? (
 
