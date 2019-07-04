@@ -78,13 +78,26 @@ class App extends Component {
 
   createUser = (firstName, lastName, email, password) => {
 
-    let weight = 150;
-    let privacy = "public";
-
-    userAPI.createUser(firstName, lastName, email, password, weight, privacy)
+    // Check if email already exists in database
+    userAPI.getUser(email) 
       .then((res) => {
-        console.log("Create User", res);
-      });
+        if (res.data.length === 0) {
+          let weight = 150;
+          let privacy = "public";
+
+          userAPI.createUser(firstName, lastName, email, password, weight, privacy)
+            .then((res) => {
+              if (res.status === 200) {
+                console.log("yes");
+              }
+            });
+        }
+        else {
+          alert("Account already exists for this email address.");
+
+          this.setRedirectToLogin();
+        }
+      });    
   }
 
   render() {

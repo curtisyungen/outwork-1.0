@@ -6,7 +6,7 @@ router.get("/loginUser", (req, res) => {
     controller.loginUser(req, res);
 });
 
-router.get("/getUser", (req, res) => {
+router.get("/getUser/:email", (req, res) => {
     controller.getUser(req, res);
 });
 
