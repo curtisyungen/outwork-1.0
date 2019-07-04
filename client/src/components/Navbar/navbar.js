@@ -22,7 +22,8 @@ class Navbar extends Component {
         return (
             window.location.pathname !== "/" &&
             window.location.pathname.toLowerCase() !== "/login" &&
-            window.location.pathname.toLowerCase() !== "/signup" ? (
+            window.location.pathname.toLowerCase() !== "/signup" &&
+            window.location.pathname.toLowerCase() !== "/error" ? (
 
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <a className="navbar-brand" href="/">Outwork</a>
