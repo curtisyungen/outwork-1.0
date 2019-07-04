@@ -122,7 +122,16 @@ class App extends Component {
             .then((res) => {
               if (res.status === 200) {
                 alert("User created.");
-                this.setRedirectToHome();
+
+                localStorage.setItem("isLoggedIn", "true");
+                localStorage.setItem("userId", res.data[0].userId);
+
+                this.setState({
+                  isLoggedIn: "true",
+                  userId: res.data[0].userId,
+                }, () => {
+                  this.setRedirectToHome();
+                }); 
               }
             });
         }
