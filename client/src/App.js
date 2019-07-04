@@ -10,6 +10,10 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import MyActivity from "./pages/MyActivity";
 import LogActivity from "./pages/LogActivity";
+import Run from "./pages/Run";
+import Bike from "./pages/Bike";
+import Swim from "./pages/Swim";
+import Lift from "./pages/Lift";
 import Generator from "./pages/Generator";
 import Metrics from "./pages/Metrics";
 import FindUsers from "./pages/FindUsers";
@@ -132,7 +136,7 @@ class App extends Component {
                   userId: res.data[0].userId,
                 }, () => {
                   this.setRedirectToHome();
-                }); 
+                });
               }
             });
         }
@@ -248,6 +252,7 @@ class App extends Component {
 
           {/* Navbar */}
           <Navbar
+            isLoggedIn={this.state.isLoggedIn}
             logoutUser={this.logoutUser}
           />
 
@@ -303,6 +308,34 @@ class App extends Component {
             {/* Log Activity Page */}
             <Route exact path="/logActivity" render={() =>
               <LogActivity
+                checkValidUser={this.checkValidUser}
+              />
+            } />
+
+            {/* Log Run Page */}
+            <Route exact path="/run" render={() =>
+              <Run
+                checkValidUser={this.checkValidUser}
+              />
+            } />
+
+            {/* Log Bike Page */}
+            <Route exact path="/bike" render={() =>
+              <Bike
+                checkValidUser={this.checkValidUser}
+              />
+            } />
+
+            {/* Log Swim Page */}
+            <Route exact path="/swim" render={() =>
+              <Swim
+                checkValidUser={this.checkValidUser}
+              />
+            } />
+
+            {/* Log Lift Page */}
+            <Route exact path="/lift" render={() =>
+              <Lift
                 checkValidUser={this.checkValidUser}
               />
             } />

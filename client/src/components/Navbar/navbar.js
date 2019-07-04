@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-// import userAPI from "../../utils/userAPI";
-// import actAPI from "../../utils/actAPI";
-// import exerAPI from "../../utils/exerAPI";
 import "./navbar.css";
 
 class Navbar extends Component {
@@ -10,24 +7,27 @@ class Navbar extends Component {
         super(props);
 
         this.state = {
-
+            renderNames: 
+                [
+                    "/home", 
+                    "/profile", 
+                    "/myactivity", 
+                    "/logactivity", 
+                    "/generator", 
+                    "/metrics", 
+                    "/findusers", 
+                    "/settings",
+                    "/run",
+                    "/bike",
+                    "/swim",
+                    "/lift",
+                ],
         }
-    }
-
-    componentDidMount = () => {
-
     }
 
     render() {
         return (
-            window.location.pathname.toLowerCase() === "/home" ||
-            window.location.pathname.toLowerCase() === "/profile" ||
-            window.location.pathname.toLowerCase() === "/myActivity" ||
-            window.location.pathname.toLowerCase() === "/logActivity" ||
-            window.location.pathname.toLowerCase() === "/generator" ||
-            window.location.pathname.toLowerCase() === "/metrics" ||
-            window.location.pathname.toLowerCase() === "/findUsers" ||
-            window.location.pathname.toLowerCase() === "/settings" ? (
+            this.state.renderNames.indexOf(window.location.pathname.toLowerCase()) > -1 ? (
 
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <a className="navbar-brand" href="/">Outwork</a>
