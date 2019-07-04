@@ -18,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
         // General location where run took place
         location: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         // Generator workout or not - true or false
         generator: {
@@ -33,22 +33,27 @@ module.exports = function(sequelize, DataTypes) {
         // Total number of push-ups in workout, all variations
         pushups: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         // Total number of pull-up/chin-ups in workout, all variations
         pullups: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         // Entire workout saved as string
         workout: {
             type: DataTypes.STRING(5000),
-            allowNull: false,
+            allowNull: true,
         },
         // Main muscle groups targeted in workout
         muscleGroups: {
             type: DataTypes.STRING(2000),
-            allowNull: false,
+            allowNull: true,
+        },
+        // User-entered notes on workout
+        notes: {
+            type: DataTypes.STRING(1000),
+            allowNull: true,
         }
     });
     

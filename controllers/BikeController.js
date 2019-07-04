@@ -19,7 +19,7 @@ class BikeController {
     getBikesByUser(req, res) {
         db.Bikes.findAll({
             where: {
-                userId: req.body.userId,
+                userId: req.params.userId,
             }
         })
         .then((bikes) => {

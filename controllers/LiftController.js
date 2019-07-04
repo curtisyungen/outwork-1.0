@@ -19,7 +19,7 @@ class LiftController {
     getLiftsByUser(req, res) {
         db.Lifts.findAll({
             where: {
-                userId: req.body.userId,
+                userId: req.params.userId,
             }
         })
         .then((lifts) => {
