@@ -19,7 +19,7 @@ class UserController {
     }
 
     getUser(req, res) {
-        db.Users.findOne({
+        db.Users.findAll({
             where: {
                 email: req.params.email,
             }
@@ -58,7 +58,7 @@ class UserController {
                     firstName: req.body.firstName,
                     lastName: req.body.lastName,
                     email: req.body.email,
-                    password: hash,
+                    password: req.body.password,
                     weight: req.body.weight,
                     privacy: req.body.privacy,
                 })
