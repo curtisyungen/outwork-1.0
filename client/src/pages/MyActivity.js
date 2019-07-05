@@ -1,6 +1,10 @@
 import React, { Component } from "react";
+import Run from "../components/Run/run";
+import Bike from "../components/Bike/bike";
+import Swim from "../components/Swim/swim";
+import Lift from "../components/Lift/lift";
 import actAPI from "../utils/actAPI";
-// import "./MyActivity.css";
+import "./MyActivity.css";
 
 class MyActivity extends Component {
 
@@ -30,6 +34,7 @@ class MyActivity extends Component {
     getUserActivity = () => {
         actAPI.getRunsByUser(this.state.userId)
             .then((res) => {
+                console.log(res);
                 this.setState({
                     runs: res.data,
                 });
@@ -62,62 +67,72 @@ class MyActivity extends Component {
             <div className="myActivityPage col-lg-12">
 
                 {/* RUNS */}
-                <div className="userRuns">Runs
+                <div className="userActivity userRuns">
+                    <p>Runs</p>
                     {this.state.runs && this.state.runs.length ? (
                         this.state.runs.map(run => (
-                            <div>
-                                {run.date}
-                                {run.distance}
-                                {run.duration}
-                            </div>
+                            <Run 
+                                key={run.id}
+                                date={run.date}
+                                distance={run.distance}
+                                duration={run.duration}
+                                location={run.location}
+                                climb={run.climb}
+                            />
                         ))
                     ) : (
-                        <p>No running workouts found.</p>
+                        <></>
                     )}
                 </div>
 
                 {/* BIKES */}
-                <div className="userBikes">Bikes
+                <div className="userActivity userBikes">
+                    <p>Bikes</p>
                     {this.state.bikes && this.state.bikes.length ? (
                         this.state.bikes.map(bike => (
-                            <div>
-                                {bike.date}
-                                {bike.distance}
-                                {bike.duration}
-                            </div>
+                            <Bike 
+                                key={bike.id}
+                                date={bike.date}
+                                distance={bike.distance}
+                                duration={bike.duration}
+                            />
                         ))
                     ) : (
-                        <p>No biking workouts found.</p>
+                        <></>
                     )}
                 </div>
 
                 {/* SWIMS */}
-                <div className="userSwims">Swims
+                <div className="userActivity userSwims">
+                    <p>Swims</p>
                     {this.state.swims && this.state.swims.length ? (
                         this.state.swims.map(swim => (
-                            <div>
-                                {swim.date}
-                                {swim.distance}
-                                {swim.duration}
-                            </div>
+                            <Swim 
+                                key={swim.id}
+                                date={swim.date}
+                                distance={swim.distance}
+                                duration={swim.duration}
+                            />
                         ))
                     ) : (
-                        <p>No swimming workouts found.</p>
+                        <></>
                     )}
                 </div>
 
                 {/* LIFTS */}
-                <div className="userLifts">Lifts
+                <div className="userActivity userLifts">
+                    <p>Lifts</p>
                     {this.state.lifts && this.state.lifts.length ? (
                         this.state.lifts.map(lift => (
-                            <div>
-                                {lift.date}
-                                {lift.location}
-                                {lift.duration}
-                            </div>
+                            <Lift
+                                key={lift.id}
+                                date={lift.date}
+                                location={lift.location}
+                                duration={lift.duration}
+                            />
                         ))
                     ) : (
-                        <p>No lifting workouts found.</p>
+                        <></>
                     )}
                 </div>
             </div>
