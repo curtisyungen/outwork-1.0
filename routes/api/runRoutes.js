@@ -6,7 +6,7 @@ router.get("/getRunById", (req, res) => {
     controller.getRunById(req, res);
 });
 
-router.get("/getRunsByUser", (req, res) => {
+router.get("/getRunsByUser/:userId", (req, res) => {
     controller.getRunsByUser(req, res);
 });
 

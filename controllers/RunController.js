@@ -19,7 +19,7 @@ class RunController {
     getRunsByUser(req, res) {
         db.Runs.findAll({
             where: {
-                userId: req.body.userId,
+                userId: req.params.userId,
             }
         })
         .then((runs) => {

@@ -19,7 +19,7 @@ class SwimController {
     getSwimsByUser(req, res) {
         db.Swims.findAll({
             where: {
-                userId: req.body.userId,
+                userId: req.params.userId,
             }
         })
         .then((swims) => {

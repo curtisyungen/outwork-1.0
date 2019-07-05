@@ -208,11 +208,11 @@ class App extends Component {
         .then((res) => {
           if (res.data.length === 0) {
             this.logoutUser();
-          }
-          else {
-            return true;
+            return;
           }
         });
+    
+        return true;
     }
   }
 

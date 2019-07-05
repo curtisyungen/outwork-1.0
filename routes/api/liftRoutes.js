@@ -6,7 +6,7 @@ router.get("/getLiftById", (req, res) => {
     controller.getLiftById(req, res);
 });
 
-router.get("/getLiftsByUser", (req, res) => {
+router.get("/getLiftsByUser/:userId", (req, res) => {
     controller.getLiftsByUser(req, res);
 });
 

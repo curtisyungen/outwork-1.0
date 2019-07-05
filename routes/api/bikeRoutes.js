@@ -6,7 +6,7 @@ router.get("/getBikeById", (req, res) => {
     controller.getBikeById(req, res);
 });
 
-router.get("/getBikesByUser", (req, res) => {
+router.get("/getBikesByUser/:userId", (req, res) => {
     controller.getBikesByUser(req, res);
 });
 

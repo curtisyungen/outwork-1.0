@@ -68,6 +68,8 @@ class Bike extends Component {
         return (
             <div className="logBikePage col-lg-4">
 
+                <h4>Biking Workout</h4>
+
                 {/* DATE */}
                 <div className="input-group input-group-sm mb-3">
                     <div className="input-group-prepend">

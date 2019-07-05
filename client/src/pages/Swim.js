@@ -62,6 +62,8 @@ class Swim extends Component {
         return (
             <div className="logRunPage col-lg-4">
 
+                <h4>Swimming Workout</h4>
+
                 {/* DATE */}
                 <div className="input-group input-group-sm mb-3">
                     <div className="input-group-prepend">

@@ -6,7 +6,7 @@ router.get("/getSwimById", (req, res) => {
     controller.getSwimById(req, res);
 });
 
-router.get("/getSwimsByUser", (req, res) => {
+router.get("/getSwimsByUser/:userId", (req, res) => {
     controller.getSwimsByUser(req, res);
 });
 
