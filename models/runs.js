@@ -20,6 +20,11 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        // Average mile pace for run
+        milePace: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         // Special type of run: repeats, hill repeats, race (optional)
         type: {
             type: DataTypes.STRING,
