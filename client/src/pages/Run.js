@@ -98,7 +98,11 @@ class Run extends Component {
 
     render() {
         return (
-            <div className="logRunPage col-lg-4">
+            <div className="logRunPage col-lg-12">
+
+                <a className="activity-sm col-md-2" href="/bike">Bike</a>
+                <a className="activity-sm col-md-2" href="/swim">Swim</a>
+                <a className="activity-sm col-md-2" href="/lift">Lift</a>
 
                 <h4>Running Workout</h4>
 

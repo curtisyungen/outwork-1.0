@@ -59,8 +59,8 @@ class RunController {
     deleteRunById(req, res) {
         db.Runs.destroy({
             where: {
-                id: req.params.runId,
-                userId: req.params.userId,
+                id: req.query.runId,
+                userId: req.query.userId,
             }
         })
         .then((run) => {

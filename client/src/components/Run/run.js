@@ -4,16 +4,9 @@ import "./run.css";
 
 class Run extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            openModal: false,
-        }
-    }
-
     deleteRun = () => {
         this.props.deleteActivity("run", this.props.id);
+        console.log(this.props.id);
     }
 
     render() {
@@ -34,13 +27,6 @@ class Run extends Component {
 
 
                 </div>
-                <Modal
-                    open={this.state.openModal}
-                    onClose={this.closeModal}
-                    className="detailView"
-                >
-                    {this.props.distance}
-                </Modal>
             </span>
         )
     }
