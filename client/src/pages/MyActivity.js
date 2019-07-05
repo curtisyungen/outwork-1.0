@@ -22,7 +22,7 @@ class MyActivity extends Component {
 
     componentDidMount = () => {
         this.props.checkValidUser();
-        
+
         let userId = localStorage.getItem("userId");
         this.setState({
             userId: userId,
@@ -62,79 +62,107 @@ class MyActivity extends Component {
             });
     }
 
+    deleteActivity = (type, id) => {
+
+        let userId = this.state.userId;
+
+        if (type === "run") {
+            actAPI.deleteRunById(id, userId)
+                .then((res) => {
+                    console.log("Delete Run", res);
+                });
+        }
+        else if (type === "bike") {
+            actAPI.deleteBikeById(id, userId)
+                .then((res) => {
+                    console.log("Delete Bike", res);
+                });
+        }
+        else if (type === "swim") {
+            actAPI.deleteSwimById(id, userId)
+                .then((res) => {
+                    console.log("Delete Swim", res);
+                });
+        }
+        else if (type === "lift") {
+            actAPI.deleteLiftById(id, userId)
+                .then((res) => {
+                    console.log("Delete Lift", res);
+                });
+        }
+
+        this.getUserActivity();
+    }
+
     render() {
         return (
             <div className="myActivityPage col-lg-12">
 
                 {/* RUNS */}
-                <div className="userActivity userRuns">
-                    <p>Runs</p>
-                    {this.state.runs && this.state.runs.length ? (
-                        this.state.runs.map(run => (
-                            <Run 
-                                key={run.id}
-                                date={run.date}
-                                distance={run.distance}
-                                duration={run.duration}
-                                location={run.location}
-                                climb={run.climb}
-                            />
-                        ))
-                    ) : (
+                {this.state.runs && this.state.runs.length ? (
+                    this.state.runs.map(run => (
+                        <Run
+                            key={run.id}
+                            id={run.id}
+                            date={run.date}
+                            distance={run.distance}
+                            duration={run.duration}
+                            location={run.location}
+                            climb={run.climb}
+                            deleteActivity={this.deleteActivity}
+                        />
+                    ))
+                ) : (
                         <></>
                     )}
-                </div>
 
                 {/* BIKES */}
-                <div className="userActivity userBikes">
-                    <p>Bikes</p>
-                    {this.state.bikes && this.state.bikes.length ? (
-                        this.state.bikes.map(bike => (
-                            <Bike 
-                                key={bike.id}
-                                date={bike.date}
-                                distance={bike.distance}
-                                duration={bike.duration}
-                            />
-                        ))
-                    ) : (
+                {this.state.bikes && this.state.bikes.length ? (
+                    this.state.bikes.map(bike => (
+                        <Bike
+                            key={bike.id}
+                            id={bike.id}
+                            date={bike.date}
+                            distance={bike.distance}
+                            duration={bike.duration}
+                            deleteActivity={this.deleteActivity}
+                        />
+                    ))
+                ) : (
                         <></>
                     )}
-                </div>
 
                 {/* SWIMS */}
-                <div className="userActivity userSwims">
-                    <p>Swims</p>
-                    {this.state.swims && this.state.swims.length ? (
-                        this.state.swims.map(swim => (
-                            <Swim 
-                                key={swim.id}
-                                date={swim.date}
-                                distance={swim.distance}
-                                duration={swim.duration}
-                            />
-                        ))
-                    ) : (
+                {this.state.swims && this.state.swims.length ? (
+                    this.state.swims.map(swim => (
+                        <Swim
+                            key={swim.id}
+                            id={swim.id}
+                            date={swim.date}
+                            distance={swim.distance}
+                            duration={swim.duration}
+                            deleteActivity={this.deleteActivity}
+                        />
+                    ))
+                ) : (
                         <></>
                     )}
-                </div>
 
                 {/* LIFTS */}
-                <div className="userActivity userLifts">
-                    <p>Lifts</p>
-                    {this.state.lifts && this.state.lifts.length ? (
-                        this.state.lifts.map(lift => (
-                            <Lift
-                                key={lift.id}
-                                date={lift.date}
-                                location={lift.location}
-                                duration={lift.duration}
-                            />
-                        ))
-                    ) : (
+                {this.state.lifts && this.state.lifts.length ? (
+                    this.state.lifts.map(lift => (
+                        <Lift
+                            key={lift.id}
+                            id={lift.id}
+                            date={lift.date}
+                            location={lift.location}
+                            duration={lift.duration}
+                            deleteActivity={this.deleteActivity}
+                        />
+                    ))
+                ) : (
                         <></>
                     )}
-                </div>
             </div>
         )
     }

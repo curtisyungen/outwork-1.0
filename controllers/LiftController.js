@@ -59,8 +59,8 @@ class LiftController {
     deleteLiftById(req, res) {
         db.Lifts.destroy(
             { where: {
-                id: req.body.id,
-                userId: req.body.userId,
+                id: req.query.liftId,
+                userId: req.query.userId,
             }}
         )
         .then((lift) => {

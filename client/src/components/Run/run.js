@@ -1,23 +1,47 @@
 import React, { Component } from "react";
+import Modal from "react-responsive-modal";
 import "./run.css";
 
 class Run extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            openModal: false,
+        }
+    }
+
+    deleteRun = () => {
+        this.props.deleteActivity("run", this.props.id);
+    }
+
     render() {
         return (
-            <div class="card runCard">
-                <div class="card-body">
-                    <h5 class="card-title mb-0">{this.props.distance} miles</h5>
-                    <h6 class="card-subtitle text-muted mb-0">{this.props.date}</h6>
-                    <div class="card-text">
-                        <span>{this.props.duration}</span>
-                        <span>{this.props.location}</span>
-                        <span>{this.props.surface}</span>
-                        <span>{this.props.weather}</span>
+            <span>
+                <div className="card actCard">
+                    <div className="card-body">
+                        <h5 className="card-title mb-0">Run</h5>
+                        <h6 className="card-subtitle text-muted mb-0">{this.props.date}</h6>
+                        <div className="card-text">
+                            <span>{this.props.duration}</span>
+                            <span>{this.props.location}</span>
+                            <span>{this.props.surface}</span>
+                            <span>{this.props.weather}</span>
+                        </div>
+                        <div className="card-link" onClick={this.deleteRun}>Delete</div>
                     </div>
-                    <a href="#" class="card-link">Edit</a>
-                    <a href="#" class="card-link">Delete</a>
+
+
                 </div>
-            </div>
+                <Modal
+                    open={this.state.openModal}
+                    onClose={this.closeModal}
+                    className="detailView"
+                >
+                    {this.props.distance}
+                </Modal>
+            </span>
         )
     }
 }
