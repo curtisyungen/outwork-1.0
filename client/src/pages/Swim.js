@@ -62,6 +62,10 @@ class Swim extends Component {
         return (
             <div className="logRunPage col-lg-4">
 
+                <a className="activity-sm col-md-2" href="/run">Run</a>
+                <a className="activity-sm col-md-2" href="/bike">Bike</a>
+                <a className="activity-sm col-md-2" href="/lift">Lift</a>
+
                 <h4>Swimming Workout</h4>
 
                 {/* DATE */}

@@ -78,7 +78,7 @@ class MyActivity extends Component {
             actAPI.deleteLiftById(id, userId);
         }
 
-        this.getUserActivity();
+        window.location.reload();
     }
 
     render() {
