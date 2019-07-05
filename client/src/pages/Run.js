@@ -12,6 +12,7 @@ class Run extends Component {
             date: null,
             distance: null,
             duration: null,
+            milePace: null,
             type: null,
             repeats: null,
             race: null,
@@ -43,6 +44,33 @@ class Run extends Component {
         });
     }
 
+    getMilePace = () => {
+        let milePace, hours, minutes, seconds, totalMinutes;
+        let paceMins, paceSecs;
+        let addZeroSecs = "";
+        
+        if (Number(this.state.distance) && this.state.duration) {
+            hours = parseFloat(this.state.duration.split(":")[0]);
+            minutes = parseFloat(this.state.duration.split(":")[1]);
+            seconds = parseFloat(this.state.duration.split(":")[2]);
+
+            totalMinutes = (hours * 60) + minutes + (seconds / 60);
+
+            paceMins = Math.floor(totalMinutes / this.state.distance);
+            paceSecs = Math.round(((totalMinutes / this.state.distance) - paceMins) * 60);
+
+            if (paceSecs < 10) {
+                addZeroSecs = 0;
+            }
+
+            milePace = `${paceMins}:${addZeroSecs}${paceSecs}`;
+
+            this.setState({
+                milePace: milePace,
+            });
+        }
+    }
+
     submitRun = () => {
         if(this.props.checkValidUser()) {
             let runData = {
@@ -50,12 +78,13 @@ class Run extends Component {
                 date: this.state.date,
                 distance: this.state.distance,
                 duration: this.state.duration,
+                milePace: this.state.milePace,
                 type: this.state.type,
                 repeats: this.state.repeats,
                 race: this.state.race,
                 location: this.state.location,
                 surface: this.state.surface,
-                weather: "sunny",
+                weather: this.state.weather,
                 climb: this.state.climb,
                 grade: this.state.grade,
                 shoe: this.state.shoe,
@@ -63,10 +92,7 @@ class Run extends Component {
                 map: this.state.map,
             }
 
-            actAPI.createRun(runData)
-                .then((res) => {
-                    console.log(res);
-                });
+            actAPI.createRun(runData);
         }
     }
 
@@ -84,7 +110,7 @@ class Run extends Component {
                     <input 
                         autoComplete="off"
                         name="date" 
-                        type="text" 
+                        type="date" 
                         className="form-control" 
                         aria-label="Sizing example input" 
                         aria-describedby="inputGroup-sizing-sm" 
@@ -102,6 +128,7 @@ class Run extends Component {
                         name="distance" 
                         type="text" 
                         className="form-control" 
+                        placeholder="miles"
                         aria-label="Sizing example input" 
                         aria-describedby="inputGroup-sizing-sm" 
                         onChange={this.handleInputChange}
@@ -118,10 +145,15 @@ class Run extends Component {
                         name="duration"
                         type="text" 
                         className="form-control" 
+                        placeholder="hh:mm:ss"
                         aria-label="Sizing example input" 
                         aria-describedby="inputGroup-sizing-sm" 
                         onChange={this.handleInputChange}
                     />
+                </div>
+
+                <div className="input-group-text">
+                    {this.state.milePace}
                 </div>
 
                 {/* LOCATION */}
@@ -137,6 +169,7 @@ class Run extends Component {
                         aria-label="Sizing example input" 
                         aria-describedby="inputGroup-sizing-sm" 
                         onChange={this.handleInputChange}
+                        onFocus={this.getMilePace}
                     />
                 </div>
 
@@ -204,6 +237,27 @@ class Run extends Component {
                     />
                 </div>
 
+                {/* WEATHER */}
+                <div className="input-group input-group-sm mb-3">
+                    <div className="input-group-prepend">
+                        <span className="input-group-text" id="inputGroup-sizing-sm">Weather</span>
+                    </div>
+                    <select 
+                        className="browser-default custom-select"
+                        autoComplete="off"
+                        name="weather" 
+                        type="text" 
+                        aria-describedby="inputGroup-sizing-sm" 
+                        onChange={this.handleInputChange}
+                        defaultValue={null}
+                    >
+                        <option value=""></option>
+                        <option value="sunny">Sunny</option>
+                        <option value="rainy">Rainy</option>
+                        <option value="cloudy">Cloudy</option>
+                    </select>
+                </div>
+
                 {/* CLIMB */}
                 <div className="input-group input-group-sm mb-3">
                     <div className="input-group-prepend">
@@ -214,6 +268,7 @@ class Run extends Component {
                         name="climb" 
                         type="text" 
                         className="form-control" 
+                        placeholder="feet"
                         aria-label="Sizing example input" 
                         aria-describedby="inputGroup-sizing-sm" 
                         onChange={this.handleInputChange}
@@ -241,7 +296,7 @@ class Run extends Component {
                     <div className="input-group-prepend">
                         <span className="input-group-text" id="inputGroup-sizing-sm">Notes</span>
                     </div>
-                    <input 
+                    <textarea 
                         autoComplete="off"
                         name="notes" 
                         type="text" 
@@ -260,7 +315,7 @@ class Run extends Component {
                     <input 
                         autoComplete="off"
                         name="map" 
-                        type="text" 
+                        type="url" 
                         className="form-control" 
                         aria-label="Sizing example input" 
                         aria-describedby="inputGroup-sizing-sm" 

@@ -1,3 +1,9 @@
 .input-group-text {
     width: 100px !important;
 }
+
+textarea {
+    height: 32px;
+    min-height: 32px;
+    max-height: 32px;
+}
