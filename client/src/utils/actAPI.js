@@ -27,8 +27,8 @@ export default {
         return axios.put("/api/runs/updateRunById", {id: runId});
     },
 
-    deleteRunById: function(runId) {
-        return axios.delete("/api/runs/deleteRunById", {id: runId});
+    deleteRunById: function(runId, userId) {
+        return axios.delete("/api/runs/deleteRunById", {params: {runId: runId, userId: userId}});
     },
 
     // BIKE ROUTES
@@ -50,8 +50,8 @@ export default {
         return axios.put("/api/bikes/updateBikeById", {id: bikeId});
     },
 
-    deleteBikeById: function(bikeId) {
-        return axios.delete("/api/bikes/deleteBikeById", {id: bikeId});
+    deleteBikeById: function(bikeId, userId) {
+        return axios.delete("/api/bikes/deleteBikeById", {params: {bikeId: bikeId, userId: userId}});
     },
 
     // SWIM ROUTES
@@ -73,8 +73,8 @@ export default {
         return axios.put("/api/swims/updateSwimById", {id: swimId});
     },
 
-    deleteSwimById: function(swimId) {
-        return axios.delete("/api/swims/deleteSwimById", {id: swimId});
+    deleteSwimById: function(swimId, userId) {
+        return axios.delete("/api/swims/deleteSwimById", {params: {swimId: swimId, userId: userId}});
     },
     
     // LIFT ROUTES
@@ -96,7 +96,7 @@ export default {
         return axios.put("/api/lifts/updateLiftById", {id: liftId});
     },
 
-    deleteLiftById: function(liftId) {
-        return axios.delete("/api/lifts/deleteLiftById", {id: liftId});
+    deleteLiftById: function(liftId, userId) {
+        return axios.delete("/api/lifts/deleteLiftById", {params: {liftId: liftId, userId: userId}});
     },
 }
