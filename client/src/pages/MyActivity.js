@@ -4,7 +4,7 @@ import Bike from "../components/Bike/bike";
 import Swim from "../components/Swim/swim";
 import Lift from "../components/Lift/lift";
 import actAPI from "../utils/actAPI";
-// import "./MyActivity.css";
+import "./MyActivity.css";
 
 class MyActivity extends Component {
 
@@ -34,6 +34,7 @@ class MyActivity extends Component {
     getUserActivity = () => {
         actAPI.getRunsByUser(this.state.userId)
             .then((res) => {
+                console.log(res);
                 this.setState({
                     runs: res.data,
                 });
@@ -66,7 +67,8 @@ class MyActivity extends Component {
             <div className="myActivityPage col-lg-12">
 
                 {/* RUNS */}
-                <div className="userRuns">Runs
+                <div className="userActivity userRuns">
+                    <p>Runs</p>
                     {this.state.runs && this.state.runs.length ? (
                         this.state.runs.map(run => (
                             <Run 
@@ -79,12 +81,13 @@ class MyActivity extends Component {
                             />
                         ))
                     ) : (
-                        <p>No running workouts found.</p>
+                        <></>
                     )}
                 </div>
 
                 {/* BIKES */}
-                <div className="userBikes">Bikes
+                <div className="userActivity userBikes">
+                    <p>Bikes</p>
                     {this.state.bikes && this.state.bikes.length ? (
                         this.state.bikes.map(bike => (
                             <Bike 
@@ -95,12 +98,13 @@ class MyActivity extends Component {
                             />
                         ))
                     ) : (
-                        <p>No biking workouts found.</p>
+                        <></>
                     )}
                 </div>
 
                 {/* SWIMS */}
-                <div className="userSwims">Swims
+                <div className="userActivity userSwims">
+                    <p>Swims</p>
                     {this.state.swims && this.state.swims.length ? (
                         this.state.swims.map(swim => (
                             <Swim 
@@ -111,12 +115,13 @@ class MyActivity extends Component {
                             />
                         ))
                     ) : (
-                        <p>No swimming workouts found.</p>
+                        <></>
                     )}
                 </div>
 
                 {/* LIFTS */}
-                <div className="userLifts">Lifts
+                <div className="userActivity userLifts">
+                    <p>Lifts</p>
                     {this.state.lifts && this.state.lifts.length ? (
                         this.state.lifts.map(lift => (
                             <Lift
@@ -127,7 +132,7 @@ class MyActivity extends Component {
                             />
                         ))
                     ) : (
-                        <p>No lifting workouts found.</p>
+                        <></>
                     )}
                 </div>
             </div>
