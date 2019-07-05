@@ -34,7 +34,6 @@ class MyActivity extends Component {
     getUserActivity = () => {
         actAPI.getRunsByUser(this.state.userId)
             .then((res) => {
-                console.log(res);
                 this.setState({
                     runs: res.data,
                 });
@@ -67,28 +66,16 @@ class MyActivity extends Component {
         let userId = this.state.userId;
 
         if (type === "run") {
-            actAPI.deleteRunById(id, userId)
-                .then((res) => {
-                    console.log("Delete Run", res);
-                });
+            actAPI.deleteRunById(id, userId);
         }
         else if (type === "bike") {
-            actAPI.deleteBikeById(id, userId)
-                .then((res) => {
-                    console.log("Delete Bike", res);
-                });
+            actAPI.deleteBikeById(id, userId);
         }
         else if (type === "swim") {
-            actAPI.deleteSwimById(id, userId)
-                .then((res) => {
-                    console.log("Delete Swim", res);
-                });
+            actAPI.deleteSwimById(id, userId);
         }
         else if (type === "lift") {
-            actAPI.deleteLiftById(id, userId)
-                .then((res) => {
-                    console.log("Delete Lift", res);
-                });
+            actAPI.deleteLiftById(id, userId);
         }
 
         this.getUserActivity();
