@@ -59,8 +59,8 @@ class SwimController {
     deleteSwimById(req, res) {
         db.Swims.destroy({
             where: {
-                id: req.body.id,
-                userId: req.body.userId,
+                id: req.query.swimId,
+                userId: req.query.userId,
             }
         })
         .then((swim) => {

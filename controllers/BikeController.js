@@ -59,8 +59,8 @@ class BikeController {
     deleteBikeById(req, res) {
         db.Bikes.destroy({
             where: {
-                id: req.body.id,
-                userId: req.body.userId,
+                id: req.query.bikeId,
+                userId: req.query.userId,
             }
         })
         .then((bike) => {
