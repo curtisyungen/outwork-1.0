@@ -108,6 +108,20 @@ class UserController {
             });
     }
 
+    updateEquipment(req, res) {
+        db.Users.update(
+            {equipment: req.body.equipment},
+            {where: {
+                userId: req.body.userId,
+            }})
+            .then((user) => {
+                res.json(user);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
     deleteUser(req, res) {
         db.Users.destroy({
             where: {

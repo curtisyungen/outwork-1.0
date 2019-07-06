@@ -30,6 +30,10 @@ router.put("/updateWeight", (req, res) => {
     controller.updateWeight(req, res);
 });
 
+router.put("/updateEquipment", (req, res) => {
+    controller.updateEquipment(req, res);
+});
+
 router.delete("/deleteUser", (req, res) => {
     controller.deleteUser(req, res);
 });
