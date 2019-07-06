@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // import Container from "../components/Container/container";
 import Equipment from "../components/Equipment/equipment";
+import Workout from "../components/Workout/workout";
 import Modal from "react-responsive-modal";
 import userAPI from "../utils/userAPI";
 import exerAPI from "../utils/exerAPI";
@@ -16,6 +17,8 @@ class Generator extends Component {
             openModal: false,
             equipment: [],
             userEquipment: [],
+            difficulty: null,
+            generate: false,
         }
     }
 
@@ -30,6 +33,14 @@ class Generator extends Component {
                 this.getUserById();
             });        
         }
+    }
+
+    handleInputChange = (event) => {
+        const { name, value } = event.target;
+
+        this.setState({
+            [name]: value,
+        });
     }
 
     // Gets user data from database
@@ -114,6 +125,13 @@ class Generator extends Component {
         this.setState({
             equipment: equipment,
             userEquipment: userEquipment,
+            generate: false,
+        });
+    }
+
+    generateWorkout = () => {
+        this.setState({
+            generate: !this.state.generate,
         });
     }
 
@@ -150,16 +168,41 @@ class Generator extends Component {
                 )}
 
                 {/* SELECT DIFFICULTY */}
-                <div class="btn-group" role="group" aria-label="Difficulty">
-                    <button type="button" class="btn btn-secondary btn-sm baby">Baby</button>
-                    <button type="button" class="btn btn-secondary btn-sm easy">Easy</button>
-                    <button type="button" class="btn btn-secondary btn-sm average">Average</button>
-                    <button type="button" class="btn btn-secondary btn-sm superior">Superior</button>
-                    <button type="button" class="btn btn-secondary btn-sm hero">Hero</button>
-                    <button type="button" class="btn btn-secondary btn-sm superman">Superman</button>
-                    <button type="button" class="btn btn-secondary btn-sm rogan">Rogan</button>
-                    <button type="button" class="btn btn-secondary btn-sm goggins">Goggins</button>
+                <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group-prepend">
+                        <span className="input-group-text" id="inputGroup-sizing-sm">Difficulty</span>
+                    </div>
+                    <select
+                        className="browser-default custom-select"
+                        autoComplete="off"
+                        name="difficulty"
+                        type="text"
+                        aria-describedby="inputGroup-sizing-sm"
+                        onChange={this.handleInputChange}
+                        defaultValue={null}
+                    >
+                        <option value="0"></option>
+                        <option value="1">Baby</option>
+                        <option value="2">Easy</option>
+                        <option value="3">Average</option>
+                        <option value="4">Superior</option>
+                        <option value="5">Hero</option>
+                        <option value="6">Superman</option>
+                        <option value="7">Rogan</option>
+                        <option value="8">Goggins</option>
+                    </select>
                 </div>
+
+                {/* GENERATE WORKOUT */}
+                <div>
+                    <button className="btn btn-primary" onClick={this.generateWorkout}>Generate</button>
+                </div>
+
+                <Workout 
+                    generate={this.state.generate}
+                    userEquipment={this.state.userEquipment}
+                    difficulty={this.state.difficulty}
+                />
                 
             </span>
         )

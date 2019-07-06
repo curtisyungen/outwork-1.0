@@ -7,7 +7,7 @@ router.get("/getExercise", (req, res) => {
 });
 
 router.get("/getAllExercises", (req, res) => {
-    controller.getExercise(req, res);
+    controller.getAllExercises(req, res);
 });
 
 router.get("/getEquipment", (req, res) => {
@@ -18,7 +18,7 @@ router.get("/getExerciseByPMG", (req, res) => {
     controller.getExerciseByPMG(req, res);
 });
 
-router.get("/getExerciseByEquip", (req, res) => {
+router.get("/getExerciseByEquip/:equip", (req, res) => {
     controller.getExerciseByEquip(req, res);
 });
 

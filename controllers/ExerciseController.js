@@ -59,8 +59,11 @@ class ExerciseController {
                 [Op.or]: [
                     {
                         equipment: {
-                            [Op.like]: '%' + req.body.equip + '%'
+                            [Op.like]: '%' + req.params.equip + '%'
                         }
+                    },
+                    {
+                        equipment: ""
                     }
                 ]
             }

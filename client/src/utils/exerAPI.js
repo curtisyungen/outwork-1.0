@@ -24,7 +24,8 @@ export default {
     },
 
     getExerciseByEquip: function(equip) {
-        return axios.get("/api/exercises/getExerciseByEquip", {equip: equip});
+        console.log(equip);
+        return axios.get("/api/exercises/getExerciseByEquip/" + equip);
     },
 
     createExercise: function(exercise) {
