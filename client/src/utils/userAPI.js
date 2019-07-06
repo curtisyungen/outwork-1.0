@@ -43,6 +43,10 @@ export default {
         return axios.put("/api/users/updateWeight", {userId: userId, weight: weight});
     },
 
+    updateEquipment: function(userId, equipment) {
+        return axios.put("/api/users/updateEquipment", {userId: userId, equipment: equipment});
+    },
+
     deleteUser: function(userId, email) {
         return axios.delete("/api/users/deleteUser", {userId: userId, email: email});
     },

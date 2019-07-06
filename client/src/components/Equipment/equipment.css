@@ -1,0 +1,16 @@
+.equipment {
+    border: 1px solid black;
+    cursor: pointer;
+    display: inline-block;
+    margin: 5px;
+    padding: 20px;
+    text-align: center;
+}
+
+.equip-true {
+    background: lightgreen;
+}
+
+.equip-false {
+    background: lightgray;
+}
