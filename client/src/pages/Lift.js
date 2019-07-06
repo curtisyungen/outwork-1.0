@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Container from "../components/Container/container";
 import actAPI from "../utils/actAPI";
 // import "./Lift.css";
 
@@ -53,7 +54,7 @@ class Lift extends Component {
 
     submitLift = () => {
 
-        if(this.props.checkValidUser()) {
+        if (this.props.checkValidUser()) {
             let liftData = {
                 userId: this.state.userId,
                 date: this.state.date,
@@ -67,7 +68,7 @@ class Lift extends Component {
                 muscleGroups: this.state.muscleGroups,
                 notes: this.state.notes,
             }
-    
+
             actAPI.createLift(liftData)
                 .then((res) => {
                     console.log(res);
@@ -77,128 +78,130 @@ class Lift extends Component {
 
     render() {
         return (
-            <div className="logRunPage col-lg-4">
+            <Container>
+                <div className="logRunPage col-lg-4">
 
-                <a className="activity-sm col-md-2" href="/run">Run</a>
-                <a className="activity-sm col-md-2" href="/bike">Bike</a>
-                <a className="activity-sm col-md-2" href="/swim">Swim</a>
+                    <a className="activity-sm col-md-2" href="/run">Run</a>
+                    <a className="activity-sm col-md-2" href="/bike">Bike</a>
+                    <a className="activity-sm col-md-2" href="/swim">Swim</a>
 
-                <h4>Lifting Workout</h4>
+                    <h4>Lifting Workout</h4>
 
-                {/* DATE */}
-                <div className="input-group input-group-sm mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-sm">Date</span>
+                    {/* DATE */}
+                    <div className="input-group input-group-sm mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Date</span>
+                        </div>
+                        <input
+                            autoComplete="off"
+                            name="date"
+                            type="text"
+                            className="form-control"
+                            aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm"
+                            onChange={this.handleInputChange}
+                        />
                     </div>
-                    <input
-                        autoComplete="off"
-                        name="date"
-                        type="text"
-                        className="form-control"
-                        aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-sm"
-                        onChange={this.handleInputChange}
-                    />
-                </div>
 
-                {/* DURATION */}
-                <div className="input-group input-group-sm mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-sm">Duration</span>
+                    {/* DURATION */}
+                    <div className="input-group input-group-sm mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Duration</span>
+                        </div>
+                        <input
+                            autoComplete="off"
+                            name="duration"
+                            type="text"
+                            className="form-control"
+                            aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm"
+                            onChange={this.handleInputChange}
+                        />
                     </div>
-                    <input
-                        autoComplete="off"
-                        name="duration"
-                        type="text"
-                        className="form-control"
-                        aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-sm"
-                        onChange={this.handleInputChange}
-                    />
-                </div>
 
-                {/* LOCATION */}
-                <div className="input-group input-group-sm mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-sm">Location</span>
+                    {/* LOCATION */}
+                    <div className="input-group input-group-sm mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Location</span>
+                        </div>
+                        <input
+                            autoComplete="off"
+                            name="location"
+                            type="text"
+                            className="form-control"
+                            aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm"
+                            onChange={this.handleInputChange}
+                        />
                     </div>
-                    <input
-                        autoComplete="off"
-                        name="location"
-                        type="text"
-                        className="form-control"
-                        aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-sm"
-                        onChange={this.handleInputChange}
-                    />
-                </div>
 
-                {/* GENERATOR */}
-                <div className="input-group input-group-sm mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-sm">Generator</span>
+                    {/* GENERATOR */}
+                    <div className="input-group input-group-sm mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Generator</span>
+                        </div>
+                        <input
+                            autoComplete="off"
+                            name="generator"
+                            type="text"
+                            className="form-control"
+                            aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm"
+                            onChange={this.handleInputChange}
+                        />
                     </div>
-                    <input
-                        autoComplete="off"
-                        name="generator"
-                        type="text"
-                        className="form-control"
-                        aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-sm"
-                        onChange={this.handleInputChange}
-                    />
-                </div>
 
-                {/* SETS */}
-                <div className="input-group input-group-sm mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-sm">Sets</span>
+                    {/* SETS */}
+                    <div className="input-group input-group-sm mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Sets</span>
+                        </div>
+                        <input
+                            autoComplete="off"
+                            name="sets"
+                            type="text"
+                            className="form-control"
+                            aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm"
+                            onChange={this.handleInputChange}
+                        />
                     </div>
-                    <input
-                        autoComplete="off"
-                        name="sets"
-                        type="text"
-                        className="form-control"
-                        aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-sm"
-                        onChange={this.handleInputChange}
-                    />
-                </div>
 
-                {/* WORKOUT */}
-                <div className="input-group input-group-sm mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-sm">Workout</span>
+                    {/* WORKOUT */}
+                    <div className="input-group input-group-sm mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Workout</span>
+                        </div>
+                        <input
+                            autoComplete="off"
+                            name="workout"
+                            type="text"
+                            className="form-control"
+                            aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm"
+                            onChange={this.handleInputChange}
+                        />
                     </div>
-                    <input
-                        autoComplete="off"
-                        name="workout"
-                        type="text"
-                        className="form-control"
-                        aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-sm"
-                        onChange={this.handleInputChange}
-                    />
-                </div>
 
-                {/* NOTES */}
-                <div className="input-group input-group-sm mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-sm">Notes</span>
+                    {/* NOTES */}
+                    <div className="input-group input-group-sm mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Notes</span>
+                        </div>
+                        <input
+                            autoComplete="off"
+                            name="notes"
+                            type="text"
+                            className="form-control"
+                            aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm"
+                            onChange={this.handleInputChange}
+                        />
                     </div>
-                    <input
-                        autoComplete="off"
-                        name="notes"
-                        type="text"
-                        className="form-control"
-                        aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-sm"
-                        onChange={this.handleInputChange}
-                    />
-                </div>
 
-                <button className="btn btn-primary" onClick={this.submitLift}>Submit</button>
-            </div>
+                    <button className="btn btn-primary" onClick={this.submitLift}>Submit</button>
+                </div>
+            </Container>
         )
     }
 }
