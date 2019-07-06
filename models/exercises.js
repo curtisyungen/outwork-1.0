@@ -13,13 +13,33 @@ module.exports = function(sequelize, DataTypes) {
         // Main muscle group targeted
         primaryMG: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         // Secondary muscle group targeted
         secondaryMG: {
             type: DataTypes.STRING,
             allowNull: true,
         },
+        // Low number of reps/duration
+        low: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        // Medium number of reps/duration
+        med: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        // High number of reps/duration
+        high: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        // Extreme number of reps/duration
+        extreme: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        }
     });
     
     return Exercises;
