@@ -14,10 +14,14 @@ class Generator extends Component {
 
         this.state = {
             userId: null,
+            difficulty: null,
+            date: null,
+            location: null,
+            duration: null,
+            notes: null,
             openModal: false,
             equipment: [],
             userEquipment: [],
-            difficulty: null,
             generate: false,
         }
     }
@@ -31,7 +35,7 @@ class Generator extends Component {
                 userId: userId,
             }, () => {
                 this.getUserById();
-            });        
+            });
         }
     }
 
@@ -97,7 +101,7 @@ class Generator extends Component {
             userAPI.updateEquipment(this.state.userId, JSON.stringify(this.state.userEquipment));
         });
     }
-    
+
     // Toggles whether or not user owns specific piece of equipment
     toggleStatus = (name) => {
         let equipment = this.state.equipment;
@@ -147,25 +151,90 @@ class Generator extends Component {
                 {/* EQUIPMENT MODAL */}
                 {this.state.openModal ? (
 
-                <Modal
-                    open={this.state.openModal}
-                    onClose={this.closeModal}
-                >
-                    <div className="col-md-12">
-                        {this.state.equipment.map(equipment => (
-                            <Equipment 
-                                key={Math.random() * 100000}
-                                id={equipment.id}
-                                name={equipment.name}
-                                status={equipment.status}
-                                toggleStatus={this.toggleStatus}
-                            />
-                        ))}
-                    </div>
-                </Modal>
+                    <Modal
+                        open={this.state.openModal}
+                        onClose={this.closeModal}
+                    >
+                        <div className="col-md-12">
+                            {this.state.equipment.map(equipment => (
+                                <Equipment
+                                    key={Math.random() * 100000}
+                                    id={equipment.id}
+                                    name={equipment.name}
+                                    status={equipment.status}
+                                    toggleStatus={this.toggleStatus}
+                                />
+                            ))}
+                        </div>
+                    </Modal>
                 ) : (
-                    <></>
-                )}
+                        <></>
+                    )}
+
+                {/* DATE */}
+                <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group-prepend">
+                        <span className="input-group-text" id="inputGroup-sizing-sm">Date</span>
+                    </div>
+                    <input
+                        autoComplete="off"
+                        name="date"
+                        type="date"
+                        className="form-control"
+                        aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-sm"
+                        onChange={this.handleInputChange}
+                    />
+                </div>
+
+                {/* LOCATION */}
+                <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group-prepend">
+                        <span className="input-group-text" id="inputGroup-sizing-sm">Location</span>
+                    </div>
+                    <input
+                        autoComplete="off"
+                        name="location"
+                        type="text"
+                        className="form-control"
+                        aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-sm"
+                        onChange={this.handleInputChange}
+                    />
+                </div>
+
+                {/* DURATION */}
+                <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group-prepend">
+                        <span className="input-group-text" id="inputGroup-sizing-sm">Duration</span>
+                    </div>
+                    <input
+                        autoComplete="off"
+                        name="duration"
+                        type="text"
+                        className="form-control"
+                        placeholder="hh:mm:ss"
+                        aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-sm"
+                        onChange={this.handleInputChange}
+                    />
+                </div>
+
+                {/* NOTES */}
+                <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group-prepend">
+                        <span className="input-group-text" id="inputGroup-sizing-sm">Notes</span>
+                    </div>
+                    <input
+                        autoComplete="off"
+                        name="notes"
+                        type="text"
+                        className="form-control"
+                        aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-sm"
+                        onChange={this.handleInputChange}
+                    />
+                </div>
 
                 {/* SELECT DIFFICULTY */}
                 <div className="col-md-4 input-group input-group-sm mb-3">
@@ -198,12 +267,16 @@ class Generator extends Component {
                     <button className="btn btn-primary" onClick={this.generateWorkout}>Generate</button>
                 </div>
 
-                <Workout 
+                <Workout
+                    userId={this.state.userId}
+                    date={this.state.date}
+                    location={this.state.location}
+                    duration={this.state.duration}
+                    notes={this.state.notes}
                     generate={this.state.generate}
                     userEquipment={this.state.userEquipment}
                     difficulty={this.state.difficulty}
                 />
-                
             </span>
         )
     }
