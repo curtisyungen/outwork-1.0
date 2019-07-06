@@ -10,6 +10,10 @@ router.get("/getAllExercises", (req, res) => {
     controller.getExercise(req, res);
 });
 
+router.get("/getEquipment", (req, res) => {
+    controller.getEquipment(req, res);
+});
+
 router.get("/getExerciseByPMG", (req, res) => {
     controller.getExerciseByPMG(req, res);
 });
