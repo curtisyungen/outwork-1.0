@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Container from "../components/Container/container";
+import Repeat from "../components/Repeat/repeat";
 import actAPI from "../utils/actAPI";
 import "./Run.css";
 
@@ -14,7 +16,7 @@ class Run extends Component {
             duration: null,
             milePace: null,
             type: null,
-            repeats: null,
+            repeats: [],
             race: null,
             location: null,
             surface: null,
@@ -30,9 +32,19 @@ class Run extends Component {
     componentDidMount = () => {
         this.props.checkValidUser();
 
+        let repeat = {
+            id: 0,
+            distance: "",
+            time: "",
+            rest: "",
+        }
+
+        let repeats = [repeat];
+
         let userId = localStorage.getItem("userId");
         this.setState({
             userId: userId,
+            repeats: repeats,
         });
     }
 
@@ -48,7 +60,7 @@ class Run extends Component {
         let milePace, hours, minutes, seconds, totalMinutes;
         let paceMins, paceSecs;
         let addZeroSecs = "";
-        
+
         if (Number(this.state.distance) && this.state.duration) {
             hours = parseFloat(this.state.duration.split(":")[0]);
             minutes = parseFloat(this.state.duration.split(":")[1]);
@@ -71,8 +83,89 @@ class Run extends Component {
         }
     }
 
+    addRepeat = () => {
+        let repeats = this.state.repeats;
+        let repeat = {
+            id: repeats.length,
+            distance: "",
+            time: "",
+            rest: "",
+        }
+
+        repeats.push(repeat);
+
+        this.setState({
+            repeats: repeats,
+        });
+    }
+
+    deleteRepeat = (repeat) => {
+        let repeats = this.state.repeats;
+        let idx;
+
+        for (var i=0; i<repeats.length; i++) {
+            if (repeats[i].id === repeat.id) {
+                idx = i;
+            }
+        }
+
+        repeats.splice(idx + 1, 1);
+
+        this.setState({
+            repeats: repeats,
+        });
+    }
+
+    setDistance = (id, distance) => {
+        let repeats = this.state.repeats;
+        let idx;
+        for (var i=0; i<repeats.length; i++) {
+            if (repeats[i].id === id) {
+                idx = i;
+            }
+        }
+
+        repeats[idx].distance = distance;
+
+        this.setState({
+            repeats: repeats,
+        });
+    }
+
+    setTime = (id, time) => {
+        let repeats = this.state.repeats;
+        let idx;
+        for (var i=0; i<repeats.length; i++) {
+            if (repeats[i].id === id) {
+                idx = i;
+            }
+        }
+
+        repeats[idx].time = time;
+
+        this.setState({
+            repeats: repeats,
+        });
+    }
+
+    setRest = (id, rest) => {
+        let repeats = this.state.repeats;
+        let idx;
+        for (var i=0; i<repeats.length; i++) {
+            if (repeats[i].id === id) {
+                idx = i;
+            }
+        }
+
+        repeats[idx].rest = rest;
+
+        this.setState({
+            repeats: repeats,
+        });
+    }
+
     submitRun = () => {
-        if(this.props.checkValidUser()) {
+        if (this.props.checkValidUser()) {
             let runData = {
                 userId: this.state.userId,
                 date: this.state.date,
@@ -98,237 +191,274 @@ class Run extends Component {
 
     render() {
         return (
-            <div className="logRunPage col-lg-12">
+            <Container>
+                <div>
 
-                <a className="activity-sm col-md-2" href="/bike">Bike</a>
-                <a className="activity-sm col-md-2" href="/swim">Swim</a>
-                <a className="activity-sm col-md-2" href="/lift">Lift</a>
+                    <a className="activity-sm" href="/bike">Bike</a>
+                    <a className="activity-sm" href="/swim">Swim</a>
+                    <a className="activity-sm" href="/lift">Lift</a>
 
-                <h4>Running Workout</h4>
+                    <h4>Running Workout</h4>
 
-                {/* DATE */}
-                <div className="input-group input-group-sm mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-sm">Date</span>
+                    {/* DATE */}
+                    <div className="col-md-4 input-group input-group-sm mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Date</span>
+                        </div>
+                        <input
+                            autoComplete="off"
+                            name="date"
+                            type="date"
+                            className="form-control"
+                            aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm"
+                            onChange={this.handleInputChange}
+                        />
                     </div>
-                    <input 
-                        autoComplete="off"
-                        name="date" 
-                        type="date" 
-                        className="form-control" 
-                        aria-label="Sizing example input" 
-                        aria-describedby="inputGroup-sizing-sm" 
-                        onChange={this.handleInputChange}
-                    />
-                </div>
 
-                {/* DISTANCE */}
-                <div className="input-group input-group-sm mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-sm">Distance</span>
+                    {/* DISTANCE */}
+                    <div className="col-md-4 input-group input-group-sm mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Distance</span>
+                        </div>
+                        <input
+                            autoComplete="off"
+                            name="distance"
+                            type="text"
+                            className="form-control"
+                            placeholder="miles"
+                            aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm"
+                            onChange={this.handleInputChange}
+                        />
                     </div>
-                    <input 
-                        autoComplete="off"
-                        name="distance" 
-                        type="text" 
-                        className="form-control" 
-                        placeholder="miles"
-                        aria-label="Sizing example input" 
-                        aria-describedby="inputGroup-sizing-sm" 
-                        onChange={this.handleInputChange}
-                    />
-                </div>
 
-                {/* DURATION */}
-                <div className="input-group input-group-sm mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-sm">Duration</span>
+                    {/* DURATION */}
+                    <div className="col-md-4 input-group input-group-sm mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Duration</span>
+                        </div>
+                        <input
+                            autoComplete="off"
+                            name="duration"
+                            type="text"
+                            className="form-control"
+                            placeholder="hh:mm:ss"
+                            aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm"
+                            onChange={this.handleInputChange}
+                        />
                     </div>
-                    <input 
-                        autoComplete="off"
-                        name="duration"
-                        type="text" 
-                        className="form-control" 
-                        placeholder="hh:mm:ss"
-                        aria-label="Sizing example input" 
-                        aria-describedby="inputGroup-sizing-sm" 
-                        onChange={this.handleInputChange}
-                    />
-                </div>
 
-                <div className="input-group-text">
-                    {this.state.milePace}
-                </div>
-
-                {/* LOCATION */}
-                <div className="input-group input-group-sm mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-sm">Location</span>
+                    {/* MILE PACE */}
+                    <div className="col-md-2 input-group-text">
+                        {this.state.milePace}
                     </div>
-                    <input 
-                        autoComplete="off"
-                        name="location" 
-                        type="text" 
-                        className="form-control" 
-                        aria-label="Sizing example input" 
-                        aria-describedby="inputGroup-sizing-sm" 
-                        onChange={this.handleInputChange}
-                        onFocus={this.getMilePace}
-                    />
-                </div>
 
-                {/* TYPE */}
-                <div className="input-group input-group-sm mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-sm">Type</span>
+                    {/* LOCATION */}
+                    <div className="col-md-4 input-group input-group-sm mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Location</span>
+                        </div>
+                        <input
+                            autoComplete="off"
+                            name="location"
+                            type="text"
+                            className="form-control"
+                            aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm"
+                            onChange={this.handleInputChange}
+                            onFocus={this.getMilePace}
+                        />
                     </div>
-                    <input 
-                        autoComplete="off"
-                        name="type" 
-                        type="text" 
-                        className="form-control" 
-                        aria-label="Sizing example input" 
-                        aria-describedby="inputGroup-sizing-sm" 
-                        onChange={this.handleInputChange}
-                    />
-                </div>
 
-                {/* REPEATS */}
-                <div className="input-group input-group-sm mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-sm">Repeats</span>
+                    {/* TYPE */}
+                    <div className="col-md-4 input-group input-group-sm mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Type</span>
+                        </div>
+                        <select
+                            className="browser-default custom-select"
+                            autoComplete="off"
+                            name="type"
+                            type="text"
+                            aria-describedby="inputGroup-sizing-sm"
+                            onChange={this.handleInputChange}
+                            defaultValue={null}
+                        >
+                            <option value=""></option>
+                            <option value="repeats">Repeats</option>
+                            <option value="race">Race</option>
+                        </select>
                     </div>
-                    <input 
-                        autoComplete="off"
-                        name="repeats" 
-                        type="text" 
-                        className="form-control" 
-                        aria-label="Sizing example input" 
-                        aria-describedby="inputGroup-sizing-sm" 
-                        onChange={this.handleInputChange}
-                    />
-                </div>
 
-                {/* RACE */}
-                <div className="input-group input-group-sm mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-sm">Race</span>
+                    {/* REPEATS */}
+
+                    {this.state.type === "repeats" ? (
+                        <button className="btn btn-dark btn-sm addRepeatBtn" onClick={this.addRepeat}>Add</button>
+                    ) : (
+                        <></>
+                    )}
+
+                    {this.state.type === "repeats" ? (
+                        this.state.repeats.map(repeat => (
+                            <Repeat 
+                                key={Math.random() * 100000}
+                                id={repeat.id}
+                                distance={repeat.distance}
+                                time={repeat.time}
+                                rest={repeat.rest}
+                                setDistance={this.setDistance}
+                                setTime={this.setTime}
+                                setRest={this.setRest}
+                                deleteRepeat={this.deleteRepeat}
+                            />
+                        ))
+                    ) : (
+                        <></>
+                    )}
+
+                    {/* RACE */}
+                    {this.state.type === "race" ? (
+                        <div className="col-md-4 input-group input-group-sm mb-3">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text" id="inputGroup-sizing-sm">Race</span>
+                            </div>
+                            <input
+                                autoComplete="off"
+                                name="race"
+                                type="text"
+                                className="form-control"
+                                aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-sm"
+                                onChange={this.handleInputChange}
+                            />
+                        </div>
+                    ) : (
+                            <></>
+                        )}
+
+                    {/* SURFACE */}
+                    <div className="col-md-4 input-group input-group-sm mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Surface</span>
+                        </div>
+                        <select
+                            className="browser-default custom-select"
+                            autoComplete="off"
+                            name="surface"
+                            type="text"
+                            aria-describedby="inputGroup-sizing-sm"
+                            onChange={this.handleInputChange}
+                            defaultValue={null}
+                        >
+                            <option value=""></option>
+                            <option value="sunny">Street</option>
+                            <option value="rainy">Bike Path</option>
+                            <option value="cloudy">Track</option>
+                            <option value="sunny">Trail</option>
+                            <option value="rainy">Dirt Road</option>
+                            <option value="cloudy">Grass</option>
+                            <option value="sunny">Beach</option>
+                            <option value="rainy">Treadmill</option>
+                        </select>
                     </div>
-                    <input 
-                        autoComplete="off"
-                        name="race" 
-                        type="text" 
-                        className="form-control" 
-                        aria-label="Sizing example input" 
-                        aria-describedby="inputGroup-sizing-sm" 
-                        onChange={this.handleInputChange}
-                    />
-                </div>
 
-                {/* SURFACE */}
-                <div className="input-group input-group-sm mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-sm">Surface</span>
+                    {/* WEATHER */}
+                    <div className="col-md-4 input-group input-group-sm mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Weather</span>
+                        </div>
+                        <select
+                            className="browser-default custom-select"
+                            autoComplete="off"
+                            name="weather"
+                            type="text"
+                            aria-describedby="inputGroup-sizing-sm"
+                            onChange={this.handleInputChange}
+                            defaultValue={null}
+                        >
+                            <option value=""></option>
+                            <option value="sunny">Sunny</option>
+                            <option value="rainy">Rainy</option>
+                            <option value="cloudy">Cloudy</option>
+                            <option value="windy">Windy</option>
+                            <option value="snowy">Snowy</option>
+                            <option value="icy">Icy</option>
+                            <option value="clear">Clear</option>
+                            <option value="indoor">Indoor</option>
+                            <option value="shitstorm">Shitstorm</option>
+                        </select>
                     </div>
-                    <input 
-                        autoComplete="off"
-                        name="surface" 
-                        type="text" 
-                        className="form-control" 
-                        aria-label="Sizing example input" 
-                        aria-describedby="inputGroup-sizing-sm" 
-                        onChange={this.handleInputChange}
-                    />
-                </div>
 
-                {/* WEATHER */}
-                <div className="input-group input-group-sm mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-sm">Weather</span>
+                    {/* CLIMB */}
+                    <div className="col-md-4 input-group input-group-sm mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Climb</span>
+                        </div>
+                        <input
+                            autoComplete="off"
+                            name="climb"
+                            type="text"
+                            className="form-control"
+                            placeholder="feet"
+                            aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm"
+                            onChange={this.handleInputChange}
+                        />
                     </div>
-                    <select 
-                        className="browser-default custom-select"
-                        autoComplete="off"
-                        name="weather" 
-                        type="text" 
-                        aria-describedby="inputGroup-sizing-sm" 
-                        onChange={this.handleInputChange}
-                        defaultValue={null}
-                    >
-                        <option value=""></option>
-                        <option value="sunny">Sunny</option>
-                        <option value="rainy">Rainy</option>
-                        <option value="cloudy">Cloudy</option>
-                    </select>
-                </div>
 
-                {/* CLIMB */}
-                <div className="input-group input-group-sm mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-sm">Climb</span>
+                    {/* SHOE */}
+                    <div className="col-md-4 input-group input-group-sm mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Footwear</span>
+                        </div>
+                        <input
+                            autoComplete="off"
+                            name="shoe"
+                            type="text"
+                            className="form-control"
+                            aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm"
+                            onChange={this.handleInputChange}
+                        />
                     </div>
-                    <input 
-                        autoComplete="off"
-                        name="climb" 
-                        type="text" 
-                        className="form-control" 
-                        placeholder="feet"
-                        aria-label="Sizing example input" 
-                        aria-describedby="inputGroup-sizing-sm" 
-                        onChange={this.handleInputChange}
-                    />
-                </div>
 
-                {/* SHOE */}
-                <div className="input-group input-group-sm mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-sm">Footwear</span>
+                    {/* NOTES */}
+                    <div className="col-md-4 input-group input-group-sm mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Notes</span>
+                        </div>
+                        <textarea
+                            autoComplete="off"
+                            name="notes"
+                            type="text"
+                            className="form-control"
+                            aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm"
+                            onChange={this.handleInputChange}
+                        />
                     </div>
-                    <input 
-                        autoComplete="off"
-                        name="shoe" 
-                        type="text" 
-                        className="form-control" 
-                        aria-label="Sizing example input" 
-                        aria-describedby="inputGroup-sizing-sm" 
-                        onChange={this.handleInputChange}
-                    />
-                </div>
 
-                {/* NOTES */}
-                <div className="input-group input-group-sm mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-sm">Notes</span>
+                    {/* MAP */}
+                    <div className="col-md-4 input-group input-group-sm mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Link</span>
+                        </div>
+                        <input
+                            autoComplete="off"
+                            name="map"
+                            type="url"
+                            className="form-control"
+                            aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm"
+                            onChange={this.handleInputChange}
+                        />
                     </div>
-                    <textarea 
-                        autoComplete="off"
-                        name="notes" 
-                        type="text" 
-                        className="form-control" 
-                        aria-label="Sizing example input" 
-                        aria-describedby="inputGroup-sizing-sm" 
-                        onChange={this.handleInputChange}
-                    />
-                </div>
 
-                {/* MAP */}
-                <div className="input-group input-group-sm mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-sm">Link</span>
-                    </div>
-                    <input 
-                        autoComplete="off"
-                        name="map" 
-                        type="url" 
-                        className="form-control" 
-                        aria-label="Sizing example input" 
-                        aria-describedby="inputGroup-sizing-sm" 
-                        onChange={this.handleInputChange}
-                    />
+                    <button className="btn btn-primary" onClick={this.submitRun}>Submit</button>
                 </div>
-
-                <button className="btn btn-primary" onClick={this.submitRun}>Submit</button>
-            </div>
+            </Container>
         )
     }
 }

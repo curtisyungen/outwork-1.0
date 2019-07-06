@@ -83,7 +83,7 @@ class MyActivity extends Component {
 
     render() {
         return (
-            <div className="myActivityPage col-lg-12">
+            <div className="myActivityPage col-md-12">
 
                 {/* RUNS */}
                 {this.state.runs && this.state.runs.length ? (

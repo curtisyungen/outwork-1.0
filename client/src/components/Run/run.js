@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Modal from "react-responsive-modal";
+// import Modal from "react-responsive-modal";
 import "./run.css";
 
 class Run extends Component {
