@@ -1,31 +1,32 @@
 import React, { Component } from "react";
-// import "./repeat.css";
+// import "./exercise.css";
 
-class Repeat extends Component {
+class Exercise extends Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
             id: null,
-            distance: "",
-            time: "",
+            name: "",
+            weight: "",
+            reps: "",
             rest: "",
-            focus: "",
         }
     }
 
     componentDidMount = () => {
         this.setState({
             id: this.props.id,
-            distance: this.props.distance,
-            time: this.props.time,
+            name: this.props.name,
+            weight: this.props.weight,
+            reps: this.props.reps,
             rest: this.props.rest,
         });
     }
 
-    deleteRepeat = () => {
-        this.props.deleteRepeat(this.state.id);
+    deleteExercise = () => {
+        this.props.deleteExercise(this.state.id);
     }
 
     handleInputChange = (event) => {
@@ -33,12 +34,13 @@ class Repeat extends Component {
 
         this.setState({
             [name]: value,
-        });        
+        });
     }
 
     updateParent = () => {
-        this.props.setDistance(this.state.id, this.state.distance);
-        this.props.setTime(this.state.id, this.state.time);
+        this.props.setName(this.state.id, this.state.name);
+        this.props.setWeight(this.state.id, this.state.weight);
+        this.props.setReps(this.state.id, this.state.reps);
         this.props.setRest(this.state.id, this.state.rest);
     }
 
@@ -46,27 +48,37 @@ class Repeat extends Component {
         return (
             <div className="col-md-4 input-group input-group-sm mb-3">
                 <div className="input-group-prepend">
-                    <span className="input-group-text">Repeat</span>
+                    <span className="input-group-text">Exercise</span>
                 </div>
                 <input
                     autoComplete="off"
-                    name="distance"
+                    name="name"
                     type="text"
                     className="form-control"
-                    placeholder="Miles"
+                    placeholder="Exercise Name"
                     onChange={this.handleInputChange}
                     onBlur={this.updateParent}
-                    value={this.state.distance}
+                    value={this.state.name}
                 />
                 <input
                     autoComplete="off"
-                    name="time"
+                    name="weight"
                     type="text"
                     className="form-control"
-                    placeholder="Time"
+                    placeholder="Weight (lbs.)"
                     onChange={this.handleInputChange}
                     onBlur={this.updateParent}
-                    value={this.state.time}
+                    value={this.state.weight}
+                />
+                <input
+                    autoComplete="off"
+                    name="reps"
+                    type="text"
+                    className="form-control"
+                    placeholder="Reps"
+                    onChange={this.handleInputChange}
+                    onBlur={this.updateParent}
+                    value={this.state.reps}
                 />
                 <input
                     autoComplete="off"
@@ -80,14 +92,13 @@ class Repeat extends Component {
                 />
                 <button
                     className="btn btn-danger btn-sm"
-                    onClick={this.deleteRepeat}
+                    onClick={this.deleteExercise}
                 >
                     Delete
                 </button>
             </div>
         )
     }
-
 }
 
-export default Repeat;
+export default Exercise;

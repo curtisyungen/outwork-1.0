@@ -6,7 +6,6 @@ class Run extends Component {
 
     deleteRun = () => {
         this.props.deleteActivity("run", this.props.id);
-        console.log(this.props.id);
     }
 
     render() {

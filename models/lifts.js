@@ -10,25 +10,15 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        // Total duration of run in minutes
-        duration: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
         // General location where run took place
         location: {
             type: DataTypes.STRING,
             allowNull: true,
         },
-        // Generator workout or not - true or false
-        generator: {
+        // Total duration of run in minutes
+        duration: {
             type: DataTypes.STRING,
-            allowNull: true,
-        },
-        // Total number of sets in workout
-        sets: {
-            type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
         },
         // Total number of push-ups in workout, all variations
         pushups: {

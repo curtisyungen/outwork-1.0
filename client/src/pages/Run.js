@@ -103,13 +103,13 @@ class Run extends Component {
         let repeats = this.state.repeats;
         let idx;
 
-        for (var i=0; i<repeats.length; i++) {
-            if (repeats[i].id === repeat.id) {
+        for (var i = 0; i < repeats.length; i++) {
+            if (repeats[i].id === repeat) {
                 idx = i;
             }
         }
 
-        repeats.splice(idx + 1, 1);
+        repeats.splice(idx, 1);
 
         this.setState({
             repeats: repeats,
@@ -119,7 +119,7 @@ class Run extends Component {
     setDistance = (id, distance) => {
         let repeats = this.state.repeats;
         let idx;
-        for (var i=0; i<repeats.length; i++) {
+        for (var i = 0; i < repeats.length; i++) {
             if (repeats[i].id === id) {
                 idx = i;
             }
@@ -135,7 +135,7 @@ class Run extends Component {
     setTime = (id, time) => {
         let repeats = this.state.repeats;
         let idx;
-        for (var i=0; i<repeats.length; i++) {
+        for (var i = 0; i < repeats.length; i++) {
             if (repeats[i].id === id) {
                 idx = i;
             }
@@ -151,7 +151,7 @@ class Run extends Component {
     setRest = (id, rest) => {
         let repeats = this.state.repeats;
         let idx;
-        for (var i=0; i<repeats.length; i++) {
+        for (var i = 0; i < repeats.length; i++) {
             if (repeats[i].id === id) {
                 idx = i;
             }
@@ -173,7 +173,7 @@ class Run extends Component {
                 duration: this.state.duration,
                 milePace: this.state.milePace,
                 type: this.state.type,
-                repeats: this.state.repeats,
+                repeats: JSON.stringify(this.state.repeats),
                 race: this.state.race,
                 location: this.state.location,
                 surface: this.state.surface,
@@ -185,7 +185,16 @@ class Run extends Component {
                 map: this.state.map,
             }
 
-            actAPI.createRun(runData);
+            actAPI.createRun(runData)
+                .then((res) => {
+                    if (res.status === 200) {
+                        alert("Run submitted!");
+                        window.location.reload();
+                    }
+                    else {
+                        alert("Error submitting run.");
+                    }
+                });
         }
     }
 
@@ -216,6 +225,22 @@ class Run extends Component {
                         />
                     </div>
 
+                    {/* LOCATION */}
+                    <div className="col-md-4 input-group input-group-sm mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Location</span>
+                        </div>
+                        <input
+                            autoComplete="off"
+                            name="location"
+                            type="text"
+                            className="form-control"
+                            aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm"
+                            onChange={this.handleInputChange}
+                        />
+                    </div>
+
                     {/* DISTANCE */}
                     <div className="col-md-4 input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
@@ -226,7 +251,7 @@ class Run extends Component {
                             name="distance"
                             type="text"
                             className="form-control"
-                            placeholder="miles"
+                            placeholder="Miles"
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
@@ -248,29 +273,13 @@ class Run extends Component {
                             aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
                         />
-                    </div>
-
-                    {/* MILE PACE */}
-                    <div className="col-md-2 input-group-text">
-                        {this.state.milePace}
-                    </div>
-
-                    {/* LOCATION */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
-                        <div className="input-group-prepend">
-                            <span className="input-group-text" id="inputGroup-sizing-sm">Location</span>
+                        {/* MILE PACE */}
+                        <div className="col-md-2 input-group-text">
+                            {this.state.milePace}
                         </div>
-                        <input
-                            autoComplete="off"
-                            name="location"
-                            type="text"
-                            className="form-control"
-                            aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-sm"
-                            onChange={this.handleInputChange}
-                            onFocus={this.getMilePace}
-                        />
                     </div>
+
+
 
                     {/* TYPE */}
                     <div className="col-md-4 input-group input-group-sm mb-3">
@@ -284,6 +293,7 @@ class Run extends Component {
                             type="text"
                             aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
+                            onFocus={this.getMilePace}
                             defaultValue={null}
                         >
                             <option value=""></option>
@@ -297,12 +307,12 @@ class Run extends Component {
                     {this.state.type === "repeats" ? (
                         <button className="btn btn-dark btn-sm addRepeatBtn" onClick={this.addRepeat}>Add</button>
                     ) : (
-                        <></>
-                    )}
+                            <></>
+                        )}
 
                     {this.state.type === "repeats" ? (
                         this.state.repeats.map(repeat => (
-                            <Repeat 
+                            <Repeat
                                 key={Math.random() * 100000}
                                 id={repeat.id}
                                 distance={repeat.distance}
@@ -315,14 +325,14 @@ class Run extends Component {
                             />
                         ))
                     ) : (
-                        <></>
-                    )}
+                            <></>
+                        )}
 
                     {/* RACE */}
                     {this.state.type === "race" ? (
                         <div className="col-md-4 input-group input-group-sm mb-3">
                             <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-sm">Race</span>
+                                <span className="input-group-text" id="inputGroup-sizing-sm">Race Name</span>
                             </div>
                             <input
                                 autoComplete="off"
