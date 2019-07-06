@@ -32,7 +32,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         // Entire workout saved as string
         workout: {
-            type: DataTypes.STRING(5000),
+            type: DataTypes.STRING(6000),
             allowNull: true,
         },
         // Main muscle groups targeted in workout

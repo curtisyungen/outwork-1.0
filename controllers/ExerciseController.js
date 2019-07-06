@@ -29,6 +29,16 @@ class ExerciseController {
             });
     }
 
+    getEquipment(req, res) {
+        db.Equipment.findAll({})
+            .then((equipment) => {
+                res.json(equipment);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
     getExerciseByPMG(req, res) {
         db.Exercises.findAll({
             where: {

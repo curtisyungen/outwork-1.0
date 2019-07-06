@@ -15,6 +15,10 @@ export default {
         return axios.get("/api/exercises/getAllExercises");
     },
 
+    getEquipment: function() {
+        return axios.get("/api/exercises/getEquipment");
+    },
+
     getExerciseByPMG: function(primaryMG) {
         return axios.get("/api/exercises/getExercisesByPMG", {primaryMG: primaryMG});
     },
