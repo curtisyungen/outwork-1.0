@@ -54,7 +54,13 @@ class Swim extends Component {
 
             actAPI.createSwim(swimData)
                 .then((res) => {
-                    console.log(res);
+                    if (res.status === 200) {
+                        alert("Workout submitted!");
+                        window.location.reload();
+                    }
+                    else {
+                        alert("Error submitting workout.");
+                    }
                 });
         }
     }

@@ -60,7 +60,13 @@ class Bike extends Component {
 
             actAPI.createBike(bikeData)
                 .then((res) => {
-                    console.log(res);
+                    if (res.status === 200) {
+                        alert("Workout submitted!");
+                        window.location.reload();
+                    }
+                    else {
+                        alert("Error submitting workout.");
+                    }
                 });
         }
     }
