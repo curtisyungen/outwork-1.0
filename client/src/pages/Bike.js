@@ -50,7 +50,7 @@ class Bike extends Component {
                 duration: this.state.duration,
                 location: this.state.location,
                 surface: this.state.surface,
-                weather: "sunny",
+                weather: this.state.weather,
                 climb: this.state.climb,
                 grade: this.state.grade,
                 bike: this.state.shoe,
@@ -68,7 +68,7 @@ class Bike extends Component {
     render() {
         return (
             <Container>
-                <div className="logBikePage col-lg-4">
+                <div>
 
                     <a className="activity-sm col-md-2" href="/run">Run</a>
                     <a className="activity-sm col-md-2" href="/swim">Swim</a>
@@ -77,14 +77,14 @@ class Bike extends Component {
                     <h4>Biking Workout</h4>
 
                     {/* DATE */}
-                    <div className="input-group input-group-sm mb-3">
+                    <div className="col-md-4 input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Date</span>
                         </div>
                         <input
                             autoComplete="off"
                             name="date"
-                            type="text"
+                            type="date"
                             className="form-control"
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-sm"
@@ -93,7 +93,7 @@ class Bike extends Component {
                     </div>
 
                     {/* DISTANCE */}
-                    <div className="input-group input-group-sm mb-3">
+                    <div className="col-md-4 input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Distance</span>
                         </div>
@@ -102,6 +102,7 @@ class Bike extends Component {
                             name="distance"
                             type="text"
                             className="form-control"
+                            placeholder="Miles"
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
@@ -109,7 +110,7 @@ class Bike extends Component {
                     </div>
 
                     {/* DURATION */}
-                    <div className="input-group input-group-sm mb-3">
+                    <div className="col-md-4 input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Duration</span>
                         </div>
@@ -118,6 +119,7 @@ class Bike extends Component {
                             name="duration"
                             type="text"
                             className="form-control"
+                            placeholder="hh:mm:ss"
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
@@ -125,7 +127,7 @@ class Bike extends Component {
                     </div>
 
                     {/* LOCATION */}
-                    <div className="input-group input-group-sm mb-3">
+                    <div className="col-md-4 input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Location</span>
                         </div>
@@ -141,26 +143,59 @@ class Bike extends Component {
                     </div>
 
                     {/* SURFACE */}
-                    <div className="input-group input-group-sm mb-3">
+                    <div className="col-md-4 input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Surface</span>
                         </div>
-                        <input
+                        <select
+                            className="browser-default custom-select"
                             autoComplete="off"
                             name="surface"
                             type="text"
-                            className="form-control"
-                            aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
-                        />
+                            defaultValue={null}
+                        >
+                            <option value=""></option>
+                            <option value="sunny">Street</option>
+                            <option value="rainy">Bike Path</option>
+                            <option value="cloudy">Track</option>
+                            <option value="sunny">Trail</option>
+                            <option value="rainy">Dirt Road</option>
+                            <option value="cloudy">Grass</option>
+                            <option value="rainy">Stationary</option>
+                        </select>
                     </div>
 
                     {/* WEATHER */}
-
+                    <div className="col-md-4 input-group input-group-sm mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Weather</span>
+                        </div>
+                        <select
+                            className="browser-default custom-select"
+                            autoComplete="off"
+                            name="weather"
+                            type="text"
+                            aria-describedby="inputGroup-sizing-sm"
+                            onChange={this.handleInputChange}
+                            defaultValue={null}
+                        >
+                            <option value=""></option>
+                            <option value="sunny">Sunny</option>
+                            <option value="rainy">Rainy</option>
+                            <option value="cloudy">Cloudy</option>
+                            <option value="windy">Windy</option>
+                            <option value="snowy">Snowy</option>
+                            <option value="icy">Icy</option>
+                            <option value="clear">Clear</option>
+                            <option value="indoor">Indoor</option>
+                            <option value="shitstorm">Shitstorm</option>
+                        </select>
+                    </div>
 
                     {/* CLIMB */}
-                    <div className="input-group input-group-sm mb-3">
+                    <div className="col-md-4 input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Climb</span>
                         </div>
@@ -169,6 +204,7 @@ class Bike extends Component {
                             name="climb"
                             type="text"
                             className="form-control"
+                            placeholder="feet"
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
@@ -179,13 +215,13 @@ class Bike extends Component {
 
 
                     {/* BIKE */}
-                    <div className="input-group input-group-sm mb-3">
+                    <div className="col-md-4 input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
-                            <span className="input-group-text" id="inputGroup-sizing-sm">Footwear</span>
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Bike</span>
                         </div>
                         <input
                             autoComplete="off"
-                            name="shoe"
+                            name="bike"
                             type="text"
                             className="form-control"
                             aria-label="Sizing example input"
@@ -195,11 +231,11 @@ class Bike extends Component {
                     </div>
 
                     {/* NOTES */}
-                    <div className="input-group input-group-sm mb-3">
+                    <div className="col-md-4 input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Notes</span>
                         </div>
-                        <input
+                        <textarea
                             autoComplete="off"
                             name="notes"
                             type="text"
@@ -211,14 +247,14 @@ class Bike extends Component {
                     </div>
 
                     {/* MAP */}
-                    <div className="input-group input-group-sm mb-3">
+                    <div className="col-md-4 input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Link</span>
                         </div>
                         <input
                             autoComplete="off"
                             name="map"
-                            type="text"
+                            type="url"
                             className="form-control"
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-sm"
