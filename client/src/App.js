@@ -210,8 +210,8 @@ class App extends Component {
             this.logoutUser();
             return;
           }
+          
         });
-    
         return true;
     }
   }
