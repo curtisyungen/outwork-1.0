@@ -138,8 +138,6 @@ class Workout extends Component {
     render() {
         return (
             <div>
-                {this.props.difficulty}
-                {this.props.userEquipment}
                 {this.state.sets && this.state.sets.length > 0 ? (
                     this.state.sets.map(set => (
                         <Set 
