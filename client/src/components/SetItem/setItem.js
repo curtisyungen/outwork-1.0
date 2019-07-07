@@ -16,14 +16,19 @@ class SetItem extends Component {
             openWeightModal: false,
             openRestModal: false,
             openNotesModal: false,
-            weight: null,
-            rest: null,
-            notes: null,
+            id: null,
+            name: null,
+            weight: "",
+            rest: "",
+            notes: "",
         }
     }
 
     componentDidMount = () => {
-
+        this.setState({
+            id: this.props.id,
+            name: this.props.name,
+        });
     }
 
     handleInputChange = (event) => {
@@ -52,13 +57,24 @@ class SetItem extends Component {
         });
     }
 
-    closeModal = () => {
+    closeModal = (name) => {
+
+        if (this.state.weight !== null) {
+            this.props.setWeight(this.state.id, this.state.name, this.state.weight);
+        }
+
+        if (this.state.rest !== null) {
+            this.props.setRest(this.state.id, this.state.name, this.state.rest);
+        }
+
+        if (this.state.notes !== null) {
+            this.props.setNotes(this.state.id, this.state.name, this.state.notes);
+        }
+
         this.setState({
             openWeightModal: false,
             openRestModal: false,
             openNotesModal: false,
-        }, () => {
-            console.log(this.state);
         });
     }
 
@@ -76,15 +92,15 @@ class SetItem extends Component {
 
                 <div className="setItemIcons col-md-4">
                     <span className="setIcon">{this.props.reps}</span>
-                    <FontAwesomeIcon className={`setIcon icon-${this.state.weight !== null}`} icon={faDumbbell} onClick={this.openModal.bind(null, "weight")} />
-                    <FontAwesomeIcon className={`setIcon icon-${this.state.rest !== null}`} icon={faBed} onClick={this.openModal.bind(null, "rest")} />
-                    <FontAwesomeIcon className={`setIcon icon-${this.state.notes !== null}`} icon={faPencilAlt} onClick={this.openModal.bind(null, "notes")} />
+                    <FontAwesomeIcon className={`setIcon icon-${this.state.weight !== ""}`} icon={faDumbbell} onClick={this.openModal.bind(null, "weight")} />
+                    <FontAwesomeIcon className={`setIcon icon-${this.state.rest !== ""}`} icon={faBed} onClick={this.openModal.bind(null, "rest")} />
+                    <FontAwesomeIcon className={`setIcon icon-${this.state.notes !== ""}`} icon={faPencilAlt} onClick={this.openModal.bind(null, "notes")} />
                 </div>
 
                 {this.state.openWeightModal ? (
                     <Modal
                         open={this.state.openWeightModal}
-                        onClose={this.closeModal}
+                        onClose={this.closeModal.bind(null, "weight")}
                     >
                         <div className="col-md-4 input-group input-group-sm mb-3">
                             <div className="input-group-prepend">
@@ -97,7 +113,9 @@ class SetItem extends Component {
                                 className="form-control"
                                 aria-describedby="inputGroup-sizing-sm"
                                 onChange={this.handleInputChange}
+                                value={this.state.weight}
                             />
+                            <button className="btn btn-success btn-sm" onClick={this.closeModal}>Save</button>
                         </div>
                     </Modal>
                 ) : (
@@ -107,7 +125,7 @@ class SetItem extends Component {
                 {this.state.openRestModal ? (
                     <Modal
                         open={this.state.openRestModal}
-                        onClose={this.closeModal}
+                        onClose={this.closeModal.bind(null, "rest")}
                     >
                         <div className="col-md-4 input-group input-group-sm mb-3">
                             <div className="input-group-prepend">
@@ -120,7 +138,9 @@ class SetItem extends Component {
                                 className="form-control"
                                 aria-describedby="inputGroup-sizing-sm"
                                 onChange={this.handleInputChange}
+                                value={this.state.rest}
                             />
+                            <button className="btn btn-success btn-sm" onClick={this.closeModal}>Save</button>
                         </div>
                     </Modal>
                 ) : (
@@ -130,7 +150,7 @@ class SetItem extends Component {
                 {this.state.openNotesModal ? (
                     <Modal
                         open={this.state.openNotesModal}
-                        onClose={this.closeModal}
+                        onClose={this.closeModal.bind(null, "notes")}
                     >
                         <div className="col-md-4 input-group input-group-sm mb-3">
                             <div className="input-group-prepend">
@@ -143,7 +163,9 @@ class SetItem extends Component {
                                 className="form-control"
                                 aria-describedby="inputGroup-sizing-sm"
                                 onChange={this.handleInputChange}
+                                value={this.state.notes}
                             />
+                            <button className="btn btn-success btn-sm" onClick={this.closeModal}>Save</button>
                         </div>
                     </Modal>
                 ) : (
