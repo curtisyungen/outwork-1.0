@@ -83,7 +83,7 @@ class SubmitBike extends Component {
                     <h4>Biking Workout</h4>
 
                     {/* DATE */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Date</span>
                         </div>
@@ -99,7 +99,7 @@ class SubmitBike extends Component {
                     </div>
 
                     {/* DISTANCE */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Distance</span>
                         </div>
@@ -116,7 +116,7 @@ class SubmitBike extends Component {
                     </div>
 
                     {/* DURATION */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Duration</span>
                         </div>
@@ -133,7 +133,7 @@ class SubmitBike extends Component {
                     </div>
 
                     {/* LOCATION */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Location</span>
                         </div>
@@ -149,7 +149,7 @@ class SubmitBike extends Component {
                     </div>
 
                     {/* SURFACE */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Surface</span>
                         </div>
@@ -174,7 +174,7 @@ class SubmitBike extends Component {
                     </div>
 
                     {/* WEATHER */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Weather</span>
                         </div>
@@ -201,7 +201,7 @@ class SubmitBike extends Component {
                     </div>
 
                     {/* CLIMB */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Climb</span>
                         </div>
@@ -221,7 +221,7 @@ class SubmitBike extends Component {
 
 
                     {/* BIKE */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Bike</span>
                         </div>
@@ -237,7 +237,7 @@ class SubmitBike extends Component {
                     </div>
 
                     {/* NOTES */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Notes</span>
                         </div>
@@ -253,7 +253,7 @@ class SubmitBike extends Component {
                     </div>
 
                     {/* MAP */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Link</span>
                         </div>

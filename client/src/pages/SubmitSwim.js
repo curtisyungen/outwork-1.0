@@ -68,7 +68,7 @@ class SubmitSwim extends Component {
     render() {
         return (
             <Container>
-                <div className="logRunPage col-lg-4">
+                <div className="logRunPage">
 
                     <a className="activity-sm col-md-2" href="/run">Run</a>
                     <a className="activity-sm col-md-2" href="/bike">Bike</a>

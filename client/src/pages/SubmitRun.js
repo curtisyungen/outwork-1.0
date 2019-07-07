@@ -210,7 +210,7 @@ class SubmitRun extends Component {
                     <h4>Running Workout</h4>
 
                     {/* DATE */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Date</span>
                         </div>
@@ -226,7 +226,7 @@ class SubmitRun extends Component {
                     </div>
 
                     {/* LOCATION */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Location</span>
                         </div>
@@ -242,7 +242,7 @@ class SubmitRun extends Component {
                     </div>
 
                     {/* DISTANCE */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Distance</span>
                         </div>
@@ -259,7 +259,7 @@ class SubmitRun extends Component {
                     </div>
 
                     {/* DURATION */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Duration</span>
                         </div>
@@ -282,7 +282,7 @@ class SubmitRun extends Component {
 
 
                     {/* TYPE */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Type</span>
                         </div>
@@ -330,7 +330,7 @@ class SubmitRun extends Component {
 
                     {/* RACE */}
                     {this.state.type === "race" ? (
-                        <div className="col-md-4 input-group input-group-sm mb-3">
+                        <div className="input-group input-group-sm mb-3">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="inputGroup-sizing-sm">Race Name</span>
                             </div>
@@ -349,7 +349,7 @@ class SubmitRun extends Component {
                         )}
 
                     {/* SURFACE */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Surface</span>
                         </div>
@@ -375,7 +375,7 @@ class SubmitRun extends Component {
                     </div>
 
                     {/* WEATHER */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Weather</span>
                         </div>
@@ -402,7 +402,7 @@ class SubmitRun extends Component {
                     </div>
 
                     {/* CLIMB */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Climb</span>
                         </div>
@@ -419,7 +419,7 @@ class SubmitRun extends Component {
                     </div>
 
                     {/* SHOE */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Footwear</span>
                         </div>
@@ -435,7 +435,7 @@ class SubmitRun extends Component {
                     </div>
 
                     {/* NOTES */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Notes</span>
                         </div>
@@ -451,7 +451,7 @@ class SubmitRun extends Component {
                     </div>
 
                     {/* MAP */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Link</span>
                         </div>
