@@ -1,0 +1,19 @@
+.exReps {
+    float: right;
+}
+
+.icon-true {
+    color: green !important;
+}
+
+.setItem {
+    color: black;
+    display: flex;
+    flex-direction: row;
+}
+
+.setIcon {
+    color: rgb(59, 59, 59);
+    cursor: pointer;
+    margin-left: 5px;
+}

@@ -40,6 +40,10 @@ class Workout extends Component {
         }
     }
 
+    handleInputChange = (setId) => {
+        
+    }
+
     // Get all exercises from database
     // Call getWorkout
     getExercises = () => {
@@ -105,7 +109,8 @@ class Workout extends Component {
             let set = [];
             for (var ex = 0; ex < 5; ex++) {
 
-                // Data is the name and index of the random exercise chosen
+                // Data is the name and index of the random exercise chosen, returned from .getRand()
+                // Name is the name of the randomly chosen exercise
                 // randEx is used to generate the reps for this particular exercise
                 let data = this.getRand(filtered, set);
                 let name = data.name;
@@ -133,8 +138,8 @@ class Workout extends Component {
     // This function takes in the filtered exercise list and the current set as arguments
     // It chooses a random exercise from the filtered list
     // Then it ensures that this exercise is not already in the set
-    // If continues looping until it finds a non-duplicate exercise
-    // One it does, it returns the chosen exercise name as well as its index in the filtered list
+    // It continues looping until it finds an exercise that isn't already in the current set
+    // Once it finds one, it returns the chosen exercise name as well as its index in the filtered list
     getRand = (filtered, set) => {
 
         let validName = false;
@@ -209,6 +214,7 @@ class Workout extends Component {
                         <Set
                             key={Math.random() * 100000}
                             set={set}
+                            handleInputChange={this.handleInputChange}
                         />
                     ))
                 ) : (
