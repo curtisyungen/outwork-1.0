@@ -35,7 +35,11 @@ class Lift extends Component {
     }
 
     deleteLift = () => {
-        this.props.deleteActivity("lift", this.props.id);
+        let confirm = window.confirm("Delete this workout?");
+
+        if (confirm) {
+            this.props.deleteActivity("lift", this.props.id);
+        }
     }
 
     render() {
@@ -57,29 +61,64 @@ class Lift extends Component {
                     open={this.state.openModal}
                     onClose={this.closeModal}
                 >
-                    <div className="liftDetails">
-                        <div>Date: {this.props.date}</div>
-                        <div>Duration: {this.props.duration}</div>
-                        <div>Location: {this.props.location}</div>
-                        <div>Generator: {this.props.generator}</div>
-                        <div>Muscle Groups: {this.props.muscleGroups}</div>
-                        <div>Notes: {this.props.notes}</div>
-                        <div>Pull-Ups: {this.props.pullups}</div>
-                        <div>Push-Ups: {this.props.pushups}</div>
-                        <div>Workout: 
-                            {this.state.workout && this.state.workout.length > 0 ? (
-                                this.state.workout.map(set => (
-                                    <LiftDetailSet
-                                        key={Math.random() * 100000}
-                                        set={set}
-                                    />
-                                ))
-                            ) : (
-                                <></>
-                            )}
-                        </div>
+                    <div>
+                        <h5>Summary:</h5>
+                        <table className="table table-striped table-bordered table-sm text-center liftDetails">
+                            <thead className="thead-dark">
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Duration (hh:mm:ss)</th>
+                                    <th>Location</th>
+                                    <th>Generator</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{this.props.date}</td>
+                                    <td>{this.props.duration}</td>
+                                    <td>{this.props.location}</td>
+                                    <td>{this.props.generator}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <div className="card-link deleteActivity" onClick={this.deleteLift}>Delete</div>
+
+                    <div>
+                        <table className="table table-striped table-bordered table-sm text-center liftDetails">
+                            <thead className="thead-dark">
+                                <tr>
+                                    <th>Total Pull-Ups</th>
+                                    <th>Total Push-Ups</th>
+                                    <th>Muscle Groups</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{this.props.pullups}</td>
+                                    <td>{this.props.pushups}</td>
+                                    <td>{this.props.muscleGroups}</td>
+                                    <td>{this.props.notes}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div>
+                    <h5>Workout:</h5>
+                        {this.state.workout && this.state.workout.length > 0 ? (
+                            this.state.workout.map(set => (
+                                <LiftDetailSet
+                                    key={Math.random() * 100000}
+                                    set={set}
+                                />
+                            ))
+                        ) : (
+                            <></>
+                        )}
+                    </div>
+
+                    <div className="card-link deleteActivity" onClick={this.deleteLift}>Delete Workout</div>
                 </Modal>
             ) : (
                 <></>
