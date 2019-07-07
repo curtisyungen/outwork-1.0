@@ -7,5 +7,6 @@ p {
 }
 
 .liftDetails {
-    width: 500px;
+    min-width: 500px;
+    width: auto;
 }
