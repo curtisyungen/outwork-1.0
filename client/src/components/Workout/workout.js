@@ -98,15 +98,18 @@ class Workout extends Component {
     getSets = () => {
         let difficulty = this.state.difficulty;
         let filtered = this.state.filtered;
-
         let sets = [];
 
         for (var s = 0; s < difficulty; s++) {
 
             let set = [];
             for (var ex = 0; ex < 5; ex++) {
-                let randEx = Math.floor(Math.random() * filtered.length);
-                let name = filtered[randEx].name;
+
+                // Data is the name and index of the random exercise chosen
+                // randEx is used to generate the reps for this particular exercise
+                let data = this.getRand(filtered, set);
+                let name = data.name;
+                let randEx = data.randEx;
 
                 let exercise = {
                     id: s,
@@ -125,6 +128,36 @@ class Workout extends Component {
         this.setState({
             sets: sets,
         });
+    }
+
+    // This function takes in the filtered exercise list and the current set as arguments
+    // It chooses a random exercise from the filtered list
+    // Then it ensures that this exercise is not already in the set
+    // If continues looping until it finds a non-duplicate exercise
+    // One it does, it returns the chosen exercise name as well as its index in the filtered list
+    getRand = (filtered, set) => {
+
+        let validName = false;
+        let randEx, name;
+        let count;
+
+        while (!validName) {
+            randEx = Math.floor(Math.random() * filtered.length);
+            name = filtered[randEx].name;
+            count = 0;
+
+            for (var ex in set) {
+                if (set[ex].name === name) {
+                    count += 1;
+                }
+            }
+
+            if (count === 0) {
+                validName = true;
+            }
+        }
+
+        return { name, randEx };
     }
 
     getReps = (exercise) => {
