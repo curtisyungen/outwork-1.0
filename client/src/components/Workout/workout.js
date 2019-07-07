@@ -180,6 +180,45 @@ class Workout extends Component {
         return reps;
     }
 
+    setWeight = (setId, exName, weight) => {
+        let sets = this.state.sets;
+        
+        let idx;
+        for (var ex in sets[setId]) {
+            if (sets[setId][ex].name === exName) {
+                idx = ex;
+            }
+        }
+
+        sets[setId][idx].weight = weight;
+    }
+
+    setRest = (setId, exName, rest) => {
+        let sets = this.state.sets;
+        
+        let idx;
+        for (var ex in sets[setId]) {
+            if (sets[setId][ex].name === exName) {
+                idx = ex;
+            }
+        }
+
+        sets[setId][idx].rest = rest;
+    }
+
+    setNotes = (setId, exName, notes) => {
+        let sets = this.state.sets;
+        
+        let idx;
+        for (var ex in sets[setId]) {
+            if (sets[setId][ex].name === exName) {
+                idx = ex;
+            }
+        }
+
+        sets[setId][idx].notes = notes;
+    }
+
     completeWorkout = () => {
         let confirm = window.confirm("Workout complete?");
 
@@ -201,7 +240,12 @@ class Workout extends Component {
 
             actAPI.createLift(liftData)
                 .then((res) => {
-                    console.log(res);
+                    if (res.status === 200) {
+                        alert("Workout logged!");
+                    }
+                    else {
+                        alert("Error logging workout.");
+                    }
                 });
         }
     }
@@ -215,6 +259,9 @@ class Workout extends Component {
                             key={Math.random() * 100000}
                             set={set}
                             handleInputChange={this.handleInputChange}
+                            setWeight={this.setWeight}
+                            setRest={this.setRest}
+                            setNotes={this.setNotes}
                         />
                     ))
                 ) : (
