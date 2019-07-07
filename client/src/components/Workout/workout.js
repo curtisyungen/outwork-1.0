@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Set from "../Set/set";
+import actAPI from "../../utils/actAPI";
 import exerAPI from "../../utils/exerAPI";
 import "./workout.css";
 
@@ -9,15 +10,18 @@ class Workout extends Component {
         super(props);
 
         this.state = {
+            userId: null,
             userEquipment: null,
             difficulty: null,
             exercises: null,
             filtered: null,
+            sets: null,
         }
     }
 
     componentDidMount = () => {
         this.setState({
+            userId: this.props.userId,
             userEquipment: this.props.userEquipment,
             difficulty: this.props.difficulty,
         }, () => {
@@ -97,16 +101,19 @@ class Workout extends Component {
 
         let sets = [];
 
-        for (var s=0; s<difficulty; s++) {
+        for (var s = 0; s < difficulty; s++) {
 
             let set = [];
-            for (var ex=0; ex<5; ex++) {
+            for (var ex = 0; ex < 5; ex++) {
                 let randEx = Math.floor(Math.random() * filtered.length);
                 let name = filtered[randEx].name;
 
                 let exercise = {
+                    id: s,
                     name: name,
+                    weight: null,
                     reps: this.getReps(filtered[randEx]),
+                    rest: null,
                 }
 
                 set.push(exercise);
@@ -124,7 +131,7 @@ class Workout extends Component {
         let repIdx = Math.floor(Math.random() * 4);
         let reps = 0;
 
-        switch(repIdx) {
+        switch (repIdx) {
             case 0: reps = exercise.low; break;
             case 1: reps = exercise.med; break;
             case 2: reps = exercise.high; break;
@@ -135,16 +142,50 @@ class Workout extends Component {
         return reps;
     }
 
+    completeWorkout = () => {
+        let confirm = window.confirm("Workout complete?");
+
+        if (confirm) {
+            localStorage.setItem("workout", JSON.stringify(this.state.sets));
+
+            let liftData = {
+                userId: this.props.userId,
+                date: this.props.date,
+                location: this.props.location,
+                duration: this.props.duration,
+                generator: this.props.difficulty,
+                pushups: null,
+                pullups: null,
+                workout: JSON.stringify(this.state.sets),
+                muscleGroups: null,
+                notes: this.props.notes,
+            }
+
+            actAPI.createLift(liftData)
+                .then((res) => {
+                    console.log(res);
+                });
+        }
+    }
+
     render() {
         return (
             <div>
                 {this.state.sets && this.state.sets.length > 0 ? (
                     this.state.sets.map(set => (
-                        <Set 
+                        <Set
                             key={Math.random() * 100000}
                             set={set}
                         />
                     ))
+                ) : (
+                        <></>
+                    )}
+
+                {this.state.sets && this.state.sets.length > 0 ? (
+                    <div>
+                        <button className="btn btn-success" onClick={this.completeWorkout}>Complete</button>
+                    </div>
                 ) : (
                         <></>
                     )}

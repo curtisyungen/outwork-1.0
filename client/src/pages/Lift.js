@@ -204,12 +204,13 @@ class Lift extends Component {
                 date: this.state.date,
                 location: this.state.location,
                 duration: this.state.duration,
+                generator: null,
                 pushups: this.state.pushups,
                 pullups: this.state.pullups,
-                workout: JSON.stringify(this.state.exercises),
+                workout: JSON.stringify([this.state.exercises]),
                 muscleGroups: JSON.stringify(this.state.muscleGroups),
                 notes: this.state.notes,
-            }
+            };
 
             actAPI.createLift(liftData)
                 .then((res) => {
