@@ -11,14 +11,31 @@ class Lift extends Component {
         this.state = {
             openModal: false,
             workout: null,
+            generator: null,
         }
     }
 
     componentDidMount = () => {
         let workout = JSON.parse(this.props.workout);
 
+        let generator = this.props.generator;
+        let generatorText;
+
+        switch (generator) {
+            case "1": generatorText = "Baby"; break;
+            case "2": generatorText = "Easy"; break;
+            case "3": generatorText = "Average"; break;
+            case "4": generatorText = "Superior"; break;
+            case "5": generatorText = "Hero"; break;
+            case "6": generatorText = "Superman"; break;
+            case "7": generatorText = "Rogan"; break;
+            case "8": generatorText = "Goggins"; break;
+            default: generatorText = "";
+        }
+
         this.setState({
             workout: workout,
+            generatorText: generatorText,
         });
     }
 
@@ -34,7 +51,9 @@ class Lift extends Component {
         });
     }
 
-    deleteLift = () => {
+    deleteLift = (event) => {
+        event.preventDefault();
+
         let confirm = window.confirm("Delete this workout?");
 
         if (confirm) {
@@ -63,7 +82,7 @@ class Lift extends Component {
                 >
                     <div>
                         <h5>Summary:</h5>
-                        <table className="table table-striped table-bordered table-sm text-center liftDetails">
+                        <table className="table table-striped table-bordered table-sm text-center align-middle liftDetails">
                             <thead className="thead-dark">
                                 <tr>
                                     <th>Date</th>
@@ -77,14 +96,14 @@ class Lift extends Component {
                                     <td>{this.props.date}</td>
                                     <td>{this.props.duration}</td>
                                     <td>{this.props.location}</td>
-                                    <td>{this.props.generator}</td>
+                                    <td>{this.state.generatorText}</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 
                     <div>
-                        <table className="table table-striped table-bordered table-sm text-center liftDetails">
+                        <table className="table table-striped table-bordered table-sm text-center align-middle liftDetails">
                             <thead className="thead-dark">
                                 <tr>
                                     <th>Total Pull-Ups</th>
@@ -118,7 +137,7 @@ class Lift extends Component {
                         )}
                     </div>
 
-                    <div className="card-link deleteActivity" onClick={this.deleteLift}>Delete Workout</div>
+                    <button className="btn btn-danger btn-sm deleteActivity" onClick={this.deleteLift}>Delete Workout</button>
                 </Modal>
             ) : (
                 <></>
