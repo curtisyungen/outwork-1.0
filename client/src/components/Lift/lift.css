@@ -3,7 +3,7 @@ p {
 }
 
 .deleteActivity {
-    z-index: 99;
+    float: right;
 }
 
 .liftDetails {
