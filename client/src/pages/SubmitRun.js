@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Container from "../components/Container/container";
-import Repeat from "../components/Repeat/repeat";
+import RunRepeat from "../components/RunRepeat/runRepeat";
 import actAPI from "../utils/actAPI";
 import "./SubmitRun.css";
 
@@ -312,7 +312,7 @@ class SubmitRun extends Component {
 
                     {this.state.type === "repeats" ? (
                         this.state.repeats.map(repeat => (
-                            <Repeat
+                            <RunRepeat
                                 key={Math.random() * 100000}
                                 id={repeat.id}
                                 distance={repeat.distance}
