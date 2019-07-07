@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Modal from "react-responsive-modal";
-import Set from "../Set/set";
 import "./lift.css";
 
 class Lift extends Component {
@@ -71,11 +70,7 @@ class Lift extends Component {
                         <div>Workout: 
                             {this.state.workout && this.state.workout.length > 0 ? (
                                 this.state.workout.map(set => (
-                                    <Set 
-                                        key={Math.random() * 100000}
-                                        set={set}
-                                        source="myActivity"
-                                    />
+                                    <div>{set[0].name}</div>
                                 ))
                             ) : (
                                 <></>

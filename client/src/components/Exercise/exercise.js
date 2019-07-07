@@ -12,16 +12,18 @@ class Exercise extends Component {
             weight: "",
             reps: "",
             rest: "",
+            notes: "",
         }
     }
 
     componentDidMount = () => {
         this.setState({
             id: this.props.id,
-            name: this.props.name,
-            weight: this.props.weight,
-            reps: this.props.reps,
-            rest: this.props.rest,
+            name: this.props.name || "",
+            weight: this.props.weight || "",
+            reps: this.props.reps || "",
+            rest: this.props.rest || "",
+            notes: this.props.notes || "",
         });
     }
 
@@ -42,11 +44,12 @@ class Exercise extends Component {
         this.props.setWeight(this.state.id, this.state.weight);
         this.props.setReps(this.state.id, this.state.reps);
         this.props.setRest(this.state.id, this.state.rest);
+        this.props.setNotes(this.state.id, this.state.notes);
     }
 
     render() {
         return (
-            <div className="col-md-4 input-group input-group-sm mb-3">
+            <div className="input-group input-group-sm mb-1">
                 <div className="input-group-prepend">
                     <span className="input-group-text">Exercise</span>
                 </div>
@@ -89,6 +92,16 @@ class Exercise extends Component {
                     onChange={this.handleInputChange}
                     onBlur={this.updateParent}
                     value={this.state.rest}
+                />
+                <input
+                    autoComplete="off"
+                    name="notes"
+                    type="text"
+                    className="form-control"
+                    placeholder="Notes"
+                    onChange={this.handleInputChange}
+                    onBlur={this.updateParent}
+                    value={this.state.notes}
                 />
                 <button
                     className="btn btn-danger btn-sm"
