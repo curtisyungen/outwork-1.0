@@ -1,3 +1,11 @@
 p {
     color: black;
 }
+
+.deleteActivity {
+    z-index: 99;
+}
+
+.liftDetails {
+    width: 500px;
+}

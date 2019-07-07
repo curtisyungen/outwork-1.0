@@ -141,9 +141,16 @@ class MyActivity extends Component {
                         <Lift
                             key={lift.id}
                             id={lift.id}
+                            userId={lift.userId}
                             date={lift.date}
-                            location={lift.location}
                             duration={lift.duration}
+                            generator={lift.generator}
+                            location={lift.location}
+                            muscleGroups={lift.muscleGroups}
+                            notes={lift.notes}
+                            pullups={lift.pullups}
+                            pushups={lift.pushups}
+                            workout={lift.workout}
                             deleteActivity={this.deleteActivity}
                         />
                     ))
