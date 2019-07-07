@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Modal from "react-responsive-modal";
+import LiftDetailSet from "../LiftDetailSet/liftDetailSet";
 import "./lift.css";
 
 class Lift extends Component {
@@ -19,8 +20,6 @@ class Lift extends Component {
         this.setState({
             workout: workout,
         });
-
-        console.log(workout);
     }
 
     openModal = () => {
@@ -70,7 +69,10 @@ class Lift extends Component {
                         <div>Workout: 
                             {this.state.workout && this.state.workout.length > 0 ? (
                                 this.state.workout.map(set => (
-                                    <div>{set[0].name}</div>
+                                    <LiftDetailSet
+                                        key={Math.random() * 100000}
+                                        set={set}
+                                    />
                                 ))
                             ) : (
                                 <></>
