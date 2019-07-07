@@ -10,10 +10,10 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import MyActivity from "./pages/MyActivity";
 import LogActivity from "./pages/LogActivity";
-import Run from "./pages/Run";
-import Bike from "./pages/Bike";
-import Swim from "./pages/Swim";
-import Lift from "./pages/Lift";
+import SubmitRun from "./pages/SubmitRun";
+import SubmitBike from "./pages/SubmitBike";
+import SubmitSwim from "./pages/SubmitSwim";
+import SubmitLift from "./pages/SubmitLift";
 import Generator from "./pages/Generator";
 import Metrics from "./pages/Metrics";
 import FindUsers from "./pages/FindUsers";
@@ -317,28 +317,28 @@ class App extends Component {
 
             {/* Log Run Page */}
             <Route exact path="/run" render={() =>
-              <Run
+              <SubmitRun
                 checkValidUser={this.checkValidUser}
               />
             } />
 
             {/* Log Bike Page */}
             <Route exact path="/bike" render={() =>
-              <Bike
+              <SubmitBike
                 checkValidUser={this.checkValidUser}
               />
             } />
 
             {/* Log Swim Page */}
             <Route exact path="/swim" render={() =>
-              <Swim
+              <SubmitSwim
                 checkValidUser={this.checkValidUser}
               />
             } />
 
             {/* Log Lift Page */}
             <Route exact path="/lift" render={() =>
-              <Lift
+              <SubmitLift
                 checkValidUser={this.checkValidUser}
               />
             } />

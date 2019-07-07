@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import Container from "../components/Container/container";
 import Exercise from "../components/Exercise/exercise";
 import actAPI from "../utils/actAPI";
-// import "./Lift.css";
+// import "./SubmitLift.css";
 
-class Lift extends Component {
+class SubmitLift extends Component {
 
     constructor(props) {
         super(props);
@@ -14,6 +14,7 @@ class Lift extends Component {
             date: null,
             location: null,
             duration: null,
+            generator: null,
             pushups: null,
             pullups: null,
             exercises: [],
@@ -204,7 +205,7 @@ class Lift extends Component {
                 date: this.state.date,
                 location: this.state.location,
                 duration: this.state.duration,
-                generator: null,
+                generator: this.state.generator,
                 pushups: this.state.pushups,
                 pullups: this.state.pullups,
                 workout: JSON.stringify([this.state.exercises]),
@@ -285,6 +286,31 @@ class Lift extends Component {
                         />
                     </div>
 
+                    {/* GENERATOR */}
+                    <div className="col-md-4 input-group input-group-sm mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Generator</span>
+                        </div>
+                        <select
+                            className="browser-default custom-select"
+                            autoComplete="off"
+                            name="generator"
+                            type="text"
+                            onChange={this.handleInputChange}
+                            defaultValue={null}
+                        >
+                            <option value=""></option>
+                            <option value="1">Baby</option>
+                            <option value="2">Easy</option>
+                            <option value="3">Average</option>
+                            <option value="4">Superior</option>
+                            <option value="5">Hero</option>
+                            <option value="6">Superman</option>
+                            <option value="7">Rogan</option>
+                            <option value="8">Goggins</option>
+                        </select>
+                    </div>
+
                     {/* WORKOUT */}
                     <div className="col-md-4 input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
@@ -332,4 +358,4 @@ class Lift extends Component {
     }
 }
 
-export default Lift;
+export default SubmitLift;

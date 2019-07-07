@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import Container from "../components/Container/container";
 import actAPI from "../utils/actAPI";
-// import "./Swim.css";
+// import "./SubmitSwim.css";
 
-class Swim extends Component {
+class SubmitSwim extends Component {
 
     constructor(props) {
         super(props);
@@ -211,4 +211,4 @@ class Swim extends Component {
     }
 }
 
-export default Swim;
+export default SubmitSwim;
