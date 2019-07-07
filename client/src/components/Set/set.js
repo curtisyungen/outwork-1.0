@@ -30,6 +30,10 @@ class Set extends Component {
                         setWeight={this.props.setWeight}
                         setRest={this.props.setRest}
                         setNotes={this.props.setNotes}
+                        source={this.props.source}
+                        weight={item.weight}
+                        rest={item.rest}
+                        notes={item.notes}
                     />
                 ))
             ) : (

@@ -6,6 +6,10 @@
     color: green !important;
 }
 
+.icon-false {
+    color: rgb(59, 59, 59) !important;
+}
+
 .setItem {
     color: black;
     display: flex;
