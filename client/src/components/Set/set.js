@@ -1,69 +1,39 @@
 import React, { Component } from "react";
+import SetItem from "../SetItem/setItem";
 import "./set.css";
 
 class Set extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            set: null,
+        }
+    }
+
+    componentDidMount = () => {
+        console.log(this.props);
+        this.setState({
+            set: this.props.set,
+        });
+    }
+
     render() {
         return (
             <div className="set">
-                <div>
-                    <a
-                        className="exName"
-                        href={`https://www.youtube.com/results?search_query=how+to+do+${this.props.set[0].name}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        {this.props.set[0].name}
-                    </a>
-                    <span className="exReps">{this.props.set[0].reps}</span>
-                </div>
-
-                <div>
-                    <a
-                        className="exName"
-                        href={`https://www.youtube.com/results?search_query=how+to+do+${this.props.set[1].name}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        {this.props.set[1].name}
-                    </a>
-                    <span className="exReps">{this.props.set[1].reps}</span>
-                </div>
-
-                <div>
-                    <a
-                        className="exName"
-                        href={`https://www.youtube.com/results?search_query=how+to+do+${this.props.set[2].name}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        {this.props.set[2].name}
-                    </a>
-                    <span className="exReps">{this.props.set[2].reps}</span>
-                </div>
-
-                <div>
-                    <a
-                        className="exName"
-                        href={`https://www.youtube.com/results?search_query=how+to+do+${this.props.set[3].name}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        {this.props.set[3].name}
-                    </a>  
-                    <span className="exReps">{this.props.set[3].reps}</span>
-                </div>
-        
-                <div>
-                    <a 
-                        className="exName"
-                        href={`https://www.youtube.com/results?search_query=how+to+do+${this.props.set[4].name}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        {this.props.set[4].name}
-                    </a>  
-                    <span className="exReps">{this.props.set[4].reps}</span>
-                </div>
+            {this.state.set && this.state.set.length > 0 ? (
+                this.state.set.map(item => (
+                    <SetItem 
+                        key={Math.random() * 100000}
+                        name={item.name}
+                        reps={item.reps}
+                        handleInputChange={this.props.handleInputChange}
+                    />
+                ))
+            ) : (
+                <></>
+            )}
             </div>
         )
     }
