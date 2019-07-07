@@ -114,7 +114,7 @@ class SubmitLift extends Component {
         let exercises = this.state.exercises;
         let idx;
 
-        for (var i=0; i<exercises.length; i++) {
+        for (var i = 0; i < exercises.length; i++) {
             if (exercises[i].id === exercise) {
                 idx = i;
             }
@@ -130,7 +130,7 @@ class SubmitLift extends Component {
     setName = (id, name) => {
         let exercises = this.state.exercises;
         let idx;
-        for (var i=0; i<exercises.length; i++) {
+        for (var i = 0; i < exercises.length; i++) {
             if (exercises[i].id === id) {
                 idx = i;
             }
@@ -146,7 +146,7 @@ class SubmitLift extends Component {
     setWeight = (id, weight) => {
         let exercises = this.state.exercises;
         let idx;
-        for (var i=0; i<exercises.length; i++) {
+        for (var i = 0; i < exercises.length; i++) {
             if (exercises[i].id === id) {
                 idx = i;
             }
@@ -162,7 +162,7 @@ class SubmitLift extends Component {
     setReps = (id, reps) => {
         let exercises = this.state.exercises;
         let idx;
-        for (var i=0; i<exercises.length; i++) {
+        for (var i = 0; i < exercises.length; i++) {
             if (exercises[i].id === id) {
                 idx = i;
             }
@@ -178,13 +178,29 @@ class SubmitLift extends Component {
     setRest = (id, rest) => {
         let exercises = this.state.exercises;
         let idx;
-        for (var i=0; i<exercises.length; i++) {
+        for (var i = 0; i < exercises.length; i++) {
             if (exercises[i].id === id) {
                 idx = i;
             }
         }
 
         exercises[idx].rest = rest;
+
+        this.setState({
+            exercises: exercises,
+        });
+    }
+
+    setNotes = (id, notes) => {
+        let exercises = this.state.exercises;
+        let idx;
+        for (var i = 0; i < exercises.length; i++) {
+            if (exercises[i].id === id) {
+                idx = i;
+            }
+        }
+
+        exercises[idx].notes = notes;
 
         this.setState({
             exercises: exercises,
@@ -238,7 +254,7 @@ class SubmitLift extends Component {
                     <h4>Lifting Workout</h4>
 
                     {/* DATE */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Date</span>
                         </div>
@@ -254,7 +270,7 @@ class SubmitLift extends Component {
                     </div>
 
                     {/* LOCATION */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Location</span>
                         </div>
@@ -268,9 +284,9 @@ class SubmitLift extends Component {
                             onChange={this.handleInputChange}
                         />
                     </div>
-                    
+
                     {/* DURATION */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Duration</span>
                         </div>
@@ -287,7 +303,7 @@ class SubmitLift extends Component {
                     </div>
 
                     {/* GENERATOR */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Generator</span>
                         </div>
@@ -312,31 +328,33 @@ class SubmitLift extends Component {
                     </div>
 
                     {/* WORKOUT */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Workout</span>
                         </div>
                         <button className="btn btn-dark btn-sm addExerciseBtn" onClick={this.addExercise}>Add</button>
                     </div>
-                    
+
                     {this.state.exercises.map(exercise => (
-                            <Exercise 
-                                key={Math.random() * 100000}
-                                id={exercise.id}
-                                name={exercise.name}
-                                weight={exercise.weight}
-                                reps={exercise.reps}
-                                rest={exercise.rest}
-                                setName={this.setName}
-                                setWeight={this.setWeight}
-                                setReps={this.setReps}
-                                setRest={this.setRest}
-                                deleteExercise={this.deleteExercise}
-                            />
-                        ))}
+                        <Exercise
+                            key={Math.random() * 100000}
+                            id={exercise.id}
+                            name={exercise.name}
+                            weight={exercise.weight}
+                            reps={exercise.reps}
+                            rest={exercise.rest}
+                            notes={exercise.notes}
+                            setName={this.setName}
+                            setWeight={this.setWeight}
+                            setReps={this.setReps}
+                            setRest={this.setRest}
+                            setNotes={this.setNotes}
+                            deleteExercise={this.deleteExercise}
+                        />
+                    ))}
 
                     {/* NOTES */}
-                    <div className="col-md-4 input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Notes</span>
                         </div>

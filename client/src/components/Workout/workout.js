@@ -262,7 +262,6 @@ class Workout extends Component {
                             setWeight={this.setWeight}
                             setRest={this.setRest}
                             setNotes={this.setNotes}
-                            source="generator"
                         />
                     ))
                 ) : (

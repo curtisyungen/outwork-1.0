@@ -21,7 +21,6 @@ class SetItem extends Component {
             weight: "",
             rest: "",
             notes: "",
-            source: null,
         }
     }
 
@@ -29,16 +28,7 @@ class SetItem extends Component {
         this.setState({
             id: this.props.id,
             name: this.props.name,
-            source: this.props.source,
         });
-        
-        if (this.props.source === "myActivity") {
-            this.setState({
-                weight: this.props.weight || "",
-                rest: this.props.rest || "",
-                notes: this.props.notes || "",
-            });
-        }
     }
 
     handleInputChange = (event) => {
@@ -69,18 +59,16 @@ class SetItem extends Component {
 
     closeModal = (name) => {
 
-        if (this.state.source === "generator") {
-            if (this.state.weight !== null) {
-                this.props.setWeight(this.state.id, this.state.name, this.state.weight);
-            }
+        if (this.state.weight !== null) {
+            this.props.setWeight(this.state.id, this.state.name, this.state.weight);
+        }
 
-            if (this.state.rest !== null) {
-                this.props.setRest(this.state.id, this.state.name, this.state.rest);
-            }
+        if (this.state.rest !== null) {
+            this.props.setRest(this.state.id, this.state.name, this.state.rest);
+        }
 
-            if (this.state.notes !== null) {
-                this.props.setNotes(this.state.id, this.state.name, this.state.notes);
-            }
+        if (this.state.notes !== null) {
+            this.props.setNotes(this.state.id, this.state.name, this.state.notes);
         }
 
         this.setState({
@@ -104,9 +92,21 @@ class SetItem extends Component {
 
                 <div className="setItemIcons col-md-4">
                     <span className="setIcon">{this.props.reps}</span>
-                    <FontAwesomeIcon className={`setIcon icon-${this.state.weight !== ""}`} icon={faDumbbell} onClick={this.openModal.bind(null, "weight")} />
-                    <FontAwesomeIcon className={`setIcon icon-${this.state.rest !== ""}`} icon={faBed} onClick={this.openModal.bind(null, "rest")} />
-                    <FontAwesomeIcon className={`setIcon icon-${this.state.notes !== ""}`} icon={faPencilAlt} onClick={this.openModal.bind(null, "notes")} />
+                    <FontAwesomeIcon 
+                        className={`setIcon icon-${this.state.weight && this.state.weight !== ""}`} 
+                        icon={faDumbbell} 
+                        onClick={this.openModal.bind(null, "weight")} 
+                    />
+                    <FontAwesomeIcon 
+                        className={`setIcon icon-${this.state.rest && this.state.rest !== ""}`} 
+                        icon={faBed} 
+                        onClick={this.openModal.bind(null, "rest")} 
+                    />
+                    <FontAwesomeIcon 
+                        className={`setIcon icon-${this.state.notes && this.state.notes !== ""}`} 
+                        icon={faPencilAlt} 
+                        onClick={this.openModal.bind(null, "notes")} 
+                    />
                 </div>
 
                 {this.state.openWeightModal ? (
