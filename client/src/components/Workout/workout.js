@@ -227,6 +227,8 @@ class Workout extends Component {
 
             let liftData = {
                 userId: this.props.userId,
+                firstName: this.props.firstName,
+                lastName: this.props.lastName,
                 date: this.props.date,
                 location: this.props.location,
                 duration: this.props.duration,

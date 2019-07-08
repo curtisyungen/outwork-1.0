@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-
 import Navbar from "./components/Navbar/navbar";
-
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
@@ -19,11 +17,7 @@ import Metrics from "./pages/Metrics";
 import FindUsers from "./pages/FindUsers";
 import Settings from "./pages/Settings";
 import Error from "./pages/Error";
-
 import userAPI from "./utils/userAPI";
-// import actAPI from "./utils/actAPI";
-// import exerAPI from "./utils/exerAPI";
-
 import './App.css';
 
 class App extends Component {
@@ -125,6 +119,7 @@ class App extends Component {
 
           userAPI.createUser(firstName, lastName, email, password, weight, privacy)
             .then((res) => {
+              console.log(res);
               if (res.status === 200) {
                 alert("User created.");
 
@@ -166,17 +161,9 @@ class App extends Component {
                 // Store login status and userId in local storage
                 localStorage.setItem("isLoggedIn", "true");
                 localStorage.setItem("userId", res.data[0].userId);
+                localStorage.setItem("fn", res.data[0].firstName);
 
-                // Store login data and userId in state
-                this.setState({
-                  isLoggedIn: "true",
-                  userId: res.data.userId,
-                }, () => {
-
-                  // Redirect to home page
-                  alert("Successful login.");
-                  this.setRedirectToHome();
-                });
+                this.setRedirectToHome();
               }
             });
         }
@@ -290,7 +277,7 @@ class App extends Component {
             <Route exact path="/home" render={() =>
               <Home
                 updateParentState={this.updateParentState}
-                setRedirectToLanding={this.setRedirectToLanding}
+                checkValidUser={this.checkValidUser}
               />
             } />
 

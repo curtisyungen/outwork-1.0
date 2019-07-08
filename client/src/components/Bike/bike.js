@@ -8,7 +8,14 @@ class Bike extends Component {
 
         this.state = {
             openModal: false,
+            userId: null,
         }
+    }
+
+    componentDidMount = () => {
+        this.setState({
+            userId: this.props.userId,
+        });
     }
 
     deleteBike = () => {
@@ -19,6 +26,7 @@ class Bike extends Component {
         return (
             <div className="card actCard">
             <div className="card-body">
+                <div>{this.props.firstName} {this.props.lastName}</div>
                 <h5 className="card-title mb-0">Bike</h5>
                 <h6 className="card-subtitle text-muted mb-0">{this.props.date}</h6>
                 <div className="card-text">

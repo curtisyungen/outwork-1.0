@@ -24,7 +24,7 @@ class LiftDetailSet extends Component {
             <table className="table table-striped table-bordered table-sm text-center align-middle liftDetails">
                 <thead className="thead-dark">
                     <tr>
-                        <th>Name</th>
+                        <th>Exercise</th>
                         <th>Reps or Time</th>
                         <th>Weight (lbs.)</th>
                         <th>Rest (min.)</th>

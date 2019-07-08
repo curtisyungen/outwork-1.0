@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Container from "../components/Container/container";
 import Exercise from "../components/Exercise/exercise";
+import userAPI from "../utils/userAPI";
 import actAPI from "../utils/actAPI";
 // import "./SubmitLift.css";
 
@@ -26,21 +27,29 @@ class SubmitLift extends Component {
     componentDidMount = () => {
         this.props.checkValidUser();
 
-        let exercise = {
-            id: 0,
-            name: "",
-            weight: "",
-            reps: "",
-            rest: "",
-        }
+        // Get user info
+        let userId = localStorage.getItem("userId");     
 
-        let exercises = [exercise];
+        userAPI.getUserById(userId)
+            .then((res) => {
+                // Get exercises
+                let exercise = {
+                    id: 0,
+                    name: "",
+                    weight: "",
+                    reps: "",
+                    rest: "",
+                }
+        
+                let exercises = [exercise];
 
-        let userId = localStorage.getItem("userId");
-        this.setState({
-            userId: userId,
-            exercises: exercises,
-        });
+                this.setState({
+                    userId: userId,
+                    firstName: res.data[0].firstName,
+                    lastName: res.data[0].lastName,
+                    exercises: exercises,
+                });
+            });      
     }
 
     handleInputChange = (event) => {
@@ -218,6 +227,8 @@ class SubmitLift extends Component {
 
             let liftData = {
                 userId: this.state.userId,
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
                 date: this.state.date,
                 location: this.state.location,
                 duration: this.state.duration,

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Container from "../components/Container/container";
+import userAPI from "../utils/userAPI";
 import actAPI from "../utils/actAPI";
 // import "./SubmitSwim.css";
 
@@ -24,10 +25,17 @@ class SubmitSwim extends Component {
     componentDidMount = () => {
         this.props.checkValidUser();
 
-        let userId = localStorage.getItem("userId");
-        this.setState({
-            userId: userId,
-        });
+        // Get user info
+        let userId = localStorage.getItem("userId");     
+
+        userAPI.getUserById(userId)
+            .then((res) => {
+                this.setState({
+                    userId: userId,
+                    firstName: res.data[0].firstName,
+                    lastName: res.data[0].lastName,
+                });
+            });      
     }
 
     handleInputChange = (event) => {
@@ -42,6 +50,8 @@ class SubmitSwim extends Component {
         if (this.props.checkValidUser()) {
             let swimData = {
                 userId: this.state.userId,
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
                 date: this.state.date,
                 distance: this.state.distance,
                 duration: this.state.duration,

@@ -31,11 +31,17 @@ class Generator extends Component {
         // Validate user and then call getUserById
         if (this.props.checkValidUser()) {
             let userId = localStorage.getItem("userId");
-            this.setState({
-                userId: userId,
-            }, () => {
-                this.getUserById();
-            });
+
+            userAPI.getUserById(userId)
+            .then((res) => {
+                this.setState({
+                    userId: userId,
+                    firstName: res.data[0].firstName,
+                    lastName: res.data[0].lastName,
+                }, () => {
+                    this.getUserById();
+                });
+            });  
         }
     }
 
@@ -269,6 +275,8 @@ class Generator extends Component {
 
                 <Workout
                     userId={this.state.userId}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
                     date={this.state.date}
                     location={this.state.location}
                     duration={this.state.duration}
