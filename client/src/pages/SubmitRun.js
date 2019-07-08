@@ -3,6 +3,7 @@ import Container from "../components/Container/container";
 import RunRepeat from "../components/RunRepeat/runRepeat";
 import actAPI from "../utils/actAPI";
 import "./SubmitRun.css";
+import userAPI from "../utils/userAPI";
 
 class SubmitRun extends Component {
 
@@ -32,20 +33,28 @@ class SubmitRun extends Component {
     componentDidMount = () => {
         this.props.checkValidUser();
 
-        let repeat = {
-            id: 0,
-            distance: "",
-            time: "",
-            rest: "",
-        }
+        // Get user info
+        let userId = localStorage.getItem("userId");     
 
-        let repeats = [repeat];
+        userAPI.getUserById(userId)
+            .then((res) => {
+                // Get repeats
+                let repeat = {
+                    id: 0,
+                    distance: "",
+                    time: "",
+                    rest: "",
+                }
 
-        let userId = localStorage.getItem("userId");
-        this.setState({
-            userId: userId,
-            repeats: repeats,
-        });
+                let repeats = [repeat];
+
+                this.setState({
+                    userId: userId,
+                    firstName: res.data[0].firstName,
+                    lastName: res.data[0].lastName,
+                    repeats: repeats,
+                });
+            });      
     }
 
     handleInputChange = (event) => {
@@ -168,6 +177,8 @@ class SubmitRun extends Component {
         if (this.props.checkValidUser()) {
             let runData = {
                 userId: this.state.userId,
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
                 date: this.state.date,
                 distance: this.state.distance,
                 duration: this.state.duration,

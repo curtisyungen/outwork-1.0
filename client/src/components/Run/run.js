@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Modal from "react-responsive-modal";
+import userAPI from "../../utils/userAPI";
 import "./run.css";
 
 class Run extends Component {
@@ -9,16 +10,17 @@ class Run extends Component {
 
         this.state = {
             openModal: false,
+            userId: null,
             repeats: null,
         }
     }
 
     componentDidMount = () => {
+
         this.setState({
+            userId: this.props.userId,
             repeats: JSON.parse(this.props.repeats),
         });
-
-        console.log(this.props);
     }
 
     openModal = () => {
@@ -48,6 +50,7 @@ class Run extends Component {
             <span>
                 <div className="card actCard" onClick={this.openModal}>
                     <div className="card-body">
+                        <div>{this.props.firstName} {this.props.lastName}</div>
                         <h4 className="card-title mb-0">Run</h4>
                         <h6 className="card-subtitle text-muted mb-0">{this.props.date}</h6>
                         <div className="card-text">
@@ -75,6 +78,14 @@ class Run extends Component {
                                         ) : (
                                                 <></>
                                             )}
+                                        <th>Miles</th>
+                                        <th>Duration (hh:mm:ss)</th>
+                                        <th>Mile Pace (mm:ss)</th>
+                                        <th>Climb (ft.)</th>
+                                        <th>Avg. Grade (%)</th>
+                                        <th>Surface</th>
+                                        <th>Weather</th>
+                                        <th>Footwear</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -87,56 +98,21 @@ class Run extends Component {
                                         ) : (
                                                 <></>
                                             )}
+                                        <td>{this.props.distance}</td>
+                                        <td>{this.props.duration}</td>
+                                        <td>{this.props.milePace}</td>
+                                        <td>{this.props.climb}</td>
+                                        <td>{this.props.grade}</td>
+                                        <td>{this.props.surface}</td>
+                                        <td>{this.props.weather}</td>
+                                        <td>{this.props.shoe}</td>
+                                        
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
 
                         {/* TABLE TWO */}
-                        <div>
-                            <table className="table table-striped table-bordered table-sm text-center align-middle runDetails">
-                                <thead className="thead-dark">
-                                    <tr>
-                                        <th>Miles</th>
-                                        <th>Duration (hh:mm:ss)</th>
-                                        <th>Mile Pace (mm:ss)</th>
-                                        <th>Climb (ft.)</th>
-                                        <th>Avg. Grade (%)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{this.props.distance}</td>
-                                        <td>{this.props.duration}</td>
-                                        <td>{this.props.milePace}</td>
-                                        <td>{this.props.climb}</td>
-                                        <td>{this.props.grade}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        {/* TABLE THREE */}
-                        <div>
-                            <table className="table table-striped table-bordered table-sm text-center align-middle runDetails">
-                                <thead className="thead-dark">
-                                    <tr>
-                                        <th>Surface</th>
-                                        <th>Weather</th>
-                                        <th>Footwear</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{this.props.surface}</td>
-                                        <td>{this.props.weather}</td>
-                                        <td>{this.props.shoe}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        {/* TABLE FOUR */}
                         <div>
                             <table className="table table-striped table-bordered table-sm text-center align-middle runDetails">
                                 <thead className="thead-dark">
@@ -156,7 +132,7 @@ class Run extends Component {
                     
                         {/* REPEATS */}
                         <div>
-                            {this.props.type.toLowerCase() === "repeats" ? (
+                            {this.props.type && this.props.type.toLowerCase() === "repeats" ? (
                                 <span>
                                     <h5 className="title">Repeats</h5>
                                     <table className="table table-striped table-bordered table-sm text-center align-middle runDetails">

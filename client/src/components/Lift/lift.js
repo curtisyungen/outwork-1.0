@@ -10,6 +10,7 @@ class Lift extends Component {
 
         this.state = {
             openModal: false,
+            userId: null,
             workout: null,
             generator: null,
         }
@@ -34,6 +35,7 @@ class Lift extends Component {
         }
 
         this.setState({
+            userId: this.props.userId,
             workout: workout,
             generatorText: generatorText,
         });
@@ -66,6 +68,7 @@ class Lift extends Component {
             <span>
             <div className="card actCard" onClick={this.openModal}>
                 <div className="card-body">
+                    <div>{this.props.firstName} {this.props.lastName}</div>
                     <h4 className="card-title mb-0">Lift</h4>
                     <h6 className="card-subtitle text-muted mb-0">{this.props.date}</h6>
                     <div className="card-text">
