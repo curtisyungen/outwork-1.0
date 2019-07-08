@@ -94,8 +94,18 @@ class MyActivity extends Component {
                             date={run.date}
                             distance={run.distance}
                             duration={run.duration}
+                            milePace={run.milePace}
+                            type={run.type}
+                            repeats={run.repeats}
+                            race={run.race}
                             location={run.location}
+                            surface={run.surface}
+                            weather={run.weather}
                             climb={run.climb}
+                            grade={run.grade}
+                            shoe={run.shoe}
+                            notes={run.notes}
+                            map={run.map}
                             deleteActivity={this.deleteActivity}
                         />
                     ))
