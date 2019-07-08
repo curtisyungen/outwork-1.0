@@ -51,12 +51,16 @@ export default {
         return axios.put("/api/users/updateEquipment", {userId: userId, equipment: equipment});
     },
 
-    deleteUser: function(userId, email) {
-        return axios.delete("/api/users/deleteUser", {userId: userId, email: email});
+    updateUserFollowings: function(userId, following) {
+        return axios.put("/api/users/updateUserFollowings", { userId: userId, following: following });
     },
 
-    followUser: function(userId) {
-        return axios.put("/api/users/followUser", {userId: userId});
+    updateUserFollowers: function(userId, followers) {
+        return axios.put("/api/users/updateUserFollowers", { userId: userId, followers: followers });
+    },
+
+    deleteUser: function(userId, email) {
+        return axios.delete("/api/users/deleteUser", {userId: userId, email: email});
     },
 
     // PASSWORD RESET ROUTES

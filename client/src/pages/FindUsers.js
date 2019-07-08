@@ -12,11 +12,28 @@ class FindUsers extends Component {
         this.state = {
             userSearch: null,
             users: null,
+            followedUsers: [],
         }
     }
 
     componentDidMount = () => {
         this.props.checkValidUser();
+        this.getFollowedUsers();
+    }
+
+    getFollowedUsers = () => {
+        let userId = localStorage.getItem("userId");
+
+        userAPI.getUserById(userId)
+            .then((res) => {
+                let followedUsers = [];
+                if (res.data[0].following !== null) {
+                    followedUsers = JSON.parse(res.data[0].following);
+                }
+                this.setState({
+                    followedUsers: followedUsers,
+                });
+            });
     }
 
     handleInputChange = (event) => {
@@ -30,12 +47,34 @@ class FindUsers extends Component {
     searchForUser = (event) => {
         event.preventDefault();
 
+        this.props.checkValidUser();
+
         userAPI.searchForUser(this.state.userSearch)
             .then((res) => {
                 this.setState({
                     users: res.data,
                 });
             });
+    }
+
+    updateUserFollowings = (subjUserId) => {
+        let followedUsers = this.state.followedUsers;
+        let userId = localStorage.getItem("userId");
+
+        let idx = followedUsers.indexOf(subjUserId);
+
+        if (idx === -1) {
+            followedUsers.push(subjUserId);
+        }
+        else {
+            followedUsers.splice(idx, 1);
+        }
+
+        this.setState({
+            followedUsers: followedUsers,
+        });
+
+        userAPI.updateUserFollowings(userId, JSON.stringify(followedUsers));
     }
 
     render() {
@@ -65,8 +104,11 @@ class FindUsers extends Component {
                         this.state.users.map(user => (
                             <User 
                                 key={Math.random() * 100000}
+                                userId={user.userId}
                                 firstName={user.firstName}
                                 lastName={user.lastName}
+                                followers={user.followers}
+                                updateUserFollowings={this.updateUserFollowings}
                             />
                         ))
                     ) : (

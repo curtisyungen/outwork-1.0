@@ -119,19 +119,13 @@ class App extends Component {
 
           userAPI.createUser(firstName, lastName, email, password, weight, privacy)
             .then((res) => {
-              console.log(res);
               if (res.status === 200) {
                 alert("User created.");
 
                 localStorage.setItem("isLoggedIn", "true");
-                localStorage.setItem("userId", res.data[0].userId);
+                localStorage.setItem("userId", res.data.userId);
 
-                this.setState({
-                  isLoggedIn: "true",
-                  userId: res.data[0].userId,
-                }, () => {
-                  this.setRedirectToHome();
-                });
+                this.setRedirectToHome();
               }
             });
         }
