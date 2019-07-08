@@ -244,7 +244,7 @@ class SubmitRun extends Component {
                     {/* DISTANCE */}
                     <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
-                            <span className="input-group-text" id="inputGroup-sizing-sm">Distance</span>
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Miles</span>
                         </div>
                         <input
                             autoComplete="off"
@@ -297,20 +297,20 @@ class SubmitRun extends Component {
                             defaultValue={null}
                         >
                             <option value=""></option>
-                            <option value="repeats">Repeats</option>
-                            <option value="race">Race</option>
+                            <option value="Repeats">Repeats</option>
+                            <option value="Race">Race</option>
                         </select>
                     </div>
 
                     {/* REPEATS */}
 
-                    {this.state.type === "repeats" ? (
+                    {this.state.type === "Repeats" ? (
                         <button className="btn btn-dark btn-sm addRepeatBtn" onClick={this.addRepeat}>Add</button>
                     ) : (
                             <></>
                         )}
 
-                    {this.state.type === "repeats" ? (
+                    {this.state.type === "Repeats" ? (
                         this.state.repeats.map(repeat => (
                             <RunRepeat
                                 key={Math.random() * 100000}
@@ -363,14 +363,14 @@ class SubmitRun extends Component {
                             defaultValue={null}
                         >
                             <option value=""></option>
-                            <option value="sunny">Street</option>
-                            <option value="rainy">Bike Path</option>
-                            <option value="cloudy">Track</option>
-                            <option value="sunny">Trail</option>
-                            <option value="rainy">Dirt Road</option>
-                            <option value="cloudy">Grass</option>
-                            <option value="sunny">Beach</option>
-                            <option value="rainy">Treadmill</option>
+                            <option value="Street">Street</option>
+                            <option value="Bike Path">Bike Path</option>
+                            <option value="Track">Track</option>
+                            <option value="Trail">Trail</option>
+                            <option value="Dirt Road">Dirt Road</option>
+                            <option value="Grass">Grass</option>
+                            <option value="Beach">Beach</option>
+                            <option value="Treadmill">Treadmill</option>
                         </select>
                     </div>
 
@@ -389,22 +389,22 @@ class SubmitRun extends Component {
                             defaultValue={null}
                         >
                             <option value=""></option>
-                            <option value="sunny">Sunny</option>
-                            <option value="rainy">Rainy</option>
-                            <option value="cloudy">Cloudy</option>
-                            <option value="windy">Windy</option>
-                            <option value="snowy">Snowy</option>
-                            <option value="icy">Icy</option>
-                            <option value="clear">Clear</option>
-                            <option value="indoor">Indoor</option>
-                            <option value="shitstorm">Shitstorm</option>
+                            <option value="Sunny">Sunny</option>
+                            <option value="Rainy">Rainy</option>
+                            <option value="Cloudy">Cloudy</option>
+                            <option value="Windy">Windy</option>
+                            <option value="Snowy">Snowy</option>
+                            <option value="Icy">Icy</option>
+                            <option value="Clear">Clear</option>
+                            <option value="Indoor">Indoor</option>
+                            <option value="Shitstorm">Shitstorm</option>
                         </select>
                     </div>
 
                     {/* CLIMB */}
                     <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
-                            <span className="input-group-text" id="inputGroup-sizing-sm">Climb</span>
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Total Climb (ft.)</span>
                         </div>
                         <input
                             autoComplete="off"
