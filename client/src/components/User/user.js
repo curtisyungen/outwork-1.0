@@ -55,6 +55,8 @@ class User extends Component {
 
         // Add current user to list of followers of subject user
         this.updateUserFollowers();
+
+        this.getFollowedStatus();
     }
 
     // Add current user to list of followers of subject user
@@ -72,27 +74,33 @@ class User extends Component {
 
         userAPI.updateUserFollowers(this.state.subjUserId, JSON.stringify(followers))
             .then(() => {
-                this.setState({
-                    followers: followers,
-                });
+                // this.setState({
+                //     followers: followers,
+                // });
             });        
     }
 
     render() {
         return (
-            <div className="user">
-                <div>{this.props.firstName} {this.props.lastName}</div>
-                <button 
-                    className="btn btn-outline-light btn-sm followBtn"
-                    onClick={this.toggleFollow}
-                >
-                    {this.state.isFollowed === true ? (
-                        <p>Follow</p>
-                    ) : (
-                        <p>Unfollow</p>
-                    )}
-                </button>
-            </div>
+            <span>
+                {this.props.userId !== localStorage.getItem("userId") ? (
+                    <div className="user">
+                        <div>{this.props.firstName} {this.props.lastName}</div>
+                        <button 
+                            className="btn btn-outline-light btn-sm followBtn"
+                            onClick={this.toggleFollow}
+                        >
+                            {this.state.isFollowed === true ? (
+                                <p>Follow</p>
+                            ) : (
+                                <p>Unfollow</p>
+                            )}
+                        </button>
+                    </div>
+                ) : (
+                    <></>
+                )}
+            </span>
         )
     }
 }

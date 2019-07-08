@@ -69,12 +69,13 @@ class FindUsers extends Component {
         else {
             followedUsers.splice(idx, 1);
         }
-
-        this.setState({
-            followedUsers: followedUsers,
-        });
-
-        userAPI.updateUserFollowings(userId, JSON.stringify(followedUsers));
+        
+        userAPI.updateUserFollowings(userId, JSON.stringify(followedUsers))
+            .then(() => {
+                // this.setState({
+                //     followedUsers: followedUsers,
+                // });
+            });
     }
 
     render() {
