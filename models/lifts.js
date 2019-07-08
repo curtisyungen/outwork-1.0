@@ -5,6 +5,16 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        // First name of user who input run
+        firstName: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        // Last name of user who input run
+        lastName: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         // Date run was completed
         date: {
             type: DataTypes.STRING,
@@ -19,6 +29,11 @@ module.exports = function(sequelize, DataTypes) {
         duration: {
             type: DataTypes.STRING,
             allowNull: false,
+        },
+        // Level of difficulty ONLY IF generator workout
+        generator: {
+            type: DataTypes.STRING,
+            allowNull: true,
         },
         // Total number of push-ups in workout, all variations
         pushups: {

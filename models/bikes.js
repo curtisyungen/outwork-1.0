@@ -5,6 +5,16 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        // First name of user who input run
+        firstName: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        // Last name of user who input run
+        lastName: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         // Date bike was completed
         date: {
             type: DataTypes.STRING,
