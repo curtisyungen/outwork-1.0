@@ -1,0 +1,9 @@
+.user {
+    background: lightgray;
+    border: 1px solid black;
+    border-radius: 4px;
+    color: black;
+    cursor: pointer;
+    padding: 10px;
+    width: 150px;
+}

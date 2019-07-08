@@ -1,4 +1,6 @@
 const db = require("../models/index.js");
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 // const bcrypt = require("bcrypt");
 
 class UserController {
@@ -40,6 +42,31 @@ class UserController {
         })
         .then((user) => {
             res.json(user);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    }
+
+    searchForUser(req, res) {
+        db.Users.findAll({
+            where: {
+                [Op.or]: [
+                    {
+                        firstName: {
+                            [Op.like]: '%' + req.params.userName + '%'
+                        }
+                    },
+                    {
+                        lastName: {
+                            [Op.like]: '%' + req.params.userName + '%'
+                        }
+                    },
+                ]
+            }
+        })
+        .then((users) => {
+            res.json(users);
         })
         .catch((err) => {
             console.log(err);
