@@ -149,6 +149,34 @@ class UserController {
             });
     }
 
+    updateUserFollowings(req, res) {
+        db.Users.update(
+            {following: req.body.following},
+            {where: {
+                userId: req.body.userId,
+            }})
+            .then((user) => {
+                res.json(user);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+    updateUserFollowers(req, res) {
+        db.Users.update(
+            {followers: req.body.followers},
+            {where: {
+                userId: req.body.userId,
+            }})
+            .then((user) => {
+                res.json(user);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
     deleteUser(req, res) {
         db.Users.destroy({
             where: {
