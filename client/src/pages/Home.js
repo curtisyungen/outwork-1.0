@@ -46,7 +46,7 @@ class Home extends Component {
                 if (res.data[0].following !== null) {
                     following = JSON.parse(res.data[0].following);
                 }
-                
+
                 this.setState({
                     following: following,
                 }, () => {
@@ -58,85 +58,44 @@ class Home extends Component {
                         this.getUserActivity(following[f]);
                     }
                 });
-                
+
             });
     }
 
     getUserActivity = (userId) => {
-        this.setState({
-            loadingRuns: true,
-            loadingBikes: true,
-            loadingSwims: true,
-            loadingLifts: true,
-        }, () => {
-            this.getRunsByUser(userId);
-            this.getBikesByUser(userId);
-            this.getSwimsByUser(userId);
-            this.getLiftsByUser(userId);
-        });  
-    }
 
-    getRunsByUser = (userId) => {
+        let allActivity = this.state.allActivity;
+
         actAPI.getRunsByUser(userId)
             .then((res) => {
-                let allActivity = this.state.allActivity;
-
                 for (var item in res.data) {
                     allActivity.push(res.data[item]);
                 };
 
-                this.setState({
-                    allActivity: allActivity,
-                    loadingRuns: false,
-                });
-            });
-    }
+                actAPI.getBikesByUser(userId)
+                    .then((res) => {
+                        for (var item in res.data) {
+                            allActivity.push(res.data[item]);
+                        };
 
-    getBikesByUser = (userId) => {
-        actAPI.getBikesByUser(userId)
-            .then((res) => {
-                let allActivity = this.state.allActivity;
+                        actAPI.getSwimsByUser(userId)
+                            .then((res) => {
+                                for (var item in res.data) {
+                                    allActivity.push(res.data[item]);
+                                };
 
-                for (var item in res.data) {
-                    allActivity.push(res.data[item]);
-                };
+                                actAPI.getLiftsByUser(userId)
+                                    .then((res) => {
+                                        for (var item in res.data) {
+                                            allActivity.push(res.data[item]);
+                                        };
 
-                this.setState({
-                    allActivity: allActivity,
-                    loadingBikes: false,
-                });
-            });
-    }
-
-    getSwimsByUser = (userId) => {
-        actAPI.getSwimsByUser(userId)
-            .then((res) => {
-                let allActivity = this.state.allActivity;
-
-                for (var item in res.data) {
-                    allActivity.push(res.data[item]);
-                };
-
-                this.setState({
-                    allActivity: allActivity,
-                    loadingSwims: false,
-                });
-            });
-    }
-
-    getLiftsByUser = (userId) => {
-        actAPI.getLiftsByUser(userId)
-            .then((res) => {
-                let allActivity = this.state.allActivity;
-
-                for (var item in res.data) {
-                    allActivity.push(res.data[item]);
-                };
-
-                this.setState({
-                    allActivity: allActivity,
-                    loadingLifts: false,
-                });
+                                        this.setState({
+                                            allActivity: allActivity,
+                                        });
+                                    });
+                            });
+                    });
             });
     }
 
@@ -162,16 +121,22 @@ class Home extends Component {
         return (
             <div className="col-md-12 homePage">
                 <span>
-                    {this.state.allActivity && this.state.allActivity.length > 0 ? (
-                        this.state.allActivity.map(activity => (
-                            <UserActivity 
-                                key={Math.random() * 100000}
-                                activity={activity}
-                            />
-                        ))
+                    {this.state.allActivity === null || this.state.allActivity.length === 0 ? (
+                        <p className="text-center">Loading activity...</p>
                     ) : (
-                        <></>
-                    )}
+                            <span>
+                                {this.state.allActivity && this.state.allActivity.length > 0 ? (
+                                    this.state.allActivity.map(activity => (
+                                        <UserActivity
+                                            key={Math.random() * 100000}
+                                            activity={activity}
+                                        />
+                                    ))
+                                ) : (
+                                        <></>
+                                    )}
+                            </span>
+                        )}
                 </span>
             </div>
         )
