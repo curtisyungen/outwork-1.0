@@ -164,9 +164,12 @@ class Run extends Component {
                                     <></>
                                 )}
                         </div>
-
-                        <button className="btn btn-danger btn-sm deleteActivity" onClick={this.deleteRun}>Delete Run</button>
-                    </Modal>
+                        {this.props.userId === localStorage.getItem("userId") ? (
+                            <button className="btn btn-danger btn-sm deleteActivity" onClick={this.deleteRun}>Delete Run</button>
+                        ) : (
+                            <></>
+                        )}
+                </Modal>
                 ) : (
                         <></>
                     )}

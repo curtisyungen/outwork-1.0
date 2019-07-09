@@ -18,6 +18,7 @@ class Lift extends Component {
             userId: null,
             workout: null,
             generator: null,
+            generatorText: null,
         }
     }
 
@@ -25,7 +26,7 @@ class Lift extends Component {
         let workout = JSON.parse(this.props.workout);
 
         let generator = this.props.generator;
-        let generatorText;
+        let generatorText = "Standard";
 
         switch (generator) {
             case "1": generatorText = "Baby"; break;
@@ -146,7 +147,11 @@ class Lift extends Component {
                             )}
                         </div>
 
-                        <button className="btn btn-danger btn-sm deleteActivity" onClick={this.deleteLift}>Delete Workout</button>
+                        {this.props.userId === localStorage.getItem("userId") ? (
+                            <button className="btn btn-danger btn-sm deleteActivity" onClick={this.deleteLift}>Delete Workout</button>
+                        ) : (
+                            <></>
+                        )}
                     </Modal>
                 ) : (
                     <></>

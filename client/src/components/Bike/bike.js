@@ -96,7 +96,11 @@ class Bike extends Component {
                             </table>
                         </div>
 
-                        <button className="btn btn-danger btn-sm deleteActivity" onClick={this.deleteBike}>Delete Bike</button>
+                        {this.props.userId === localStorage.getItem("userId") ? (
+                            <button className="btn btn-danger btn-sm deleteActivity" onClick={this.deleteBike}>Delete Bike</button>
+                        ) : (
+                            <></>
+                        )}
                     </Modal>
                 ) : (
                     <></>
