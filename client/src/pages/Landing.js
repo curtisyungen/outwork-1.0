@@ -12,7 +12,11 @@ class Landing extends Component {
     }
 
     componentDidMount = () => {
-        
+        if (localStorage.getItem("userId") !== null) {
+            if (this.props.checkValidUser()) {
+                this.props.setRedirectToHome();
+            }
+        }
     }
 
     render() {

@@ -246,6 +246,8 @@ class App extends Component {
               <Landing
                 setRedirectToSignUp={this.setRedirectToSignUp}
                 setRedirectToLogin={this.setRedirectToLogin}
+                setRedirectToHome={this.setRedirectToHome}
+                checkValidUser={this.props.checkValidUser}
               />
             } />
 
