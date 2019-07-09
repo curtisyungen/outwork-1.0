@@ -17,10 +17,7 @@ class Home extends Component {
             userId: null,
             following: null,
             allActivity: [],
-            loadingRuns: false,
-            loadingBikes: false,
-            loadingSwims: false,
-            loadingLifts: false,
+            loadingActivity: false,
         }
     }
 
@@ -64,42 +61,47 @@ class Home extends Component {
 
     getUserActivity = (userId) => {
 
-        let allActivity = this.state.allActivity;
+        this.setState({
+            loadingActivity: true,
+        }, () => {
 
-        // GET RUNS
-        actAPI.getRunsByUser(userId)
-            .then((res) => {
-                for (var item in res.data) {
-                    allActivity.push(res.data[item]);
-                };
+            let allActivity = this.state.allActivity;
 
-                // GET BIKES
-                actAPI.getBikesByUser(userId)
-                    .then((res) => {
-                        for (var item in res.data) {
-                            allActivity.push(res.data[item]);
-                        };
+            // GET RUNS
+            actAPI.getRunsByUser(userId)
+                .then((res) => {
+                    for (var item in res.data) {
+                        allActivity.push(res.data[item]);
+                    };
 
-                        // GET SWIMS
-                        actAPI.getSwimsByUser(userId)
-                            .then((res) => {
-                                for (var item in res.data) {
-                                    allActivity.push(res.data[item]);
-                                };
+                    // GET BIKES
+                    actAPI.getBikesByUser(userId)
+                        .then((res) => {
+                            for (var item in res.data) {
+                                allActivity.push(res.data[item]);
+                            };
 
-                                // GET LIFTS
-                                actAPI.getLiftsByUser(userId)
-                                    .then((res) => {
-                                        for (var item in res.data) {
-                                            allActivity.push(res.data[item]);
-                                        };
+                            // GET SWIMS
+                            actAPI.getSwimsByUser(userId)
+                                .then((res) => {
+                                    for (var item in res.data) {
+                                        allActivity.push(res.data[item]);
+                                    };
 
-                                        // SORT BY DATE
-                                        this.sortByDate(allActivity);
-                                    });
-                            });
-                    });
-            });
+                                    // GET LIFTS
+                                    actAPI.getLiftsByUser(userId)
+                                        .then((res) => {
+                                            for (var item in res.data) {
+                                                allActivity.push(res.data[item]);
+                                            };
+
+                                            // SORT BY DATE
+                                            this.sortByDate(allActivity);
+                                        });
+                                });
+                        });
+                });
+        });
     }
 
     sortByDate = (allActivity) => {
@@ -107,6 +109,7 @@ class Home extends Component {
 
         this.setState({
             allActivity: allActivity,
+            loadingActivity: false,
         });
     }
 
@@ -123,7 +126,7 @@ class Home extends Component {
         return (
             <div className="col-md-12 homePage">
                 <span>
-                    {this.state.allActivity === null || this.state.allActivity.length === 0 ? (
+                    {this.state.loadingActivity ? (
                         <p className="text-center">Loading activity...</p>
                     ) : (
                             <span>
