@@ -91,6 +91,8 @@ class MyActivity extends Component {
                         <Run
                             key={run.id}
                             id={run.id}
+                            firstName={run.firstName}
+                            lastName={run.lastName}
                             date={run.date}
                             distance={run.distance}
                             duration={run.duration}
@@ -119,6 +121,8 @@ class MyActivity extends Component {
                         <Bike
                             key={bike.id}
                             id={bike.id}
+                            firstName={bike.firstName}
+                            lastName={bike.lastName}
                             date={bike.date}
                             distance={bike.distance}
                             duration={bike.duration}
@@ -135,6 +139,8 @@ class MyActivity extends Component {
                         <Swim
                             key={swim.id}
                             id={swim.id}
+                            firstName={swim.firstName}
+                            lastName={swim.lastName}
                             date={swim.date}
                             distance={swim.distance}
                             duration={swim.duration}
@@ -152,6 +158,8 @@ class MyActivity extends Component {
                             key={lift.id}
                             id={lift.id}
                             userId={lift.userId}
+                            firstName={lift.firstName}
+                            lastName={lift.lastName}
                             date={lift.date}
                             duration={lift.duration}
                             generator={lift.generator}
