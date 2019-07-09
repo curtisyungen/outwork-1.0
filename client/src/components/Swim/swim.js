@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Modal from "react-responsive-modal";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSwimmer } from '@fortawesome/free-solid-svg-icons';
