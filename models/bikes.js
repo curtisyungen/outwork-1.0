@@ -1,5 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
     let Bikes = sequelize.define("Bikes", {
+        // Type of workout
+        workoutType: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         // UserID of user who submitted bike
         userId: {
             type: DataTypes.STRING,
