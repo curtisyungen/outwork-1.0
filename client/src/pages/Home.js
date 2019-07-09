@@ -63,7 +63,6 @@ class Home extends Component {
     }
 
     getUserActivity = (userId) => {
-        let allActivity = this.state.allActivity;
         this.setState({
             loadingRuns: true,
             loadingBikes: true,
@@ -79,8 +78,12 @@ class Home extends Component {
     }
 
     getRunsByUser = (userId) => {
+        let allActivity = this.state.allActivity;
         actAPI.getRunsByUser(userId)
             .then((res) => {
+
+                let allActivity = this.state.allActivity;
+
                 for (var item in res.data) {
                     allActivity.push(res.data[item]);
                 };
@@ -93,8 +96,12 @@ class Home extends Component {
     }
 
     getBikesByUser = (userId) => {
+        let allActivity = this.state.allActivity;
         actAPI.getBikesByUser(userId)
             .then((res) => {
+
+                let allActivity = this.state.allActivity;
+
                 for (var item in res.data) {
                     allActivity.push(res.data[item]);
                 };
@@ -109,6 +116,9 @@ class Home extends Component {
     getSwimsByUser = (userId) => {
         actAPI.getSwimsByUser(userId)
             .then((res) => {
+
+                let allActivity = this.state.allActivity;
+
                 for (var item in res.data) {
                     allActivity.push(res.data[item]);
                 };
@@ -123,6 +133,9 @@ class Home extends Component {
     getLiftsByUser = (userId) => {
         actAPI.getLiftsByUser(userId)
             .then((res) => {
+
+                let allActivity = this.state.allActivity;
+
                 for (var item in res.data) {
                     allActivity.push(res.data[item]);
                 };
