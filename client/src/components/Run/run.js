@@ -59,6 +59,8 @@ class Run extends Component {
                             <td className="cell">{this.props.firstName} {this.props.lastName}</td>
                             <td className="cell">{this.props.date}</td>
                             <td className="cell">{this.props.distance} miles</td>
+                            <td className="cell">{this.props.duration}</td>
+                            <td className="cell">{this.props.milePace}</td>
                         </tr>
                     </tbody>
                 </table>                        
