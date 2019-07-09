@@ -78,6 +78,8 @@ class Lift extends Component {
                             <td className="cell">{this.props.firstName} {this.props.lastName}</td>
                             <td className="cell">{this.props.date}</td>
                             <td className="cell">{this.state.generatorText}</td>
+                            <td className="cell">{this.props.duration}</td>
+                            <td className="cell">{this.props.muscleGroups}</td>
                         </tr>
                     </tbody>
                 </table>
