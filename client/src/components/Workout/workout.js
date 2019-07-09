@@ -223,9 +223,10 @@ class Workout extends Component {
         let confirm = window.confirm("Workout complete?");
 
         if (confirm) {
-            localStorage.setItem("workout", JSON.stringify(this.state.sets));
+            sessionStorage.setItem("workout", JSON.stringify(this.state.sets));
 
             let liftData = {
+                workoutType: "lift",
                 userId: this.props.userId,
                 firstName: this.props.firstName,
                 lastName: this.props.lastName,

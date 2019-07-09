@@ -52,6 +52,7 @@ class SubmitBike extends Component {
     submitBike = () => {
         if (this.props.checkValidUser()) {
             let bikeData = {
+                workoutType: "bike",
                 userId: this.state.userId,
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
@@ -173,13 +174,13 @@ class SubmitBike extends Component {
                             defaultValue={null}
                         >
                             <option value=""></option>
-                            <option value="sunny">Street</option>
-                            <option value="rainy">Bike Path</option>
-                            <option value="cloudy">Track</option>
-                            <option value="sunny">Trail</option>
-                            <option value="rainy">Dirt Road</option>
-                            <option value="cloudy">Grass</option>
-                            <option value="rainy">Stationary</option>
+                            <option value="Street">Street</option>
+                            <option value="Bike Path">Bike Path</option>
+                            <option value="Track">Track</option>
+                            <option value="Trail">Trail</option>
+                            <option value="Dirt Road">Dirt Road</option>
+                            <option value="Grass">Grass</option>
+                            <option value="Stationary">Stationary</option>
                         </select>
                     </div>
 
