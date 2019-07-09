@@ -2,13 +2,16 @@
     border: 0px;
     cursor: pointer;
     font-size: 12px;
-    line-height: 12px;
-    margin: 5px auto;
+    line-height: 1.0;
+    margin: 2px auto;
     max-height: 50px;
     width: 600px;
 }
 
 .cell {
+    max-width: 120px !important;
+    min-width: 120px !important;
+    vertical-align: middle !important;
     width: 120px;
 }
 
