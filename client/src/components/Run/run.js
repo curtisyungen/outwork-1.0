@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import Modal from "react-responsive-modal";
-import userAPI from "../../utils/userAPI";
+// import userAPI from "../../utils/userAPI";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRunning } from '@fortawesome/free-solid-svg-icons';
 import "./run.css";
+
+library.add(faRunning);
 
 class Run extends Component {
 
@@ -16,7 +21,6 @@ class Run extends Component {
     }
 
     componentDidMount = () => {
-
         this.setState({
             userId: this.props.userId,
             repeats: JSON.parse(this.props.repeats),
@@ -48,16 +52,15 @@ class Run extends Component {
     render() {
         return (
             <span>
-                <div className="card actCard" onClick={this.openModal}>
-                    <div className="card-body">
-                        <div>{this.props.firstName} {this.props.lastName}</div>
-                        <h4 className="card-title mb-0">Run</h4>
-                        <h6 className="card-subtitle text-muted mb-0">{this.props.date}</h6>
-                        <div className="card-text">
-                            <span>{this.props.duration}</span>
-                        </div>
-                    </div>
-                </div>
+                <table className="table table-hover table-bordered actCard" onClick={this.openModal}>
+                    <tbody>
+                        <tr>
+                            <td className="runIcon"><FontAwesomeIcon className="fa-2x icon" icon={faRunning} /></td>
+                            <td className="cell">{this.props.firstName} {this.props.lastName}</td>
+                            <td className="cell">{this.props.date}</td>
+                        </tr>
+                    </tbody>
+                </table>                        
 
                 {this.state.openModal ? (
                     <Modal

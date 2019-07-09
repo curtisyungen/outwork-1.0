@@ -1,5 +1,10 @@
 import React, { Component } from "react";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSwimmer } from '@fortawesome/free-solid-svg-icons';
 import "./swim.css";
+
+library.add(faSwimmer);
 
 class Swim extends Component {
 
@@ -24,20 +29,17 @@ class Swim extends Component {
 
     render() {
         return (
-            <div className="card actCard">
-                <div className="card-body">
-                    <div>{this.props.firstName} {this.props.lastName}</div>
-                    <h5 className="card-title mb-0">Swim</h5>
-                    <h6 className="card-subtitle text-muted mb-0">{this.props.date}</h6>
-                    <div className="card-text">
-                        <span>{this.props.duration}</span>
-                        <span>{this.props.location}</span>
-                        <span>{this.props.surface}</span>
-                        <span>{this.props.weather}</span>
-                    </div>
-                    <div className="card-link" onClick={this.deleteSwim}>Delete</div>
-                </div>
-            </div>
+            <span>
+                <table className="table table-hover table-bordered actCard" onClick={this.openModal}>
+                    <tbody>
+                        <tr>
+                            <td className="swimIcon"><FontAwesomeIcon className="fa-2x icon" icon={faSwimmer} /></td>
+                            <td className="cell">{this.props.firstName} {this.props.lastName}</td>
+                            <td className="cell">{this.props.date}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </span>
         )
     }
 }
