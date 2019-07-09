@@ -13,7 +13,9 @@ class Landing extends Component {
     }
 
     componentDidMount = () => {
+        let userId;
         if (localStorage.getItem("userId") !== null) {
+            userId=localStorage.getItem("userId");
             userAPI.getUserById(userId)
                 .then((res) => {
                     if (res.data.length === 0) {
