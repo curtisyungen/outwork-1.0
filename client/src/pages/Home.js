@@ -63,39 +63,74 @@ class Home extends Component {
     }
 
     getUserActivity = (userId) => {
-
         let allActivity = this.state.allActivity;
+        this.setState({
+            loadingRuns: true,
+            loadingBikes: true,
+            loadingSwims: true,
+            loadingLifts: true,
+        }, () => {
+            this.getRunsByUser(userId);
+            this.getBikesByUser(userId);
+            this.getSwimsByUser(userId);
+            this.getLiftsByUser(userId);
+        });
 
+    }
+
+    getRunsByUser = (userId) => {
         actAPI.getRunsByUser(userId)
             .then((res) => {
                 for (var item in res.data) {
                     allActivity.push(res.data[item]);
                 };
 
-                actAPI.getBikesByUser(userId)
-                    .then((res) => {
-                        for (var item in res.data) {
-                            allActivity.push(res.data[item]);
-                        };
+                this.setState({
+                    allActivity: allActivity,
+                    loadingRuns: false,
+                });
+            });
+    }
 
-                        actAPI.getSwimsByUser(userId)
-                            .then((res) => {
-                                for (var item in res.data) {
-                                    allActivity.push(res.data[item]);
-                                };
+    getBikesByUser = (userId) => {
+        actAPI.getBikesByUser(userId)
+            .then((res) => {
+                for (var item in res.data) {
+                    allActivity.push(res.data[item]);
+                };
 
-                                actAPI.getLiftsByUser(userId)
-                                    .then((res) => {
-                                        for (var item in res.data) {
-                                            allActivity.push(res.data[item]);
-                                        };
+                this.setState({
+                    allActivity: allActivity,
+                    loadingBikes: false,
+                });
+            });
+    }
 
-                                        this.setState({
-                                            allActivity: allActivity,
-                                        });
-                                    });
-                            });
-                    });
+    getSwimsByUser = (userId) => {
+        actAPI.getSwimsByUser(userId)
+            .then((res) => {
+                for (var item in res.data) {
+                    allActivity.push(res.data[item]);
+                };
+
+                this.setState({
+                    allActivity: allActivity,
+                    loadingSwims: false,
+                });
+            });
+    }
+
+    getLiftsByUser = (userId) => {
+        actAPI.getLiftsByUser(userId)
+            .then((res) => {
+                for (var item in res.data) {
+                    allActivity.push(res.data[item]);
+                };
+
+                this.setState({
+                    allActivity: allActivity,
+                    loadingLifts: false,
+                });
             });
     }
 
@@ -121,7 +156,10 @@ class Home extends Component {
         return (
             <div className="col-md-12 homePage">
                 <span>
-                    {this.state.allActivity === null || this.state.allActivity.length === 0 ? (
+
+
+
+                    {this.state.loadingRuns || this.state.loadingBikes || this.state.loadingSwims || this.state.loadingLifts ? (
                         <p className="text-center">Loading activity...</p>
                     ) : (
                             <span>
@@ -133,7 +171,7 @@ class Home extends Component {
                                         />
                                     ))
                                 ) : (
-                                        <></>
+                                        <p>No activity found.</p>
                                     )}
                             </span>
                         )}
