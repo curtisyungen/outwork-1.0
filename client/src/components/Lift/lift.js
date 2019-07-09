@@ -36,7 +36,7 @@ class Lift extends Component {
             case "6": generatorText = "Superman"; break;
             case "7": generatorText = "Rogan"; break;
             case "8": generatorText = "Goggins"; break;
-            default: generatorText = "";
+            default: generatorText = "Standard";
         }
 
         this.setState({
