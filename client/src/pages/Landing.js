@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import userAPI from "../utils/userAPI";
 import "./Landing.css";
 
 class Landing extends Component {
@@ -13,9 +14,16 @@ class Landing extends Component {
 
     componentDidMount = () => {
         if (localStorage.getItem("userId") !== null) {
-            if (this.props.checkValidUser()) {
-                this.props.setRedirectToHome();
-            }
+            userAPI.getUserById(userId)
+                .then((res) => {
+                    if (res.data.length === 0) {
+                        this.logoutUser();
+                        return;
+                    }
+                    else {
+                        this.props.setRedirectToHome();
+                    }
+            });
         }
     }
 
