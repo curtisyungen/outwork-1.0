@@ -1,5 +1,6 @@
 .actCard {
     border: 0px;
+    cursor: pointer;
     font-size: 12px;
     line-height: 12px;
     margin: 5px auto;
