@@ -63,92 +63,46 @@ class Home extends Component {
     }
 
     getUserActivity = (userId) => {
-        this.setState({
-            loadingRuns: true,
-            loadingBikes: true,
-            loadingSwims: true,
-            loadingLifts: true,
-        }, () => {
-            this.getRunsByUser(userId);
-            this.getBikesByUser(userId);
-            this.getSwimsByUser(userId);
-            this.getLiftsByUser(userId);
-        });
 
-    }
-
-    getRunsByUser = (userId) => {
         let allActivity = this.state.allActivity;
+
+        // GET RUNS
         actAPI.getRunsByUser(userId)
             .then((res) => {
-
-                let allActivity = this.state.allActivity;
-
                 for (var item in res.data) {
                     allActivity.push(res.data[item]);
                 };
 
-                this.setState({
-                    allActivity: allActivity,
-                    loadingRuns: false,
-                });
+                // GET BIKES
+                actAPI.getBikesByUser(userId)
+                    .then((res) => {
+                        for (var item in res.data) {
+                            allActivity.push(res.data[item]);
+                        };
+
+                        // GET SWIMS
+                        actAPI.getSwimsByUser(userId)
+                            .then((res) => {
+                                for (var item in res.data) {
+                                    allActivity.push(res.data[item]);
+                                };
+
+                                // GET LIFTS
+                                actAPI.getLiftsByUser(userId)
+                                    .then((res) => {
+                                        for (var item in res.data) {
+                                            allActivity.push(res.data[item]);
+                                        };
+
+                                        // SORT BY DATE
+                                        this.sortByDate(allActivity);
+                                    });
+                            });
+                    });
             });
     }
 
-    getBikesByUser = (userId) => {
-        let allActivity = this.state.allActivity;
-        actAPI.getBikesByUser(userId)
-            .then((res) => {
-
-                let allActivity = this.state.allActivity;
-
-                for (var item in res.data) {
-                    allActivity.push(res.data[item]);
-                };
-
-                this.setState({
-                    allActivity: allActivity,
-                    loadingBikes: false,
-                });
-            });
-    }
-
-    getSwimsByUser = (userId) => {
-        actAPI.getSwimsByUser(userId)
-            .then((res) => {
-
-                let allActivity = this.state.allActivity;
-
-                for (var item in res.data) {
-                    allActivity.push(res.data[item]);
-                };
-
-                this.setState({
-                    allActivity: allActivity,
-                    loadingSwims: false,
-                });
-            });
-    }
-
-    getLiftsByUser = (userId) => {
-        actAPI.getLiftsByUser(userId)
-            .then((res) => {
-
-                let allActivity = this.state.allActivity;
-
-                for (var item in res.data) {
-                    allActivity.push(res.data[item]);
-                };
-
-                this.setState({
-                    allActivity: allActivity,
-                    loadingLifts: false,
-                });
-            });
-    }
-
-    sortByDate = () => {
-        let allActivity = this.state.allActivity;
+    sortByDate = (allActivity) => {
         allActivity.sort(this.compare);
 
         this.setState({
@@ -169,10 +123,7 @@ class Home extends Component {
         return (
             <div className="col-md-12 homePage">
                 <span>
-
-
-
-                    {this.state.loadingRuns || this.state.loadingBikes || this.state.loadingSwims || this.state.loadingLifts ? (
+                    {this.state.allActivity === null || this.state.allActivity.length === 0 ? (
                         <p className="text-center">Loading activity...</p>
                     ) : (
                             <span>
@@ -184,7 +135,7 @@ class Home extends Component {
                                         />
                                     ))
                                 ) : (
-                                        <p>No activity found.</p>
+                                        <></>
                                     )}
                             </span>
                         )}
