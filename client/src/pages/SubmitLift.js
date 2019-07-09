@@ -226,6 +226,7 @@ class SubmitLift extends Component {
             this.getMuscleGroups();
 
             let liftData = {
+                workoutType: "lift",
                 userId: this.state.userId,
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,

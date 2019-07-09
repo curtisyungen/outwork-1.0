@@ -176,6 +176,7 @@ class SubmitRun extends Component {
     submitRun = () => {
         if (this.props.checkValidUser()) {
             let runData = {
+                workoutType: "run",
                 userId: this.state.userId,
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
@@ -290,8 +291,6 @@ class SubmitRun extends Component {
                         </div>
                     </div>
 
-
-
                     {/* TYPE */}
                     <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
@@ -314,7 +313,6 @@ class SubmitRun extends Component {
                     </div>
 
                     {/* REPEATS */}
-
                     {this.state.type === "Repeats" ? (
                         <button className="btn btn-dark btn-sm addRepeatBtn" onClick={this.addRepeat}>Add</button>
                     ) : (
@@ -340,7 +338,7 @@ class SubmitRun extends Component {
                         )}
 
                     {/* RACE */}
-                    {this.state.type === "race" ? (
+                    {this.state.type === "Race" ? (
                         <div className="input-group input-group-sm mb-3">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="inputGroup-sizing-sm">Race Name</span>

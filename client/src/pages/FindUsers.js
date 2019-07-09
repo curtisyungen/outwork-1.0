@@ -83,6 +83,7 @@ class FindUsers extends Component {
             <span>
                 <div className="col-md-6 input-group mb-3">
                     <input 
+                        autoComplete="off"
                         name="userSearch" 
                         type="text" 
                         className="form-control" 

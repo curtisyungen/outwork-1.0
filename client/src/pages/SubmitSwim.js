@@ -49,6 +49,7 @@ class SubmitSwim extends Component {
     submitSwim = () => {
         if (this.props.checkValidUser()) {
             let swimData = {
+                workoutType: "swim",
                 userId: this.state.userId,
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
@@ -94,7 +95,7 @@ class SubmitSwim extends Component {
                         <input
                             autoComplete="off"
                             name="date"
-                            type="text"
+                            type="date"
                             className="form-control"
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-sm"
@@ -105,7 +106,7 @@ class SubmitSwim extends Component {
                     {/* DISTANCE */}
                     <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
-                            <span className="input-group-text" id="inputGroup-sizing-sm">Distance</span>
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Miles</span>
                         </div>
                         <input
                             autoComplete="off"
@@ -128,6 +129,7 @@ class SubmitSwim extends Component {
                             name="duration"
                             type="text"
                             className="form-control"
+                            placeholder="hh:mm:ss"
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
@@ -171,15 +173,20 @@ class SubmitSwim extends Component {
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Water Type</span>
                         </div>
-                        <input
+                        <select
+                            className="browser-default custom-select"
                             autoComplete="off"
                             name="waterType"
                             type="text"
-                            className="form-control"
-                            aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
-                        />
+                            defaultValue={null}
+                        >
+                            <option value=""></option>
+                            <option value="Pool">Pool</option>
+                            <option value="Lake">Lake</option>
+                            <option value="River">River</option>
+                            <option value="Ocean">Ocean</option>
+                        </select>
                     </div>
 
                     {/* SWIM WORKOUT */}

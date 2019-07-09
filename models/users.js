@@ -44,6 +44,11 @@ module.exports = function(sequelize, DataTypes) {
         following: {
             type: DataTypes.STRING(1000),
             allowNull: true,
+        },
+        // Array of users following this user stored as string
+        followers: {
+            type: DataTypes.STRING(1000),
+            allowNull: true,
         }
     });
     

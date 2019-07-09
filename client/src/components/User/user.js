@@ -83,14 +83,14 @@ class User extends Component {
     render() {
         return (
             <span>
-                {this.props.userId !== localStorage.getItem("userId") ? (
+                {true ? (
                     <div className="user">
                         <div>{this.props.firstName} {this.props.lastName}</div>
                         <button 
                             className="btn btn-outline-light btn-sm followBtn"
                             onClick={this.toggleFollow}
                         >
-                            {this.state.isFollowed === true ? (
+                            {this.state.isFollowed === false ? (
                                 <p>Follow</p>
                             ) : (
                                 <p>Unfollow</p>
