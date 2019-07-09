@@ -1,23 +1,35 @@
-.card {
-    cursor: pointer;
-
-
-}
-
-.card:hover {
-    background: rgb(242, 242, 242);
-}
-
-.card-title {
-    font-size: 15px;
-}
-
 .actCard {
+    border: 0px;
     font-size: 12px;
     line-height: 12px;
     margin: 5px auto;
-    max-height: 150px;
-    width: 500px;
+    max-height: 50px;
+    width: 600px;
+}
+
+.cell {
+    width: 120px;
+}
+
+.icon {
+    text-align: center !important;
+    width: 25px !important;
+}
+
+.bikeIcon {
+    background: rgb(255, 216, 116);
+}
+
+.liftIcon {
+    background: rgb(255, 191, 191);
+}
+
+.runIcon {
+    background: lightgreen;
+}
+
+.swimIcon {
+    background: lightblue;
 }
 
 .runDetails {
@@ -25,6 +37,6 @@
     width: auto;
 }
 
-.title {
-    font-size: 16px;
+.table {
+    display: flex;
 }

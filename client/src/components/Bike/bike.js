@@ -1,8 +1,14 @@
 import React, { Component } from "react";
+import Modal from "react-responsive-modal";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBiking } from '@fortawesome/free-solid-svg-icons';
 import "./bike.css";
 
+library.add(faBiking);
+
 class Bike extends Component {
-    
+
     constructor(props) {
         super(props);
 
@@ -18,26 +24,81 @@ class Bike extends Component {
         });
     }
 
+    openModal = () => {
+        this.setState({
+            openModal: true,
+        });
+    }
+
+    closeModal = () => {
+        this.setState({
+            openModal: false,
+        });
+    }
+
     deleteBike = () => {
         this.props.deleteActivity("bike", this.props.id);
     }
 
     render() {
         return (
-            <div className="card actCard">
-            <div className="card-body">
-                <div>{this.props.firstName} {this.props.lastName}</div>
-                <h5 className="card-title mb-0">Bike</h5>
-                <h6 className="card-subtitle text-muted mb-0">{this.props.date}</h6>
-                <div className="card-text">
-                    <span>{this.props.duration}</span>
-                    <span>{this.props.location}</span>
-                    <span>{this.props.surface}</span>
-                    <span>{this.props.weather}</span>
-                </div>
-                <div className="card-link" onClick={this.deleteBike}>Delete</div>
-            </div>
-        </div>
+            <span>
+                <table className="table table-hover table-bordered actCard" onClick={this.openModal}>
+                    <tbody>
+                        <tr>
+                            <td className="bikeIcon"><FontAwesomeIcon className="fa-2x icon" icon={faBiking} /></td>
+                            <td className="cell">{this.props.firstName} {this.props.lastName}</td>
+                            <td className="cell">{this.props.date}</td>
+                        </tr>
+                    </tbody>
+                </table>  
+
+                {this.state.openModal ? (
+                    <Modal
+                        open={this.state.openModal}
+                        onClose={this.closeModal}
+                    >
+                        {/* TABLE ONE */}
+                        <div>
+                            <h5 className="title">Summary</h5>
+                            <table className="table table-striped table-bordered table-sm text-center align-middle bikeDetails">
+                                <thead className="thead-dark">
+                                    <tr>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        {/* TABLE TWO */}
+                        <div>
+                            <table className="table table-striped table-bordered table-sm text-center align-middle bikeDetails">
+                                <thead className="thead-dark">
+                                    <tr>
+                                        <th>Notes</th>
+                                        <th>Map</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{this.props.notes}</td>
+                                        <td><a href={this.props.map} target="_blank" rel="noopener noreferrer">{this.props.map}</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <button className="btn btn-danger btn-sm deleteActivity" onClick={this.deleteBike}>Delete Bike</button>
+                    </Modal>
+                ) : (
+                    <></>
+                )}
+            </span>
         )
     }
 }
