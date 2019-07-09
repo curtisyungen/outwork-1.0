@@ -22,6 +22,18 @@ class Swim extends Component {
             userId: this.props.userId,
         });
     }
+    
+    openModal = () => {
+        this.setState({
+            openModal: true,
+        });
+    }
+
+    closeModal = () => {
+        this.setState({
+            openModal: false,
+        });
+    }
 
     deleteSwim = () => {
         this.props.deleteActivity("swim", this.props.id);
@@ -36,9 +48,45 @@ class Swim extends Component {
                             <td className="swimIcon"><FontAwesomeIcon className="fa-2x icon" icon={faSwimmer} /></td>
                             <td className="cell">{this.props.firstName} {this.props.lastName}</td>
                             <td className="cell">{this.props.date}</td>
+                            <td className="cell">{this.props.distance} miles</td>
                         </tr>
                     </tbody>
                 </table>
+
+
+                {this.state.openModal ? (
+                    <Modal
+                        open={this.state.openModal}
+                        onClose={this.closeModal}
+                    >
+                        {/* TABLE ONE */}
+                        <div>
+                            <h5 className="title">Summary</h5>
+                            <table className="table table-striped table-bordered table-sm text-center align-middle swimDetails">
+                                <thead className="thead-dark">
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Location</th>
+                                        <th>Miles</th>
+                                        <th>Duration (hh:mm:ss)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{this.props.date}</td>
+                                        <td>{this.props.location}</td>
+                                        <td>{this.props.miles}</td>
+                                        <td>{this.props.duration}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <button className="btn btn-danger btn-sm deleteActivity" onClick={this.deleteSwim}>Delete Swim</button>
+                    </Modal>
+                ) : (
+                        <></>
+                    )}
             </span>
         )
     }

@@ -58,6 +58,7 @@ class Run extends Component {
                             <td className="runIcon"><FontAwesomeIcon className="fa-2x icon" icon={faRunning} /></td>
                             <td className="cell">{this.props.firstName} {this.props.lastName}</td>
                             <td className="cell">{this.props.date}</td>
+                            <td className="cell">{this.props.distance} miles</td>
                         </tr>
                     </tbody>
                 </table>                        
