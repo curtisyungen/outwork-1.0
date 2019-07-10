@@ -9,6 +9,7 @@ class SwimMetrics extends Component {
         this.state = {
             userId: null,
             userSwims: null,
+            workouts: null,
             totalMiles: null,
             totalTime: null,
             avgMilesPerWeek: null,
@@ -50,6 +51,7 @@ class SwimMetrics extends Component {
         }
 
         this.setState({
+            workouts: swims.length,
             totalMiles: totalMiles,
             totalTime: totalTime,
             maxMiles: maxMiles,
@@ -63,6 +65,7 @@ class SwimMetrics extends Component {
                 <table className="table table-bordered metricTable">
                     <thead className="thead-light">
                         <tr>
+                            <th>Total Swims</th>
                             <th>Total Miles</th>
                             <th>Avg. Miles / Week</th>
                             <th>Total Time (min.)</th>
@@ -72,6 +75,7 @@ class SwimMetrics extends Component {
                     </thead>
                     <tbody>
                         <tr>
+                            <td>{this.state.workouts}</td>
                             <td>{this.state.totalMiles}</td>
                             <td>{this.state.avgMilesPerWeek}</td>
                             <td>{this.state.totalTime}</td>

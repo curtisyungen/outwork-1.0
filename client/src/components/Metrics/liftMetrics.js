@@ -40,8 +40,8 @@ class LiftMetrics extends Component {
 
             totalTime += (hours * 60) + minutes + Math.round(seconds / 60);
 
-            pushups += lifts[l].pushups;
-            pullups += lifts[l].pullups;
+            pushups += parseFloat(lifts[l].pushups);
+            pullups += parseFloat(lifts[l].pullups);
         }
 
         this.setState({

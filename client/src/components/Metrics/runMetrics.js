@@ -11,6 +11,7 @@ class RunMetrics extends Component {
         this.state = {
             userId: null,
             userRuns: null,
+            workouts: null,
             totalMiles: null,
             avgMilesPerWeek: null,
             totalClimb: null,
@@ -71,6 +72,7 @@ class RunMetrics extends Component {
         avgMilePace = `${avgMilePaceMins}:${addZero}${avgMilePaceSecs}`
 
         this.setState({
+            workouts: runs.length,
             totalMiles: totalMiles,
             totalClimb: totalClimb,
             avgMiles: avgMiles,
@@ -95,6 +97,7 @@ class RunMetrics extends Component {
                 <table className="table table-bordered metricsTable">
                     <thead className="thead-light">
                         <tr>
+                            <th>Total Runs</th>
                             <th>Total Miles</th>
                             <th>Avg. Miles / Week</th>
                             <th>Total Climb (ft.)</th>
@@ -105,6 +108,7 @@ class RunMetrics extends Component {
                     </thead>
                     <tbody>
                         <tr>
+                            <td>{this.state.workouts}</td>
                             <td>{this.state.totalMiles}</td>
                             <td></td>
                             <td>{this.state.totalClimb}</td>
