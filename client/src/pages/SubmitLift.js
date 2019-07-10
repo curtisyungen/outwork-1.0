@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Container from "../components/Container/container";
 import Exercise from "../components/Exercise/exercise";
+import MuscleGroup from "../components/MuscleGroup/muscleGroup";
 import userAPI from "../utils/userAPI";
 import actAPI from "../utils/actAPI";
 import "./SubmitLift.css";
@@ -20,6 +21,7 @@ class SubmitLift extends Component {
             pullups: null,
             exercises: [],
             muscleGroups: [],
+            muscleGroupList: [],
             notes: null,
         }
     }
@@ -43,11 +45,19 @@ class SubmitLift extends Component {
         
                 let exercises = [exercise];
 
+                let muscleGroupList = [
+                    "Chest", "Shoulders", 
+                    "Back", "Biceps", 
+                    "Triceps", "Forearms", 
+                    "Quadriceps", "Hamstrings", 
+                    "Calves", "Abdominals"];
+
                 this.setState({
                     userId: userId,
                     firstName: res.data[0].firstName,
                     lastName: res.data[0].lastName,
                     exercises: exercises,
+                    muscleGroupList: muscleGroupList,
                 });
             });      
     }
@@ -228,8 +238,6 @@ class SubmitLift extends Component {
                 notes: this.state.notes,
             };
 
-            console.log(liftData);
-
             actAPI.createLift(liftData)
                 .then((res) => {
                     if (res.status === 200) {
@@ -243,13 +251,12 @@ class SubmitLift extends Component {
         }
     }
 
-    updateMuscleGroups = (event) => {
-        const { value } = event.target;
+    updateMuscleGroups = (muscleGroup) => {
         let muscleGroups = this.state.muscleGroups;
-        let idx = muscleGroups.indexOf(value);
+        let idx = muscleGroups.indexOf(muscleGroup);
 
         if (idx === -1) {
-            muscleGroups.push(value);
+            muscleGroups.push(muscleGroup);
         }
         else {
             muscleGroups.splice(idx, 1);
@@ -258,6 +265,8 @@ class SubmitLift extends Component {
         this.setState({
             muscleGroups: muscleGroups,
         });
+
+        console.log(this.state.muscleGroups);
     }
 
     render() {
@@ -373,49 +382,18 @@ class SubmitLift extends Component {
 
                     {/* MUSCLE GROUPS */}
                     <div className="form-check">
-                        <div className="input-group-prepend">
-                            <span className="input-group-text" id="inputGroup-sizing-sm">Muscle Groups</span>
-                        </div>
-                        <div className="muscleGroup">
-                            <input className="form-check-input" type="checkbox" value="Chest" onChange={this.updateMuscleGroups}/>
-                            Chest
-                        </div>
-                        <div className="muscleGroup">
-                            <input className="form-check-input" type="checkbox" value="Shoulders" onChange={this.updateMuscleGroups}/>
-                            Shoulders
-                        </div>
-                        <div className="muscleGroup">
-                            <input className="form-check-input" type="checkbox" value="Back" onChange={this.updateMuscleGroups}/>
-                            Back
-                        </div>
-                        <div className="muscleGroup">
-                            <input className="form-check-input" type="checkbox" value="Biceps" onChange={this.updateMuscleGroups}/>
-                            Biceps
-                        </div>
-                        <div className="muscleGroup">
-                            <input className="form-check-input" type="checkbox" value="Triceps" onChange={this.updateMuscleGroups}/>
-                            Triceps
-                        </div>
-                        <div className="muscleGroup">
-                            <input className="form-check-input" type="checkbox" value="Forearms" onChange={this.updateMuscleGroups}/>
-                            Forearms
-                        </div>
-                        <div className="muscleGroup">
-                            <input className="form-check-input" type="checkbox" value="Abdominals" onChange={this.updateMuscleGroups}/>
-                            Abdominals
-                        </div>
-                        <div className="muscleGroup">
-                            <input className="form-check-input" type="checkbox" value="Quadriceps" onChange={this.updateMuscleGroups}/>
-                            Quadriceps
-                        </div>
-                        <div className="muscleGroup">
-                            <input className="form-check-input" type="checkbox" value="Hamstrings" onChange={this.updateMuscleGroups}/>
-                            Hamstrings
-                        </div>
-                        <div className="muscleGroup">
-                            <input className="form-check-input" type="checkbox" value="Calves" onChange={this.updateMuscleGroups}/>
-                            Calves
-                        </div>
+                        {this.state.muscleGroupList && this.state.muscleGroupList.length > 0 ? (
+                            this.state.muscleGroupList.map(group => (
+                                <MuscleGroup
+                                    key={Math.random() * 100000}
+                                    muscleGroup={group}
+                                    updateMuscleGroups={this.updateMuscleGroups}
+                                    checked={this.state.muscleGroups.indexOf(group) > -1}
+                                />
+                            ))
+                        ) : (
+                            <></>
+                        )}
                     </div>
 
                     {/* NOTES */}
