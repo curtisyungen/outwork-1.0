@@ -25,6 +25,8 @@ class RunMetrics extends Component {
             userRuns: this.props.userRuns,
         }, () => {
             this.getTotalMiles();
+            this.getTotalClimb();
+            this.getAvgAndMaxDist();
         });
     }
 
@@ -62,7 +64,7 @@ class RunMetrics extends Component {
 
     }
 
-    getAvgDistance = () => {
+    getAvgAndMaxDist = () => {
         let runs = this.state.userRuns;
         let totalDist = 0;
         let maxDist = 0;
