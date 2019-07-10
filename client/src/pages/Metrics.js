@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import Container from "../components/Container/container";
+import RunMetrics from "../components/Metrics/runMetrics";
+import BikeMetrics from "../components/Metrics/bikeMetrics";
+import SwimMetrics from "../components/Metrics/swimMetrics";
+import LiftMetrics from "../components/Metrics/liftMetrics";
 import actAPI from "../utils/actAPI";
 // import "./Metrics.css";
 
@@ -10,6 +14,10 @@ class Metrics extends Component {
 
         this.state = {
             firstName: null,
+            userRuns: null,
+            userBikes: null,
+            userSwims: null,
+            userLifts: null,            
         }
     }
 
@@ -22,6 +30,11 @@ class Metrics extends Component {
         this.setState({
             firstName: firstName,
             userId: userId,
+        }, () => {
+            this.getUserRuns();
+            this.getUserBikes();
+            this.getUserSwims();
+            this.getUserLifts();
         });
     }
 
@@ -29,104 +42,76 @@ class Metrics extends Component {
         this.props.checkValidUser();
     }
 
+    getUserRuns = () => {
+        actAPI.getRunsByUser(this.state.userId)
+            .then((res) => {
+                this.setState({
+                    userRuns: res.data,
+                });
+            });
+    }
+
+    getUserBikes = () => {
+        actAPI.getBikesByUser(this.state.userId)
+            .then((res) => {
+                this.setState({
+                    userBikes: res.data,
+                });
+            });
+    }
+
+    getUserSwims = () => {
+        actAPI.getSwimsByUser(this.state.userId)
+            .then((res) => {
+                this.setState({
+                    userSwims: res.data,
+                });
+            });
+    }
+
+    getUserLifts = () => {
+        actAPI.getLiftsByUser(this.state.userId)
+            .then((res) => {
+                this.setState({
+                    userLifts: res.data,
+                });
+            });
+    }
+
     render() {
         return (
             <Container>
-                <h4 className="metricsPageTitle">Running</h4>
-                <table className="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Avg. Miles / Wk.</th>
-                            <th>Max. Miles / Wk.</th>
-                            <th>Longest Dist. (mi.)</th>
-                            <th>Avg. Mile Pace</th>
-                            <th>Total Miles Run</th>
-                            <th>Dist. Climbed (ft.)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
+                {this.state.userRuns && this.state.userRuns.length > 0 ? (
+                    <RunMetrics 
+                        userRuns={this.state.userRuns}
+                    />
+                ) : (
+                    <></>
+                )}
 
-                <h4 className="metricsPageTitle">Biking</h4>
-                <table className="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Avg. Miles / Wk.</th>
-                            <th>Max. Miles / Wk.</th>
-                            <th>Longest Dist. (mi.)</th>
-                            <th>Avg. Mile Pace</th>
-                            <th>Total Miles Run</th>
-                            <th>Dist. Climbed (ft.)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
+                {this.state.userBikes && this.state.userBikes.length > 0 ? (
+                    <BikeMetrics 
+                        userBikes={this.state.userBikes}
+                    />
+                ) : (
+                    <></>
+                )}
 
-                <h4 className="metricsPageTitle">Swimming</h4>
-                <table className="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Avg. Miles / Wk.</th>
-                            <th>Max. Miles / Wk.</th>
-                            <th>Longest Dist. (mi.)</th>
-                            <th>Avg. Mile Pace</th>
-                            <th>Total Miles Run</th>
-                            <th>Dist. Climbed (ft.)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
+                {this.state.userSwims && this.state.userSwims.length > 0 ? (
+                    <SwimMetrics 
+                        userSwims={this.state.userSwims}
+                    />
+                ) : (
+                    <></>
+                )}
 
-                <h4 className="metricsPageTitle">Lifting</h4>
-                <table className="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Avg. Miles / Wk.</th>
-                            <th>Max. Miles / Wk.</th>
-                            <th>Longest Dist. (mi.)</th>
-                            <th>Avg. Mile Pace</th>
-                            <th>Total Miles Run</th>
-                            <th>Dist. Climbed (ft.)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
+                {this.state.userLifts && this.state.userLifts.length > 0 ? (
+                    <LiftMetrics 
+                        userLifts={this.state.userLifts}
+                    />
+                ) : (
+                    <></>
+                )}
             </Container>
         )
     }
