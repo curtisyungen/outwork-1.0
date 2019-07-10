@@ -10,6 +10,8 @@ class Exercise extends Component {
             id: null,
             name: "",
             weight: "",
+            superset: "",
+            sets: "",
             reps: "",
             rest: "",
             notes: "",
@@ -21,6 +23,8 @@ class Exercise extends Component {
             id: this.props.id,
             name: this.props.name || "",
             weight: this.props.weight || "",
+            superset: this.props.superset || "",
+            sets: this.props.sets || "",
             reps: this.props.reps || "",
             rest: this.props.rest || "",
             notes: this.props.notes || "",
@@ -42,6 +46,8 @@ class Exercise extends Component {
     updateParent = () => {
         this.props.setName(this.state.id, this.state.name);
         this.props.setWeight(this.state.id, this.state.weight);
+        this.props.setSuperset(this.state.id, this.state.superset);
+        this.props.setSets(this.state.id, this.state.sets);
         this.props.setReps(this.state.id, this.state.reps);
         this.props.setRest(this.state.id, this.state.rest);
         this.props.setNotes(this.state.id, this.state.notes);
@@ -53,6 +59,8 @@ class Exercise extends Component {
                 <div className="input-group-prepend">
                     <span className="input-group-text">Exercise</span>
                 </div>
+
+                {/* NAME */}
                 <input
                     autoComplete="off"
                     name="name"
@@ -63,6 +71,7 @@ class Exercise extends Component {
                     onBlur={this.updateParent}
                     value={this.state.name}
                 />
+                {/* WEIGHT */}
                 <input
                     autoComplete="off"
                     name="weight"
@@ -73,6 +82,29 @@ class Exercise extends Component {
                     onBlur={this.updateParent}
                     value={this.state.weight}
                 />
+                {/* SUPERSET ID */}
+                <input
+                    autoComplete="off"
+                    name="superset"
+                    type="text"
+                    className="form-control"
+                    placeholder="Superset ID"
+                    onChange={this.handleInputChange}
+                    onBlur={this.updateParent}
+                    value={this.state.superset}
+                />
+                {/* SETS */}
+                <input
+                    autoComplete="off"
+                    name="sets"
+                    type="text"
+                    className="form-control"
+                    placeholder="Sets"
+                    onChange={this.handleInputChange}
+                    onBlur={this.updateParent}
+                    value={this.state.sets}
+                />
+                {/* REPS */}
                 <input
                     autoComplete="off"
                     name="reps"
@@ -83,6 +115,7 @@ class Exercise extends Component {
                     onBlur={this.updateParent}
                     value={this.state.reps}
                 />
+                {/* REST */}
                 <input
                     autoComplete="off"
                     name="rest"
@@ -93,6 +126,7 @@ class Exercise extends Component {
                     onBlur={this.updateParent}
                     value={this.state.rest}
                 />
+                {/* NOTES */}
                 <input
                     autoComplete="off"
                     name="notes"
@@ -103,6 +137,7 @@ class Exercise extends Component {
                     onBlur={this.updateParent}
                     value={this.state.notes}
                 />
+                {/* DELETE */}
                 <button
                     className="btn btn-danger btn-sm"
                     onClick={this.deleteExercise}

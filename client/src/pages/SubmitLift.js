@@ -170,6 +170,38 @@ class SubmitLift extends Component {
         });
     }
 
+    setSuperset = (id, superset) => {
+        let exercises = this.state.exercises;
+        let idx;
+        for (var i = 0; i < exercises.length; i++) {
+            if (exercises[i].id === id) {
+                idx = i;
+            }
+        }
+
+        exercises[idx].superset = superset;
+
+        this.setState({
+            exercises: exercises,
+        });
+    }
+
+    setSets = (id, sets) => {
+        let exercises = this.state.exercises;
+        let idx;
+        for (var i = 0; i < exercises.length; i++) {
+            if (exercises[i].id === id) {
+                idx = i;
+            }
+        }
+
+        exercises[idx].sets = sets;
+
+        this.setState({
+            exercises: exercises,
+        });
+    }
+
     setReps = (id, reps) => {
         let exercises = this.state.exercises;
         let idx;
@@ -265,8 +297,6 @@ class SubmitLift extends Component {
         this.setState({
             muscleGroups: muscleGroups,
         });
-
-        console.log(this.state.muscleGroups);
     }
 
     render() {
@@ -359,7 +389,7 @@ class SubmitLift extends Component {
                         <div className="input-group-prepend">
                             <span className="input-group-text" id="inputGroup-sizing-sm">Workout</span>
                         </div>
-                        <button className="btn btn-dark btn-sm addExerciseBtn" onClick={this.addExercise}>Add</button>
+                        <button className="btn btn-dark btn-sm addExerciseBtn" onClick={this.addExercise}>Add Exercise</button>
                     </div>
 
                     {this.state.exercises.map(exercise => (
@@ -368,11 +398,15 @@ class SubmitLift extends Component {
                             id={exercise.id}
                             name={exercise.name}
                             weight={exercise.weight}
+                            superset={exercise.superset}
+                            sets={exercise.sets}
                             reps={exercise.reps}
                             rest={exercise.rest}
                             notes={exercise.notes}
                             setName={this.setName}
                             setWeight={this.setWeight}
+                            setSuperset={this.setSuperset}
+                            setSets={this.setSets}
                             setReps={this.setReps}
                             setRest={this.setRest}
                             setNotes={this.setNotes}
