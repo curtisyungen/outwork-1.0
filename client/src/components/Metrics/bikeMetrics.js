@@ -43,13 +43,6 @@ class BikeMetrics extends Component {
             // Get total miles, total climb
             totalMiles += miles;
             totalClimb += climb;
-
-            // Get total mile pace in seconds
-            let milePace = bikes[b].milePace;
-            let paceMins = parseFloat(milePace.split(":")[0]);
-            let paceSecs = parseFloat(milePace.split(":")[1]);
-            
-            totalSecs += (paceMins * 60) + paceSecs;
         }
 
         // Get avg. miles
