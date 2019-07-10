@@ -32,19 +32,21 @@ class SwimMetrics extends Component {
         let totalTime = 0;
         let maxMiles = 0;
 
-        console.log(swims);
-        
         for (var s in swims) {
             let dist = parseFloat(swims[s].distance);
 
             totalMiles += dist;
 
-            let time = swims[s].duration;
-            let hours = time.split(":")[0];
-            let minutes = time.split(":")[1];
-            let seconds = time.split(":")[2]
+            if (maxMiles < dist) {
+                maxMiles = dist;
+            }
 
-            console.log(time, hours, minutes, seconds);
+            let time = swims[s].duration.split(":");
+            let hours = parseFloat(time[0]);
+            let minutes = parseFloat(time[1]);
+            let seconds = parseFloat(time[2]);
+
+            totalTime = (hours * 60) + minutes + Math.round(((seconds / 60) * 100) / 100);
         }
 
         this.setState({
