@@ -83,7 +83,7 @@ class RunMetrics extends Component {
         let runs = this.state.userRuns;
 
         for (var r in runs) {
-            console.log(moment.week(runs[r].date));
+            //console.log(moment.week(runs[r].date));
             console.log(runs[r].date);
         }
     }
