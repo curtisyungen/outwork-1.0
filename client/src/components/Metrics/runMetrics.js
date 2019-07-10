@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import actAPI from "../../utils/actAPI";
 // import "./metricsTable.css";
 
 class RunMetrics extends Component {
@@ -8,7 +9,58 @@ class RunMetrics extends Component {
 
         this.state = {
             userId: null,
+            userRuns: null,
+            totalMiles: null,
+            avgMilesPerWeek: null,
+            totalClimb: null,
+            avgMilePace: null,
+            avgDistance: null,
+            longestDistance: null,
         }
+    }
+
+    componentDidMount = () => {
+        this.setState({
+            userId: this.props.userId,
+            userRuns: this.props.userRuns,
+        }, () => {
+            this.getTotalMiles();
+        });
+    }
+
+    getTotalMiles = () => {
+        let runs = this.state.userRuns;
+        let miles = 0;
+
+        for (var r in runs) {
+            miles += runs[r].distance;
+        }
+
+        this.setState({
+            totalMiles: miles,
+        }, () => {
+            console.log(this.state);
+        });
+    }
+
+    getAvgMilesPerWeek = () => {
+
+    }
+
+    getTotalClimb = () => {
+
+    }
+
+    getAvgMilePace = () => {
+
+    }
+
+    getAvgDistance = () => {
+
+    }
+
+    getLongestDistance = () => {
+
     }
 
     render() {
@@ -28,7 +80,7 @@ class RunMetrics extends Component {
                     </thead>
                     <tbody>
                         <tr>
-                            <td></td>
+                            <td>{this.state.totalMiles}</td>
                             <td></td>
                             <td></td>
                             <td></td>
