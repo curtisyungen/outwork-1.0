@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import "./metricsTable.css";
+import "./metrics.css";
 
 class SwimMetrics extends Component {
 
