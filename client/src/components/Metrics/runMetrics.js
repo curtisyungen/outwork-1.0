@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./metrics.css";
 
-import moment from "moment";
+// import moment from "moment";
 
 class RunMetrics extends Component {
 
@@ -83,7 +83,7 @@ class RunMetrics extends Component {
         let runs = this.state.userRuns;
 
         for (var r in runs) {
-            //console.log(moment.week(runs[r].date));
+            // console.log(moment.week(runs[r].date));
             console.log(runs[r].date);
         }
     }
