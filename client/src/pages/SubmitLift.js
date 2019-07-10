@@ -3,7 +3,7 @@ import Container from "../components/Container/container";
 import Exercise from "../components/Exercise/exercise";
 import userAPI from "../utils/userAPI";
 import actAPI from "../utils/actAPI";
-// import "./SubmitLift.css";
+import "./SubmitLift.css";
 
 class SubmitLift extends Component {
 
@@ -19,7 +19,7 @@ class SubmitLift extends Component {
             pushups: null,
             pullups: null,
             exercises: [],
-            muscleGroups: null,
+            muscleGroups: [],
             notes: null,
         }
     }
@@ -60,10 +60,6 @@ class SubmitLift extends Component {
         });
     }
 
-    getMuscleGroups = () => {
-
-    }
-
     getPushUps = () => {
         let exercises = this.state.exercises;
         let pushups = 0;
@@ -78,9 +74,7 @@ class SubmitLift extends Component {
             }
         }
 
-        this.setState({
-            pushups: pushups,
-        });
+        return pushups;
     }
 
     getPullUps = () => {
@@ -97,9 +91,7 @@ class SubmitLift extends Component {
             }
         }
 
-        this.setState({
-            pullups: pullups,
-        });
+        return pullups;
     }
 
     addExercise = () => {
@@ -216,14 +208,9 @@ class SubmitLift extends Component {
         });
     }
 
-
     submitLift = () => {
 
         if (this.props.checkValidUser()) {
-
-            this.getPushUps();
-            this.getPullUps();
-            this.getMuscleGroups();
 
             let liftData = {
                 workoutType: "lift",
@@ -234,24 +221,43 @@ class SubmitLift extends Component {
                 location: this.state.location,
                 duration: this.state.duration,
                 generator: this.state.generator,
-                pushups: this.state.pushups,
-                pullups: this.state.pullups,
+                pushups: this.getPushUps(),
+                pullups: this.getPullUps(),
                 workout: JSON.stringify([this.state.exercises]),
                 muscleGroups: JSON.stringify(this.state.muscleGroups),
                 notes: this.state.notes,
             };
 
+            console.log(liftData);
+
             actAPI.createLift(liftData)
                 .then((res) => {
                     if (res.status === 200) {
                         alert("Workout submitted!");
-                        window.location.reload();
+                        // window.location.reload();
                     }
                     else {
                         alert("Error submitting workout.");
                     }
                 });
         }
+    }
+
+    updateMuscleGroups = (event) => {
+        const { value } = event.target;
+        let muscleGroups = this.state.muscleGroups;
+        let idx = muscleGroups.indexOf(value);
+
+        if (idx === -1) {
+            muscleGroups.push(value);
+        }
+        else {
+            muscleGroups.splice(idx, 1);
+        }
+
+        this.setState({
+            muscleGroups: muscleGroups,
+        });
     }
 
     render() {
@@ -364,6 +370,53 @@ class SubmitLift extends Component {
                             deleteExercise={this.deleteExercise}
                         />
                     ))}
+
+                    {/* MUSCLE GROUPS */}
+                    <div className="form-check">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Muscle Groups</span>
+                        </div>
+                        <div className="muscleGroup">
+                            <input className="form-check-input" type="checkbox" value="Chest" onChange={this.updateMuscleGroups}/>
+                            Chest
+                        </div>
+                        <div className="muscleGroup">
+                            <input className="form-check-input" type="checkbox" value="Shoulders" onChange={this.updateMuscleGroups}/>
+                            Shoulders
+                        </div>
+                        <div className="muscleGroup">
+                            <input className="form-check-input" type="checkbox" value="Back" onChange={this.updateMuscleGroups}/>
+                            Back
+                        </div>
+                        <div className="muscleGroup">
+                            <input className="form-check-input" type="checkbox" value="Biceps" onChange={this.updateMuscleGroups}/>
+                            Biceps
+                        </div>
+                        <div className="muscleGroup">
+                            <input className="form-check-input" type="checkbox" value="Triceps" onChange={this.updateMuscleGroups}/>
+                            Triceps
+                        </div>
+                        <div className="muscleGroup">
+                            <input className="form-check-input" type="checkbox" value="Forearms" onChange={this.updateMuscleGroups}/>
+                            Forearms
+                        </div>
+                        <div className="muscleGroup">
+                            <input className="form-check-input" type="checkbox" value="Abdominals" onChange={this.updateMuscleGroups}/>
+                            Abdominals
+                        </div>
+                        <div className="muscleGroup">
+                            <input className="form-check-input" type="checkbox" value="Quadriceps" onChange={this.updateMuscleGroups}/>
+                            Quadriceps
+                        </div>
+                        <div className="muscleGroup">
+                            <input className="form-check-input" type="checkbox" value="Hamstrings" onChange={this.updateMuscleGroups}/>
+                            Hamstrings
+                        </div>
+                        <div className="muscleGroup">
+                            <input className="form-check-input" type="checkbox" value="Calves" onChange={this.updateMuscleGroups}/>
+                            Calves
+                        </div>
+                    </div>
 
                     {/* NOTES */}
                     <div className="input-group input-group-sm mb-3">
