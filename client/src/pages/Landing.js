@@ -19,7 +19,7 @@ class Landing extends Component {
             userAPI.getUserById(userId)
                 .then((res) => {
                     if (res.data.length === 0) {
-                        this.logoutUser();
+                        this.props.logoutUser();
                         return;
                     }
                     else {

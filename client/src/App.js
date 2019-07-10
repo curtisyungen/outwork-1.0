@@ -195,6 +195,10 @@ class App extends Component {
         });
         return true;
     }
+    else {
+      this.logoutUser();
+      return false;
+    }
   }
 
   render() {
@@ -248,6 +252,7 @@ class App extends Component {
                 setRedirectToLogin={this.setRedirectToLogin}
                 setRedirectToHome={this.setRedirectToHome}
                 checkValidUser={this.checkValidUser}
+                logoutUser={this.logoutUser}
               />
             } />
 

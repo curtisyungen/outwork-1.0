@@ -122,6 +122,26 @@ class Home extends Component {
         }
     }
 
+    deleteActivity = (type, id) => {
+
+        let userId = this.state.userId;
+
+        if (type === "run") {
+            actAPI.deleteRunById(id, userId);
+        }
+        else if (type === "bike") {
+            actAPI.deleteBikeById(id, userId);
+        }
+        else if (type === "swim") {
+            actAPI.deleteSwimById(id, userId);
+        }
+        else if (type === "lift") {
+            actAPI.deleteLiftById(id, userId);
+        }
+
+        window.location.reload();
+    }
+
     render() {
         return (
             <div className="col-md-12 homePage">
@@ -135,6 +155,7 @@ class Home extends Component {
                                         <UserActivity
                                             key={Math.random() * 100000}
                                             activity={activity}
+                                            deleteActivity={this.deleteActivity}
                                         />
                                     ))
                                 ) : (
