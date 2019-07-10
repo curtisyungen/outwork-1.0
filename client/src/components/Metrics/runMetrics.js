@@ -30,27 +30,34 @@ class RunMetrics extends Component {
 
     getMetrics = () => {
         let runs = this.state.userRuns;
-        let totalMiles = 0, totalClimb = 0, totalMilePace = 0;
+        let totalMiles = 0, totalClimb = 0, totalMilePace = 0, totalSecs = 0;
         let avgMiles, maxMiles = 0, avgMilePace;
 
         for (var r in runs) {
             let miles = parseFloat(runs[r].distance);
             let climb = parseFloat(runs[r].climb);
-            let milePace = parseFloat(runs[r].milePace);
 
+            // Get max miles
             if (maxMiles < miles) {
                 maxMiles = miles;
             }
 
+            // Get total miles, total climb
             totalMiles += miles;
             totalClimb += climb;
-            totalMilePace += milePace;
 
-            console.log(milePace);
+            // Get total mile pace in seconds
+            let milePace = runs[r].milePace;
+            let paceMins = parseFloat(milePace.split(":")[0]);
+            let paceSecs = parseFloat(milePace.split(":")[1]);
+            
+            totalSecs += (paceMins * 60) + paceSecs;
+
+            console.log(paceMins, paceSecs);
         }
 
         avgMiles = totalMiles / runs.length;
-        avgMilePace = totalMilePace / runs.length;
+        avgMilePace = (totalSecs / 60) / runs.length;
 
         this.setState({
             totalMiles: totalMiles,
