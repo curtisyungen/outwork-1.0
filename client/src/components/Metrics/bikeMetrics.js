@@ -14,6 +14,7 @@ class BikeMetrics extends Component {
             totalClimb: null,
             avgMiles: null,
             maxMiles: null,
+            workouts: null,
         }
     }
 
@@ -53,6 +54,7 @@ class BikeMetrics extends Component {
             totalClimb: totalClimb,
             avgMiles: avgMiles,
             maxMiles: maxMiles,
+            workouts: bikes.length,
         });
     }
 
@@ -63,6 +65,7 @@ class BikeMetrics extends Component {
                 <table className="table table-bordered metricsTable">
                     <thead className="thead-light">
                         <tr>
+                            <th>Total Workouts</th>
                             <th>Total Miles</th>
                             <th>Avg. Miles / Week</th>
                             <th>Total Climb (ft.)</th>
@@ -72,6 +75,7 @@ class BikeMetrics extends Component {
                     </thead>
                     <tbody>
                         <tr>
+                            <td>{this.state.workouts}</td>
                             <td>{this.state.totalMiles}</td>
                             <td></td>
                             <td>{this.state.totalClimb}</td>
