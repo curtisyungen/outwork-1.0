@@ -44,7 +44,7 @@ class SwimMetrics extends Component {
         this.setState({
             totalMiles: totalMiles,
             totalTime: totalTime,
-            maxMiles = maxMiles,
+            maxMiles: maxMiles,
         });
     }
 
