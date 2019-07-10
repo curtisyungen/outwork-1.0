@@ -185,15 +185,16 @@ class App extends Component {
     if (localStorage.getItem("userId") && localStorage.getItem("userId") !== null) {
       userId = localStorage.getItem("userId");
 
-      userAPI.getUserById(userId)
+      return userAPI.getUserById(userId)
         .then((res) => {
           if (res.data.length === 0) {
             this.logoutUser();
-            return;
+            return false;
           }
-          
+          else {
+            return true;
+          }
         });
-        return true;
     }
     else {
       this.logoutUser();

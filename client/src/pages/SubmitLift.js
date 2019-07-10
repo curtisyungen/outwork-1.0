@@ -242,7 +242,7 @@ class SubmitLift extends Component {
                 .then((res) => {
                     if (res.status === 200) {
                         alert("Workout submitted!");
-                        // window.location.reload();
+                        window.location.reload();
                     }
                     else {
                         alert("Error submitting workout.");
