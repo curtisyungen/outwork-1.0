@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import actAPI from "../../utils/actAPI";
-// import "./metricsTable.css";
+import "./metrics.css";
 
 class RunMetrics extends Component {
 
@@ -55,7 +54,7 @@ class RunMetrics extends Component {
         }
 
         // Get avg. miles
-        avgMiles = totalMiles / runs.length;
+        avgMiles = Math.round((totalMiles / runs.length) * 100) /100;
 
         // Get avg. mile pace
         let addZero = "";
@@ -85,7 +84,7 @@ class RunMetrics extends Component {
         return (
             <span>
             <h4 className="metricsPageTitle">Runs</h4>
-                <table className="table table-bordered">
+                <table className="table table-bordered metricsTable">
                     <thead className="thead-light">
                         <tr>
                             <th>Total Miles</th>
