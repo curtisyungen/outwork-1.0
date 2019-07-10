@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./metrics.css";
 
+const moment = require("moment");
+
 class RunMetrics extends Component {
 
     constructor(props) {
@@ -24,6 +26,7 @@ class RunMetrics extends Component {
             userRuns: this.props.userRuns,
         }, () => {
             this.getMetrics();
+            this.getAvgMilesPerWeek();
         });
     }
 
@@ -77,7 +80,12 @@ class RunMetrics extends Component {
     }
 
     getAvgMilesPerWeek = () => {
+        let runs = this.state.userRuns;
 
+        for (var r in runs) {
+            console.log(moment.week(runs[r].date));
+            console.log(runs[r].date);
+        }
     }
 
     render() {
