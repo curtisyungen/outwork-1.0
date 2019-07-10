@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import Container from "../components/Container/container";
+import Container from "../components/Container/container";
 import userAPI from "../utils/userAPI";
 // import "./Profile.css";
 
@@ -46,15 +46,17 @@ class Profile extends Component {
 
     render() {
         return (
-            <div className="profile">
-                <div>
-                    <h4>{this.state.firstName} {this.state.lastName}</h4>
+            <Container>
+                <div className="profile">
                     <div>
-                        <p>Following: {this.state.following ? (this.state.following.length):("")}</p>
-                        <p>Followers: {this.state.followers ? (this.state.followers.length):("")}</p>
+                        <h4>{this.state.firstName} {this.state.lastName}</h4>
+                        <div>
+                            <p>Following: {this.state.following ? (this.state.following.length):("")}</p>
+                            <p>Followers: {this.state.followers ? (this.state.followers.length):("")}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </Container>
         )
     }
 }
