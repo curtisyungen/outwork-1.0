@@ -15,7 +15,7 @@ class RunMetrics extends Component {
             totalClimb: null,
             avgMilePace: null,
             avgDistance: null,
-            longestDistance: null,
+            maxDistance: null,
         }
     }
 
@@ -33,13 +33,11 @@ class RunMetrics extends Component {
         let miles = 0;
 
         for (var r in runs) {
-            miles += runs[r].distance;
+            miles += parseFloat(runs[r].distance);
         }
 
         this.setState({
             totalMiles: miles,
-        }, () => {
-            console.log(this.state);
         });
     }
 
@@ -48,7 +46,16 @@ class RunMetrics extends Component {
     }
 
     getTotalClimb = () => {
+        let runs = this.state.userRuns;
+        let climb = 0;
 
+        for (var r in runs) {
+            climb += parseFloat(runs[r].climb);
+        }
+
+        this.setState({
+            totalClimb: climb,
+        });
     }
 
     getAvgMilePace = () => {
@@ -56,11 +63,27 @@ class RunMetrics extends Component {
     }
 
     getAvgDistance = () => {
+        let runs = this.state.userRuns;
+        let totalDist = 0;
+        let maxDist = 0;
 
-    }
+        for (var r in runs) {
 
-    getLongestDistance = () => {
+            let dist = parseFloat(runs[r].distance);
 
+            if (dist > maxDist) {
+                maxDist = dist;
+            }
+
+            totalDist += dist;
+        }
+
+        let avgDist = totalDist / runs.length;
+
+        this.setState({
+            avgDistance: avgDist,
+            maxDistance: maxDist, 
+        });
     }
 
     render() {
@@ -82,10 +105,10 @@ class RunMetrics extends Component {
                         <tr>
                             <td>{this.state.totalMiles}</td>
                             <td></td>
+                            <td>{this.state.totalClimb}</td>
                             <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{this.state.avgDistance}</td>
+                            <td>{this.state.maxDistance}</td>
                         </tr>
                     </tbody>
                 </table>
