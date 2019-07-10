@@ -36,7 +36,7 @@ class RunMetrics extends Component {
         for (var r in runs) {
             let miles = parseFloat(runs[r].distance);
             let climb = parseFloat(runs[r].climb);
-            let milePace = parseFloat(runs[r].miles);
+            let milePace = parseFloat(runs[r].milePace);
 
             if (maxMiles < miles) {
                 maxMiles = miles;
