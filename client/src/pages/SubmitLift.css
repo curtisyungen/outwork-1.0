@@ -4,5 +4,9 @@
 }
 
 .submitFormSectTitle {
+    background: rgb(232, 232, 232);
+    border-radius: 4px;
+    padding: 5px;
+    text-align: center;
     width: 100%;
 }
