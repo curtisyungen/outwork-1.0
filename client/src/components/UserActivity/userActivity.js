@@ -65,6 +65,7 @@ class UserActivity extends Component {
                 shoe={activity.shoe}
                 notes={activity.notes}
                 map={activity.map}
+                deleteActivity={this.props.deleteActivity}
             />
         )
     }
@@ -87,6 +88,7 @@ class UserActivity extends Component {
                 bike={activity.bike}
                 notes={activity.notes}
                 map={activity.map}
+                deleteActivity={this.props.deleteActivity}
             />
         )
     }
@@ -106,6 +108,7 @@ class UserActivity extends Component {
                 waterType={activity.waterType}
                 swimWorkout={activity.swimWorkout}
                 notes={activity.notes}
+                deleteActivity={this.props.deleteActivity}
             />
         )
     }
@@ -126,6 +129,7 @@ class UserActivity extends Component {
                 workout={activity.workout}
                 muscleGroups={activity.muscleGroups}
                 notes={activity.notes}
+                deleteActivity={this.props.deleteActivity}
             />
         )
     }

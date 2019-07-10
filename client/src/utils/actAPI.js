@@ -19,7 +19,6 @@ export default {
     },
 
     createRun: function(runData) {
-        console.log(runData);
         return axios.post("/api/runs/createRun", {runData: runData});
     },
 
