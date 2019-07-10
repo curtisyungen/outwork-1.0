@@ -60,7 +60,7 @@ class RunMetrics extends Component {
         // Get avg. mile pace
         let addZero = "";
         let avgMilePaceMins = Math.floor((totalSecs / 60) / runs.length);
-        let avgMilePaceSecs = Math.floor(((totalSecs / 60) / runs.length) - avgMilePaceMins) * 60;
+        let avgMilePaceSecs = Math.round(((totalSecs / 60) / runs.length) - avgMilePaceMins) * 60;
 
         if (avgMilePaceSecs < 10) {
             addZero = "0";
