@@ -60,7 +60,7 @@ class SwimMetrics extends Component {
         return (
             <span>
             <h4 className="metricsPageTitle">Swims</h4>
-                <table className="table table-bordered">
+                <table className="table table-bordered metricTable">
                     <thead className="thead-light">
                         <tr>
                             <th>Total Miles</th>
