@@ -39,6 +39,12 @@ class SwimMetrics extends Component {
 
             totalMiles += dist;
 
+            let time = swims[s].duration;
+            let hours = time.split(":")[0];
+            let minutes = time.split(":")[1];
+            let seconds = time.split(":")[2]
+
+            console.log(time, hours, minutes, seconds);
         }
 
         this.setState({
