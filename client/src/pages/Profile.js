@@ -22,7 +22,7 @@ class Profile extends Component {
 
         let userId;
         if (localStorage.getItem("userId") && localStorage.getItem("userId") !== null) {
-            userId = localStorage.getItem("user");
+            userId = localStorage.getItem("userId");
         }
 
         this.setState({
