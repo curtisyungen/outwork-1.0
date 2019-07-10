@@ -285,6 +285,7 @@ class App extends Component {
             {/* Profile Page */}
             <Route exact path="/profile" render={() =>
               <Profile
+                userId={this.state.userId}
                 checkValidUser={this.checkValidUser}
               />
             } />
