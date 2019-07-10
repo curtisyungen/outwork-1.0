@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./metrics.css";
 
-const moment = require("moment");
+import moment from "moment";
 
 class RunMetrics extends Component {
 
