@@ -387,7 +387,7 @@ class SubmitLift extends Component {
                     {/* WORKOUT */}
                     <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend submitFormSectTitle">
-                            <span className="input-group-text" id="inputGroup-sizing-sm">Workout</span>
+                            Workout
                         </div>
                         <div>
                             <button className="btn btn-dark btn-sm addExerciseBtn" onClick={this.addExercise}>Add Exercise</button>
@@ -419,7 +419,7 @@ class SubmitLift extends Component {
                     {/* MUSCLE GROUPS */}
                     <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend submitFormSectTitle">
-                            <span className="input-group-text" id="inputGroup-sizing-sm">Muscle Groups</span>
+                            Muscle Groups
                         </div>
                     </div>
 
