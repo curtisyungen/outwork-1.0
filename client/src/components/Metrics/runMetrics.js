@@ -14,8 +14,8 @@ class RunMetrics extends Component {
             avgMilesPerWeek: null,
             totalClimb: null,
             avgMilePace: null,
-            avgDistance: null,
-            maxDistance: null,
+            avgMiles: null,
+            maxMiles: null,
         }
     }
 
@@ -24,68 +24,42 @@ class RunMetrics extends Component {
             userId: this.props.userId,
             userRuns: this.props.userRuns,
         }, () => {
-            this.getTotalMiles();
-            this.getTotalClimb();
-            this.getAvgAndMaxDist();
+            this.getMetrics();
         });
     }
 
-    getTotalMiles = () => {
+    getMetrics = () => {
         let runs = this.state.userRuns;
-        let miles = 0;
+        let totalMiles = 0, totalClimb = 0, totalMilePace = 0;
+        let avgMiles, maxMiles = 0, avgMilePace;
 
         for (var r in runs) {
-            miles += parseFloat(runs[r].distance);
+            let miles = parseFloat(runs[r].distance);
+            let climb = parseFloat(runs[r].climb);
+            let milePace = parseFloat(runs[r].milePace);
+
+            if (maxMiles < miles) {
+                maxMiles = miles;
+            }
+
+            totalMiles += miles;
+            totalClimb += climb;
+            totalMilePace += milePace;
         }
 
+        avgMiles = totalMiles / runs.length;
+
         this.setState({
-            totalMiles: miles,
+            totalMiles: totalMiles,
+            totalClimb: totalClimb,
+            avgMiles: avgMiles,
+            maxMiles: maxMiles,
+            avgMilePace: avgMilePace,
         });
     }
 
     getAvgMilesPerWeek = () => {
 
-    }
-
-    getTotalClimb = () => {
-        let runs = this.state.userRuns;
-        let climb = 0;
-
-        for (var r in runs) {
-            climb += parseFloat(runs[r].climb);
-        }
-
-        this.setState({
-            totalClimb: climb,
-        });
-    }
-
-    getAvgMilePace = () => {
-
-    }
-
-    getAvgAndMaxDist = () => {
-        let runs = this.state.userRuns;
-        let totalDist = 0;
-        let maxDist = 0;
-
-        for (var r in runs) {
-
-            let dist = parseFloat(runs[r].distance);
-
-            if (dist > maxDist) {
-                maxDist = dist;
-            }
-
-            totalDist += dist;
-        }
-
-        let avgDist = totalDist / runs.length;
-
-        this.setState({
-            avgDistance: avgDist,
-            maxDistance: maxDist, 
-        });
     }
 
     render() {
@@ -108,9 +82,9 @@ class RunMetrics extends Component {
                             <td>{this.state.totalMiles}</td>
                             <td></td>
                             <td>{this.state.totalClimb}</td>
-                            <td></td>
-                            <td>{this.state.avgDistance}</td>
-                            <td>{this.state.maxDistance}</td>
+                            <td>{this.state.avgMilePace}</td>
+                            <td>{this.state.avgMiles}</td>
+                            <td>{this.state.maxMiles}</td>
                         </tr>
                     </tbody>
                 </table>
