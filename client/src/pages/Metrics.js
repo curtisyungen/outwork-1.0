@@ -13,6 +13,7 @@ class Metrics extends Component {
         super(props);
 
         this.state = {
+            userId: null,
             firstName: null,
             userRuns: null,
             userBikes: null,
@@ -83,6 +84,7 @@ class Metrics extends Component {
             <Container>
                 {this.state.userRuns && this.state.userRuns.length > 0 ? (
                     <RunMetrics 
+                        userId={this.state.userId}
                         userRuns={this.state.userRuns}
                     />
                 ) : (
