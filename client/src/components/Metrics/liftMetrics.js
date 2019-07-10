@@ -33,6 +33,7 @@ class LiftMetrics extends Component {
 
         for (var l in lifts) {
 
+            // Get total time
             let time = lifts[l].duration.split(":");
             let hours = parseFloat(time[0]);
             let minutes = parseFloat(time[1]);
@@ -40,8 +41,15 @@ class LiftMetrics extends Component {
 
             totalTime += (hours * 60) + minutes + Math.round(seconds / 60);
 
-            pushups += parseFloat(lifts[l].pushups);
-            pullups += parseFloat(lifts[l].pullups);
+            // Get total push-ups
+            if (lifts[l].pushups) {
+                pushups += parseFloat(lifts[l].pushups);
+            }
+
+            // Get total pull-ups
+            if (lifts[l].pullups) {
+                pullups += parseFloat(lifts[l].pullups);
+            }
         }
 
         this.setState({

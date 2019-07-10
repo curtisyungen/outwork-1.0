@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./metrics.css";
 
+import moment from "moment";
+
 class BikeMetrics extends Component {
 
     constructor(props) {
@@ -24,6 +26,7 @@ class BikeMetrics extends Component {
             userBikes: this.props.userBikes,
         }, () => {
             this.getMetrics();
+            this.getAvgMilesPerWeek();
         });
     }
 
@@ -58,6 +61,33 @@ class BikeMetrics extends Component {
         });
     }
 
+    getAvgMilesPerWeek = () => {
+        let bikes = this.state.userBikes;
+        let year = [];
+        for (var i=0; i<52; i++) {
+            year.push(0);
+        }
+
+        let miles = 0;
+        let week;
+        let totalMiles = 0;
+        for (var r in bikes) {
+            miles = parseFloat(bikes[r].distance);
+            week = moment(bikes[r].date).week();
+            year[week] += miles;
+
+            totalMiles += miles;
+        }
+
+        let avgMiles = 0;
+        let today = new Date();
+        avgMiles = Math.round((totalMiles / moment(today).week()) * 100) / 100;
+
+        this.setState({
+            avgMilesPerWeek: avgMiles,
+        });
+    }
+
     render() {
         return (
             <span>
@@ -77,7 +107,7 @@ class BikeMetrics extends Component {
                         <tr>
                             <td>{this.state.workouts}</td>
                             <td>{this.state.totalMiles}</td>
-                            <td></td>
+                            <td>{this.state.avgMilesPerWeek}</td>
                             <td>{this.state.totalClimb}</td>
                             <td>{this.state.avgMiles}</td>
                             <td>{this.state.maxMiles}</td>

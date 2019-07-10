@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./metrics.css";
 
-// import moment from "moment";
+import moment from "moment";
 
 class RunMetrics extends Component {
 
@@ -83,11 +83,29 @@ class RunMetrics extends Component {
 
     getAvgMilesPerWeek = () => {
         let runs = this.state.userRuns;
-
-        for (var r in runs) {
-            // console.log(moment.week(runs[r].date));
-            console.log(runs[r].date);
+        let year = [];
+        for (var i=0; i<52; i++) {
+            year.push(0);
         }
+
+        let miles = 0;
+        let week;
+        let totalMiles = 0;
+        for (var r in runs) {
+            miles = parseFloat(runs[r].distance);
+            week = moment(runs[r].date).week();
+            year[week] += miles;
+
+            totalMiles += miles;
+        }
+
+        let avgMiles = 0;
+        let today = new Date();
+        avgMiles = Math.round((totalMiles / moment(today).week()) * 100) / 100;
+
+        this.setState({
+            avgMilesPerWeek: avgMiles,
+        });
     }
 
     render() {
@@ -110,7 +128,7 @@ class RunMetrics extends Component {
                         <tr>
                             <td>{this.state.workouts}</td>
                             <td>{this.state.totalMiles}</td>
-                            <td></td>
+                            <td>{this.state.avgMilesPerWeek}</td>
                             <td>{this.state.totalClimb}</td>
                             <td>{this.state.avgMilePace}</td>
                             <td>{this.state.avgMiles}</td>
