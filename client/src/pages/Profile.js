@@ -20,8 +20,13 @@ class Profile extends Component {
     componentDidMount = () => {
         this.props.checkValidUser();
 
+        let userId;
+        if (localStorage.getItem("userId") && localStorage.getItem("userId") !== null) {
+            userId = localStorage.getItem("user");
+        }
+
         this.setState({
-            userId: this.props.userId,
+            userId: userId,
         }, () => {
             this.getUser();
         });
@@ -30,8 +35,6 @@ class Profile extends Component {
     getUser = () => {
         userAPI.getUserById(this.state.userId)
             .then((res) => {
-                console.log(res);
-
                 this.setState({
                     firstName: res.data[0].firstName,
                     lastName: res.data[0].lastName,
