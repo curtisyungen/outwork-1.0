@@ -36,7 +36,7 @@ class RunMetrics extends Component {
         for (var r in runs) {
             let miles = parseFloat(runs[r].distance);
             let climb = parseFloat(runs[r].climb);
-            let milePace = parseFloat(runs[r].milePace);
+            let milePace = parseFloat(runs[r].miles);
 
             if (maxMiles < miles) {
                 maxMiles = miles;
@@ -45,9 +45,12 @@ class RunMetrics extends Component {
             totalMiles += miles;
             totalClimb += climb;
             totalMilePace += milePace;
+
+            console.log(milePace);
         }
 
         avgMiles = totalMiles / runs.length;
+        avgMilePace = totalMilePace / runs.length;
 
         this.setState({
             totalMiles: totalMiles,
