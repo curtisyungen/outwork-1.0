@@ -5,7 +5,7 @@
     line-height: 1.0;
     margin: 2px 0px;
     max-height: 50px;
-    width: 600px;
+    /* width: 600px; */
 }
 
 .cell {
@@ -22,18 +22,22 @@
 
 .bikeIcon {
     background: rgb(255, 216, 116);
+    padding: 10px;
 }
 
 .liftIcon {
     background: rgb(255, 191, 191);
+    padding: 10px;
 }
 
 .runIcon {
     background: lightgreen;
+    padding: 10px;
 }
 
 .swimIcon {
     background: lightblue;
+    padding: 10px;
 }
 
 .runDetails {

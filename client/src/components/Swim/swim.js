@@ -43,18 +43,14 @@ class Swim extends Component {
     render() {
         return (
             <span>
-                <table className="table table-hover table-bordered actCard" onClick={this.openModal}>
-                    <tbody>
-                        <tr>
-                            <td className="swimIcon"><FontAwesomeIcon className="fa-2x icon" icon={faSwimmer} /></td>
-                            <td className="cell">{this.props.firstName} {this.props.lastName}</td>
-                            <td className="cell">{this.props.date}</td>
-                            <td className="cell">{this.props.distance} miles</td>
-                            <td className="cell">{this.props.duration}</td>
-                            <td className="cell">{this.props.waterType}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div className="row actCard" onClick={this.openModal}>
+                    <div className="swimIcon"><FontAwesomeIcon className="fa-2x icon" icon={faSwimmer} /></div>
+                    <div className="col-md-2 cell">{this.props.firstName} {this.props.lastName}</div>
+                    <div className="col-md-2 cell">{this.props.date}</div>
+                    <div className="col-md-2 cell">{this.props.distance} miles</div>
+                    <div className="col-md-2 cell">{this.props.duration}</div>
+                    <div className="col-md-2 cell">{this.props.waterType}</div>
+                </div>
 
 
                 {this.state.openModal ? (

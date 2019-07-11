@@ -3,6 +3,7 @@ import React, { Component } from "react";
 // import Bike from "../components/Bike/bike";
 // import Swim from "../components/Swim/swim";
 // import Lift from "../components/Lift/lift";
+import Container from "../components/Container/container";
 import UserActivity from "../components/UserActivity/userActivity";
 import userAPI from "../utils/userAPI";
 import actAPI from "../utils/actAPI";
@@ -144,7 +145,8 @@ class Home extends Component {
 
     render() {
         return (
-            <div className="col-md-12 homePage">
+            <Container>
+            <div className="homePage">
                 <span>
                     {this.state.loadingActivity ? (
                         <p className="text-center">Loading activity...</p>
@@ -165,6 +167,7 @@ class Home extends Component {
                         )}
                 </span>
             </div>
+            </Container>
         )
     }
 }
