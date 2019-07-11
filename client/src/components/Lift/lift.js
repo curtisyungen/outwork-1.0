@@ -78,10 +78,10 @@ class Lift extends Component {
                     <div className="cell"><span className="cellDesc">Date</span>{this.props.date}</div>
                     <div className="cell"><span className="cellDesc">Generator</span>{this.state.generatorText}</div>
                     <div className="cell"><span className="cellDesc">Time</span>{this.props.duration}</div>
-                    <div className="cell"><span className="cellDesc">Muscle Grps.</span>{this.props.muscleGroups}</div>
-                    <div className="cell"><span className="cellDesc">Push-Ups</span>{this.state.pushups}</div>
-                    <div className="cell"><span className="cellDesc">Pull-Ups</span>{this.props.pullups}</div>
-                    <div className="cell"><span className="cellDesc">Notes</span>{this.props.notes}</div>
+                    <div className="cell cell5"><span className="cellDesc">Muscle Grps.</span>{this.props.muscleGroups}</div>
+                    <div className="cell cell6"><span className="cellDesc">Push-Ups</span>{this.state.pushups}</div>
+                    <div className="cell cell7"><span className="cellDesc">Pull-Ups</span>{this.props.pullups}</div>
+                    <div className="cell cell8 actNotes"><span className="cellDesc">Notes</span>{this.props.notes}</div>
                 </div>
 
                 {this.state.openModal ? (
