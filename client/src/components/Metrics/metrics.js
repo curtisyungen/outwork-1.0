@@ -40,8 +40,6 @@ class Metrics extends Component {
             this.getUserSwims();
             this.getUserLifts();
         });
-
-        window.addEventListener("resize", this.getScreenSize());
     }
 
     componentDidUpdate = () => {
