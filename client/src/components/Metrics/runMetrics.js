@@ -112,30 +112,25 @@ class RunMetrics extends Component {
         return (
             <span>
             <h4 className="metricsPageTitle">Runs</h4>
-                <table className="table table-bordered metricsTable">
-                    <thead className="thead-light">
-                        <tr>
-                            <th>Total Runs</th>
-                            <th>Total Miles</th>
-                            <th>Avg. Miles / Week</th>
-                            <th>Total Climb (ft.)</th>
-                            <th>Avg. Mile Pace</th>
-                            <th>Avg. Distance (mi.)</th>
-                            <th>Longest Distance (mi.)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{this.state.workouts}</td>
-                            <td>{this.state.totalMiles}</td>
-                            <td>{this.state.avgMilesPerWeek}</td>
-                            <td>{this.state.totalClimb}</td>
-                            <td>{this.state.avgMilePace}</td>
-                            <td>{this.state.avgMiles}</td>
-                            <td>{this.state.maxMiles}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div className="d-flex p-2">
+                    <div className="d-inline-flex p2">Total Runs</div>
+                    <div className="d-inline-flex p2">Total Miles</div>
+                    <div className="d-inline-flex p2">Avg. Miles / Week</div>
+                    <div className="d-inline-flex p2">Total Climb (ft.)</div>
+                    <div className="d-inline-flex p2">Avg. Mile Pace</div>
+                    <div className="d-inline-flex p2">Avg. Distance (mi.)</div>
+                    <div className="d-inline-flex p2">Longest Distance (mi.)</div>
+                </div>
+
+                <div>
+                    <div className="d-inline-flex p2">{this.state.workouts}</div>
+                    <div className="d-inline-flex p2">{this.state.totalMiles}</div>
+                    <div className="d-inline-flex p2">{this.state.avgMilesPerWeek}</div>
+                    <div className="d-inline-flex p2">{this.state.totalClimb}</div>
+                    <div className="d-inline-flex p2">{this.state.avgMilePace}</div>
+                    <div className="d-inline-flex p2">{this.state.avgMiles}</div>
+                    <div className="d-inline-flex p2">{this.state.maxMiles}</div>
+                </div>
             </span>
         )
     }
