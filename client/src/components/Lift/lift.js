@@ -72,18 +72,14 @@ class Lift extends Component {
     render() {
         return (
             <span>
-                <table className="table table-hover table-bordered actCard" onClick={this.openModal}>
-                    <tbody>
-                        <tr>
-                            <td className="liftIcon"><FontAwesomeIcon className="fa-2x icon" icon={faDumbbell} /></td>
-                            <td className="cell">{this.props.firstName} {this.props.lastName}</td>
-                            <td className="cell">{this.props.date}</td>
-                            <td className="cell">{this.state.generatorText}</td>
-                            <td className="cell">{this.props.duration}</td>
-                            <td className="cell">{this.props.muscleGroups}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div className="row actCard" onClick={this.openModal}>
+                    <div className="liftIcon"><FontAwesomeIcon className="fa-2x icon" icon={faDumbbell} /></div>
+                    <div className="col-md-2 cell">{this.props.firstName} {this.props.lastName}</div>
+                    <div className="col-md-2 cell">{this.props.date}</div>
+                    <div className="col-md-2 cell">{this.state.generatorText}</div>
+                    <div className="col-md-2 cell">{this.props.duration}</div>
+                    <div className="col-md-2 cell">{this.props.muscleGroups}</div>
+                </div>
 
                 {this.state.openModal ? (
                     <Modal 

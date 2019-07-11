@@ -12,7 +12,6 @@ import SubmitBike from "./pages/SubmitBike";
 import SubmitSwim from "./pages/SubmitSwim";
 import SubmitLift from "./pages/SubmitLift";
 import Generator from "./pages/Generator";
-import Metrics from "./pages/Metrics";
 import FindUsers from "./pages/FindUsers";
 import Settings from "./pages/Settings";
 import Error from "./pages/Error";
@@ -35,14 +34,18 @@ class App extends Component {
 
   componentDidMount = () => {
 
-    let loginStatus;
+    let loginStatus = false;
     if (localStorage.getItem("isLoggedIn")) {
       loginStatus = JSON.parse(localStorage.getItem("isLoggedIn"));
-
-      this.setState({
-        isLoggedIn: loginStatus,
-      });
     }
+    
+    this.setState({
+      isLoggedIn: loginStatus,
+      redirectToSignUp: false,
+      redirectToLogin: false,
+      redirectToHome: false,
+      redirectToLanding: false,
+    });
 
     let userId;
     if (localStorage.getItem("userId") && localStorage.getItem("userId") !== null) {
@@ -54,23 +57,12 @@ class App extends Component {
             return;
           }
           else {
-            this.setState({
-              userId: userId,
-              firstName: res.data[0].firstName,
-              lastName: res.data[0].lastName,
-              followers: JSON.parse(res.data[0].followers),
-              following: JSON.parse(res.data[0].following),
-            });
+            localStorage.setItem("userId", res.data[0].userId);
+            localStorage.setItem("fn", res.data[0].firstName);
+            localStorage.setItem("ln", res.data[0].lastName);
           }
         });
     }
-
-    this.setState({
-      redirectToSignUp: false,
-      redirectToLogin: false,
-      redirectToHome: false,
-      redirectToLanding: false,
-    });
   }
 
   // REDIRECTS
@@ -307,11 +299,6 @@ class App extends Component {
             <Route exact path="/profile" render={() =>
               <Profile
                 checkValidUser={this.checkValidUser}
-                userId={this.state.userId}
-                firstName={this.state.firstName}
-                lastName={this.state.lastName}
-                followers={this.state.followers}
-                following={this.state.following}
               />
             } />
 
@@ -353,13 +340,6 @@ class App extends Component {
             {/* Generator Page */}
             <Route exact path="/generator" render={() =>
               <Generator
-                checkValidUser={this.checkValidUser}
-              />
-            } />
-
-            {/* Metrics Page */}
-            <Route exact path="/metrics" render={() =>
-              <Metrics
                 checkValidUser={this.checkValidUser}
               />
             } />

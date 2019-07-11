@@ -11,10 +11,8 @@ class Navbar extends Component {
                 [
                     "/home", 
                     "/profile", 
-                    "/myactivity", 
                     "/logactivity", 
                     "/generator", 
-                    "/metrics", 
                     "/findusers", 
                     "/settings",
                     "/run",
@@ -43,16 +41,10 @@ class Navbar extends Component {
                             <a className="nav-link" href="/profile">Profile</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/myActivity">My Activity</a>
-                        </li>
-                        <li className="nav-item">
                             <a className="nav-link" href="/logActivity">Log Activity</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="/generator">Generator</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/metrics">Metrics</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="/findUsers">Users</a>
