@@ -16,6 +16,7 @@ import FindUsers from "./pages/FindUsers";
 import Settings from "./pages/Settings";
 import Error from "./pages/Error";
 import userAPI from "./utils/userAPI";
+import actAPI from "./utils/actAPI";
 import './App.css';
 
 class App extends Component {
@@ -38,7 +39,7 @@ class App extends Component {
     if (localStorage.getItem("isLoggedIn")) {
       loginStatus = JSON.parse(localStorage.getItem("isLoggedIn"));
     }
-    
+
     this.setState({
       isLoggedIn: loginStatus,
       redirectToSignUp: false,
@@ -50,7 +51,7 @@ class App extends Component {
     let userId;
     if (localStorage.getItem("userId") && localStorage.getItem("userId") !== null) {
       userId = localStorage.getItem("userId");
-      userAPI.getUserById(userId) 
+      userAPI.getUserById(userId)
         .then((res) => {
           if (res.data.length === 0) {
             this.logoutUser();
@@ -214,6 +215,89 @@ class App extends Component {
     }
   }
 
+  getUserActivity = (userId) => {
+
+    this.setState({
+      loadingActivity: true,
+    }, () => {
+
+      let allActivity = this.state.allActivity;
+
+      // GET RUNS
+      actAPI.getRunsByUser(userId)
+        .then((res) => {
+          for (var item in res.data) {
+            allActivity.push(res.data[item]);
+          };
+
+          // GET BIKES
+          actAPI.getBikesByUser(userId)
+            .then((res) => {
+              for (var item in res.data) {
+                allActivity.push(res.data[item]);
+              };
+
+              // GET SWIMS
+              actAPI.getSwimsByUser(userId)
+                .then((res) => {
+                  for (var item in res.data) {
+                    allActivity.push(res.data[item]);
+                  };
+
+                  // GET LIFTS
+                  actAPI.getLiftsByUser(userId)
+                    .then((res) => {
+                      for (var item in res.data) {
+                        allActivity.push(res.data[item]);
+                      };
+
+                      // SORT BY DATE
+                      this.sortByDate(allActivity);
+                    });
+                });
+            });
+        });
+    });
+  }
+
+  sortByDate = (allActivity) => {
+    allActivity.sort(this.compare);
+
+    this.setState({
+      allActivity: allActivity,
+      loadingActivity: false,
+    });
+  }
+
+  compare = (a, b) => {
+    if (a.date === b.date) {
+      return 0;
+    }
+    else {
+      return (a.date > b.date) ? -1 : 1;
+    }
+  }
+
+  deleteActivity = (type, id) => {
+
+    let userId = this.state.userId;
+
+    if (type === "run") {
+      actAPI.deleteRunById(id, userId);
+    }
+    else if (type === "bike") {
+      actAPI.deleteBikeById(id, userId);
+    }
+    else if (type === "swim") {
+      actAPI.deleteSwimById(id, userId);
+    }
+    else if (type === "lift") {
+      actAPI.deleteLiftById(id, userId);
+    }
+
+    window.location.reload();
+  }
+
   render() {
     return (
       <Router>
@@ -292,6 +376,8 @@ class App extends Component {
               <Home
                 updateParentState={this.updateParentState}
                 checkValidUser={this.checkValidUser}
+                getUserActivity={this.getUserActivity}
+                allActivity={this.state.allActivity}
               />
             } />
 
