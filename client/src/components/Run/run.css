@@ -1,18 +1,40 @@
 .actCard {
-    border: 0px;
+    border: 1px solid lightgray;;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 13px;
+    height: 50px;
     line-height: 1.0;
     margin: 2px 0px;
-    max-height: 50px;
     /* width: 600px; */
 }
 
+.actCard:hover {
+    background: rgb(242, 242, 242);
+}
+
 .cell {
-    max-width: 120px !important;
-    min-width: 120px !important;
-    vertical-align: middle !important;
-    width: 120px;
+    border-right: 1px solid lightgray;
+    min-width: 100px;
+    max-width: 100px;
+    padding-top: 15px;
+}
+
+.cellDesc {
+    font-size: 12px;
+    height: 100%;
+    margin: 0;
+    margin-left: -15px;
+    margin-top: -15px;
+    opacity: 0;
+    padding: 0;
+    padding-right: 5px;
+    position: absolute;
+    text-align: left;
+    width: 100%;
+}
+
+.cellDesc:hover {
+    opacity: 0.5;
 }
 
 .icon {

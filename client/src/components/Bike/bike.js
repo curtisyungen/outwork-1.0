@@ -45,11 +45,11 @@ class Bike extends Component {
             <span>
                 <div className="row actCard" onClick={this.openModal}>
                     <div className="bikeIcon"><FontAwesomeIcon className="fa-2x icon" icon={faBiking} /></div>
-                    <div className="col-md-2 cell">{this.props.firstName} {this.props.lastName}</div>
-                    <div className="col-md-2 cell">{this.props.date}</div>
-                    <div className="col-md-2 cell">{this.props.distance} miles</div>
-                    <div className="col-md-2 cell">{this.props.duration}</div>
-                    <div className="col-md-2 cell">{this.props.location}</div>
+                    <div className="col-md-2 cell"><span className="cellDesc">Name</span>{this.props.firstName}</div>
+                    <div className="col-md-2 cell"><span className="cellDesc">Date</span>{this.props.date}</div>
+                    <div className="col-md-2 cell"><span className="cellDesc">Miles</span>{this.props.distance} miles</div>
+                    <div className="col-md-2 cell"><span className="cellDesc">Time</span>{this.props.duration}</div>
+                    <div className="col-md-2 cell"><span className="cellDesc">Location</span>{this.props.location}</div>
                 </div>  
 
                 {this.state.openModal ? (
