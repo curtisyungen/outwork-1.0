@@ -30,8 +30,17 @@ class Home extends Component {
             let userId = localStorage.getItem("userId");
             this.setState({
                 userId: userId,
+                allActivity: this.props.allActivity,
             }, () => {
                 this.getUserById();
+            });
+        }
+    }
+
+    componentDidUpdate = (prevProps, prevState) => {
+        if (this.props !== this.state) {
+            this.setState({
+                allActivity: this.props.allActivity,
             });
         }
     }
@@ -49,98 +58,15 @@ class Home extends Component {
                     following: following,
                 }, () => {
                     // Get user's activity
-                    this.getUserActivity(this.state.userId);
+                    this.props.getUserActivity(this.state.userId);
 
                     // Get following's activity
                     for (var f in following) {
-                        this.getUserActivity(following[f]);
+                        this.props.getUserActivity(following[f]);
                     }
                 });
 
             });
-    }
-
-    getUserActivity = (userId) => {
-
-        this.setState({
-            loadingActivity: true,
-        }, () => {
-
-            let allActivity = this.state.allActivity;
-
-            // GET RUNS
-            actAPI.getRunsByUser(userId)
-                .then((res) => {
-                    for (var item in res.data) {
-                        allActivity.push(res.data[item]);
-                    };
-
-                    // GET BIKES
-                    actAPI.getBikesByUser(userId)
-                        .then((res) => {
-                            for (var item in res.data) {
-                                allActivity.push(res.data[item]);
-                            };
-
-                            // GET SWIMS
-                            actAPI.getSwimsByUser(userId)
-                                .then((res) => {
-                                    for (var item in res.data) {
-                                        allActivity.push(res.data[item]);
-                                    };
-
-                                    // GET LIFTS
-                                    actAPI.getLiftsByUser(userId)
-                                        .then((res) => {
-                                            for (var item in res.data) {
-                                                allActivity.push(res.data[item]);
-                                            };
-
-                                            // SORT BY DATE
-                                            this.sortByDate(allActivity);
-                                        });
-                                });
-                        });
-                });
-        });
-    }
-
-    sortByDate = (allActivity) => {
-        allActivity.sort(this.compare);
-
-        this.setState({
-            allActivity: allActivity,
-            loadingActivity: false,
-        });
-    }
-
-    compare = (a, b) => {
-        if (a.date === b.date) {
-            return 0;
-        }
-        else {
-            return (a.date > b.date) ? -1 : 1;
-        }
-    }
-
-    deleteActivity = (type, id) => {
-
-        let userId = this.state.userId;
-
-        if (type === "run") {
-            actAPI.deleteRunById(id, userId);
-        }
-        else if (type === "bike") {
-            actAPI.deleteBikeById(id, userId);
-        }
-        else if (type === "swim") {
-            actAPI.deleteSwimById(id, userId);
-        }
-        else if (type === "lift") {
-            actAPI.deleteLiftById(id, userId);
-        }
-
-        window.location.reload();
     }
 
     render() {
