@@ -83,6 +83,14 @@ class SwimMetrics extends Component {
                         <div className="metricTitle">Longest Distance (mi.)</div>
                         <div>{this.state.maxMiles}</div>
                     </div>
+                    <div className="metric">
+                        <div className="metricTitle">Metric</div>
+                        <div></div>
+                    </div>
+                    <div className="metric">
+                        <div className="metricTitle">Metric</div>
+                        <div></div>
+                    </div>
                 </div>
             </span>
         )

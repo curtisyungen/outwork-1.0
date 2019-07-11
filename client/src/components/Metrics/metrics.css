@@ -1,8 +1,16 @@
 .metric {
     border: 1px solid lightgray;
+    border-right: 0px;
     font-size: 13px;
-    min-width: 150px;
     padding: 2px;
     text-align: center;
-    width: auto;
+    width: 14.28%;
+}
+
+.metric:last-child {
+    border-right: 1px solid lightgray;
+}
+
+.metricTitle {
+    font-weight: 700;
 }

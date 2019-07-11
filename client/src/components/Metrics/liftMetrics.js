@@ -81,6 +81,18 @@ class LiftMetrics extends Component {
                         <div className="metricTitle">Total Pull-Ups</div>
                         <div>{this.state.pullups}</div>
                     </div>
+                    <div className="metric">
+                        <div className="metricTitle">Metric</div>
+                        <div></div>
+                    </div>
+                    <div className="metric">
+                        <div className="metricTitle">Metric</div>
+                        <div></div>
+                    </div>
+                    <div className="metric">
+                        <div className="metricTitle">Metric</div>
+                        <div></div>
+                    </div>
                 </div>
             </span>
         )
