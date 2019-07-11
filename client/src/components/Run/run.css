@@ -12,6 +12,11 @@
     background: rgb(242, 242, 242);
 }
 
+.actNotes {
+    min-width: 200px;
+    max-width: 200px;
+}
+
 .cell {
     border-right: 1px solid lightgray;
     min-width: 100px;
@@ -65,4 +70,13 @@
 .runDetails {
     font-size: 13px;
     width: auto;
+}
+
+@media only screen and (max-width: 520px) {
+    .cell5,
+    .cell6, 
+    .cell7, 
+    .cell8 {
+        display: none;
+    }
 }
