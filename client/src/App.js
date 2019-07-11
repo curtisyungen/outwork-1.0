@@ -383,7 +383,7 @@ class App extends Component {
                 checkValidUser={this.checkValidUser}
                 getUserActivity={this.getUserActivity}
                 allActivity={this.state.allActivity}
-                deleteActivity={this.state.deleteActivity}
+                deleteActivity={this.deleteActivity}
               />
             } />
 
@@ -393,7 +393,7 @@ class App extends Component {
                 checkValidUser={this.checkValidUser}
                 getUserActivity={this.getUserActivity}
                 allActivity={this.state.allActivity}
-                deleteActivity={this.state.deleteActivity}
+                deleteActivity={this.deleteActivity}
               />
             } />
 
