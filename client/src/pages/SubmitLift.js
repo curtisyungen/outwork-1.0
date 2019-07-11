@@ -254,6 +254,19 @@ class SubmitLift extends Component {
 
         if (this.props.checkValidUser()) {
 
+            let generator = "Standard";
+            switch (this.state.generator) {
+                case "1": generator = "Baby"; break;
+                case "2": generator = "Easy"; break;
+                case "3": generator = "Average"; break;
+                case "4": generator = "Superior"; break;
+                case "5": generator = "Hero"; break;
+                case "6": generator = "Superman"; break;
+                case "7": generator = "Rogan"; break;
+                case "8": generator = "Goggins"; break;
+                default: generator = "Standard";
+            }
+
             let liftData = {
                 workoutType: "lift",
                 userId: this.state.userId,
@@ -262,7 +275,7 @@ class SubmitLift extends Component {
                 date: this.state.date,
                 location: this.state.location,
                 duration: this.state.duration,
-                generator: this.state.generator,
+                generator: generator,
                 pushups: this.getPushUps(),
                 pullups: this.getPullUps(),
                 workout: JSON.stringify([this.state.exercises]),

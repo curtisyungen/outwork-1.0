@@ -223,7 +223,19 @@ class Workout extends Component {
         let confirm = window.confirm("Workout complete?");
 
         if (confirm) {
-            sessionStorage.setItem("workout", JSON.stringify(this.state.sets));
+
+            let generator = "Standard";
+            switch (this.props.difficulty) {
+                case "1": generator = "Baby"; break;
+                case "2": generator = "Easy"; break;
+                case "3": generator = "Average"; break;
+                case "4": generator = "Superior"; break;
+                case "5": generator = "Hero"; break;
+                case "6": generator = "Superman"; break;
+                case "7": generator = "Rogan"; break;
+                case "8": generator = "Goggins"; break;
+                default: generator = "Standard";
+            }
 
             let liftData = {
                 workoutType: "lift",
@@ -233,7 +245,7 @@ class Workout extends Component {
                 date: this.props.date,
                 location: this.props.location,
                 duration: this.props.duration,
-                generator: this.props.difficulty,
+                generator: generator,
                 pushups: null,
                 pullups: null,
                 workout: JSON.stringify(this.state.sets),
