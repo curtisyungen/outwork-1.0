@@ -13,6 +13,9 @@ class Metrics extends Component {
         super(props);
 
         this.state = {
+            screenWidth: null,
+            screenHeight: null,
+            flexDir: null,
             userId: null,
             firstName: null,
             userRuns: null,
@@ -32,6 +35,7 @@ class Metrics extends Component {
             firstName: firstName,
             userId: userId,
         }, () => {
+            this.getScreenSize();
             this.getUserRuns();
             this.getUserBikes();
             this.getUserSwims();
@@ -41,6 +45,29 @@ class Metrics extends Component {
 
     componentDidUpdate = () => {
         // this.props.checkValidUser();
+    }
+
+    getScreenSize = () => {
+        let width = window.innerWidth
+            || document.documentElement.clientWidth
+            || document.body.clientWidth;
+
+        let height = window.innerHeight
+            || document.documentElement.clientHeight
+            || document.body.clientHeight;
+
+        let flexDir = "row";
+        if (width <= 420) {
+            flexDir = "column";
+        }
+
+        this.setState({
+            screenWidth: width,
+            screenHeight: height,
+            flexDir: flexDir,
+        }, () => {
+            console.log(flexDir, width, height);
+        });
     }
 
     getUserRuns = () => {
@@ -86,6 +113,7 @@ class Metrics extends Component {
                     <RunMetrics 
                         userId={this.state.userId}
                         userRuns={this.state.userRuns}
+                        flexDir={this.state.flexDir}
                     />
                 ) : (
                     <></>
