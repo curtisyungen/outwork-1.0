@@ -52,7 +52,7 @@ class Metrics extends Component {
             || document.body.clientWidth;
 
         let flexDir = "row";
-        if (width <= 420) {
+        if (width <= 520) {
             flexDir = "column";
         }
 

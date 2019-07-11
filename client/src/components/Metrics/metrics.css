@@ -14,3 +14,9 @@
 .metricTitle {
     font-weight: 700;
 }
+
+@media only screen and (max-width: 520px) {
+    .metric {
+        width: auto;
+    }
+}
