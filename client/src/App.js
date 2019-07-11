@@ -383,6 +383,7 @@ class App extends Component {
                 checkValidUser={this.checkValidUser}
                 getUserActivity={this.getUserActivity}
                 allActivity={this.state.allActivity}
+                deleteActivity={this.state.deleteActivity}
               />
             } />
 
@@ -390,6 +391,9 @@ class App extends Component {
             <Route exact path="/profile" render={() =>
               <Profile
                 checkValidUser={this.checkValidUser}
+                getUserActivity={this.getUserActivity}
+                allActivity={this.state.allActivity}
+                deleteActivity={this.state.deleteActivity}
               />
             } />
 

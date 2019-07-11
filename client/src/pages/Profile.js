@@ -5,23 +5,23 @@ import "./Profile.css";
 
 class Profile extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            userId: null,
-        }
-    }
-
     componentDidMount = () => {
         this.props.checkValidUser();
+    
+        let userId;
+        userId = localStorage.getItem("userId");
+
+        this.props.getUserActivity(userId);
     }
 
     render() {
         return (
             <span>
                 <ProfileHeader />
-                <ProfileBody />                    
+                <ProfileBody 
+                    allActivity={this.props.allActivity}
+                    deleteActivity={this.props.deleteActivity}
+                />                    
             </span>
         )
     }

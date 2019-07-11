@@ -1,12 +1,7 @@
 import React, { Component } from "react";
-// import Run from "../components/Run/run";
-// import Bike from "../components/Bike/bike";
-// import Swim from "../components/Swim/swim";
-// import Lift from "../components/Lift/lift";
 import Container from "../components/Container/container";
 import UserActivity from "../components/UserActivity/userActivity";
 import userAPI from "../utils/userAPI";
-import actAPI from "../utils/actAPI";
 import "./Home.css";
 
 class Home extends Component {
@@ -57,7 +52,6 @@ class Home extends Component {
                         this.props.getUserActivity(following[f]);
                     }
                 });
-
             });
     }
 
@@ -66,7 +60,7 @@ class Home extends Component {
             <Container>
             <div className="homePage">
                 <span>
-                    {this.state.loadingActivity ? (
+                    {this.state.allActivity && this.state.allActivity.length === 0 ? (
                         <p className="text-center">Loading activity...</p>
                     ) : (
                             <span>
@@ -75,7 +69,7 @@ class Home extends Component {
                                         <UserActivity
                                             key={Math.random() * 100000}
                                             activity={activity}
-                                            deleteActivity={this.deleteActivity}
+                                            deleteActivity={this.props.deleteActivity}
                                         />
                                     ))
                                 ) : (
