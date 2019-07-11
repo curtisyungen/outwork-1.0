@@ -1,0 +1,7 @@
+.followStats {
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px;
+}
