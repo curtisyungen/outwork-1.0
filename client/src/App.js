@@ -285,7 +285,7 @@ class App extends Component {
 
   deleteActivity = (type, id) => {
 
-    let userId = this.state.userId;
+    let userId = localStorage.getItem("userId");
 
     if (type === "run") {
       actAPI.deleteRunById(id, userId);
