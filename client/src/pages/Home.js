@@ -37,14 +37,6 @@ class Home extends Component {
         }
     }
 
-    componentDidUpdate = (prevProps, prevState) => {
-        if (this.props !== this.state) {
-            this.setState({
-                allActivity: this.props.allActivity,
-            });
-        }
-    }
-
     getUserById = () => {
         userAPI.getUserById(this.state.userId)
             .then((res) => {
