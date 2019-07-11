@@ -1,12 +1,7 @@
 import React, { Component } from "react";
-// import Run from "../components/Run/run";
-// import Bike from "../components/Bike/bike";
-// import Swim from "../components/Swim/swim";
-// import Lift from "../components/Lift/lift";
 import Container from "../components/Container/container";
 import UserActivity from "../components/UserActivity/userActivity";
 import userAPI from "../utils/userAPI";
-import actAPI from "../utils/actAPI";
 import "./Home.css";
 
 class Home extends Component {
