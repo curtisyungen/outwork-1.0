@@ -14,7 +14,6 @@ class Metrics extends Component {
 
         this.state = {
             screenWidth: null,
-            screenHeight: null,
             flexDir: null,
             userId: null,
             firstName: null,
@@ -52,10 +51,6 @@ class Metrics extends Component {
             || document.documentElement.clientWidth
             || document.body.clientWidth;
 
-        let height = window.innerHeight
-            || document.documentElement.clientHeight
-            || document.body.clientHeight;
-
         let flexDir = "row";
         if (width <= 420) {
             flexDir = "column";
@@ -63,10 +58,7 @@ class Metrics extends Component {
 
         this.setState({
             screenWidth: width,
-            screenHeight: height,
             flexDir: flexDir,
-        }, () => {
-            console.log(flexDir, width, height);
         });
     }
 
@@ -123,6 +115,7 @@ class Metrics extends Component {
                     <BikeMetrics 
                         userId={this.state.userId}
                         userBikes={this.state.userBikes}
+                        flexDir={this.state.flexDir}
                     />
                 ) : (
                     <></>
@@ -132,6 +125,7 @@ class Metrics extends Component {
                     <SwimMetrics 
                         userId={this.state.userId}
                         userSwims={this.state.userSwims}
+                        flexDir={this.state.flexDir}
                     />
                 ) : (
                     <></>
@@ -141,6 +135,7 @@ class Metrics extends Component {
                     <LiftMetrics 
                         userId={this.state.userId}
                         userLifts={this.state.userLifts}
+                        flexDir={this.state.flexDir}
                     />
                 ) : (
                     <></>
