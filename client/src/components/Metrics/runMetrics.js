@@ -112,24 +112,35 @@ class RunMetrics extends Component {
         return (
             <span>
             <h4 className="metricsPageTitle">Runs</h4>
-                <div className="d-flex p-2">
-                    <div className="d-inline-flex p2">Total Runs</div>
-                    <div className="d-inline-flex p2">Total Miles</div>
-                    <div className="d-inline-flex p2">Avg. Miles / Week</div>
-                    <div className="d-inline-flex p2">Total Climb (ft.)</div>
-                    <div className="d-inline-flex p2">Avg. Mile Pace</div>
-                    <div className="d-inline-flex p2">Avg. Distance (mi.)</div>
-                    <div className="d-inline-flex p2">Longest Distance (mi.)</div>
-                </div>
-
-                <div>
-                    <div className="d-inline-flex p2">{this.state.workouts}</div>
-                    <div className="d-inline-flex p2">{this.state.totalMiles}</div>
-                    <div className="d-inline-flex p2">{this.state.avgMilesPerWeek}</div>
-                    <div className="d-inline-flex p2">{this.state.totalClimb}</div>
-                    <div className="d-inline-flex p2">{this.state.avgMilePace}</div>
-                    <div className="d-inline-flex p2">{this.state.avgMiles}</div>
-                    <div className="d-inline-flex p2">{this.state.maxMiles}</div>
+                <div className="d-flex flex-row">
+                    <div className="p-2">
+                        <div>Total Runs</div>
+                        <div>{this.state.workouts}</div>
+                    </div>
+                    <div className="p-2">
+                        <div>Total Miles</div>
+                        <div>{this.state.totalMiles}</div>
+                    </div>
+                    <div className="p-2">
+                        <div>Avg. Miles / Week</div>
+                        <div>{this.state.avgMilesPerWeek}</div>
+                    </div>
+                    <div className="p-2">
+                        <div>Total Climb (ft.)</div>
+                        <div>{this.state.totalClimb}</div>
+                    </div>
+                    <div className="p-2">
+                        <div>Avg. Mile Pace</div>
+                        <div>{this.state.avgMilePace}</div>
+                    </div>
+                    <div className="p-2">
+                        <div>Avg. Distance (mi.)</div>
+                        <div>{this.state.avgMiles}</div>
+                    </div>
+                    <div className="p-2">
+                        <div>Longest Distance (mi.)</div>
+                        <div>{this.state.maxMiles}</div>
+                    </div>
                 </div>
             </span>
         )
