@@ -25,25 +25,9 @@ class Lift extends Component {
     componentDidMount = () => {
         let workout = JSON.parse(this.props.workout);
 
-        let generator = this.props.generator;
-        let generatorText = "Standard";
-
-        switch (generator) {
-            case "1": generatorText = "Baby"; break;
-            case "2": generatorText = "Easy"; break;
-            case "3": generatorText = "Average"; break;
-            case "4": generatorText = "Superior"; break;
-            case "5": generatorText = "Hero"; break;
-            case "6": generatorText = "Superman"; break;
-            case "7": generatorText = "Rogan"; break;
-            case "8": generatorText = "Goggins"; break;
-            default: generatorText = "Standard";
-        }
-
         this.setState({
             userId: this.props.userId,
             workout: workout,
-            generatorText: generatorText,
         });
     }
 
@@ -76,7 +60,7 @@ class Lift extends Component {
                     <div className="liftIcon"><FontAwesomeIcon className="fa-2x icon" icon={faDumbbell} /></div>
                     <div className="cell"><span className="cellDesc">Name</span>{this.props.firstName}</div>
                     <div className="cell"><span className="cellDesc">Date</span>{this.props.date}</div>
-                    <div className="cell"><span className="cellDesc">Generator</span>{this.state.generatorText}</div>
+                    <div className="cell"><span className="cellDesc">Generator</span>{this.props.generator}</div>
                     <div className="cell cell4"><span className="cellDesc">Time</span>{this.props.duration}</div>
                     <div className="cell cell5"><span className="cellDesc">Muscle Grps.</span>{this.props.muscleGroups}</div>
                     <div className="cell cell6"><span className="cellDesc">Push-Ups</span>{this.state.pushups}</div>
