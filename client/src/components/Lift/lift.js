@@ -79,6 +79,9 @@ class Lift extends Component {
                     <div className="cell"><span className="cellDesc">Generator</span>{this.state.generatorText}</div>
                     <div className="cell"><span className="cellDesc">Time</span>{this.props.duration}</div>
                     <div className="cell"><span className="cellDesc">Muscle Grps.</span>{this.props.muscleGroups}</div>
+                    <div className="cell"><span className="cellDesc">Push-Ups</span>{this.state.pushups}</div>
+                    <div className="cell"><span className="cellDesc">Pull-Ups</span>{this.props.pullups}</div>
+                    <div className="cell"><span className="cellDesc">Notes</span>{this.props.notes}</div>
                 </div>
 
                 {this.state.openModal ? (

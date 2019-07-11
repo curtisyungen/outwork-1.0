@@ -11,6 +11,10 @@
     border-right: 1px solid lightgray;
 }
 
+.metricsSectionTitle {
+    margin-top: 20px;
+}
+
 .metricTitle {
     font-weight: 700;
 }

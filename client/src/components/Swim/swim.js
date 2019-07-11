@@ -49,9 +49,11 @@ class Swim extends Component {
                     <div className="cell"><span className="cellDesc">Date</span>{this.props.date}</div>
                     <div className="cell"><span className="cellDesc">Miles</span>{this.props.distance} miles</div>
                     <div className="cell"><span className="cellDesc">Time</span>{this.props.duration}</div>
-                    <div className="cell"><span className="cellDesc">Water Type</span>{this.props.waterType}</div>
+                    <div className="cell"><span className="cellDesc">Location</span>{this.props.location}</div>
+                    <div className="cell"><span className="cellDesc">Water Type</span>{this.props.waterType} miles</div>
+                    <div className="cell"><span className="cellDesc">Laps</span>{this.props.laps}</div>
+                    <div className="cell"><span className="cellDesc">Notes</span>{this.props.Notes}</div>
                 </div>
-
 
                 {this.state.openModal ? (
                     <Modal
