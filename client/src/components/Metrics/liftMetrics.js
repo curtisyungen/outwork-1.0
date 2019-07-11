@@ -63,25 +63,25 @@ class LiftMetrics extends Component {
     render() {
         return (
             <span>
-            <h4 className="metricsPageTitle">Lifts</h4>
-                <table className="table table-bordered metricsTable">
-                    <thead className="thead-light">
-                        <tr>
-                            <th>Total Workouts</th>
-                            <th>Total Time (min.)</th>
-                            <th>Push-Ups</th>
-                            <th>Pull-Ups</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{this.state.workouts}</td>
-                            <td>{this.state.totalTime}</td>
-                            <td>{this.state.pushups}</td>
-                            <td>{this.state.pullups}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <h4 className="metricsPageTitle">Lifts</h4>
+                <div className={`d-flex flex-${this.props.flexDir}`}>
+                    <div className="metric">
+                        <div>Total Lifts</div>
+                        <div>{this.state.workouts}</div>
+                    </div>
+                    <div className="metric">
+                        <div>Total Time</div>
+                        <div>{this.state.totalTime}</div>
+                    </div>
+                    <div className="metric">
+                        <div>Total Push-Ups</div>
+                        <div>{this.state.pushups}</div>
+                    </div>
+                    <div className="metric">
+                        <div>Total Pull-Ups</div>
+                        <div>{this.state.pullups}</div>
+                    </div>
+                </div>
             </span>
         )
     }

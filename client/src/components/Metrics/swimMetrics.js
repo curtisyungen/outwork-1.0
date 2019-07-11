@@ -61,29 +61,29 @@ class SwimMetrics extends Component {
     render() {
         return (
             <span>
-            <h4 className="metricsPageTitle">Swims</h4>
-                <table className="table table-bordered metricTable">
-                    <thead className="thead-light">
-                        <tr>
-                            <th>Total Swims</th>
-                            <th>Total Miles</th>
-                            <th>Avg. Miles / Week</th>
-                            <th>Total Time (min.)</th>
-                            <th>Avg. Distance</th>
-                            <th>Longest Distance (mi.)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{this.state.workouts}</td>
-                            <td>{this.state.totalMiles}</td>
-                            <td>{this.state.avgMilesPerWeek}</td>
-                            <td>{this.state.totalTime}</td>
-                            <td>{this.state.avgMiles}</td>
-                            <td>{this.state.maxMiles}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <h4 className="metricsPageTitle">Swims</h4>
+                <div className={`d-flex flex-${this.props.flexDir}`}>
+                    <div className="metric">
+                        <div>Total Swims</div>
+                        <div>{this.state.workouts}</div>
+                    </div>
+                    <div className="metric">
+                        <div>Total Time (min.)</div>
+                        <div>{this.state.totalTime}</div>
+                    </div>
+                    <div className="metric">
+                        <div>Total Miles</div>
+                        <div>{this.state.totalMiles}</div>
+                    </div>
+                    <div className="metric">
+                        <div>Avg. Distance (mi.)</div>
+                        <div>{this.state.avgMiles}</div>
+                    </div>
+                    <div className="metric">
+                        <div>Longest Distance (mi.)</div>
+                        <div>{this.state.maxMiles}</div>
+                    </div>
+                </div>
             </span>
         )
     }
