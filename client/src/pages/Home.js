@@ -74,48 +74,60 @@ class Home extends Component {
     render() {
         return (
             <Container>
-            <div className="homePage">
-                <div className="col-md-6 input-group mb-3">
-                    <input 
-                        autoComplete="off"
-                        name="activitySearch" 
-                        type="text" 
-                        className="form-control" 
-                        aria-describedby="basic-addon2" 
-                        onChange={this.handleInputChange}
-                        value={this.state.activitySearch}
-                    />
-                    <div className="input-group-append">
-                        <button 
-                            className="btn btn-outline-secondary" 
-                            type="button"
-                            onClick={this.searchForActivity}
-                        >
-                            Search
+                <div className="homePage">
+                    <div className="input-group mb-3">
+                        <div className="input-group-prepend">
+                            <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+                            <div className="dropdown-menu">
+                                <a className="dropdown-item" href="#">Name</a>
+                                <a className="dropdown-item" href="#">Date</a>
+                                <a className="dropdown-item" href="#">Distance</a>
+                                <a className="dropdown-item" href="#">Generator</a>
+                                <a className="dropdown-item" href="#">Type</a>
+                                <a className="dropdown-item" href="#">Location</a>
+                                <a className="dropdown-item" href="#">Race</a>
+                            </div>
+                        </div>
+                        <input
+                            autoComplete="off"
+                            name="activitySearch"
+                            type="text"
+                            className="form-control"
+                            aria-describedby="basic-addon2"
+                            onChange={this.handleInputChange}
+                            value={this.state.activitySearch}
+                        />
+                        <div className="input-group-append">
+                            <button
+                                className="btn btn-outline-secondary"
+                                type="button"
+                                onClick={this.searchForActivity}
+                            >
+                                Search
                         </button>
+                        </div>
                     </div>
-                </div>
 
-                <span>
-                    {this.state.allActivity && this.state.allActivity.length === 0 ? (
-                        <p className="text-center">Loading activity...</p>
-                    ) : (
-                            <span>
-                                {this.state.allActivity && this.state.allActivity.length > 0 ? (
-                                    this.state.allActivity.map(activity => (
-                                        <UserActivity
-                                            key={Math.random() * 100000}
-                                            activity={activity}
-                                            deleteActivity={this.props.deleteActivity}
-                                        />
-                                    ))
-                                ) : (
-                                        <></>
-                                    )}
-                            </span>
-                        )}
-                </span>
-            </div>
+                    <span>
+                        {this.state.allActivity && this.state.allActivity.length === 0 ? (
+                            <p className="text-center">Loading activity...</p>
+                        ) : (
+                                <span>
+                                    {this.state.allActivity && this.state.allActivity.length > 0 ? (
+                                        this.state.allActivity.map(activity => (
+                                            <UserActivity
+                                                key={Math.random() * 100000}
+                                                activity={activity}
+                                                deleteActivity={this.props.deleteActivity}
+                                            />
+                                        ))
+                                    ) : (
+                                            <></>
+                                        )}
+                                </span>
+                            )}
+                    </span>
+                </div>
             </Container>
         )
     }
