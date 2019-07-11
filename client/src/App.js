@@ -30,11 +30,13 @@ class App extends Component {
       redirectToHome: false,
       redirectToLanding: false,
       userId: null,
+      allActivity: [],
     }
   }
 
   componentDidMount = () => {
 
+    // Check if logged in
     let loginStatus = false;
     if (localStorage.getItem("isLoggedIn")) {
       loginStatus = JSON.parse(localStorage.getItem("isLoggedIn"));
@@ -48,9 +50,12 @@ class App extends Component {
       redirectToLanding: false,
     });
 
+    // Get userId from local storage
     let userId;
     if (localStorage.getItem("userId") && localStorage.getItem("userId") !== null) {
       userId = localStorage.getItem("userId");
+
+      // Verify userId
       userAPI.getUserById(userId)
         .then((res) => {
           if (res.data.length === 0) {
@@ -58,7 +63,6 @@ class App extends Component {
             return;
           }
           else {
-            localStorage.setItem("userId", res.data[0].userId);
             localStorage.setItem("fn", res.data[0].firstName);
             localStorage.setItem("ln", res.data[0].lastName);
           }
@@ -170,6 +174,7 @@ class App extends Component {
                 localStorage.setItem("userId", res.data[0].userId);
                 localStorage.setItem("fn", res.data[0].firstName);
 
+                this.getUserActivity(res.data[0].userId);
                 this.setRedirectToHome();
               }
             });
