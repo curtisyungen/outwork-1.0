@@ -14,6 +14,7 @@ class Home extends Component {
             following: null,
             allActivity: [],
             loadingActivity: false,
+            activitySearch: "",
         }
     }
 
@@ -30,6 +31,14 @@ class Home extends Component {
                 this.getUserById();
             });
         }
+    }
+
+    handleInputChange = (event) => {
+        const { name, value } = event.target;
+
+        this.setState({
+            [name]: value,
+        });
     }
 
     getUserById = () => {
@@ -55,10 +64,38 @@ class Home extends Component {
             });
     }
 
+    searchForActivity = (event) => {
+        event.preventDefault();
+
+        this.props.checkValidUser();
+
+    }
+
     render() {
         return (
             <Container>
             <div className="homePage">
+                <div className="col-md-6 input-group mb-3">
+                    <input 
+                        autoComplete="off"
+                        name="activitySearch" 
+                        type="text" 
+                        className="form-control" 
+                        aria-describedby="basic-addon2" 
+                        onChange={this.handleInputChange}
+                        value={this.state.activitySearch}
+                    />
+                    <div className="input-group-append">
+                        <button 
+                            className="btn btn-outline-secondary" 
+                            type="button"
+                            onClick={this.searchForActivity}
+                        >
+                            Search
+                        </button>
+                    </div>
+                </div>
+
                 <span>
                     {this.state.allActivity && this.state.allActivity.length === 0 ? (
                         <p className="text-center">Loading activity...</p>
