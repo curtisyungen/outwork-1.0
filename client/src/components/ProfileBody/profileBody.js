@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import Container from "../Container/container";
-import Run from "../Run/run";
-import Bike from "../Bike/bike";
-import Swim from "../Swim/swim";
-import Lift from "../Lift/lift";
+import UserActivity from "../UserActivity/userActivity";
 import Metrics from "../Metrics/metrics";
-import actAPI from "../../utils/actAPI";
 // import "./profileBody.css";
 
 class ProfileBody extends Component {
@@ -15,6 +11,7 @@ class ProfileBody extends Component {
 
         this.state = {
             userId: null,
+            allActivity: null,
         }
     }
 
