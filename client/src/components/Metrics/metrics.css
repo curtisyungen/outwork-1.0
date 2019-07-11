@@ -1,7 +1,6 @@
-.metricsTable {
-    text-align: center;
-}
-
-.metricsTable td {
+.metric {
+    border: 1px solid lightgray;
     font-size: 13px;
+    padding: 5px;
+    text-align: center;
 }

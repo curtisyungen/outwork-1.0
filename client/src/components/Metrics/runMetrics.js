@@ -53,12 +53,12 @@ class RunMetrics extends Component {
             let milePace = runs[r].milePace;
             let paceMins = parseFloat(milePace.split(":")[0]);
             let paceSecs = parseFloat(milePace.split(":")[1]);
-            
+
             totalSecs += (paceMins * 60) + paceSecs;
         }
 
         // Get avg. miles
-        avgMiles = Math.round((totalMiles / runs.length) * 100) /100;
+        avgMiles = Math.round((totalMiles / runs.length) * 100) / 100;
 
         // Get avg. mile pace
         let addZero = "";
@@ -84,7 +84,7 @@ class RunMetrics extends Component {
     getAvgMilesPerWeek = () => {
         let runs = this.state.userRuns;
         let year = [];
-        for (var i=0; i<52; i++) {
+        for (var i = 0; i < 52; i++) {
             year.push(0);
         }
 
@@ -111,33 +111,33 @@ class RunMetrics extends Component {
     render() {
         return (
             <span>
-            <h4 className="metricsPageTitle">Runs</h4>
+                <h4 className="metricsPageTitle">Runs</h4>
                 <div className={`d-flex flex-${this.props.flexDir}`}>
-                    <div className="p-2">
+                    <div className="metric">
                         <div>Total Runs</div>
                         <div>{this.state.workouts}</div>
                     </div>
-                    <div className="p-2">
+                    <div className="metric">
                         <div>Total Miles</div>
                         <div>{this.state.totalMiles}</div>
                     </div>
-                    <div className="p-2">
+                    <div className="metric">
                         <div>Avg. Miles / Week</div>
                         <div>{this.state.avgMilesPerWeek}</div>
                     </div>
-                    <div className="p-2">
+                    <div className="metric">
                         <div>Total Climb (ft.)</div>
                         <div>{this.state.totalClimb}</div>
                     </div>
-                    <div className="p-2">
+                    <div className="metric">
                         <div>Avg. Mile Pace</div>
                         <div>{this.state.avgMilePace}</div>
                     </div>
-                    <div className="p-2">
+                    <div className="metric">
                         <div>Avg. Distance (mi.)</div>
                         <div>{this.state.avgMiles}</div>
                     </div>
-                    <div className="p-2">
+                    <div className="metric">
                         <div>Longest Distance (mi.)</div>
                         <div>{this.state.maxMiles}</div>
                     </div>
