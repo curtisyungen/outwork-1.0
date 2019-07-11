@@ -72,13 +72,13 @@ class Lift extends Component {
     render() {
         return (
             <span>
-                <div className="row actCard" onClick={this.openModal}>
+                <div className="d-flex flex-row actCard" onClick={this.openModal}>
                     <div className="liftIcon"><FontAwesomeIcon className="fa-2x icon" icon={faDumbbell} /></div>
-                    <div className="col-md-2 cell"><span className="cellDesc">Name</span>{this.props.firstName}</div>
-                    <div className="col-md-2 cell"><span className="cellDesc">Date</span>{this.props.date}</div>
-                    <div className="col-md-2 cell"><span className="cellDesc">Generator</span>{this.state.generatorText}</div>
-                    <div className="col-md-2 cell"><span className="cellDesc">Time</span>{this.props.duration}</div>
-                    <div className="col-md-2 cell"><span className="cellDesc">Muscle Grps.</span>{this.props.muscleGroups}</div>
+                    <div className="cell"><span className="cellDesc">Name</span>{this.props.firstName}</div>
+                    <div className="cell"><span className="cellDesc">Date</span>{this.props.date}</div>
+                    <div className="cell"><span className="cellDesc">Generator</span>{this.state.generatorText}</div>
+                    <div className="cell"><span className="cellDesc">Time</span>{this.props.duration}</div>
+                    <div className="cell"><span className="cellDesc">Muscle Grps.</span>{this.props.muscleGroups}</div>
                 </div>
 
                 {this.state.openModal ? (

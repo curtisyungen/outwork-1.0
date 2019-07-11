@@ -52,13 +52,13 @@ class Run extends Component {
     render() {
         return (
             <span>
-                <div className="row actCard" onClick={this.openModal}>
+                <div className="d-flex flex-row actCard" onClick={this.openModal}>
                     <div className="runIcon"><FontAwesomeIcon className="fa-2x icon" icon={faRunning} /></div>
-                    <div className="col-md-2 cell"><span className="cellDesc">Name</span>{this.props.firstName}</div>
-                    <div className="col-md-2 cell"><span className="cellDesc">Date</span>{this.props.date}</div>
-                    <div className="col-md-2 cell"><span className="cellDesc">Miles</span>{this.props.distance} miles</div>
-                    <div className="col-md-2 cell"><span className="cellDesc">Time</span>{this.props.duration}</div>
-                    <div className="col-md-2 cell"><span className="cellDesc">Pace</span>{this.props.milePace} (min./mile)</div>
+                    <div className="cell"><span className="cellDesc">Name</span>{this.props.firstName}</div>
+                    <div className="cell"><span className="cellDesc">Date</span>{this.props.date}</div>
+                    <div className="cell"><span className="cellDesc">Miles</span>{this.props.distance} miles</div>
+                    <div className="cell"><span className="cellDesc">Time</span>{this.props.duration}</div>
+                    <div className="cell"><span className="cellDesc">Pace</span>{this.props.milePace} (min./mile)</div>
                 </div>                        
 
                 {this.state.openModal ? (
