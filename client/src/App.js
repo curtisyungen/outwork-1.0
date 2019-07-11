@@ -6,7 +6,6 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
-import MyActivity from "./pages/MyActivity";
 import LogActivity from "./pages/LogActivity";
 import SubmitRun from "./pages/SubmitRun";
 import SubmitBike from "./pages/SubmitBike";
@@ -43,6 +42,27 @@ class App extends Component {
       this.setState({
         isLoggedIn: loginStatus,
       });
+    }
+
+    let userId;
+    if (localStorage.getItem("userId") && localStorage.getItem("userId") !== null) {
+      userId = localStorage.getItem("userId");
+      userAPI.getUserById(userId) 
+        .then((res) => {
+          if (res.data.length === 0) {
+            this.logoutUser();
+            return;
+          }
+          else {
+            this.setState({
+              userId: userId,
+              firstName: res.data[0].firstName,
+              lastName: res.data[0].lastName,
+              followers: JSON.parse(res.data[0].followers),
+              following: JSON.parse(res.data[0].following),
+            });
+          }
+        });
     }
 
     this.setState({
@@ -287,13 +307,11 @@ class App extends Component {
             <Route exact path="/profile" render={() =>
               <Profile
                 checkValidUser={this.checkValidUser}
-              />
-            } />
-
-            {/* My Activity Page */}
-            <Route exact path="/myActivity" render={() =>
-              <MyActivity
-                checkValidUser={this.checkValidUser}
+                userId={this.state.userId}
+                firstName={this.state.firstName}
+                lastName={this.state.lastName}
+                followers={this.state.followers}
+                following={this.state.following}
               />
             } />
 
