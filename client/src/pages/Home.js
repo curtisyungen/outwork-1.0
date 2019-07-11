@@ -57,7 +57,6 @@ class Home extends Component {
                         this.props.getUserActivity(following[f]);
                     }
                 });
-
             });
     }
 
@@ -66,7 +65,7 @@ class Home extends Component {
             <Container>
             <div className="homePage">
                 <span>
-                    {this.state.loadingActivity ? (
+                    {this.state.allActivity && this.state.allActivity.length === 0 ? (
                         <p className="text-center">Loading activity...</p>
                     ) : (
                             <span>
@@ -75,7 +74,7 @@ class Home extends Component {
                                         <UserActivity
                                             key={Math.random() * 100000}
                                             activity={activity}
-                                            deleteActivity={this.deleteActivity}
+                                            deleteActivity={this.props.deleteActivity}
                                         />
                                     ))
                                 ) : (

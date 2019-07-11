@@ -9,6 +9,7 @@ class Badge extends Component {
         this.state = {
             id: null,
             name: null,
+            imageURL: null,
         }
     }
 
