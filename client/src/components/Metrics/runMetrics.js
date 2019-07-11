@@ -114,31 +114,31 @@ class RunMetrics extends Component {
                 <h4 className="metricsPageTitle">Runs</h4>
                 <div className={`d-flex flex-${this.props.flexDir}`}>
                     <div className="metric">
-                        <div>Total Runs</div>
+                        <div className="metricTitle">Total Runs</div>
                         <div>{this.state.workouts}</div>
                     </div>
                     <div className="metric">
-                        <div>Total Miles</div>
+                        <div className="metricTitle">Total Miles</div>
                         <div>{this.state.totalMiles}</div>
                     </div>
                     <div className="metric">
-                        <div>Avg. Miles / Week</div>
+                        <div className="metricTitle">Avg. Miles / Week</div>
                         <div>{this.state.avgMilesPerWeek}</div>
                     </div>
                     <div className="metric">
-                        <div>Total Climb (ft.)</div>
+                        <div className="metricTitle">Total Climb (ft.)</div>
                         <div>{this.state.totalClimb}</div>
                     </div>
                     <div className="metric">
-                        <div>Avg. Mile Pace</div>
+                        <div className="metricTitle">Avg. Mile Pace</div>
                         <div>{this.state.avgMilePace}</div>
                     </div>
                     <div className="metric">
-                        <div>Avg. Distance (mi.)</div>
+                        <div className="metricTitle">Avg. Distance (mi.)</div>
                         <div>{this.state.avgMiles}</div>
                     </div>
                     <div className="metric">
-                        <div>Longest Distance (mi.)</div>
+                        <div className="metricTitle">Longest Distance (mi.)</div>
                         <div>{this.state.maxMiles}</div>
                     </div>
                 </div>

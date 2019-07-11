@@ -64,23 +64,23 @@ class SwimMetrics extends Component {
                 <h4 className="metricsPageTitle">Swims</h4>
                 <div className={`d-flex flex-${this.props.flexDir}`}>
                     <div className="metric">
-                        <div>Total Swims</div>
+                        <div className="metricTitle">Total Swims</div>
                         <div>{this.state.workouts}</div>
                     </div>
                     <div className="metric">
-                        <div>Total Time (min.)</div>
+                        <div className="metricTitle">Total Time (min.)</div>
                         <div>{this.state.totalTime}</div>
                     </div>
                     <div className="metric">
-                        <div>Total Miles</div>
+                        <div className="metricTitle">Total Miles</div>
                         <div>{this.state.totalMiles}</div>
                     </div>
                     <div className="metric">
-                        <div>Avg. Distance (mi.)</div>
+                        <div className="metricTitle">Avg. Distance (mi.)</div>
                         <div>{this.state.avgMiles}</div>
                     </div>
                     <div className="metric">
-                        <div>Longest Distance (mi.)</div>
+                        <div className="metricTitle">Longest Distance (mi.)</div>
                         <div>{this.state.maxMiles}</div>
                     </div>
                 </div>
