@@ -111,7 +111,7 @@ class RunMetrics extends Component {
     render() {
         return (
             <span>
-                <h4 className="metricsPageTitle">Runs</h4>
+                <h4 className="metricsSectionTitle">Runs</h4>
                 <div className={`d-flex flex-${this.props.flexDir}`}>
                     <div className="metric">
                         <div className="metricTitle">Total Runs</div>

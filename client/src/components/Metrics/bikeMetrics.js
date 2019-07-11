@@ -91,7 +91,7 @@ class BikeMetrics extends Component {
     render() {
         return (
             <span>
-                <h4 className="metricsPageTitle">Bikes</h4>
+                <h4 className="metricsSectionTitle">Bikes</h4>
                 <div className={`d-flex flex-${this.props.flexDir}`}>
                     <div className="metric">
                         <div className="metricTitle">Total Bikes</div>
@@ -119,7 +119,7 @@ class BikeMetrics extends Component {
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Metric</div>
-                        <div></div>
+                        <div>0</div>
                     </div>
                 </div>
             </span>
