@@ -28,7 +28,7 @@ class AllUsers extends Component {
     render() {
         return (
             <Container>
-                <div>
+                <div className="allUsersPage">
                     {this.state.users && this.state.users.length > 0 ? (
                         this.state.users.map(user => (
                             <User 
