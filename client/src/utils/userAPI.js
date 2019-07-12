@@ -22,6 +22,10 @@ export default {
         return axios.get("/api/users/getUserById/" + userId);
     },
 
+    getAllUsers: function() {
+        return axios.get("/api/users/getAllUsers");
+    },
+
     searchForUser: function(userName) {
         return axios.get("/api/users/searchForUser/" + userName);
     },
