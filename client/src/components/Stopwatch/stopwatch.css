@@ -1,5 +1,10 @@
 .stopwatch {
+    background: rgb(242, 242, 242);
+    border: 1px solid darkgray;
+    border-radius: 4px;
     color: black;
+    margin: 5px auto;
+    width: 400px;
 }
 
 .stopwatchBtns {
@@ -10,6 +15,7 @@
 .startWatchBtn,
 .stopWatchBtn,
 .resetWatchBtn {
+    border: 1px solid black;
     margin: 5px;
 }
 
@@ -22,4 +28,10 @@
     font-size: 24px;
     line-height: 1.255;
     text-align: center;
+}
+
+@media only screen and (max-width: 520px) {
+    .stopwatch {
+        width: auto;
+    }
 }
