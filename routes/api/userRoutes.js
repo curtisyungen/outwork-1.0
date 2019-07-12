@@ -14,6 +14,10 @@ router.get("/getUserById/:userId", (req, res) => {
     controller.getUserById(req, res);
 });
 
+router.get("/getAllUsers", (req, res) => {
+    controller.getAllUsers(req, res);
+});
+
 router.get("/searchForUser/:userName", (req, res) => {
     controller.searchForUser(req, res);
 });

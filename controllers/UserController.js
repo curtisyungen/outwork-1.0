@@ -48,6 +48,16 @@ class UserController {
         });
     }
 
+    getAllUsers(req, res) {
+        db.Users.findAll({})
+            .then((users) => {
+                res.json(users);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
     searchForUser(req, res) {
         db.Users.findAll({
             where: {
