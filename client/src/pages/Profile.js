@@ -18,8 +18,6 @@ class Profile extends Component {
     componentDidMount = () => {
         this.props.checkValidUser();
 
-        console.log("Profile Props", this.props);
-
         let userId, firstName, lastName;
 
         if (this.props.profileId !== null) {
@@ -45,16 +43,22 @@ class Profile extends Component {
     render() {
         return (
             <span>
-                <ProfileHeader 
-                    userId={this.state.userId}
-                    firstName={this.state.firstName}
-                    lastName={this.state.lastName}
-                />
-                <ProfileBody 
-                    userId={this.state.userId}
-                    allActivity={this.props.allActivity}
-                    deleteActivity={this.props.deleteActivity}
-                />                    
+                {this.state.firstName && this.state.lastName ? (
+                    <span>
+                        <ProfileHeader 
+                            userId={this.state.userId}
+                            firstName={this.state.firstName}
+                            lastName={this.state.lastName}
+                        />
+                        <ProfileBody 
+                            userId={this.state.userId}
+                            allActivity={this.props.allActivity}
+                            deleteActivity={this.props.deleteActivity}
+                        />   
+                    </span>          
+                ) : (
+                    <p>Loading...</p>
+                )   }    
             </span>
         )
     }
