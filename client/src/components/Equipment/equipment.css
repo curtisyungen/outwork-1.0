@@ -3,13 +3,22 @@
     border: 1px solid black;
     border-radius: 4px;
     cursor: pointer;
-    display: block;
-    margin: 5px 0px;
+    display: inline-block;
+    height: 100px;
+    margin: 5px auto;
+    margin-left: 2px;
     padding: 20px;
     text-align: center;
-    width: 100%;
+    width: 150px;
+    vertical-align: middle;
 }
 
 .equip-true {
     background: rgb(63, 255, 63);
+}
+
+@media only screen and (max-width: 375px) {
+    .equipment {
+        width: 100% !important;
+    }
 }
