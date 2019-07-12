@@ -1,3 +1,9 @@
 .stopwatch {
     color: black;
 }
+
+.timeString {
+    font-size: 18px;
+    line-height: 1.255;
+    text-align: center;
+}
