@@ -13,7 +13,7 @@ class Navbar extends Component {
                     "/profile", 
                     "/logactivity", 
                     "/generator",
-                    "/findusers",
+                    "/allusers",
                     "/settings",
                     "/run",
                     "/bike",
@@ -47,7 +47,7 @@ class Navbar extends Component {
                             <a className="nav-link" href="/generator">Generator</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/findUsers">Users</a>
+                            <a className="nav-link" href="/allUsers">Users</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="/settings">Settings</a>
