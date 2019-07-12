@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import Container from "../components/Container/container";
+import Container from "../components/Container/container";
 import User from "../components/User/user";
 import userAPI from "../utils/userAPI";
 // import "./FindUsers.css";
@@ -80,7 +80,7 @@ class FindUsers extends Component {
 
     render() {
         return (
-            <span>
+            <Container>
                 <div className="col-md-6 input-group mb-3">
                     <input 
                         autoComplete="off"
@@ -117,7 +117,7 @@ class FindUsers extends Component {
                         <></>
                     )}
                 </div>
-            </span>
+            </Container>
         )
     }
 }
