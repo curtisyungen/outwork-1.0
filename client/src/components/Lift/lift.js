@@ -35,7 +35,7 @@ class Lift extends Component {
     }
 
     getMuscleGroups = () => {
-        let groups;
+        let groups = "";
         let muscleGroups = "";
         if (this.props.muscleGroups && this.props.muscleGroups.length > 0) {
             groups = JSON.parse(this.props.muscleGroups);
