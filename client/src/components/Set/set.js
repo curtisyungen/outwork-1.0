@@ -19,7 +19,7 @@ class Set extends Component {
 
     render() {
         return (
-            <div className="set">
+            <div className={`set diff${this.props.difficulty}`}>
             {this.state.set && this.state.set.length > 0 ? (
                 this.state.set.map(item => (
                     <SetItem 
@@ -30,6 +30,7 @@ class Set extends Component {
                         setWeight={this.props.setWeight}
                         setRest={this.props.setRest}
                         setNotes={this.props.setNotes}
+                        difficulty={this.props.difficulty}
                     />
                 ))
             ) : (
