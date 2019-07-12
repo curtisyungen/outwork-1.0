@@ -18,9 +18,11 @@ class Profile extends Component {
     componentDidMount = () => {
         this.props.checkValidUser();
 
+        console.log("Profile", this.props);
+
         let userId, firstName, lastName;
-        
-        if (this.props.location.state && this.props.location.state.userId !== null) {
+
+        if (this.props.location && this.props.location.state.userId !== null) {
             userId = this.props.location.state.userId;
             firstName = this.props.location.state.firstName;
             lastName = this.props.location.state.lastName;
