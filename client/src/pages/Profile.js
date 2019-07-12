@@ -18,7 +18,7 @@ class Profile extends Component {
     componentDidMount = () => {
         this.props.checkValidUser();
 
-        console.log("Profile", this.props);
+        console.log("Profile Props", this.props);
 
         let userId, firstName, lastName;
 
@@ -38,6 +38,7 @@ class Profile extends Component {
             firstName: firstName,
             lastName: lastName,
         }, () => {
+            console.log("Profile State", this.state);
             this.props.getUserActivity(userId);
         });
     }
