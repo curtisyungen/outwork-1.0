@@ -25,13 +25,12 @@ class ProfileBody extends Component {
     render() {
         return (
             <Container>
-                
                 {this.state.userId ? (
                     <Metrics 
                         userId={this.state.userId}
                     />
                 ) : (
-                    <></>
+                    <p className="text-center">Loading metrics...</p>
                 )}
 
                 <div className="col-md-12 myActivity">
@@ -45,7 +44,7 @@ class ProfileBody extends Component {
                             />
                         ))
                     ) : (
-                            <></>
+                            <p className="text-center">Loading activity...</p>
                         )}
                 </div>
             </Container>

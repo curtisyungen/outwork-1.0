@@ -4,12 +4,18 @@
 }
 
 .user {
-    background: lightgray;
+    background: rgb(222, 222, 222);
     border: 1px solid black;
     border-radius: 4px;
     color: black;
     cursor: pointer;
+    margin-bottom: 10px;
     max-width: 300px;
     padding: 10px;
+    text-align: center;
     width: auto;
+}
+
+.user:hover {
+    background: rgb(242, 242, 242);
 }
