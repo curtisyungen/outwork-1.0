@@ -81,24 +81,26 @@ class Stopwatch extends Component {
                     {this.state.timeString}
                 </div>
 
-                <button 
-                    className="btn btn-dark btn-sm startWatchBtn"
-                    onClick={this.startWatch}
-                >
-                    Start
-                </button>
-                <button
-                    className="btn btn-dark btn-sm stopWatchBtn"
-                    onClick={this.stopWatch}
-                >
-                    Stop
-                </button>
-                <button
-                    className="btn btn-light btn-sm resetWatchBtn"
-                    onClick={this.resetWatch}
-                >
-                    Reset
-                </button>
+                <div className="stopwatchBtns">
+                    <button 
+                        className="btn btn-dark btn-sm startWatchBtn"
+                        onClick={this.startWatch}
+                    >
+                        Start
+                    </button>
+                    <button
+                        className="btn btn-dark btn-sm stopWatchBtn"
+                        onClick={this.stopWatch}
+                    >
+                        Stop
+                    </button>
+                    <button
+                        className="btn btn-light btn-sm resetWatchBtn"
+                        onClick={this.resetWatch}
+                    >
+                        Reset
+                    </button>
+                </div>
             </div>
         )
     }
