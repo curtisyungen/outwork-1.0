@@ -29,6 +29,7 @@ class App extends Component {
       redirectToLogin: false,
       redirectToHome: false,
       redirectToLanding: false,
+      redirectToProfile: false,
       userId: null,
       profileId: null,
       otherUserFirst: null,
@@ -51,6 +52,7 @@ class App extends Component {
       redirectToLogin: false,
       redirectToHome: false,
       redirectToLanding: false,
+      redirectToProfile: false,
     });
 
     // Get userId from local storage
@@ -100,6 +102,12 @@ class App extends Component {
     });
   }
 
+  setRedirectToProfile = () => {
+    this.setState({
+      redirectToProfile: true,
+    });
+  }
+
   redirectToLanding = () => {
     return <Redirect to="/" />
   }
@@ -116,12 +124,17 @@ class App extends Component {
     return <Redirect to="/home" />
   }
 
+  redirectToProfile = () => {
+    return <Redirect to="/profile" />
+  }
+
   updateParentState = () => {
     this.setState({
       redirectToHome: false,
       redirectToLogin: false,
       redirectToSignup: false,
       redirectToLanding: false,
+      redirectToProfile: false,
     });
   }
 
@@ -311,6 +324,8 @@ class App extends Component {
       profileId: userId,
       otherUserFirst: firstName,
       otherUserLast: lastName,
+    }, () => {
+      this.setRedirectToProfile();
     });
   }
 
@@ -348,6 +363,14 @@ class App extends Component {
           {this.state.redirectToHome ? (
             this.redirectToHome()
           ) : (
+              <></>
+            )}
+
+            {/* Redirect To Profile */}
+
+            {this.state.redirectToProfile ? (
+              this.redirectToProfile()
+            ) : (
               <></>
             )}
 
