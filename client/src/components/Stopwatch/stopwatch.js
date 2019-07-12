@@ -22,17 +22,18 @@ class Stopwatch extends Component {
     }
 
     startWatch = () => {
-        setInterval(this.runWatch(), 1000);
+        this.runWatch();
     }
 
     runWatch = () => {
+        setInterval(() => {
+            let seconds = this.state.seconds;
+            seconds += 1;
 
-        let seconds = this.state.seconds;
-        seconds += 1;
-
-        this.setState({
-            seconds: seconds,
-        });
+            this.setState({
+                seconds: seconds,
+            });
+        }, 1000);
     }
 
     stopWatch = () => {
