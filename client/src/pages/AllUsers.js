@@ -20,7 +20,7 @@ class AllUsers extends Component {
         userAPI.getAllUsers()
             .then((res) => {
                 this.setState({
-                    users: JSON.parse(res.data),
+                    users: res.data,
                 });
             });
     }
