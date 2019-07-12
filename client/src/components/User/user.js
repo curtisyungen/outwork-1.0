@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import userAPI from "../../utils/userAPI";
 import "./user.css";
 
@@ -84,22 +85,24 @@ class User extends Component {
         return (
             <span>
                 {this.props.userId !== localStorage.getItem("userId") ? (
-                    <div className="user">
+                    <Link className="user"
+                        to={{
+                            pathname: "/profile",
+                            state: {
+                                userId: this.props.userId,
+                                firstName: this.props.firstName,
+                                lastName: this.props.lastName,
+                            }
+                        }}
+                    >
                         <div>{this.props.firstName} {this.props.lastName}</div>
-                        <button 
-                            className="btn btn-outline-light btn-sm followBtn"
-                            onClick={this.toggleFollow}
-                        >
-                            {this.state.isFollowed === false ? (
-                                <p>Follow</p>
-                            ) : (
-                                <p>Unfollow</p>
-                            )}
-                        </button>
-                    </div>
+                    </Link>
                 ) : (
                     <></>
                 )}
+
+                
+
             </span>
         )
     }
