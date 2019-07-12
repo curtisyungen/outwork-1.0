@@ -9,6 +9,7 @@ class Stopwatch extends Component {
         this.state = {
             seconds: null,
             timeString: null,
+            status: "inactive",
         }
     }
 
@@ -20,7 +21,12 @@ class Stopwatch extends Component {
     }
 
     startWatch = () => {
-        this.runWatch();
+
+        this.setState({
+            status: "active",
+        }, () => {
+            this.runWatch();
+        });
     }
 
     runWatch = () => {
@@ -45,12 +51,17 @@ class Stopwatch extends Component {
     stopWatch = () => {
         let timer = this.state.timer;
         clearInterval(timer);
+
+        this.setState({
+            status: "inactive",
+        });
     }
 
     resetWatch = () => {
         this.setState({
             seconds: 0,
             timeString: "00:00:00",
+            status: "inactive",
         });
     }
 
@@ -75,7 +86,7 @@ class Stopwatch extends Component {
 
     render() {
         return (
-            <div className="stopwatch">
+            <div className={`stopwatch watch-${this.state.status}`}>
 
                 <div className="timeString">
                     {this.state.timeString}

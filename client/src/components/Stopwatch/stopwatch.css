@@ -30,6 +30,11 @@
     text-align: center;
 }
 
+.watch-active {
+    background: rgb(102, 224, 102);
+    box-shadow: 0px 0px 5px green;
+}
+
 @media only screen and (max-width: 520px) {
     .stopwatch {
         width: auto;
