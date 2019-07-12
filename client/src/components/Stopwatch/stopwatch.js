@@ -58,9 +58,6 @@ class Stopwatch extends Component {
     }
 
     resetWatch = () => {
-        let timer = this.state.timer;
-        clearInterval(timer);
-        
         this.setState({
             seconds: 0,
             timeString: "00:00:00",
