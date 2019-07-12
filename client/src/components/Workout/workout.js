@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Modal from "react-responsive-modal";
 import Set from "../Set/set";
 import actAPI from "../../utils/actAPI";
 import exerAPI from "../../utils/exerAPI";
@@ -12,10 +13,15 @@ class Workout extends Component {
         this.state = {
             userId: null,
             userEquipment: null,
+            date: null,
+            location: null,
+            duration: null,
+            notes: null,
             difficulty: null,
             exercises: null,
             filtered: null,
             sets: null,
+            complete: false,
         }
     }
 
@@ -40,8 +46,12 @@ class Workout extends Component {
         }
     }
 
-    handleInputChange = (setId) => {
-        
+    handleInputChange = (event) => {
+        const { name, value } = event.target;
+
+        this.setState({
+            [name]: value,
+        });
     }
 
     // Get all exercises from database
@@ -182,7 +192,7 @@ class Workout extends Component {
 
     setWeight = (setId, exName, weight) => {
         let sets = this.state.sets;
-        
+
         let idx;
         for (var ex in sets[setId]) {
             if (sets[setId][ex].name === exName) {
@@ -195,7 +205,7 @@ class Workout extends Component {
 
     setRest = (setId, exName, rest) => {
         let sets = this.state.sets;
-        
+
         let idx;
         for (var ex in sets[setId]) {
             if (sets[setId][ex].name === exName) {
@@ -208,7 +218,7 @@ class Workout extends Component {
 
     setNotes = (setId, exName, notes) => {
         let sets = this.state.sets;
-        
+
         let idx;
         for (var ex in sets[setId]) {
             if (sets[setId][ex].name === exName) {
@@ -220,49 +230,56 @@ class Workout extends Component {
     }
 
     completeWorkout = () => {
-        let confirm = window.confirm("Workout complete?");
+        this.setState({
+            complete: true,
+        });
+    }
 
-        if (confirm) {
+    closeModal = () => {
+        this.setState({
+            complete: false,
+        });
+    }
 
-            let generator = "Standard";
-            switch (this.props.difficulty) {
-                case "1": generator = "Baby"; break;
-                case "2": generator = "Easy"; break;
-                case "3": generator = "Average"; break;
-                case "4": generator = "Superior"; break;
-                case "5": generator = "Hero"; break;
-                case "6": generator = "Superman"; break;
-                case "7": generator = "Rogan"; break;
-                case "8": generator = "Goggins"; break;
-                default: generator = "Standard";
-            }
-
-            let liftData = {
-                workoutType: "lift",
-                userId: this.props.userId,
-                firstName: this.props.firstName,
-                lastName: this.props.lastName,
-                date: this.props.date,
-                location: this.props.location,
-                duration: this.props.duration,
-                generator: generator,
-                pushups: null,
-                pullups: null,
-                workout: JSON.stringify(this.state.sets),
-                muscleGroups: null,
-                notes: this.props.notes,
-            }
-
-            actAPI.createLift(liftData)
-                .then((res) => {
-                    if (res.status === 200) {
-                        alert("Workout logged!");
-                    }
-                    else {
-                        alert("Error logging workout.");
-                    }
-                });
+    submitWorkout = () => {
+        let generator = "Standard";
+        switch (this.props.difficulty) {
+            case "1": generator = "Baby"; break;
+            case "2": generator = "Easy"; break;
+            case "3": generator = "Average"; break;
+            case "4": generator = "Superior"; break;
+            case "5": generator = "Hero"; break;
+            case "6": generator = "Superman"; break;
+            case "7": generator = "Rogan"; break;
+            case "8": generator = "Goggins"; break;
+            default: generator = "Standard";
         }
+
+        let liftData = {
+            workoutType: "lift",
+            userId: this.props.userId,
+            firstName: this.props.firstName,
+            lastName: this.props.lastName,
+            date: this.state.date,
+            location: this.state.location,
+            duration: this.state.duration,
+            generator: generator,
+            pushups: null,
+            pullups: null,
+            workout: JSON.stringify(this.state.sets),
+            muscleGroups: null,
+            notes: this.state.notes,
+        }
+
+        actAPI.createLift(liftData)
+            .then((res) => {
+                if (res.status === 200) {
+                    alert("Workout logged!");
+                }
+                else {
+                    alert("Error logging workout.");
+                }
+            });
     }
 
     render() {
@@ -277,6 +294,7 @@ class Workout extends Component {
                             setWeight={this.setWeight}
                             setRest={this.setRest}
                             setNotes={this.setNotes}
+                            difficulty={this.state.difficulty}
                         />
                     ))
                 ) : (
@@ -285,8 +303,85 @@ class Workout extends Component {
 
                 {this.state.sets && this.state.sets.length > 0 ? (
                     <div>
-                        <button className="btn btn-success" onClick={this.completeWorkout}>Complete</button>
+                        <button className="btn btn-success completeBtn" onClick={this.completeWorkout}>Complete</button>
                     </div>
+                ) : (
+                        <></>
+                    )}
+
+                {this.state.complete ? (
+                    <Modal
+                        open={this.state.complete}
+                        onClose={this.closeModal}
+                    >
+
+                        {/* DATE */}
+                        <div className="input-group input-group-sm mb-3">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text" id="inputGroup-sizing-sm">Date</span>
+                            </div>
+                            <input
+                                autoComplete="off"
+                                name="date"
+                                type="date"
+                                className="form-control"
+                                aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-sm"
+                                onChange={this.handleInputChange}
+                            />
+                        </div>
+
+                        {/* LOCATION */}
+                        <div className="input-group input-group-sm mb-3">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text" id="inputGroup-sizing-sm">Location</span>
+                            </div>
+                            <input
+                                autoComplete="off"
+                                name="location"
+                                type="text"
+                                className="form-control"
+                                aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-sm"
+                                onChange={this.handleInputChange}
+                            />
+                        </div>
+
+                        {/* DURATION */}
+                        <div className="input-group input-group-sm mb-3">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text" id="inputGroup-sizing-sm">Duration</span>
+                            </div>
+                            <input
+                                autoComplete="off"
+                                name="duration"
+                                type="text"
+                                className="form-control"
+                                placeholder="hh:mm:ss"
+                                aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-sm"
+                                onChange={this.handleInputChange}
+                            />
+                        </div>
+
+                        {/* NOTES */}
+                        <div className="input-group input-group-sm mb-3">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text" id="inputGroup-sizing-sm">Notes</span>
+                            </div>
+                            <input
+                                autoComplete="off"
+                                name="notes"
+                                type="text"
+                                className="form-control"
+                                aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-sm"
+                                onChange={this.handleInputChange}
+                            />
+                        </div>
+
+                        <button className="btn btn-success btn-sm" onClick={this.submitWorkout}>Submit</button>
+                    </Modal>
                 ) : (
                         <></>
                     )}

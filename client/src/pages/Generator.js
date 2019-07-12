@@ -1,11 +1,16 @@
 import React, { Component } from "react";
-// import Container from "../components/Container/container";
+import Container from "../components/Container/container";
 import Equipment from "../components/Equipment/equipment";
 import Workout from "../components/Workout/workout";
 import Modal from "react-responsive-modal";
 import userAPI from "../utils/userAPI";
 import exerAPI from "../utils/exerAPI";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTools } from '@fortawesome/free-solid-svg-icons';
 import "./Generator.css";
+
+library.add(faTools);
 
 class Generator extends Component {
 
@@ -23,6 +28,7 @@ class Generator extends Component {
             equipment: [],
             userEquipment: [],
             generate: false,
+            confirm: false,
         }
     }
 
@@ -33,15 +39,15 @@ class Generator extends Component {
             let userId = localStorage.getItem("userId");
 
             userAPI.getUserById(userId)
-            .then((res) => {
-                this.setState({
-                    userId: userId,
-                    firstName: res.data[0].firstName,
-                    lastName: res.data[0].lastName,
-                }, () => {
-                    this.getUserById();
+                .then((res) => {
+                    this.setState({
+                        userId: userId,
+                        firstName: res.data[0].firstName,
+                        lastName: res.data[0].lastName,
+                    }, () => {
+                        this.getUserById();
+                    });
                 });
-            });  
         }
     }
 
@@ -103,6 +109,7 @@ class Generator extends Component {
     closeModal = () => {
         this.setState({
             openModal: false,
+            confirm: false,
         }, () => {
             userAPI.updateEquipment(this.state.userId, JSON.stringify(this.state.userEquipment));
         });
@@ -147,11 +154,11 @@ class Generator extends Component {
 
     render() {
         return (
-            <span>
+            <Container>
 
                 {/* SELECT EQUIPMENT */}
                 <div>
-                    <button className="btn btn-primary" onClick={this.openModal}>Select Equipment</button>
+                    <button className="btn selectEquipment" onClick={this.openModal}><FontAwesomeIcon className="fa-3x" icon={faTools} /></button>
                 </div>
 
                 {/* EQUIPMENT MODAL */}
@@ -161,7 +168,8 @@ class Generator extends Component {
                         open={this.state.openModal}
                         onClose={this.closeModal}
                     >
-                        <div className="col-md-12">
+                        <h4 className="equipTitle">Select Equipment</h4>
+                        <div className="">
                             {this.state.equipment.map(equipment => (
                                 <Equipment
                                     key={Math.random() * 100000}
@@ -177,115 +185,46 @@ class Generator extends Component {
                         <></>
                     )}
 
-                {/* DATE */}
-                <div className="col-md-4 input-group input-group-sm mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-sm">Date</span>
+                <div className="col-md-6 mt-3 generatorPage">
+
+                    <h4>Generator</h4>
+
+                    {/* SELECT DIFFICULTY */}
+                    <div className="input-group mb-3">
+                        <select
+                            className="browser-default custom-select"
+                            autoComplete="off"
+                            name="difficulty"
+                            type="text"
+                            aria-describedby="inputGroup-sizing-sm"
+                            onChange={this.handleInputChange}
+                            defaultValue={null}
+                        >
+                            <option value="0" selected disabled>Select Difficulty</option>
+                            <option value="1">Baby</option>
+                            <option value="2">Easy</option>
+                            <option value="3">Average</option>
+                            <option value="4">Superior</option>
+                            <option value="5">Hero</option>
+                            <option value="6">Superman</option>
+                            <option value="7">Rogan</option>
+                            <option value="8">Goggins</option>
+                        </select>
+                        <div className="input-group-append">
+                            <button className="btn btn-dark" onClick={this.generateWorkout}>Generate</button>
+                        </div>
                     </div>
-                    <input
-                        autoComplete="off"
-                        name="date"
-                        type="date"
-                        className="form-control"
-                        aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-sm"
-                        onChange={this.handleInputChange}
+
+                    <Workout
+                        userId={this.state.userId}
+                        firstName={this.state.firstName}
+                        lastName={this.state.lastName}
+                        generate={this.state.generate}
+                        userEquipment={this.state.userEquipment}
+                        difficulty={this.state.difficulty}
                     />
                 </div>
-
-                {/* LOCATION */}
-                <div className="col-md-4 input-group input-group-sm mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-sm">Location</span>
-                    </div>
-                    <input
-                        autoComplete="off"
-                        name="location"
-                        type="text"
-                        className="form-control"
-                        aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-sm"
-                        onChange={this.handleInputChange}
-                    />
-                </div>
-
-                {/* DURATION */}
-                <div className="col-md-4 input-group input-group-sm mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-sm">Duration</span>
-                    </div>
-                    <input
-                        autoComplete="off"
-                        name="duration"
-                        type="text"
-                        className="form-control"
-                        placeholder="hh:mm:ss"
-                        aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-sm"
-                        onChange={this.handleInputChange}
-                    />
-                </div>
-
-                {/* NOTES */}
-                <div className="col-md-4 input-group input-group-sm mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-sm">Notes</span>
-                    </div>
-                    <input
-                        autoComplete="off"
-                        name="notes"
-                        type="text"
-                        className="form-control"
-                        aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-sm"
-                        onChange={this.handleInputChange}
-                    />
-                </div>
-
-                {/* SELECT DIFFICULTY */}
-                <div className="col-md-4 input-group input-group-sm mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-sm">Difficulty</span>
-                    </div>
-                    <select
-                        className="browser-default custom-select"
-                        autoComplete="off"
-                        name="difficulty"
-                        type="text"
-                        aria-describedby="inputGroup-sizing-sm"
-                        onChange={this.handleInputChange}
-                        defaultValue={null}
-                    >
-                        <option value="0"></option>
-                        <option value="1">Baby</option>
-                        <option value="2">Easy</option>
-                        <option value="3">Average</option>
-                        <option value="4">Superior</option>
-                        <option value="5">Hero</option>
-                        <option value="6">Superman</option>
-                        <option value="7">Rogan</option>
-                        <option value="8">Goggins</option>
-                    </select>
-                </div>
-
-                {/* GENERATE WORKOUT */}
-                <div>
-                    <button className="btn btn-primary" onClick={this.generateWorkout}>Generate</button>
-                </div>
-
-                <Workout
-                    userId={this.state.userId}
-                    firstName={this.state.firstName}
-                    lastName={this.state.lastName}
-                    date={this.state.date}
-                    location={this.state.location}
-                    duration={this.state.duration}
-                    notes={this.state.notes}
-                    generate={this.state.generate}
-                    userEquipment={this.state.userEquipment}
-                    difficulty={this.state.difficulty}
-                />
-            </span>
+            </Container >
         )
     }
 }

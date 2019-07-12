@@ -80,7 +80,7 @@ class SetItem extends Component {
 
     render() {
         return (
-            <div className="setItem col-md-12">
+            <div className={`setItem col-md-12 diff${this.props.difficulty}`}>
                 <a
                     className="exName col-md-8"
                     href={`https://www.youtube.com/results?search_query=how+to+do+${this.props.name}`}

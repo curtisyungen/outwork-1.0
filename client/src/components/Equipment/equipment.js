@@ -24,7 +24,7 @@ class Equipment extends Component {
     render() {
         return (
             <div 
-                className={`equipment col-md-3 equip-${this.props.status}`}
+                className={`equipment equip-${this.props.status}`}
                 onClick={this.props.toggleStatus.bind(null, this.props.name)}
             >
                 <p>{this.props.name}</p>

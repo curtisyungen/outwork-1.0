@@ -1,11 +1,50 @@
 .set {
-    background: lightblue;
+    border-radius: 4px;
     color: black;
     display: block;
     font-size: 13px;
     font-weight: 400;
     line-height: 1.5;
-    margin: 5px;
-    padding: 10px;
-    width: 500px;
+    margin: 5px 0px;
+    padding: 10px 5px;
+    width: 100%;
+}
+
+a {
+    color: black;
+}
+
+.diff1, .diff1 a {
+    background: pink;
+}
+
+.diff2, .diff2 a {
+    background: lightgreen;
+}
+
+.diff3, .diff3 a {
+    background: gold;
+}
+
+.diff4, .diff4 a {
+    background: lightblue;
+}
+
+.diff5, .diff5 a {
+    background: rgb(45, 178, 223);
+}
+
+.diff6, .diff6 a {
+    background: rgb(58, 58, 255);
+    color: white;
+}
+
+.diff7, .diff7 a {
+    background: gray;
+    color: black;
+}
+
+.diff8, .diff8 a {
+    background: black;
+    color: red;
 }

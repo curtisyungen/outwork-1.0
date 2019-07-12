@@ -1,36 +1,22 @@
-/* .baby {
-    background: pink;
+.equipTitle {
+    font-size: 18px;
+    margin: 25px 0px 15px 0px;
 }
 
-.easy {
-    background: lightgreen;
+.generatorPage {
+    margin: 5px auto;
 }
 
-.average {
-    background: gold;
+.selectEquipment {
+    background: rgb(242, 242, 242);
+    border: 1px solid darkgray;
+    border-radius: 4px;
+    float: right;
+    height: 80px;
+    margin: 5px 0px;
+    width: 80px;
 }
 
-.superior {
-    background: blue;
+.selectEquipment:hover {
+    background: rgb(220, 220, 220);
 }
-
-.hero {
-    background: lightblue;
-}
-
-.superman {
-    background: navy;
-}
-
-.rogan {
-    background: gray;
-}
-
-.goggins {
-    background: black;
-    color: red;
-}
-
-.btn-secondary {
-    border: none;
-} */

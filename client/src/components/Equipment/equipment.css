@@ -1,13 +1,15 @@
 .equipment {
     background: rgb(242, 242, 242);
     border: 1px solid black;
+    border-radius: 4px;
     cursor: pointer;
-    display: inline-block;
-    margin: 5px;
+    display: block;
+    margin: 5px 0px;
     padding: 20px;
     text-align: center;
+    width: 100%;
 }
 
 .equip-true {
-    background: lightgreen;
+    background: rgb(63, 255, 63);
 }
