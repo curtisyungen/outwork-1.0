@@ -111,6 +111,7 @@ class FindUsers extends Component {
                                 lastName={user.lastName}
                                 followers={user.followers}
                                 updateUserFollowings={this.updateUserFollowings}
+                                loadProfile={this.props.loadProfile}
                             />
                         ))
                     ) : (
