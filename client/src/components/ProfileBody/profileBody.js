@@ -16,9 +16,8 @@ class ProfileBody extends Component {
     }
 
     componentDidMount = () => {
-        let userId = localStorage.getItem("userId");
         this.setState({
-            userId: userId,
+            userId: this.props.userId,
             allActivity: this.props.allActivity,
         });
     }
