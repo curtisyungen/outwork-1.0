@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Redirect, Link } from "react-router-dom";
-import userAPI from "../../utils/userAPI";
+// import { Redirect, Link } from "react-router-dom";
+// import userAPI from "../../utils/userAPI";
 import "./user.css";
 
 // Current user = user who is conducting the search for other users
@@ -8,79 +8,74 @@ import "./user.css";
 
 class User extends Component {
 
-    constructor(props) {
-        super(props);
+    // constructor(props) {
+    //     super(props);
 
-        this.state = {
-            subjUserId: null,
-            followers: [],
-            isFollowed: false,
-            redirect: false,
-        }
-    }
+    //     this.state = {
+    //         subjUserId: null,
+    //     }
+    // }
 
-    componentDidMount = () => {
-        let followers = [];
-        if (this.props.followers !== null) {
-            followers = JSON.parse(this.props.followers);
-        }
+    // componentDidMount = () => {
+    //     let followers = [];
+    //     if (this.props.followers !== null) {
+    //         followers = JSON.parse(this.props.followers);
+    //     }
         
-        this.setState({
-            subjUserId: this.props.userId,
-            followers: followers,
-        }, () => {
-            this.getFollowedStatus();
-        });
-    }
+    //     this.setState({
+    //         subjUserId: this.props.userId,
+    //         followers: followers,
+    //     });
+    // }
 
-    getFollowedStatus = () => {
-        let followers = this.state.followers;
-        let userId = localStorage.getItem("userId");
-        let isFollowed = false;
+    // getFollowedStatus = () => {
+    //     let followers = this.state.followers;
+    //     let userId = localStorage.getItem("userId");
+    //     let isFollowed = false;
 
-        for (var f in followers) {
-            if (followers[f] === userId) {
-                isFollowed = true;
-            }
-        }
+    //     for (var f in followers) {
+    //         if (followers[f] === userId) {
+    //             isFollowed = true;
+    //         }
+    //     }
 
-        this.setState({
-            isFollowed: isFollowed,
-        });
-    }
+    //     this.setState({
+    //         isFollowed: isFollowed,
+    //     });
+    // }
 
-    toggleFollow = (event) => {
-        event.preventDefault();
+    // toggleFollow = (event) => {
+    //     event.preventDefault();
 
-        // Add subject user to list of users being followed by current user
-        this.props.updateUserFollowings(this.props.userId);
+    //     // Add subject user to list of users being followed by current user
+    //     this.props.updateUserFollowings(this.props.userId);
 
-        // Add current user to list of followers of subject user
-        this.updateUserFollowers();
+    //     // Add current user to list of followers of subject user
+    //     this.updateUserFollowers();
 
-        this.getFollowedStatus();
-    }
+    //     this.getFollowedStatus();
+    // }
 
     // Add current user to list of followers of subject user
-    updateUserFollowers = () => {
-        let followers = this.state.followers;
-        let userId = localStorage.getItem("userId");
+    // updateUserFollowers = () => {
+    //     let followers = this.state.followers;
+    //     let userId = localStorage.getItem("userId");
 
-        let idx = followers.indexOf(userId);
-        if (idx === -1) {
-            followers.push(userId);
-        }
-        else {
-            followers.splice(idx, 1);
-        }
+    //     let idx = followers.indexOf(userId);
+    //     if (idx === -1) {
+    //         followers.push(userId);
+    //     }
+    //     else {
+    //         followers.splice(idx, 1);
+    //     }
 
-        userAPI.updateUserFollowers(this.state.subjUserId, JSON.stringify(followers))
-            .then(() => {
-                // this.setState({
-                //     followers: followers,
-                // });
-            });        
-    }
+    //     userAPI.updateUserFollowers(this.state.subjUserId, JSON.stringify(followers))
+    //         .then(() => {
+    //             this.setState({
+    //                 followers: followers,
+    //             });
+    //         });        
+    // }
 
     loadProfile = () => {
         this.props.loadProfile(this.props.userId, this.props.firstName, this.props.lastName);
@@ -88,18 +83,12 @@ class User extends Component {
 
     render() {
         return (
-            <span>
-                {this.props.userId !== localStorage.getItem("userId") ? (
-                    <div 
-                        className="user"
-                        onClick={this.loadProfile}
-                    >
-                        <div>{this.props.firstName} {this.props.lastName}</div>
-                    </div>
-                ) : (
-                    <></>
-                )}
-            </span>
+            <div 
+                className="user"
+                onClick={this.loadProfile}
+            >
+                <div>{this.props.firstName} {this.props.lastName}</div>
+            </div>
         )
     }
 }
