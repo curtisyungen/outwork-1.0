@@ -1,0 +1,36 @@
+.activityIcons {
+    display: inline-block;
+    height: 50px;
+    margin-top: 25px;
+}
+
+.activityIcon {
+    background: rgb(242, 242, 242);
+    border: 1px solid darkgray;
+    height: 50px;
+    margin: 10px 5px;
+    margin-left: 0px;
+    padding: 20px 15px 10px 15px;
+    width: 50px;
+}
+
+.activityIcon:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.bikeIcon:hover {
+    background: rgb(255, 216, 116);
+}
+
+.liftIcon:hover {
+    background: rgb(255, 191, 191);
+}
+
+.runIcon:hover {
+    background: lightgreen;
+}
+
+.swimIcon:hover {
+    background: lightblue;
+}

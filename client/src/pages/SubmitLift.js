@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Container from "../components/Container/container";
 import Exercise from "../components/Exercise/exercise";
 import MuscleGroup from "../components/MuscleGroup/muscleGroup";
+import ActivityIcons from "../components/ActivityIcons/activityIcons";
 import userAPI from "../utils/userAPI";
 import actAPI from "../utils/actAPI";
 import "./SubmitLift.css";
@@ -317,9 +318,9 @@ class SubmitLift extends Component {
             <Container>
                 <div>
 
-                    <a className="activity-sm col-md-2" href="/run">Run</a>
-                    <a className="activity-sm col-md-2" href="/bike">Bike</a>
-                    <a className="activity-sm col-md-2" href="/swim">Swim</a>
+                    <ActivityIcons 
+                        hidden="lift"
+                    />
 
                     <h4>Lifting Workout</h4>
 
