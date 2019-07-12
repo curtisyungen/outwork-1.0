@@ -7,8 +7,6 @@ class Stopwatch extends Component {
         super(props);
 
         this.state = {
-            hours: null,
-            minutes: null,
             seconds: null,
             timeString: null,
         }
@@ -17,6 +15,7 @@ class Stopwatch extends Component {
     componentDidMount = () => {
         this.setState({
             seconds: 0,
+            timeString: "00:00:00",
         });
     }
 
@@ -60,9 +59,13 @@ class Stopwatch extends Component {
         
         hours = Math.floor(seconds / 3600);
         minutes = Math.floor(seconds / 60);
-        seconds = Math.floor(seconds - (minutes * 60) - (hours * 3600));
+        seconds = Math.floor(seconds - (hours * 3600) - (minutes * 60));
 
-        let timeString = `${hours}:${minutes}:${seconds}`;
+        let addZeroHrs = (hours < 10) ? (0):("");
+        let addZeroMins = (minutes < 10) ? (0):("");
+        let addZeroSecs = (seconds < 10) ? (0):("");
+
+        let timeString = `${addZeroHrs}${hours}:${addZeroMins}${minutes}:${addZeroSecs}${seconds}`;
 
         this.setState({
             timeString: timeString,
