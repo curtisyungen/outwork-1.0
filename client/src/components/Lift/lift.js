@@ -19,15 +19,31 @@ class Lift extends Component {
             workout: null,
             generator: null,
             generatorText: null,
+            muscleGroups: null,
         }
     }
 
     componentDidMount = () => {
         let workout = JSON.parse(this.props.workout);
 
+        this.getMuscleGroups();
+
         this.setState({
             userId: this.props.userId,
             workout: workout,
+        });
+    }
+
+    getMuscleGroups = () => {
+        let groups;
+        if (this.props.muscleGroups) {
+            groups = JSON.parse(this.props.muscleGroups);
+        }
+
+        let muscleGroups = groups.join(", ");
+        
+        this.setState({
+            muscleGroups: muscleGroups,
         });
     }
 
@@ -62,7 +78,7 @@ class Lift extends Component {
                     <div className="cell"><span className="cellDesc">Date</span>{this.props.date}</div>
                     <div className="cell"><span className="cellDesc">Generator</span>{this.props.generator}</div>
                     <div className="cell cell4"><span className="cellDesc">Time</span>{this.props.duration}</div>
-                    <div className="cell cell5"><span className="cellDesc">Muscle Grps.</span>{this.props.muscleGroups}</div>
+                    <div className="cell cell5"><span className="cellDesc">Muscle Grps.</span>{this.state.muscleGroups}</div>
                     <div className="cell cell6"><span className="cellDesc">Push-Ups</span>{this.state.pushups}</div>
                     <div className="cell cell7"><span className="cellDesc">Pull-Ups</span>{this.props.pullups}</div>
                     <div className="cell cell8 actNotes"><span className="cellDesc">Notes</span>{this.props.notes}</div>
