@@ -107,7 +107,7 @@ class User extends Component {
                 {this.state.redirect ? (
                     <Redirect 
                         to={{
-                            pathname: "/profile/" + userId,
+                            pathname: "/profile/" + this.props.userId,
                             params: {
                                 userId: this.props.userId,
                                 firstName: this.props.firstName,
