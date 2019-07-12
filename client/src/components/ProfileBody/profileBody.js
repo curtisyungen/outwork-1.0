@@ -25,10 +25,14 @@ class ProfileBody extends Component {
     render() {
         return (
             <Container>
-
-                <Metrics 
-                    userId={this.state.userId}
-                />
+                
+                {this.state.userId ? (
+                    <Metrics 
+                        userId={this.state.userId}
+                    />
+                ) : (
+                    <></>
+                )}
 
                 <div className="col-md-12 myActivity">
                     <h4>User Activity</h4>
