@@ -83,7 +83,7 @@ class User extends Component {
     render() {
         return (
             <span>
-                {true ? (
+                {this.props.userId !== localStorage.getItem("userId") ? (
                     <div className="user">
                         <div>{this.props.firstName} {this.props.lastName}</div>
                         <button 
