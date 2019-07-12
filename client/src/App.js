@@ -13,6 +13,7 @@ import SubmitSwim from "./pages/SubmitSwim";
 import SubmitLift from "./pages/SubmitLift";
 import Generator from "./pages/Generator";
 import FindUsers from "./pages/FindUsers";
+import AllUsers from "./pages/AllUsers";
 import Settings from "./pages/Settings";
 import Error from "./pages/Error";
 import userAPI from "./utils/userAPI";
@@ -477,8 +478,8 @@ class App extends Component {
             } />
 
             {/* Find Users Page */}
-            <Route exact path="/findUsers" render={() =>
-              <FindUsers
+            <Route exact path="/allUsers" render={() =>
+              <AllUsers
                 checkValidUser={this.checkValidUser}
                 loadProfile={this.loadProfile}
               />

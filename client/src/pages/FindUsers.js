@@ -4,6 +4,9 @@ import User from "../components/User/user";
 import userAPI from "../utils/userAPI";
 import "./FindUsers.css";
 
+// THIS PAGE IS CURRENTLY NOT USED.
+// REPLACED BY ALLUSERS.JS.
+
 class FindUsers extends Component {
 
     constructor(props) {
@@ -36,47 +39,47 @@ class FindUsers extends Component {
             });
     }
 
-    handleInputChange = (event) => {
-        const { name, value } = event.target;
+    // handleInputChange = (event) => {
+    //     const { name, value } = event.target;
 
-        this.setState({
-            [name]: value,
-        });
-    }
+    //     this.setState({
+    //         [name]: value,
+    //     });
+    // }
 
-    searchForUser = (event) => {
-        event.preventDefault();
+    // searchForUser = (event) => {
+    //     event.preventDefault();
 
-        this.props.checkValidUser();
+    //     this.props.checkValidUser();
 
-        userAPI.searchForUser(this.state.userSearch)
-            .then((res) => {
-                this.setState({
-                    users: res.data,
-                });
-            });
-    }
+    //     userAPI.searchForUser(this.state.userSearch)
+    //         .then((res) => {
+    //             this.setState({
+    //                 users: res.data,
+    //             });
+    //         });
+    // }
 
-    updateUserFollowings = (subjUserId) => {
-        let followedUsers = this.state.followedUsers;
-        let userId = localStorage.getItem("userId");
+    // updateUserFollowings = (subjUserId) => {
+    //     let followedUsers = this.state.followedUsers;
+    //     let userId = localStorage.getItem("userId");
 
-        let idx = followedUsers.indexOf(subjUserId);
+    //     let idx = followedUsers.indexOf(subjUserId);
 
-        if (idx === -1) {
-            followedUsers.push(subjUserId);
-        }
-        else {
-            followedUsers.splice(idx, 1);
-        }
+    //     if (idx === -1) {
+    //         followedUsers.push(subjUserId);
+    //     }
+    //     else {
+    //         followedUsers.splice(idx, 1);
+    //     }
         
-        userAPI.updateUserFollowings(userId, JSON.stringify(followedUsers))
-            .then(() => {
-                // this.setState({
-                //     followedUsers: followedUsers,
-                // });
-            });
-    }
+    //     userAPI.updateUserFollowings(userId, JSON.stringify(followedUsers))
+    //         .then(() => {
+    //             this.setState({
+    //                 followedUsers: followedUsers,
+    //             });
+    //         });
+    // }
 
     render() {
         return (
@@ -110,7 +113,7 @@ class FindUsers extends Component {
                                 firstName={user.firstName}
                                 lastName={user.lastName}
                                 followers={user.followers}
-                                updateUserFollowings={this.updateUserFollowings}
+                                // updateUserFollowings={this.updateUserFollowings}
                                 loadProfile={this.props.loadProfile}
                             />
                         ))
