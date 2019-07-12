@@ -26,7 +26,9 @@ class ProfileBody extends Component {
         return (
             <Container>
 
-                <Metrics />
+                <Metrics 
+                    userId={this.state.userId}
+                />
 
                 <div className="col-md-12 myActivity">
                     <h4>User Activity</h4>
@@ -42,8 +44,6 @@ class ProfileBody extends Component {
                             <></>
                         )}
                 </div>
-
-
             </Container>
         )
     }
