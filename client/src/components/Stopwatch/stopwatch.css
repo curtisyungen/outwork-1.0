@@ -1,9 +1,7 @@
 .stopwatch {
     background: rgb(242, 242, 242);
-    border: 1px solid darkgray;
-    border-radius: 4px;
     color: black;
-    margin: 5px auto;
+    margin: 5px -5px;
     width: 400px;
 }
 
@@ -37,6 +35,6 @@
 
 @media only screen and (max-width: 520px) {
     .stopwatch {
-        width: auto;
+        width: 100%;
     }
 }
