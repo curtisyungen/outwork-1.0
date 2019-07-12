@@ -31,12 +31,16 @@ class Stopwatch extends Component {
 
             this.setState({
                 seconds: seconds,
+            }, () => {
+                this.formatTime();
             });
         }, 1000);
 
         this.setState({
             timer: timer,
         });
+
+        
     }
 
     stopWatch = () => {
