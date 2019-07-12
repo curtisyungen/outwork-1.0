@@ -13,16 +13,20 @@
 }
 
 .actNotes {
-    min-width: 200px;
-    max-width: 200px;
+    border-right: 0px !important;
+    min-width: 26% !important;
+    max-width: 26% !important;
 }
 
 .cell {
     border-right: 1px solid lightgray;
-    min-width: 100px;
-    max-width: 100px;
+    min-width: 10%;
+    max-width: 10%;
+    overflow: hidden;
     padding-left: 5px;
     padding-top: 15px;
+    text-overflow: ellipsis;
+    white-space: normal;
 }
 
 .cellDesc {
@@ -35,36 +39,34 @@
     padding-right: 5px;
     position: absolute;
     text-align: left;
-    width: 100%;
 }
-/* 
-.cellDesc:hover {
-    opacity: 0.5;
-} */
 
 .icon {
     text-align: center !important;
     width: 25px !important;
 }
 
+.bikeIcon, .liftIcon, 
+.runIcon, .swimIcon {
+    min-width: 45px !important;
+    padding: 10px;
+    width: 4%;
+}
+
 .bikeIcon {
     background: rgb(255, 216, 116);
-    padding: 10px;
 }
 
 .liftIcon {
     background: rgb(255, 191, 191);
-    padding: 10px;
 }
 
 .runIcon {
     background: lightgreen;
-    padding: 10px;
 }
 
 .swimIcon {
     background: lightblue;
-    padding: 10px;
 }
 
 .runDetails {

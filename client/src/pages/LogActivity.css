@@ -1,12 +1,13 @@
 .activity {
     background: rgb(242, 242, 242);
     border: 1px solid black;
+    border-radius: 4px;
     color: black;
     cursor: pointer;
     display: inline-block;
     height: 150px;
     margin: 5px;
-    padding-top: 60px;
+    padding-top: 50px;
     text-align: center;
     width: 150px;
 }
@@ -31,4 +32,20 @@
     height: auto;
     margin-top: 150px;
     text-align: center;
+}
+
+.bikeIcon:hover {
+    background: rgb(255, 216, 116);
+}
+
+.liftIcon:hover {
+    background: rgb(255, 191, 191);
+}
+
+.runIcon:hover {
+    background: lightgreen;
+}
+
+.swimIcon:hover {
+    background: lightblue;
 }
