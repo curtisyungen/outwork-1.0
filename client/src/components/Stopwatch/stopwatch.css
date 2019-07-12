@@ -2,8 +2,24 @@
     color: black;
 }
 
+.stopwatchBtns {
+    margin: 5px 0px;
+    text-align: center;
+}
+
+.startWatchBtn,
+.stopWatchBtn,
+.resetWatchBtn {
+    margin: 5px;
+}
+
+.stopWatchBtn {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
 .timeString {
-    font-size: 18px;
+    font-size: 24px;
     line-height: 1.255;
     text-align: center;
 }
