@@ -397,6 +397,15 @@ class App extends Component {
               />
             } />
 
+            <Route path="/profile/:userId" render={() => {
+              <Profile
+                checkValidUser={this.checkValidUser}
+                getUserActivity={this.getUserActivity}
+                allActivity={this.state.allActivity}
+                deleteActivity={this.deleteActivity}
+              />
+            }} />
+
             {/* Log Activity Page */}
             <Route exact path="/logActivity" render={() =>
               <LogActivity
