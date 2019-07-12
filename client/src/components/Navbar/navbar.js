@@ -13,7 +13,7 @@ class Navbar extends Component {
                     "/profile", 
                     "/logactivity", 
                     "/generator",
-                    "/findUsers",
+                    "/findusers",
                     "/settings",
                     "/run",
                     "/bike",
