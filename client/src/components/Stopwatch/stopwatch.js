@@ -50,6 +50,7 @@ class Stopwatch extends Component {
     resetWatch = () => {
         this.setState({
             seconds: 0,
+            timeString: "00:00:00",
         });
     }
 
@@ -76,24 +77,24 @@ class Stopwatch extends Component {
         return (
             <div className="stopwatch">
 
-                <div>
+                <div className="timeString">
                     {this.state.timeString}
                 </div>
 
                 <button 
-                    className="btn btn-success btn-sm startWatchBtn"
+                    className="btn btn-dark btn-sm startWatchBtn"
                     onClick={this.startWatch}
                 >
                     Start
                 </button>
                 <button
-                    className="btn btn-danger btn-sm stopWatchBtn"
+                    className="btn btn-dark btn-sm stopWatchBtn"
                     onClick={this.stopWatch}
                 >
                     Stop
                 </button>
                 <button
-                    className="btn btn-dark btn-sm resetWatchBtn"
+                    className="btn btn-light btn-sm resetWatchBtn"
                     onClick={this.resetWatch}
                 >
                     Reset
