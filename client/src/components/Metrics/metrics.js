@@ -16,7 +16,6 @@ class Metrics extends Component {
             screenWidth: null,
             flexDir: null,
             userId: null,
-            firstName: null,
             userRuns: null,
             userBikes: null,
             userSwims: null,
@@ -27,12 +26,8 @@ class Metrics extends Component {
     componentDidMount = () => {
         // this.props.checkValidUser();
 
-        let firstName = localStorage.getItem("fn");
-        let userId = localStorage.getItem("userId");
-
         this.setState({
-            firstName: firstName,
-            userId: userId,
+            userId: this.props.userId,
         }, () => {
             this.getScreenSize();
             this.getUserRuns();
