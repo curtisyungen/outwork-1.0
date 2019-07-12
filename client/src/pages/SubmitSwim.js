@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Container from "../components/Container/container";
+import ActivityIcons from "../components/ActivityIcons/activityIcons";
 import userAPI from "../utils/userAPI";
 import actAPI from "../utils/actAPI";
 // import "./SubmitSwim.css";
@@ -79,11 +80,11 @@ class SubmitSwim extends Component {
     render() {
         return (
             <Container>
-                <div className="logRunPage">
+                <div className="logSwimPage">
 
-                    <a className="activity-sm col-md-2" href="/run">Run</a>
-                    <a className="activity-sm col-md-2" href="/bike">Bike</a>
-                    <a className="activity-sm col-md-2" href="/lift">Lift</a>
+                    <ActivityIcons 
+                        hidden="swim"
+                    />
 
                     <h4>Swimming Workout</h4>
 

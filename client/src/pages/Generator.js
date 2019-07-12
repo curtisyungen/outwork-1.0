@@ -168,7 +168,8 @@ class Generator extends Component {
                         open={this.state.openModal}
                         onClose={this.closeModal}
                     >
-                        <h4 className="equipTitle">Select Equipment</h4>
+                        <h4 className="equipTitle lead">Select the equipment you own.</h4>
+                        <p class="equipSubtitle lead">This will filter the exercises generated.</p>
                         <div className="">
                             {this.state.equipment.map(equipment => (
                                 <Equipment

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Container from "../components/Container/container";
+import ActivityIcons from "../components/ActivityIcons/activityIcons";
 import userAPI from "../utils/userAPI";
 import actAPI from "../utils/actAPI";
 // import "./SubmitBike.css";
@@ -87,9 +88,9 @@ class SubmitBike extends Component {
             <Container>
                 <div>
 
-                    <a className="activity-sm col-md-2" href="/run">Run</a>
-                    <a className="activity-sm col-md-2" href="/swim">Swim</a>
-                    <a className="activity-sm col-md-2" href="/lift">Lift</a>
+                    <ActivityIcons 
+                        hidden="bike"
+                    />
 
                     <h4>Biking Workout</h4>
 

@@ -1,6 +1,22 @@
+.equipList {
+    white-space: normal;
+    max-width: 500px;
+}
+
+.equipSubtitle {
+    font-size: 15px;
+    font-weight: 400;
+    margin-bottom: 25px;
+    margin-top: 0px;
+    /* text-align: center; */
+}
+
 .equipTitle {
     font-size: 18px;
-    margin: 25px 0px 15px 0px;
+    font-weight: 700;
+    margin: 35px auto 0px auto;
+    /* text-align: center; */
+    width: 100%;
 }
 
 .generatorPage {

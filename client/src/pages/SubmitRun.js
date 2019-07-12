@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import Container from "../components/Container/container";
 import RunRepeat from "../components/RunRepeat/runRepeat";
+import ActivityIcons from "../components/ActivityIcons/activityIcons";
 import actAPI from "../utils/actAPI";
-import "./SubmitRun.css";
 import userAPI from "../utils/userAPI";
+import "./SubmitRun.css";
 
 class SubmitRun extends Component {
 
@@ -213,12 +214,13 @@ class SubmitRun extends Component {
     render() {
         return (
             <Container>
-                <div>
 
-                    <a className="activity-sm" href="/bike">Bike</a>
-                    <a className="activity-sm" href="/swim">Swim</a>
-                    <a className="activity-sm" href="/lift">Lift</a>
+                <ActivityIcons 
+                    hidden="run"
+                />
 
+                <div className="runningWorkout">
+                    
                     <h4>Running Workout</h4>
 
                     {/* DATE */}

@@ -303,7 +303,7 @@ class Workout extends Component {
 
                 {this.state.sets && this.state.sets.length > 0 ? (
                     <div>
-                        <button className="btn btn-success completeBtn" onClick={this.completeWorkout}>Complete</button>
+                        <button className="btn btn-light completeBtn" onClick={this.completeWorkout}>Complete</button>
                     </div>
                 ) : (
                         <></>
@@ -316,7 +316,7 @@ class Workout extends Component {
                     >
 
                         {/* DATE */}
-                        <div className="input-group input-group-sm mb-3">
+                        <div className="input-group input-group-sm mb-3 workoutModalForm">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="inputGroup-sizing-sm">Date</span>
                             </div>
@@ -380,7 +380,7 @@ class Workout extends Component {
                             />
                         </div>
 
-                        <button className="btn btn-success btn-sm" onClick={this.submitWorkout}>Submit</button>
+                        <button className="btn btn-success btn-sm submitWorkoutBtn" onClick={this.submitWorkout}>Submit</button>
                     </Modal>
                 ) : (
                         <></>

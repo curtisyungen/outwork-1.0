@@ -3,6 +3,14 @@
     margin: 5px auto;
 }
 
+.submitWorkoutBtn {
+    float: right;
+}
+
 .workout {
     color: black;
+}
+
+.workoutModalForm {
+    margin-top: 35px;
 }
