@@ -22,10 +22,10 @@ class Profile extends Component {
 
         let userId, firstName, lastName;
 
-        if (this.props.location && this.props.location.state.userId !== null) {
-            userId = this.props.location.state.userId;
-            firstName = this.props.location.state.firstName;
-            lastName = this.props.location.state.lastName;
+        if (this.props.profileId !== null) {
+            userId = this.props.profileId;
+            firstName = this.props.otherUserFirst;
+            lastName = this.props.otherUserLast;
         }
         else {
             userId = localStorage.getItem("userId");
@@ -38,7 +38,6 @@ class Profile extends Component {
             firstName: firstName,
             lastName: lastName,
         }, () => {
-            console.log("Profile State", this.state);
             this.props.getUserActivity(userId);
         });
     }

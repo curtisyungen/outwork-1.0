@@ -82,12 +82,8 @@ class User extends Component {
             });        
     }
 
-    viewProfile = () => {
-        this.setState({
-            redirect: true,
-        }, () => {
-            console.log("User Props", this.props);
-        });
+    loadProfile = () => {
+        this.props.loadProfile(this.props.userId, this.props.firstName, this.props.lastName);
     }
 
     render() {
@@ -96,29 +92,13 @@ class User extends Component {
                 {this.props.userId !== localStorage.getItem("userId") ? (
                     <div 
                         className="user"
-                        onClick={this.viewProfile}
+                        onClick={this.loadProfile}
                     >
                         <div>{this.props.firstName} {this.props.lastName}</div>
                     </div>
                 ) : (
                     <></>
                 )}
-
-                {this.state.redirect ? (
-                    <Redirect 
-                        to={{
-                            pathname: "/profile/" + this.props.userId,
-                            params: {
-                                userId: this.props.userId,
-                                firstName: this.props.firstName,
-                                lastName: this.props.lastName,
-                            }
-                        }}
-                    />
-                ) : (
-                    <></>
-                )}
-
             </span>
         )
     }

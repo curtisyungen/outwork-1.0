@@ -30,6 +30,9 @@ class App extends Component {
       redirectToHome: false,
       redirectToLanding: false,
       userId: null,
+      profileId: null,
+      otherUserFirst: null,
+      otherUserLast: null,
       allActivity: [],
     }
   }
@@ -303,6 +306,14 @@ class App extends Component {
     window.location.reload();
   }
 
+  loadProfile = (userId, firstName, lastName) => {
+    this.setState({
+      profileId: userId,
+      otherUserFirst: firstName,
+      otherUserLast: lastName,
+    });
+  }
+
   render() {
     return (
       <Router>
@@ -390,15 +401,9 @@ class App extends Component {
             {/* Profile Page */}
             <Route exact path="/profile" render={() =>
               <Profile
-                checkValidUser={this.checkValidUser}
-                getUserActivity={this.getUserActivity}
-                allActivity={this.state.allActivity}
-                deleteActivity={this.deleteActivity}
-              />
-            } />
-
-            <Route path="/profile/:userId" render={() => 
-              <Profile
+                profileId={this.state.profileId}
+                otherUserFirst={this.state.otherUserFirst}
+                otherUserLast={this.state.otherUserLast}
                 checkValidUser={this.checkValidUser}
                 getUserActivity={this.getUserActivity}
                 allActivity={this.state.allActivity}
@@ -452,6 +457,7 @@ class App extends Component {
             <Route exact path="/findUsers" render={() =>
               <FindUsers
                 checkValidUser={this.checkValidUser}
+                loadProfile={this.loadProfile}
               />
             } />
 
