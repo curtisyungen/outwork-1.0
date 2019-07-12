@@ -16,9 +16,18 @@ class ProfileHeader extends Component {
 
     componentDidMount = () => {
 
-        let userId = localStorage.getItem("userId");
-        let firstName = localStorage.getItem("fn");
-        let lastName = localStorage.getItem("ln");
+        let userId, firstName, lastName;
+
+        if (this.props.location.state && this.props.location.state.userId !== null) {
+            userId = this.props.location.state.userId;
+            firstName = this.props.location.state.firstName;
+            lastName = this.props.location.state.lastName;
+        }
+        else {
+            userId = localStorage.getItem("userId");
+            firstName = localStorage.getItem("fn");
+            lastName = localStorage.getItem("ln");
+        }
 
         this.setState({
             userId: userId,
