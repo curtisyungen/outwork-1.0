@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import userAPI from "../../utils/userAPI";
 import "./user.css";
 
@@ -15,6 +15,7 @@ class User extends Component {
             subjUserId: null,
             followers: [],
             isFollowed: false,
+            redirect: false,
         }
     }
 
@@ -81,11 +82,28 @@ class User extends Component {
             });        
     }
 
+    viewProfile = () => {
+        this.setState({
+            redirect: true,
+        });
+    }
+
     render() {
         return (
             <span>
                 {this.props.userId !== localStorage.getItem("userId") ? (
-                    <Link className="user"
+                    <div 
+                        className="user"
+                        onClick={this.viewProfile}
+                    >
+                        <div>{this.props.firstName} {this.props.lastName}</div>
+                    </div>
+                ) : (
+                    <></>
+                )}
+
+                {this.state.redirect ? (
+                    <Redirect 
                         to={{
                             pathname: "/profile",
                             state: {
@@ -94,14 +112,10 @@ class User extends Component {
                                 lastName: this.props.lastName,
                             }
                         }}
-                    >
-                        <div>{this.props.firstName} {this.props.lastName}</div>
-                    </Link>
+                    />
                 ) : (
                     <></>
                 )}
-
-                
 
             </span>
         )
