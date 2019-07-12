@@ -85,6 +85,8 @@ class User extends Component {
     viewProfile = () => {
         this.setState({
             redirect: true,
+        }, () => {
+            console.log("User Props", this.props);
         });
     }
 
