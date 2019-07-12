@@ -10,14 +10,13 @@ class Stopwatch extends Component {
             hours: null,
             minutes: null,
             seconds: null,
-            active: false,
+            timeString: null,
         }
     }
 
     componentDidMount = () => {
         this.setState({
             seconds: 0,
-            active: false,
         });
     }
 
@@ -26,7 +25,7 @@ class Stopwatch extends Component {
     }
 
     runWatch = () => {
-        setInterval(() => {
+        let timer = setInterval(() => {
             let seconds = this.state.seconds;
             seconds += 1;
 
@@ -34,16 +33,35 @@ class Stopwatch extends Component {
                 seconds: seconds,
             });
         }, 1000);
+
+        this.setState({
+            timer: timer,
+        });
     }
 
     stopWatch = () => {
-
+        let timer = this.state.timer;
+        clearInterval(timer);
     }
 
     resetWatch = () => {
         this.setState({
             seconds: 0,
-            active: false,
+        });
+    }
+
+    formatTime = () => {
+        let seconds = this.state.seconds;
+        let hours, minutes;
+        
+        hours = Math.floor(seconds / 3600);
+        minutes = Math.floor(seconds / 60);
+        seconds = Math.floor(seconds - (minutes * 60) - (hours * 3600));
+
+        let timeString = `${hours}:${minutes}:${seconds}`;
+
+        this.setState({
+            timeString: timeString,
         });
     }
 
@@ -52,7 +70,7 @@ class Stopwatch extends Component {
             <div className="stopwatch">
 
                 <div>
-                    {this.state.seconds}
+                    {this.state.timeString}
                 </div>
 
                 <button 
