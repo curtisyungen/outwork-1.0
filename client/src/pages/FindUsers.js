@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Container from "../components/Container/container";
 import User from "../components/User/user";
 import userAPI from "../utils/userAPI";
-// import "./FindUsers.css";
+import "./FindUsers.css";
 
 class FindUsers extends Component {
 
@@ -81,7 +81,7 @@ class FindUsers extends Component {
     render() {
         return (
             <Container>
-                <div className="col-md-6 input-group mb-3">
+                <div className="col-md-6 input-group mb-3 findUsersPage">
                     <input 
                         autoComplete="off"
                         name="userSearch" 
