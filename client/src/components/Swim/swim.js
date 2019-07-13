@@ -37,7 +37,7 @@ class Swim extends Component {
     }
 
     deleteSwim = () => {
-        this.props.deleteActivity("swim", this.props.id);
+        this.props.deleteActivity(this.props.id);
     }
 
     render() {
@@ -50,9 +50,9 @@ class Swim extends Component {
                     <div className="cell"><span className="cellDesc">Miles</span>{this.props.distance} miles</div>
                     <div className="cell cell4"><span className="cellDesc">Time</span>{this.props.duration}</div>
                     <div className="cell cell5"><span className="cellDesc">Location</span>{this.props.location}</div>
-                    <div className="cell cell6"><span className="cellDesc">Water Type</span>{this.props.waterType} miles</div>
+                    <div className="cell cell6"><span className="cellDesc">Water Type</span>{this.props.surface}</div>
                     <div className="cell cell7"><span className="cellDesc">Laps</span>{this.props.laps}</div>
-                    <div className="cell cell8 actNotes"><span className="cellDesc">Notes</span>{this.props.Notes}</div>
+                    <div className="cell cell8 actNotes"><span className="cellDesc">Notes</span>{this.props.notes}</div>
                 </div>
 
                 {this.state.openModal ? (

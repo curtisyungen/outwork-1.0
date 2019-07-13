@@ -45,7 +45,7 @@ class Run extends Component {
         let confirm = window.confirm("Delete this run?");
 
         if (confirm) {
-            this.props.deleteActivity("run", this.props.id);
+            this.props.deleteActivity(this.props.id);
         }
     }
 
@@ -137,7 +137,7 @@ class Run extends Component {
                     
                         {/* REPEATS */}
                         <div>
-                            {this.props.type && this.props.type.toLowerCase() === "repeats" ? (
+                            {this.props.runType && this.props.runType.toLowerCase() === "repeats" ? (
                                 <span>
                                     <h5 className="title">Repeats</h5>
                                     <table className="table table-striped table-bordered table-sm text-center align-middle runDetails">

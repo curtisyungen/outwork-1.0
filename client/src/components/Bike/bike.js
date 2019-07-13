@@ -37,7 +37,7 @@ class Bike extends Component {
     }
 
     deleteBike = () => {
-        this.props.deleteActivity("bike", this.props.id);
+        this.props.deleteActivity(this.props.id);
     }
 
     render() {

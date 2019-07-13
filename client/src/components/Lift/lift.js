@@ -58,7 +58,7 @@ class Lift extends Component {
         let confirm = window.confirm("Delete this workout?");
 
         if (confirm) {
-            this.props.deleteActivity("lift", this.props.id);
+            this.props.deleteActivity(this.props.id);
         }
     }
 
