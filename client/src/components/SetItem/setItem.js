@@ -80,9 +80,9 @@ class SetItem extends Component {
 
     render() {
         return (
-            <div className={`setItem col-md-12 diff${this.props.difficulty}`}>
+            <div className={`setItem col-md-8 diff${this.props.difficulty}`}>
                 <a
-                    className="exName col-md-8"
+                    className="exName col-md-6"
                     href={`https://www.youtube.com/results?search_query=how+to+do+${this.props.name}`}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -90,7 +90,7 @@ class SetItem extends Component {
                     {this.props.name}
                 </a>
 
-                <div className="setItemIcons col-md-4">
+                <div className="setItemIcons col-md-6">
                     <span className="setIcon">{this.props.reps}</span>
                     <FontAwesomeIcon 
                         className={`setIcon icon-${this.state.weight && this.state.weight !== ""}`} 
