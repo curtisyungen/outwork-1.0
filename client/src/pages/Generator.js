@@ -161,7 +161,7 @@ class Generator extends Component {
 
                 {/* SELECT EQUIPMENT */}
                 <div>
-                    <button className="btn selectEquipment" onClick={this.openModal}><FontAwesomeIcon className="fa-3x" icon={faTools} /></button>
+                    <button className="btn selectEquipment" onClick={this.openModal}><FontAwesomeIcon className="equipIcon fa-2x" icon={faTools} /></button>
                 </div>
 
                 {/* EQUIPMENT MODAL */}
@@ -189,7 +189,7 @@ class Generator extends Component {
                         <></>
                     )}
 
-                <div className={`${this.props.theme} col-md-6 mt-3 difficultyBar`}>
+                <div className={`col-md-10 pt-5 difficultyBar`}>
 
                     <h4>Generator</h4>
 

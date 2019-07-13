@@ -15,15 +15,21 @@
     color: rgb(59, 59, 59) !important;
 }
 
+.setIcon {
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 8px;
+}
+
 .setItem {
     color: black;
     display: flex;
     flex-direction: row;
 }
 
-.setIcon {
-    cursor: pointer;
-    display: inline-block;
-    margin-left: 5px;
-    width: 50px;
+.setItemIcons {
+    padding-right: 2px;
+    text-align: right;
 }
+
+
