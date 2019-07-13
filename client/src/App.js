@@ -352,6 +352,7 @@ class App extends Component {
       background: background,
     }, () => {
       localStorage.setItem("background", background);
+      this.closeBackgrounds();
     });
   }
 
