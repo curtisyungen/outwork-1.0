@@ -80,7 +80,7 @@ class SubmitSwim extends Component {
     render() {
         return (
             <Container>
-                <div className="logSwimPage">
+                <div className={`${this.props.theme} logSwimPage`}>
 
                     <ActivityIcons 
                         hidden="swim"

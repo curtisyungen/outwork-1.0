@@ -86,7 +86,7 @@ class SubmitBike extends Component {
     render() {
         return (
             <Container>
-                <div>
+                <div className={`${this.props.theme}`}>
 
                     <ActivityIcons 
                         hidden="bike"

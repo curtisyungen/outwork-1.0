@@ -1,5 +1,6 @@
 .metric {
-    border: 1px solid lightgray;
+    background: #fff;
+    border: 1px solid rgb(114, 114, 114);
     border-right: 0px;
     font-size: 13px;
     padding: 2px;
@@ -8,7 +9,7 @@
 }
 
 .metric:last-child {
-    border-right: 1px solid lightgray;
+    border-right: 1px solid rgb(114, 114, 114);
 }
 
 .metricsSectionTitle {

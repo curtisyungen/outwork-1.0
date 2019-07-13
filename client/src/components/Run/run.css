@@ -1,11 +1,11 @@
 .actCard {
-    border: 1px solid lightgray;
+    background: #fff;
+    border: 1px solid rgb(114, 114, 114);
     cursor: pointer;
     font-size: 13px;
     height: 50px;
     line-height: 1.0;
     margin: 2px 0px;
-    /* width: 600px; */
 }
 
 .actCard:hover {
@@ -19,7 +19,7 @@
 }
 
 .cell {
-    border-right: 1px solid lightgray;
+    border-right: 1px solid rgb(114, 114, 114);
     min-width: 10%;
     max-width: 10%;
     overflow: hidden;
@@ -30,11 +30,10 @@
 }
 
 .cellDesc {
+    color: rgb(150, 150, 150);
     font-size: 11px;
-    height: 100%;
     margin: 0;
     margin-top: -15px;
-    opacity: 0.3;
     padding: 0;
     padding-right: 5px;
     position: absolute;

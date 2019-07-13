@@ -42,7 +42,7 @@ class Profile extends Component {
 
     render() {
         return (
-            <span>
+            <span className={`${this.props.theme}`}>
                 {this.state.firstName && this.state.lastName ? (
                     <span>
                         <ProfileHeader 

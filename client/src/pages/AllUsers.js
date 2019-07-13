@@ -28,23 +28,27 @@ class AllUsers extends Component {
     render() {
         return (
             <Container>
-                <div className="allUsersPage">
-                    {this.state.users && this.state.users.length > 0 ? (
-                        this.state.users.map(user => (
-                            <User 
-                                key={Math.random() * 100000}
-                                userId={user.userId}
-                                firstName={user.firstName}
-                                lastName={user.lastName}
-                                followers={user.followers}
-                                // updateUserFollowings={this.updateUserFollowings}
-                                loadProfile={this.props.loadProfile}
-                            />
-                        ))
-                    ) : (
-                        <></>
-                    )}
-                </div>
+                {this.state.users !== null ? (
+                    <div className={`allUsersPage ${this.props.background}`}>
+                        {this.state.users && this.state.users.length > 0 ? (
+                            this.state.users.map(user => (
+                                <User 
+                                    key={Math.random() * 100000}
+                                    userId={user.userId}
+                                    firstName={user.firstName}
+                                    lastName={user.lastName}
+                                    followers={user.followers}
+                                    // updateUserFollowings={this.updateUserFollowings}
+                                    loadProfile={this.props.loadProfile}
+                                />
+                            ))
+                        ) : (
+                            <></>
+                        )}
+                    </div>
+                ) : (
+                    <p>Loading users...</p>
+                )}
             </Container>
         )
     }

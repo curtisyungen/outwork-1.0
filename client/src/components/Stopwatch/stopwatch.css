@@ -4,7 +4,8 @@
     border-radius: 4px;
     color: black;
     margin: 5px auto;
-    width: 400px;
+    padding-top: 5px;
+    width: 100%;
 }
 
 .stopwatchBtns {
@@ -33,14 +34,4 @@
 .watch-active {
     background: rgb(102, 224, 102);
     box-shadow: 0px 0px 5px green;
-}
-
-@media only screen and (max-width: 520px) {
-    .stopwatch {
-        border: 0px;
-        border-radius: 0px;
-        margin-left: -5px;
-        margin-right: -5px;
-        width: auto;
-    }
 }

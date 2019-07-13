@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Container from "../components/Container/container";
 import Equipment from "../components/Equipment/equipment";
 import Workout from "../components/Workout/workout";
-import Stopwatch from "../components/Stopwatch/stopwatch";
 import Modal from "react-responsive-modal";
 import userAPI from "../utils/userAPI";
 import exerAPI from "../utils/exerAPI";
@@ -150,6 +149,7 @@ class Generator extends Component {
     generateWorkout = () => {
         this.setState({
             generate: !this.state.generate,
+            showWatch: true,
         });
     }
 
@@ -187,14 +187,12 @@ class Generator extends Component {
                         <></>
                     )}
 
-                <Stopwatch />
-
-                <div className="col-md-6 mt-3 generatorPage">
+                <div className={`${this.props.theme} col-md-6 mt-3 generatorPage`}>
 
                     <h4>Generator</h4>
 
                     {/* SELECT DIFFICULTY */}
-                    <div className="input-group mb-3">
+                    <div className="input-group mb-0">
                         <select
                             className="browser-default custom-select"
                             autoComplete="off"
@@ -202,9 +200,9 @@ class Generator extends Component {
                             type="text"
                             aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
-                            defaultValue={null}
+                            defaultValue="0"
                         >
-                            <option value="0" selected disabled>Select Difficulty</option>
+                            <option value="0" disabled>Select Difficulty</option>
                             <option value="1">Baby</option>
                             <option value="2">Easy</option>
                             <option value="3">Average</option>
@@ -219,6 +217,7 @@ class Generator extends Component {
                         </div>
                     </div>
 
+                    {/* WORKOUT */}
                     <Workout
                         userId={this.state.userId}
                         firstName={this.state.firstName}
@@ -226,6 +225,7 @@ class Generator extends Component {
                         generate={this.state.generate}
                         userEquipment={this.state.userEquipment}
                         difficulty={this.state.difficulty}
+                        timeString={this.state.timeString}
                     />
                 </div>
             </Container >

@@ -1,0 +1,20 @@
+.background {
+    
+    cursor: pointer;
+    display: inline-block;
+    height: 100px;
+    margin: 10px;
+    width: 100px;
+    vertical-align: middle;
+}
+
+.background img {
+    border: 1px solid darkgray;
+    height: 100px;
+    width: 100px;
+}
+
+.imageList {
+    display: inline-block;
+    margin-top: 20px;
+}

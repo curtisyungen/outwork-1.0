@@ -1,5 +1,12 @@
 import React, { Component } from "react";
+import Popup from "reactjs-popup";
 import "./navbar.css";
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faCog);
 
 class Navbar extends Component {
 
@@ -49,11 +56,30 @@ class Navbar extends Component {
                         <li className="nav-item">
                             <a className="nav-link" href="/allUsers">Users</a>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/settings">Settings</a>
+                        
+                        <Popup
+                            trigger={
+                                <li className="nav-item" onClick={this.displaySettings}>
+                                    <FontAwesomeIcon className="fa-2x settingsIcon" icon={faCog}/>
+                                </li>}
+                            on="click"
+                            position="bottom right"
+                            closeOnDocumentClick
+                            className="popup"
+                        >
+                            <li className="nav-item">
+                                <div className="popupBackground" onClick={this.props.openBackgrounds}>{`Background`}</div>
+                            </li>
+                            <li className="nav-item">
+                                <div className="popupLogout" onClick={this.props.logoutUser}>Logout</div>
+                            </li>
+                        </Popup>
+
+                        <li className="nav-item navBackground">
+                            <div className="nav-link" onClick={this.props.openBackgrounds}>{`Background`}</div>
                         </li>
-                        <li className="nav-item">
-                            <button className="" onClick={this.props.logoutUser}>Logout</button>
+                        <li className="nav-item navLogout">
+                            <div className="nav-link" onClick={this.props.logoutUser}>Logout</div>
                         </li>
                     </ul>
                 </div>

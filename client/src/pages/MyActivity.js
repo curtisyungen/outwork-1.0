@@ -83,7 +83,7 @@ class MyActivity extends Component {
 
     render() {
         return (
-            <div className="myActivityPage col-md-12">
+            <div className={`${this.props.theme} myActivityPage col-md-12`}>
 
                 {/* RUNS */}
                 {this.state.runs && this.state.runs.length ? (

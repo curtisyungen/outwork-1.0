@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-// import Container from "../components/Container/container";
-// import "./Settings.css";
+import Container from "../components/Container/container";
+import "./Settings.css";
 
 class Settings extends Component {
 
@@ -18,7 +18,11 @@ class Settings extends Component {
 
     render() {
         return (
-            <></>
+            <Container>
+                <div className="settingsPage">
+                    <div>Theme</div>
+                </div>
+            </Container>
         )
     }
 }

@@ -49,3 +49,10 @@
 .swimIcon:hover {
     background: lightblue;
 }
+
+@media only screen and (max-width: 520px) {
+   
+    .logActivity {
+        margin-top: 10px;
+    }
+}
