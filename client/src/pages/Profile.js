@@ -12,6 +12,7 @@ class Profile extends Component {
             userId: null,
             firstName: null,
             lastName: null,
+            userActivity: null,
         }
     }
 
@@ -35,8 +36,6 @@ class Profile extends Component {
             userId: userId,
             firstName: firstName,
             lastName: lastName,
-        }, () => {
-            this.props.getUserActivity(userId);
         });
     }
 
@@ -52,7 +51,6 @@ class Profile extends Component {
                         />
                         <ProfileBody 
                             userId={this.state.userId}
-                            allActivity={this.props.allActivity}
                             deleteActivity={this.props.deleteActivity}
                         />   
                     </span>          

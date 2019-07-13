@@ -18,7 +18,7 @@ import Generator from "./pages/Generator";
 import AllUsers from "./pages/AllUsers";
 import Error from "./pages/Error";
 import userAPI from "./utils/userAPI";
-import actAPI from "./utils/actAPI";
+import workoutAPI from "./utils/workoutAPI";
 import './App.css';
 
 class App extends Component {
@@ -49,6 +49,7 @@ class App extends Component {
       loginStatus = JSON.parse(localStorage.getItem("isLoggedIn"));
     }
 
+    // Get background image from local storage or default to None
     let background = "none";
     if (localStorage.getItem("background") && localStorage.getItem("background") !== null) {
       background = localStorage.getItem("background");
@@ -202,7 +203,7 @@ class App extends Component {
                 localStorage.setItem("userId", res.data[0].userId);
                 localStorage.setItem("fn", res.data[0].firstName);
 
-                this.getUserActivity(res.data[0].userId);
+                this.getAllWorkouts();
                 this.setRedirectToHome();
               }
             });
@@ -248,87 +249,42 @@ class App extends Component {
     }
   }
 
-  getUserActivity = (userId) => {
-
-    this.setState({
-      loadingActivity: true,
-    }, () => {
-
-      let allActivity = this.state.allActivity;
-
-      // GET RUNS
-      actAPI.getRunsByUser(userId)
-        .then((res) => {
-          for (var item in res.data) {
-            allActivity.push(res.data[item]);
-          };
-
-          // GET BIKES
-          actAPI.getBikesByUser(userId)
-            .then((res) => {
-              for (var item in res.data) {
-                allActivity.push(res.data[item]);
-              };
-
-              // GET SWIMS
-              actAPI.getSwimsByUser(userId)
-                .then((res) => {
-                  for (var item in res.data) {
-                    allActivity.push(res.data[item]);
-                  };
-
-                  // GET LIFTS
-                  actAPI.getLiftsByUser(userId)
-                    .then((res) => {
-                      for (var item in res.data) {
-                        allActivity.push(res.data[item]);
-                      };
-
-                      // SORT BY DATE
-                      this.sortByDate(allActivity);
-                    });
-                });
-            });
+  getAllWorkouts = () => {
+    workoutAPI.getAllWorkouts()
+      .then((res) => {
+        this.setState({
+          allActivity: res.data,
         });
-    });
+      });
   }
 
-  sortByDate = (allActivity) => {
-    allActivity.sort(this.compare);
+  // sortByDate = (allActivity) => {
+  //   allActivity.sort(this.compare);
 
-    this.setState({
-      allActivity: allActivity,
-      loadingActivity: false,
-    });
-  }
+  //   this.setState({
+  //     allActivity: allActivity,
+  //     loadingActivity: false,
+  //   });
+  // }
 
-  compare = (a, b) => {
-    if (a.date === b.date) {
-      return 0;
-    }
-    else {
-      return (a.date > b.date) ? -1 : 1;
-    }
-  }
+  // compare = (a, b) => {
+  //   if (a.date === b.date) {
+  //     return 0;
+  //   }
+  //   else {
+  //     return (a.date > b.date) ? -1 : 1;
+  //   }
+  // }
 
-  deleteActivity = (type, id) => {
+  deleteActivity = (workoutId) => {
 
     let userId = localStorage.getItem("userId");
 
-    if (type === "run") {
-      actAPI.deleteRunById(id, userId);
-    }
-    else if (type === "bike") {
-      actAPI.deleteBikeById(id, userId);
-    }
-    else if (type === "swim") {
-      actAPI.deleteSwimById(id, userId);
-    }
-    else if (type === "lift") {
-      actAPI.deleteLiftById(id, userId);
-    }
-
-    window.location.reload();
+    workoutAPI.deleteWorkoutById(userId, workoutId)
+      .then((res) => {
+        console.log(res);
+        window.location.reload();
+      });
   }
 
   loadProfile = (userId, firstName, lastName) => {
@@ -399,11 +355,11 @@ class App extends Component {
               <></>
             )}
 
-            {/* Redirect To Profile */}
+          {/* Redirect To Profile */}
 
-            {this.state.redirectToProfile ? (
-              this.redirectToProfile()
-            ) : (
+          {this.state.redirectToProfile ? (
+            this.redirectToProfile()
+          ) : (
               <></>
             )}
 
@@ -412,13 +368,13 @@ class App extends Component {
               open={this.state.openModal}
               onClose={this.closeBackgrounds}
             >
-              <Backgrounds 
+              <Backgrounds
                 setBackground={this.setBackground}
               />
             </Modal>
           ) : (
-            <></>
-          )}
+              <></>
+            )}
 
           {/* Navbar */}
           <Navbar
@@ -462,7 +418,7 @@ class App extends Component {
               <Home
                 updateParentState={this.updateParentState}
                 checkValidUser={this.checkValidUser}
-                getUserActivity={this.getUserActivity}
+                getAllWorkouts={this.getAllWorkouts}
                 allActivity={this.state.allActivity}
                 deleteActivity={this.deleteActivity}
                 background={this.state.background}
@@ -476,8 +432,6 @@ class App extends Component {
                 otherUserFirst={this.state.otherUserFirst}
                 otherUserLast={this.state.otherUserLast}
                 checkValidUser={this.checkValidUser}
-                getUserActivity={this.getUserActivity}
-                allActivity={this.state.allActivity}
                 deleteActivity={this.deleteActivity}
                 background={this.state.background}
               />
@@ -543,7 +497,7 @@ class App extends Component {
             <Route component={Error} />
           </Switch>
         </div>
-      </Router>
+      </Router >
     )
   }
 }

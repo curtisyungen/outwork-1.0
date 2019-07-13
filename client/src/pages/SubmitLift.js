@@ -4,7 +4,7 @@ import Exercise from "../components/Exercise/exercise";
 import MuscleGroup from "../components/MuscleGroup/muscleGroup";
 import ActivityIcons from "../components/ActivityIcons/activityIcons";
 import userAPI from "../utils/userAPI";
-import actAPI from "../utils/actAPI";
+import workoutAPI from "../utils/workoutAPI";
 import "./SubmitLift.css";
 
 class SubmitLift extends Component {
@@ -275,16 +275,29 @@ class SubmitLift extends Component {
                 lastName: this.state.lastName,
                 date: this.state.date,
                 location: this.state.location,
+                distance: null,
                 duration: this.state.duration,
+                milePace: null,
+                runType: null,
+                laps: null,
+                repeats: null,
+                race: null,
+                surface: null,
+                weather: null,
+                climb: null,
+                grade: null,
+                shoe: null,
+                bike: null,
                 generator: generator,
                 pushups: this.getPushUps(),
                 pullups: this.getPullUps(),
                 workout: JSON.stringify([this.state.exercises]),
                 muscleGroups: JSON.stringify(this.state.muscleGroups),
                 notes: this.state.notes,
+                map: null,
             };
 
-            actAPI.createLift(liftData)
+            workoutAPI.createWorkout(liftData)
                 .then((res) => {
                     if (res.status === 200) {
                         alert("Workout submitted!");

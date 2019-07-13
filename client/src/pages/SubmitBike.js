@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import Container from "../components/Container/container";
 import ActivityIcons from "../components/ActivityIcons/activityIcons";
 import userAPI from "../utils/userAPI";
-import actAPI from "../utils/actAPI";
+import workoutAPI from "../utils/workoutAPI";
 // import "./SubmitBike.css";
 
 class SubmitBike extends Component {
@@ -58,19 +58,30 @@ class SubmitBike extends Component {
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
                 date: this.state.date,
+                location: this.state.location,
                 distance: this.state.distance,
                 duration: this.state.duration,
-                location: this.state.location,
+                milePace: null,
+                runType: null,
+                laps: null,
+                repeats: null,
+                race: null,
                 surface: this.state.surface,
                 weather: this.state.weather,
                 climb: this.state.climb,
                 grade: this.state.grade,
+                shoe: null,
                 bike: this.state.shoe,
+                generator: null,
+                pushups: null,
+                pullups: null,
+                workout: null,
+                muscleGroups: null,
                 notes: this.state.notes,
                 map: this.state.map,
             }
 
-            actAPI.createBike(bikeData)
+            workoutAPI.createWorkout(bikeData)
                 .then((res) => {
                     if (res.status === 200) {
                         alert("Workout submitted!");

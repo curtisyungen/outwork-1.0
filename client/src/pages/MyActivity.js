@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import Run from "../components/Run/run";
-import Bike from "../components/Bike/bike";
-import Swim from "../components/Swim/swim";
-import Lift from "../components/Lift/lift";
-import actAPI from "../utils/actAPI";
+import Activity from "../components/Activity/activity";
+import workoutAPI from "../utils/actAPI";
 import "./MyActivity.css";
 
 class MyActivity extends Component {
@@ -13,10 +10,7 @@ class MyActivity extends Component {
 
         this.state = {
             userId: null,
-            runs: null,
-            bikes: null,
-            swims: null,
-            lifts: null,
+            userActivity: null,
         }
     }
 
@@ -32,58 +26,65 @@ class MyActivity extends Component {
     }
 
     getUserActivity = () => {
-        actAPI.getRunsByUser(this.state.userId)
+        workoutAPI.getAllWorkoutsByUserId(this.state.userId)
             .then((res) => {
                 this.setState({
-                    runs: res.data,
-                });
-            });
-
-        actAPI.getBikesByUser(this.state.userId)
-            .then((res) => {
-                this.setState({
-                    bikes: res.data,
-                });
-            });
-
-        actAPI.getSwimsByUser(this.state.userId)
-            .then((res) => {
-                this.setState({
-                    swims: res.data,
-                });
-            });
-
-        actAPI.getLiftsByUser(this.state.userId)
-            .then((res) => {
-                this.setState({
-                    lifts: res.data,
+                    userActivity: res.data,
                 });
             });
     }
 
-    deleteActivity = (type, id) => {
+    deleteActivity = (workoutId) => {
 
         let userId = this.state.userId;
 
-        if (type === "run") {
-            actAPI.deleteRunById(id, userId);
-        }
-        else if (type === "bike") {
-            actAPI.deleteBikeById(id, userId);
-        }
-        else if (type === "swim") {
-            actAPI.deleteSwimById(id, userId);
-        }
-        else if (type === "lift") {
-            actAPI.deleteLiftById(id, userId);
-        }
-
-        window.location.reload();
+        workoutAPI.deleteWorkoutById(userId, workoutId)
+            .then((res) => {
+                console.log(res);
+                window.location.reload();
+            });
     }
 
     render() {
         return (
-            <div className={`${this.props.theme} myActivityPage col-md-12`}>
+            <div className={`myActivityPage`}>
+
+                {this.state.userActivity && this.state.userActivity.length > 0 ? (
+                    this.state.userActivity.map(act => (
+                        <Activity 
+                            key={act.id}
+                            id={act.id}
+                            workoutType={act.workoutType}
+                            userId={act.userId}
+                            firstName={act.firstName}
+                            lastName={act.lastName}
+                            date={act.date}
+                            location={act.location}
+                            distance={act.distance}
+                            duration={act.duration}
+                            milePace={act.milePace}
+                            runType={act.runType}
+                            laps={act.laps}
+                            repeats={act.repeats}
+                            race={act.race}
+                            surface={act.surface}
+                            weather={act.weather}
+                            climb={act.climb}
+                            grade={act.grade}
+                            shoe={act.shoe}
+                            bike={act.bike}
+                            generator={act.generator}
+                            pushups={act.pushups}
+                            pullups={act.pullups}
+                            workout={act.workout}
+                            muscleGroups={act.muscleGroups}
+                            notes={act.notes}
+                            map={act.map}
+                        />
+                    ))
+                ) : (
+                    <></>
+                )}
 
                 {/* RUNS */}
                 {this.state.runs && this.state.runs.length ? (

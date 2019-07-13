@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Modal from "react-responsive-modal";
 import Set from "../Set/set";
 import Stopwatch from "../Stopwatch/stopwatch";
-import actAPI from "../../utils/actAPI";
+import workoutAPI from "../../utils/workoutAPI";
 import exerAPI from "../../utils/exerAPI";
 import "./workout.css";
 
@@ -13,6 +13,8 @@ class Workout extends Component {
 
         this.state = {
             userId: null,
+            firstName: null,
+            lastName: null,
             userEquipment: null,
             date: null,
             location: null,
@@ -29,6 +31,8 @@ class Workout extends Component {
     componentDidMount = () => {
         this.setState({
             userId: this.props.userId,
+            firstName: this.props.firstName,
+            lastName: this.props.lastName,
             userEquipment: this.props.userEquipment,
             difficulty: this.props.difficulty,
         }, () => {
@@ -257,30 +261,46 @@ class Workout extends Component {
         }
 
         let liftData = {
-            workoutType: "lift",
-            userId: this.props.userId,
-            firstName: this.props.firstName,
-            lastName: this.props.lastName,
-            date: this.state.date,
-            location: this.state.location,
-            duration: this.state.duration,
-            generator: generator,
-            pushups: null,
-            pullups: null,
-            workout: JSON.stringify(this.state.sets),
-            muscleGroups: null,
-            notes: this.state.notes,
-        }
+                workoutType: "lift",
+                userId: this.props.userId,
+                firstName: this.props.firstName,
+                lastName: this.props.lastName,
+                date: this.state.date,
+                location: this.state.location,
+                distance: null,
+                duration: this.state.duration,
+                milePace: null,
+                runType: null,
+                laps: null,
+                repeats: null,
+                race: null,
+                surface: null,
+                weather: null,
+                climb: null,
+                grade: null,
+                shoe: null,
+                bike: null,
+                generator: generator,
+                pushups: null,
+                pullups: null,
+                workout: JSON.stringify(this.state.sets),
+                muscleGroups: JSON.stringify(this.state.muscleGroups),
+                notes: this.state.notes,
+                map: null,
+            };
 
-        actAPI.createLift(liftData)
-            .then((res) => {
-                if (res.status === 200) {
-                    alert("Workout logged!");
-                }
-                else {
-                    alert("Error logging workout.");
-                }
-            });
+            console.log(liftData);
+
+            workoutAPI.createWorkout(liftData)
+                .then((res) => {
+                    if (res.status === 200) {
+                        alert("Workout submitted!");
+                        window.location.reload();
+                    }
+                    else {
+                        alert("Error submitting workout.");
+                    }
+                });
     }
 
     recordTime = (timeString) => {

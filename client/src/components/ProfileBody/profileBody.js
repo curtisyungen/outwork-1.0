@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Container from "../Container/container";
 import UserActivity from "../UserActivity/userActivity";
 import Metrics from "../Metrics/metrics";
+import workoutAPI from "../../utils/workoutAPI";
 // import "./profileBody.css";
 
 class ProfileBody extends Component {
@@ -11,15 +12,27 @@ class ProfileBody extends Component {
 
         this.state = {
             userId: null,
-            allActivity: null,
+            userActivity: null,
         }
     }
 
     componentDidMount = () => {
         this.setState({
             userId: this.props.userId,
-            allActivity: this.props.allActivity,
+            userActivity: this.props.userActivity,
+        }, () => {
+            this.getAllWorkoutsByUserId(this.state.userId);
         });
+    }
+
+    
+    getAllWorkoutsByUserId = (userId) => {
+        workoutAPI.getAllWorkoutsByUserId(userId)
+        .then((res) => {
+            this.setState({
+                userActivity: res.data,
+            });
+        })
     }
 
     render() {
@@ -27,19 +40,19 @@ class ProfileBody extends Component {
             <Container>
                 {this.state.userId ? (
                     <Metrics 
-                        userId={this.state.userId}
+                        userId={this.props.userId}
                     />
                 ) : (
                     <p className="text-center">Loading metrics...</p>
                 )}
 
-                <div className="col-md-12 myActivity">
+                <div className="myActivity">
                     <h4>User Activity</h4>
-                    {this.state.allActivity && this.state.allActivity.length > 0 ? (
-                        this.state.allActivity.map(activity => (
+                    {this.state.userActivity && this.state.userActivity.length > 0 ? (
+                        this.state.userActivity.map(act => (
                             <UserActivity
                                 key={Math.random() * 100000}
-                                activity={activity}
+                                activity={act}
                                 deleteActivity={this.props.deleteActivity}
                             />
                         ))

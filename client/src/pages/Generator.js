@@ -19,6 +19,8 @@ class Generator extends Component {
 
         this.state = {
             userId: null,
+            firstName: null,
+            lastName: null,
             difficulty: null,
             date: null,
             location: null,
