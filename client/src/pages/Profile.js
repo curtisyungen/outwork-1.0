@@ -42,7 +42,7 @@ class Profile extends Component {
 
     render() {
         return (
-            <span className={`${this.props.theme}`}>
+            <div className="container pageContainer">
                 {this.state.firstName && this.state.lastName ? (
                     <span>
                         <ProfileHeader 
@@ -59,7 +59,7 @@ class Profile extends Component {
                 ) : (
                     <p>Loading...</p>
                 )   }    
-            </span>
+            </div>
         )
     }
 }

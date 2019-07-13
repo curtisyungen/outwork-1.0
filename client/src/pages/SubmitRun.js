@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Container from "../components/Container/container";
 import RunRepeat from "../components/RunRepeat/runRepeat";
 import ActivityIcons from "../components/ActivityIcons/activityIcons";
 import actAPI from "../utils/actAPI";
@@ -213,7 +212,7 @@ class SubmitRun extends Component {
 
     render() {
         return (
-            <Container>
+            <div className="container pageContainer">
 
                 <div className={`${this.props.theme}`}>
 
@@ -482,7 +481,7 @@ class SubmitRun extends Component {
                         <button className="btn btn-primary" onClick={this.submitRun}>Submit</button>
                     </div>
                 </div>
-            </Container>
+            </div>
         )
     }
 }

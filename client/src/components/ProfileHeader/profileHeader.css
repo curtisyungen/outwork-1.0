@@ -1,7 +1,18 @@
+.display-4 {
+    border-bottom: 1px solid darkgray;
+    padding-bottom: 10px;
+}
+
 .profileHeader {
     background: rgb(242, 242, 242);
     height: 150px;
     margin: 0;
     padding: 0;
     padding-top: 35px;
+}
+
+@media only screen and (max-width: 520px) {
+    .profileHeader {
+        padding: 10px;
+    }
 }

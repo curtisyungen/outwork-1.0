@@ -29,7 +29,7 @@ class AllUsers extends Component {
         return (
             <Container>
                 {this.state.users !== null ? (
-                    <div className={`allUsersPage ${this.props.background}`}>
+                    <div className={`allUsersPage`}>
                         {this.state.users && this.state.users.length > 0 ? (
                             this.state.users.map(user => (
                                 <User 

@@ -317,7 +317,7 @@ class Workout extends Component {
 
                 {this.state.sets && this.state.sets.length > 0 ? (
                     <div>
-                        <button className="btn btn-outline-dark completeBtn" onClick={this.completeWorkout}>Complete</button>
+                        <button className="btn btn-outline-success completeBtn" onClick={this.completeWorkout}>Complete</button>
                     </div>
                 ) : (
                         <></>

@@ -1,6 +1,8 @@
 .completeBtn {
-    float: right;
+    /* float: right; */
     margin: 5px auto;
+    margin-bottom: 0px;
+    width: 100%;
 }
 
 .submitWorkoutBtn {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Container from "../components/Container/container";
+// import Container from "../components/Container/container";
 import Equipment from "../components/Equipment/equipment";
 import Workout from "../components/Workout/workout";
 import Modal from "react-responsive-modal";
@@ -155,7 +155,7 @@ class Generator extends Component {
 
     render() {
         return (
-            <Container>
+            <div className="container pageContainer">
 
                 {/* SELECT EQUIPMENT */}
                 <div>
@@ -187,7 +187,7 @@ class Generator extends Component {
                         <></>
                     )}
 
-                <div className={`${this.props.theme} col-md-6 mt-3 generatorPage`}>
+                <div className={`${this.props.theme} col-md-6 mt-3 difficultyBar`}>
 
                     <h4>Generator</h4>
 
@@ -228,7 +228,7 @@ class Generator extends Component {
                         timeString={this.state.timeString}
                     />
                 </div>
-            </Container >
+            </div >
         )
     }
 }

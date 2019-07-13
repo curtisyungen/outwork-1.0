@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Container from "../components/Container/container";
+// import Container from "../components/Container/container";
 import ActivityIcons from "../components/ActivityIcons/activityIcons";
 import userAPI from "../utils/userAPI";
 import actAPI from "../utils/actAPI";
@@ -79,7 +79,7 @@ class SubmitSwim extends Component {
 
     render() {
         return (
-            <Container>
+            <div className="container pageContainer generatorPage">
                 <div className={`${this.props.theme} logSwimPage`}>
 
                     <ActivityIcons 
@@ -224,7 +224,7 @@ class SubmitSwim extends Component {
 
                     <button className="btn btn-primary" onClick={this.submitSwim}>Submit</button>
                 </div>
-            </Container>
+            </div>
         )
     }
 }
