@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Container from "../components/Container/container";
 import UserActivity from "../components/UserActivity/userActivity";
-import userAPI from "../utils/userAPI";
+// import userAPI from "../utils/userAPI";
 import "./Home.css";
 
 class Home extends Component {
@@ -11,10 +11,8 @@ class Home extends Component {
 
         this.state = {
             userId: null,
-            following: null,
             allActivity: [],
             filtered: [],
-            loadingActivity: false,
             category: null,
             activitySearch: "",
         }
@@ -22,17 +20,25 @@ class Home extends Component {
 
     componentDidMount = () => {
         this.props.updateParentState();
+        this.props.getAllWorkouts();
 
         // Validate user and then call getUserById
-        if (this.props.checkValidUser()) {
+        if (true) {
             let userId = localStorage.getItem("userId");
             this.setState({
                 userId: userId,
                 allActivity: this.props.allActivity,
                 filtered: this.props.allActivity,
                 category: "Name",
-            }, () => {
-                this.getUserById();
+            });
+        }
+    }
+
+    componentDidUpdate = (prevProps, prevState) => {
+        if (prevProps.allActivity !== this.props.allActivity) {
+            this.setState({
+                allActivity: this.props.allActivity,
+                filtered: this.props.allActivity,
             });
         }
     }
@@ -45,29 +51,6 @@ class Home extends Component {
         });
     }
 
-    getUserById = () => {
-        userAPI.getUserById(this.state.userId)
-            .then((res) => {
-
-                let following = [];
-                if (res.data[0].following !== null) {
-                    following = JSON.parse(res.data[0].following);
-                }
-
-                this.setState({
-                    following: following,
-                }, () => {
-                    // Get user's activity
-                    this.props.getUserActivity(this.state.userId);
-
-                    // Get following's activity
-                    for (var f in following) {
-                        this.props.getUserActivity(following[f]);
-                    }
-                });
-            });
-    }
-
     searchForActivity = (event) => {
         event.preventDefault();
 
@@ -75,7 +58,7 @@ class Home extends Component {
 
         let category = this.state.category;
         let activitySearch = this.state.activitySearch;
-        let activity = this.state.allActivity;
+        let activity = this.props.allActivity;
         let filtered = [];
 
         if (activitySearch && activitySearch.length > 0) {
@@ -199,17 +182,13 @@ class Home extends Component {
                             <p className="text-center">Loading activity...</p>
                         ) : (
                                 <span>
-                                    {this.state.filtered && this.state.filtered.length > 0 ? (
-                                        this.state.filtered.map(activity => (
-                                            <UserActivity
-                                                key={Math.random() * 100000}
-                                                activity={activity}
-                                                deleteActivity={this.props.deleteActivity}
-                                            />
-                                        ))
-                                    ) : (
-                                            <></>
-                                        )}
+                                    {this.state.filtered.map(activity => (
+                                        <UserActivity
+                                            key={Math.random() * 100000}
+                                            activity={activity}
+                                            deleteActivity={this.props.deleteActivity}
+                                        />
+                                    ))}
                                 </span>
                             )}
                     </span>

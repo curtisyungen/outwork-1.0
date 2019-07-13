@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import RunRepeat from "../components/RunRepeat/runRepeat";
 import ActivityIcons from "../components/ActivityIcons/activityIcons";
-import actAPI from "../utils/actAPI";
+import workoutAPI from "../utils/workoutAPI";
 import userAPI from "../utils/userAPI";
 import "./SubmitRun.css";
 
@@ -181,23 +181,30 @@ class SubmitRun extends Component {
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
                 date: this.state.date,
+                location: this.state.location,
                 distance: this.state.distance,
                 duration: this.state.duration,
                 milePace: this.state.milePace,
-                type: this.state.type,
+                runType: this.state.runType,
+                laps: null,
                 repeats: JSON.stringify(this.state.repeats),
                 race: this.state.race,
-                location: this.state.location,
                 surface: this.state.surface,
                 weather: this.state.weather,
                 climb: this.state.climb,
                 grade: this.state.grade,
                 shoe: this.state.shoe,
+                bike: null,
+                generator: null,
+                pushups: null,
+                pullups: null,
+                workout: null,
+                muscleGroups: null,
                 notes: this.state.notes,
                 map: this.state.map,
             }
 
-            actAPI.createRun(runData)
+            workoutAPI.createWorkout(runData)
                 .then((res) => {
                     if (res.status === 200) {
                         alert("Run submitted!");
@@ -297,12 +304,12 @@ class SubmitRun extends Component {
                         {/* TYPE */}
                         <div className="input-group input-group-sm mb-3">
                             <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-sm">Type</span>
+                                <span className="input-group-text" id="inputGroup-sizing-sm">Run Type</span>
                             </div>
                             <select
                                 className="browser-default custom-select"
                                 autoComplete="off"
-                                name="type"
+                                name="runType"
                                 type="text"
                                 aria-describedby="inputGroup-sizing-sm"
                                 onChange={this.handleInputChange}

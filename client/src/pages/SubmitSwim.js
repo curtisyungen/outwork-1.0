@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import Container from "../components/Container/container";
 import ActivityIcons from "../components/ActivityIcons/activityIcons";
 import userAPI from "../utils/userAPI";
-import actAPI from "../utils/actAPI";
+import workoutAPI from "../utils/workoutAPI";
 // import "./SubmitSwim.css";
 
 class SubmitSwim extends Component {
@@ -17,8 +17,8 @@ class SubmitSwim extends Component {
             duration: null,
             laps: null,
             location: null,
-            waterType: null,
-            swimWorkout: null,
+            surface: null,
+            workout: null,
             notes: null,
         }
     }
@@ -55,16 +55,30 @@ class SubmitSwim extends Component {
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
                 date: this.state.date,
+                location: this.state.location,
                 distance: this.state.distance,
                 duration: this.state.duration,
+                milePace: null,
+                runType: null,
                 laps: this.state.laps,
-                location: this.state.location,
-                waterType: this.state.waterType,
-                swimWorkout: this.state.swimWorkout,
+                repeats: null,
+                race: null,
+                surface: this.state.surface,
+                weather: null,
+                climb: null,
+                grade: null,
+                shoe: null,
+                bike: null,
+                generator: null,
+                pushups: null,
+                pullups: null,
+                workout: this.state.workout,
+                muscleGroups: null,
                 notes: this.state.notes,
+                map: null,
             }
 
-            actAPI.createSwim(swimData)
+            workoutAPI.createWorkout(swimData)
                 .then((res) => {
                     if (res.status === 200) {
                         alert("Workout submitted!");
@@ -177,7 +191,7 @@ class SubmitSwim extends Component {
                         <select
                             className="browser-default custom-select"
                             autoComplete="off"
-                            name="waterType"
+                            name="surface"
                             type="text"
                             onChange={this.handleInputChange}
                             defaultValue={null}
@@ -197,7 +211,7 @@ class SubmitSwim extends Component {
                         </div>
                         <input
                             autoComplete="off"
-                            name="swimWorkout"
+                            name="workout"
                             type="text"
                             className="form-control"
                             aria-label="Sizing example input"
