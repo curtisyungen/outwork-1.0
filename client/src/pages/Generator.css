@@ -19,8 +19,12 @@
     width: 100%;
 }
 
-.generatorPage {
+.difficultyBar {
     margin: 5px auto;
+}
+
+.generatorPage {
+    padding: 25px !important;
 }
 
 .selectEquipment {

@@ -9,6 +9,13 @@ html {
   min-height: 100vh;
 }
 
+.pageContainer {
+  background: rgb(242, 242, 242);
+  height: 100%;
+  min-height: 100vh;
+  padding: 25px 100px;
+}
+
 .white {
   background-image: none;
   background: #fff;
@@ -74,5 +81,11 @@ html {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .pageContainer {
+    padding: 0px;
   }
 }

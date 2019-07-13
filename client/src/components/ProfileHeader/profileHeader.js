@@ -25,9 +25,7 @@ class ProfileHeader extends Component {
     render() {
         return (
             <div className="jumbotron jumbotron-fluid profileHeader">
-                <div className="container">
-                    <h1 className="display-4">{this.state.firstName} {this.state.lastName}</h1>
-                </div>
+                <h1 className="display-4">{this.state.firstName} {this.state.lastName}</h1>
             </div>
         )
     }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Container from "../components/Container/container";
+// import Container from "../components/Container/container";
 import Exercise from "../components/Exercise/exercise";
 import MuscleGroup from "../components/MuscleGroup/muscleGroup";
 import ActivityIcons from "../components/ActivityIcons/activityIcons";
@@ -315,7 +315,7 @@ class SubmitLift extends Component {
 
     render() {
         return (
-            <Container>
+            <div className="container pageContainer">
                 <div className={`${this.props.theme}`}>
 
                     <ActivityIcons 
@@ -470,7 +470,7 @@ class SubmitLift extends Component {
 
                     <button className="btn btn-primary" onClick={this.submitLift}>Submit</button>
                 </div>
-            </Container>
+            </div>
         )
     }
 }
