@@ -6525,7 +6525,7 @@ button.bg-primary:focus {
   background-color: #6c757d !important;
 }
 
-.dark {
+/* .dark {
   background-color: #6c757d !important;
   color: white !important;
 }
@@ -6533,7 +6533,7 @@ button.bg-primary:focus {
 .light {
   background-color: #dbdbdb !important;
   color: black !important;
-}
+} */
 
 /* .bg-secondary .light {
   background-color: white !important;

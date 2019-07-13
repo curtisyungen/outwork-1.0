@@ -1,3 +1,48 @@
+html {
+  height: 100% !important;
+  min-height: 100vh !important;
+  overflow-x: hidden;
+}
+
+.appClass {
+  height: 100%;
+  min-height: 100vh;
+}
+
+.white {
+  background-image: none;
+  background: #fff;
+  color: black;
+}
+
+.brick {
+  background-image: url("../src/images/brick-wall-dark.png");
+}
+
+.darkGray {
+  background-image: url("../src/images/darkGray.png");
+}
+
+.diagonal {
+  background-image: url("../src/images/diagonal.png");
+}
+
+.trump {
+  background-image: url("../src/images/trump.png");
+}
+
+.tiles {
+  background-image: url("../src/images/batthern.png");
+  /* color: white; */
+}
+
+.light {
+  /* background-image: url("https://i0.wp.com/www.knoxalliance.store/wp-content/uploads/2017/05/light-color-background-images-for-website-top-hd-images-for-free-background-for-website-in-light-color-1-1024x640.jpg?ssl=1");
+  background-repeat: no-repeat;
+  background-size: 100%; */
+  color: black;
+}
+
 .App {
   text-align: center;
 }

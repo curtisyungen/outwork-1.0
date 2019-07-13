@@ -82,41 +82,43 @@ class Metrics extends Component {
     render() {
         return (
             <Container>
-                {this.state.userRuns && this.state.userRuns.length > 0 ? (
-                    <RunMetrics 
-                        userId={this.state.userId}
-                        userRuns={this.state.userRuns}
-                    />
-                ) : (
-                    <></>
-                )}
+                <span className={`${this.props.theme}`}>
+                    {this.state.userRuns && this.state.userRuns.length > 0 ? (
+                        <RunMetrics 
+                            userId={this.state.userId}
+                            userRuns={this.state.userRuns}
+                        />
+                    ) : (
+                        <></>
+                    )}
 
-                {this.state.userBikes && this.state.userBikes.length > 0 ? (
-                    <BikeMetrics 
-                        userId={this.state.userId}
-                        userBikes={this.state.userBikes}
-                    />
-                ) : (
-                    <></>
-                )}
+                    {this.state.userBikes && this.state.userBikes.length > 0 ? (
+                        <BikeMetrics 
+                            userId={this.state.userId}
+                            userBikes={this.state.userBikes}
+                        />
+                    ) : (
+                        <></>
+                    )}
 
-                {this.state.userSwims && this.state.userSwims.length > 0 ? (
-                    <SwimMetrics 
-                        userId={this.state.userId}
-                        userSwims={this.state.userSwims}
-                    />
-                ) : (
-                    <></>
-                )}
+                    {this.state.userSwims && this.state.userSwims.length > 0 ? (
+                        <SwimMetrics 
+                            userId={this.state.userId}
+                            userSwims={this.state.userSwims}
+                        />
+                    ) : (
+                        <></>
+                    )}
 
-                {this.state.userLifts && this.state.userLifts.length > 0 ? (
-                    <LiftMetrics 
-                        userId={this.state.userId}
-                        userLifts={this.state.userLifts}
-                    />
-                ) : (
-                    <></>
-                )}
+                    {this.state.userLifts && this.state.userLifts.length > 0 ? (
+                        <LiftMetrics 
+                            userId={this.state.userId}
+                            userLifts={this.state.userLifts}
+                        />
+                    ) : (
+                        <></>
+                    )}
+                </span>
             </Container>
         )
     }

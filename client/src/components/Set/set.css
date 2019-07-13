@@ -1,4 +1,5 @@
 .set {
+    border: 1px solid darkgray;
     border-radius: 4px;
     color: black;
     display: block;
@@ -23,7 +24,7 @@ a {
 }
 
 .diff3, .diff3 a {
-    background: gold;
+    background: rgb(255, 225, 53);
 }
 
 .diff4, .diff4 a {
@@ -40,7 +41,7 @@ a {
 }
 
 .diff7, .diff7 a {
-    background: gray;
+    background: rgb(180, 180, 180);
     color: black;
 }
 

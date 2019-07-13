@@ -151,15 +151,15 @@ class Home extends Component {
     render() {
         return (
             <Container>
-                <div className="homePage">
+                <div className={`homePage`}>
                     <div className="input-group mb-4 mt-3">
                         <div className="input-group-prepend">
                             <button 
-                            className="btn btn-outline-secondary dropdown-toggle" 
-                            type="button" 
-                            data-toggle="dropdown" 
-                            aria-haspopup="true" 
-                            aria-expanded="false"
+                                className="btn btn-dark dropdown-toggle" 
+                                type="button" 
+                                data-toggle="dropdown" 
+                                aria-haspopup="true" 
+                                aria-expanded="false"
                             >
                                 {this.state.category}&nbsp;
                             </button>
@@ -178,14 +178,14 @@ class Home extends Component {
                             autoComplete="off"
                             name="activitySearch"
                             type="text"
-                            className="form-control"
+                            className="form-control activitySearch"
                             aria-describedby="basic-addon2"
                             onChange={this.handleInputChange}
                             value={this.state.activitySearch}
                         />
                         <div className="input-group-append">
                             <button
-                                className="btn btn-outline-secondary"
+                                className="btn btn-dark"
                                 type="button"
                                 onClick={this.searchForActivity}
                             >

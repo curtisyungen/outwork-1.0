@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Modal from "react-responsive-modal";
 import Set from "../Set/set";
+import Stopwatch from "../Stopwatch/stopwatch";
 import actAPI from "../../utils/actAPI";
 import exerAPI from "../../utils/exerAPI";
 import "./workout.css";
@@ -282,12 +283,23 @@ class Workout extends Component {
             });
     }
 
+    recordTime = (timeString) => {
+        this.setState({
+            timeString: timeString,
+        });
+    }
+
     render() {
         return (
             <div>
                 {this.state.sets && this.state.sets.length > 0 ? (
-                    this.state.sets.map(set => (
-                        <Set
+                    <span>
+                        <Stopwatch 
+                            recordTime={this.recordTime}
+                        />
+
+                        {this.state.sets.map(set => (
+                            <Set
                             key={Math.random() * 100000}
                             set={set}
                             handleInputChange={this.handleInputChange}
@@ -296,14 +308,16 @@ class Workout extends Component {
                             setNotes={this.setNotes}
                             difficulty={this.state.difficulty}
                         />
-                    ))
+
+                        ))}
+                    </span>
                 ) : (
                         <></>
                     )}
 
                 {this.state.sets && this.state.sets.length > 0 ? (
                     <div>
-                        <button className="btn btn-light completeBtn" onClick={this.completeWorkout}>Complete</button>
+                        <button className="btn btn-outline-dark completeBtn" onClick={this.completeWorkout}>Complete</button>
                     </div>
                 ) : (
                         <></>
@@ -361,6 +375,7 @@ class Workout extends Component {
                                 aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-sm"
                                 onChange={this.handleInputChange}
+                                defaultValue={this.state.timeString}
                             />
                         </div>
 

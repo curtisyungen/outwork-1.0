@@ -14,7 +14,7 @@ class LogActivity extends Component {
 
     render() {
         return (
-            <div className="logActivity col-md-12">
+            <div className={`${this.props.theme} logActivity col-md-12`}>
                 <a className="activity col-md-2 runIcon" href="/run"><FontAwesomeIcon className="fa-3x" icon={faRunning}/></a>
                 <a className="activity col-md-2 bikeIcon" href="/bike"><FontAwesomeIcon className="fa-3x" icon={faBicycle}/></a>
                 <a className="activity col-md-2 swimIcon" href="/swim"><FontAwesomeIcon className="fa-3x" icon={faSwimmer}/></a>

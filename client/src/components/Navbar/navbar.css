@@ -1,56 +1,19 @@
-.accountLink {
-    margin-top: -5px;
-    padding: 15px 10px 0px 10px;
+.logoutBtn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    height: 30px;
+    margin: 0;
+    padding: 0.5rem;
 }
 
-.cartLink {
-    margin-top: -6px;
-    padding: 15px 10px 0px 10px;
-}
-
-.cartQty {
-    color: rgb(253, 188, 106);
-    font-size: 14px;
-    font-weight: 700;
-    margin-left: 18px;
-    margin-top: 3px;
-    position: absolute;
-}
-
-.helloUser {
-    color: lightgray;
-    font-size: 12px;
-    font-weight: 400;
-    margin-top: -15px;
-    position: absolute;
-}
-
-.logo {
-    font-family: "Arial";
-    font-size: 30px;
-    left: 15px;
-    margin-top: -42px;
-    position: absolute;
-    width: 125px;
+.logoutBtn:hover {
+    color: rgb(203, 204, 206);
 }
 
 .navbar {
     height: 100px;
-}
-
-.navbar-disclaimer {
-    color: #fff !important;
-    cursor: pointer;
-    font-family: "Arial";
-    font-size: 18px;
-    font-weight: 400;
-    margin-left: -100px;
-    margin-right: 20px;
-    margin-top: -40px;
-    text-decoration: none;
-    white-space: nowrap;
-    width: auto;
-    z-index: 102;
 }
 
 .nav-item {
@@ -58,324 +21,64 @@
 }
 
 .nav-link {
+    cursor: pointer;
     height: 30px;
     white-space: nowrap;
     width: auto;
-}
-
-.nav-link:hover {
-    border: 1px solid rgb(99, 98, 98);
-    cursor: pointer;
 }
 
 .navbar-nav {
     background: none;
     position: absolute;
     right: 200px;
+    z-index: 100;
 }
 
-#navbarAcctMenu {
-    font-family: "Arial";
-    font-size: 14px;
-    font-weight: 700;
-    margin: 0;
-    position: absolute;
-    right: 30px;
-    top: 62px;
-    z-index: 99;
-}
-
-.navbarAcctMenuList {
-    display: flex;
-    flex-direction: row;
-}
-
-#navbarMenu {
-    color: gray;
-    font-size: 14px;
-    left: 204px;
-    margin-top: 32px;
-    right: none;
-    z-index: 99;
-}
-
-.nav-acct-link {
-    background: none;
-    border: 1px solid #343a40;
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-    display: block;
-    margin-top: 8px;
-    padding: 2px;
-    padding-bottom: 0px;
-    white-space: nowrap;
-}
-
-
-.nav-acct-link:hover {
-    border: 1px solid rgb(99, 98, 98);
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-}
-
-.nav-menu-link {
-    background: none;
-    border: 1px solid #343a40;
-    color: rgb(189, 188, 188);
-    display: block;
-    margin-right: 15px;
-    padding: 3px;
-}
-
-.nav-menu-link:hover {
-    border: 1px solid rgb(99, 98, 98);
-    color: rgb(189, 188, 188);
-    text-decoration: none;
+.navBackground, 
+.navLogout {
+    display: none;
 }
 
 .popup {
-    text-align: center;
+    background: white;
+    z-index: 1000;
 }
 
-.popupNewCustomer {
-    color: rgb(44, 44, 44);
-    font-family: "Arial";
-    font-size: 10px;
-    margin-top: 6px;
-    text-align: center;
-    width: 100%;
-}
-
-.popupLoginBtn {
-    color: black;
+.popupBackground,
+.popupLogout {
     cursor: pointer;
-    margin-left: 18px;
-    margin-top: 8px;
-    text-align: center;
-    width: 150px;
 }
 
-.popupLoginBtn a{
-    color: black;
+.popupBackground:hover,
+.popupLogout:hover {
+    color: rgb(203, 204, 206);
 }
 
-.popupLoginBtn:hover {
-    color: black;
-    text-decoration: none;
-}
-
-.popupLoginBtn a:hover {
-    color: black;
-    text-decoration: none;
-}
-
-.searchBox {
-    border: 1px solid gray;
-    border-right: none;
-    border-radius: 5px 0px 0px 5px;
-    height: 38px;
-    padding: 5px;
-    width: 70vh;
-}
-
-.searchBox:focus {
-    border: 2px solid rgb(253, 188, 106);
-}
-
-.searchBtn {
-    background: rgb(253, 188, 106);
-    border: 1px solid gray;;
-    border-left: none;
-    border-radius: 0px 5px 5px 0px;
-    height: 38px;
-    position: absolute;
-    width: 50px;
-}
-
-.searchForm {
-    margin: 10px 176px;
-    margin-top: -30px;
-    max-width: 100%;
-}
-
-.shoppingCart {
-    margin-top: -8px;
-}
-
-.signoutBtn {
+.settingsIcon {
+    color: white;
     cursor: pointer;
-    font-size: 14px;
+    margin-left: 5px;
 }
 
-@media only screen and (max-width: 1200px) {
-    .searchBox {
-        max-width: 100%;
-        width: 450px;
-    }
-}
-
-@media only screen and (max-width: 1024px) {
-
-    .logo {
-        left: 80px;
-        margin-top: -40px;
+@media only screen and (max-width: 520px) {
+    .nav-link {
+        padding: 0px 15px !important;
     }
 
-    .navbar-disclaimer {
-        font-size: 16px;
-        margin-left: -110px;
+    .navbar-nav {
+        right: 0px;
     }
 
-    .navbar-toggler {
-        left: 15px;
-        top: 15px;
-        position: absolute;
+    .navBackground, 
+    .navLogout {
+        display: inline;
     }
 
-    .searchBox {
-        width: 350px;
-    }
-
-    .searchForm {
-        left: 50px;
-        position: absolute;
-        top: 50px;
-        width: 350px;
-    }
-}
-
-@media only screen and (max-width: 991px) {
-    .navbar-disclaimer {
+    .popup {
         display: none;
     }
 
-    .navbarAcctMenuList {
+    .settingsIcon {
         display: none;
-    }
-
-    .searchBox,
-    .searchForm {
-        max-width: 500px;
-        width: 500px;
-    }
-}
-
-@media only screen and (max-width: 800px) {
-    .searchBox,
-    .searchForm {
-        max-width: 350px;
-        width: 350px;
-    }
-}
-
-@media only screen and (max-width: 768px) {
-    .navbar-disclaimer {
-        display: none;
-    }
-
-    #navbarAcctMenu {
-        display: none;
-    }
-}
-
-@media only screen and (max-width: 700px) {
-    .bannerBtn {
-        display: none;
-    }
-}
-
-@media only screen and (max-width: 650px) {
-    .searchBox,
-    .searchForm {
-        max-width: 270px;
-        width: 270px;
-    }
-}
-
-@media only screen and (max-width: 560px) {
-
-}
-
-@media only screen and (max-width: 560px) {
-
-    .logo {
-        left: 75px;
-        position: absolute;
-        top: 50px;
-        z-index: 99;
-    }
-
-    .navbar {
-        height: 138px;
-        min-height: 138px;
-        z-index: 99;
-    }
-
-    #navbarMenu {
-        background: #343a40;
-        border: 1px solid black;
-        border-radius: 4px;
-        left: 15px;
-        min-width: 200px;
-        padding: 5px;
-        position: fixed;
-        top: 100px;
-        width: auto;
-    }
-
-    .navbar-disclaimer {
-        display: none;
-    }
-
-    .navbar-toggler {
-        left: 15px;
-        position: absolute;
-        top: 15px;
-    }
-    
-    .nav-menu-link {
-        border: none;
-    }
-
-    .searchBox {
-        margin: 0;
-        max-width: 100%;
-        position: absolute;
-        top: 87px;
-        width: 80% !important;
-    }
-
-    .searchBtn {
-        left: 80%;
-        position: absolute;
-        top: 87px;
-        z-index: 99;
-    }
-
-    .searchForm {
-        left: 50%;
-        margin-left: 0;
-        /* margin-right: auto; */
-        margin-top: -50px;
-        max-width: 90%;
-        transform: translate(-45%);
-        width: 90%;
-    }
-}
-
-@media only screen and (max-width: 365px) {
-    .searchBox {
-        max-width: 340px;
-        width: 340px;
-    }
-
-    .searchForm {
-        max-width: 340px;
-    }
-}
-
-@media only screen and (max-width: 325px) {
-    .searchForm {
-        max-width: 300px;
     }
 }

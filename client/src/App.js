@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import Modal from "react-responsive-modal";
 import Navbar from "./components/Navbar/navbar";
+import Backgrounds from "./components/Backgrounds/backgrounds";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
@@ -12,9 +14,8 @@ import SubmitBike from "./pages/SubmitBike";
 import SubmitSwim from "./pages/SubmitSwim";
 import SubmitLift from "./pages/SubmitLift";
 import Generator from "./pages/Generator";
-import FindUsers from "./pages/FindUsers";
+// import FindUsers from "./pages/FindUsers";
 import AllUsers from "./pages/AllUsers";
-import Settings from "./pages/Settings";
 import Error from "./pages/Error";
 import userAPI from "./utils/userAPI";
 import actAPI from "./utils/actAPI";
@@ -36,6 +37,7 @@ class App extends Component {
       otherUserFirst: null,
       otherUserLast: null,
       allActivity: [],
+      background: "none",
     }
   }
 
@@ -47,6 +49,14 @@ class App extends Component {
       loginStatus = JSON.parse(localStorage.getItem("isLoggedIn"));
     }
 
+    let background = "none";
+    if (localStorage.getItem("background") && localStorage.getItem("background") !== null) {
+      background = localStorage.getItem("background");
+    }
+    else {
+      localStorage.setItem("background", "none");
+    }
+
     this.setState({
       isLoggedIn: loginStatus,
       redirectToSignUp: false,
@@ -54,6 +64,7 @@ class App extends Component {
       redirectToHome: false,
       redirectToLanding: false,
       redirectToProfile: false,
+      background: background,
     });
 
     // Get userId from local storage
@@ -330,10 +341,31 @@ class App extends Component {
     });
   }
 
+  openBackgrounds = () => {
+    this.setState({
+      openModal: true,
+    });
+  }
+
+  setBackground = (background) => {
+    this.setState({
+      background: background,
+    }, () => {
+      localStorage.setItem("background", background);
+      this.closeBackgrounds();
+    });
+  }
+
+  closeBackgrounds = () => {
+    this.setState({
+      openModal: false,
+    });
+  }
+
   render() {
     return (
       <Router>
-        <span>
+        <div className={`appClass ${this.state.background}`}>
 
           {/* Redirect To Landing Page */}
 
@@ -375,9 +407,23 @@ class App extends Component {
               <></>
             )}
 
+          {this.state.openModal ? (
+            <Modal
+              open={this.state.openModal}
+              onClose={this.closeBackgrounds}
+            >
+              <Backgrounds 
+                setBackground={this.setBackground}
+              />
+            </Modal>
+          ) : (
+            <></>
+          )}
+
           {/* Navbar */}
           <Navbar
             isLoggedIn={this.state.isLoggedIn}
+            openBackgrounds={this.openBackgrounds}
             logoutUser={this.logoutUser}
           />
 
@@ -419,6 +465,7 @@ class App extends Component {
                 getUserActivity={this.getUserActivity}
                 allActivity={this.state.allActivity}
                 deleteActivity={this.deleteActivity}
+                background={this.state.background}
               />
             } />
 
@@ -432,6 +479,7 @@ class App extends Component {
                 getUserActivity={this.getUserActivity}
                 allActivity={this.state.allActivity}
                 deleteActivity={this.deleteActivity}
+                background={this.state.background}
               />
             } />
 
@@ -439,6 +487,7 @@ class App extends Component {
             <Route exact path="/logActivity" render={() =>
               <LogActivity
                 checkValidUser={this.checkValidUser}
+                background={this.state.background}
               />
             } />
 
@@ -446,6 +495,7 @@ class App extends Component {
             <Route exact path="/run" render={() =>
               <SubmitRun
                 checkValidUser={this.checkValidUser}
+                background={this.state.background}
               />
             } />
 
@@ -453,6 +503,7 @@ class App extends Component {
             <Route exact path="/bike" render={() =>
               <SubmitBike
                 checkValidUser={this.checkValidUser}
+                background={this.state.background}
               />
             } />
 
@@ -460,6 +511,7 @@ class App extends Component {
             <Route exact path="/swim" render={() =>
               <SubmitSwim
                 checkValidUser={this.checkValidUser}
+                background={this.state.background}
               />
             } />
 
@@ -467,6 +519,7 @@ class App extends Component {
             <Route exact path="/lift" render={() =>
               <SubmitLift
                 checkValidUser={this.checkValidUser}
+                background={this.state.background}
               />
             } />
 
@@ -474,6 +527,7 @@ class App extends Component {
             <Route exact path="/generator" render={() =>
               <Generator
                 checkValidUser={this.checkValidUser}
+                background={this.state.background}
               />
             } />
 
@@ -482,19 +536,13 @@ class App extends Component {
               <AllUsers
                 checkValidUser={this.checkValidUser}
                 loadProfile={this.loadProfile}
-              />
-            } />
-
-            {/* Settings Page */}
-            <Route exact path="/settings" render={() =>
-              <Settings
-                checkValidUser={this.checkValidUser}
+                background={this.state.background}
               />
             } />
 
             <Route component={Error} />
           </Switch>
-        </span>
+        </div>
       </Router>
     )
   }

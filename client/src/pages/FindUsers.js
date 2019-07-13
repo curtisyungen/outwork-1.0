@@ -84,7 +84,7 @@ class FindUsers extends Component {
     render() {
         return (
             <Container>
-                <div className="col-md-6 input-group mb-3 findUsersPage">
+                <div className={`${this.props.theme} col-md-6 input-group mb-3 findUsersPage`}>
                     <input 
                         autoComplete="off"
                         name="userSearch" 

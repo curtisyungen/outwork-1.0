@@ -83,11 +83,11 @@ class LiftMetrics extends Component {
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Metric</div>
-                        <div></div>
+                        <div>0</div>
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Metric</div>
-                        <div></div>
+                        <div>0</div>
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Metric</div>
