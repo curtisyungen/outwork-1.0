@@ -1,22 +1,32 @@
 .activityIcons {
-    display: inline-block;
     height: 50px;
-    margin-top: 25px;
+    width: 100%;
 }
 
 .activityIcon {
     background: rgb(242, 242, 242);
     border: 1px solid darkgray;
+    border-radius: 4px;
+    float: right;
     height: 50px;
-    margin: 10px 5px;
+    margin: 0px 5px;
     margin-left: 0px;
-    padding: 20px 15px 10px 15px;
+    padding-left: 12px;
+    padding-top: 12px;
     width: 50px;
 }
 
 .activityIcon:hover {
     color: black;
     text-decoration: none;
+}
+
+.activityIcon:first-child {
+    margin-right: 0px;
+}
+
+.icon {
+    height: 25px;
 }
 
 .bikeIcon:hover {
@@ -33,4 +43,10 @@
 
 .swimIcon:hover {
     background: lightblue;
+}
+
+@media only screen and (max-width: 768px) {
+    .activityIcons {
+        display: none;
+    }
 }

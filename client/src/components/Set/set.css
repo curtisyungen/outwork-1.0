@@ -11,6 +11,11 @@
     width: 100%;
 }
 
+.buffer {
+    height: 100%;
+    padding: 0px 10px;
+}
+
 a {
     color: black;
 }
@@ -48,4 +53,10 @@ a {
 .diff8, .diff8 a {
     background: black;
     color: red;
+}
+
+@media only screen and (max-width: 768px) {
+    .set {
+        font-size: 13px;
+    }
 }

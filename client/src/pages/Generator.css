@@ -1,5 +1,6 @@
 .difficultyBar {
     margin: 0px auto;
+    z-index: 1;
 }
 
 .equipIcon {
@@ -29,7 +30,7 @@
 }
 
 .generatorPage {
-    padding: 25px !important;
+    padding: 25px 0px !important;
 }
 
 .selectEquipment {
@@ -40,11 +41,18 @@
     height: 50px;
     /* margin: 5px 0px; */
     width: 58px;
-    z-index: 99;
+    z-index: 101;
 }
 
 .selectEquipment:hover {
     background: rgb(220, 220, 220);
+}
+
+.selectEquipDiv {
+    display: block;
+    margin-bottom: 50px;
+    width: 100%;
+    z-index: 99;
 }
 
 @media only screen and (max-width: 768px) {

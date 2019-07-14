@@ -13,6 +13,7 @@ class SubmitRun extends Component {
         this.state = {
             userId: null,
             date: null,
+            time: null,
             distance: null,
             duration: null,
             milePace: null,
@@ -181,6 +182,7 @@ class SubmitRun extends Component {
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
                 date: this.state.date,
+                time: this.state.time,
                 location: this.state.location,
                 distance: this.state.distance,
                 duration: this.state.duration,
@@ -221,15 +223,16 @@ class SubmitRun extends Component {
         return (
             <div className="container pageContainer">
 
-                <div className={`${this.props.theme}`}>
+                <div>
 
-                    <ActivityIcons
-                        hidden="run"
-                    />
-
-                    <div className="runningWorkout">
-
+                    <div className="titleBar">
                         <h4>Running Workout</h4>
+                        <ActivityIcons
+                            hidden="run"
+                        />
+                    </div>
+
+                    <div>
 
                         {/* DATE */}
                         <div className="input-group input-group-sm mb-3">
@@ -241,6 +244,23 @@ class SubmitRun extends Component {
                                 name="date"
                                 type="date"
                                 className="form-control"
+                                aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-sm"
+                                onChange={this.handleInputChange}
+                            />
+                        </div>
+
+                        {/* TIME */}
+                        <div className="input-group input-group-sm mb-3">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text" id="inputGroup-sizing-sm">Time of Day</span>
+                            </div>
+                            <input
+                                autoComplete="off"
+                                name="time"
+                                type="text"
+                                className="form-control"
+                                placeholder="3:00pm"
                                 aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-sm"
                                 onChange={this.handleInputChange}
@@ -423,7 +443,7 @@ class SubmitRun extends Component {
                         {/* CLIMB */}
                         <div className="input-group input-group-sm mb-3">
                             <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-sm">Total Climb (ft.)</span>
+                                <span className="input-group-text" id="inputGroup-sizing-sm">Climb</span>
                             </div>
                             <input
                                 autoComplete="off"
