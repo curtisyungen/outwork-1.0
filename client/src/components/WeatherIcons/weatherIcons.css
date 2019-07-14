@@ -1,0 +1,69 @@
+.weatherBtn {
+    background: rgb(242, 242, 242);
+    border: 1px solid darkgray;
+    border-radius: 4px;
+    color: rgb(177, 177, 177);
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 10px;
+    padding: 2px;
+}
+
+.sunny-true, .sunny-false:hover {
+    background: yellow;
+    border: 1px solid gold;
+    color: black;
+}
+
+.clear-true, .clear-false:hover {
+    background: lightskyblue;
+    border: 1px solid rgb(113, 188, 212);
+    color: white;
+}
+
+.cloudy-true, .cloudy-false:hover {
+    background: rgb(173, 173, 173);
+    border: 1px solid rgb(121, 121, 121);
+    color: rgb(87, 87, 87);
+}
+
+.windy-true, .windy-false:hover {
+    background: orange;
+    border: 1px solid rgb(43, 43, 43);
+    color: rgb(90, 90, 90);
+}
+
+.lightRain-true, .lightRain-false:hover {
+    background: rgb(232, 232, 232);
+    border: 1px solid rgb(65, 65, 65);
+    color: rgb(134, 225, 255);
+}
+
+.heavyRain-true, .heavyRain-false:hover {
+    background: rgb(85, 85, 85);
+    border: 1px solid rgb(54, 54, 54);
+    color: rgb(64, 140, 255);
+}
+
+.snowy-true, .snowy-false:hover {
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(34, 34, 34);
+    color: rgb(43, 151, 187);
+}
+
+.indoor-true, .indoor-false:hover {
+    background: rgb(148, 148, 148);
+    border: 1px solid rgb(63, 63, 63);
+}
+
+.shitstorm-true, .shitstorm-false:hover {
+    background: #7B5804;
+    border: 1px solid rgb(48, 48, 48);
+    color: #8a9b00;
+}
+
+.night-true, .night-false:hover {
+    background: rgb(65, 65, 65);
+    border: 1px solid rgb(0, 0, 0);
+    color: rgb(255, 255, 108);
+}
