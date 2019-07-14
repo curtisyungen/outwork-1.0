@@ -14,7 +14,10 @@ class SubmitLift extends Component {
 
         this.state = {
             userId: null,
+            firstName: null,
+            lastName: null,
             date: null,
+            time: null,
             location: null,
             duration: null,
             generator: null,
@@ -35,16 +38,19 @@ class SubmitLift extends Component {
 
         userAPI.getUserById(userId)
             .then((res) => {
-                // Get exercises
-                let exercise = {
-                    id: 0,
-                    name: "",
-                    weight: "",
-                    reps: "",
-                    rest: "",
+                // Get exercises 
+                let exercises = [];   
+                for (var i=0; i<5; i++) {
+                    let exercise = {
+                        id: i,
+                        name: "",
+                        weight: "",
+                        reps: "",
+                        rest: "",
+                    }
+
+                    exercises.push(exercise);
                 }
-        
-                let exercises = [exercise];
 
                 let muscleGroupList = [
                     "Chest", "Shoulders", 
@@ -274,6 +280,7 @@ class SubmitLift extends Component {
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
                 date: this.state.date,
+                time: this.state.time,
                 location: this.state.location,
                 distance: null,
                 duration: this.state.duration,
@@ -329,13 +336,15 @@ class SubmitLift extends Component {
     render() {
         return (
             <div className="container pageContainer">
-                <div className={`${this.props.theme}`}>
+                <div>
 
-                    <ActivityIcons 
-                        hidden="lift"
-                    />
+                    <div className="titleBar">
+                        <h4>Lifting Workout</h4>
 
-                    <h4>Lifting Workout</h4>
+                        <ActivityIcons 
+                            hidden="lift"
+                        />
+                    </div>
 
                     {/* DATE */}
                     <div className="input-group input-group-sm mb-3">
@@ -347,6 +356,23 @@ class SubmitLift extends Component {
                             name="date"
                             type="date"
                             className="form-control"
+                            aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm"
+                            onChange={this.handleInputChange}
+                        />
+                    </div>
+
+                    {/* TIME */}
+                    <div className="input-group input-group-sm mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Time of Day</span>
+                        </div>
+                        <input
+                            autoComplete="off"
+                            name="time"
+                            type="text"
+                            className="form-control"
+                            placeholder="3:00pm"
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
@@ -415,9 +441,11 @@ class SubmitLift extends Component {
                     <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend submitFormSectTitle">
                             Workout
-                        </div>
-                        <div>
-                            <button className="btn btn-dark btn-sm addExerciseBtn" onClick={this.addExercise}>Add Exercise</button>
+                            <div className="addExerciseDiv">
+                                <button className="btn btn-dark btn-sm addExerciseBtn" onClick={this.addExercise}>
+                                    Add Exercise
+                                </button>
+                            </div>
                         </div>
                     </div>
 
@@ -444,9 +472,9 @@ class SubmitLift extends Component {
                     ))}
 
                     {/* MUSCLE GROUPS */}
-                    <div className="input-group input-group-sm mb-3">
+                    <div className="input-group input-group-sm mt-3 mb-3">
                         <div className="input-group-prepend submitFormSectTitle">
-                            Muscle Groups
+                            <div className="">Muscle Groups</div>
                         </div>
                     </div>
 

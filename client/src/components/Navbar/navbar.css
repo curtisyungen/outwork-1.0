@@ -74,8 +74,13 @@
         padding: 0px 15px !important;
     }
 
+    .nav-link:after {
+        content: "";
+    }
+
     .navbar-nav {
         right: 0px;
+        z-index: 105;
     }
 
     .navBackground, 

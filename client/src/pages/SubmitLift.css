@@ -1,12 +1,34 @@
+.addExerciseBtn {
+    float: right;
+}
+
+.addExerciseDiv {
+    width: 100%;
+}
+
 .muscleGroup {
     display: inline-block;
     width: 125px;
 }
 
 .submitFormSectTitle {
-    background: rgb(232, 232, 232);
+    background: rgb(95, 95, 95);
+    border: 1px solid darkgray;
     border-radius: 4px;
+    color: white;
+    font-size: 18px;
     padding: 5px;
     text-align: center;
     width: 100%;
+}
+
+.titleBar {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.titleBar h4 {
+    white-space: nowrap;
 }

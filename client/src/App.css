@@ -56,6 +56,6 @@ html {
 
 @media only screen and (max-width: 520px) {
   .pageContainer {
-    padding: 0px;
+    padding: 15px 25px;
   }
 }

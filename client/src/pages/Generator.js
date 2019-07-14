@@ -157,10 +157,10 @@ class Generator extends Component {
 
     render() {
         return (
-            <div className="container pageContainer">
+            <div className="container pageContainer generatorPage">
 
                 {/* SELECT EQUIPMENT */}
-                <div>
+                <div className="selectEquipDiv">
                     <button className="btn selectEquipment" onClick={this.openModal}><FontAwesomeIcon className="equipIcon fa-2x" icon={faTools} /></button>
                 </div>
 
@@ -189,7 +189,7 @@ class Generator extends Component {
                         <></>
                     )}
 
-                <div className={`col-md-10 pt-5 difficultyBar`}>
+                <div className={`col-md-12 difficultyBar`}>
 
                     <h4>Generator</h4>
 
