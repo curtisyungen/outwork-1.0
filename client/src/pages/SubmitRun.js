@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import RunRepeat from "../components/RunRepeat/runRepeat";
 import ActivityIcons from "../components/ActivityIcons/activityIcons";
+import WeatherIcons from "../components/WeatherIcons/weatherIcons";
 import workoutAPI from "../utils/workoutAPI";
 import userAPI from "../utils/userAPI";
 import "./SubmitRun.css";
@@ -171,6 +172,12 @@ class SubmitRun extends Component {
 
         this.setState({
             repeats: repeats,
+        });
+    }
+
+    setWeather = (weather) => {
+        this.setState({
+            weather: weather,
         });
     }
 
@@ -417,27 +424,11 @@ class SubmitRun extends Component {
                         <div className="input-group input-group-sm mb-3">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="inputGroup-sizing-sm">Weather</span>
+                                <WeatherIcons 
+                                    setWeather={this.setWeather}
+                                    selected={this.state.weather}
+                                />
                             </div>
-                            <select
-                                className="browser-default custom-select"
-                                autoComplete="off"
-                                name="weather"
-                                type="text"
-                                aria-describedby="inputGroup-sizing-sm"
-                                onChange={this.handleInputChange}
-                                defaultValue={null}
-                            >
-                                <option value=""></option>
-                                <option value="Sunny">Sunny</option>
-                                <option value="Rainy">Rainy</option>
-                                <option value="Cloudy">Cloudy</option>
-                                <option value="Windy">Windy</option>
-                                <option value="Snowy">Snowy</option>
-                                <option value="Icy">Icy</option>
-                                <option value="Clear">Clear</option>
-                                <option value="Indoor">Indoor</option>
-                                <option value="Shitstorm">Shitstorm</option>
-                            </select>
                         </div>
 
                         {/* CLIMB */}
