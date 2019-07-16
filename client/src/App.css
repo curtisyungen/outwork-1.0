@@ -20,10 +20,8 @@ html {
 
 /* BACKGROUNDS */
 
-      .white {
-        background-image: none;
-        background: #fff;
-        color: black;
+      .alex {
+        background-image: url("../src/images/alex.png");
       }
 
       .blue {
@@ -46,23 +44,26 @@ html {
         background-image: url("../src/images/arabesque.png");
       }
 
-      .gravel {
-        background-image: url("../src/images/gravel.png");
+      .goggins {
+        background-image: url("../src/images/goggins.png");
       }
 
-      .trump {
-        background-image: url("../src/images/trump.png");
+      .gravel {
+        background-image: url("../src/images/gravel.png");
       }
 
       .tiles {
         background-image: url("../src/images/batthern.png");
         /* color: white; */
       }
+      
+      .trump {
+        background-image: url("../src/images/trump.png");
+      }
 
-      .light {
-        /* background-image: url("https://i0.wp.com/www.knoxalliance.store/wp-content/uploads/2017/05/light-color-background-images-for-website-top-hd-images-for-free-background-for-website-in-light-color-1-1024x640.jpg?ssl=1");
-        background-repeat: no-repeat;
-        background-size: 100%; */
+      .white {
+        background-image: none;
+        background: #fff;
         color: black;
       }
 
