@@ -126,8 +126,8 @@ class Lift extends Component {
                             </div>
                         </div>
 
-                        <div>
-                        <h5>Workout:</h5>
+                        <div className="liftWorkout">
+                            <h5>Workout</h5>
                             {this.state.workout && this.state.workout.length > 0 ? (
                                 this.state.workout.map(set => (
                                     <LiftDetailSet
