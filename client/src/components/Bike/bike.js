@@ -60,41 +60,67 @@ class Bike extends Component {
                         open={this.state.openModal}
                         onClose={this.closeModal}
                     >
-                        {/* TABLE ONE */}
-                        <div>
-                            <h5 className="title">Summary</h5>
-                            <table className="table table-striped table-bordered table-sm text-center align-middle bikeDetails">
-                                <thead className="thead-dark">
-                                    <tr>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-
-                                    </tr>
-                                </tbody>
-                            </table>
+                        {/* ICON, DATE */}
+                        <div className="">
+                            <FontAwesomeIcon className="fa-3x bikeIcon dataIcon" icon={faBiking} />
+                            <h5 className="dataPoint-xl">{this.props.firstName} | {this.props.date}</h5>
                         </div>
 
-                        {/* TABLE TWO */}
+                        {/* DATA */}
                         <div>
-                            <table className="table table-striped table-bordered table-sm text-center align-middle bikeDetails">
-                                <thead className="thead-dark">
-                                    <tr>
-                                        <th>Notes</th>
-                                        <th>Map</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{this.props.notes}</td>
-                                        <td><a href={this.props.map} target="_blank" rel="noopener noreferrer">{this.props.map}</a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div className="d-flex flex-column">
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Location</div>
+                                    <div className="dataPoint">{this.props.location}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Time of Day</div>
+                                    <div className="dataPoint">{this.props.time}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Distance (mi.)</div>
+                                    <div className="dataPoint">{this.props.distance}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Duration</div>
+                                    <div className="dataPoint">{this.props.duration}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Pace (min./mi.)</div>
+                                    <div className="dataPoint">{this.props.milePace}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Climb (ft.)</div>
+                                    <div className="dataPoint">{this.props.climb}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Grade (%)</div>
+                                    <div className="dataPoint">{this.props.grade}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Surface</div>
+                                    <div className="dataPoint">{this.props.surface}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Weather</div>
+                                    <div className="dataPoint">{this.props.weather}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Bike</div>
+                                    <div className="dataPoint">{this.props.bike}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Notes</div>
+                                    <div className="dataPoint">{this.props.notes}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Map</div>
+                                    <div className="dataPoint">{this.props.map}</div>
+                                </div>
+                            </div>
                         </div>
-
+                        
+                        {/* DELETE BUTTON */}
                         {this.props.userId === localStorage.getItem("userId") ? (
                             <button className="btn btn-danger btn-sm deleteActivity" onClick={this.deleteBike}>Delete Bike</button>
                         ) : (

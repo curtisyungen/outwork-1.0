@@ -62,79 +62,77 @@ class Run extends Component {
                     <div className="cell cell6"><span className="cellDesc">Climb</span>{this.props.climb}</div>
                     <div className="cell cell7"><span className="cellDesc">Weather</span>{this.props.weather}</div>
                     <div className="cell cell8 actNotes"><span className="cellDesc">Notes</span>{this.props.notes}</div>
-                </div>                        
+                </div>
 
                 {this.state.openModal ? (
                     <Modal
                         open={this.state.openModal}
                         onClose={this.closeModal}
                     >
-                        {/* TABLE ONE */}
-                        <div>
-                            <h5 className="title">Summary</h5>
-                            <table className="table table-striped table-bordered table-sm text-center align-middle runDetails">
-                                <thead className="thead-dark">
-                                    <tr>
-                                        <th>Date</th>
-                                        <th>Location</th>
-                                        <th>Type</th>
-                                        {this.props.type === "race" ? (
-                                            <th>Race</th>
-                                        ) : (
-                                                <></>
-                                            )}
-                                        <th>Miles</th>
-                                        <th>Duration (hh:mm:ss)</th>
-                                        <th>Mile Pace (mm:ss)</th>
-                                        <th>Climb (ft.)</th>
-                                        <th>Avg. Grade (%)</th>
-                                        <th>Surface</th>
-                                        <th>Weather</th>
-                                        <th>Footwear</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{this.props.date}</td>
-                                        <td>{this.props.location}</td>
-                                        <td>{this.props.type}</td>
-                                        {this.props.type === "race" ? (
-                                            <td>{this.props.race}</td>
-                                        ) : (
-                                                <></>
-                                            )}
-                                        <td>{this.props.distance}</td>
-                                        <td>{this.props.duration}</td>
-                                        <td>{this.props.milePace}</td>
-                                        <td>{this.props.climb}</td>
-                                        <td>{this.props.grade}</td>
-                                        <td>{this.props.surface}</td>
-                                        <td>{this.props.weather}</td>
-                                        <td>{this.props.shoe}</td>
-                                        
-                                    </tr>
-                                </tbody>
-                            </table>
+                        {/* ICON, DATE */}
+                        <div className="">
+                            <FontAwesomeIcon className="fa-3x runIcon dataIcon" icon={faRunning} />
+                            <h5 className="dataPoint-xl">{this.props.date}</h5>
                         </div>
 
-                        {/* TABLE TWO */}
+                        {/* DATA */}
                         <div>
-                            <table className="table table-striped table-bordered table-sm text-center align-middle runDetails">
-                                <thead className="thead-dark">
-                                    <tr>
-                                        <th>Notes</th>
-                                        <th>Map</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{this.props.notes}</td>
-                                        <td><a href={this.props.map} target="_blank" rel="noopener noreferrer">{this.props.map}</a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div className="d-flex flex-column">
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Location</div>
+                                    <div className="dataPoint">{this.props.location}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Time of Day</div>
+                                    <div className="dataPoint">{this.props.time}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Distance (mi.)</div>
+                                    <div className="dataPoint">{this.props.distance}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Duration</div>
+                                    <div className="dataPoint">{this.props.duration}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Pace (min./mi.)</div>
+                                    <div className="dataPoint">{this.props.milePace}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Type</div>
+                                    <div className="dataPoint">{this.props.type}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Climb (ft.)</div>
+                                    <div className="dataPoint">{this.props.climb}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Grade (%)</div>
+                                    <div className="dataPoint">{this.props.grade}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Surface</div>
+                                    <div className="dataPoint">{this.props.surface}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Weather</div>
+                                    <div className="dataPoint">{this.props.weather}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Shoes</div>
+                                    <div className="dataPoint">{this.props.shoes}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Notes</div>
+                                    <div className="dataPoint">{this.props.notes}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Map</div>
+                                    <div className="dataPoint">{this.props.map}</div>
+                                </div>
+                            </div>
                         </div>
-                    
+
                         {/* REPEATS */}
                         <div>
                             {this.props.runType && this.props.runType.toLowerCase() === "repeats" ? (
@@ -149,12 +147,12 @@ class Run extends Component {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {this.state.repeats.map(repeat => (  
+                                            {this.state.repeats.map(repeat => (
                                                 <tr key={Math.random() * 100000}>
                                                     <td>{repeat.distance}</td>
                                                     <td>{repeat.time}</td>
                                                     <td>{repeat.rest}</td>
-                                                </tr>       
+                                                </tr>
                                             ))}
                                         </tbody>
                                     </table>
@@ -166,9 +164,9 @@ class Run extends Component {
                         {this.props.userId === localStorage.getItem("userId") ? (
                             <button className="btn btn-danger btn-sm deleteActivity" onClick={this.deleteRun}>Delete Run</button>
                         ) : (
-                            <></>
-                        )}
-                </Modal>
+                                <></>
+                            )}
+                    </Modal>
                 ) : (
                         <></>
                     )}
