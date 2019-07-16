@@ -66,19 +66,19 @@ class LiftMetrics extends Component {
                 <h4 className="metricsSectionTitle">Lifts</h4>
                 <div className={`d-flex flex-${this.props.flexDir}`}>
                     <div className="metric">
-                        <div className="metricTitle">Total Lifts</div>
+                        <div className="metricTitle">Workouts</div>
                         <div>{this.state.workouts}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Total Time</div>
+                        <div className="metricTitle">Time (min.)</div>
                         <div>{this.state.totalTime}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Total Push-Ups</div>
+                        <div className="metricTitle">Push-Ups</div>
                         <div>{this.state.pushups}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Total Pull-Ups</div>
+                        <div className="metricTitle">Pull-Ups</div>
                         <div>{this.state.pullups}</div>
                     </div>
                     <div className="metric">

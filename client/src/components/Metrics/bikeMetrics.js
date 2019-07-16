@@ -94,11 +94,11 @@ class BikeMetrics extends Component {
                 <h4 className="metricsSectionTitle">Bikes</h4>
                 <div className={`d-flex flex-${this.props.flexDir}`}>
                     <div className="metric">
-                        <div className="metricTitle">Total Bikes</div>
+                        <div className="metricTitle">Workouts</div>
                         <div>{this.state.workouts}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Total Miles</div>
+                        <div className="metricTitle">Miles</div>
                         <div>{this.state.totalMiles}</div>
                     </div>
                     <div className="metric">
@@ -106,15 +106,15 @@ class BikeMetrics extends Component {
                         <div>{this.state.avgMilesPerWeek}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Total Climb (ft.)</div>
+                        <div className="metricTitle">Climb (ft.)</div>
                         <div>{this.state.totalClimb}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Avg. Distance (mi.)</div>
+                        <div className="metricTitle">Avg. Dist. (mi.)</div>
                         <div>{this.state.avgMiles}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Longest Distance (mi.)</div>
+                        <div className="metricTitle">Max. Dist. (mi.)</div>
                         <div>{this.state.maxMiles}</div>
                     </div>
                     <div className="metric">
