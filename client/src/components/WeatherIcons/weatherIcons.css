@@ -9,6 +9,16 @@
     padding: 2px;
 }
 
+.weatherLabel {
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 13px;
+    line-height: 1.0;
+    margin-left: 10px;
+    padding-bottom: 12px;
+    vertical-align: middle;
+}
+
 .sunny-true, .sunny-false:hover {
     background: yellow;
     border: 1px solid gold;
