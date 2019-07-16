@@ -41,7 +41,7 @@ class Profile extends Component {
 
     render() {
         return (
-            <div className="container pageContainer">
+            <div className="container pageContainer profileContainer">
                 {this.state.firstName && this.state.lastName ? (
                     <span>
                         <ProfileHeader 
