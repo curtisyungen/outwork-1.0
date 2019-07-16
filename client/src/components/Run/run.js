@@ -56,9 +56,9 @@ class Run extends Component {
                     <div className="runIcon"><FontAwesomeIcon className="fa-2x icon" icon={faRunning} /></div>
                     <div className="cell"><span className="cellDesc">Name</span>{this.props.firstName}</div>
                     <div className="cell"><span className="cellDesc">Date</span>{this.props.date}</div>
-                    <div className="cell"><span className="cellDesc">Miles</span>{this.props.distance} miles</div>
+                    <div className="cell"><span className="cellDesc">Miles</span>{this.props.distance}</div>
                     <div className="cell cell4"><span className="cellDesc">Time</span>{this.props.duration}</div>
-                    <div className="cell cell5"><span className="cellDesc">Pace</span>{this.props.milePace} (min./mile)</div>
+                    <div className="cell cell5"><span className="cellDesc">Mile Pace</span>{this.props.milePace}</div>
                     <div className="cell cell6"><span className="cellDesc">Climb</span>{this.props.climb}</div>
                     <div className="cell cell7"><span className="cellDesc">Weather</span>{this.props.weather}</div>
                     <div className="cell cell8 actNotes"><span className="cellDesc">Notes</span>{this.props.notes}</div>
