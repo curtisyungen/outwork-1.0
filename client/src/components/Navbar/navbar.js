@@ -54,6 +54,9 @@ class Navbar extends Component {
                             <a className="nav-link" href="/generator">Generator</a>
                         </li>
                         <li className="nav-item">
+                            <a className="nav-link" href="/streaks">Streaks</a>
+                        </li>
+                        <li className="nav-item">
                             <a className="nav-link" href="/allUsers">Users</a>
                         </li>
                         
