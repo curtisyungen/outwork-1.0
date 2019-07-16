@@ -17,4 +17,5 @@
 .imageList {
     display: inline-block;
     margin-top: 20px;
+    max-width: 550px;
 }

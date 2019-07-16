@@ -17,6 +17,12 @@ class Backgrounds extends Component {
                         alt="Dark Gray"
                     />
                 </div>
+                <div className="background" onClick={this.props.setBackground.bind(null, "blue")}>
+                    <img
+                        src={require("../../images/blue.png")}
+                        alt="Blue"
+                    />
+                </div>
                 <div className="background" onClick={this.props.setBackground.bind(null, "brick")}>
                     <img
                         src={require("../../images/brick-wall-dark.png")}
@@ -33,6 +39,18 @@ class Backgrounds extends Component {
                     <img
                         src={require("../../images/batthern.png")}
                         alt="Tiles"
+                    />
+                </div>
+                <div className="background" onClick={this.props.setBackground.bind(null, "floral")}>
+                    <img
+                        src={require("../../images/arabesque.png")}
+                        alt="Floral"
+                    />
+                </div>
+                <div className="background" onClick={this.props.setBackground.bind(null, "gravel")}>
+                    <img
+                        src={require("../../images/gravel.png")}
+                        alt="Gravel"
                     />
                 </div>
                 <div className="background" onClick={this.props.setBackground.bind(null, "trump")}>
