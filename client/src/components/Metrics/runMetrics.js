@@ -112,13 +112,13 @@ class RunMetrics extends Component {
         return (
             <span>
                 <h4 className="metricsSectionTitle">Runs</h4>
-                <div className={`d-flex flex-${this.props.flexDir}`}>
+                <div className={`d-flex flex-${this.props.flexDir} metricRow`}>
                     <div className="metric">
-                        <div className="metricTitle">Total Runs</div>
+                        <div className="metricTitle">Workouts</div>
                         <div>{this.state.workouts}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Total Miles</div>
+                        <div className="metricTitle">Miles</div>
                         <div>{this.state.totalMiles}</div>
                     </div>
                     <div className="metric">
@@ -126,19 +126,19 @@ class RunMetrics extends Component {
                         <div>{this.state.avgMilesPerWeek}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Total Climb (ft.)</div>
+                        <div className="metricTitle">Climb (ft.)</div>
                         <div>{this.state.totalClimb}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Avg. Mile Pace</div>
+                        <div className="metricTitle">Avg. Pace</div>
                         <div>{this.state.avgMilePace}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Avg. Distance (mi.)</div>
+                        <div className="metricTitle">Avg. Dist. (mi.)</div>
                         <div>{this.state.avgMiles}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Longest Distance (mi.)</div>
+                        <div className="metricTitle">Max. Dist. (mi.)</div>
                         <div>{this.state.maxMiles}</div>
                     </div>
                 </div>
