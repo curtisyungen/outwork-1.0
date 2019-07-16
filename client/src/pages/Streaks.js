@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./streaks.css";
+import "./Streaks.css";
 
 class Streaks extends Component {
 
