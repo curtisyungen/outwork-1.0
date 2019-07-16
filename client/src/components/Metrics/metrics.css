@@ -31,4 +31,8 @@
         border-bottom: 1px solid lightgray;
         border-right: 0px;
     }
+
+    .profileContainer {
+        padding: 25px !important;
+    }
 }
