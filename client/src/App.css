@@ -26,6 +26,10 @@ html {
         color: black;
       }
 
+      .blue {
+        background-image: url("../src/images/blue.png");
+      }
+
       .brick {
         background-image: url("../src/images/brick-wall-dark.png");
       }
@@ -36,6 +40,14 @@ html {
 
       .diagonal {
         background-image: url("../src/images/diagonal.png");
+      }
+
+      .floral {
+        background-image: url("../src/images/arabesque.png");
+      }
+
+      .gravel {
+        background-image: url("../src/images/gravel.png");
       }
 
       .trump {
