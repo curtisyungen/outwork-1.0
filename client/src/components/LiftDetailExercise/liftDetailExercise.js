@@ -4,7 +4,16 @@ import "./liftDetailExercise.css";
 class LiftDetailExercise extends Component {
     render() {
         return (
-            <tr className="listDetailExercise">
+            <div className="border-bottom">
+                <div className="dataTitle">Notes</div>
+                <div className="dataPoint">{this.props.pullups}</div>
+                <div className="dataPoint">{this.props.pullups}</div>
+                <div className="dataPoint">{this.props.pullups}</div>
+                <div className="dataPoint">{this.props.pullups}</div>
+            </div>
+
+
+            <tr className="liftDetailExercise">
                 <td className="align-middle liftDetail">{this.props.name}</td>
                 <td className="align-middle liftDetail">{this.props.reps}</td>
                 <td className="align-middle liftDetail">{this.props.weight}</td>
