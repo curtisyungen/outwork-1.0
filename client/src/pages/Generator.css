@@ -30,7 +30,7 @@
 }
 
 .generatorPage {
-    padding: 25px 0px !important;
+    padding: 25px 100px;
 }
 
 .selectEquipment {
@@ -56,6 +56,10 @@
 }
 
 @media only screen and (max-width: 768px) {
+    .generatorPage {
+        padding: 25px 0px !important;
+    }
+
     .selectEquipment {
         position: absolute;
         right: 15px;
