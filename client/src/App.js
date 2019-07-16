@@ -14,6 +14,7 @@ import SubmitBike from "./pages/SubmitBike";
 import SubmitSwim from "./pages/SubmitSwim";
 import SubmitLift from "./pages/SubmitLift";
 import Generator from "./pages/Generator";
+import Streaks from "./pages/Streaks";
 // import FindUsers from "./pages/FindUsers";
 import AllUsers from "./pages/AllUsers";
 import Error from "./pages/Error";
@@ -480,6 +481,14 @@ class App extends Component {
             {/* Generator Page */}
             <Route exact path="/generator" render={() =>
               <Generator
+                checkValidUser={this.checkValidUser}
+                background={this.state.background}
+              />
+            } />
+
+            {/* Streaks Page */}
+            <Route exact path="/streaks" render={() =>
+              <Streaks
                 checkValidUser={this.checkValidUser}
                 background={this.state.background}
               />
