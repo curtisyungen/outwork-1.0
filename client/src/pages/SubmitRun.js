@@ -18,7 +18,7 @@ class SubmitRun extends Component {
             distance: null,
             duration: null,
             milePace: null,
-            type: null,
+            runType: null,
             repeats: [],
             race: null,
             location: null,

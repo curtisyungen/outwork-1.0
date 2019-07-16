@@ -72,7 +72,7 @@ class Run extends Component {
                         {/* ICON, DATE */}
                         <div className="">
                             <FontAwesomeIcon className="fa-3x runIcon dataIcon" icon={faRunning} />
-                            <h5 className="dataPoint-xl">{this.props.date}</h5>
+                            <h5 className="dataPoint-xl">{this.props.firstName} | {this.props.date}</h5>
                         </div>
 
                         {/* DATA */}
