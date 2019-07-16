@@ -349,9 +349,9 @@ class Workout extends Component {
             <div>
                 {this.state.sets && this.state.sets.length > 0 ? (
                     <span>
-                        <Stopwatch 
+                        {/* <Stopwatch 
                             recordTime={this.recordTime}
-                        />
+                        /> */}
 
                         {this.state.sets.map(set => (
                             <Set
@@ -429,7 +429,7 @@ class Workout extends Component {
                                 aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-sm"
                                 onChange={this.handleInputChange}
-                                defaultValue={this.state.timeString}
+                                defaultValue={this.props.timeString}
                             />
                         </div>
 

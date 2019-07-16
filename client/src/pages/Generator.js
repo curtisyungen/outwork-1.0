@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // import Container from "../components/Container/container";
 import Equipment from "../components/Equipment/equipment";
 import Workout from "../components/Workout/workout";
+import Stopwatch from "../components/Stopwatch/stopwatch";
 import Modal from "react-responsive-modal";
 import userAPI from "../utils/userAPI";
 import exerAPI from "../utils/exerAPI";
@@ -31,6 +32,7 @@ class Generator extends Component {
             userEquipment: [],
             generate: false,
             confirm: false,
+            timeString: "00:00:00",
         }
     }
 
@@ -155,6 +157,12 @@ class Generator extends Component {
         });
     }
 
+    recordTime = (timeString) => {
+        this.setState({
+            timeString: timeString,
+        });
+    }
+
     render() {
         return (
             <div className="container pageContainer generatorPage">
@@ -218,6 +226,10 @@ class Generator extends Component {
                             <button className="btn btn-dark" onClick={this.generateWorkout}>Generate</button>
                         </div>
                     </div>
+
+                    <Stopwatch 
+                        recordTime={this.recordTime}
+                    />
 
                     {/* WORKOUT */}
                     <Workout
