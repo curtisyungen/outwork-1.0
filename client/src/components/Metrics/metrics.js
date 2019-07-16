@@ -25,12 +25,14 @@ class Metrics extends Component {
         let firstName = localStorage.getItem("fn");
         let userId = localStorage.getItem("userId");
 
+        window.addEventListener("resize", this.getScreenSize.bind(this));
+
         this.setState({
             firstName: firstName,
             userId: userId,
         }, () => {
-            this.getUserActivity();
             this.getScreenSize();
+            this.getUserActivity();
         });
     }
 
