@@ -86,6 +86,11 @@ class WeatherIcons extends Component {
                 >
                     <FontAwesomeIcon className="icon fa-2x" icon={faMoon} />
                 </div>
+                <div
+                    className="weatherLabel"
+                >
+                    {this.props.selected}
+                </div>
             </div>
         )
     }
