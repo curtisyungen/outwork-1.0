@@ -59,6 +59,12 @@ class Backgrounds extends Component {
                         alt="Trump"
                     />
                 </div>
+                <div className="background" onClick={this.props.setBackground.bind(null, "bundy")}>
+                    <img
+                        src={require("../../images/bundy.png")}
+                        alt="Ted Bundy"
+                    />
+                </div>
                 <div className="background" onClick={this.props.setBackground.bind(null, "goggins")}>
                     <img
                         src={require("../../images/goggins.png")}

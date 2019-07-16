@@ -32,6 +32,10 @@ html {
         background-image: url("../src/images/brick-wall-dark.png");
       }
 
+      .bundy {
+        background-image: url("../src/images/bundy.png");
+      }
+
       .darkGray {
         background-image: url("../src/images/darkGray.png");
       }
