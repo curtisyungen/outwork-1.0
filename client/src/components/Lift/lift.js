@@ -82,47 +82,48 @@ class Lift extends Component {
                         open={this.state.openModal}
                         onClose={this.closeModal}
                     >
-                        <div>
-                            <h5>Summary:</h5>
-                            <table className="table table-striped table-bordered table-sm text-center align-middle liftDetails">
-                                <thead className="thead-dark">
-                                    <tr>
-                                        <th>Date</th>
-                                        <th>Duration (hh:mm:ss)</th>
-                                        <th>Location</th>
-                                        <th>Generator</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{this.props.date}</td>
-                                        <td>{this.props.duration}</td>
-                                        <td>{this.props.location}</td>
-                                        <td>{this.state.generatorText}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        {/* ICON, DATE */}
+                        <div className="">
+                            <FontAwesomeIcon className="fa-3x liftIcon dataIcon" icon={faDumbbell} />
+                            <h5 className="dataPoint-xl">{this.props.firstName} | {this.props.date}</h5>
                         </div>
 
+                        {/* DATA */}
                         <div>
-                            <table className="table table-striped table-bordered table-sm text-center align-middle liftDetails">
-                                <thead className="thead-dark">
-                                    <tr>
-                                        <th>Total Pull-Ups</th>
-                                        <th>Total Push-Ups</th>
-                                        <th>Muscle Groups</th>
-                                        <th>Notes</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{this.props.pullups}</td>
-                                        <td>{this.props.pushups}</td>
-                                        <td>{this.props.muscleGroups}</td>
-                                        <td>{this.props.notes}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div className="d-flex flex-column">
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Location</div>
+                                    <div className="dataPoint">{this.props.location}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Time of Day</div>
+                                    <div className="dataPoint">{this.props.time}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Duration</div>
+                                    <div className="dataPoint">{this.props.duration}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Generator</div>
+                                    <div className="dataPoint">{this.props.generator}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Push-Ups</div>
+                                    <div className="dataPoint">{this.props.pushups}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Pull-Ups</div>
+                                    <div className="dataPoint">{this.props.pullups}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Muscle Groups</div>
+                                    <div className="dataPoint">{this.props.pullups}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Notes</div>
+                                    <div className="dataPoint">{this.props.pullups}</div>
+                                </div>
+                            </div>
                         </div>
 
                         <div>

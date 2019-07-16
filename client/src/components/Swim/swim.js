@@ -60,29 +60,46 @@ class Swim extends Component {
                         open={this.state.openModal}
                         onClose={this.closeModal}
                     >
-                        {/* TABLE ONE */}
-                        <div>
-                            <h5 className="title">Summary</h5>
-                            <table className="table table-striped table-bordered table-sm text-center align-middle swimDetails">
-                                <thead className="thead-dark">
-                                    <tr>
-                                        <th>Date</th>
-                                        <th>Location</th>
-                                        <th>Miles</th>
-                                        <th>Duration (hh:mm:ss)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{this.props.date}</td>
-                                        <td>{this.props.location}</td>
-                                        <td>{this.props.miles}</td>
-                                        <td>{this.props.duration}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        {/* ICON, DATE */}
+                        <div className="">
+                            <FontAwesomeIcon className="fa-3x swimIcon dataIcon" icon={faSwimmer} />
+                            <h5 className="dataPoint-xl">{this.props.firstName} | {this.props.date}</h5>
                         </div>
 
+                        {/* DATA */}
+                        <div>
+                            <div className="d-flex flex-column">
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Location</div>
+                                    <div className="dataPoint">{this.props.location}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Time of Day</div>
+                                    <div className="dataPoint">{this.props.time}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Distance (mi.)</div>
+                                    <div className="dataPoint">{this.props.distance}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Duration</div>
+                                    <div className="dataPoint">{this.props.duration}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Laps</div>
+                                    <div className="dataPoint">{this.props.laps}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Water Type</div>
+                                    <div className="dataPoint">{this.props.surface}</div>
+                                </div>
+                                <div className="border-bottom">
+                                    <div className="dataTitle">Notes</div>
+                                    <div className="dataPoint">{this.props.notes}</div>
+                                </div>
+                            </div>
+                        </div>
+                        
                         {this.props.userId === localStorage.getItem("userId") ? (
                             <button className="btn btn-danger btn-sm deleteActivity" onClick={this.deleteSwim}>Delete Swim</button>
                         ) : (
