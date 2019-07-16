@@ -104,6 +104,7 @@ class Metrics extends Component {
                     <RunMetrics
                         userId={this.state.userId}
                         userRuns={this.state.userRuns}
+                        flexDir={this.state.flexDir}
                     />
                 ) : (
                         <></>
@@ -113,6 +114,7 @@ class Metrics extends Component {
                     <BikeMetrics
                         userId={this.state.userId}
                         userBikes={this.state.userBikes}
+                        flexDir={this.state.flexDir}
                     />
                 ) : (
                         <></>
@@ -122,6 +124,7 @@ class Metrics extends Component {
                     <SwimMetrics
                         userId={this.state.userId}
                         userSwims={this.state.userSwims}
+                        flexDir={this.state.flexDir}
                     />
                 ) : (
                         <></>
@@ -131,6 +134,7 @@ class Metrics extends Component {
                     <LiftMetrics
                         userId={this.state.userId}
                         userLifts={this.state.userLifts}
+                        flexDir={this.state.flexDir}
                     />
                 ) : (
                         <></>
