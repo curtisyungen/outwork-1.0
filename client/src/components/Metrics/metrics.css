@@ -26,18 +26,6 @@
     font-weight: 700;
 }
 
-@media only screen and (max-width: 990px) {
-    .profileContainer {
-        padding: 25px !important;
-    }
-}
-
-@media only screen and (max-width: 768px) {
-    .profileContainer {
-        padding: 25px 5px !important;
-    }
-}
-
 @media only screen and (max-width: 520px) {
     .metric {
         border: 1px solid lightgray;
