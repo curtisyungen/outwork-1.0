@@ -195,6 +195,40 @@ class Workout extends Component {
         return reps;
     }
 
+    getPushUps = () => {
+        let sets = this.state.sets;
+        let pushups = 0;
+        let name;
+
+        for (var i in sets) {
+            name = sets[i].name.toLowerCase();
+            if (name.indexOf("push") > -1) {
+                pushups += parseInt(sets[i].reps);
+            }
+        }
+
+        this.setState({
+            pushups: pushups,
+        });
+    }
+
+    getPullUps = () => {
+        let sets = this.state.sets;
+        let pullups = 0;
+        let name;
+
+        for (var i in sets) {
+            name = sets[i].name.toLowerCase();
+            if (name.indexOf("pull") > -1 && name.indexOf("up") > -1) {
+                pullups += parseInt(sets[i].reps);
+            }
+        }
+
+        this.setState({
+            pullups: pullups,
+        });
+    }
+
     setWeight = (setId, exName, weight) => {
         let sets = this.state.sets;
 
@@ -237,6 +271,9 @@ class Workout extends Component {
     completeWorkout = () => {
         this.setState({
             complete: true,
+        }, () => {
+            this.getPushUps();
+            this.getPullUps();
         });
     }
 
@@ -281,15 +318,13 @@ class Workout extends Component {
                 shoe: null,
                 bike: null,
                 generator: generator,
-                pushups: null,
-                pullups: null,
+                pushups: this.state.pushups,
+                pullups: this.state.pullups,
                 workout: JSON.stringify(this.state.sets),
                 muscleGroups: JSON.stringify(this.state.muscleGroups),
                 notes: this.state.notes,
                 map: null,
             };
-
-            console.log(liftData);
 
             workoutAPI.createWorkout(liftData)
                 .then((res) => {
@@ -320,15 +355,14 @@ class Workout extends Component {
 
                         {this.state.sets.map(set => (
                             <Set
-                            key={Math.random() * 100000}
-                            set={set}
-                            handleInputChange={this.handleInputChange}
-                            setWeight={this.setWeight}
-                            setRest={this.setRest}
-                            setNotes={this.setNotes}
-                            difficulty={this.state.difficulty}
-                        />
-
+                                key={Math.random() * 100000}
+                                set={set}
+                                handleInputChange={this.handleInputChange}
+                                setWeight={this.setWeight}
+                                setRest={this.setRest}
+                                setNotes={this.setNotes}
+                                difficulty={this.state.difficulty}
+                            />
                         ))}
                     </span>
                 ) : (
