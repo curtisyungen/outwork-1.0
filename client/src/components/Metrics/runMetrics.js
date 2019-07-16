@@ -11,13 +11,13 @@ class RunMetrics extends Component {
         this.state = {
             userId: null,
             userRuns: null,
-            workouts: null,
-            totalMiles: null,
-            avgMilesPerWeek: null,
-            totalClimb: null,
-            avgMilePace: null,
-            avgMiles: null,
-            maxMiles: null,
+            workouts: "NA",
+            totalMiles: 0,
+            avgMilesPerWeek: 0,
+            totalClimb: 0,
+            avgMilePace: 0,
+            avgMiles: 0,
+            maxMiles: 0,
         }
     }
 
