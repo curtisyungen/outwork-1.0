@@ -9,12 +9,12 @@ class SwimMetrics extends Component {
         this.state = {
             userId: null,
             userSwims: null,
-            workouts: null,
-            totalMiles: null,
-            totalTime: null,
-            avgMilesPerWeek: null,
-            avgMiles: null,
-            maxMiles: null,
+            workouts: "NA",
+            totalMiles: 0,
+            totalTime: 0,
+            avgMilesPerWeek: 0,
+            avgMiles: 0,
+            maxMiles: 0,
         }
     }
 

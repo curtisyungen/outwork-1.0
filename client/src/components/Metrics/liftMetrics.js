@@ -9,10 +9,10 @@ class LiftMetrics extends Component {
         this.state = {
             userId: null,
             userLifts: null,
-            totalTime: null,
-            pushups: null,
-            pullups: null,
-            workouts: null,
+            totalTime: 0,
+            pushups: 0,
+            pullups: 0,
+            workouts: "NA",
         }
     }
 

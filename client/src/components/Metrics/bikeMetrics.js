@@ -11,12 +11,12 @@ class BikeMetrics extends Component {
         this.state = {
             userId: null,
             userBikes: null,
-            totalMiles: null,
-            avgMilesPerWeek: null,
-            totalClimb: null,
-            avgMiles: null,
-            maxMiles: null,
-            workouts: null,
+            totalMiles: 0,
+            avgMilesPerWeek: 0,
+            totalClimb: 0,
+            avgMiles: 0,
+            maxMiles: 0,
+            workouts: "NA",
         }
     }
 
