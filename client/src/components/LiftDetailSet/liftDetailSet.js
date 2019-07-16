@@ -25,9 +25,9 @@ class LiftDetailSet extends Component {
                 <thead className="thead-dark">
                     <tr>
                         <th>Exercise</th>
-                        <th>Reps or Time</th>
-                        <th>Weight (lbs.)</th>
-                        <th>Rest (min.)</th>
+                        <th>Reps</th>
+                        <th>Lbs.</th>
+                        <th>Rest</th>
                         <th>Notes</th>
                     </tr>
                 </thead>
