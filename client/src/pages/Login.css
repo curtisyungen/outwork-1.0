@@ -1,3 +1,35 @@
-.loginPage {
-    color: black;
+.loginContainer {
+    border-radius: 4px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.loginForm {
+    background: rgb(85, 85, 85);
+    border: 2px solid rgb(53, 53, 53);
+    border-radius: 4px;
+    color: #fff;
+    margin: 10px auto;
+    padding: 25px;
+    width: 350px;
+}
+
+.loginRow {
+    margin-top: 45px;
+}
+
+.logo {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.logo a { 
+    color: #fff;
+    font-size: 30px;
+}
+
+.logo a:hover {
+    text-decoration: none;
 }
