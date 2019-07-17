@@ -5,43 +5,40 @@ import { select } from "d3-selection";
 import "./barChart.css";
 
 class BarChart extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-
-        }
-    }
-
+    
     componentDidMount = () => {
         this.createBarChart();
-        console.log(this.props);
     }
 
     createBarChart = () => {
         let node = this.node;
         let dataMax = max(this.props.data)
+
+        // Scale chart
         let yScale = scaleLinear()
             .domain([0, dataMax])
             .range([0, this.props.size[1]]);
 
+        // Create rectangles
         select(node)
             .selectAll("rect")
             .data(this.props.data)
             .enter()
             .append("rect");
 
+        // Insert data
         select(node)
             .selectAll("rect")
             .data(this.props.data)
             .exit()
             .remove();
 
+        // Style rectangles
         select(node)
             .selectAll("rect")
             .data(this.props.data)
-            .style("fill", "#000")
+            .style("fill", "#424242")
+            .style("border", "1x solid black")
             .attr("x", (d, i) => i * 25)
             .attr("y", d => this.props.size[1] - yScale(d))
             .attr("height", d => yScale(d))
@@ -57,7 +54,6 @@ class BarChart extends Component {
             <div className="barChartContainer">
                 <svg 
                     ref={node => this.node = node}
-                    // className="bar"
                     width={500} 
                     height={500}>
                 </svg>
