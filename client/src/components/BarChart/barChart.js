@@ -16,6 +16,7 @@ class BarChart extends Component {
 
     componentDidMount = () => {
         this.createBarChart();
+        console.log(this.props);
     }
 
     createBarChart = () => {
