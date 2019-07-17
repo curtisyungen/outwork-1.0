@@ -227,9 +227,9 @@ class Generator extends Component {
                         </div>
                     </div>
 
-                    <Stopwatch 
+                    {/* <Stopwatch 
                         recordTime={this.recordTime}
-                    />
+                    /> */}
 
                     {/* WORKOUT */}
                     <Workout

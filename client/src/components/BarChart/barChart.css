@@ -1,5 +1,7 @@
 .barChartContainer {
+    background: #fff;
     border: 1px solid black;
-    margin: 25px;
+    margin-top: 50px;
+    overflow-x: scroll;
     padding: 10px;
 }
