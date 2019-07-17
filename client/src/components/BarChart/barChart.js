@@ -5,7 +5,7 @@ import { select } from "d3-selection";
 import "./barChart.css";
 
 class BarChart extends Component {
-    
+
     componentDidMount = () => {
         this.createBarChart();
     }
@@ -54,8 +54,9 @@ class BarChart extends Component {
             <div className="barChartContainer">
                 <svg 
                     ref={node => this.node = node}
-                    width={500} 
-                    height={500}>
+                    width={this.props.size} 
+                    height={this.props.size}
+                >
                 </svg>
             </div>
         )
