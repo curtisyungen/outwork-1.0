@@ -48,13 +48,13 @@ class Streaks extends Component {
         return (
             this.state.dataset.length > 0 ? (
                 <BarChart 
-                data={this.state.dataset}
-                size={[500, 500]}
-            />
-            ) : (
-                <></>
-            )
-            
+                    data={this.state.dataset}
+                    size={[200, 200]}
+                />
+                ) : (
+                    <></>
+                )
+                
         )
     }
 }
