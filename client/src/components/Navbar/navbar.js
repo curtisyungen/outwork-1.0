@@ -35,7 +35,10 @@ class Navbar extends Component {
             this.state.renderNames.indexOf(window.location.pathname.toLowerCase()) > -1 ? (
 
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a className="navbar-brand" href="/home">Outwork</a>
+                <a className="navbar-brand" href="/home">
+                    <img src={require("../../images/logo2.png")} />
+                    <span>Outwork</span>
+                </a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
