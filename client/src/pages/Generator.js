@@ -197,7 +197,7 @@ class Generator extends Component {
                         <></>
                     )}
 
-                <div className={`col-md-12 difficultyBar`}>
+                <div className={`difficultyBar`}>
 
                     <h4>Generator</h4>
 
