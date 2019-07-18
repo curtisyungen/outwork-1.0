@@ -107,7 +107,7 @@ class SubmitBike extends Component {
 
     render() {
         return (
-            <div className="container pageContainer">
+            <div className="container pageContainer submitContainer">
                 <div>
 
                     <div className="titleBar">
