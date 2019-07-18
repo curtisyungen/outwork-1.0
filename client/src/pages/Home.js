@@ -20,7 +20,10 @@ class Home extends Component {
 
     componentDidMount = () => {
         this.props.updateParentState();
-        this.props.getAllWorkouts();
+        
+        for (var i=0; i<5; i++) {
+            this.props.getAllWorkouts();
+        }
 
         // Validate user and then call getUserById
         if (true) {
