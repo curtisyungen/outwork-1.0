@@ -128,6 +128,18 @@ class SubmitLift extends Component {
         });
     }
 
+    getExercise = (exercise) => {
+        let exercises = this.state.exercises;
+
+        exercises.push(exercise);
+
+        console.log(exercises);
+
+        this.setState({
+            exercises: exercises,
+        });
+    }
+
     deleteExercise = (exercise) => {
         let exercises = this.state.exercises;
         let idx;
@@ -139,118 +151,6 @@ class SubmitLift extends Component {
         }
 
         exercises.splice(idx, 1);
-
-        this.setState({
-            exercises: exercises,
-        });
-    }
-
-    setName = (id, name) => {
-        let exercises = this.state.exercises;
-        let idx;
-        for (var i = 0; i < exercises.length; i++) {
-            if (exercises[i].id === id) {
-                idx = i;
-            }
-        }
-
-        exercises[idx].name = name;
-
-        this.setState({
-            exercises: exercises,
-        });
-    }
-
-    setWeight = (id, weight) => {
-        let exercises = this.state.exercises;
-        let idx;
-        for (var i = 0; i < exercises.length; i++) {
-            if (exercises[i].id === id) {
-                idx = i;
-            }
-        }
-
-        exercises[idx].weight = weight;
-
-        this.setState({
-            exercises: exercises,
-        });
-    }
-
-    setSuperset = (id, superset) => {
-        let exercises = this.state.exercises;
-        let idx;
-        for (var i = 0; i < exercises.length; i++) {
-            if (exercises[i].id === id) {
-                idx = i;
-            }
-        }
-
-        exercises[idx].superset = superset;
-
-        this.setState({
-            exercises: exercises,
-        });
-    }
-
-    setSets = (id, sets) => {
-        let exercises = this.state.exercises;
-        let idx;
-        for (var i = 0; i < exercises.length; i++) {
-            if (exercises[i].id === id) {
-                idx = i;
-            }
-        }
-
-        exercises[idx].sets = sets;
-
-        this.setState({
-            exercises: exercises,
-        });
-    }
-
-    setReps = (id, reps) => {
-        let exercises = this.state.exercises;
-        let idx;
-        for (var i = 0; i < exercises.length; i++) {
-            if (exercises[i].id === id) {
-                idx = i;
-            }
-        }
-
-        exercises[idx].reps = reps;
-
-        this.setState({
-            exercises: exercises,
-        });
-    }
-
-    setRest = (id, rest) => {
-        let exercises = this.state.exercises;
-        let idx;
-        for (var i = 0; i < exercises.length; i++) {
-            if (exercises[i].id === id) {
-                idx = i;
-            }
-        }
-
-        exercises[idx].rest = rest;
-
-        this.setState({
-            exercises: exercises,
-        });
-    }
-
-    setNotes = (id, notes) => {
-        let exercises = this.state.exercises;
-        let idx;
-        for (var i = 0; i < exercises.length; i++) {
-            if (exercises[i].id === id) {
-                idx = i;
-            }
-        }
-
-        exercises[idx].notes = notes;
 
         this.setState({
             exercises: exercises,
@@ -453,20 +353,7 @@ class SubmitLift extends Component {
                         <Exercise
                             key={Math.random() * 100000}
                             id={exercise.id}
-                            name={exercise.name}
-                            weight={exercise.weight}
-                            superset={exercise.superset}
-                            sets={exercise.sets}
-                            reps={exercise.reps}
-                            rest={exercise.rest}
-                            notes={exercise.notes}
-                            setName={this.setName}
-                            setWeight={this.setWeight}
-                            setSuperset={this.setSuperset}
-                            setSets={this.setSets}
-                            setReps={this.setReps}
-                            setRest={this.setRest}
-                            setNotes={this.setNotes}
+                            getExercise={this.getExercise}
                             deleteExercise={this.deleteExercise}
                         />
                     ))}
