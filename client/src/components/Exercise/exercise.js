@@ -29,7 +29,7 @@ class Exercise extends Component {
             notes: this.props.notes || "",
         });
     }
-    
+
     handleInputChange = (event) => {
         const { name, value } = event.target;
 
@@ -40,17 +40,16 @@ class Exercise extends Component {
         });
     }
 
-    debounce = (func, wait, immediate) => {
+    debounce(func, wait, immediate) {
         let timeout;
 
-        return sendExercise = () => {
-            let $this = this;
+        return function executedFunction() {
+            let context = this;
             let args = arguments;
 
-            let later = () => {
+            let later = function () {
                 timeout = null;
-
-                if (!immediate) func.apply($this, args);
+                if (!immediate) func.apply(context, args);
             };
 
             let callNow = immediate && !timeout;
@@ -59,10 +58,10 @@ class Exercise extends Component {
 
             timeout = setTimeout(later, wait);
 
-            if (callNow) func.apply($this, args);
-        }
-    }
-
+            if (callNow) func.apply(context, args);
+        };
+    };
+    
     callSendExercise = () => {
         this.debounce(this.sendExercise(), 250);
     }
