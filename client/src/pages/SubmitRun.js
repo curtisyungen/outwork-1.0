@@ -304,6 +304,7 @@ class SubmitRun extends Component {
                                 aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-sm"
                                 onChange={this.handleInputChange}
+                                onBlur={this.getMilePace}
                             />
                         </div>
 
@@ -321,6 +322,7 @@ class SubmitRun extends Component {
                                 aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-sm"
                                 onChange={this.handleInputChange}
+                                onBlur={this.getMilePace}
                             />
                             {/* MILE PACE */}
                             <div className="col-md-2 input-group-text milePace">
@@ -340,7 +342,6 @@ class SubmitRun extends Component {
                                 type="text"
                                 aria-describedby="inputGroup-sizing-sm"
                                 onChange={this.handleInputChange}
-                                onFocus={this.getMilePace}
                                 defaultValue={null}
                             >
                                 <option value=""></option>
