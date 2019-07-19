@@ -40,18 +40,16 @@ class SubmitLift extends Component {
             .then((res) => {
                 // Get exercises 
                 let exercises = [];   
-                for (var i=0; i<5; i++) {
-                    let exercise = {
-                        id: i,
-                        name: "",
-                        weight: "",
-                        reps: "",
-                        rest: "",
-                    }
-
-                    exercises.push(exercise);
+                let exercise = {
+                    id: 0,
+                    name: "",
+                    weight: "",
+                    reps: "",
+                    rest: "",
                 }
 
+                exercises.push(exercise);
+                
                 let muscleGroupList = [
                     "Chest", "Shoulders", 
                     "Back", "Biceps", 
@@ -130,8 +128,20 @@ class SubmitLift extends Component {
 
     getExercise = (exercise) => {
         let exercises = this.state.exercises;
+        let idx = -1;
 
-        exercises.push(exercise);
+        for (var e in exercises) {
+            if (exercises[e].id === exercise.id) {
+                idx = e;
+            }
+        }
+
+        if (idx > -1) {
+            exercises[idx] = exercise;
+        }
+        else {
+            exercises.push(exercise);
+        }
 
         console.log(exercises);
 
