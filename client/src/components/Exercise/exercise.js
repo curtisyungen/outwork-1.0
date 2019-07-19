@@ -21,14 +21,26 @@ class Exercise extends Component {
     componentDidMount = () => {
         this.setState({
             id: this.props.id,
-            name: this.props.name || "",
-            weight: this.props.weight || "",
-            superset: this.props.superset || "",
-            sets: this.props.sets || "",
-            reps: this.props.reps || "",
-            rest: this.props.rest || "",
-            notes: this.props.notes || "",
         });
+    }
+
+    sendExercise = (event) => {
+        event.preventDefault();
+
+        let exercise = {
+            id: this.props.id,
+            name: this.state.name,
+            weight: this.state.weight,
+            superset: this.state.superset,
+            sets: this.state.sets,
+            reps: this.state.reps,
+            rest: this.state.rest,
+            notes: this.state.notes,
+        }
+
+        console.log("Exericse", exercise);
+
+        this.props.getExercise(exercise);
     }
 
     deleteExercise = () => {
@@ -43,16 +55,6 @@ class Exercise extends Component {
         });
     }
 
-    updateParent = () => {
-        this.props.setName(this.state.id, this.state.name);
-        this.props.setWeight(this.state.id, this.state.weight);
-        this.props.setSuperset(this.state.id, this.state.superset);
-        this.props.setSets(this.state.id, this.state.sets);
-        this.props.setReps(this.state.id, this.state.reps);
-        this.props.setRest(this.state.id, this.state.rest);
-        this.props.setNotes(this.state.id, this.state.notes);
-    }
-
     render() {
         return (
             <div className="input-group input-group-sm mb-1">
@@ -64,7 +66,6 @@ class Exercise extends Component {
                     className="form-control"
                     placeholder="Exercise"
                     onChange={this.handleInputChange}
-                    onBlur={this.updateParent}
                     value={this.state.name}
                 />
                 {/* WEIGHT */}
@@ -75,7 +76,6 @@ class Exercise extends Component {
                     className="form-control"
                     placeholder="Lbs."
                     onChange={this.handleInputChange}
-                    onBlur={this.updateParent}
                     value={this.state.weight}
                 />
                 {/* SUPERSET ID */}
@@ -86,7 +86,6 @@ class Exercise extends Component {
                     className="form-control"
                     placeholder="Superset ID"
                     onChange={this.handleInputChange}
-                    onBlur={this.updateParent}
                     value={this.state.superset}
                 />
                 {/* SETS */}
@@ -97,7 +96,6 @@ class Exercise extends Component {
                     className="form-control"
                     placeholder="Sets"
                     onChange={this.handleInputChange}
-                    onBlur={this.updateParent}
                     value={this.state.sets}
                 />
                 {/* REPS */}
@@ -108,7 +106,6 @@ class Exercise extends Component {
                     className="form-control"
                     placeholder="Reps"
                     onChange={this.handleInputChange}
-                    onBlur={this.updateParent}
                     value={this.state.reps}
                 />
                 {/* REST */}
@@ -119,7 +116,6 @@ class Exercise extends Component {
                     className="form-control"
                     placeholder="Rest"
                     onChange={this.handleInputChange}
-                    onBlur={this.updateParent}
                     value={this.state.rest}
                 />
                 {/* NOTES */}
@@ -130,15 +126,22 @@ class Exercise extends Component {
                     className="form-control"
                     placeholder="Notes"
                     onChange={this.handleInputChange}
-                    onBlur={this.updateParent}
                     value={this.state.notes}
                 />
+                {/* COMPLETE */}
+                <button
+                    className="btn btn-success btn-sm"
+                    onClick={this.sendExercise}
+                >
+                    Y
+                </button>
+
                 {/* DELETE */}
                 <button
                     className="btn btn-danger btn-sm"
                     onClick={this.deleteExercise}
                 >
-                    Delete
+                    X
                 </button>
             </div>
         )
