@@ -36,7 +36,12 @@ class Workout extends Component {
             userEquipment: this.props.userEquipment,
             difficulty: this.props.difficulty,
         }, () => {
-            this.getExercises();
+            if (sessionStorage.getItem("sets") && JSON.parse(sessionStorage.getItem("sets")).length > 0) {
+                this.getSetsFromSessionStorage();
+            }
+            else {
+                this.getExercises();
+            } 
         });
     }
 
@@ -114,6 +119,16 @@ class Workout extends Component {
         return false;
     }
 
+    getSetsFromSessionStorage = () => {
+        let sets = JSON.parse(sessionStorage.getItem("sets"));
+        let difficulty = sessionStorage.getItem("diff");
+        
+        this.setState({
+            sets: sets,
+            difficulty: difficulty,
+        });
+    }
+
     getSets = () => {
         let difficulty = this.state.difficulty;
         let filtered = this.state.filtered;
@@ -147,6 +162,9 @@ class Workout extends Component {
 
         this.setState({
             sets: sets,
+        }, () => {
+            sessionStorage.setItem("sets", JSON.stringify(sets));
+            sessionStorage.setItem("diff", difficulty);
         });
     }
 
@@ -197,6 +215,9 @@ class Workout extends Component {
 
     getPushUps = () => {
         let sets = this.state.sets;
+
+        console.log(sets);
+
         let pushups = 0;
         let name;
 
@@ -330,6 +351,8 @@ class Workout extends Component {
                 .then((res) => {
                     if (res.status === 200) {
                         alert("Workout submitted!");
+                        sessionStorage.setItem("sets", null);
+                        sessionStorage.setItem("diff", null);
                         window.location.reload();
                     }
                     else {
