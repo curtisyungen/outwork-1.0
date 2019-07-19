@@ -21,6 +21,12 @@ class Exercise extends Component {
     componentDidMount = () => {
         this.setState({
             id: this.props.id,
+            name: this.props.name || "",
+            weight: this.props.weight || "",
+            superset: this.props.superset || "",
+            sets: this.props.sets || "",
+            reps: this.props.reps || "",
+            notes: this.props.notes || "",
         });
     }
 
@@ -135,7 +141,6 @@ class Exercise extends Component {
                 >
                     Y
                 </button>
-
                 {/* DELETE */}
                 <button
                     className="btn btn-danger btn-sm"
