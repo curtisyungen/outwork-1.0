@@ -293,8 +293,8 @@ class Workout extends Component {
         this.setState({
             complete: true,
         }, () => {
-            this.getPushUps();
-            this.getPullUps();
+            // this.getPushUps();
+            // this.getPullUps();
         });
     }
 
