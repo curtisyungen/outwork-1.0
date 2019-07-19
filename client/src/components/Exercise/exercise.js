@@ -29,6 +29,43 @@ class Exercise extends Component {
             notes: this.props.notes || "",
         });
     }
+    
+    handleInputChange = (event) => {
+        const { name, value } = event.target;
+
+        this.setState({
+            [name]: value,
+        }, () => {
+            this.callSendExercise();
+        });
+    }
+
+    debounce = (func, wait, immediate) => {
+        let timeout;
+
+        return sendExercise = () => {
+            let $this = this;
+            let args = arguments;
+
+            let later = () => {
+                timeout = null;
+
+                if (!immediate) func.apply($this, args);
+            };
+
+            let callNow = immediate && !timeout;
+
+            clearTimeout(timeout);
+
+            timeout = setTimeout(later, wait);
+
+            if (callNow) func.apply($this, args);
+        }
+    }
+
+    callSendExercise = () => {
+        this.debounce(this.sendExercise(), 250);
+    }
 
     sendExercise = () => {
         let exercise = {
@@ -51,23 +88,12 @@ class Exercise extends Component {
         this.props.deleteExercise(this.state.id);
     }
 
-    handleInputChange = (event) => {
-        const { name, value } = event.target;
-
-        this.setState({
-            [name]: value,
-        }, () => {
-            this.sendExercise();
-        });
-    }
-
     render() {
         return (
             <div className="input-group input-group-sm mb-1">
                 {/* NAME */}
                 <input
                     autoComplete="off"
-                    autoFocus
                     name="name"
                     type="text"
                     className="form-control"
@@ -78,7 +104,6 @@ class Exercise extends Component {
                 {/* WEIGHT */}
                 <input
                     autoComplete="off"
-                    autoFocus
                     name="weight"
                     type="text"
                     className="form-control"
@@ -89,7 +114,6 @@ class Exercise extends Component {
                 {/* SUPERSET ID */}
                 <input
                     autoComplete="off"
-                    autoFocus
                     name="superset"
                     type="text"
                     className="form-control"
@@ -100,7 +124,6 @@ class Exercise extends Component {
                 {/* SETS */}
                 <input
                     autoComplete="off"
-                    autoFocus
                     name="sets"
                     type="text"
                     className="form-control"
@@ -111,7 +134,6 @@ class Exercise extends Component {
                 {/* REPS */}
                 <input
                     autoComplete="off"
-                    autoFocus
                     name="reps"
                     type="text"
                     className="form-control"
@@ -122,7 +144,6 @@ class Exercise extends Component {
                 {/* REST */}
                 <input
                     autoComplete="off"
-                    autoFocus
                     name="rest"
                     type="text"
                     className="form-control"
@@ -133,7 +154,6 @@ class Exercise extends Component {
                 {/* NOTES */}
                 <input
                     autoComplete="off"
-                    autoFocus
                     name="notes"
                     type="text"
                     className="form-control"
