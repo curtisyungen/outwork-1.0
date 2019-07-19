@@ -111,6 +111,7 @@ class SubmitLift extends Component {
 
     addExercise = () => {
         let exercises = this.state.exercises;
+
         let exercise = {
             id: exercises.length,
             name: "",
@@ -363,6 +364,13 @@ class SubmitLift extends Component {
                         <Exercise
                             key={Math.random() * 100000}
                             id={exercise.id}
+                            name={exercise.name}
+                            weight={exercise.weight}
+                            superset={exercise.superset}
+                            sets={exercise.sets}
+                            reps={exercise.reps}
+                            rest={exercise.rest}
+                            notes={exercise.notes}
                             getExercise={this.getExercise}
                             deleteExercise={this.deleteExercise}
                         />
