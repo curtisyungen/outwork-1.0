@@ -215,6 +215,9 @@ class Workout extends Component {
 
     getPushUps = () => {
         let sets = this.state.sets;
+
+        console.log(sets);
+
         let pushups = 0;
         let name;
 
