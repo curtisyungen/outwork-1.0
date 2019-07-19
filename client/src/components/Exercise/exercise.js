@@ -61,9 +61,9 @@ class Exercise extends Component {
             if (callNow) func.apply(context, args);
         };
     };
-    
+
     callSendExercise = () => {
-        this.debounce(this.sendExercise(), 250);
+        this.debounce(this.sendExercise, 250);
     }
 
     sendExercise = () => {
