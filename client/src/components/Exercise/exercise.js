@@ -56,17 +56,13 @@ class Exercise extends Component {
     render() {
         return (
             <div className="input-group input-group-sm mb-1">
-                <div className="input-group-prepend">
-                    <span className="input-group-text">Exercise</span>
-                </div>
-
                 {/* NAME */}
                 <input
                     autoComplete="off"
                     name="name"
                     type="text"
                     className="form-control"
-                    placeholder="Exercise Name"
+                    placeholder="Exercise"
                     onChange={this.handleInputChange}
                     onBlur={this.updateParent}
                     value={this.state.name}
@@ -77,7 +73,7 @@ class Exercise extends Component {
                     name="weight"
                     type="text"
                     className="form-control"
-                    placeholder="Weight (lbs.)"
+                    placeholder="Lbs."
                     onChange={this.handleInputChange}
                     onBlur={this.updateParent}
                     value={this.state.weight}
