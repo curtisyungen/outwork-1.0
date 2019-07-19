@@ -30,9 +30,7 @@ class Exercise extends Component {
         });
     }
 
-    sendExercise = (event) => {
-        event.preventDefault();
-
+    sendExercise = () => {
         let exercise = {
             id: this.props.id,
             name: this.state.name,
@@ -58,6 +56,8 @@ class Exercise extends Component {
 
         this.setState({
             [name]: value,
+        }, () => {
+            this.sendExercise();
         });
     }
 
@@ -134,13 +134,6 @@ class Exercise extends Component {
                     onChange={this.handleInputChange}
                     value={this.state.notes}
                 />
-                {/* COMPLETE */}
-                <button
-                    className="btn btn-success btn-sm"
-                    onClick={this.sendExercise}
-                >
-                    Y
-                </button>
                 {/* DELETE */}
                 <button
                     className="btn btn-danger btn-sm"
