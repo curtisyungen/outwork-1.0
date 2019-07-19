@@ -323,7 +323,7 @@ class SubmitRun extends Component {
                                 onChange={this.handleInputChange}
                             />
                             {/* MILE PACE */}
-                            <div className="col-md-2 input-group-text">
+                            <div className="col-md-2 input-group-text milePace">
                                 {this.state.milePace}
                             </div>
                         </div>
