@@ -36,7 +36,7 @@ class Workout extends Component {
             userEquipment: this.props.userEquipment,
             difficulty: this.props.difficulty,
         }, () => {
-            if (sessionStorage.getItem("sets") && JSON.parse(sessionStorage.getItem("sets")).length > 0) {
+            if (sessionStorage.getItem("sets") !== null && sessionStorage.getItem("sets").length > 0) {
                 this.getSetsFromSessionStorage();
             }
             else {
