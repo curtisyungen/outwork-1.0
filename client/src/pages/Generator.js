@@ -53,6 +53,8 @@ class Generator extends Component {
                     });
                 });
         }
+
+        
     }
 
     handleInputChange = (event) => {
@@ -210,9 +212,9 @@ class Generator extends Component {
                             type="text"
                             aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
-                            defaultValue="0"
+                            defaultValue={this.props.difficulty || "0"}
                         >
-                            <option value="0" disabled>Select Difficulty</option>
+                            <option value="0">Select Difficulty</option>
                             <option value="1">Baby</option>
                             <option value="2">Easy</option>
                             <option value="3">Average</option>
