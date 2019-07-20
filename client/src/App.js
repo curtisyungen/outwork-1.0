@@ -483,6 +483,7 @@ class App extends Component {
               <Generator
                 checkValidUser={this.checkValidUser}
                 background={this.state.background}
+                difficulty={sessionStorage.getItem("diff")}
               />
             } />
 
