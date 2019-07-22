@@ -1,8 +1,9 @@
 .addExerciseBtn {
-    float: right;
+    margin-top: 5px;
 }
 
 .addExerciseDiv {
+    text-align: center;
     width: 100%;
 }
 
