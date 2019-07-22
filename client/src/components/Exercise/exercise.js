@@ -80,99 +80,90 @@ class Exercise extends Component {
     render() {
         return (
             <div className={`input-group input-group-sm mb-1 saved-${this.state.saved}`}>
-                <div className="workoutBlock">
-                    <div ClassName="sect1">
-                        {/* NAME */}
-                        <input
-                            autoComplete="off"
-                            name="name"
-                            type="text"
-                            className="form-control exerciseInput"
-                            placeholder="Exercise"
-                            onChange={this.handleInputChange}
-                            value={this.state.name}
-                        />
-                        {/* WEIGHT */}
-                        <input
-                            autoComplete="off"
-                            name="weight"
-                            type="text"
-                            className="form-control exerciseInput"
-                            placeholder="Lbs."
-                            onChange={this.handleInputChange}
-                            value={this.state.weight}
-                        />
-                        {/* SUPERSET ID */}
-                        <input
-                            autoComplete="off"
-                            name="superset"
-                            type="text"
-                            className="form-control exerciseInput"
-                            placeholder="Superset ID"
-                            onChange={this.handleInputChange}
-                            value={this.state.superset}
-                        />
-                    </div>
-                    <div className="sect2">
-                        {/* SETS */}
-                        <input
-                            autoComplete="off"
-                            name="sets"
-                            type="text"
-                            className="form-control exerciseInput"
-                            placeholder="Sets"
-                            onChange={this.handleInputChange}
-                            value={this.state.sets}
-                        />
-                        {/* REPS */}
-                        <input
-                            autoComplete="off"
-                            name="reps"
-                            type="text"
-                            className="form-control exerciseInput"
-                            placeholder="Reps"
-                            onChange={this.handleInputChange}
-                            value={this.state.reps}
-                        />
-                        {/* REST */}
-                        <input
-                            autoComplete="off"
-                            name="rest"
-                            type="text"
-                            className="form-control exerciseInput"
-                            placeholder="Rest"
-                            onChange={this.handleInputChange}
-                            value={this.state.rest}
-                        />
-                    </div>
-                    <div className="sect3">
-                        {/* NOTES */}
-                        <input
-                            autoComplete="off"
-                            name="notes"
-                            type="text"
-                            className="form-control exerciseInput"
-                            placeholder="Notes"
-                            onChange={this.handleInputChange}
-                            value={this.state.notes}
-                        />
-
-                        {/* SAVE */}
-                        <button
-                            className="btn btn-success btn-sm exerciseBtn"
-                            onClick={this.sendExercise}
-                        >
-                            Save
+                {/* NAME */}
+                <input
+                    autoComplete="off"
+                    name="name"
+                    type="text"
+                    className="form-control exerciseInput"
+                    placeholder="Exercise"
+                    onChange={this.handleInputChange}
+                    value={this.state.name}
+                />
+                {/* WEIGHT */}
+                <input
+                    autoComplete="off"
+                    name="weight"
+                    type="text"
+                    className="form-control exerciseInput"
+                    placeholder="Lbs."
+                    onChange={this.handleInputChange}
+                    value={this.state.weight}
+                />
+                {/* SUPERSET ID */}
+                <input
+                    autoComplete="off"
+                    name="superset"
+                    type="text"
+                    className="form-control exerciseInput"
+                    placeholder="Superset ID"
+                    onChange={this.handleInputChange}
+                    value={this.state.superset}
+                />
+                {/* SETS */}
+                <input
+                    autoComplete="off"
+                    name="sets"
+                    type="text"
+                    className="form-control exerciseInput"
+                    placeholder="Sets"
+                    onChange={this.handleInputChange}
+                    value={this.state.sets}
+                />
+                {/* REPS */}
+                <input
+                    autoComplete="off"
+                    name="reps"
+                    type="text"
+                    className="form-control exerciseInput"
+                    placeholder="Reps"
+                    onChange={this.handleInputChange}
+                    value={this.state.reps}
+                />
+                {/* REST */}
+                <input
+                    autoComplete="off"
+                    name="rest"
+                    type="text"
+                    className="form-control exerciseInput"
+                    placeholder="Rest"
+                    onChange={this.handleInputChange}
+                    value={this.state.rest}
+                />
+                {/* NOTES */}
+                <input
+                    autoComplete="off"
+                    name="notes"
+                    type="text"
+                    className="form-control exerciseInput"
+                    placeholder="Notes"
+                    onChange={this.handleInputChange}
+                    value={this.state.notes}
+                />
+                {/* SAVE */}
+                <button
+                    className="btn btn-success btn-sm exerciseBtn"
+                    onClick={this.sendExercise}
+                >
+                    Save
                 </button>
-                        {/* DELETE */}
-                        <button
-                            className="btn btn-danger btn-sm exerciseBtn"
-                            onClick={this.deleteExercise}
-                        >
-                            Delete
+                {/* DELETE */}
+                <button
+                    className="btn btn-danger btn-sm exerciseBtn"
+                    onClick={this.deleteExercise}
+                >
+                    Delete
                 </button>
-                    </div>
-                </div>
             </div>
         )
     }
