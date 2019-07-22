@@ -112,8 +112,15 @@ class SubmitLift extends Component {
     addExercise = () => {
         let exercises = this.state.exercises;
 
+        let maxId = -1;
+        for (var e in exercises) {
+            if (exercises[e].id > maxId) {
+                maxId = parseeInt(exercises[e].id);
+            }
+        }
+
         let exercise = {
-            id: exercises.length,
+            id: maxId + 1,
             name: "",
             weight: "",
             reps: "",
@@ -143,8 +150,6 @@ class SubmitLift extends Component {
         else {
             exercises.push(exercise);
         }
-
-        console.log(exercises);
 
         this.setState({
             exercises: exercises,
