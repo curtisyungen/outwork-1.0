@@ -66,7 +66,7 @@ class Exercise extends Component {
                     autoComplete="off"
                     name="name"
                     type="text"
-                    className="form-control"
+                    className="form-control exerciseInput"
                     placeholder="Exercise"
                     onChange={this.handleInputChange}
                     value={this.state.name}
@@ -76,7 +76,7 @@ class Exercise extends Component {
                     autoComplete="off"
                     name="weight"
                     type="text"
-                    className="form-control"
+                    className="form-control exerciseInput"
                     placeholder="Lbs."
                     onChange={this.handleInputChange}
                     value={this.state.weight}
@@ -86,7 +86,7 @@ class Exercise extends Component {
                     autoComplete="off"
                     name="superset"
                     type="text"
-                    className="form-control"
+                    className="form-control exerciseInput"
                     placeholder="Superset ID"
                     onChange={this.handleInputChange}
                     value={this.state.superset}
@@ -96,7 +96,7 @@ class Exercise extends Component {
                     autoComplete="off"
                     name="sets"
                     type="text"
-                    className="form-control"
+                    className="form-control exerciseInput"
                     placeholder="Sets"
                     onChange={this.handleInputChange}
                     value={this.state.sets}
@@ -106,7 +106,7 @@ class Exercise extends Component {
                     autoComplete="off"
                     name="reps"
                     type="text"
-                    className="form-control"
+                    className="form-control exerciseInput"
                     placeholder="Reps"
                     onChange={this.handleInputChange}
                     value={this.state.reps}
@@ -116,7 +116,7 @@ class Exercise extends Component {
                     autoComplete="off"
                     name="rest"
                     type="text"
-                    className="form-control"
+                    className="form-control exerciseInput"
                     placeholder="Rest"
                     onChange={this.handleInputChange}
                     value={this.state.rest}
@@ -126,24 +126,24 @@ class Exercise extends Component {
                     autoComplete="off"
                     name="notes"
                     type="text"
-                    className="form-control"
+                    className="form-control exerciseInput"
                     placeholder="Notes"
                     onChange={this.handleInputChange}
                     value={this.state.notes}
                 />
                 {/* SAVE */}
                 <button
-                    className="btn btn-success btn-sm"
+                    className="btn btn-success btn-sm exerciseBtn"
                     onClick={this.sendExercise}
                 >
-                    O
+                    Save
                 </button>
                 {/* DELETE */}
                 <button
-                    className="btn btn-danger btn-sm"
+                    className="btn btn-danger btn-sm exerciseBtn"
                     onClick={this.deleteExercise}
                 >
-                    X
+                    Delete
                 </button>
             </div>
         )
