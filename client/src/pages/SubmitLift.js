@@ -115,7 +115,7 @@ class SubmitLift extends Component {
         let maxId = -1;
         for (var e in exercises) {
             if (exercises[e].id > maxId) {
-                maxId = parseeInt(exercises[e].id);
+                maxId = parseInt(exercises[e].id);
             }
         }
 
