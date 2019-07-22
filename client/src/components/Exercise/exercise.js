@@ -26,6 +26,7 @@ class Exercise extends Component {
             superset: this.props.superset || "",
             sets: this.props.sets || "",
             reps: this.props.reps || "",
+            rest: this.props.rest || "",
             notes: this.props.notes || "",
         });
     }
@@ -134,7 +135,7 @@ class Exercise extends Component {
                 />
                 {/* SAVE */}
                 <button
-                    className="btn btn-danger btn-sm"
+                    className="btn btn-success btn-sm"
                     onClick={this.sendExercise}
                 >
                     O
