@@ -17,9 +17,9 @@
     width: 33.3%;
 }
 
-.sect1 form-control,
-.sect2 form-control,
-.sect3 form-control {
+.sect1 .form-control,
+.sect2 .form-control,
+.sect3 .form-control {
     font-size: 13px !important;
 }
 
