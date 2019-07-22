@@ -98,11 +98,11 @@ class SubmitLift extends Component {
 
         for (var e in exercises) {
             if (exercises[e].name.toLowerCase().indexOf("pull-ups") > -1) {
-                pullups += parseInt(exercises[e].reps);
+                pullups += parseInt(exercises[e].reps) * parseInt(exercises[e].sets);
             }
 
             if (exercises[e].name.toLowerCase().indexOf("pull ups") > -1) {
-                pullups += parseInt(exercises[e].reps);
+                pullups += parseInt(exercises[e].reps) * parseInt(exercises[e].sets);
             }
         }
 
