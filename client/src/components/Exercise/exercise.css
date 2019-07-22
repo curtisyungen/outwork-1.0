@@ -1,6 +1,5 @@
 .sect1, .sect2, .sect3 {
     display: flex;
-    flex-direction: row;
 }
 
 .exerciseBtn {
@@ -19,7 +18,7 @@
 
 .workoutBlock {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 @media only screen and (max-width: 520px) {
