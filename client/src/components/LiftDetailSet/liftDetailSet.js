@@ -25,8 +25,10 @@ class LiftDetailSet extends Component {
                 <thead className="thead-dark">
                     <tr>
                         <th>Exercise</th>
-                        <th>Reps</th>
                         <th>Lbs.</th>
+                        <th>Superset ID</th>
+                        <th>Sets</th>
+                        <th>Reps</th>
                         <th>Rest</th>
                         <th>Notes</th>
                     </tr>
@@ -37,8 +39,10 @@ class LiftDetailSet extends Component {
                             <LiftDetailExercise
                                 key={Math.random() * 100000}
                                 name={exercise.name}
-                                reps={exercise.reps}
                                 weight={exercise.weight}
+                                superset={exercise.superset}
+                                sets={exercise.sets}
+                                reps={exercise.reps}
                                 rest={exercise.rest}
                                 notes={exercise.notes}
                             />
