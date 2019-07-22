@@ -62,7 +62,7 @@ class Exercise extends Component {
 
     render() {
         return (
-            <div className={`input-group input-group-sm mb-1 saved-${this.props.id !== null}`}>
+            <div className={`input-group input-group-sm mb-1 saved-${this.props.name !== null}`}>
                 {/* NAME */}
                 <input
                     autoComplete="off"
