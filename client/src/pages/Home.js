@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Container from "../components/Container/container";
 import UserActivity from "../components/UserActivity/userActivity";
-// import userAPI from "../utils/userAPI";
 import "./Home.css";
 
 class Home extends Component {
