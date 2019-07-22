@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import "./exercise.css";
+import "./exercise.css";
 
 class Exercise extends Component {
 
@@ -62,7 +62,7 @@ class Exercise extends Component {
 
     render() {
         return (
-            <div className="input-group input-group-sm mb-1">
+            <div className={`input-group input-group-sm mb-1 saved-${this.props.id !== null}`}>
                 {/* NAME */}
                 <input
                     autoComplete="off"
