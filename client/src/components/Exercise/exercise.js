@@ -81,7 +81,7 @@ class Exercise extends Component {
         return (
             <div className={`input-group input-group-sm mb-1 saved-${this.state.saved}`}>
                 <div className="workoutBlock">
-                    <div className="sect1">
+                    <div ClassName="sect1">
                         {/* NAME */}
                         <input
                             autoComplete="off"
