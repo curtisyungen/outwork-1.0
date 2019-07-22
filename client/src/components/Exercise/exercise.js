@@ -21,13 +21,13 @@ class Exercise extends Component {
     componentDidMount = () => {
         this.setState({
             id: this.props.id,
-            name: this.props.name,
-            weight: this.props.weight,
-            superset: this.props.superset,
-            sets: this.props.sets,
-            reps: this.props.reps,
-            rest: this.props.rest,
-            notes: this.props.notes,
+            name: this.props.name || "",
+            weight: this.props.weight || "",
+            superset: this.props.superset || "",
+            sets: this.props.sets || "",
+            reps: this.props.reps || "",
+            rest: this.props.rest || "",
+            notes: this.props.notes || "",
         });
     }
 
@@ -51,6 +51,8 @@ class Exercise extends Component {
             notes: this.state.notes,
         }
 
+        console.log("Exericse", exercise);
+
         this.props.getExercise(exercise);
     }
 
@@ -60,7 +62,7 @@ class Exercise extends Component {
 
     render() {
         return (
-            <div className={`input-group input-group-sm mb-1 saved-${this.props.name !== ""}`}>
+            <div className={`input-group input-group-sm mb-1 saved-${this.props.name !== null}`}>
                 {/* NAME */}
                 <input
                     autoComplete="off"
