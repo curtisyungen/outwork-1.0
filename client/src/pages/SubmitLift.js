@@ -251,7 +251,7 @@ class SubmitLift extends Component {
 
     render() {
         return (
-            <div className="container pageContainer submitContainer">
+            <div className="container pageContainer submitContainer liftContainer">
                 <div>
 
                     <div className="titleBar">

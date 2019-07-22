@@ -6,6 +6,10 @@
     width: 100%;
 }
 
+.liftContainer {
+    width: 800px !important;
+}
+
 .muscleGroup {
     display: inline-block;
     width: 125px;
@@ -31,4 +35,10 @@
 
 .titleBar h4 {
     white-space: nowrap;
+}
+
+@media only screen and (max-width: 990px) {
+    .liftContainer {
+        width: auto;
+    }
 }
