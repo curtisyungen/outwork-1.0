@@ -130,7 +130,7 @@ class Exercise extends Component {
                             name="reps"
                             type="text"
                             className="form-control exerciseInput"
-                            placeholder="Reps"
+                            placeholder="Reps/Min."
                             onChange={this.handleInputChange}
                             value={this.state.reps}
                         />
