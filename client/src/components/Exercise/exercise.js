@@ -15,6 +15,7 @@ class Exercise extends Component {
             reps: "",
             rest: "",
             notes: "",
+            saved: false,
         }
     }
 
@@ -28,6 +29,8 @@ class Exercise extends Component {
             reps: this.props.reps,
             rest: this.props.rest,
             notes: this.props.notes,
+        }, () => {
+            this.checkSaved();
         });
     }
 
@@ -36,7 +39,19 @@ class Exercise extends Component {
 
         this.setState({
             [name]: value,
+        }, () => {
+            this.setState({
+                saved: false,
+            });
         });
+    }
+
+    checkSaved = () => {
+        if (this.props.name !== "") {
+            this.setState({
+                saved: true,
+            });
+        }
     }
 
     sendExercise = () => {
@@ -52,6 +67,10 @@ class Exercise extends Component {
         }
 
         this.props.getExercise(exercise);
+
+        this.setState({
+            saved: true,
+        });
     }
 
     deleteExercise = () => {
@@ -60,7 +79,7 @@ class Exercise extends Component {
 
     render() {
         return (
-            <div className={`input-group input-group-sm mb-1 saved-${this.props.name !== ""}`}>
+            <div className={`input-group input-group-sm mb-1 saved-${this.state.saved}`}>
                 {/* NAME */}
                 <input
                     autoComplete="off"
