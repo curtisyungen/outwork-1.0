@@ -15,6 +15,7 @@ class SwimLap extends Component {
         this.state = {
             id: null,
             distance: "",
+            units: "",
             time: "",
             stroke: "",
             rest: "",
@@ -26,6 +27,7 @@ class SwimLap extends Component {
         this.setState({
             id: this.props.id,
             distance: this.props.distance,
+            units: this.props.units,
             time: this.props.time,
             stroke: this.props.stroke,
             rest: this.props.rest,
@@ -80,7 +82,7 @@ class SwimLap extends Component {
                     name="distance"
                     type="text"
                     className="form-control lapInput-md"
-                    placeholder="Meters"
+                    placeholder={this.props.units}
                     onChange={this.handleInputChange}
                     value={this.state.distance}
                 />
