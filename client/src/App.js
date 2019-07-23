@@ -509,7 +509,8 @@ class App extends Component {
           </Switch>
 
           {/* Footer */}
-          <Footer />
+          {/* <Footer /> */}
+
         </div>
       </Router >
     )
