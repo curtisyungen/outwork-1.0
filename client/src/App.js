@@ -385,9 +385,6 @@ class App extends Component {
             logoutUser={this.logoutUser}
           />
 
-          {/* Footer */}
-          <Footer />
-
           <Switch>
             {/* Landing Page */}
             <Route exact path="/" render={() =>
@@ -510,6 +507,9 @@ class App extends Component {
 
             <Route component={Error} />
           </Switch>
+
+          {/* Footer */}
+          <Footer />
         </div>
       </Router >
     )
