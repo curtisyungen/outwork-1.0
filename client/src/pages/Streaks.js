@@ -4,6 +4,8 @@ import Calendar from "../components/Calendar/calendar";
 import workoutAPI from "../utils/workoutAPI";
 import "./Streaks.css";
 
+import moment from "moment";
+
 class Streaks extends Component {
 
     constructor(props) {
@@ -39,15 +41,34 @@ class Streaks extends Component {
 
                 this.setState({
                     activity: res.data,
+                }, () => {
+                    this.processData();
                 });
             });
+    }
+
+    processData = () => {
+        let activity = this.state.activity;
+        let week;
+
+        for (var a in activity) {
+            week = moment(activity[a].date).week();
+
+            year[week].push(activity[a]);
+        }
+
+        this.setState({
+            year: year,
+        }, () => {
+            console.log(year);
+        });
     }
 
     render() {
         return (
             <div className="container pageContainer">
                 <Calendar 
-                    data={this.state.data}
+                    year={this.state.year}
                 />
             </div>
         )

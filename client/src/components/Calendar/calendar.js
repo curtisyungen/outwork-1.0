@@ -9,13 +9,13 @@ class Calendar extends Component {
 
         this.state = {
             userId:  null,
-            data: null,
+            year: null,
         }
     }
 
     componentDidMount = () => {
         this.setState({
-            data: this.props.data,
+            year: this.props.year,
         });
     }
 
