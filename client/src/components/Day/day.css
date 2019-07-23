@@ -1,14 +1,16 @@
 .day {
+    border: 1px solid rgb(65, 65, 65);
     height: 20px;
+    margin: 2px;
     width: 20px;
 }
 
 .day-bike {
-    background: yellow;
+    background: rgb(255, 216, 116);
 }
 
 .day-lift {
-    background: red;
+    background: rgb(255, 191, 191);
 }
 
 .day-run {

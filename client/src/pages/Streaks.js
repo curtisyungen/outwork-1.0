@@ -47,18 +47,18 @@ class Streaks extends Component {
 
     render() {
         return (
-            <span>
+            <div className="container pageContainer">
                 <Calendar />
 
-                {this.state.dataset.length > 0 ? (
+                {/* {this.state.dataset.length > 0 ? (
                     <BarChart
                         data={this.state.dataset}
                         size={[200, 200]}
                     />
                 ) : (
                     <></>
-                )}
-            </span>
+                )} */}
+            </div>
         )
     }
 }
