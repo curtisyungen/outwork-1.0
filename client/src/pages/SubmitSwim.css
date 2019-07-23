@@ -1,3 +1,7 @@
+.dropdown-toggle::after {
+    margin-left: 35px;
+}
+
 .unitDropdown {
     width: 100px;
 }
