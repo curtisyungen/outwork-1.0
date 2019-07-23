@@ -67,8 +67,8 @@ class SwimLap extends Component {
         });
     }
 
-    sendLap = () => {
-        this.props.sendLap(this.state.id);
+    deleteLap = () => {
+        this.props.deleteLap(this.state.id);
     }
 
     render() {
