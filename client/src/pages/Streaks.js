@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import BarChart from "../components/BarChart/barChart";
-import Calendar from "../components/Calendar/calendar";
+import Week from "../components/Week/week";
 import workoutAPI from "../utils/workoutAPI";
 import "./Streaks.css";
 
@@ -15,6 +15,7 @@ class Streaks extends Component {
             userId: null,
             activity: [],
             year: [],
+            processed: false,
         }
     }
 
@@ -30,15 +31,12 @@ class Streaks extends Component {
             year: year,
         }, () => {
             this.getUserActivity();
-            console.log("Year", this.state.year);
         });
     }
 
     getUserActivity = () => {
         workoutAPI.getAllWorkoutsByUserId(this.state.userId)
             .then((res) => {
-                console.log("Workouts", res);
-
                 this.setState({
                     activity: res.data,
                 }, () => {
@@ -60,17 +58,22 @@ class Streaks extends Component {
 
         this.setState({
             year: year,
-        }, () => {
-            console.log(year);
+            processed: true,
         });
     }
 
     render() {
         return (
             <div className="container pageContainer">
-                <Calendar 
-                    year={this.state.year}
-                />
+                {this.state.year && this.state.year.length > 0 && this.state.processed ? (
+                    this.state.year.map(week => (
+                        <Week
+                            week={week}
+                        />
+                    ))
+                ) : (
+                    <></>
+                )}
             </div>
         )
     }
