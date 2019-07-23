@@ -45,10 +45,7 @@ class Exercise extends Component {
 
         this.setState({
             [name]: value,
-        }, () => {
-            this.setState({
-                saved: false,
-            });
+            saved: false,
         });
     }
 
@@ -169,14 +166,14 @@ class Exercise extends Component {
                             onClick={this.sendExercise}
                         >
                             <FontAwesomeIcon className="fa-2x faSave" icon={faSave} />
-                </button>
+                        </button>
                         {/* DELETE */}
                         <button
                             className="btn btn-danger btn-sm exerciseBtn"
                             onClick={this.deleteExercise}
                         >
                             <FontAwesomeIcon className="fa-2x faTrashAlt" icon={faTrashAlt} />
-                </button>
+                        </button>
                     </div>
                 </div>
             </div>
