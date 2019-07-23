@@ -87,7 +87,7 @@ class SubmitSwim extends Component {
     }
 
     deleteLap = (lap) => {
-        let laps = this.state.laps;
+        let laps = this.state.workout;
         let idx;
 
         for (var i = 0; i < laps.length; i++) {
@@ -99,12 +99,12 @@ class SubmitSwim extends Component {
         laps.splice(idx, 1);
 
         this.setState({
-            laps: laps,
+            workout: laps,
         });
     }
 
     getLap = (lap) => {
-        let laps = this.state.laps;
+        let laps = this.state.workout;
         let idx = -1;
 
         for (var l in laps) {
