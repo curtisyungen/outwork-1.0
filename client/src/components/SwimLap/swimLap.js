@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./swimLap.css";
+// import "./swimLap.css";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -15,7 +15,6 @@ class SwimLap extends Component {
         this.state = {
             id: null,
             distance: "",
-            units: "",
             time: "",
             stroke: "",
             rest: "",
@@ -27,7 +26,6 @@ class SwimLap extends Component {
         this.setState({
             id: this.props.id,
             distance: this.props.distance,
-            units: this.props.units,
             time: this.props.time,
             stroke: this.props.stroke,
             rest: this.props.rest,
@@ -69,8 +67,8 @@ class SwimLap extends Component {
         });
     }
 
-    deleteLap = () => {
-        this.props.deleteLap(this.state.id);
+    sendLap = () => {
+        this.props.sendLap(this.state.id);
     }
 
     render() {
@@ -82,7 +80,7 @@ class SwimLap extends Component {
                     name="distance"
                     type="text"
                     className="form-control lapInput-md"
-                    placeholder={this.props.units}
+                    placeholder="Meters"
                     onChange={this.handleInputChange}
                     value={this.state.distance}
                 />
