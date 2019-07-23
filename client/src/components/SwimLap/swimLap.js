@@ -44,7 +44,7 @@ class SwimLap extends Component {
     }
 
     checkSaved = () => {
-        if (this.props.distance !== "" && this.props.time !== "") {
+        if (this.props.distance !== "") {
             this.setState({
                 saved: true,
             });
@@ -73,14 +73,14 @@ class SwimLap extends Component {
 
     render() {
         return (
-            <div className={`input-group input-group-sm repeat saved-${this.state.saved}`}>
+            <div className={`input-group input-group-sm lap saved-${this.state.saved}`}>
                 {/* DISTANCE */}
                 <input
                     autoComplete="off"
                     name="distance"
                     type="text"
-                    className="form-control repeatInput-md"
-                    placeholder="Miles"
+                    className="form-control lapInput-md"
+                    placeholder="Meters"
                     onChange={this.handleInputChange}
                     value={this.state.distance}
                 />
@@ -89,7 +89,7 @@ class SwimLap extends Component {
                     autoComplete="off"
                     name="time"
                     type="text"
-                    className="form-control repeatInput-md"
+                    className="form-control lapInput-md"
                     placeholder="Time (mm:ss)"
                     onChange={this.handleInputChange}
                     value={this.state.time}
@@ -99,7 +99,7 @@ class SwimLap extends Component {
                     autoComplete="off"
                     name="stroke"
                     type="text"
-                    className="form-control repeatInput-md"
+                    className="form-control lapInput-md"
                     placeholder="Stroke"
                     onChange={this.handleInputChange}
                     value={this.state.stroke}
@@ -109,7 +109,7 @@ class SwimLap extends Component {
                     autoComplete="off"
                     name="rest"
                     type="text"
-                    className="form-control repeatInput-md"
+                    className="form-control lapInput-md"
                     placeholder="Rest (min.)"
                     onChange={this.handleInputChange}
                     value={this.state.rest}
@@ -117,14 +117,14 @@ class SwimLap extends Component {
                 {/* SAVE */}
                 <button
                     className="btn btn-success btn-sm exerciseBtn saveBtn"
-                    onClick={this.sendRepeat}
+                    onClick={this.sendLap}
                 >
                     <FontAwesomeIcon className="fa-2x faSave" icon={faSave} />
                 </button>
                 {/* DELETE */}
                 <button
                     className="btn btn-danger btn-sm exerciseBtn"
-                    onClick={this.deleteRepeat}
+                    onClick={this.deleteLap}
                 >
                     <FontAwesomeIcon className="fa-2x faTrashAlt" icon={faTrashAlt} />
                 </button>

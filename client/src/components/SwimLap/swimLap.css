@@ -1,0 +1,27 @@
+.lap {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2px;
+}
+
+.lap .form-control {
+    border-radius: 0px !important;
+}
+
+.lapLabel {
+    width: 65px !important;
+}
+
+.lap .form-control {
+    font-size: 12px !important;
+    height: 31px !important;
+}
+
+.saved-true .lapInput-sm,
+.saved-true .lapInput-md {
+    background: rgba(222, 255, 222, 0.897);
+}
+
+.saved-true {
+    box-shadow: 0px 0px 3px rgb(0, 165, 22);
+}
