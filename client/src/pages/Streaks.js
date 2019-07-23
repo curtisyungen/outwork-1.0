@@ -22,7 +22,7 @@ class Streaks extends Component {
     componentDidMount = () => {
         let year = [];
         for (var i=0; i<52; i++) {
-            year.push([]);
+            year.push([0, 0, 0, 0, 0, 0, 0]);
         }
 
         let userId = localStorage.getItem("userId");
