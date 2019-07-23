@@ -15,7 +15,7 @@ class SubmitSwim extends Component {
             date: null,
             time: null,
             distance: null,
-            units: "meters",
+            units: "Meters",
             duration: null,
             laps: null,
             location: null,
@@ -224,13 +224,7 @@ class SubmitSwim extends Component {
                     {/* DISTANCE */}
                     <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
-                            <button class="btn btn-outline-secondary dropdown-toggle unitDropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {this.state.units}
-                            </button>
-                            <div class="dropdown-menu">
-                                <div class="dropdown-item" onClick={this.changeUnits.bind(null, "Meters")}>Meters</div>
-                                <div class="dropdown-item" onClick={this.changeUnits.bind(null, "Miles")}>Miles</div>
-                            </div>
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Distance</span>
                         </div>
                         <input
                             autoComplete="off"
@@ -241,6 +235,15 @@ class SubmitSwim extends Component {
                             aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
                         />
+                        <div className="input-group-append">
+                            <button class="btn btn-outline-secondary dropdown-toggle unitDropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {this.state.units}
+                            </button>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-item" onClick={this.changeUnits.bind(null, "Meters")}>Meters</div>
+                                <div class="dropdown-item" onClick={this.changeUnits.bind(null, "Miles")}>Miles</div>
+                            </div>
+                        </div>
                     </div>
 
                     {/* DURATION */}
