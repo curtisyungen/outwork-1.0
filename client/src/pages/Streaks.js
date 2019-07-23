@@ -49,6 +49,7 @@ class Streaks extends Component {
 
     processData = () => {
         let activity = this.state.activity;
+        let year = this.state.year;
         let week;
 
         for (var a in activity) {
