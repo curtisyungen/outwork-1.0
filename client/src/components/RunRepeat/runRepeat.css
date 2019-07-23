@@ -1,0 +1,21 @@
+.repeat {
+    margin-bottom: 2px;
+}
+
+.repeatLabel {
+    width: 65px !important;
+}
+
+.repeat .form-control {
+    font-size: 12px !important;
+    height: 31px !important;
+}
+
+.saved-true .repeatInput-sm,
+.saved-true .repeatInput-md {
+    background: rgba(222, 255, 222, 0.897);
+}
+
+.saved-true {
+    box-shadow: 0px 0px 3px rgb(0, 165, 22);
+}

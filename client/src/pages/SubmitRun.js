@@ -96,8 +96,16 @@ class SubmitRun extends Component {
 
     addRepeat = () => {
         let repeats = this.state.repeats;
+
+        let maxId = -1;
+        for (var r in repeats) {
+            if (repeats[r].id > maxId) {
+                maxId = parseInt(repeats[r].id);
+            }
+        }
+
         let repeat = {
-            id: repeats.length,
+            id: maxId + 1,
             distance: "",
             time: "",
             rest: "",
@@ -127,48 +135,22 @@ class SubmitRun extends Component {
         });
     }
 
-    setDistance = (id, distance) => {
+    getRepeat = (repeat) => {
         let repeats = this.state.repeats;
-        let idx;
-        for (var i = 0; i < repeats.length; i++) {
-            if (repeats[i].id === id) {
-                idx = i;
+        let idx = -1;
+
+        for (var r in repeats) {
+            if (repeats[r].id === repeat.id) {
+                idx = r;
             }
         }
 
-        repeats[idx].distance = distance;
-
-        this.setState({
-            repeats: repeats,
-        });
-    }
-
-    setTime = (id, time) => {
-        let repeats = this.state.repeats;
-        let idx;
-        for (var i = 0; i < repeats.length; i++) {
-            if (repeats[i].id === id) {
-                idx = i;
-            }
+        if (idx > -1) {
+            repeats[idx] = repeat;
         }
-
-        repeats[idx].time = time;
-
-        this.setState({
-            repeats: repeats,
-        });
-    }
-
-    setRest = (id, rest) => {
-        let repeats = this.state.repeats;
-        let idx;
-        for (var i = 0; i < repeats.length; i++) {
-            if (repeats[i].id === id) {
-                idx = i;
-            }
+        else {
+            repeats.push(repeat);
         }
-
-        repeats[idx].rest = rest;
 
         this.setState({
             repeats: repeats,
@@ -351,13 +333,7 @@ class SubmitRun extends Component {
                         </div>
 
                         {/* REPEATS */}
-                        {this.state.type === "Repeats" ? (
-                            <button className="btn btn-dark btn-sm addRepeatBtn" onClick={this.addRepeat}>Add</button>
-                        ) : (
-                                <></>
-                            )}
-
-                        {this.state.type === "Repeats" ? (
+                        {this.state.runType === "Repeats" ? (
                             this.state.repeats.map(repeat => (
                                 <RunRepeat
                                     key={Math.random() * 100000}
@@ -365,15 +341,22 @@ class SubmitRun extends Component {
                                     distance={repeat.distance}
                                     time={repeat.time}
                                     rest={repeat.rest}
-                                    setDistance={this.setDistance}
-                                    setTime={this.setTime}
-                                    setRest={this.setRest}
+                                    getRepeat={this.getRepeat}
                                     deleteRepeat={this.deleteRepeat}
                                 />
                             ))
                         ) : (
-                                <></>
-                            )}
+                            <></>
+                        )}
+
+                        {/* ADD REPEAT BUTTON */}
+                        {this.state.runType === "Repeats" ? (
+                            <div className="addRepeatBtn">
+                                <button className="btn btn-dark btn-sm" onClick={this.addRepeat}>Add Repeat</button>
+                            </div>
+                        ) : (
+                            <></>
+                        )}
 
                         {/* RACE */}
                         {this.state.type === "Race" ? (
@@ -425,7 +408,7 @@ class SubmitRun extends Component {
                         <div className="input-group input-group-sm mb-3">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="inputGroup-sizing-sm">Weather</span>
-                                <WeatherIcons 
+                                <WeatherIcons
                                     setWeather={this.setWeather}
                                     selected={this.state.weather}
                                 />
