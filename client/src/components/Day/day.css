@@ -1,0 +1,20 @@
+.day {
+    height: 20px;
+    width: 20px;
+}
+
+.day-bike {
+    background: yellow;
+}
+
+.day-lift {
+    background: red;
+}
+
+.day-run {
+    background: lightgreen;
+}
+
+.day-swim {
+    background: lightblue;
+}
