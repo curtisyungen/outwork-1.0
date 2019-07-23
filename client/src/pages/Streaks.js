@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import BarChart from "../components/BarChart/barChart";
+import Calendar from "../components/Calendar/calendar";
 import workoutAPI from "../utils/workoutAPI";
 import "./Streaks.css";
 
@@ -46,15 +47,18 @@ class Streaks extends Component {
 
     render() {
         return (
-            this.state.dataset.length > 0 ? (
-                <BarChart 
-                    data={this.state.dataset}
-                    size={[200, 200]}
-                />
+            <span>
+                <Calendar />
+
+                {this.state.dataset.length > 0 ? (
+                    <BarChart
+                        data={this.state.dataset}
+                        size={[200, 200]}
+                    />
                 ) : (
                     <></>
-                )
-                
+                )}
+            </span>
         )
     }
 }
