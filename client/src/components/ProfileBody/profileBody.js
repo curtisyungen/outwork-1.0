@@ -13,6 +13,7 @@ class ProfileBody extends Component {
         this.state = {
             userId: null,
             userActivity: null,
+            message: null,
         }
     }
 
@@ -27,10 +28,15 @@ class ProfileBody extends Component {
 
     
     getAllWorkoutsByUserId = (userId) => {
+        this.setState({
+            message: "Loading activity...",
+        });
+
         workoutAPI.getAllWorkoutsByUserId(userId)
         .then((res) => {
             this.setState({
                 userActivity: res.data,
+                message: "No activity found.",
             });
         })
     }
@@ -57,7 +63,7 @@ class ProfileBody extends Component {
                             />
                         ))
                     ) : (
-                            <p className="text-center">Loading activity...</p>
+                            <p className="text-center">{this.state.message}</p>
                         )}
                 </div>
             </Container>
