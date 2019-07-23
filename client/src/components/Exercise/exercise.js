@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import "./exercise.css";
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSave, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faSave, faTrashAlt);
+
 class Exercise extends Component {
 
     constructor(props) {
@@ -87,7 +93,7 @@ class Exercise extends Component {
                             autoComplete="off"
                             name="name"
                             type="text"
-                            className="form-control exerciseInput"
+                            className="form-control exerciseInput-md"
                             placeholder="Exercise"
                             onChange={this.handleInputChange}
                             value={this.state.name}
@@ -97,7 +103,7 @@ class Exercise extends Component {
                             autoComplete="off"
                             name="weight"
                             type="text"
-                            className="form-control exerciseInput"
+                            className="form-control exerciseInput-sm"
                             placeholder="Lbs."
                             onChange={this.handleInputChange}
                             value={this.state.weight}
@@ -107,7 +113,7 @@ class Exercise extends Component {
                             autoComplete="off"
                             name="superset"
                             type="text"
-                            className="form-control exerciseInput"
+                            className="form-control exerciseInput-md"
                             placeholder="Superset ID"
                             onChange={this.handleInputChange}
                             value={this.state.superset}
@@ -119,7 +125,7 @@ class Exercise extends Component {
                             autoComplete="off"
                             name="sets"
                             type="text"
-                            className="form-control exerciseInput"
+                            className="form-control exerciseInput-sm"
                             placeholder="Sets"
                             onChange={this.handleInputChange}
                             value={this.state.sets}
@@ -129,8 +135,8 @@ class Exercise extends Component {
                             autoComplete="off"
                             name="reps"
                             type="text"
-                            className="form-control exerciseInput"
-                            placeholder="Reps/Min."
+                            className="form-control exerciseInput-md"
+                            placeholder="Reps or Time"
                             onChange={this.handleInputChange}
                             value={this.state.reps}
                         />
@@ -139,8 +145,8 @@ class Exercise extends Component {
                             autoComplete="off"
                             name="rest"
                             type="text"
-                            className="form-control exerciseInput"
-                            placeholder="Rest"
+                            className="form-control exerciseInput-md"
+                            placeholder="Rest (Min.)"
                             onChange={this.handleInputChange}
                             value={this.state.rest}
                         />
@@ -151,7 +157,7 @@ class Exercise extends Component {
                             autoComplete="off"
                             name="notes"
                             type="text"
-                            className="form-control exerciseInput"
+                            className="form-control exerciseInput-md"
                             placeholder="Notes"
                             onChange={this.handleInputChange}
                             value={this.state.notes}
@@ -159,17 +165,17 @@ class Exercise extends Component {
 
                         {/* SAVE */}
                         <button
-                            className="btn btn-success btn-sm exerciseBtn"
+                            className="btn btn-success btn-sm exerciseBtn saveBtn"
                             onClick={this.sendExercise}
                         >
-                            Save
+                            <FontAwesomeIcon className="fa-2x faSave" icon={faSave} />
                 </button>
                         {/* DELETE */}
                         <button
                             className="btn btn-danger btn-sm exerciseBtn"
                             onClick={this.deleteExercise}
                         >
-                            Delete
+                            <FontAwesomeIcon className="fa-2x faTrashAlt" icon={faTrashAlt} />
                 </button>
                     </div>
                 </div>
