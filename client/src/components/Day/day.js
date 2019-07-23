@@ -4,9 +4,7 @@ import "./day.css";
 class Day extends Component {
     render() {
         return (
-            <div className={`day day-${this.props.type}`}>
-
-            </div>
+            <div className={`day day-${this.props.type}`}></div>            
         )
     }
 }
