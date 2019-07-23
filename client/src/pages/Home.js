@@ -14,6 +14,7 @@ class Home extends Component {
             filtered: [],
             category: null,
             activitySearch: "",
+            message: null,
         }
     }
 
@@ -32,6 +33,7 @@ class Home extends Component {
                 allActivity: this.props.allActivity,
                 filtered: this.props.allActivity,
                 category: "Name",
+                message: "Loading activity...",
             });
         }
     }
@@ -123,6 +125,7 @@ class Home extends Component {
         
         this.setState({
             filtered: filtered,
+            message: "No activity found.",
         });
         
     }
@@ -181,7 +184,7 @@ class Home extends Component {
 
                     <span>
                         {this.state.filtered && this.state.filtered.length === 0 ? (
-                            <p className="text-center">Loading activity...</p>
+                            <p className="text-center">{this.state.message}</p>
                         ) : (
                                 <span>
                                     {this.state.filtered.map(activity => (
