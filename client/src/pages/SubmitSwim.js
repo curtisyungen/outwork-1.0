@@ -16,6 +16,7 @@ class SubmitSwim extends Component {
             date: null,
             time: null,
             distance: null,
+            units: "meters",
             duration: null,
             laps: null,
             location: null,
@@ -58,6 +59,12 @@ class SubmitSwim extends Component {
 
         this.setState({
             [name]: value,
+        });
+    }
+
+    changeUnits = (units) => {
+        this.setState({
+            units: units,
         });
     }
 
@@ -218,7 +225,11 @@ class SubmitSwim extends Component {
                     {/* DISTANCE */}
                     <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
-                            <span className="input-group-text" id="inputGroup-sizing-sm">Miles</span>
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-item" onClick={this.changeUnits.bind(null, "Meters")}>Meters</div>
+                                <div class="dropdown-item" onClick={this.changeUnits.bind(null, "Miles")}>Miles</div>
+                            </div>
                         </div>
                         <input
                             autoComplete="off"
@@ -307,12 +318,13 @@ class SubmitSwim extends Component {
                             Workout
                         </div>
                     </div>
-                    
+
                     {this.state.workout.map(lap => (
                         <SwimLap
                             key={Math.random() * 100000}
                             id={lap.id}
                             distance={lap.distance}
+                            units={this.state.units}
                             time={lap.time}
                             stroke={lap.stroke}
                             rest={lap.rest}
