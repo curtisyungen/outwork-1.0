@@ -25,12 +25,12 @@
 }
 
 .saved-true {
-    box-shadow: 0px 0px 2px rgb(0, 187, 0);
+    box-shadow: 0px 0px 3px rgb(0, 165, 22);
 }
 
 .sect1, .sect2, .sect3 {
     display: flex;
-    width: 33.3%;
+    width: 33.33%;
 }
 
 .sect1 .form-control,
@@ -49,15 +49,13 @@
 @media only screen and (max-width: 520px) {
     .sect1, .sect2, .sect3 {
         display: flex;
-        margin-bottom: 2px;
+        /* margin-bottom: 2px; */
         width: 100%;
     }
 
     .sect1 .form-control,
-    .sect2 .form-control,
-    .sect3 .form-control {
-        /* border-right: 1px solid lightgray; */
-        /* margin-right: 2px; */
+    .sect2 .form-control {
+        border-bottom: 0px;
     }
 
     .workoutBlock {
