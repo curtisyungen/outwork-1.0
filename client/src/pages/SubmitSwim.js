@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // import Container from "../components/Container/container";
 import ActivityIcons from "../components/ActivityIcons/activityIcons";
+import SwimLap from "../components/SwimLap/swimLap";
 import userAPI from "../utils/userAPI";
 import workoutAPI from "../utils/workoutAPI";
 // import "./SubmitSwim.css";
@@ -28,16 +29,28 @@ class SubmitSwim extends Component {
         this.props.checkValidUser();
 
         // Get user info
-        let userId = localStorage.getItem("userId");     
+        let userId = localStorage.getItem("userId");
 
         userAPI.getUserById(userId)
             .then((res) => {
+                // Get workout
+                let lap = {
+                    id: 0,
+                    distance: "",
+                    time: "",
+                    stroke: "",
+                    rest: "",
+                }
+
+                let workout = [lap];
+
                 this.setState({
                     userId: userId,
                     firstName: res.data[0].firstName,
                     lastName: res.data[0].lastName,
+                    workout: workout,
                 });
-            });      
+            });
     }
 
     handleInputChange = (event) => {
@@ -45,6 +58,70 @@ class SubmitSwim extends Component {
 
         this.setState({
             [name]: value,
+        });
+    }
+
+    addLap = () => {
+        let laps = this.state.laps;
+
+        let maxId = -1;
+        for (var r in laps) {
+            if (laps[r].id > maxId) {
+                maxId = parseInt(laps[r].id);
+            }
+        }
+
+        let lap = {
+            id: maxId + 1,
+            distance: "",
+            time: "",
+            stroke: "",
+            rest: "",
+        }
+
+        laps.push(lap);
+
+        this.setState({
+            laps: laps,
+        });
+    }
+
+    deleteLap = (lap) => {
+        let laps = this.state.laps;
+        let idx;
+
+        for (var i = 0; i < laps.length; i++) {
+            if (laps[i].id === lap) {
+                idx = i;
+            }
+        }
+
+        laps.splice(idx, 1);
+
+        this.setState({
+            laps: laps,
+        });
+    }
+
+    getLap = (lap) => {
+        let laps = this.state.laps;
+        let idx = -1;
+
+        for (var l in laps) {
+            if (laps[l].id === lap.id) {
+                idx = l;
+            }
+        }
+
+        if (idx > -1) {
+            laps[idx] = lap;
+        }
+        else {
+            laps.push(lap);
+        }
+
+        this.setState({
+            workout: laps,
         });
     }
 
@@ -63,7 +140,7 @@ class SubmitSwim extends Component {
                 milePace: null,
                 runType: null,
                 laps: this.state.laps,
-                repeats: null,
+                laps: null,
                 race: null,
                 surface: this.state.surface,
                 weather: null,
@@ -100,7 +177,7 @@ class SubmitSwim extends Component {
 
                     <div className="titleBar">
                         <h4>Swimming Workout</h4>
-                        <ActivityIcons 
+                        <ActivityIcons
                             hidden="swim"
                         />
                     </div>
@@ -120,7 +197,7 @@ class SubmitSwim extends Component {
                             onChange={this.handleInputChange}
                         />
                     </div>
-                    
+
                     {/* TIME */}
                     <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
@@ -225,19 +302,22 @@ class SubmitSwim extends Component {
                     </div>
 
                     {/* SWIM WORKOUT */}
-                    <div className="input-group input-group-sm mb-3">
-                        <div className="input-group-prepend">
-                            <span className="input-group-text" id="inputGroup-sizing-sm">Workout</span>
-                        </div>
-                        <input
-                            autoComplete="off"
-                            name="workout"
-                            type="text"
-                            className="form-control"
-                            aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-sm"
-                            onChange={this.handleInputChange}
+                    {this.state.workout.map(lap => (
+                        <SwimLap
+                            key={Math.random() * 100000}
+                            id={lap.id}
+                            distance={lap.distance}
+                            time={lap.time}
+                            stroke={lap.stroke}
+                            rest={lap.rest}
+                            getLap={this.getLap}
+                            deleteLap={this.deleteLap}
                         />
+                    ))}
+
+                    {/* ADD REPEAT BUTTON */}
+                    <div className="addRepeatBtn">
+                        <button className="btn btn-dark btn-sm" onClick={this.addLap}>Add Lap</button>
                     </div>
 
                     {/* NOTES */}
