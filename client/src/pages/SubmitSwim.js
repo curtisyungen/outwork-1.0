@@ -20,7 +20,7 @@ class SubmitSwim extends Component {
             laps: null,
             location: null,
             surface: null,
-            workout: null,
+            workout: [],
             notes: null,
         }
     }
