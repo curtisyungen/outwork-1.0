@@ -1,5 +1,11 @@
 .repeat {
+    display: flex;
+    flex-direction: row;
     margin-bottom: 2px;
+}
+
+.repeat .form-control {
+    border-radius: 0px !important;
 }
 
 .repeatLabel {

@@ -72,9 +72,6 @@ class RunRepeat extends Component {
     render() {
         return (
             <div className={`input-group input-group-sm repeat saved-${this.state.saved}`}>
-                <div className="input-group-prepend">
-                    <span className="input-group-text repeatLabel">Repeat</span>
-                </div>
                 {/* DISTANCE */}
                 <input
                     autoComplete="off"
@@ -91,7 +88,7 @@ class RunRepeat extends Component {
                     name="time"
                     type="text"
                     className="form-control repeatInput-md"
-                    placeholder="Time"
+                    placeholder="Time (mm:ss)"
                     onChange={this.handleInputChange}
                     value={this.state.time}
                 />
@@ -101,7 +98,7 @@ class RunRepeat extends Component {
                     name="rest"
                     type="text"
                     className="form-control repeatInput-md"
-                    placeholder="Rest"
+                    placeholder="Rest (min.)"
                     onChange={this.handleInputChange}
                     value={this.state.rest}
                 />
