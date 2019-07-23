@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-// import Container from "../components/Container/container";
 import ActivityIcons from "../components/ActivityIcons/activityIcons";
 import SwimLap from "../components/SwimLap/swimLap";
 import userAPI from "../utils/userAPI";
 import workoutAPI from "../utils/workoutAPI";
-// import "./SubmitSwim.css";
+import "./SubmitSwim.css";
 
 class SubmitSwim extends Component {
 
@@ -225,7 +224,9 @@ class SubmitSwim extends Component {
                     {/* DISTANCE */}
                     <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
-                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+                            <button class="btn btn-outline-secondary dropdown-toggle unitDropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {this.state.units}
+                            </button>
                             <div class="dropdown-menu">
                                 <div class="dropdown-item" onClick={this.changeUnits.bind(null, "Meters")}>Meters</div>
                                 <div class="dropdown-item" onClick={this.changeUnits.bind(null, "Miles")}>Miles</div>
