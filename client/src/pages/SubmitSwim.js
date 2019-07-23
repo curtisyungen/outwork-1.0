@@ -62,7 +62,7 @@ class SubmitSwim extends Component {
     }
 
     addLap = () => {
-        let laps = this.state.laps;
+        let laps = this.state.workout;
 
         let maxId = -1;
         for (var r in laps) {
@@ -82,7 +82,7 @@ class SubmitSwim extends Component {
         laps.push(lap);
 
         this.setState({
-            laps: laps,
+            workout: laps,
         });
     }
 
@@ -315,7 +315,7 @@ class SubmitSwim extends Component {
                         />
                     ))}
 
-                    {/* ADD REPEAT BUTTON */}
+                    {/* ADD LAP BUTTON */}
                     <div className="addRepeatBtn">
                         <button className="btn btn-dark btn-sm" onClick={this.addLap}>Add Lap</button>
                     </div>
