@@ -1,10 +1,26 @@
 .exerciseBtn {
+    /* border: 1px solid rgb(65, 65, 65); */
     border-radius: 0px !important;
+    cursor: pointer;
     font-size: 13px;
-    margin-left: 2px;
+    width: 50px;
 }
 
-.saved-true .exerciseInput {
+.exerciseInput-sm {
+    width: 50%;
+}
+
+.faSave, .faTrashAlt {
+    height: 20px;
+}
+
+.saveBtn {
+    border-right: 0px;
+    margin-left: 0px;
+}
+
+.saved-true .exerciseInput-sm,
+.saved-true .exerciseInput-md {
     background: rgba(222, 255, 222, 0.897);
 }
 
@@ -20,7 +36,9 @@
 .sect1 .form-control,
 .sect2 .form-control,
 .sect3 .form-control {
-    font-size: 13px !important;
+    border-right: 0px;
+    border-radius: 0px;
+    font-size: 12px !important;
 }
 
 .workoutBlock {
@@ -31,7 +49,15 @@
 @media only screen and (max-width: 520px) {
     .sect1, .sect2, .sect3 {
         display: flex;
+        margin-bottom: 2px;
         width: 100%;
+    }
+
+    .sect1 .form-control,
+    .sect2 .form-control,
+    .sect3 .form-control {
+        /* border-right: 1px solid lightgray; */
+        /* margin-right: 2px; */
     }
 
     .workoutBlock {
