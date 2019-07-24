@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Modal from "react-responsive-modal";
 import Set from "../Set/set";
-import Stopwatch from "../Stopwatch/stopwatch";
+// import Stopwatch from "../Stopwatch/stopwatch";
 import workoutAPI from "../../utils/workoutAPI";
 import exerAPI from "../../utils/exerAPI";
 import "./workout.css";

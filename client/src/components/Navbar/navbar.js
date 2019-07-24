@@ -36,7 +36,7 @@ class Navbar extends Component {
 
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a className="navbar-brand" href="/home">
-                    <img className="navLogo" src={require("../../images/logo2.png")} />
+                    <img className="navLogo" src={require("../../images/logo2.png")} alt="Navbar Logo"/>
                     <span>Outwork</span>
                 </a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
