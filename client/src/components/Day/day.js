@@ -42,7 +42,7 @@ class Day extends Component {
                     {this.props.day.date  ? (
                         <span>
                             <h4>{this.props.day.date}</h4>
-                            <div>{this.props.day.workoutType.toUppercase()}</div>
+                            <div>{this.props.day.workoutType.toUpperCase()}</div>
                             <div>{this.props.day.distance} Miles</div>
                             <div>Generator: {this.props.day.generator}</div>
                             <div>Muscle Groups: {this.props.day.muscleGroups}</div>
