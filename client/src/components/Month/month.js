@@ -35,7 +35,11 @@ class Month extends Component {
         let days = this.state.days;
         let numDays = days[monthId];
 
+        // Remove extra days at end of month
         month.splice(numDays);
+
+        // Remove first digit which indicates month number
+        month.shift();
 
         this.setState({
             month: month,
