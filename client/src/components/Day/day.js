@@ -41,7 +41,10 @@ class Day extends Component {
                             <div>{this.props.day.workoutType.toUpperCase()}</div>
                         </span>
                     ) : (
-                        <div>Rest Day</div>
+                        <span>
+                            <div>{this.props.month}/{this.props.day}</div>
+                            <div>Rest Day</div>
+                        </span>
                     )}
                     {this.props.day.workoutType === "run" ? (
                         <span>
