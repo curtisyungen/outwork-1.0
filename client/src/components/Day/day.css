@@ -23,11 +23,15 @@
     background: lightblue;
 }
 
-.popup {
+.popup-content {
     background: #000;
     font-size: 13px;
     line-height: 1.0;
     opacity: 0.75;
+}
+
+.popupData {
+    white-space: normal;
 }
 
 .streakModal {
