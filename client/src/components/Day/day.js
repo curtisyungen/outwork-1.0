@@ -28,11 +28,7 @@ class Day extends Component {
             <span>
                 <Popup
                     trigger={
-                        this.props.day.date ? (
-                            <div className={`day day-${this.props.type}`}></div>
-                        ) : (
-                                <></>
-                            )
+                        <div className={`day day-${this.props.type}`}></div>
                     }
                     on="hover"
                     position="top right"
