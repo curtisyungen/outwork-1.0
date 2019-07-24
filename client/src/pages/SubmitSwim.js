@@ -140,7 +140,6 @@ class SubmitSwim extends Component {
                 milePace: null,
                 runType: null,
                 laps: this.state.laps,
-                laps: null,
                 race: null,
                 surface: this.state.surface,
                 weather: null,

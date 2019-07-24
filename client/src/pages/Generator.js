@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import Container from "../components/Container/container";
 import Equipment from "../components/Equipment/equipment";
 import Workout from "../components/Workout/workout";
-import Stopwatch from "../components/Stopwatch/stopwatch";
+// import Stopwatch from "../components/Stopwatch/stopwatch";
 import Modal from "react-responsive-modal";
 import userAPI from "../utils/userAPI";
 import exerAPI from "../utils/exerAPI";
