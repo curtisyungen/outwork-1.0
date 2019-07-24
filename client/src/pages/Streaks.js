@@ -71,7 +71,7 @@ class Streaks extends Component {
 
     render() {
         return (
-            <div className="">
+            <div className="container pageContainer">
                 {this.state.year && this.state.year.length > 0 && this.state.processed ? (
                     this.state.year.map(month => (
                         <Month
