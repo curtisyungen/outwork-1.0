@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Modal from "react-responsive-modal";
+import Popup from "reactjs-popup";
 import "./day.css";
 
 class Day extends Component {
@@ -26,18 +26,20 @@ class Day extends Component {
     render() {
         return (
             <span>
-                <div 
-                    className={`day day-${this.props.type}`}
-                    onClick={this.openModal}
-                ></div>
-                <Modal
-                    open={this.state.openModal}
-                    onClose={this.closeModal}
+                <Popup
+                    trigger={
+                        <div className={`day day-${this.props.type}`}></div>
+                    }
+                    on="hover"
+                    position="top"
+                    closeOnDocumentClick
+                    className="popup"
                 >
-                    <div className="streakModal">
-                        {this.props.day.workoutType}
+                    <div
+                    >
+                        {this.props.day.date}
                     </div>
-                </Modal>
+                </Popup>
             </span>         
         )
     }
