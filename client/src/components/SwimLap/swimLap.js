@@ -73,7 +73,7 @@ class SwimLap extends Component {
 
     render() {
         return (
-            <div className={`input-group input-group-sm lap saved-${this.state.saved}`}>
+            <div className={`input-group input-group-sm lap mb-1 saved-${this.state.saved}`}>
                 {/* DISTANCE */}
                 <input
                     autoComplete="off"
