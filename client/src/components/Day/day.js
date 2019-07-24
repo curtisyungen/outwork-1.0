@@ -3,24 +3,9 @@ import Popup from "reactjs-popup";
 import "./day.css";
 
 class Day extends Component {
-    constructor(props) {
-        super(props);
 
-        this.state = {
-            openModal: false,
-        }
-    }
-
-    openModal = () => {
-        this.setState({
-            openModal: true,
-        });
-    }
-
-    closeModal = () => {
-        this.setState({
-            openModal: false,
-        });
+    componentDidMount = () => {
+        console.log("Day", this.props);
     }
 
     render() {
@@ -37,7 +22,7 @@ class Day extends Component {
                 >
                     {this.props.day.date ? (
                         <span>
-                            <h4>{this.props.day.date}</h4>
+                            <p>{this.props.day.date}</p>
                             <div>{this.props.day.workoutType.toUpperCase()}</div>
                         </span>
                     ) : (
