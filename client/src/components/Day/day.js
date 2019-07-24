@@ -31,27 +31,58 @@ class Day extends Component {
                         this.props.day.date ? (
                             <div className={`day day-${this.props.type}`}></div>
                         ) : (
-                            <></>
-                        )
+                                <></>
+                            )
                     }
                     on="hover"
-                    position="top"
+                    position="top right"
                     closeOnDocumentClick
                     className="popup"
                 >
-                    {this.props.day.date  ? (
+                    {this.props.day.date ? (
                         <span>
                             <h4>{this.props.day.date}</h4>
                             <div>{this.props.day.workoutType.toUpperCase()}</div>
-                            <div>{this.props.day.distance} Miles</div>
-                            <div>Generator: {this.props.day.generator}</div>
-                            <div>Muscle Groups: {this.props.day.muscleGroups}</div>
                         </span>
                     ) : (
                         <div>Rest Day</div>
                     )}
+                    {this.props.day.workoutType === "run" ? (
+                        <span>
+                            <div>Miles: {this.props.day.distance}</div>
+                            <div>Time: {this.props.day.duration}</div>
+                            <div>Climb: {this.props.day.climb} Feet</div>
+                        </span>
+                    ) : (
+                        <></>
+                    )}
+                    {this.props.day.workoutType === "bike" ? (
+                        <span>
+                            <div>Miles: {this.props.day.distance}</div>
+                            <div>Time: {this.props.day.duration}</div>
+                            <div>Climb: {this.props.day.climb} Feet</div>
+                        </span>
+                    ): (
+                        <></>
+                    )}
+                    {this.props.day.workoutType === "swim" ? (
+                        <span>
+                            <div>Distance: {this.props.day.distance}</div>
+                            <div>Time: {this.props.day.duration}</div>
+                        </span>
+                    ): (
+                        <></>
+                    )}
+                    {this.props.day.workoutType === "lift" ? (
+                        <span>
+                            <div>Generator: {this.props.day.generator}</div>
+                            <div>Muscle Groups: {this.props.day.muscleGroups}</div>
+                        </span>
+                    ): (
+                        <></>
+                    )}
                 </Popup>
-            </span>         
+            </span>
         )
     }
 }
