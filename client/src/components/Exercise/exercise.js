@@ -82,7 +82,7 @@ class Exercise extends Component {
 
     render() {
         return (
-            <div className={`input-group input-group-sm mb-1 saved-${this.state.saved}`}>
+            <div className={`input-group input-group-sm saved-${this.state.saved}`}>
                 <div className="workoutBlock">
                     <div className="sect1">
                         {/* NAME */}
