@@ -22,8 +22,19 @@ class Month extends Component {
                 "August", "September", "October",
                 "November", "December"],
             days: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+            monthName: "Month",
         }, () => {
+            this.getMonthName();
             this.trimMonth();
+        });
+    }
+
+    getMonthName = () => {
+        let names = this.state.names;
+        let id = this.props.month[0];
+
+        this.setState({
+            monthName: names[id],
         });
     }
 
@@ -38,7 +49,7 @@ class Month extends Component {
         // Remove extra days at end of month
         month.splice(numDays);
 
-        // Remove first digit which indicates month number
+        // Remove month ID at beginning of array
         month.shift();
 
         this.setState({
@@ -49,7 +60,7 @@ class Month extends Component {
     render() {
         return (
             <div className="month">
-                <h4 className="monthName">{this.state.names[this.props.month[0]]}</h4>
+                <h4 className="monthName">{this.state.monthName}</h4>
                 {this.state.month && this.state.month.length > 0 ? (
                     this.state.month.map(day => (
                         <Day
