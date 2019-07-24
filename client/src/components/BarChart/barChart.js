@@ -54,8 +54,8 @@ class BarChart extends Component {
             <div className="container barChartContainer">
                 <svg 
                     ref={node => this.node = node}
-                    width={this.props.size} 
-                    height={this.props.size}
+                    width={this.props.size[0]} 
+                    height={this.props.size[1]}
                 >
                 </svg>
             </div>
