@@ -10,6 +10,9 @@ class Month extends Component {
         this.state = {
             month: [],
             names: [],
+            days: [],
+            monthName: "Month",
+            monthNum: 0,
         }
     }
 
@@ -22,7 +25,6 @@ class Month extends Component {
                 "August", "September", "October",
                 "November", "December"],
             days: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
-            monthName: "Month",
         }, () => {
             this.getMonthName();
             this.trimMonth();
@@ -35,6 +37,7 @@ class Month extends Component {
 
         this.setState({
             monthName: names[id],
+            monthNum: id,
         });
     }
 
@@ -65,7 +68,7 @@ class Month extends Component {
                     this.state.month.map(day => (
                         <Day
                             key={Math.random() * 100000}
-                            month={parseInt(this.state.month[0]) + 1}
+                            month={this.state.monthNum}
                             day={day}
                             type={day.workoutType}
                         />
