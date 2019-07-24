@@ -24,10 +24,13 @@
 }
 
 .popup-content {
-    background: #000;
     font-size: 13px;
     line-height: 1.0;
-    opacity: 0.75;
+    opacity: 0.85;
+}
+
+.popup-overlay {
+    background: #000;
 }
 
 .popupData {
