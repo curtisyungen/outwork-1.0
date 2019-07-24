@@ -50,7 +50,7 @@ class Month extends Component {
                     this.state.month.map(day => (
                         <Day
                             key={Math.random() * 100000}
-                            month={this.state.month[0]}
+                            month={parseInt(this.state.month[0]) + 1}
                             day={day}
                             type={day.workoutType}
                         />

@@ -42,7 +42,7 @@ class Day extends Component {
                         </span>
                     ) : (
                         <span>
-                            <div>{this.props.month}/{this.props.day}</div>
+                            <div>{this.props.month}/{parseInt(this.props.day) + 1}</div>
                             <div>Rest Day</div>
                         </span>
                     )}
