@@ -3,11 +3,6 @@ import Popup from "reactjs-popup";
 import "./day.css";
 
 class Day extends Component {
-
-    componentDidMount = () => {
-        console.log("Day", this.props);
-    }
-
     render() {
         return (
             <span>
