@@ -35,10 +35,14 @@ class Day extends Component {
                     closeOnDocumentClick
                     className="popup"
                 >
-                    <div
-                    >
-                        {this.props.day.date}
-                    </div>
+                    {this.props.day.date  ? (
+                        <div>{this.props.day.date}</div>
+                        <div>{this.props.day.workoutType}</div>
+                        <div>{this.props.day.distance}</div>
+                        <div>{this.props.day.generator}</div>
+                    ) : (
+                        <></>
+                    )}
                 </Popup>
             </span>         
         )
