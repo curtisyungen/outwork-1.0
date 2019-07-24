@@ -9,22 +9,30 @@ class Month extends Component {
 
         this.state = {
             month: [],
+            names: [],
         }
     }
 
     componentDidMount = () => {
         this.setState({
             month: this.props.month,
+            names: [
+                "January", "February", "March", 
+                "April", "May", "June", "July", 
+                "August", "September", "October", 
+                "November", "December"],
         });
     }
 
     render() {
         return (
-            <div className="week">
+            <div className="month">
+                <h4 className="monthName">{this.state.names[this.props.month[0]]}</h4>
                 {this.state.month && this.state.month.length > 0 ? (
                     this.state.month.map(day => (
                         <Day 
                             key={Math.random() * 100000}
+                            day={day}
                             type={day.workoutType}
                         />
                     ))
