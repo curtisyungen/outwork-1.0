@@ -33,11 +33,11 @@ class Month extends Component {
 
     getMonthName = () => {
         let names = this.state.names;
-        let id = this.props.month[0];
+        let id = parseInt(this.props.month[0]);
 
         this.setState({
             monthName: names[id],
-            monthNum: id,
+            monthNum: id + 1,
         });
     }
 
