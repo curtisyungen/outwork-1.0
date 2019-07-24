@@ -20,14 +20,13 @@ class Streaks extends Component {
     }
 
     componentDidMount = () => {
-
-        let month = [];
-        for (var m=0; m<31; m++) {
-            month.push([0]);
-        }
-
         let year = [];
         for (var i=0; i<12; i++) {
+            let month = [i];
+            for (var m=0; m<31; m++) {
+                month.push(0);
+            }
+
             year.push(month);
         }
 
@@ -54,7 +53,6 @@ class Streaks extends Component {
     processData = () => {
         let activity = this.state.activity;
         let year = this.state.year;
-        console.log(year);
 
         let month, day;
 
@@ -69,12 +67,11 @@ class Streaks extends Component {
             year: year,
             processed: true,
         });
-
     }
 
     render() {
         return (
-            <div className="container pageContainer">
+            <div className="">
                 {this.state.year && this.state.year.length > 0 && this.state.processed ? (
                     this.state.year.map(month => (
                         <Month
