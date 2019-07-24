@@ -14,7 +14,7 @@
     width: 100px;
 }
 
-@media only screen and (max-width: 880px) {
+@media only screen and (max-width: 1200px) {
     .monthName {
         width: 100%;
     }

@@ -21,6 +21,22 @@ class Month extends Component {
                 "April", "May", "June", "July", 
                 "August", "September", "October", 
                 "November", "December"],
+            days: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+        }, () => {
+            this.trimMonth();
+        });
+    }
+
+    trimMonth = () => {
+        let month = this.state.month;
+        let monthId = month[0];
+        let days = this.state.days;
+        let numDays = days[monthId];
+
+        month.splice(numDays);
+
+        this.setState({
+            month: month,
         });
     }
 
