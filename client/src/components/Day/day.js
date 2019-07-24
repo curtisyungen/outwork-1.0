@@ -36,10 +36,12 @@ class Day extends Component {
                     className="popup"
                 >
                     {this.props.day.date  ? (
-                        <div>{this.props.day.date}</div>
-                        <div>{this.props.day.workoutType}</div>
-                        <div>{this.props.day.distance}</div>
-                        <div>{this.props.day.generator}</div>
+                        <span>
+                            <div>{this.props.day.date}</div>
+                            <div>{this.props.day.workoutType}</div>
+                            <div>{this.props.day.distance}</div>
+                            <div>{this.props.day.generator}</div>
+                        </span>
                     ) : (
                         <></>
                     )}
