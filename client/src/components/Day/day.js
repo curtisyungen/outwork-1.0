@@ -28,7 +28,11 @@ class Day extends Component {
             <span>
                 <Popup
                     trigger={
-                        <div className={`day day-${this.props.type}`}></div>
+                        this.props.day.date ? (
+                            <div className={`day day-${this.props.type}`}></div>
+                        ) : (
+                            <></>
+                        )
                     }
                     on="hover"
                     position="top"
@@ -37,13 +41,14 @@ class Day extends Component {
                 >
                     {this.props.day.date  ? (
                         <span>
-                            <div>{this.props.day.date}</div>
-                            <div>{this.props.day.workoutType}</div>
-                            <div>{this.props.day.distance}</div>
-                            <div>{this.props.day.generator}</div>
+                            <h4>{this.props.day.date}</h4>
+                            <div>{this.props.day.workoutType.toUppercase()}</div>
+                            <div>{this.props.day.distance} Miles</div>
+                            <div>Generator: {this.props.day.generator}</div>
+                            <div>Muscle Groups: {this.props.day.muscleGroups}</div>
                         </span>
                     ) : (
-                        <></>
+                        <div>Rest Day</div>
                     )}
                 </Popup>
             </span>         
