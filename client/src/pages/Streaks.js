@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import BarChart from "../components/BarChart/barChart";
-import Week from "../components/Week/week";
+import Month from "../components/Month/month";
 import workoutAPI from "../utils/workoutAPI";
 import "./Streaks.css";
 
@@ -20,9 +20,15 @@ class Streaks extends Component {
     }
 
     componentDidMount = () => {
+
+        let month = [];
+        for (var m=0; m<31; m++) {
+            month.push([0]);
+        }
+
         let year = [];
-        for (var i=0; i<52; i++) {
-            year.push([0, 0, 0, 0, 0, 0, 0]);
+        for (var i=0; i<12; i++) {
+            year.push(month);
         }
 
         let userId = localStorage.getItem("userId");
@@ -48,27 +54,32 @@ class Streaks extends Component {
     processData = () => {
         let activity = this.state.activity;
         let year = this.state.year;
-        let week;
+        console.log(year);
+
+        let month, day;
 
         for (var a in activity) {
-            week = moment(activity[a].date).week();
+            month = moment(activity[a].date).month();
+            day = moment(activity[a].date).date();
 
-            year[week].push(activity[a]);
+            year[month][day] = (activity[a]);
         }
 
         this.setState({
             year: year,
             processed: true,
         });
+
     }
 
     render() {
         return (
             <div className="container pageContainer">
                 {this.state.year && this.state.year.length > 0 && this.state.processed ? (
-                    this.state.year.map(week => (
-                        <Week
-                            week={week}
+                    this.state.year.map(month => (
+                        <Month
+                            key={Math.random() * 100000}
+                            month={month}
                         />
                     ))
                 ) : (

@@ -1,31 +1,30 @@
 import React, { Component } from "react";
 import Day from "../Day/day";
-import "./week.css";
+import "./month.css";
 
-class Week extends Component {
+class Month extends Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            week: [],
+            month: [],
         }
     }
 
     componentDidMount = () => {
         this.setState({
-            week: this.props.week,
-        }, () => {
-            console.log("Week", this.state);
+            month: this.props.month,
         });
     }
 
     render() {
         return (
             <div className="week">
-                {this.state.week && this.state.week.length > 0 ? (
-                    this.state.week.map(day => (
+                {this.state.month && this.state.month.length > 0 ? (
+                    this.state.month.map(day => (
                         <Day 
+                            key={Math.random() * 100000}
                             type={day.workoutType}
                         />
                     ))
@@ -37,4 +36,4 @@ class Week extends Component {
     }
 }
 
-export default Week;
+export default Month;
