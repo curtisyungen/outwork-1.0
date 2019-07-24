@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import "./swimLap.css";
+import "./swimLap.css";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -15,6 +15,7 @@ class SwimLap extends Component {
         this.state = {
             id: null,
             distance: "",
+            units: "",
             time: "",
             stroke: "",
             rest: "",
@@ -26,6 +27,7 @@ class SwimLap extends Component {
         this.setState({
             id: this.props.id,
             distance: this.props.distance,
+            units: this.props.units,
             time: this.props.time,
             stroke: this.props.stroke,
             rest: this.props.rest,
@@ -67,20 +69,20 @@ class SwimLap extends Component {
         });
     }
 
-    sendLap = () => {
-        this.props.sendLap(this.state.id);
+    deleteLap = () => {
+        this.props.deleteLap(this.state.id);
     }
 
     render() {
         return (
-            <div className={`input-group input-group-sm lap mb-1 saved-${this.state.saved}`}>
+            <div className={`input-group input-group-sm lap saved-${this.state.saved}`}>
                 {/* DISTANCE */}
                 <input
                     autoComplete="off"
                     name="distance"
                     type="text"
                     className="form-control lapInput-md"
-                    placeholder="Meters"
+                    placeholder={this.props.units}
                     onChange={this.handleInputChange}
                     value={this.state.distance}
                 />
