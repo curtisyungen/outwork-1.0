@@ -301,7 +301,13 @@ class SubmitSwim extends Component {
                         </select>
                     </div>
 
-                    {/* SWIM WORKOUT */}
+                    {/* WORKOUT */}
+                    <div className="input-group input-group-sm mb-3">
+                        <div className="input-group-prepend submitFormSectTitle">
+                            Workout
+                        </div>
+                    </div>
+
                     {this.state.workout.map(lap => (
                         <SwimLap
                             key={Math.random() * 100000}
