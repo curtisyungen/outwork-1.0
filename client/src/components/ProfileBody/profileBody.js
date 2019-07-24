@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Container from "../Container/container";
 import UserActivity from "../UserActivity/userActivity";
 import Metrics from "../Metrics/metrics";
+import Calendar from "../Calendar/calendar";
 import workoutAPI from "../../utils/workoutAPI";
 // import "./profileBody.css";
 
@@ -45,12 +46,20 @@ class ProfileBody extends Component {
         return (
             <Container>
                 {this.state.userId ? (
+                    <span>
                     <Metrics 
                         userId={this.props.userId}
                     />
+
+                    <Calendar 
+                        userId={this.props.userId}
+                    />
+                    </span>
                 ) : (
                     <p className="text-center">Loading metrics...</p>
                 )}
+
+                
 
                 <div className="myActivity">
                     <h4>User Activity</h4>
