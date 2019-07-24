@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-// import Container from "../components/Container/container";
 import ActivityIcons from "../components/ActivityIcons/activityIcons";
 import SwimLap from "../components/SwimLap/swimLap";
 import userAPI from "../utils/userAPI";
 import workoutAPI from "../utils/workoutAPI";
-// import "./SubmitSwim.css";
+import "./SubmitSwim.css";
 
 class SubmitSwim extends Component {
 
@@ -16,6 +15,7 @@ class SubmitSwim extends Component {
             date: null,
             time: null,
             distance: null,
+            units: "Meters",
             duration: null,
             laps: null,
             location: null,
@@ -61,6 +61,12 @@ class SubmitSwim extends Component {
         });
     }
 
+    changeUnits = (units) => {
+        this.setState({
+            units: units,
+        });
+    }
+
     addLap = () => {
         let laps = this.state.workout;
 
@@ -87,7 +93,7 @@ class SubmitSwim extends Component {
     }
 
     deleteLap = (lap) => {
-        let laps = this.state.laps;
+        let laps = this.state.workout;
         let idx;
 
         for (var i = 0; i < laps.length; i++) {
@@ -99,12 +105,12 @@ class SubmitSwim extends Component {
         laps.splice(idx, 1);
 
         this.setState({
-            laps: laps,
+            workout: laps,
         });
     }
 
     getLap = (lap) => {
-        let laps = this.state.laps;
+        let laps = this.state.workout;
         let idx = -1;
 
         for (var l in laps) {
@@ -140,6 +146,7 @@ class SubmitSwim extends Component {
                 milePace: null,
                 runType: null,
                 laps: this.state.laps,
+                laps: null,
                 race: null,
                 surface: this.state.surface,
                 weather: null,
@@ -217,7 +224,7 @@ class SubmitSwim extends Component {
                     {/* DISTANCE */}
                     <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
-                            <span className="input-group-text" id="inputGroup-sizing-sm">Miles</span>
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Distance</span>
                         </div>
                         <input
                             autoComplete="off"
@@ -228,6 +235,15 @@ class SubmitSwim extends Component {
                             aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
                         />
+                        <div className="input-group-append">
+                            <button class="btn btn-outline-secondary dropdown-toggle unitDropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {this.state.units}
+                            </button>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-item" onClick={this.changeUnits.bind(null, "Meters")}>Meters</div>
+                                <div class="dropdown-item" onClick={this.changeUnits.bind(null, "Miles")}>Miles</div>
+                            </div>
+                        </div>
                     </div>
 
                     {/* DURATION */}
@@ -300,7 +316,7 @@ class SubmitSwim extends Component {
                         </select>
                     </div>
 
-                    {/* WORKOUT */}
+                    {/* SWIM WORKOUT */}
                     <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend submitFormSectTitle">
                             Workout
@@ -312,6 +328,7 @@ class SubmitSwim extends Component {
                             key={Math.random() * 100000}
                             id={lap.id}
                             distance={lap.distance}
+                            units={this.state.units}
                             time={lap.time}
                             stroke={lap.stroke}
                             rest={lap.rest}
