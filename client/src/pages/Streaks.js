@@ -24,7 +24,7 @@ class Streaks extends Component {
         for (var i=0; i<12; i++) {
             let month = [i];
             for (var m=0; m<31; m++) {
-                month.push(0);
+                month.push(m);
             }
 
             year.push(month);
