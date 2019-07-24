@@ -27,6 +27,8 @@ class Month extends Component {
         });
     }
 
+    // Loops through each month and trims extra days off the end of each
+    // Does not account for leap year
     trimMonth = () => {
         let month = this.state.month;
         let monthId = month[0];
@@ -48,6 +50,7 @@ class Month extends Component {
                     this.state.month.map(day => (
                         <Day
                             key={Math.random() * 100000}
+                            month={this.state.month[0]}
                             day={day}
                             type={day.workoutType}
                         />
