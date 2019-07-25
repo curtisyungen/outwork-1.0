@@ -28,9 +28,8 @@
     font-weight: 700;
 }
 
-.shoeModal {
-    min-height: 200px;
-    min-width: 300px;
+.shoeList {
+    margin-top: 30px;
 }
 
 @media only screen and (max-width: 520px) {

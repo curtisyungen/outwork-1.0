@@ -3,14 +3,21 @@
     border: 1px solid rgb(114, 114, 114);
     border-right: 0px;
     font-size: 13px;
+    margin-bottom: 2px;
     padding: 2px;
     text-align: center;
-    width: 14.28%;
+    width: 23%;
 }
 
 .shoeModal {
     min-height: 200px;
     min-width: 300px;
+}
+
+.shoe {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2px;
 }
 
 .shoeTitle {
