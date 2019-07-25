@@ -6,4 +6,12 @@ router.get("/getShoesByUserId/:userId", (req, res) => {
     controller.getShoesByUserId(req, res);
 });
 
+router.post("/addShoe", (req, res) => {
+    controller.addShoe(req, res);
+});
+
+router.delete("/deleteShoe/:id", (req, res) => {
+    controller.deleteShoe(req, res);
+});
+
 module.exports = router;
