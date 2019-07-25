@@ -250,6 +250,19 @@ class Workout extends Component {
         });
     }
 
+    setActualReps = (setId, exName, reps) => {
+        let sets = this.state.sets;
+
+        let idx;
+        for (var ex in sets[setId]) {
+            if (sets[setId][ex].name === exName) {
+                idx = ex;
+            }
+        }
+
+        sets[setId][idx].reps = reps;
+    }
+
     setWeight = (setId, exName, weight) => {
         let sets = this.state.sets;
 
@@ -381,6 +394,7 @@ class Workout extends Component {
                                 key={Math.random() * 100000}
                                 set={set}
                                 handleInputChange={this.handleInputChange}
+                                setActualReps={this.setActualReps}
                                 setWeight={this.setWeight}
                                 setRest={this.setRest}
                                 setNotes={this.setNotes}

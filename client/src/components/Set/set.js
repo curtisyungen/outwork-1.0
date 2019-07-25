@@ -27,6 +27,7 @@ class Set extends Component {
                         id={item.id}
                         name={item.name}
                         reps={item.reps}
+                        setActualReps={this.props.setActualReps}
                         setWeight={this.props.setWeight}
                         setRest={this.props.setRest}
                         setNotes={this.props.setNotes}
