@@ -90,7 +90,7 @@ class SetItem extends Component {
                     {this.props.name}
                 </a>
 
-                <div className="setReps">
+                <div className="exReps">
                     {this.props.reps}
                 </div>
 
