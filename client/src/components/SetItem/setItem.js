@@ -101,8 +101,8 @@ class SetItem extends Component {
                         autoComplete="off"
                         name="actualReps"
                         type="text"
-                        className="form-control actualData actualReps"
-                        placeholder="Actual Reps"
+                        className="form-control actualData"
+                        placeholder="Reps"
                         onChange={this.handleInputChange}
                         value={this.state.actualReps}
                     />
@@ -122,7 +122,7 @@ class SetItem extends Component {
                         name="rest"
                         type="text"
                         className="form-control actualData"
-                        placeholder="Rest (min.)"
+                        placeholder="Rest"
                         onChange={this.handleInputChange}
                         value={this.state.rest}
                     />
