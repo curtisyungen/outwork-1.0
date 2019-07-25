@@ -36,11 +36,7 @@
     border-radius: 0px !important;
     display: flex;
     flex-direction: row;
-    margin-bottom: 2px;
-}
-
-.shoeInput {
-
+    margin-top: 10px;
 }
 
 @media only screen and (max-width: 520px) {

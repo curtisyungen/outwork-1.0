@@ -89,12 +89,14 @@ class ShoeMetrics extends Component {
     render() {
         return (
             <span>
-                <button className="btn btn-primary btn-sm shoesBtn" onClick={this.openShoesModal}>My Shoes</button>
+                <button className="btn btn-dark-outline btn-sm shoesBtn" onClick={this.openShoesModal}>My Shoes</button>
 
                 <Modal
                     open={this.state.openShoesModal}
                     onClose={this.closeShoesModal}
                 >
+                    <h4>Your Shoes</h4>
+
                     <div className="shoeList">
                         {this.state.shoes && this.state.shoes.length > 0 ? (
                             this.state.shoes.map(shoe => (
