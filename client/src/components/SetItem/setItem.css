@@ -12,7 +12,7 @@
     display: flex;
     flex-direction: row;
     text-align: center;
-    width: 55%;
+    width: auto;
 }
 
 .exName {
@@ -36,6 +36,10 @@
 
 .saveSetBtn {
     height: 34px;
+}
+
+.saved-true input {
+    background: rgba(222, 255, 222, 0.897);
 }
 
 .setIcon {
