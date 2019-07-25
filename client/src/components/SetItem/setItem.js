@@ -22,6 +22,7 @@ class SetItem extends Component {
             weight: "",
             rest: "",
             notes: "",
+            saved: false,
         }
     }
 
@@ -37,6 +38,8 @@ class SetItem extends Component {
 
         this.setState({
             [name]: value,
+        }, () => {
+            this.unsave();
         });
     }
 
@@ -56,6 +59,20 @@ class SetItem extends Component {
         if (this.state.notes !== null) {
             this.props.setNotes(this.state.id, this.state.name, this.state.notes);
         }
+
+        this.save();
+    }
+
+    save = () => {
+        this.setState({
+            saved: true,
+        });
+    }
+
+    unsave = () => {
+        this.setState({
+            saved: false,
+        });
     }
 
     render() {
@@ -74,7 +91,7 @@ class SetItem extends Component {
                     {this.props.reps}
                 </div>
 
-                <div className="exActual">
+                <div className={`exActual saved-${this.state.saved}`}>
                     {/* ACTUAL REPS */}
                     <input
                         autoComplete="off"
@@ -115,14 +132,15 @@ class SetItem extends Component {
                         onChange={this.handleInputChange}
                         value={this.state.notes}
                     />
-                    {/* SAVE */}
-                    <button
-                        className="btn btn-success btn-sm saveSetBtn saveBtn"
+                    
+                </div>
+                {/* SAVE */}
+                <button
+                        className="btn btn-outline-success btn-sm saveSetBtn saveBtn"
                         onClick={this.saveData}
                     >
                         <FontAwesomeIcon className="fa-2x faSave" icon={faSave} />
                     </button>
-                </div>
             </div>
         )
     }

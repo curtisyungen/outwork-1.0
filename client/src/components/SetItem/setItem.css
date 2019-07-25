@@ -6,13 +6,14 @@
     font-size: 13px;
     margin: 1px;
     max-width: 100px;
+    margin-right: 1px;
 }
 
 .exActual {
     display: flex;
     flex-direction: row;
     text-align: center;
-    width: 55%;
+    width: auto;
 }
 
 .exName {
@@ -35,7 +36,12 @@
 }
 
 .saveSetBtn {
+    border-right: 1px solid #28a745;
     height: 34px;
+}
+
+.saved-true input {
+    background: rgba(222, 255, 222, 0.897);
 }
 
 .setIcon {
