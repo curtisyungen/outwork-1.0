@@ -3,8 +3,10 @@
 }
 
 .exActual {
+    display: flex;
+    flex-direction: row;
     text-align: center;
-    width: 10%;
+    width: 65%;
 }
 
 .exName {
@@ -15,7 +17,7 @@
 
 .exReps {
     text-align: center;
-    width: 25%;
+    width: 15%;
 }
 
 .icon-true {
