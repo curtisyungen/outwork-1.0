@@ -1,5 +1,5 @@
 .set {
-    border: 1px solid darkgray;
+    background: rgb(255, 255, 255);
     border-radius: 4px;
     color: black;
     display: block;
@@ -20,44 +20,44 @@ a {
     color: black;
 }
 
-.diff1, .diff1 a {
-    border-left: 10px solid pink;
-    border-right: 10px solid pink;
+.diff1 {
+    border-left: 15px solid pink;
+    border-right: 15px solid pink;
 }
 
-.diff2, .diff2 a {
-    border-left: 10px solid lightgreen;
-    border-right: 10px solid lightgreen;
+.diff2 {
+    border-left: 15px solid lightgreen;
+    border-right: 15px solid lightgreen;
 }
 
-.diff3, .diff3 a {
-    border-left: 10px solid rgb(255, 225, 53);
-    border-right: 10px solid rgb(255, 225, 53);
+.diff3 {
+    border-left: 15px solid rgb(255, 225, 53);
+    border-right: 15px solid rgb(255, 225, 53);
 }
 
-.diff4, .diff4 a {
-    border-left: 10px solid lightblue;
-    border-right: 10px solid lightblue;
+.diff4 {
+    border-left: 15px solid lightblue;
+    border-right: 15px solid lightblue;
 }
 
-.diff5, .diff5 a {
-    border-left: 10px solid rgb(45, 178, 223);
-    border-right: 10px solid rgb(45, 178, 223);
+.diff5 {
+    border-left: 15px solid rgb(45, 178, 223);
+    border-right: 15px solid rgb(45, 178, 223);
 }
 
-.diff6, .diff6 a {
-    border-left: 10px solid rgb(58, 58, 255);
-    border-right: 10px solid rgb(58, 58, 255);
+.diff6 {
+    border-left: 15px solid rgb(58, 58, 255);
+    border-right: 15px solid rgb(58, 58, 255);
 }
 
-.diff7, .diff7 a {
-    border-left: 10px solid rgb(180, 180, 180);
-    border-right: 10px solid rgb(180, 180, 180);
+.diff7 {
+    border-left: 15px solid rgb(180, 180, 180);
+    border-right: 15px solid rgb(180, 180, 180);
 }
 
-.diff8, .diff8 a {
-    border-left: 10px solid black;
-    border-right: 10px solid black;
+.diff8 {
+    border-left: 15px solid black;
+    border-right: 15px solid black;
     color: red;
 }
 

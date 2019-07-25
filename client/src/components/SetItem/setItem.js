@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import Modal from "react-responsive-modal";
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDumbbell, faBed, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import "./setItem.css";
 
-library.add(faDumbbell, faBed, faPencilAlt);
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSave } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faSave);
 
 class SetItem extends Component {
 
@@ -40,25 +40,10 @@ class SetItem extends Component {
         });
     }
 
-    openModal = (name) => {
-
-        let weight = false, rest = false, notes = false;
-
-        switch (name) {
-            case "weight": weight = true; break;
-            case "rest": rest = true; break;
-            case "notes": notes = true; break;
-            default: weight = false;
+    saveData = () => {
+        if (this.state.actualReps !== null) {
+            this.props.setActualReps(this.state.id, this.state.name, this.state.actualReps);
         }
-
-        this.setState({
-            openWeightModal: weight,
-            openRestModal: rest,
-            openNotesModal: notes,
-        });
-    }
-
-    closeModal = (name) => {
 
         if (this.state.weight !== null) {
             this.props.setWeight(this.state.id, this.state.name, this.state.weight);
@@ -71,17 +56,11 @@ class SetItem extends Component {
         if (this.state.notes !== null) {
             this.props.setNotes(this.state.id, this.state.name, this.state.notes);
         }
-
-        this.setState({
-            openWeightModal: false,
-            openRestModal: false,
-            openNotesModal: false,
-        });
     }
 
     render() {
         return (
-            <div className={`setItem diff${this.props.difficulty}`}>
+            <div className={`setItem`}>
                 <a
                     className="exName"
                     href={`https://www.youtube.com/results?search_query=how+to+do+${this.props.name}`}
@@ -136,102 +115,14 @@ class SetItem extends Component {
                         onChange={this.handleInputChange}
                         value={this.state.notes}
                     />
+                    {/* SAVE */}
+                    <button
+                        className="btn btn-success btn-sm saveSetBtn saveBtn"
+                        onClick={this.saveData}
+                    >
+                        <FontAwesomeIcon className="fa-2x faSave" icon={faSave} />
+                    </button>
                 </div>
-
-                {/* <div className="setItemIcons">
-                    
-                    <FontAwesomeIcon 
-                        className={`setIcon icon-${this.state.weight && this.state.weight !== ""}`} 
-                        icon={faDumbbell} 
-                        onClick={this.openModal.bind(null, "weight")} 
-                    />
-                    <FontAwesomeIcon 
-                        className={`setIcon icon-${this.state.rest && this.state.rest !== ""}`} 
-                        icon={faBed} 
-                        onClick={this.openModal.bind(null, "rest")} 
-                    />
-                    <FontAwesomeIcon 
-                        className={`setIcon icon-${this.state.notes && this.state.notes !== ""}`} 
-                        icon={faPencilAlt} 
-                        onClick={this.openModal.bind(null, "notes")} 
-                    />
-                </div> */}
-
-                {this.state.openWeightModal ? (
-                    <Modal
-                        open={this.state.openWeightModal}
-                        onClose={this.closeModal.bind(null, "weight")}
-                    >
-                        <div className="col-md-4 input-group input-group-sm mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-sm">Weight (lbs.)</span>
-                            </div>
-                            <input
-                                autoComplete="off"
-                                name="weight"
-                                type="text"
-                                className="form-control"
-                                aria-describedby="inputGroup-sizing-sm"
-                                onChange={this.handleInputChange}
-                                value={this.state.weight}
-                            />
-                            <button className="btn btn-success btn-sm" onClick={this.closeModal}>Save</button>
-                        </div>
-                    </Modal>
-                ) : (
-                        <></>
-                    )}
-
-                {this.state.openRestModal ? (
-                    <Modal
-                        open={this.state.openRestModal}
-                        onClose={this.closeModal.bind(null, "rest")}
-                    >
-                        <div className="col-md-4 input-group input-group-sm mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-sm">Rest (min.)</span>
-                            </div>
-                            <input
-                                autoComplete="off"
-                                name="rest"
-                                type="text"
-                                className="form-control"
-                                aria-describedby="inputGroup-sizing-sm"
-                                onChange={this.handleInputChange}
-                                value={this.state.rest}
-                            />
-                            <button className="btn btn-success btn-sm" onClick={this.closeModal}>Save</button>
-                        </div>
-                    </Modal>
-                ) : (
-                        <></>
-                    )}
-
-                {this.state.openNotesModal ? (
-                    <Modal
-                        open={this.state.openNotesModal}
-                        onClose={this.closeModal.bind(null, "notes")}
-                    >
-                        <div className="col-md-4 input-group input-group-sm mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-sm">Notes</span>
-                            </div>
-                            <input
-                                autoComplete="off"
-                                name="notes"
-                                type="text"
-                                className="form-control"
-                                aria-describedby="inputGroup-sizing-sm"
-                                onChange={this.handleInputChange}
-                                value={this.state.notes}
-                            />
-                            <button className="btn btn-success btn-sm" onClick={this.closeModal}>Save</button>
-                        </div>
-                    </Modal>
-                ) : (
-                        <></>
-                    )}
-
             </div>
         )
     }
