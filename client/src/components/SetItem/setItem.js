@@ -95,7 +95,7 @@ class SetItem extends Component {
                     {this.props.reps}
                 </div>
 
-                <div>
+                <div className="exActual">
                     <input
                         autoComplete="off"
                         name="actualReps"
