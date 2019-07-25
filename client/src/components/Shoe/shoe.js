@@ -29,6 +29,26 @@ class Shoe extends Component {
             buyDate: this.props.buyDate,
             miles: this.props.miles,
             wears: this.props.wears,
+        }, () => {
+            this.getMiles();
+        });
+    }
+
+    getMiles = () => {
+        let shoeMiles = this.props.shoeMiles;
+        let miles = this.props.miles;
+        let name = this.props.name;
+
+        for (var i in shoeMiles) {
+            if (shoeMiles[i][0] === name) {
+                miles += parseInt(shoeMiles[i][1]);
+            }
+        }
+
+        this.setState({
+            miles: miles,
+        }, () => {
+            console.log(this.state);
         });
     }
 
