@@ -54,7 +54,7 @@ class Shoe extends Component {
                 
                 {/* DELETE */}
                 <button
-                    className="btn btn-danger btn-sm exerciseBtn"
+                    className="btn btn-danger btn-sm shoeBtn"
                     onClick={this.props.deleteShoe.bind(null, this.props.id)}
                 >
                     <FontAwesomeIcon className="fa-2x faTrashAlt" icon={faTrashAlt} />
