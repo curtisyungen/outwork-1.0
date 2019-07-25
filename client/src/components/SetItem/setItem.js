@@ -18,6 +18,7 @@ class SetItem extends Component {
             openNotesModal: false,
             id: null,
             name: null,
+            actualReps: null,
             weight: "",
             rest: "",
             notes: "",
@@ -92,6 +93,18 @@ class SetItem extends Component {
 
                 <div className="exReps">
                     {this.props.reps}
+                </div>
+
+                <div>
+                    <input
+                        autoComplete="off"
+                        name="actualReps"
+                        type="text"
+                        className="form-control actualReps"
+                        placeholder="Actual"
+                        onChange={this.handleInputChange}
+                        value={this.state.actualReps}
+                    />
                 </div>
 
                 <div className="setItemIcons">
