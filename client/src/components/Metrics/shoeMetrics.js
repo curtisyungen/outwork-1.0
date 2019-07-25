@@ -95,7 +95,7 @@ class ShoeMetrics extends Component {
                     open={this.state.openShoesModal}
                     onClose={this.closeShoesModal}
                 >
-                    <div>
+                    <div className="shoeList">
                         {this.state.shoes && this.state.shoes.length > 0 ? (
                             this.state.shoes.map(shoe => (
                                 <Shoe
