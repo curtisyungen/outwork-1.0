@@ -35,11 +35,26 @@ class ProfileBody extends Component {
 
         workoutAPI.getAllWorkoutsByUserId(userId)
         .then((res) => {
-            this.setState({
-                userActivity: res.data,
-                message: "No activity found.",
-            });
-        })
+            this.sortByDate(res.data);
+        });
+    }
+    
+    sortByDate = (userActivity) => {
+        userActivity.sort(this.compare);
+
+        this.setState({
+            userActivity: userActivity,
+            message: "No activity found.",
+        });
+    }
+
+    compare = (a, b) => {
+        if (a.date === b.date) {
+            return 0;
+        }
+        else {
+            return (a.date > b.date) ? -1 : 1;
+        }
     }
 
     render() {
