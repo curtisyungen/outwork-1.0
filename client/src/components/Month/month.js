@@ -27,7 +27,6 @@ class Month extends Component {
             days: [32, 29, 32, 31, 32, 31, 32, 32, 31, 32, 31, 32],
         }, () => {
             this.getMonthName();
-            this.trimMonth();
         });
     }
 
@@ -38,6 +37,8 @@ class Month extends Component {
         this.setState({
             monthName: names[id],
             monthNum: id + 1,
+        }, () => {
+            this.trimMonth();
         });
     }
 
