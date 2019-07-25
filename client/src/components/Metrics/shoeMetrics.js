@@ -101,7 +101,7 @@ class ShoeMetrics extends Component {
                                 <Shoe
                                     key={Math.random() * 100000}
                                     id={shoe.id}
-                                    name={shoe.name}
+                                    name={shoe.shoe}
                                     buyDate={shoe.buyDate}
                                     miles={shoe.miles}
                                     wears={shoe.wears}
