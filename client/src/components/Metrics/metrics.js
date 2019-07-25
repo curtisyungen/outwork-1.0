@@ -3,6 +3,7 @@ import RunMetrics from "./runMetrics";
 import BikeMetrics from "./bikeMetrics";
 import SwimMetrics from "./swimMetrics";
 import LiftMetrics from "./liftMetrics";
+import ShoeMetrics from "./shoeMetrics";
 import workoutAPI from "../../utils/workoutAPI";
 // import "./Metrics.css";
 
@@ -99,8 +100,14 @@ class Metrics extends Component {
                 {this.state.userActivity === null ? (
                     <p>No activity found. What a loser!</p>
                 ) : (
-                    <></>
-                )}
+                        <></>
+                    )}
+
+
+                <ShoeMetrics
+                    userId={this.state.userId}
+                    flexDir={this.state.flexDir}
+                />
 
                 {this.state.userRuns && this.state.userRuns.length > 0 ? (
                     <RunMetrics
