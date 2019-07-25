@@ -1,3 +1,11 @@
 .calendar {
     margin-top: 25px;
 }
+
+.calendarContainer {
+    background: #fff;
+    border: 1px solid rgb(114, 114, 114);
+    border-radius: 4px;
+    padding: 10px;
+    padding-bottom: 7px;
+}

@@ -24,7 +24,7 @@ class Month extends Component {
                 "April", "May", "June", "July",
                 "August", "September", "October",
                 "November", "December"],
-            days: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+            days: [32, 29, 32, 31, 32, 31, 32, 32, 31, 32, 31, 32],
         }, () => {
             this.getMonthName();
             this.trimMonth();
