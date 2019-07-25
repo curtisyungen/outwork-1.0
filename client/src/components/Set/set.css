@@ -21,37 +21,43 @@ a {
 }
 
 .diff1, .diff1 a {
-    background: pink;
+    border-left: 10px solid pink;
+    border-right: 10px solid pink;
 }
 
 .diff2, .diff2 a {
-    background: lightgreen;
+    border-left: 10px solid lightgreen;
+    border-right: 10px solid lightgreen;
 }
 
 .diff3, .diff3 a {
-    background: rgb(255, 225, 53);
+    border-left: 10px solid rgb(255, 225, 53);
+    border-right: 10px solid rgb(255, 225, 53);
 }
 
 .diff4, .diff4 a {
-    background: lightblue;
+    border-left: 10px solid lightblue;
+    border-right: 10px solid lightblue;
 }
 
 .diff5, .diff5 a {
-    background: rgb(45, 178, 223);
+    border-left: 10px solid rgb(45, 178, 223);
+    border-right: 10px solid rgb(45, 178, 223);
 }
 
 .diff6, .diff6 a {
-    background: rgb(58, 58, 255);
-    color: white;
+    border-left: 10px solid rgb(58, 58, 255);
+    border-right: 10px solid rgb(58, 58, 255);
 }
 
 .diff7, .diff7 a {
-    background: rgb(180, 180, 180);
-    color: black;
+    border-left: 10px solid rgb(180, 180, 180);
+    border-right: 10px solid rgb(180, 180, 180);
 }
 
 .diff8, .diff8 a {
-    background: black;
+    border-left: 10px solid black;
+    border-right: 10px solid black;
     color: red;
 }
 
