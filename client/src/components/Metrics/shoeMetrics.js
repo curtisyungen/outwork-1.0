@@ -114,13 +114,13 @@ class ShoeMetrics extends Component {
                     </div>
 
                     <div className="shoeModal">
-                        <div className={`input-group input-group-sm repeat saved-${this.state.saved}`}>
+                        <div className={`input-group input-group-sm shoeInputForm saved-${this.state.saved}`}>
                             {/* SHOE NAME */}
                             <input
                                 autoComplete="off"
                                 name="name"
                                 type="text"
-                                className="form-control repeatInput-md"
+                                className="form-control shoeInput"
                                 placeholder="Shoe Name"
                                 onChange={this.handleInputChange}
                                 value={this.state.name}
@@ -130,7 +130,7 @@ class ShoeMetrics extends Component {
                                 autoComplete="off"
                                 name="buyDate"
                                 type="text"
-                                className="form-control repeatInput-md"
+                                className="form-control shoeInput"
                                 placeholder="Buy Date"
                                 onChange={this.handleInputChange}
                                 value={this.state.buyDate}
@@ -140,7 +140,7 @@ class ShoeMetrics extends Component {
                                 autoComplete="off"
                                 name="miles"
                                 type="text"
-                                className="form-control repeatInput-md"
+                                className="form-control shoeInput"
                                 placeholder="Miles"
                                 onChange={this.handleInputChange}
                                 value={this.state.miles}
@@ -150,7 +150,7 @@ class ShoeMetrics extends Component {
                                 autoComplete="off"
                                 name="wears"
                                 type="text"
-                                className="form-control repeatInput-md"
+                                className="form-control shoeInput"
                                 placeholder="Wears"
                                 onChange={this.handleInputChange}
                                 value={this.state.wears}
