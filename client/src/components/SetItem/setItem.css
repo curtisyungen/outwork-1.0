@@ -1,6 +1,9 @@
 .actualData {
-    border-radius: 0px;
+    background: none;
+    border: 1px solid rgb(114, 114, 114);
+    border-radius: 4px;
     font-size: 13px;
+    margin: 1px;
     max-width: 100px;
 }
 
@@ -53,6 +56,14 @@
 }
 
 @media only screen and (max-width: 768px) {
+    .exActual {
+        width: 65%;
+    }
+
+    .exName {
+        width: 25%;
+    }
+
     .setItemIcons {
         padding-left: 0px;
     }
