@@ -78,6 +78,11 @@
     width: 25px !important;
 }
 
+.dataIcon {
+    border-top-right-radius: 4px !important;
+    border-bottom-right-radius: 4px !important;
+}
+
 .bikeIcon, .liftIcon, 
 .runIcon, .swimIcon {
     border-top-left-radius: 4px;
