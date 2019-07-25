@@ -1,11 +1,16 @@
+.actualReps {
+    color: black;
+}
+
 .exName {
     padding-left: 2px;
     padding-right: 2px;
-    width: 33.3%;
+    width: 25%;
 }
 
 .exReps {
-    width: 33.3%;
+    text-align: center;
+    width: 25%;
 }
 
 .icon-true {
