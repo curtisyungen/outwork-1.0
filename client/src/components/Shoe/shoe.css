@@ -1,5 +1,19 @@
-.shoe {
-    color: black;
-    display: flex;
-    flex-direction: row;
+.shoeData {
+    background: #fff;
+    border: 1px solid rgb(114, 114, 114);
+    border-right: 0px;
+    font-size: 13px;
+    padding: 2px;
+    text-align: center;
+    width: 14.28%;
+}
+
+.shoeModal {
+    min-height: 200px;
+    min-width: 300px;
+}
+
+.shoeTitle {
+    font-size: 11px;
+    font-weight: 700;
 }
