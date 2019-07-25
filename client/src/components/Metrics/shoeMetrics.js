@@ -17,6 +17,7 @@ class ShoeMetrics extends Component {
 
         this.state = {
             userId: null,
+            userRuns: null,
             shoes: null,
             name: "",
             buyDate: "",
@@ -29,8 +30,10 @@ class ShoeMetrics extends Component {
     componentDidMount = () => {
         this.setState({
             userId: this.props.userId,
+            userRuns: this.props.userRuns,
         }, () => {
             this.getShoes();
+            this.getMiles();
         });
     }
 
@@ -86,10 +89,28 @@ class ShoeMetrics extends Component {
         });
     }
 
+    getMiles = () => {
+        let runs = this.state.userRuns;
+
+        if (!runs) {
+            return;
+        }
+        
+        let shoeMiles = [];
+
+        for (var r in runs) {
+            if (runs[r].shoe) {
+                shoeMiles.push([runs[r].shoe, runs[r].distance]);
+            }
+        }
+
+        console.log(shoeMiles);
+    }
+
     render() {
         return (
             <span>
-                <button className="btn btn-dark-outline btn-sm shoesBtn" onClick={this.openShoesModal}>My Shoes</button>
+                <button className="btn btn-outline-dark btn-sm shoesBtn" onClick={this.openShoesModal}>My Shoes</button>
 
                 <Modal
                     open={this.state.openShoesModal}

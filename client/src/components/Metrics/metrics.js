@@ -106,6 +106,7 @@ class Metrics extends Component {
 
                 <ShoeMetrics
                     userId={this.state.userId}
+                    userRuns={this.state.userRuns}
                     flexDir={this.state.flexDir}
                 />
 
