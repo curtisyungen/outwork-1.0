@@ -10,7 +10,6 @@ class ProfileHeader extends Component {
             userId: null,
             firstName: null,
             lastName: null,
-            badges: null,
         }
     }
 
@@ -25,7 +24,9 @@ class ProfileHeader extends Component {
     render() {
         return (
             <div className="jumbotron jumbotron-fluid profileHeader">
-                <h1 className="display-4">{this.state.firstName} {this.state.lastName}</h1>
+                <h1 className="display-4">
+                    {this.state.firstName} {this.state.lastName}
+                </h1>                
             </div>
         )
     }

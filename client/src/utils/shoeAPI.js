@@ -10,4 +10,12 @@ export default {
     getShoesByUserId: function(userId) {
         return axios.get("/api/shoes/getShoesByUserId/" + userId);
     },
+
+    addShoe: function(shoe) {
+        return axios.post("/api/shoes/addShoe", shoe);
+    },
+
+    deleteShoe: function(id, userId) {
+        return axios.delete("/api/shoes/deleteShoe/" + id, userId);
+    }
 }
