@@ -35,10 +35,11 @@ class Shoe extends Component {
     render() {
         return (
             <div className="shoe">
-                <div>{this.props.name}</div>
-                <div>{this.props.buyDate}</div>
-                <div>{this.props.miles}</div>
-                <div>{this.props.wears}</div>
+                <div className="shoeData">{this.props.name}</div>
+                <div className="shoeData">{this.props.buyDate}</div>
+                <div className="shoeData">{this.props.miles}</div>
+                <div className="shoeData">{this.props.wears}</div>
+                
                 {/* DELETE */}
                 <button
                     className="btn btn-danger btn-sm exerciseBtn"
