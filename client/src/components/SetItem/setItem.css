@@ -1,3 +1,9 @@
+.actualData {
+    border-radius: 0px;
+    font-size: 13px;
+    max-width: 100px;
+}
+
 .actualReps {
     color: black;
 }
@@ -6,13 +12,13 @@
     display: flex;
     flex-direction: row;
     text-align: center;
-    width: 65%;
+    width: 55%;
 }
 
 .exName {
     padding-left: 2px;
     padding-right: 2px;
-    width: 25%;
+    width: 35%;
 }
 
 .exReps {
