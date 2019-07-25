@@ -4,6 +4,7 @@ import ActivityIcons from "../components/ActivityIcons/activityIcons";
 import WeatherIcons from "../components/WeatherIcons/weatherIcons";
 import workoutAPI from "../utils/workoutAPI";
 import userAPI from "../utils/userAPI";
+import shoeAPI from "../utils/shoeAPI";
 import "./SubmitRun.css";
 
 class SubmitRun extends Component {
@@ -26,7 +27,8 @@ class SubmitRun extends Component {
             weather: null,
             climb: null,
             grade: null,
-            shoe: null,
+            shoe: "",
+            shoes: null,
             notes: null,
             map: null,
         }
@@ -55,6 +57,8 @@ class SubmitRun extends Component {
                     firstName: res.data[0].firstName,
                     lastName: res.data[0].lastName,
                     repeats: repeats,
+                }, () => {
+                    this.getShoes();
                 });
             });
     }
@@ -163,6 +167,15 @@ class SubmitRun extends Component {
         });
     }
 
+    getShoes = () => {
+        shoeAPI.getShoesByUserId(this.state.userId)
+            .then((res) => {
+                this.setState({
+                    shoes: res.data,
+                });
+            });
+    }
+
     submitRun = () => {
         if (this.props.checkValidUser()) {
             let runData = {
@@ -199,7 +212,6 @@ class SubmitRun extends Component {
                 .then((res) => {
                     if (res.status === 200) {
                         alert("Run submitted!");
-                        window.location.reload();
                     }
                     else {
                         alert("Error submitting run.");
@@ -346,8 +358,8 @@ class SubmitRun extends Component {
                                 />
                             ))
                         ) : (
-                            <></>
-                        )}
+                                <></>
+                            )}
 
                         {/* ADD REPEAT BUTTON */}
                         {this.state.runType === "Repeats" ? (
@@ -355,8 +367,8 @@ class SubmitRun extends Component {
                                 <button className="btn btn-dark btn-sm" onClick={this.addRepeat}>Add Repeat</button>
                             </div>
                         ) : (
-                            <></>
-                        )}
+                                <></>
+                            )}
 
                         {/* RACE */}
                         {this.state.runType === "Race" ? (
@@ -433,20 +445,42 @@ class SubmitRun extends Component {
                         </div>
 
                         {/* SHOE */}
-                        <div className="input-group input-group-sm mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-sm">Footwear</span>
+                        {this.state.shoes && this.state.shoes.length > 0 ? (
+                            <div className="input-group input-group-sm mb-3">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text" id="inputGroup-sizing-sm">Shoe</span>
+                                </div>
+                                <select
+                                    className="browser-default custom-select"
+                                    autoComplete="off"
+                                    name="shoe"
+                                    type="text"
+                                    aria-describedby="inputGroup-sizing-sm"
+                                    onChange={this.handleInputChange}
+                                    value={this.state.shoe}
+                                >
+                                    <option value=""></option>
+                                    {this.state.shoes.map(shoe => (
+                                        <option key={Math.random() * 1000000} value={shoe.shoe}>{shoe.shoe}</option>
+                                    ))}
+                                </select>
                             </div>
-                            <input
-                                autoComplete="off"
-                                name="shoe"
-                                type="text"
-                                className="form-control"
-                                aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-sm"
-                                onChange={this.handleInputChange}
-                            />
-                        </div>
+                        ) : (
+                            <div className="input-group input-group-sm mb-3">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text" id="inputGroup-sizing-sm">Footwear</span>
+                                </div>
+                                <input
+                                    autoComplete="off"
+                                    name="shoe"
+                                    type="text"
+                                    className="form-control"
+                                    aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm"
+                                    onChange={this.handleInputChange}
+                                />
+                            </div>
+                        )}
 
                         {/* NOTES */}
                         <div className="input-group input-group-sm mb-3">

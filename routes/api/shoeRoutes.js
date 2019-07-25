@@ -10,6 +10,14 @@ router.post("/addShoe", (req, res) => {
     controller.addShoe(req, res);
 });
 
+router.put("/addMiles", (req, res) => {
+    controller.addMiles(req, res);
+});
+
+router.put("/addWears", (req, res) => {
+    controller.addWears(req, res);
+});
+
 router.delete("/deleteShoe/:id", (req, res) => {
     controller.deleteShoe(req, res);
 });
