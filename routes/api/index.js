@@ -3,6 +3,7 @@ const router = require("express").Router();
 const userRoutes = require("./userRoutes");
 const exerciseRoutes = require("./exerciseRoutes");
 const workoutRoutes = require("./workoutRoutes");
+const shoeRoutes = require("./shoeRoutes");
 const resetRoutes = require("./resetRoutes");
 
 // User routes
@@ -13,6 +14,9 @@ router.use("/workouts", workoutRoutes);
 
 // Exercise routes
 router.use("/exercises", exerciseRoutes);
+
+// Shoe routes
+router.use("/shoes", shoeRoutes);
 
 // Reset routes
 router.use("/reset", resetRoutes);
