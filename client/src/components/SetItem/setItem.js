@@ -136,7 +136,7 @@ class SetItem extends Component {
                 </div>
                 {/* SAVE */}
                 <button
-                        className="btn btn-success btn-sm saveSetBtn saveBtn"
+                        className="btn btn-outline-success btn-sm saveSetBtn saveBtn"
                         onClick={this.saveData}
                     >
                         <FontAwesomeIcon className="fa-2x faSave" icon={faSave} />

@@ -6,6 +6,7 @@
     font-size: 13px;
     margin: 1px;
     max-width: 100px;
+    margin-right: 1px;
 }
 
 .exActual {
@@ -35,6 +36,7 @@
 }
 
 .saveSetBtn {
+    border-right: 1px solid #28a745;
     height: 34px;
 }
 
