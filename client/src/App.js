@@ -254,29 +254,27 @@ class App extends Component {
   getAllWorkouts = () => {
     workoutAPI.getAllWorkouts()
       .then((res) => {
-        this.setState({
-          allActivity: res.data,
-        });
+
+        this.sortByDate(res.data);
       });
   }
 
-  // sortByDate = (allActivity) => {
-  //   allActivity.sort(this.compare);
+  sortByDate = (allActivity) => {
+    allActivity.sort(this.compare);
 
-  //   this.setState({
-  //     allActivity: allActivity,
-  //     loadingActivity: false,
-  //   });
-  // }
+    this.setState({
+      allActivity: allActivity,
+    });
+  }
 
-  // compare = (a, b) => {
-  //   if (a.date === b.date) {
-  //     return 0;
-  //   }
-  //   else {
-  //     return (a.date > b.date) ? -1 : 1;
-  //   }
-  // }
+  compare = (a, b) => {
+    if (a.date === b.date) {
+      return 0;
+    }
+    else {
+      return (a.date > b.date) ? -1 : 1;
+    }
+  }
 
   deleteActivity = (workoutId) => {
 
