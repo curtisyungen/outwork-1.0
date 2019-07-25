@@ -92,8 +92,6 @@ class ShoeMetrics extends Component {
     getMiles = () => {
         let runs = this.props.userRuns;
 
-        console.log("Get Miles", runs);
-
         if (!runs) {
             return;
         }
@@ -106,7 +104,9 @@ class ShoeMetrics extends Component {
             }
         }
 
-        console.log(shoeMiles);
+        this.setState({
+            shoeMiles: shoeMiles,
+        });
     }
 
     render() {
@@ -130,6 +130,7 @@ class ShoeMetrics extends Component {
                                     buyDate={shoe.buyDate}
                                     miles={shoe.miles}
                                     wears={shoe.wears}
+                                    shoeMiles={this.state.shoeMiles}
                                     deleteShoe={this.deleteShoe}
                                 />
                             ))
