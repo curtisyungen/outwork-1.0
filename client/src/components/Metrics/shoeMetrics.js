@@ -90,7 +90,9 @@ class ShoeMetrics extends Component {
     }
 
     getMiles = () => {
-        let runs = this.state.userRuns;
+        let runs = this.props.userRuns;
+
+        console.log("Get Miles", runs);
 
         if (!runs) {
             return;
