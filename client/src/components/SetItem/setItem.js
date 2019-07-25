@@ -96,18 +96,49 @@ class SetItem extends Component {
                 </div>
 
                 <div className="exActual">
+                    {/* ACTUAL REPS */}
                     <input
                         autoComplete="off"
                         name="actualReps"
                         type="text"
                         className="form-control actualReps"
-                        placeholder="Actual"
+                        placeholder="Actual Reps"
                         onChange={this.handleInputChange}
                         value={this.state.actualReps}
                     />
+                    {/* WEIGHT */}
+                    <input
+                        autoComplete="off"
+                        name="weight"
+                        type="text"
+                        className="form-control"
+                        placeholder="Weight"
+                        onChange={this.handleInputChange}
+                        value={this.state.weight}
+                    />
+                    {/* REST */}
+                    <input
+                        autoComplete="off"
+                        name="rest"
+                        type="text"
+                        className="form-control"
+                        placeholder="Rest"
+                        onChange={this.handleInputChange}
+                        value={this.state.rest}
+                    />
+                    {/* NOTES */}
+                    <input
+                        autoComplete="off"
+                        name="notes"
+                        type="text"
+                        className="form-control"
+                        placeholder="Notes"
+                        onChange={this.handleInputChange}
+                        value={this.state.notes}
+                    />
                 </div>
 
-                <div className="setItemIcons">
+                {/* <div className="setItemIcons">
                     
                     <FontAwesomeIcon 
                         className={`setIcon icon-${this.state.weight && this.state.weight !== ""}`} 
@@ -124,7 +155,7 @@ class SetItem extends Component {
                         icon={faPencilAlt} 
                         onClick={this.openModal.bind(null, "notes")} 
                     />
-                </div>
+                </div> */}
 
                 {this.state.openWeightModal ? (
                     <Modal
