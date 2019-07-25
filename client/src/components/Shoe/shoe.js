@@ -50,6 +50,8 @@ class Shoe extends Component {
         this.setState({
             miles: miles,
             wears: wears,
+        }, () => {
+            console.log(this.state);
         });
     }
 
@@ -66,11 +68,11 @@ class Shoe extends Component {
                 </div>
                 <div className="shoeData">
                     <div className="shoeTitle">Miles</div>
-                    <div>{this.props.miles}</div>
+                    <div>{this.state.miles}</div>
                 </div>
                 <div className="shoeData">
                     <div className="shoeTitle">Wears</div>
-                    <div>{this.props.wears}</div>
+                    <div>{this.state.wears}</div>
                 </div>
                 
                 {/* DELETE */}
