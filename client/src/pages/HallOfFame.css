@@ -1,3 +1,15 @@
+.hofHover {
+    background: rgb(242, 242, 242);
+    display: inline-block;
+    height: 150px;
+    opacity: 0;
+    width: 200px;
+}
+
+.hofHover:hover {
+    opacity: 0.75;
+}
+
 .hofIcon {
 
 }
@@ -16,12 +28,8 @@
     width: 200px;
 }
 
-.hofMetric:first-child {
-    margin-top: 25px;
-}
-
 .hofName {
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .hofTitle {
