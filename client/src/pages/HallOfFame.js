@@ -148,7 +148,7 @@ class HallOfFame extends Component {
 
                         {/* MOST WORKOUTS */}
                         <div className="hofMetric">
-                            <div className="hofHover">Most number of total workouts</div>
+                            <div className="hofHover">Highest number of workouts completed of any type.</div>
                             <div className="hofIcon"><FontAwesomeIcon className="fa-3x trophyIcon" icon={faTrophy} /></div>
                             <div className="hofTitle">Most Workouts</div>
                             <div className="hofName">{this.state.globalData[0][0]}</div>
@@ -157,7 +157,7 @@ class HallOfFame extends Component {
 
                         {/* MOST REST DAYS */}
                         <div className="hofMetric">
-                            <div className="hofHover">Most number of rest days. Winner here needs to stop cuddling with blanky, get the fuck out of bed, and quit being a lazy bitch.</div>
+                            <div className="hofHover">Most number of rest days. Person here needs to stop cuddling with blanky, get the fuck out of bed, and quit being a lazy bitch.</div>
                             <div className="hofIcon"><FontAwesomeIcon className="fa-3x restIcon" icon={faBed} /></div>
                             <div className="hofTitle">Most Rest Days</div>
                             <div className="hofName">{this.state.globalData[1][0]}</div>
@@ -175,7 +175,7 @@ class HallOfFame extends Component {
 
                         {/* GREATEST CLIMB */}
                         <div className="hofMetric">
-                            <div className="hofHover">Most elevation climbed in single workout.</div>
+                            <div className="hofHover">Most elevation climbed in single workout. Measured in feet.</div>
                             <div className="hofIcon"><FontAwesomeIcon className="fa-3x mountainIcon" icon={faMountain} /></div>
                             <div className="hofTitle">Greatest Climb</div>
                             <div className="hofName">{this.state.globalData[3][0]}</div>
@@ -184,7 +184,7 @@ class HallOfFame extends Component {
 
                         {/* MOST PUSH-UPS */}
                         <div className="hofMetric">
-                            <div className="hofHover">Most push-ups in a single workout.</div>
+                            <div className="hofHover">Most push-ups done in a single workout.</div>
                             <div className="hofIcon"><FontAwesomeIcon className="fa-3x silverMedalIcon" icon={faMedal} /></div>
                             <div className="hofTitle">Most Push-Ups</div>
                             <div className="hofName">{this.state.globalData[4][0]}</div>
@@ -193,7 +193,7 @@ class HallOfFame extends Component {
 
                         {/* MOST PULL-UPS */}
                         <div className="hofMetric">
-                            <div className="hofHover">Most pull-ups in a single workout.</div>
+                            <div className="hofHover">Most pull-ups done in a single workout.</div>
                             <div className="hofIcon"><FontAwesomeIcon className="fa-3x bronzeMedalIcon" icon={faMedal} /></div>
                             <div className="hofTitle">Most Pull-Ups</div>
                             <div className="hofName">{this.state.globalData[5][0]}</div>
@@ -202,7 +202,7 @@ class HallOfFame extends Component {
 
                         {/* MOST GOGGINS WORKOUTS */}
                         <div className="hofMetric">
-                            <div className="hofHover">Most Goggins workouts completed. Total badass.</div>
+                            <div className="hofHover">Most Goggins workouts completed. Winner here is a total badass.</div>
                             <div className="hofIcon"><FontAwesomeIcon className="fa-3x dragonIcon" icon={faDragon} /></div>
                             <div className="hofTitle">Most Goggins</div>
                             <div className="hofName">{this.state.globalData[6][0]}</div>
