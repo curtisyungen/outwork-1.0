@@ -117,6 +117,8 @@ class HallOfFame extends Component {
     // Sets user metric as global max if appropriate
     compareMetrics = (userData) => {
 
+        console.log(userData);
+
         let globalData = this.state.globalData;
         let name = userData[0];
 
@@ -128,15 +130,22 @@ class HallOfFame extends Component {
 
         this.setState({
             globalData: globalData,
-        }, () => {
-            console.log(this.state);
         });
     }
 
     render() {
         return (
             <div className="container pageContainer">
-
+                {this.state.globalData ? (
+                    this.state.globalData.map(data => (
+                        <div>
+                            {data[0]}
+                            {data[1]}
+                        </div>
+                    ))
+                ) : (
+                    <></>
+                )}
             </div>
         )
     }
