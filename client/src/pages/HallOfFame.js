@@ -53,11 +53,14 @@ class HallOfFame extends Component {
     // Loop to get maximums for each user
     getActivity = () => {
         let users = this.state.users;
+        console.log("Users", users);
 
         for (var u in users) {
+            let firstName = users[u].firstName;
             workoutAPI.getAllWorkoutsByUserId(users[u].userId)
                 .then((res) => {
-                    this.getUserMaxes(users[u].firstName, res.data);
+                    console.log("First", firstName);
+                    this.getUserMaxes(firstName, res.data);
                 });
         }
     }
