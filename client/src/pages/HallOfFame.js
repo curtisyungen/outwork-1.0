@@ -5,6 +5,15 @@ import "./HallOfFame.css";
 
 class HallOfFame extends Component {
 
+    // Global data: 
+    // most workouts, 
+    // most rest days, 
+    // longest run, 
+    // greatest climb, 
+    // most push-ups, 
+    // most pull-ups, 
+    // most Goggins workouts
+
     constructor(props) {
         super(props);
 
@@ -66,7 +75,6 @@ class HallOfFame extends Component {
         let userGoggins = 0;
 
         for (var a in activity) {
-
             if (activity[a].workoutType === "run") {
                 // LONGEST RUN
                 if (activity[a].distance > userLongestRun) {
@@ -106,6 +114,7 @@ class HallOfFame extends Component {
         this.compareMetrics(userData);
     }
 
+    // Sets user metric as global max if appropriate
     compareMetrics = (userData) => {
 
         let globalData = this.state.globalData;
@@ -113,7 +122,7 @@ class HallOfFame extends Component {
 
         for (var i=1; i<userData.length; i++) {
             if (userData[i] > globalData[i][1]) {
-                globalData[i] === [name, userData[i]];
+                globalData[i] = [name, userData[i]];
             }
         }
 
