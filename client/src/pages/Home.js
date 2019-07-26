@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Container from "../components/Container/container";
 import UserActivity from "../components/UserActivity/userActivity";
+import workoutAPI from "../utils/workoutAPI";
 import "./Home.css";
 
 class Home extends Component {
@@ -120,14 +121,16 @@ class Home extends Component {
                         filtered.push(activity[a]);
                     }
                 }
+
+                this.sortByDate(filtered);
             }
         }
-        
-        this.setState({
-            filtered: filtered,
-            message: "No activity found.",
-        });
-        
+        else {
+            workoutAPI.getAllWorkouts()
+                .then((res) => {
+                    this.sortByDate(res.data);
+                });
+        }        
     }
 
     selectCategory = (category) => {
@@ -135,6 +138,24 @@ class Home extends Component {
             category: category,
         });
     }
+
+    sortByDate = (allActivity) => {
+        allActivity.sort(this.compare);
+    
+        this.setState({
+          filtered: allActivity,
+          message: "No activity found.",
+        });
+      }
+    
+      compare = (a, b) => {
+        if (a.date === b.date) {
+          return 0;
+        }
+        else {
+          return (a.date > b.date) ? -1 : 1;
+        }
+      }
 
     render() {
         return (
@@ -152,6 +173,7 @@ class Home extends Component {
                                 {this.state.category}&nbsp;
                             </button>
                             <div className="dropdown-menu">
+                                <div className="dropdown-item" onClick={this.selectCategory.bind(null, "All")}>All</div>
                                 <div className="dropdown-item" onClick={this.selectCategory.bind(null, "Name")}>Name</div>
                                 <div className="dropdown-item" onClick={this.selectCategory.bind(null, "Date")}>Date</div>
                                 <div className="dropdown-item" onClick={this.selectCategory.bind(null, "Type")}>Type</div>
