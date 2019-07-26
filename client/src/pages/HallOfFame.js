@@ -142,7 +142,7 @@ class HallOfFame extends Component {
 
     render() {
         return (
-            <div className="container pageContainer">
+            <div className="container">
                 {this.state.globalData ? (
                     <span>
 
@@ -180,7 +180,7 @@ class HallOfFame extends Component {
 
                         {/* MOST PUSH-UPS */}
                         <div className="hofMetric">
-                            <div className="hofIcon"><FontAwesomeIcon className="fa-3x medalIcon" icon={faMedal} /></div>
+                            <div className="hofIcon"><FontAwesomeIcon className="fa-3x silverMedalIcon" icon={faMedal} /></div>
                             <div className="hofTitle">Most Push-Ups</div>
                             <div className="hofName">{this.state.globalData[4][0]}</div>
                             <div className="hofValue">{this.state.globalData[4][1]}</div>
@@ -188,7 +188,7 @@ class HallOfFame extends Component {
 
                         {/* MOST PULL-UPS */}
                         <div className="hofMetric">
-                            <div className="hofIcon"><FontAwesomeIcon className="fa-3x medalIcon" icon={faMedal} /></div>
+                            <div className="hofIcon"><FontAwesomeIcon className="fa-3x bronzeMedalIcon" icon={faMedal} /></div>
                             <div className="hofTitle">Most Pull-Ups</div>
                             <div className="hofName">{this.state.globalData[5][0]}</div>
                             <div className="hofValue">{this.state.globalData[5][1]}</div>
