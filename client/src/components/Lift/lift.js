@@ -35,8 +35,15 @@ class Lift extends Component {
     }
 
     getMuscleGroups = () => {
+        let muscleGroups = JSON.parse(this.props.muscleGroups);
+        let groups = [];
+        
+        if (muscleGroups !== null && muscleGroups.length > 1) {
+            groups = muscleGroups.join(", ");
+        }
+
         this.setState({
-            muscleGroups: this.props.muscleGroups,
+            muscleGroups: groups,
         });
     }
 
@@ -117,11 +124,11 @@ class Lift extends Component {
                                 </div>
                                 <div className="border-bottom">
                                     <div className="dataTitle">Muscle Groups</div>
-                                    <div className="dataPoint">{this.props.pullups}</div>
+                                    <div className="dataPoint">{this.props.muscleGroups}</div>
                                 </div>
                                 <div className="border-bottom">
                                     <div className="dataTitle">Notes</div>
-                                    <div className="dataPoint">{this.props.pullups}</div>
+                                    <div className="dataPoint">{this.props.notes}</div>
                                 </div>
                             </div>
                         </div>

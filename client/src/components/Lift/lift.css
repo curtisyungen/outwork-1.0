@@ -1,3 +1,13 @@
+.cell5 {
+    overflow: scroll;
+}
+
+.cell5::-webkit-scrollbar {
+    background: transparent;
+    height: 0;
+    width: 0;
+}
+
 .deleteActivity {
     float: right;
 }
