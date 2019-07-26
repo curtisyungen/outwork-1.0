@@ -5,9 +5,9 @@ import "./HallOfFame.css";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrophy } from '@fortawesome/free-solid-svg-icons';
+import { faTrophy, faBed, faRulerHorizontal, faMountain, faMedal, faDragon } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faTrophy);
+library.add(faTrophy, faBed, faRulerHorizontal, faMountain, faMedal, faDragon);
 
 class HallOfFame extends Component {
 
@@ -145,50 +145,58 @@ class HallOfFame extends Component {
             <div className="container pageContainer">
                 {this.state.globalData ? (
                     <span>
+
+                        {/* MOST WORKOUTS */}
                         <div className="hofMetric">
-                            <FontAwesomeIcon className="" icon={faTrophy} />
+                            <FontAwesomeIcon className="fa-3x" icon={faTrophy} />
                             <div className="hofTitle">Most Workouts</div>
                             <div className="hofName">{this.state.globalData[0][0]}</div>
                             <div className="hofValue">{this.state.globalData[0][1]}</div>
                         </div>
 
+                        {/* MOST REST DAYS */}
                         <div className="hofMetric">
-                            <FontAwesomeIcon className="" icon={faTrophy} />
+                            <FontAwesomeIcon className="fa-3x" icon={faBed} />
                             <div className="hofTitle">Most Rest Days</div>
                             <div className="hofName">{this.state.globalData[1][0]}</div>
                             <div className="hofValue">{this.state.globalData[1][1]}</div>
                         </div>
 
+                        {/* LONGEST RUN */}
                         <div className="hofMetric">
-                            <FontAwesomeIcon className="" icon={faTrophy} />
+                            <FontAwesomeIcon className="fa-3x" icon={faRulerHorizontal} />
                             <div className="hofTitle">Longest Run</div>
                             <div className="hofName">{this.state.globalData[2][0]}</div>
                             <div className="hofValue">{this.state.globalData[2][1]}</div>
                         </div>
 
+                        {/* GREATEST CLIMB */}
                         <div className="hofMetric">
-                            <FontAwesomeIcon className="" icon={faTrophy} />
+                            <FontAwesomeIcon className="fa-3x" icon={faMountain} />
                             <div className="hofTitle">Greatest Climb</div>
                             <div className="hofName">{this.state.globalData[3][0]}</div>
                             <div className="hofValue">{this.state.globalData[3][1]}</div>
                         </div>
 
+                        {/* MOST PUSH-UPS */}
                         <div className="hofMetric">
-                            <FontAwesomeIcon className="" icon={faTrophy} />
+                            <FontAwesomeIcon className="fa-3x" icon={faMedal} />
                             <div className="hofTitle">Most Push-Ups</div>
                             <div className="hofName">{this.state.globalData[4][0]}</div>
                             <div className="hofValue">{this.state.globalData[4][1]}</div>
                         </div>
 
+                        {/* MOST PULL-UPS */}
                         <div className="hofMetric">
-                            <FontAwesomeIcon className="" icon={faTrophy} />
+                            <FontAwesomeIcon className="fa-3x" icon={faMedal} />
                             <div className="hofTitle">Most Pull-Ups</div>
                             <div className="hofName">{this.state.globalData[5][0]}</div>
                             <div className="hofValue">{this.state.globalData[5][1]}</div>
                         </div>
 
+                        {/* MOST GOGGINS WORKOUTS */}
                         <div className="hofMetric">
-                            <FontAwesomeIcon className="" icon={faTrophy} />
+                            <FontAwesomeIcon className="fa-3x" icon={faDragon} />
                             <div className="hofTitle">Most Goggins Workouts</div>
                             <div className="hofName">{this.state.globalData[6][0]}</div>
                             <div className="hofValue">{this.state.globalData[6][1]}</div>
