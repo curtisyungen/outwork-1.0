@@ -163,7 +163,7 @@ class HallOfFame extends Component {
         return (
             <div className="container">
                 {this.state.globalData ? (
-                    <span>
+                    <div className="hallOfFame">
 
                         {/* MOST WORKOUTS */}
                         <div className="hofMetric">
@@ -231,8 +231,8 @@ class HallOfFame extends Component {
                         {/* MOST RACES */}
                         <div className="hofMetric">
                             <div className="hofHover">Most number of races completed.</div>
-                            <div className="hofIcon"><FontAwesomeIcon className="fa-3x dragonIcon" icon={faFlagCheckered} /></div>
-                            <div className="hofTitle">Most Racist</div>
+                            <div className="hofIcon"><FontAwesomeIcon className="fa-3x flagIcon" icon={faFlagCheckered} /></div>
+                            <div className="hofTitle">Most Races</div>
                             <div className="hofName">{this.state.globalData[7][0]}</div>
                             <div className="hofValue">{this.state.globalData[7][1]}</div>
                         </div>
@@ -240,12 +240,12 @@ class HallOfFame extends Component {
                         {/* MOST TIME */}
                         <div className="hofMetric">
                             <div className="hofHover">Most time spent working out. Measured in minutes.</div>
-                            <div className="hofIcon"><FontAwesomeIcon className="fa-3x dragonIcon" icon={faClock} /></div>
+                            <div className="hofIcon"><FontAwesomeIcon className="fa-3x clockIcon" icon={faClock} /></div>
                             <div className="hofTitle">Most Time</div>
                             <div className="hofName">{this.state.globalData[8][0]}</div>
                             <div className="hofValue">{this.state.globalData[8][1]} mins.</div>
                         </div>
-                    </span>
+                    </div>
                 ) : (
                         <></>
                     )
