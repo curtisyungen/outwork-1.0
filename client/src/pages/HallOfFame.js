@@ -197,7 +197,7 @@ class HallOfFame extends Component {
                         {/* MOST GOGGINS WORKOUTS */}
                         <div className="hofMetric">
                             <div className="hofIcon"><FontAwesomeIcon className="fa-3x dragonIcon" icon={faDragon} /></div>
-                            <div className="hofTitle">Most Goggins Workouts</div>
+                            <div className="hofTitle">Most Goggins</div>
                             <div className="hofName">{this.state.globalData[6][0]}</div>
                             <div className="hofValue">{this.state.globalData[6][1]}</div>
                         </div>

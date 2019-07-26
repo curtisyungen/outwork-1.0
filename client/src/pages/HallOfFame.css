@@ -6,12 +6,14 @@
     background: #fff;
     border: 1px solid black;
     border-radius: 4px;
-    height: auto;
-    margin: 5px auto;
+    display: inline-block;
+    height: 150px;
+    margin: 5px;
     max-width: 200px;
     padding: 10px 20px;
     text-align: center;
     vertical-align: middle;
+    width: 200px;
 }
 
 .hofMetric:first-child {
