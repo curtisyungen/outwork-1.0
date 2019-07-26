@@ -15,7 +15,7 @@ import SubmitBike from "./pages/SubmitBike";
 import SubmitSwim from "./pages/SubmitSwim";
 import SubmitLift from "./pages/SubmitLift";
 import Generator from "./pages/Generator";
-import AllMetrics from "./pages/AllMetrics";
+import HallOfFame from "./pages/HallOfFame";
 // import FindUsers from "./pages/FindUsers";
 import AllUsers from "./pages/AllUsers";
 import Error from "./pages/Error";
@@ -485,9 +485,9 @@ class App extends Component {
               />
             } />
 
-            {/* All Metrics Page */}
-            <Route exact path="/allMetrics" render={() =>
-              <AllMetrics
+            {/* Hall Of Fame Page */}
+            <Route exact path="/hallOfFame" render={() =>
+              <HallOfFame
                 checkValidUser={this.checkValidUser}
                 background={this.state.background}
               />
