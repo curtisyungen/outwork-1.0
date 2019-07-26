@@ -172,6 +172,7 @@ class App extends Component {
                 localStorage.setItem("isLoggedIn", "true");
                 localStorage.setItem("userId", res.data.userId);
 
+                this.getAllWorkouts();
                 this.setRedirectToHome();
               }
             });
