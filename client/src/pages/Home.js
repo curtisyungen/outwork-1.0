@@ -140,7 +140,7 @@ class Home extends Component {
         return (
             <Container>
                 <div className={`homePage`}>
-                    <div className="input-group mb-4 mt-3">
+                    <div className="input-group mb-4 mt-4">
                         <div className="input-group-prepend">
                             <button 
                                 className="btn btn-dark dropdown-toggle" 
