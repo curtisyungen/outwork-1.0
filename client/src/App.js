@@ -44,7 +44,6 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-
     // Check if logged in
     let loginStatus = false;
     if (localStorage.getItem("isLoggedIn")) {
