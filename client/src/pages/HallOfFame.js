@@ -161,7 +161,7 @@ class HallOfFame extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="container pageContainer hofContainer">
                 {this.state.globalData ? (
                     <div className="hallOfFame">
 
