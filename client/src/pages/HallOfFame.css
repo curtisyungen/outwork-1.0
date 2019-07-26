@@ -1,5 +1,9 @@
+.hofIcon {
+    width: 15%;
+}
+
 .hofMetric {
-    background: rgb(200, 200, 200);
+    background: #fff;
     border: 1px solid black;
     border-radius: 4px;
     display: flex;
@@ -9,16 +13,19 @@
     margin: 5px;
     padding: 5px;
     vertical-align: middle;
-    width: 33%;
+}
+
+.hofName {
+    width: 25%;
 }
 
 .hofTitle {
-    width: 33%;
+    width: 35%;
 }
 
 .hofValue {
     text-align: right;
-    width: 33%;
+    width: 25%;
 }
 
 .trophyIcon {
@@ -26,7 +33,7 @@
 }
 
 .restIcon {
-    color: white;
+    color: rgb(128, 179, 255);
 }
 
 .rulerIcon {
@@ -42,5 +49,5 @@
 }
 
 .dragonIcon {
-    color: red;
+    color: rgb(185, 0, 0);
 }
