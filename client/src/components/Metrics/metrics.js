@@ -103,7 +103,7 @@ class Metrics extends Component {
                         <></>
                     )}
 
-                {this.state.userRuns ? (
+                {this.state.userRuns && (this.props.userId === localStorage.getItem("userId")) ? (
                     <ShoeMetrics
                         userId={this.state.userId}
                         userRuns={this.state.userRuns}
