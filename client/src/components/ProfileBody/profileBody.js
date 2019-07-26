@@ -62,19 +62,17 @@ class ProfileBody extends Component {
             <Container>
                 {this.state.userId ? (
                     <span>
-                    <Metrics 
-                        userId={this.props.userId}
-                    />
+                        <Metrics 
+                            userId={this.props.userId}
+                        />
 
-                    <Calendar 
-                        userId={this.props.userId}
-                    />
+                        <Calendar 
+                            userId={this.props.userId}
+                        />
                     </span>
                 ) : (
                     <p className="text-center">Loading metrics...</p>
                 )}
-
-                
 
                 <div className="myActivity">
                     <h4>User Activity</h4>
@@ -87,8 +85,8 @@ class ProfileBody extends Component {
                             />
                         ))
                     ) : (
-                            <p className="text-center">{this.state.message}</p>
-                        )}
+                        <p className="text-center">{this.state.message}</p>
+                    )}
                 </div>
             </Container>
         )

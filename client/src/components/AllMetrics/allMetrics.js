@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./allMetrics.css";
 
-class AllMetrics extends Component {
+class AllMetricsSub extends Component {
 
     constructor(props) {
         super(props);
@@ -19,8 +19,8 @@ class AllMetrics extends Component {
         });
     }
 
+    // Most rest days
     
-
     render() {
         return (
             <div className="allMetrics">
@@ -30,4 +30,4 @@ class AllMetrics extends Component {
     }
 }
 
-export default AllMetrics;
+export default AllMetricsSub;

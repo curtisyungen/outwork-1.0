@@ -20,7 +20,7 @@ class Navbar extends Component {
                     "/profile", 
                     "/logactivity", 
                     "/generator",
-                    "/allmetrics",
+                    "/halloffame",
                     "/allusers",
                     "/run",
                     "/bike",
@@ -56,9 +56,9 @@ class Navbar extends Component {
                         <li className="nav-item">
                             <a className="nav-link" href="/generator">Generator</a>
                         </li>
-                        {/* <li className="nav-item">
-                            <a className="nav-link" href="/allMetrics">Metrics</a>
-                        </li> */}
+                        <li className="nav-item">
+                            <a className="nav-link" href="/hallOfFame">Hall Of Fame</a>
+                        </li>
                         <li className="nav-item">
                             <a className="nav-link" href="/allUsers">Users</a>
                         </li>
