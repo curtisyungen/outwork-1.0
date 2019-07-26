@@ -15,7 +15,7 @@ import SubmitBike from "./pages/SubmitBike";
 import SubmitSwim from "./pages/SubmitSwim";
 import SubmitLift from "./pages/SubmitLift";
 import Generator from "./pages/Generator";
-import Streaks from "./pages/Streaks";
+import AllMetrics from "./pages/AllMetrics";
 // import FindUsers from "./pages/FindUsers";
 import AllUsers from "./pages/AllUsers";
 import Error from "./pages/Error";
@@ -282,7 +282,6 @@ class App extends Component {
 
     workoutAPI.deleteWorkoutById(userId, workoutId)
       .then((res) => {
-        console.log(res);
         window.location.reload();
       });
   }
@@ -486,9 +485,9 @@ class App extends Component {
               />
             } />
 
-            {/* Streaks Page */}
-            <Route exact path="/streaks" render={() =>
-              <Streaks
+            {/* All Metrics Page */}
+            <Route exact path="/allMetrics" render={() =>
+              <AllMetrics
                 checkValidUser={this.checkValidUser}
                 background={this.state.background}
               />
