@@ -1,5 +1,5 @@
 .hallOfFame {
-    max-width: 600px;
+    max-width: 1000px;
 }
 
 .hofContainer {
@@ -102,7 +102,7 @@
 }
 
 .longestRun {
-    background: rgb(161, 118, 118);
+    background: rgb(199, 151, 151);
 }
 
 .mostClimb {
@@ -110,7 +110,7 @@
 }
 
 .mostPushUps {
-    background: rgb(222, 222, 222);
+    background: rgb(205, 216, 180);
 }
 
 .mostPullUps {
@@ -119,6 +119,7 @@
 
 .mostGoggins {
     background: black;
+    color: white;
 }
 
 .mostRaces {
@@ -126,5 +127,5 @@
 }
 
 .mostTime {
-    background: rgb(200, 200, 200);
+    background: rgb(156, 93, 130);
 }
