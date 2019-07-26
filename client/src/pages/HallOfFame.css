@@ -1,13 +1,19 @@
 .hofHover {
     background: rgb(242, 242, 242);
+    border-radius: 4px;
     display: inline-block;
+    font-size: 13px;
     height: 150px;
+    margin-left: -100px;
+    margin-top: -11px;
     opacity: 0;
+    padding-top: 25px;
+    position: absolute;
     width: 200px;
 }
 
 .hofHover:hover {
-    opacity: 0.75;
+    opacity: 0.95;
 }
 
 .hofIcon {
