@@ -146,49 +146,49 @@ class HallOfFame extends Component {
                 {this.state.globalData ? (
                     <span>
                         <div className="hofMetric">
-                            <FontAwesome className="" icon={faTrophy} />
+                            <FontAwesomeIcon className="" icon={faTrophy} />
                             <div className="hofTitle">Most Workouts</div>
                             <div className="hofName">{this.state.globalData[0][0]}</div>
                             <div className="hofValue">{this.state.globalData[0][1]}</div>
                         </div>
 
                         <div className="hofMetric">
-                            <FontAwesome className="" icon={faTrophy} />
+                            <FontAwesomeIcon className="" icon={faTrophy} />
                             <div className="hofTitle">Most Rest Days</div>
                             <div className="hofName">{this.state.globalData[1][0]}</div>
                             <div className="hofValue">{this.state.globalData[1][1]}</div>
                         </div>
 
                         <div className="hofMetric">
-                            <FontAwesome className="" icon={faTrophy} />
+                            <FontAwesomeIcon className="" icon={faTrophy} />
                             <div className="hofTitle">Longest Run</div>
                             <div className="hofName">{this.state.globalData[2][0]}</div>
                             <div className="hofValue">{this.state.globalData[2][1]}</div>
                         </div>
 
                         <div className="hofMetric">
-                            <FontAwesome className="" icon={faTrophy} />
+                            <FontAwesomeIcon className="" icon={faTrophy} />
                             <div className="hofTitle">Greatest Climb</div>
                             <div className="hofName">{this.state.globalData[3][0]}</div>
                             <div className="hofValue">{this.state.globalData[3][1]}</div>
                         </div>
 
                         <div className="hofMetric">
-                            <FontAwesome className="" icon={faTrophy} />
+                            <FontAwesomeIcon className="" icon={faTrophy} />
                             <div className="hofTitle">Most Push-Ups</div>
                             <div className="hofName">{this.state.globalData[4][0]}</div>
                             <div className="hofValue">{this.state.globalData[4][1]}</div>
                         </div>
 
                         <div className="hofMetric">
-                            <FontAwesome className="" icon={faTrophy} />
+                            <FontAwesomeIcon className="" icon={faTrophy} />
                             <div className="hofTitle">Most Pull-Ups</div>
                             <div className="hofName">{this.state.globalData[5][0]}</div>
                             <div className="hofValue">{this.state.globalData[5][1]}</div>
                         </div>
 
                         <div className="hofMetric">
-                            <FontAwesome className="" icon={faTrophy} />
+                            <FontAwesomeIcon className="" icon={faTrophy} />
                             <div className="hofTitle">Most Goggins Workouts</div>
                             <div className="hofName">{this.state.globalData[6][0]}</div>
                             <div className="hofValue">{this.state.globalData[6][1]}</div>
