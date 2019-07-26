@@ -121,7 +121,7 @@ class HallOfFame extends Component {
             }
 
             // MOST TIME
-            let time = activity[a].split(":");
+            let time = activity[a].duration.split(":");
             let hours = parseFloat(time[0]);
             let mins = parseFloat(time[1]);
             let secs = parseFloat(time[2]);
