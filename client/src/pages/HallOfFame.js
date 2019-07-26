@@ -24,7 +24,7 @@ class HallOfFame extends Component {
     }
 
     componentDidMount = () => {
-        let globalData = [];
+        let globalData = ["blank"];
 
         for (var i=0; i < 7; i++) {
             globalData.push([null, 0]);
