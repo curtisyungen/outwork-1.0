@@ -3,16 +3,44 @@
     border: 1px solid black;
     border-radius: 4px;
     display: flex;
+    font-size: 22px;
+    font-weight: 400;
     height: auto;
     margin: 5px;
     padding: 5px;
     vertical-align: middle;
+    width: 33%;
 }
 
 .hofTitle {
-
+    width: 33%;
 }
 
 .hofValue {
+    text-align: right;
+    width: 33%;
+}
 
+.trophyIcon {
+    color: gold;
+}
+
+.restIcon {
+    color: white;
+}
+
+.rulerIcon {
+    color: #DEB887;
+}
+
+.mountainIcon {
+    color: rgb(156, 46, 156);
+}
+
+.medalIcon {
+    color: #C0C0C0;
+}
+
+.dragonIcon {
+    color: red;
 }
