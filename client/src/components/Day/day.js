@@ -55,7 +55,6 @@ class Day extends Component {
                     {this.props.day.workoutType === "lift" ? (
                         <span>
                             <div>Generator: {this.props.day.generator}</div>
-                            <div className="popupData">Muscle Groups: {this.props.day.muscleGroups}</div>
                         </span>
                     ): (
                         <></>
