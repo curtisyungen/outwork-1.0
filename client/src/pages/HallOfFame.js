@@ -128,6 +128,8 @@ class HallOfFame extends Component {
 
         this.setState({
             globalData: globalData,
+        }, () => {
+            console.log(this.state);
         });
     }
 
