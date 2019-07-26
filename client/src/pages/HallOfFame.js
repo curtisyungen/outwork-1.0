@@ -5,9 +5,9 @@ import "./HallOfFame.css";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrophy, faBed, faRulerHorizontal, faMountain, faMedal, faDragon } from '@fortawesome/free-solid-svg-icons';
+import { faTrophy, faBed, faRulerHorizontal, faMountain, faMedal, faDragon, faClock, faFlagCheckered } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faTrophy, faBed, faRulerHorizontal, faMountain, faMedal, faDragon);
+library.add(faTrophy, faBed, faRulerHorizontal, faMountain, faMedal, faDragon, faClock, faFlagCheckered);
 
 class HallOfFame extends Component {
 
@@ -18,7 +18,9 @@ class HallOfFame extends Component {
     // greatest climb, 
     // most push-ups, 
     // most pull-ups, 
-    // most Goggins workouts
+    // most Goggins workouts,
+    // most races,
+    // most time spent,
 
     constructor(props) {
         super(props);
@@ -32,7 +34,7 @@ class HallOfFame extends Component {
     componentDidMount = () => {
         let globalData = [];
 
-        for (var i = 0; i < 7; i++) {
+        for (var i = 0; i < 9; i++) {
             globalData.push([null, 0]);
         }
 
@@ -80,6 +82,8 @@ class HallOfFame extends Component {
         let userPushUps = 0;
         let userPullUps = 0;
         let userGoggins = 0;
+        let userRaces = 0;
+        let userTime = 0;
 
         for (var a in activity) {
             if (activity[a].workoutType === "run") {
@@ -110,12 +114,27 @@ class HallOfFame extends Component {
             if (activity[a].generator === "Goggins") {
                 userGoggins += 1;
             }
+
+            // MOST RACES
+            if (activity[a].race && activity[a].race !== "") {
+                userRaces += 1;
+            }
+
+            // MOST TIME
+            let time = activity[a].split(":");
+            let hours = parseFloat(time[0]);
+            let mins = parseFloat(time[1]);
+            let secs = parseFloat(time[2]);
+
+            let totalMins = (hours * 60) + mins + (secs / 60);
+
+            userTime += totalMins;
         }
 
         let userData = [
             userName, userWorkouts, userRestDays,
             userLongestRun, userClimb, userPushUps,
-            userPullUps, userGoggins
+            userPullUps, userGoggins, userRaces, userTime,
         ];
 
         this.compareMetrics(userData);
@@ -207,6 +226,24 @@ class HallOfFame extends Component {
                             <div className="hofTitle">Most Goggins</div>
                             <div className="hofName">{this.state.globalData[6][0]}</div>
                             <div className="hofValue">{this.state.globalData[6][1]}</div>
+                        </div>
+
+                        {/* MOST RACES */}
+                        <div className="hofMetric">
+                            <div className="hofHover">Most number of races completed.</div>
+                            <div className="hofIcon"><FontAwesomeIcon className="fa-3x dragonIcon" icon={faFlagCheckered} /></div>
+                            <div className="hofTitle">Most Racist</div>
+                            <div className="hofName">{this.state.globalData[7][0]}</div>
+                            <div className="hofValue">{this.state.globalData[7][1]}</div>
+                        </div>
+
+                        {/* MOST TIME */}
+                        <div className="hofMetric">
+                            <div className="hofHover">Most time spent working out. Measured in minutes.</div>
+                            <div className="hofIcon"><FontAwesomeIcon className="fa-3x dragonIcon" icon={faClock} /></div>
+                            <div className="hofTitle">Most Time</div>
+                            <div className="hofName">{this.state.globalData[8][0]}</div>
+                            <div className="hofValue">{this.state.globalData[8][1]}</div>
                         </div>
                     </span>
                 ) : (
