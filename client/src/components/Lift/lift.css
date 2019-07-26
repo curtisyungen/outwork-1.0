@@ -1,3 +1,35 @@
+.border-baby {
+    border-right: 3px solid rgb(255, 88, 116);
+}
+
+.border-easy {
+    border-right: 3px solid lightgreen;
+}
+
+.border-average {
+    border-right: 3px solid rgb(255, 225, 53);
+}
+
+.border-superior {
+    border-right: 3px solid lightblue;
+}
+
+.border-hero {
+    border-right: 3px solid rgb(45, 178, 223);
+}
+
+.border-superman {
+    border-right: 3px solid rgb(58, 58, 255);
+}
+
+.border-rogan {
+    border-right: 3px solid rgb(180, 180, 180);
+}
+
+.border-goggins {
+    border-right: 3px solid black;
+}
+
 .cell5 {
     overflow: scroll;
 }

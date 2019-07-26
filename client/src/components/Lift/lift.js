@@ -73,7 +73,7 @@ class Lift extends Component {
         return (
             <span>
                 <div className="d-flex flex-row actCard" onClick={this.openModal}>
-                    <div className="liftIcon"><FontAwesomeIcon className="fa-2x icon" icon={faDumbbell} /></div>
+                    <div className={`liftIcon border-${this.props.generator.toLowerCase()}`}><FontAwesomeIcon className="fa-2x icon" icon={faDumbbell} /></div>
                     <div className="cell"><span className="cellDesc">Name</span>{this.props.firstName}</div>
                     <div className="cell"><span className="cellDesc">Date</span>{this.props.date}</div>
                     <div className="cell"><span className="cellDesc">Generator</span>{this.props.generator}</div>
