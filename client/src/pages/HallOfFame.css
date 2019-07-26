@@ -1,3 +1,7 @@
+.hallOfFame {
+    max-width: 600px;
+}
+
 .hofHover {
     background: rgb(242, 242, 242);
     border-radius: 4px;
@@ -23,7 +27,7 @@
 
 .hofMetric {
     background: #fff;
-    border: 1px solid black;
+    border: 1px solid rgb(252, 252, 252);
     border-radius: 4px;
     display: inline-block;
     height: 150px;
@@ -74,4 +78,12 @@
 
 .dragonIcon {
     color: rgb(185, 0, 0);
+}
+
+.flagIcon {
+    color: #000;
+}
+
+.clockIcon {
+    color: #fff;
 }
