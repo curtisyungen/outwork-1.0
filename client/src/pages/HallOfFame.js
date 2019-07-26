@@ -10,20 +10,25 @@ class HallOfFame extends Component {
 
         this.state = {
             users: null,
-            maxWorkouts: [null, 0],
-            mostRestDays: [null, 0],
-            longestRun: [null, 0],
-            maxClimb: [null, 0],
-            maxPushUps: [null, 0],
-            maxPullUps: [null, 0],
-            maxGoggins: [null, 0],
+            globalData: null,
         }
     }
 
     componentDidMount = () => {
-        this.getAllUsers();
+        let globalData = [];
+
+        for (var i=0; i < 7; i++) {
+            globalData.push([null, 0]);
+        }
+
+        this.setState({
+            globalData: globalData,
+        }, () => {
+            this.getAllUsers();
+        });
     }
 
+    // Get all users from database
     getAllUsers = () => {
         userAPI.getAllUsers()
             .then((res) => {
@@ -35,18 +40,22 @@ class HallOfFame extends Component {
             });
     }
 
+    // Get activity for each user
+    // Loop to get maximums for each user
     getActivity = () => {
         let users = this.state.users;
 
         for (var u in users) {
             workoutAPI.getAllWorkoutsByUserId(users[u].userId)
-            .then((res) => {
-                this.getMetrics(users[u].firstName, res.data);
-            });
+                .then((res) => {
+                    this.getUserMaxes(users[u].firstName, res.data);
+                });
         }
     }
 
-    getMetrics = (userName, activity) => {
+    // Calculate maximums for each user
+    // Determine if it's maximum of all users
+    getUserMaxes = (userName, activity) => {
 
         let userWorkouts = activity.length;
         let userRestDays = 365 - userWorkouts;
@@ -88,80 +97,35 @@ class HallOfFame extends Component {
             }
         }
 
-        let maxWorkouts = this.compareMetrics(userName, this.state.maxWorkouts, userWorkouts);
-        let mostRestDays = this.compareMetrics(userName, this.state.mostRestDays, userRestDays);
-        let longestRun = this.compareMetrics(userName, this.state.longestRun, userLongestRun);
-        let maxClimb = this.compareMetrics(userName, this.state.maxClimb, userClimb);
-        let maxPushUps = this.compareMetrics(userName, this.state.maxPushUps, userPushUps);
-        let maxPullUps = this.compareMetrics(userName, this.state.maxPullUps, userPullUps);
-        let maxGoggins = this.compareMetrics(userName, this.state.maxGoggins, userGoggins);
+        let userData = [
+            userName, userWorkouts, userRestDays, 
+            userLongestRun, userClimb, userPushUps, 
+            userPullUps, userGoggins
+        ];
+
+        this.compareMetrics(userData);
+    }
+
+    compareMetrics = (userData) => {
+
+        let globalData = this.state.globalData;
+        let name = userData[0];
+
+        for (var i=1; i<userData.length; i++) {
+            if (userData[i] > globalData[i][1]) {
+                globalData[i] === [name, userData[i]];
+            }
+        }
 
         this.setState({
-            maxWorkouts: maxWorkouts,
-            mostRestDays: mostRestDays,
-            longestRun: longestRun,
-            maxClimb: maxClimb,
-            maxPushUps: maxPushUps,
-            maxPullUps: maxPullUps, 
-            maxGoggins: maxGoggins,
+            globalData: globalData,
         });
-
     }
-
-    compareMetrics = (userName, globalMetric, userMetric) => {
-        if (globalMetric[1] < userMetric) {
-            return [userName, userMetric];
-        }
-        else {
-            return globalMetric;
-        }
-    }
-
 
     render() {
         return (
             <div className="container pageContainer">
-                <div className="hofMetric">
-                    <div className="hofTitle">Most Workouts</div>
-                    <div className="hofName">{this.state.maxWorkouts[0]}</div>
-                    <div className="hofValue">{this.state.maxWorkouts[1]}</div>
-                </div>
-                
-                <div className="hofMetric">
-                    <div className="hofTitle">Most Rest Days</div>
-                    <div className="hofName">{this.state.mostRestDays[0]}</div>
-                    <div className="hofValue">{this.state.mostRestDays[1]}</div>
-                </div>
 
-                <div className="hofMetric">
-                    <div className="hofTitle">Longest Run</div>
-                    <div className="hofName">{this.state.longestRun[0]}</div>
-                    <div className="hofValue">{this.state.longestRun[1]}</div>
-                </div>
-
-                <div className="hofMetric">
-                    <div className="hofTitle">Max Climb</div>
-                    <div className="hofName">{this.state.maxClimb[0]}</div>
-                    <div className="hofValue">{this.state.maxClimb[1]}</div>
-                </div>
-
-                <div className="hofMetric">
-                    <div className="hofTitle">Max Push-Ups</div>
-                    <div className="hofName">{this.state.maxPushUps[0]}</div>
-                    <div className="hofValue">{this.state.maxPushUps[1]}</div>
-                </div>
-
-                <div className="hofMetric">
-                    <div className="hofTitle">Max Pull-Ups</div>
-                    <div className="hofName">{this.state.maxPullUps[0]}</div>
-                    <div className="hofValue">{this.state.maxPullUps[1]}</div>
-                </div>
-
-                <div className="hofMetric">
-                    <div className="hofTitle">Max Goggins</div>
-                    <div className="hofName">{this.state.maxGoggins[0]}</div>
-                    <div className="hofValue">{this.state.maxGoggins[1]}</div>
-                </div>
             </div>
         )
     }
