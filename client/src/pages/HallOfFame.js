@@ -3,6 +3,12 @@ import workoutAPI from "../utils/workoutAPI";
 import userAPI from "../utils/userAPI";
 import "./HallOfFame.css";
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrophy } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faTrophy);
+
 class HallOfFame extends Component {
 
     // Global data: 
@@ -24,9 +30,9 @@ class HallOfFame extends Component {
     }
 
     componentDidMount = () => {
-        let globalData = ["blank"];
+        let globalData = [];
 
-        for (var i=0; i < 7; i++) {
+        for (var i = 0; i < 7; i++) {
             globalData.push([null, 0]);
         }
 
@@ -53,13 +59,11 @@ class HallOfFame extends Component {
     // Loop to get maximums for each user
     getActivity = () => {
         let users = this.state.users;
-        console.log("Users", users);
 
         for (var u in users) {
             let firstName = users[u].firstName;
             workoutAPI.getAllWorkoutsByUserId(users[u].userId)
                 .then((res) => {
-                    console.log("First", firstName);
                     this.getUserMaxes(firstName, res.data);
                 });
         }
@@ -109,8 +113,8 @@ class HallOfFame extends Component {
         }
 
         let userData = [
-            userName, userWorkouts, userRestDays, 
-            userLongestRun, userClimb, userPushUps, 
+            userName, userWorkouts, userRestDays,
+            userLongestRun, userClimb, userPushUps,
             userPullUps, userGoggins
         ];
 
@@ -120,12 +124,12 @@ class HallOfFame extends Component {
     // Sets user metric as global max if appropriate
     compareMetrics = (userData) => {
 
-        console.log(userData);
-
         let globalData = this.state.globalData;
         let name = userData[0];
 
-        for (var i=1; i<userData.length; i++) {
+        userData.shift();
+
+        for (var i = 0; i < userData.length; i++) {
             if (userData[i] > globalData[i][1]) {
                 globalData[i] = [name, userData[i]];
             }
@@ -140,15 +144,52 @@ class HallOfFame extends Component {
         return (
             <div className="container pageContainer">
                 {this.state.globalData ? (
-                    this.state.globalData.map(data => (
-                        <div>
-                            {data[0]}
-                            {data[1]}
+                    <span>
+                        <div className="hofMetric">
+                            <div className="hofTitle">Most Workouts</div>
+                            <div className="hofName">{this.state.globalData[0][0]}</div>
+                            <div className="hofValue">{this.state.globalData[0][1]}</div>
                         </div>
-                    ))
+
+                        <div className="hofMetric">
+                            <div className="hofTitle">Most Rest Days</div>
+                            <div className="hofName">{this.state.globalData[1][0]}</div>
+                            <div className="hofValue">{this.state.globalData[1][1]}</div>
+                        </div>
+
+                        <div className="hofMetric">
+                            <div className="hofTitle">Longest Run</div>
+                            <div className="hofName">{this.state.globalData[2][0]}</div>
+                            <div className="hofValue">{this.state.globalData[2][1]}</div>
+                        </div>
+
+                        <div className="hofMetric">
+                            <div className="hofTitle">Greatest Climb</div>
+                            <div className="hofName">{this.state.globalData[3][0]}</div>
+                            <div className="hofValue">{this.state.globalData[3][1]}</div>
+                        </div>
+
+                        <div className="hofMetric">
+                            <div className="hofTitle">Most Push-Ups</div>
+                            <div className="hofName">{this.state.globalData[4][0]}</div>
+                            <div className="hofValue">{this.state.globalData[4][1]}</div>
+                        </div>
+
+                        <div className="hofMetric">
+                            <div className="hofTitle">Most Pull-Ups</div>
+                            <div className="hofName">{this.state.globalData[5][0]}</div>
+                            <div className="hofValue">{this.state.globalData[5][1]}</div>
+                        </div>
+
+                        <div className="hofMetric">
+                            <div className="hofTitle">Most Goggins Workouts</div>
+                            <div className="hofName">{this.state.globalData[6][0]}</div>
+                            <div className="hofValue">{this.state.globalData[6][1]}</div>
+                        </div>
+                    </span>
                 ) : (
-                    <></>
-                )}
+                        <></>
+                    )}
             </div>
         )
     }
