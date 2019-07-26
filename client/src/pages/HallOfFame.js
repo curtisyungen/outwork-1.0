@@ -126,7 +126,7 @@ class HallOfFame extends Component {
             let mins = parseFloat(time[1]);
             let secs = parseFloat(time[2]);
 
-            let totalMins = (hours * 60) + mins + (secs / 60);
+            let totalMins = Math.round((hours * 60) + mins + (secs / 60));
 
             userTime += totalMins;
         }
@@ -243,7 +243,7 @@ class HallOfFame extends Component {
                             <div className="hofIcon"><FontAwesomeIcon className="fa-3x dragonIcon" icon={faClock} /></div>
                             <div className="hofTitle">Most Time</div>
                             <div className="hofName">{this.state.globalData[8][0]}</div>
-                            <div className="hofValue">{this.state.globalData[8][1]}</div>
+                            <div className="hofValue">{this.state.globalData[8][1]} mins.</div>
                         </div>
                     </span>
                 ) : (
