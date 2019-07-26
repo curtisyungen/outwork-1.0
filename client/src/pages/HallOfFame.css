@@ -1,9 +1,18 @@
-.metricsUser {
+.hofMetric {
     background: rgb(200, 200, 200);
     border: 1px solid black;
     border-radius: 4px;
-    cursor: pointer;
-    display: inline;
+    display: inline-block;
+    height: 100px;
     margin: 5px;
     padding: 5px;
+    vertical-align: middle;
+}
+
+.hofTitle {
+
+}
+
+.hofValue {
+
 }
