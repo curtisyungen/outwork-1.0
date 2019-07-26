@@ -22,6 +22,7 @@
 }
 
 .hofHover:hover {
+    border: 1px solid rgb(114, 114, 114);
     opacity: 1;
 }
 
@@ -90,4 +91,40 @@
 
 .clockIcon {
     color: #fff;
+}
+
+.mostWorkouts {
+    background: lightyellow;
+}
+
+.mostRestDays {
+    background: lightblue;
+}
+
+.longestRun {
+    background: rgb(161, 118, 118);
+}
+
+.mostClimb {
+    background: rgb(216, 189, 216);
+}
+
+.mostPushUps {
+    background: rgb(222, 222, 222);
+}
+
+.mostPullUps {
+    background: rgb(250, 223, 223);
+}
+
+.mostGoggins {
+    background: black;
+}
+
+.mostRaces {
+    background: rgb(190, 190, 190);
+}
+
+.mostTime {
+    background: rgb(200, 200, 200);
 }
