@@ -101,12 +101,12 @@ module.exports = function(sequelize, DataTypes) {
         },
         // Total number of push-ups in workout, all variations
         pushups: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: true,
         },
         // Total number of pull-up/chin-ups in workout, all variations
         pullups: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: true,
         },
         // Entire workout saved as string

@@ -7,7 +7,7 @@
     width: 100px !important;
 }
 
-.milePace {
+.grade, .milePace {
     border-bottom-right-radius: 3.2px;
     border-left: 0px;
     border-radius: 0px;

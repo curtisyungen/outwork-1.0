@@ -166,6 +166,16 @@ class SubmitRun extends Component {
             weather: weather,
         });
     }
+    
+    getGrade = () => {
+        let distance = this.state.distance;
+        let climb = this.state.climb;
+        let grade = ((climb / (distance * 5280)));
+
+        this.setState({
+            grade: grade,
+        });
+    }
 
     getShoes = () => {
         shoeAPI.getShoesByUserId(this.state.userId)
@@ -298,7 +308,10 @@ class SubmitRun extends Component {
                                 aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-sm"
                                 onChange={this.handleInputChange}
-                                onBlur={this.getMilePace}
+                                onBlur={() => {
+                                    this.getMilePace();
+                                    this.getGrade();
+                                }}
                             />
                         </div>
 
@@ -441,7 +454,12 @@ class SubmitRun extends Component {
                                 aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-sm"
                                 onChange={this.handleInputChange}
+                                onBlur={this.getGrade}
                             />
+                            {/* GRADE */}
+                            <div className="col-md-2 input-group-text grade">
+                                {this.state.grade}
+                            </div>
                         </div>
 
                         {/* SHOE */}
