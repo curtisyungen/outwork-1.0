@@ -10,18 +10,7 @@ import { faTrophy, faBed, faRulerHorizontal, faMountain, faMedal, faDragon, faCl
 library.add(faTrophy, faBed, faRulerHorizontal, faMountain, faMedal, faDragon, faClock, faFlagCheckered);
 
 class HallOfFame extends Component {
-
-    // Global data: 
-    // most workouts, 
-    // most rest days, 
-    // longest run, 
-    // greatest climb, 
-    // most push-ups, 
-    // most pull-ups, 
-    // most Goggins workouts,
-    // most races,
-    // most time spent,
-
+    
     constructor(props) {
         super(props);
 
