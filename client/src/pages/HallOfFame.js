@@ -10,7 +10,6 @@ import { faTrophy, faBed, faRulerHorizontal, faMountain, faMedal, faDragon, faCl
 library.add(faTrophy, faBed, faRulerHorizontal, faMountain, faMedal, faDragon, faClock, faFlagCheckered);
 
 class HallOfFame extends Component {
-    
     constructor(props) {
         super(props);
 
@@ -35,15 +34,25 @@ class HallOfFame extends Component {
 
         workoutAPI.getMaxWorkouts()
             .then((res) => {
-                this.setState({
-                    mostWorkouts: res.data[0],
-                });
-            });
+                let max = 0;
+                let maxName = "";
+                let min = 365;
+                let minName = "";
 
-        workoutAPI.getMinWorkouts()
-            .then((res) => {
+                for (var r in res.data) {
+                    if (res.data[r].workouts > max) {
+                        max = res.data[r].workouts;
+                        maxName = res.data[r].firstName;
+                    }
+                    if (res.data[r].workouts < min) {
+                        min = res.data[r].workouts;
+                        minName = res.data[r].firstName;
+                    }
+                }
+
                 this.setState({
-                    mostRestDays: [365 - parseInt(res.data[0].minWrkt), res.data[0].firstName],
+                    mostWorkouts: [max, maxName],
+                    mostRestDays: [365 - min, minName],
                 });
             });
 
@@ -77,15 +86,31 @@ class HallOfFame extends Component {
 
         workoutAPI.getMaxGoggins()
             .then((res) => {
+                let max = 0;
+                let maxName = "";
+                for (var r in res.data) {
+                    if (res.data[r].goggins > max) {
+                        max = res.data[r].goggins;
+                        maxName = res.data[r].firstName;
+                    }
+                }
                 this.setState({
-                    mostGoggins: res.data[0],
+                    mostGoggins: [max, maxName],
                 });
             });
 
         workoutAPI.getMaxRaces()
             .then((res) => {
+                let max = 0;
+                let maxName = 0;
+                for (var r in res.data) {
+                    if (res.data[r].race > max) {
+                        max = res.data[r].race;
+                        maxName = res.data[r].firstName;
+                    }
+                }
                 this.setState({
-                    mostRaces: res.data[0],
+                    mostRaces: [max, maxName],
                 });
             });
     }
@@ -103,8 +128,8 @@ class HallOfFame extends Component {
                                 <div className="hofHover">Highest number of workouts completed of any type.</div>
                                 <div className="hofIcon"><FontAwesomeIcon className="fa-3x trophyIcon" icon={faTrophy} /></div>
                                 <div className="hofTitle">Most Workouts</div>
-                                <div className="hofName">{this.state.mostWorkouts.firstName}</div>
-                                <div className="hofValue">{this.state.mostWorkouts.maxWrkt} workouts</div>
+                                <div className="hofName">{this.state.mostWorkouts[1]}</div>
+                                <div className="hofValue">{this.state.mostWorkouts[0]} workouts</div>
                             </div>
 
                             {/* MOST REST DAYS */}
@@ -157,8 +182,8 @@ class HallOfFame extends Component {
                                 <div className="hofHover">Most Goggins workouts completed. Winner here is a total badass.</div>
                                 <div className="hofIcon"><FontAwesomeIcon className="fa-3x dragonIcon" icon={faDragon} /></div>
                                 <div className="hofTitle">Most Goggins</div>
-                                <div className="hofName">{this.state.mostGoggins.firstName}</div>
-                                <div className="hofValue">{this.state.mostGoggins.goggins} workouts</div>
+                                <div className="hofName">{this.state.mostGoggins[1]}</div>
+                                <div className="hofValue">{this.state.mostGoggins[0]} workouts</div>
                             </div>
 
                             {/* MOST RACES */}
@@ -166,8 +191,8 @@ class HallOfFame extends Component {
                                 <div className="hofHover">Most number of races completed.</div>
                                 <div className="hofIcon"><FontAwesomeIcon className="fa-3x flagIcon" icon={faFlagCheckered} /></div>
                                 <div className="hofTitle">Most Races</div>
-                                <div className="hofName">{this.state.mostRaces.firstName}</div>
-                                <div className="hofValue">{this.state.mostRaces.races} races</div>
+                                <div className="hofName">{this.state.mostRaces[1]}</div>
+                                <div className="hofValue">{this.state.mostRaces[0]} races</div>
                             </div>
 
                             {/* MOST TIME */}
