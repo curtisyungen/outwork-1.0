@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import workoutAPI from "../utils/workoutAPI";
-import userAPI from "../utils/userAPI";
 import "./HallOfFame.css";
+
+import moment from "moment";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,6 +11,7 @@ import { faTrophy, faBed, faRulerHorizontal, faMountain, faMedal, faDragon, faCl
 library.add(faTrophy, faBed, faRulerHorizontal, faMountain, faMedal, faDragon, faClock, faFlagCheckered);
 
 class HallOfFame extends Component {
+
     constructor(props) {
         super(props);
 
@@ -50,9 +52,11 @@ class HallOfFame extends Component {
                     }
                 }
 
+                let dateNum = moment().dayOfYear();
+
                 this.setState({
                     mostWorkouts: [max, maxName],
-                    mostRestDays: [365 - min, minName],
+                    mostRestDays: [dateNum - min, minName],
                 });
             });
 
