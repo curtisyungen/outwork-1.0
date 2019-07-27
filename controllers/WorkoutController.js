@@ -69,16 +69,9 @@ class WorkoutController {
     // HALL OF FAME QUERIES
 
     getMaxWorkouts(req, res) {
-        db.sequelize.query("SELECT MAX(workouts) AS maxWrkt, firstName FROM (SELECT COUNT(id) AS workouts, firstName FROM workouts GROUP BY firstName) AS table1", { type: sequelize.QueryTypes.SELECT })
+        db.sequelize.query("SELECT COUNT(id) AS workouts, firstName FROM Workouts GROUP BY firstName", { type: sequelize.QueryTypes.SELECT })
             .then(max => {
                 res.json(max);
-            });
-    }
-
-    getMinWorkouts(req, res) {
-        db.sequelize.query("SELECT MIN(workouts) AS minWrkt, firstName FROM (SELECT COUNT(id) AS workouts, firstName FROM workouts GROUP BY firstName) AS table1", { type: sequelize.QueryTypes.SELECT })
-            .then(min => {
-                res.json(min);
             });
     }
 
@@ -111,14 +104,14 @@ class WorkoutController {
     }
 
     getMaxGoggins(req, res) {
-        db.sequelize.query("SELECT MAX(goggins) AS goggins, firstName FROM (SELECT COUNT(id) AS goggins, firstName FROM workouts WHERE generator = 'Goggins') AS table2", { type: sequelize.QueryTypes.SELECT })
+        db.sequelize.query("SELECT COUNT(id) AS goggins, firstName FROM workouts WHERE generator = 'Goggins'", { type: sequelize.QueryTypes.SELECT })
             .then(goggins => {
                 res.json(goggins);
             });
     }
 
     getMaxRaces(req, res) {
-        db.sequelize.query("SELECT MAX(race) AS races, firstName FROM (SELECT COUNT(race) AS race, firstName FROM workouts GROUP BY firstName) AS table3", { type: sequelize.QueryTypes.SELECT })
+        db.sequelize.query("SELECT COUNT(race) AS race, firstName FROM workouts GROUP BY firstName", { type: sequelize.QueryTypes.SELECT })
             .then(races => {
                 res.json(races);
             });
