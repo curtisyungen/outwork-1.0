@@ -10,7 +10,6 @@ import { faTrophy, faBed, faRulerHorizontal, faMountain, faMedal, faDragon, faCl
 library.add(faTrophy, faBed, faRulerHorizontal, faMountain, faMedal, faDragon, faClock, faFlagCheckered);
 
 class HallOfFame extends Component {
-
     constructor(props) {
         super(props);
 
