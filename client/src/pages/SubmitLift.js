@@ -362,7 +362,7 @@ class SubmitLift extends Component {
 
                     {this.state.exercises.map(exercise => (
                         <Exercise
-                            key={Math.random() * 100000}
+                            key={exercise.id}
                             id={exercise.id}
                             name={exercise.name}
                             weight={exercise.weight}
