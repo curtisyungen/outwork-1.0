@@ -4,6 +4,7 @@ const userRoutes = require("./userRoutes");
 const exerciseRoutes = require("./exerciseRoutes");
 const workoutRoutes = require("./workoutRoutes");
 const shoeRoutes = require("./shoeRoutes");
+const hofRoutes = require("./hofRoutes");
 const resetRoutes = require("./resetRoutes");
 
 // User routes
@@ -17,6 +18,9 @@ router.use("/exercises", exerciseRoutes);
 
 // Shoe routes
 router.use("/shoes", shoeRoutes);
+
+// Hall of Fame routes
+router.use("/hof", hofRoutes);
 
 // Reset routes
 router.use("/reset", resetRoutes);
