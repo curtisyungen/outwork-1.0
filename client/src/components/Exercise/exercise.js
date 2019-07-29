@@ -35,8 +35,6 @@ class Exercise extends Component {
             reps: this.props.reps,
             rest: this.props.rest,
             notes: this.props.notes,
-        }, () => {
-            this.checkSaved();
         });
     }
 
@@ -45,39 +43,21 @@ class Exercise extends Component {
 
         this.setState({
             [name]: value,
-            saved: false,
-        });
-    }
-
-    checkSaved = () => {
-        if (this.props.name !== "") {
-            this.setState({
-                saved: true,
-            });
-        }
-    }
-
-    sendExercise = () => {
-        let exercise = {
-            id: this.props.id,
-            name: this.state.name,
-            weight: this.state.weight,
-            superset: this.state.superset,
-            sets: this.state.sets,
-            reps: this.state.reps,
-            rest: this.state.rest,
-            notes: this.state.notes,
-        }
-
-        this.props.getExercise(exercise);
-
-        this.setState({
-            saved: true,
         });
     }
 
     deleteExercise = () => {
         this.props.deleteExercise(this.state.id);
+    }
+
+    updateParent = () => {
+        this.props.setName(this.props.id, this.state.name);
+        this.props.setWeight(this.props.id, this.state.weight);
+        this.props.setSuperset(this.props.id, this.state.superset);
+        this.props.setSets(this.props.id, this.state.sets);
+        this.props.setReps(this.props.id, this.state.reps);
+        this.props.setRest(this.props.id, this.state.rest);
+        this.props.setNotes(this.props.id, this.state.notes);
     }
 
     render() {
@@ -93,6 +73,7 @@ class Exercise extends Component {
                             className="form-control exerciseInput-md"
                             placeholder="Exercise"
                             onChange={this.handleInputChange}
+                            onBlur={this.updateParent}
                             value={this.state.name}
                         />
                         {/* WEIGHT */}
@@ -103,6 +84,7 @@ class Exercise extends Component {
                             className="form-control exerciseInput-sm"
                             placeholder="Lbs."
                             onChange={this.handleInputChange}
+                            onBlur={this.updateParent}
                             value={this.state.weight}
                         />
                         {/* SUPERSET ID */}
@@ -113,6 +95,7 @@ class Exercise extends Component {
                             className="form-control exerciseInput-md"
                             placeholder="Superset ID"
                             onChange={this.handleInputChange}
+                            onBlur={this.updateParent}
                             value={this.state.superset}
                         />
                     </div>
@@ -125,6 +108,7 @@ class Exercise extends Component {
                             className="form-control exerciseInput-sm"
                             placeholder="Sets"
                             onChange={this.handleInputChange}
+                            onBlur={this.updateParent}
                             value={this.state.sets}
                         />
                         {/* REPS */}
@@ -135,6 +119,7 @@ class Exercise extends Component {
                             className="form-control exerciseInput-md"
                             placeholder="Reps or Time"
                             onChange={this.handleInputChange}
+                            onBlur={this.updateParent}
                             value={this.state.reps}
                         />
                         {/* REST */}
@@ -145,6 +130,7 @@ class Exercise extends Component {
                             className="form-control exerciseInput-md"
                             placeholder="Rest (Min.)"
                             onChange={this.handleInputChange}
+                            onBlur={this.updateParent}
                             value={this.state.rest}
                         />
                     </div>
@@ -157,16 +143,9 @@ class Exercise extends Component {
                             className="form-control exerciseInput-md"
                             placeholder="Notes"
                             onChange={this.handleInputChange}
+                            onBlur={this.updateParent}
                             value={this.state.notes}
                         />
-
-                        {/* SAVE */}
-                        <button
-                            className="btn btn-success btn-sm exerciseBtn saveBtn"
-                            onClick={this.sendExercise}
-                        >
-                            <FontAwesomeIcon className="fa-2x faSave" icon={faSave} />
-                        </button>
                         {/* DELETE */}
                         <button
                             className="btn btn-danger btn-sm exerciseBtn"
