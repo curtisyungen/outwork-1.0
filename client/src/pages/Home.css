@@ -27,6 +27,11 @@
     min-height: calc(100vh - 70px);
 }
 
+.filterBtns {
+    display: flex;
+    flex-direction: row;
+}
+
 .filterString {
     font-weight: 700;
 }
