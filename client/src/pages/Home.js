@@ -56,9 +56,7 @@ class Home extends Component {
         });
     }
 
-    searchForActivity = (event) => {
-        event.preventDefault();
-
+    searchForActivity = () => {
         this.props.checkValidUser();
 
         let category = this.state.category;
@@ -157,12 +155,12 @@ class Home extends Component {
         }
       }
 
-    filterBy = (event, filter) => {
+    filterBy = (filter) => {
         this.selectCategory("Type");
         this.setState({
             activitySearch: filter,
         }, () => {
-            this.searchForActivity(event);
+            this.searchForActivity();
         });
        
     }
@@ -214,7 +212,10 @@ class Home extends Component {
                             <button
                                 className="btn btn-dark"
                                 type="button"
-                                onClick={this.searchForActivity}
+                                onClick={(event) => {
+                                    event.preventDefault();
+                                    this.searchForActivity();
+                                }}
                             >
                                 Search
                             </button>
