@@ -194,7 +194,7 @@ class Home extends Component {
                                 <div className="dropdown-item" onClick={this.selectCategory.bind(null, "Notes")}>Notes</div>
                             </div>
                             <div className="filterBtns">
-                                <button className="btn btn-primary btn-sm filterAll" onClick={this.filterBy.bind(event, "")}>All</button>
+                                <button className="btn btn-primary btn-sm filterAll" onClick={this.filterBy.bind(null, "")}>All</button>
                                 <button className="btn btn-primary btn-sm filterRuns" onClick={this.filterBy.bind(null, "run")}>Runs</button>
                                 <button className="btn btn-primary btn-sm filterBikes" onClick={this.filterBy.bind(null, "bike")}>Bikes</button>
                                 <button className="btn btn-primary btn-sm filterSwims" onClick={this.filterBy.bind(null, "swim")}>Swims</button>
