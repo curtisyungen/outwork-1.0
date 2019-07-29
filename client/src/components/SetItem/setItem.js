@@ -13,23 +13,17 @@ class SetItem extends Component {
         super(props);
 
         this.state = {
-            openWeightModal: false,
-            openRestModal: false,
-            openNotesModal: false,
             id: null,
-            name: null,
-            actualReps: null,
+            actualReps: "",
             weight: "",
             rest: "",
             notes: "",
-            saved: false,
         }
     }
 
     componentDidMount = () => {
         this.setState({
             id: this.props.id,
-            name: this.props.name,
         });
     }
 
@@ -38,41 +32,25 @@ class SetItem extends Component {
 
         this.setState({
             [name]: value,
-        }, () => {
-            this.unsave();
         });
     }
 
-    saveData = () => {
+    updateParent = () => {
         if (this.state.actualReps !== null) {
-            this.props.setActualReps(this.state.id, this.state.name, this.state.actualReps);
+            this.props.setActualReps(this.props.id, this.props.assignName, this.state.actualReps);
         }
 
         if (this.state.weight !== null) {
-            this.props.setWeight(this.state.id, this.state.name, this.state.weight);
+            this.props.setWeight(this.props.id, this.props.assignName, this.state.weight);
         }
 
         if (this.state.rest !== null) {
-            this.props.setRest(this.state.id, this.state.name, this.state.rest);
+            this.props.setRest(this.props.id, this.props.assignName, this.state.rest);
         }
 
         if (this.state.notes !== null) {
-            this.props.setNotes(this.state.id, this.state.name, this.state.notes);
+            this.props.setNotes(this.props.id, this.props.assignName, this.state.notes);
         }
-
-        this.save();
-    }
-
-    save = () => {
-        this.setState({
-            saved: true,
-        });
-    }
-
-    unsave = () => {
-        this.setState({
-            saved: false,
-        });
     }
 
     render() {
@@ -80,15 +58,15 @@ class SetItem extends Component {
             <div className={`setItem`}>
                 <a
                     className="exName"
-                    href={`https://www.youtube.com/results?search_query=how+to+do+${this.props.name}`}
+                    href={`https://www.youtube.com/results?search_query=how+to+do+${this.props.assignName}`}
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    {this.props.name}
+                    {this.props.assignName}
                 </a>
 
                 <div className="exReps">
-                    {this.props.reps}
+                    {this.props.assignReps}
                 </div>
 
                 <div className={`exActual saved-${this.state.saved}`}>
@@ -100,6 +78,7 @@ class SetItem extends Component {
                         className="form-control actualData"
                         placeholder="Reps"
                         onChange={this.handleInputChange}
+                        onBlur={this.updateParent}
                         value={this.state.actualReps}
                     />
                     {/* WEIGHT */}
@@ -110,6 +89,7 @@ class SetItem extends Component {
                         className="form-control actualData"
                         placeholder="Lbs."
                         onChange={this.handleInputChange}
+                        onBlur={this.updateParent}
                         value={this.state.weight}
                     />
                     {/* REST */}
@@ -120,6 +100,7 @@ class SetItem extends Component {
                         className="form-control actualData"
                         placeholder="Rest"
                         onChange={this.handleInputChange}
+                        onBlur={this.updateParent}
                         value={this.state.rest}
                     />
                     {/* NOTES */}
@@ -130,17 +111,11 @@ class SetItem extends Component {
                         className="form-control actualData"
                         placeholder="Notes"
                         onChange={this.handleInputChange}
+                        onBlur={this.updateParent}
                         value={this.state.notes}
                     />
                     
                 </div>
-                {/* SAVE */}
-                <button
-                        className="btn btn-outline-success btn-sm saveSetBtn saveBtn"
-                        onClick={this.saveData}
-                    >
-                        <FontAwesomeIcon className="fa-2x faSave" icon={faSave} />
-                    </button>
             </div>
         )
     }
