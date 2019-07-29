@@ -157,6 +157,11 @@ class HallOfFame extends Component {
                     mostSwims: [max, maxName],
                 });
             })
+
+        hofAPI.getHotdog()
+            .then((res) => {
+                console.log(res);
+            });
     }
 
     getHotDog = () => {
@@ -272,9 +277,9 @@ class HallOfFame extends Component {
 
                                 {/* HOT DOG */}
                                 <div className="hofMetric hotdog">
-                                    <div className="hofHover">Hot dog.</div>
+                                    <div className="hofHover">Weiner.</div>
                                     <div className="hofIcon"><FontAwesomeIcon className="fa-3x hotdogIcon" icon={faHotdog} /></div>
-                                    <div className="hofTitle">Hot Dog</div>
+                                    <div className="hofTitle">Weiner</div>
                                     <div className="hofName">{this.state.hotdog[1]}</div>
                                     <div className="hofValue">{this.state.hotdog[0]}</div>
                                 </div>
