@@ -19,7 +19,7 @@ class SubmitRun extends Component {
             distance: null,
             duration: null,
             milePace: null,
-            runType: null,
+            runType: "Training",
             repeats: [],
             race: null,
             location: null,
@@ -230,6 +230,48 @@ class SubmitRun extends Component {
         }
     }
 
+    setDist = (id, dist) => {
+        let repeats = this.state.repeats;
+
+        for (var r in repeats) {
+            if (repeats[r].id === id) {
+                repeats[r].distance = dist;
+            }
+        }
+
+        this.setState({
+            repeats: repeats,
+        });
+    }
+
+    setTime = (id, time) => {
+        let repeats = this.state.repeats;
+
+        for (var r in repeats) {
+            if (repeats[r].id === id) {
+                repeats[r].time = time;
+            }
+        }
+
+        this.setState({
+            repeats: repeats,
+        });
+    }
+
+    setRest = (id, rest) => {
+        let repeats = this.state.repeats;
+
+        for (var r in repeats) {
+            if (repeats[r].id === id) {
+                repeats[r].rest = rest;
+            }
+        }
+
+        this.setState({
+            repeats: repeats,
+        });
+    }
+
     render() {
         return (
             <div className="container pageContainer submitContainer">
@@ -361,13 +403,13 @@ class SubmitRun extends Component {
                         {this.state.runType === "Repeats" ? (
                             this.state.repeats.map(repeat => (
                                 <RunRepeat
-                                    key={Math.random() * 100000}
+                                    key={repeat.id}
                                     id={repeat.id}
-                                    distance={repeat.distance}
-                                    time={repeat.time}
-                                    rest={repeat.rest}
                                     getRepeat={this.getRepeat}
                                     deleteRepeat={this.deleteRepeat}
+                                    setDist={this.setDist}
+                                    setTime={this.setTime}
+                                    setRest={this.setRest}
                                 />
                             ))
                         ) : (

@@ -113,6 +113,18 @@
     width: auto;
 }
 
+.repeatDiv {
+    background: rgb(242, 242, 242);
+    border: 1px solid darkgray;
+    font-size: 12px;
+    margin: 2px 0px;
+}
+
+.repeatSpan {
+    margin-left: 5px;
+    padding: 2px;
+}
+
 @media only screen and (max-width: 990px) {
     .cell7 {
         border-right: 0px;

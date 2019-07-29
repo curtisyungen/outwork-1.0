@@ -100,8 +100,24 @@ class Run extends Component {
                                 </div>
                                 <div className="border-bottom">
                                     <div className="dataTitle">Type</div>
-                                    <div className="dataPoint">{this.props.type}</div>
+                                    <div className="dataPoint">{this.props.runType}</div>
                                 </div>
+                                {this.props.runType === "Repeats" ? (
+                                    <div className="border-bottom">
+                                        <div className="dataTitle">Repeats</div>
+                                        <div className="dataPoint">
+                                            {JSON.parse(this.props.repeats).map(repeat => (
+                                                <div className="repeatDiv">
+                                                    <span className="repeatSpan">Miles: {repeat.distance}</span>
+                                                    <span className="repeatSpan">Time: {repeat.time}</span>
+                                                    <span className="repeatSpan">Rest: {repeat.rest}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <></>
+                                )}
                                 <div className="border-bottom">
                                     <div className="dataTitle">Climb (ft.)</div>
                                     <div className="dataPoint">{this.props.climb}</div>
@@ -134,7 +150,7 @@ class Run extends Component {
                         </div>
 
                         {/* REPEATS */}
-                        <div>
+                        {/* <div>
                             {this.props.runType && this.props.runType.toLowerCase() === "repeats" ? (
                                 <span>
                                     <h5 className="title">Repeats</h5>
@@ -160,7 +176,7 @@ class Run extends Component {
                             ) : (
                                     <></>
                                 )}
-                        </div>
+                        </div> */}
                         {this.props.userId === localStorage.getItem("userId") ? (
                             <button className="btn btn-danger btn-sm deleteActivity" onClick={this.deleteRun}>Delete Run</button>
                         ) : (
