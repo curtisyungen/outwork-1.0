@@ -157,6 +157,16 @@ class Home extends Component {
         }
       }
 
+    filterBy = (event, filter) => {
+        this.selectCategory("Type");
+        this.setState({
+            activitySearch: filter,
+        }, () => {
+            this.searchForActivity(event);
+        });
+       
+    }
+
     render() {
         return (
             <Container>
@@ -182,6 +192,13 @@ class Home extends Component {
                                 <div className="dropdown-item" onClick={this.selectCategory.bind(null, "Generator")}>Generator</div>
                                 <div className="dropdown-item" onClick={this.selectCategory.bind(null, "Race")}>Race</div>
                                 <div className="dropdown-item" onClick={this.selectCategory.bind(null, "Notes")}>Notes</div>
+                            </div>
+                            <div className="filterBtns">
+                                <button className="btn btn-primary btn-sm filterAll" onClick={this.filterBy.bind(event, "")}>All</button>
+                                <button className="btn btn-primary btn-sm filterRuns" onClick={this.filterBy.bind(null, "run")}>Runs</button>
+                                <button className="btn btn-primary btn-sm filterBikes" onClick={this.filterBy.bind(null, "bike")}>Bikes</button>
+                                <button className="btn btn-primary btn-sm filterSwims" onClick={this.filterBy.bind(null, "swim")}>Swims</button>
+                                <button className="btn btn-primary btn-sm filterLifts" onClick={this.filterBy.bind(null, "lift")}>Lifts</button>
                             </div>
                         </div>
                         <input
