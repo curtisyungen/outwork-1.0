@@ -124,7 +124,16 @@ class Lift extends Component {
                                 </div>
                                 <div className="border-bottom">
                                     <div className="dataTitle">Muscle Groups</div>
-                                    <div className="dataPoint">{this.props.muscleGroups}</div>
+                                    <div className="dataPoint">{this.props.muscleGroups ? (
+                                        JSON.parse(this.props.muscleGroups).map(group => (
+                                            <div>
+                                                <span>{group}</span>
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <></>
+                                    )}
+                                    </div>
                                 </div>
                                 <div className="border-bottom">
                                     <div className="dataTitle">Notes</div>
