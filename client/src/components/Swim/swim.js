@@ -19,7 +19,6 @@ class Swim extends Component {
     }
 
     componentDidMount = () => {
-        console.log(this.props);
         this.setState({
             userId: this.props.userId,
         });
@@ -92,7 +91,7 @@ class Swim extends Component {
                                 </div>
                                 <div className="border-bottom">
                                     <div className="dataTitle">Workout</div>
-                                    <div className="dataPoint">{this.props.workout && this.props.workout.length > 0 ? (
+                                    <div className="">{this.props.workout && this.props.workout.length > 0 ? (
                                         JSON.parse(this.props.workout).map(lap => (
                                             <div className="swimLapDiv">
                                                 <span className="swimLapModal">Distance: {lap.distance}</span>

@@ -105,7 +105,7 @@ class Run extends Component {
                                 {this.props.runType === "Repeats" ? (
                                     <div className="border-bottom">
                                         <div className="dataTitle">Repeats</div>
-                                        <div className="dataPoint">
+                                        <div className="">
                                             {JSON.parse(this.props.repeats).map(repeat => (
                                                 <div className="repeatDiv">
                                                     <span className="repeatSpan">Miles: {repeat.distance}</span>
