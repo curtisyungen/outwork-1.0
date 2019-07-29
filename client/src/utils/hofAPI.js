@@ -50,4 +50,8 @@ export default {
     getSwims: function() {
         return axios.get("/api/hof/getSwims");
     },
+
+    getHotdog: function() {
+        return axios.get("/api/hof/getHotdog");
+    },
 }
