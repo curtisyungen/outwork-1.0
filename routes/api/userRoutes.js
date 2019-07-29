@@ -38,6 +38,10 @@ router.put("/updateWeight", (req, res) => {
     controller.updateWeight(req, res);
 });
 
+router.put("/updateUserHof", (req, res) => {
+    controller.updateUserHof(req, res);
+});
+
 router.put("/updateUserFollowings", (req, res) => {
     controller.updateUserFollowings(req, res);
 });
