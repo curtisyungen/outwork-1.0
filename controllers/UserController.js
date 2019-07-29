@@ -159,6 +159,20 @@ class UserController {
             });
     }
 
+    updateUserHof(req, res) {
+        db.Users.update(
+            {hof: req.body.userHof},
+            {where: {
+                userId: req.body.userId,
+            }})
+            .then((user) => {
+                res.json(user);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
     updateUserFollowings(req, res) {
         db.Users.update(
             {following: req.body.following},
