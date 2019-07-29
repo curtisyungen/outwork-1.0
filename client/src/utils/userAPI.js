@@ -55,6 +55,10 @@ export default {
         return axios.put("/api/users/updateEquipment", {userId: userId, equipment: equipment});
     },
 
+    updateUserHof: function(userId, userHof) {
+        return axios.put("/api/users/updateUserHof", {userId: userId, userHof: userHof});
+    },
+
     updateUserFollowings: function(userId, following) {
         return axios.put("/api/users/updateUserFollowings", { userId: userId, following: following });
     },
