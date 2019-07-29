@@ -31,8 +31,6 @@ class SwimLap extends Component {
             time: this.props.time,
             stroke: this.props.stroke,
             rest: this.props.rest,
-        }, () => {
-            this.checkSaved();
         });
     }
 
@@ -45,32 +43,15 @@ class SwimLap extends Component {
         });
     }
 
-    checkSaved = () => {
-        if (this.props.distance !== "") {
-            this.setState({
-                saved: true,
-            });
-        }
-    }
-
-    sendLap = () => {
-        let lap = {
-            id: this.props.id,
-            distance: this.state.distance,
-            time: this.state.time,
-            stroke: this.state.stroke,
-            rest: this.state.rest,
-        }
-
-        this.props.getLap(lap);
-
-        this.setState({
-            saved: true,
-        });
-    }
-
     deleteLap = () => {
         this.props.deleteLap(this.state.id);
+    }
+
+    updateParent = () => {
+        this.props.setDistance(this.props.id, this.state.distance);
+        this.props.setTime(this.props.id, this.state.time);
+        this.props.setStroke(this.props.id, this.state.stroke);
+        this.props.setRest(this.props.id, this.state.rest);
     }
 
     render() {
@@ -84,6 +65,7 @@ class SwimLap extends Component {
                     className="form-control lapInput-md"
                     placeholder={this.props.units}
                     onChange={this.handleInputChange}
+                    onBlur={this.updateParent}
                     value={this.state.distance}
                 />
                 {/* TIME */}
@@ -94,6 +76,7 @@ class SwimLap extends Component {
                     className="form-control lapInput-md"
                     placeholder="Time (mm:ss)"
                     onChange={this.handleInputChange}
+                    onBlur={this.updateParent}
                     value={this.state.time}
                 />
                 {/* STROKE */}
@@ -104,6 +87,7 @@ class SwimLap extends Component {
                     className="form-control lapInput-md"
                     placeholder="Stroke"
                     onChange={this.handleInputChange}
+                    onBlur={this.updateParent}
                     value={this.state.stroke}
                 />
                 {/* REST */}
@@ -114,15 +98,9 @@ class SwimLap extends Component {
                     className="form-control lapInput-md"
                     placeholder="Rest (min.)"
                     onChange={this.handleInputChange}
+                    onBlur={this.updateParent}
                     value={this.state.rest}
                 />
-                {/* SAVE */}
-                <button
-                    className="btn btn-success btn-sm exerciseBtn saveBtn"
-                    onClick={this.sendLap}
-                >
-                    <FontAwesomeIcon className="fa-2x faSave" icon={faSave} />
-                </button>
                 {/* DELETE */}
                 <button
                     className="btn btn-danger btn-sm exerciseBtn"
