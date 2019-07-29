@@ -48,4 +48,8 @@ router.get("/getSwims", (req, res) => {
     controller.getSwims(req, res);
 });
 
+router.get("/getHotdog", (req, res) => {
+    controller.getHotdog(req, res);
+});
+
 module.exports = router;
