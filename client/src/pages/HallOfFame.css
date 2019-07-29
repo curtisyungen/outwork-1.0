@@ -54,95 +54,100 @@
     font-size: 12px;
 }
 
-/* ICONS */
-
+/* MOST WORKOUTS */
+.mostWorkouts {
+    background: lightyellow;
+    border: 3px solid gold;
+}
 .trophyIcon {
     color: gold;
 }
 
+/* MOST REST DAYS */
+.mostRestDays {
+    background: lightblue;
+}
 .restIcon {
     color: rgb(128, 179, 255);
 }
 
+/* LONGEST RUN */
+.longestRun {
+    background: rgb(199, 151, 151);
+}
 .rulerIcon {
     color: #DEB887;
 }
 
+/* BEST CLIMB */
+.mostClimb {
+    background: rgb(216, 189, 216);
+}
 .mountainIcon {
     color: rgb(156, 46, 156);
 }
 
+/* MOST PUSH-UPS */
+.mostPushUps {
+    background: rgb(205, 216, 180);
+}
 .silverMedalIcon {
     color: rgb(155, 155, 155);
 }
 
+/* MOST PULL-UPS */
+.mostPullUps {
+    background: rgb(250, 223, 223);
+}
 .bronzeMedalIcon {
     color: rgb(205, 127, 50);
 }
 
-.dragonIcon {
-    color: rgb(185, 0, 0);
-}
-
-.flagIcon {
-    color: #000;
-}
-
-.clockIcon {
-    color: #fff;
-}
-
-.rainIcon {
-    color: rgb(114, 114, 114);
-}
-
-.fishIcon {
-    color: rgb(31, 153, 31);
-}
-
-/* METRICS */
-
-.mostWorkouts {
-    background: lightyellow;
-}
-
-.mostRestDays {
-    background: lightblue;
-}
-
-.longestRun {
-    background: rgb(199, 151, 151);
-}
-
-.mostClimb {
-    background: rgb(216, 189, 216);
-}
-
-.mostPushUps {
-    background: rgb(205, 216, 180);
-}
-
-.mostPullUps {
-    background: rgb(250, 223, 223);
-}
-
+/* MOST GOGGINS */
 .mostGoggins {
     background: black;
     color: white;
 }
+.dragonIcon {
+    color: rgb(185, 0, 0);
+}
 
+/* MOST RACES */
+.flagIcon {
+    color: #000;
+}
 .mostRaces {
     background: rgb(190, 190, 190);
 }
 
+/* MOST TIME */
+.clockIcon {
+    color: #fff;
+}
 .mostTime {
     background: rgb(199, 119, 166);
 }
 
+/* MOST RAINY DAYS */
+.rainIcon {
+    color: rgb(114, 114, 114);
+}
 .mostRainyDays {
     background: rgb(194, 194, 194);
 }
 
+/* MOST SWIMS */
+.fishIcon {
+    color: rgb(31, 153, 31);
+}
 .mostSwims {
     background: lightblue;
+}
+
+/* HOT DOG */
+.hotdogIcon {
+    color: rgb(255, 145, 0);
+}
+.hotdog {
+    background: rgb(110, 255, 110);
 }
