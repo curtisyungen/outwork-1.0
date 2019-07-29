@@ -52,4 +52,12 @@ router.get("/getHotdog", (req, res) => {
     controller.getHotdog(req, res);
 });
 
+router.get("/getHof", (req, res) => {
+    controller.getHof(req, res);
+});
+
+router.put("/updateHof", (req, res) => {
+    controller.updateHof(req, res);
+});
+
 module.exports = router;
