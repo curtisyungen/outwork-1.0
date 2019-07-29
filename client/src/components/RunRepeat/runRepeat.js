@@ -28,8 +28,6 @@ class RunRepeat extends Component {
             distance: this.props.distance,
             time: this.props.time,
             rest: this.props.rest,
-        }, () => {
-            this.checkSaved();
         });
     }
 
@@ -40,14 +38,6 @@ class RunRepeat extends Component {
             [name]: value,
             saved: false,
         });
-    }
-
-    checkSaved = () => {
-        if (this.props.distance !== "" && this.props.time !== "") {
-            this.setState({
-                saved: true,
-            });
-        }
     }
 
     sendRepeat = () => {
@@ -69,6 +59,12 @@ class RunRepeat extends Component {
         this.props.deleteRepeat(this.state.id);
     }
 
+    updateParent = () => {
+        this.props.setDist(this.props.id, this.state.distance);
+        this.props.setTime(this.props.id, this.state.time);
+        this.props.setRest(this.props.id, this.state.rest);
+    }
+
     render() {
         return (
             <div className={`input-group input-group-sm repeat saved-${this.state.saved}`}>
@@ -80,6 +76,7 @@ class RunRepeat extends Component {
                     className="form-control repeatInput-md"
                     placeholder="Miles"
                     onChange={this.handleInputChange}
+                    onBlur={this.updateParent}
                     value={this.state.distance}
                 />
                 {/* TIME */}
@@ -90,6 +87,7 @@ class RunRepeat extends Component {
                     className="form-control repeatInput-md"
                     placeholder="Time (mm:ss)"
                     onChange={this.handleInputChange}
+                    onBlur={this.updateParent}
                     value={this.state.time}
                 />
                 {/* REST */}
@@ -100,15 +98,9 @@ class RunRepeat extends Component {
                     className="form-control repeatInput-md"
                     placeholder="Rest (min.)"
                     onChange={this.handleInputChange}
+                    onBlur={this.updateParent}
                     value={this.state.rest}
                 />
-                {/* SAVE */}
-                <button
-                    className="btn btn-success btn-sm exerciseBtn saveBtn"
-                    onClick={this.sendRepeat}
-                >
-                    <FontAwesomeIcon className="fa-2x faSave" icon={faSave} />
-                </button>
                 {/* DELETE */}
                 <button
                     className="btn btn-danger btn-sm exerciseBtn"

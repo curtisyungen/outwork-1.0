@@ -54,7 +54,7 @@ class UserActivity extends Component {
                 distance={activity.distance}
                 duration={activity.duration}
                 milePace={activity.milePace}
-                type={activity.type}
+                runType={activity.runType}
                 repeats={activity.repeats}
                 race={activity.race}
                 location={activity.location}
