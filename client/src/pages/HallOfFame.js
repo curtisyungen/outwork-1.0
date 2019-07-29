@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import hofAPI from "../utils/hofAPI";
+import userAPI from "../utils/userAPI";
 import "./HallOfFame.css";
 
 import moment from "moment";
@@ -43,23 +44,26 @@ class HallOfFame extends Component {
     }
 
     getUserMaxes = () => {
-
         hofAPI.getMaxWorkouts()
             .then((res) => {
                 let max = 0;
                 let maxName = "";
+                let maxId = null;
                 let min = 365;
                 let minName = "";
+                let minId = null;
 
                 // Get maximum and minimum number of workouts
                 for (var r in res.data) {
                     if (res.data[r].workouts > max) {
                         max = res.data[r].workouts;
                         maxName = res.data[r].firstName;
+                        maxId = res.data[r].userId;
                     }
                     if (res.data[r].workouts < min) {
                         min = res.data[r].workouts;
                         minName = res.data[r].firstName;
+                        minId = res.data[r].userId;
                     }
                 }
 
@@ -69,6 +73,9 @@ class HallOfFame extends Component {
                 this.setState({
                     mostWorkouts: [max, maxName],
                     mostRestDays: [dateNum - min, minName],
+                }, () => {
+                    this.updateUserHof(maxId, "mostWorkouts");
+                    this.updateUserHof(minId, "mostRestDays");
                 });
             });
 
@@ -76,6 +83,8 @@ class HallOfFame extends Component {
             .then((res) => {
                 this.setState({
                     longestRun: res.data[0],
+                }, () => {
+                    this.updateUserHof(res.data[0].userId, "longestRun");
                 });
             });
 
@@ -83,6 +92,8 @@ class HallOfFame extends Component {
             .then((res) => {
                 this.setState({
                     maxClimb: res.data[0],
+                }, () => {
+                    this.updateUserHof(res.data[0].userId, "maxClimb");
                 });
             });
 
@@ -90,6 +101,8 @@ class HallOfFame extends Component {
             .then((res) => {
                 this.setState({
                     mostPushUps: res.data[0],
+                }, () => {
+                    this.updateUserHof(res.data[0].userId, "mostPushUps");
                 });
             });
 
@@ -97,6 +110,8 @@ class HallOfFame extends Component {
             .then((res) => {
                 this.setState({
                     mostPullUps: res.data[0],
+                }, () => {
+                    this.updateUserHof(res.data[0].userId, "mostPullUps");
                 });
             });
 
@@ -104,14 +119,18 @@ class HallOfFame extends Component {
             .then((res) => {
                 let max = 0;
                 let maxName = "";
+                let maxId = null;
                 for (var r in res.data) {
                     if (res.data[r].goggins > max) {
                         max = res.data[r].goggins;
                         maxName = res.data[r].firstName;
+                        maxId = res.data[r].userId;
                     }
                 }
                 this.setState({
                     mostGoggins: [max, maxName],
+                }, () => {
+                    this.updateUserHof(maxId, "mostGoggins");
                 });
             });
 
@@ -124,14 +143,18 @@ class HallOfFame extends Component {
             .then((res) => {
                 let max = 0;
                 let maxName = 0;
+                let maxId = null;
                 for (var r in res.data) {
                     if (res.data[r].race > max) {
                         max = res.data[r].race;
                         maxName = res.data[r].firstName;
+                        maxId = res.data[r].userId;
                     }
                 }
                 this.setState({
                     mostRaces: [max, maxName],
+                }, () => {
+                    this.updateUserHof(maxId, "mostRaces");
                 });
             });
 
@@ -139,14 +162,18 @@ class HallOfFame extends Component {
             .then((res) => {
                 let max = 0;
                 let maxName = 0;
+                let maxId = null;
                 for (var r in res.data) {
                     if (res.data[r].days > max) {
                         max = res.data[r].days;
                         maxName = res.data[r].firstName;
+                        maxId = res.data[r].userId;
                     }
                 }
                 this.setState({
                     mostRainyDays: [max, maxName],
+                }, () => {
+                    this.updateUserHof(maxId, "mostRainyDays");
                 });
             });
 
@@ -154,20 +181,40 @@ class HallOfFame extends Component {
             .then((res) => {
                 let max = 0;
                 let maxName = "";
+                let maxId = null;
                 for (var r in res.data) {
                     if (res.data[r].swims > max) {
                         max = res.data[r].swims;
                         maxName = res.data[r].firstName;
+                        maxId = res.data[r].userId;
                     }
                 }
                 this.setState({
                     mostSwims: [max, maxName],
+                }, () => {
+                    this.updateUserHof(maxId, "mostSwims");
                 });
             })
 
         hofAPI.getHotdog()
             .then((res) => {
                 console.log("Hotdog", res);
+            });
+    }
+
+    updateUserHof = (userId, award) => {
+        userAPI.getUserById(userId)
+            .then((res) => {
+                console.log(res);
+
+                let userHof = res.data.hof || [];
+
+                userHof.push(award);
+
+                userAPI.updateUserHof(userId, userHof)
+                    .then((res) => {
+                        console.log(res);
+                    });
             });
     }
 
