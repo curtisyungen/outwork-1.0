@@ -30,6 +30,7 @@
 .filterAll, .filterRuns,
 .filterBikes, .filterSwims,
 .filterLifts {
+    font-size: 12px;
     margin-right: 3px;
 }
 
