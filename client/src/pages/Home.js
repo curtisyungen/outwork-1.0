@@ -169,7 +169,7 @@ class Home extends Component {
         return (
             <Container>
                 <div className={`homePage`}>
-                    <div className="input-group mb-4 mt-4">
+                    <div className="input-group mb-2 mt-4">
                         <div className="input-group-prepend">
                             <button 
                                 className="btn btn-dark dropdown-toggle" 
@@ -213,13 +213,15 @@ class Home extends Component {
                                 Search
                             </button>
                         </div>
-                        <div className="filterBtns">
-                            <button className="btn btn-light btn-sm filterAll" onClick={this.filterBy.bind(null, "")}>All</button>
-                            <button className="btn btn-light btn-sm filterRuns" onClick={this.filterBy.bind(null, "run")}>Runs</button>
-                            <button className="btn btn-light btn-sm filterBikes" onClick={this.filterBy.bind(null, "bike")}>Bikes</button>
-                            <button className="btn btn-light btn-sm filterSwims" onClick={this.filterBy.bind(null, "swim")}>Swims</button>
-                            <button className="btn btn-light btn-sm filterLifts" onClick={this.filterBy.bind(null, "lift")}>Lifts</button>
-                        </div>
+                    </div>
+
+                    {/* FILTER BUTTONS */}
+                    <div className="filterBtns mb-2">
+                        <button className="btn btn-light btn-sm filterAll" onClick={this.filterBy.bind(null, "")}>All</button>
+                        <button className="btn btn-light btn-sm filterRuns" onClick={this.filterBy.bind(null, "run")}>Runs</button>
+                        <button className="btn btn-light btn-sm filterBikes" onClick={this.filterBy.bind(null, "bike")}>Bikes</button>
+                        <button className="btn btn-light btn-sm filterSwims" onClick={this.filterBy.bind(null, "swim")}>Swims</button>
+                        <button className="btn btn-light btn-sm filterLifts" onClick={this.filterBy.bind(null, "lift")}>Lifts</button>
                     </div>
 
                     <span>
