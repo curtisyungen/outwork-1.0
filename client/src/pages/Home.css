@@ -27,6 +27,12 @@
     min-height: calc(100vh - 70px);
 }
 
+.filterAll, .filterRuns,
+.filterBikes, .filterSwims,
+.filterLifts {
+    margin-right: 3px;
+}
+
 .filterBtns {
     display: flex;
     flex-direction: row;
