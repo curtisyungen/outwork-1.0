@@ -78,30 +78,46 @@ class Run extends Component {
                         {/* DATA */}
                         <div>
                             <div className="d-flex flex-column">
+                                {/* LOCATION */}
                                 <div className="border-bottom">
                                     <div className="dataTitle">Location</div>
                                     <div className="dataPoint">{this.props.location}</div>
                                 </div>
+                                {/* TIME OF DAY */}
                                 <div className="border-bottom">
                                     <div className="dataTitle">Time of Day</div>
                                     <div className="dataPoint">{this.props.time}</div>
                                 </div>
+                                {/* DISTANCE */}
                                 <div className="border-bottom">
                                     <div className="dataTitle">Distance (mi.)</div>
                                     <div className="dataPoint">{this.props.distance}</div>
                                 </div>
+                                {/* DURATION */}
                                 <div className="border-bottom">
                                     <div className="dataTitle">Duration</div>
                                     <div className="dataPoint">{this.props.duration}</div>
                                 </div>
+                                {/* PACE */}
                                 <div className="border-bottom">
                                     <div className="dataTitle">Pace (min./mi.)</div>
                                     <div className="dataPoint">{this.props.milePace}</div>
                                 </div>
+                                {/* TYPE */}
                                 <div className="border-bottom">
                                     <div className="dataTitle">Type</div>
                                     <div className="dataPoint">{this.props.runType}</div>
                                 </div>
+                                {/* RACE */}
+                                {this.props.runType === "Race" ? (
+                                    <div className="border-bottom">
+                                        <div className="dataTitle">Race</div>
+                                        <div className="dataPoint">{this.props.race}</div>
+                                    </div>
+                                ) : (
+                                    <></>
+                                )}
+                                {/* REPEATS */}
                                 {this.props.runType === "Repeats" ? (
                                     <div className="border-bottom">
                                         <div className="dataTitle">Repeats</div>
@@ -118,30 +134,37 @@ class Run extends Component {
                                 ) : (
                                     <></>
                                 )}
+                                {/* CLIMB */}
                                 <div className="border-bottom">
                                     <div className="dataTitle">Climb (ft.)</div>
                                     <div className="dataPoint">{this.props.climb}</div>
                                 </div>
+                                {/* GRADE */}
                                 <div className="border-bottom">
                                     <div className="dataTitle">Grade (%)</div>
                                     <div className="dataPoint">{this.props.grade}</div>
                                 </div>
+                                {/* SURFACE */}
                                 <div className="border-bottom">
                                     <div className="dataTitle">Surface</div>
                                     <div className="dataPoint">{this.props.surface}</div>
                                 </div>
+                                {/* WEATHER */}
                                 <div className="border-bottom">
                                     <div className="dataTitle">Weather</div>
                                     <div className="dataPoint">{this.props.weather}</div>
                                 </div>
+                                {/* SHOES */}
                                 <div className="border-bottom">
                                     <div className="dataTitle">Shoes</div>
                                     <div className="dataPoint">{this.props.shoes}</div>
                                 </div>
+                                {/* NOTES */}
                                 <div className="border-bottom">
                                     <div className="dataTitle">Notes</div>
                                     <div className="dataPoint">{this.props.notes}</div>
                                 </div>
+                                {/* MAP */}
                                 <div className="border-bottom">
                                     <div className="dataTitle">Map</div>
                                     <div className="dataPoint">{this.props.map}</div>
