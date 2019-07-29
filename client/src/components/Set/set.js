@@ -23,10 +23,10 @@ class Set extends Component {
             {this.state.set && this.state.set.length > 0 ? (
                 this.state.set.map(item => (
                     <SetItem 
-                        key={Math.random() * 100000}
+                        key={item.id}
                         id={item.id}
-                        name={item.name}
-                        reps={item.reps}
+                        assignName={item.name}
+                        assignReps={item.reps}
                         setActualReps={this.props.setActualReps}
                         setWeight={this.props.setWeight}
                         setRest={this.props.setRest}

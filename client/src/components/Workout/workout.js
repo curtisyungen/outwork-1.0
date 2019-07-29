@@ -24,6 +24,7 @@ class Workout extends Component {
             exercises: null,
             filtered: null,
             sets: null,
+            workout: null,
             complete: false,
         }
     }
@@ -121,10 +122,12 @@ class Workout extends Component {
 
     getSetsFromSessionStorage = () => {
         let sets = JSON.parse(sessionStorage.getItem("sets"));
+        let workout = JSON.parse(sessionStorage.getItem("sets"));
         let difficulty = sessionStorage.getItem("diff");
         
         this.setState({
             sets: sets,
+            workout: workout,
             difficulty: difficulty,
         });
     }
@@ -133,6 +136,7 @@ class Workout extends Component {
         let difficulty = this.state.difficulty;
         let filtered = this.state.filtered;
         let sets = [];
+        let workout = [];
 
         for (var s = 0; s < difficulty; s++) {
 
@@ -158,10 +162,12 @@ class Workout extends Component {
             }
 
             sets.push(set);
+            workout.push(set);
         }
 
         this.setState({
             sets: sets,
+            workout: workout,
         }, () => {
             sessionStorage.setItem("sets", JSON.stringify(sets));
             sessionStorage.setItem("diff", difficulty);
@@ -251,55 +257,55 @@ class Workout extends Component {
     }
 
     setActualReps = (setId, exName, reps) => {
-        let sets = this.state.sets;
+        let workout = this.state.workout;
 
         let idx;
-        for (var ex in sets[setId]) {
-            if (sets[setId][ex].name === exName) {
+        for (var ex in workout[setId]) {
+            if (workout[setId][ex].name === exName) {
                 idx = ex;
             }
         }
 
-        sets[setId][idx].reps = reps;
+        workout[setId][idx].reps = reps;
     }
 
     setWeight = (setId, exName, weight) => {
-        let sets = this.state.sets;
+        let workout = this.state.workout;
 
         let idx;
-        for (var ex in sets[setId]) {
-            if (sets[setId][ex].name === exName) {
+        for (var ex in workout[setId]) {
+            if (workout[setId][ex].name === exName) {
                 idx = ex;
             }
         }
 
-        sets[setId][idx].weight = weight;
+        workout[setId][idx].weight = weight;
     }
 
     setRest = (setId, exName, rest) => {
-        let sets = this.state.sets;
+        let workout = this.state.workout;
 
         let idx;
-        for (var ex in sets[setId]) {
-            if (sets[setId][ex].name === exName) {
+        for (var ex in workout[setId]) {
+            if (workout[setId][ex].name === exName) {
                 idx = ex;
             }
         }
 
-        sets[setId][idx].rest = rest;
+        workout[setId][idx].rest = rest;
     }
 
     setNotes = (setId, exName, notes) => {
-        let sets = this.state.sets;
+        let workout = this.state.workout;
 
         let idx;
-        for (var ex in sets[setId]) {
-            if (sets[setId][ex].name === exName) {
+        for (var ex in workout[setId]) {
+            if (workout[setId][ex].name === exName) {
                 idx = ex;
             }
         }
 
-        sets[setId][idx].notes = notes;
+        workout[setId][idx].notes = notes;
     }
 
     completeWorkout = () => {
@@ -354,7 +360,7 @@ class Workout extends Component {
                 generator: generator,
                 pushups: this.state.pushups,
                 pullups: this.state.pullups,
-                workout: JSON.stringify(this.state.sets),
+                workout: JSON.stringify(this.state.workout),
                 muscleGroups: JSON.stringify(this.state.muscleGroups),
                 notes: this.state.notes,
                 map: null,
@@ -393,7 +399,6 @@ class Workout extends Component {
                             <Set
                                 key={Math.random() * 100000}
                                 set={set}
-                                handleInputChange={this.handleInputChange}
                                 setActualReps={this.setActualReps}
                                 setWeight={this.setWeight}
                                 setRest={this.setRest}
