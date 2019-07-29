@@ -1,3 +1,11 @@
-p {
-    color: black;
+.swimLapDiv {
+    background: rgb(242, 242, 242);
+    border: 1px solid darkgray;
+    font-size: 12px;
+    margin: 2px 0px;
+}
+
+.swimLapModal {
+    margin-left: 5px;
+    padding: 2px;
 }

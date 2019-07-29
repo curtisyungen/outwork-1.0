@@ -23,7 +23,7 @@ class Swim extends Component {
             userId: this.props.userId,
         });
     }
-    
+
     openModal = () => {
         this.setState({
             openModal: true,
@@ -90,6 +90,23 @@ class Swim extends Component {
                                     <div className="dataPoint">{this.props.laps}</div>
                                 </div>
                                 <div className="border-bottom">
+                                    <div className="dataTitle">Workout</div>
+                                    <div className="dataPoint">{this.props.workout ? (
+                                        JSON.parse(this.props.workout).map(lap => (
+                                            <div className="swimLapDiv">
+                                                <span className="swimLapModal">Distance: {lap.distance}</span>
+                                                <span className="swimLapModal">Time: {lap.time}</span>
+                                                <span className="swimLapModal">Stroke: {lap.stroke}</span>
+                                                <span className="swimLapModal">Rest: {lap.rest}</span>
+                                            </div>
+                                        ))
+                                    ) : (
+                                            <></>
+                                        )}
+                                    </div>
+                                </div>
+
+                                <div className="border-bottom">
                                     <div className="dataTitle">Water Type</div>
                                     <div className="dataPoint">{this.props.surface}</div>
                                 </div>
@@ -99,12 +116,12 @@ class Swim extends Component {
                                 </div>
                             </div>
                         </div>
-                        
+
                         {this.props.userId === localStorage.getItem("userId") ? (
                             <button className="btn btn-danger btn-sm deleteActivity" onClick={this.deleteSwim}>Delete Swim</button>
                         ) : (
-                            <></>
-                        )}
+                                <></>
+                            )}
                     </Modal>
                 ) : (
                         <></>

@@ -131,6 +131,62 @@ class SubmitSwim extends Component {
         });
     }
 
+    setDistance = (id, distance) => {
+        let workout = this.state.workout;
+
+        for (var w in workout) {
+            if (workout[w].id === id) {
+                workout[w].distance = distance;
+            }
+        }
+
+        this.setState({
+            workout: workout,
+        });
+    }
+
+    setTime = (id, time) => {
+        let workout = this.state.workout;
+
+        for (var w in workout) {
+            if (workout[w].id === id) {
+                workout[w].time = time;
+            }
+        }
+
+        this.setState({
+            workout: workout,
+        });
+    }
+    
+    setStroke = (id, stroke) => {
+        let workout = this.state.workout;
+
+        for (var w in workout) {
+            if (workout[w].id === id) {
+                workout[w].stroke = stroke;
+            }
+        }
+
+        this.setState({
+            workout: workout,
+        });
+    }
+
+    setRest = (id, rest) => {
+        let workout = this.state.workout;
+
+        for (var w in workout) {
+            if (workout[w].id === id) {
+                workout[w].rest = rest;
+            }
+        }
+
+        this.setState({
+            workout: workout,
+        });
+    }
+
     submitSwim = () => {
         if (true) {
             let swimData = {
@@ -325,13 +381,13 @@ class SubmitSwim extends Component {
 
                     {this.state.workout.map(lap => (
                         <SwimLap
-                            key={Math.random() * 100000}
+                            key={lap.id}
                             id={lap.id}
-                            distance={lap.distance}
                             units={this.state.units}
-                            time={lap.time}
-                            stroke={lap.stroke}
-                            rest={lap.rest}
+                            setDistance={this.setDistance}
+                            setTime={this.setTime}
+                            setStroke={this.setStroke}
+                            setRest={this.setRest}
                             getLap={this.getLap}
                             deleteLap={this.deleteLap}
                         />
