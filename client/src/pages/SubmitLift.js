@@ -44,8 +44,11 @@ class SubmitLift extends Component {
                     id: 0,
                     name: "",
                     weight: "",
+                    superset: "",
+                    sets: "",
                     reps: "",
                     rest: "",
+                    notes: "",
                 }
 
                 exercises.push(exercise);
@@ -249,6 +252,104 @@ class SubmitLift extends Component {
         });
     }
 
+    setName = (id, name) => {
+        let exercises = this.state.exercises;
+
+        for (var e in exercises) {
+            if (exercises[e].id === id) {
+                exercises[e].name = name;
+            }
+        }
+
+        this.setState({
+            exercises: exercises,
+        });
+    }
+
+    setWeight = (id, weight) => {
+        let exercises = this.state.exercises;
+
+        for (var e in exercises) {
+            if (exercises[e].id === id) {
+                exercises[e].weight = weight;
+            }
+        }
+
+        this.setState({
+            exercises: exercises,
+        });
+    }
+
+    setSuperset = (id, superset) => {
+        let exercises = this.state.exercises;
+
+        for (var e in exercises) {
+            if (exercises[e].id === id) {
+                exercises[e].superset = superset;
+            }
+        }
+
+        this.setState({
+            exercises: exercises,
+        });
+    }
+
+    setSets = (id, sets) => {
+        let exercises = this.state.exercises;
+
+        for (var e in exercises) {
+            if (exercises[e].id === id) {
+                exercises[e].sets = sets;
+            }
+        }
+
+        this.setState({
+            exercises: exercises,
+        });
+    }
+
+    setReps = (id, reps) => {
+        let exercises = this.state.exercises;
+
+        for (var e in exercises) {
+            if (exercises[e].id === id) {
+                exercises[e].reps = reps;
+            }
+        }
+
+        this.setState({
+            exercises: exercises,
+        });
+    }
+    
+    setRest = (id, rest) => {
+        let exercises = this.state.exercises;
+
+        for (var e in exercises) {
+            if (exercises[e].id === id) {
+                exercises[e].rest = rest;
+            }
+        }
+
+        this.setState({
+            exercises: exercises,
+        });
+    }
+
+    setNotes = (id, notes) => {
+        let exercises = this.state.exercises;
+
+        for (var e in exercises) {
+            if (exercises[e].id === id) {
+                exercises[e].notes = notes;
+            }
+        }
+
+        this.setState({
+            exercises: exercises,
+        });
+    }
+
     render() {
         return (
             <div className="container pageContainer submitContainer liftContainer">
@@ -364,13 +465,13 @@ class SubmitLift extends Component {
                         <Exercise
                             key={exercise.id}
                             id={exercise.id}
-                            name={exercise.name}
-                            weight={exercise.weight}
-                            superset={exercise.superset}
-                            sets={exercise.sets}
-                            reps={exercise.reps}
-                            rest={exercise.rest}
-                            notes={exercise.notes}
+                            setName={this.setName}
+                            setWeight={this.setWeight}
+                            setSuperset={this.setSuperset}
+                            setSets={this.setSets}
+                            setReps={this.setReps}
+                            setRest={this.setRest}
+                            setNotes={this.setNotes}
                             getExercise={this.getExercise}
                             deleteExercise={this.deleteExercise}
                         />
