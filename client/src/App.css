@@ -11,7 +11,7 @@ html {
 }
 
 .pageContainer {
-  background: rgb(242, 242, 242);
+  background: #fff;
   border-left: 2px solid rgb(29, 29, 29);
   border-right: 2px solid rgb(29, 29, 29);
   height: 100%;
