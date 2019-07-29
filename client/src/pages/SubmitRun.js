@@ -26,7 +26,7 @@ class SubmitRun extends Component {
             surface: null,
             weather: null,
             climb: null,
-            grade: null,
+            grade: 0.00,
             shoe: "",
             shoes: null,
             notes: null,
@@ -170,7 +170,7 @@ class SubmitRun extends Component {
     getGrade = () => {
         let distance = this.state.distance;
         let climb = this.state.climb;
-        let grade = ((climb / (distance * 5280)));
+        let grade = Math.round(((climb / (distance * 5280)) * 100) * 100) / 100;
 
         this.setState({
             grade: grade,
@@ -500,7 +500,7 @@ class SubmitRun extends Component {
                             />
                             {/* GRADE */}
                             <div className="col-md-2 input-group-text grade">
-                                {this.state.grade}
+                                {this.state.grade}%
                             </div>
                         </div>
 
