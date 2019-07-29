@@ -21,44 +21,35 @@ a {
 }
 
 .diff1 {
-    border-left: 15px solid rgb(255, 88, 116);
-    border-right: 15px solid rgb(255, 88, 116);
+    border: 5px solid rgb(255, 88, 116);
 }
 
 .diff2 {
-    border-left: 15px solid lightgreen;
-    border-right: 15px solid lightgreen;
+    border: 5px solid lightgreen;
 }
 
 .diff3 {
-    border-left: 15px solid rgb(255, 225, 53);
-    border-right: 15px solid rgb(255, 225, 53);
+    border: 5px solid rgb(255, 225, 53);
 }
 
 .diff4 {
-    border-left: 15px solid lightblue;
-    border-right: 15px solid lightblue;
+    border: 5px solid lightblue;
 }
 
 .diff5 {
-    border-left: 15px solid rgb(45, 178, 223);
-    border-right: 15px solid rgb(45, 178, 223);
+    border: 5px solid rgb(45, 178, 223);
 }
 
 .diff6 {
-    border-left: 15px solid rgb(58, 58, 255);
-    border-right: 15px solid rgb(58, 58, 255);
+    border: 5px solid rgb(58, 58, 255);
 }
 
 .diff7 {
-    border-left: 15px solid rgb(131, 131, 131);
-    border-right: 15px solid rgb(131, 131, 131);
+    border: 5px solid rgb(131, 131, 131);
 }
 
 .diff8 {
-    border-left: 15px solid black;
-    border-right: 15px solid black;
-    color: red;
+    border: 5px solid black;
 }
 
 @media only screen and (max-width: 768px) {
