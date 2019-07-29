@@ -51,6 +51,7 @@ class HallOfFame extends Component {
                 let min = 365;
                 let minName = "";
 
+                // Get maximum and minimum number of workouts
                 for (var r in res.data) {
                     if (res.data[r].workouts > max) {
                         max = res.data[r].workouts;
@@ -62,6 +63,7 @@ class HallOfFame extends Component {
                     }
                 }
 
+                // Get day number of year for today
                 let dateNum = moment().dayOfYear();
 
                 this.setState({
@@ -113,6 +115,11 @@ class HallOfFame extends Component {
                 });
             });
 
+        hofAPI.getTotalTime()
+            .then((res) => {
+                console.log("Time", res);
+            });
+
         hofAPI.getMaxRaces()
             .then((res) => {
                 let max = 0;
@@ -160,12 +167,8 @@ class HallOfFame extends Component {
 
         hofAPI.getHotdog()
             .then((res) => {
-                console.log(res);
+                console.log("Hotdog", res);
             });
-    }
-
-    getHotDog = () => {
-
     }
 
     render() {
@@ -254,7 +257,7 @@ class HallOfFame extends Component {
                                     <div className="hofIcon"><FontAwesomeIcon className="fa-3x clockIcon" icon={faClock} /></div>
                                     <div className="hofTitle">Most Time</div>
                                     <div className="hofName">{null}</div>
-                                    <div className="hofValue">{null}</div>
+                                    <div className="hofValue">{null} minutes</div>
                                 </div>
 
                                 {/* MOST RAINY DAYS */}
@@ -263,7 +266,7 @@ class HallOfFame extends Component {
                                     <div className="hofIcon"><FontAwesomeIcon className="fa-3x rainIcon" icon={faCloudShowersHeavy} /></div>
                                     <div className="hofTitle">Rain Man</div>
                                     <div className="hofName">{this.state.mostRainyDays[1]}</div>
-                                    <div className="hofValue">{this.state.mostRainyDays[0]}</div>
+                                    <div className="hofValue">{this.state.mostRainyDays[0]} rain runs</div>
                                 </div>
 
                                 {/* MOST SWIMS */}
@@ -272,12 +275,12 @@ class HallOfFame extends Component {
                                     <div className="hofIcon"><FontAwesomeIcon className="fa-3x fishIcon" icon={faFish} /></div>
                                     <div className="hofTitle">Merman</div>
                                     <div className="hofName">{this.state.mostSwims[1]}</div>
-                                    <div className="hofValue">{this.state.mostSwims[0]}</div>
+                                    <div className="hofValue">{this.state.mostSwims[0]} swims</div>
                                 </div>
 
                                 {/* HOT DOG */}
                                 <div className="hofMetric hotdog">
-                                    <div className="hofHover">Weiner.</div>
+                                    <div className="hofHover">The coveted weiner award.</div>
                                     <div className="hofIcon"><FontAwesomeIcon className="fa-3x hotdogIcon" icon={faHotdog} /></div>
                                     <div className="hofTitle">Weiner</div>
                                     <div className="hofName">{this.state.hotdog[1]}</div>
