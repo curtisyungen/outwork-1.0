@@ -203,19 +203,20 @@ class HallOfFame extends Component {
     }
 
     updateUserHof = (userId, award) => {
-        userAPI.getUserById(userId)
-            .then((res) => {
-                console.log(res);
+        console.log(userId, award);
+//         userAPI.getUserById(userId)
+//             .then((res) => {
+//                 console.log(res);
 
-                let userHof = res.data.hof || [];
+//                 let userHof = res.data.hof || [];
 
-                userHof.push(award);
+//                 userHof.push(award);
 
-                userAPI.updateUserHof(userId, userHof)
-                    .then((res) => {
-                        console.log(res);
-                    });
-            });
+//                 userAPI.updateUserHof(userId, userHof)
+//                     .then((res) => {
+//                         console.log(res);
+//                     });
+//             });
     }
 
     render() {
