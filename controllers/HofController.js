@@ -72,6 +72,13 @@ class HofController {
                 res.json(swims);
             });
     }
+
+    getHotdog(req, res) {
+        db.sequelize.query("SELECT id AS days, firstName, milePace FROM workouts WHERE weather = 'Sunny'", { type: sequelize.QueryTypes.SELECT })
+            .then(days => {
+                res.json(days);
+            });
+    }
 }
 
 module.exports = HofController;
