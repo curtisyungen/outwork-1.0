@@ -19,6 +19,7 @@ class Swim extends Component {
     }
 
     componentDidMount = () => {
+        console.log(this.props);
         this.setState({
             userId: this.props.userId,
         });
