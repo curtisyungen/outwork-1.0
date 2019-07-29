@@ -53,7 +53,7 @@ class HofController {
     }
 
     getTotalTime(req, res) {
-        db.sequelize.query("SELECT id AS time, firstName FROM Workouts", { type: sequelize.QueryTypes.SELECT })
+        db.sequelize.query("SELECT id, firstName, duration FROM Workouts", { type: sequelize.QueryTypes.SELECT })
             .then(time => {
                 res.json(time);
             });
