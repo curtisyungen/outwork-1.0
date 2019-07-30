@@ -25,29 +25,26 @@ class Award extends Component {
     }
 
     componentDidMount = () => {
-        let award = this.props.hof;
-        let icon = null;
+        let icon = this.props.hof[1];
 
-        switch (award) {
-            case "mostWorkouts": icon = faTrophy; break;
-            case "mostRestDays": icon = faBed; break;
-            case "longestRun": icon = faRulerHorizontal; break;
-            case "maxClimb": icon = faMountain; break;
-            case "mostPushups": icon = faMedal; break;
-            case "mostPullups": icon = faMedal; break;
-            case "mostGoggins": icon = faDragon; break;
-            case "mostTime": icon = faClock; break;
-            case "mostRaces": icon = faFlagCheckered; break;
-            case "mostRainyDays": icon = faCloudShowersHeavy; break;
-            case "mostSwims": icon = faFish; break;
-            case "hotdog": icon = faHotdog; break;
+        switch (icon) {
+            case "faTrophy": icon = faTrophy; break;
+            case "faBed": icon = faBed; break;
+            case "faRulerHorizontal": icon = faRulerHorizontal; break;
+            case "faMountain": icon = faMountain; break;
+            case "faMedal": icon = faMedal; break;
+            case "faMedal": icon = faMedal; break;
+            case "faDragon": icon = faDragon; break;
+            case "faClock": icon = faClock; break;
+            case "faFlagCheckered": icon = faFlagCheckered; break;
+            case "faCloudShowersHeavy": icon = faCloudShowersHeavy; break;
+            case "faFish": icon = faFish; break;
+            case "faHotdog": icon = faHotdog; break;
             default: icon = faTrophy;
         }
 
         this.setState({
             icon: icon,
-        }, () => {
-            console.log(this.state.icon.iconName);
         });
     }
 
@@ -66,7 +63,7 @@ class Award extends Component {
                         closeOnDocumentClick
                         className="popup"
                     >
-                        Award Name
+                        {this.props.hof[0]}
                 </Popup>
                 ) : (
                         <></>
