@@ -61,15 +61,8 @@ class HallOfFame extends Component {
             .then((res) => {
                 let awards = [];
 
-                let award = {
-                    award: null,
-                    icon: null,
-                    desc: null,
-                    userName: null,
-                    value: null
-                }
-
                 for (var r in res.data) {
+                    let award = {};
                     award.userName = res.data[r].userName;
                     award.value = res.data[r].value;
 
