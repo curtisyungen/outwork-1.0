@@ -20,7 +20,28 @@
 }
 
 .metricIcon {
-    
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    height: auto;
+    min-width: 45px !important;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+.metricIcon-run {
+    background: #90ee90;
+}
+
+.metricIcon-bike {
+    background: rgb(255, 216, 116);
+}
+
+.metricIcon-swim {
+    background: lightblue;
+}
+
+.metricIcon-lift {
+    background: rgb(255, 191, 191);
 }
 
 .metricsSectionTitle {
