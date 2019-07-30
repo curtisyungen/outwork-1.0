@@ -97,12 +97,14 @@ class Metrics extends Component {
     render() {
         return (
             <div>
-                <h4>User Total</h4>
-                {this.state.userActivity === null ? (
-                    <p>No activity found. What a loser!</p>
-                ) : (
+                <div className="metricsTitleBlock">
+                    <h4>User Totals</h4>
+                    {this.state.userActivity === null ? (
+                        <p>No activity found. What a loser!</p>
+                    ) : (
                         <></>
                     )}
+                </div>
 
                 {this.state.userRuns && this.state.userRuns.length > 0 ? (
                     <RunMetrics
