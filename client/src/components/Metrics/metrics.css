@@ -49,7 +49,7 @@
 }
 
 .metricRow {
-    background: rgb(255, 251, 232);
+    background: rgb(239, 251, 255);
     height: 50px;
     margin-bottom: 2px;
 }
@@ -104,6 +104,10 @@
         border-bottom-left-radius: 4px;
         border-bottom-right-radius: 4px;
         border-top-right-radius: 0px;
+    }
+
+    .metricIcon {
+        border-right: 1px solid rgb(114, 114, 114);
     }
 
     .metricRow {
