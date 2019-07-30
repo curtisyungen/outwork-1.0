@@ -419,8 +419,8 @@ class App extends Component {
     
     for (var d in data) {
       if (data[d].value > max) {
-        max = res.data[r].value;
-        maxName = res.data[r].firstName;
+        max = data[d].value;
+        maxName = data[d].firstName;
       }
     }
 
@@ -433,8 +433,8 @@ class App extends Component {
 
     for (var d in data) {
       if (data[d].value < min) {
-        min = res.data[r].value;
-        minName = res.data[r].firstName;
+        min = data[d].value;
+        minName = data[d].firstName;
       }
     }
 
