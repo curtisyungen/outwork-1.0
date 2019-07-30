@@ -21,7 +21,10 @@ import AllUsers from "./pages/AllUsers";
 import Error from "./pages/Error";
 import userAPI from "./utils/userAPI";
 import workoutAPI from "./utils/workoutAPI";
+import hofAPI from "./utils/hofAPI";
 import './App.css';
+
+import moment from "moment";
 
 class App extends Component {
 
@@ -87,6 +90,8 @@ class App extends Component {
           }
         });
     }
+
+    this.updateHof();
   }
 
   // REDIRECTS
@@ -251,6 +256,9 @@ class App extends Component {
     }
   }
 
+  // WORKOUTS
+  // ==================================
+
   getAllWorkouts = () => {
     workoutAPI.getAllWorkouts()
       .then((res) => {
@@ -296,6 +304,9 @@ class App extends Component {
     });
   }
 
+  // BACKGROUND
+  // ==================================
+
   openBackgrounds = () => {
     this.setState({
       openModal: true,
@@ -315,6 +326,125 @@ class App extends Component {
     this.setState({
       openModal: false,
     });
+  }
+
+  // HALL OF FAME
+  // ==================================
+
+  updateHof = () => {
+    hofAPI.getMaxWorkouts()
+      .then((res) => {
+        let max = 0;
+        let maxName = "";
+        let min = 365;
+        let minName = "";
+
+        // Get maximum and minimum number of workouts
+        for (var r in res.data) {
+          if (res.data[r].workouts > max) {
+            max = res.data[r].workouts;
+            maxName = res.data[r].firstName;
+          }
+          if (res.data[r].workouts < min) {
+            min = res.data[r].workouts;
+            minName = res.data[r].firstName;
+          }
+        }
+
+        hofAPI.updateHof("mostWorkouts", maxName, max);
+
+        // Get day number of year for today
+        let dateNum = moment().dayOfYear();
+        let min = dateNum - min;
+
+        hofAPI.updateHof("mosteRstDays", minName, min);
+      });
+
+    hofAPI.getLongestRun()
+      .then((res) => {
+        hofAPI.updateHof("longestRun", res.data[0].firstName, res.data[0].distance);
+      });
+
+    hofAPI.getMaxClimb()
+      .then((res) => {
+        hofAPI.updateHof("maxClimb", res.data[0].firstName, res.data[0].climb);
+      });
+
+    hofAPI.getMaxPushups()
+      .then((res) => {
+        hofAPI.updateHof("mostPushups", res.data[0].firstName, res.data[0].pushups);
+      });
+
+    hofAPI.getMaxPullups()
+      .then((res) => {
+        hofAPI.updateHof("mostPullups", res.data[0].firstName, res.data[0].pullups);
+      });
+
+    hofAPI.getMaxGoggins()
+      .then((res) => {
+        let max = 0;
+        let maxName = "";
+        for (var r in res.data) {
+          if (res.data[r].goggins > max) {
+            max = res.data[r].goggins;
+            maxName = res.data[r].firstName;
+          }
+        }
+
+        hofAPI.updateHof("mostGoggins", maxName, max);
+      });
+
+    // hofAPI.getTotalTime()
+    //   .then((res) => {
+    //     console.log("Time", res);
+    //   });
+
+    hofAPI.getMaxRaces()
+      .then((res) => {
+        let max = 0;
+        let maxName = 0;
+        for (var r in res.data) {
+          if (res.data[r].race > max) {
+            max = res.data[r].race;
+            maxName = res.data[r].firstName;
+          }
+        }
+
+        hofAPI.updateHof("mostRaces", maxName, max);
+      });
+
+    hofAPI.getRainyDays()
+      .then((res) => {
+        let max = 0;
+        let maxName = 0;
+        for (var r in res.data) {
+          if (res.data[r].days > max) {
+            max = res.data[r].days;
+            maxName = res.data[r].firstName;
+          }
+        }
+
+        hofAPI.updateHof("mostRainyDays", maxName, max);
+      });
+
+    hofAPI.getSwims()
+      .then((res) => {
+        let max = 0;
+        let maxName = "";
+        for (var r in res.data) {
+          if (res.data[r].swims > max) {
+            max = res.data[r].swims;
+            maxName = res.data[r].firstName;
+          }
+        }
+
+        hofAPI.updateHof("mostSwims", maxName, max);
+      });
+
+    // hofAPI.getHotdog()
+    //   .then((res) => {
+    //     console.log("Hotdog", res);
+    //   });
   }
 
   render() {
@@ -431,6 +561,7 @@ class App extends Component {
                 otherUserFirst={this.state.otherUserFirst}
                 otherUserLast={this.state.otherUserLast}
                 checkValidUser={this.checkValidUser}
+                updateHof={this.updateHof}
                 deleteActivity={this.deleteActivity}
                 background={this.state.background}
               />
@@ -490,18 +621,7 @@ class App extends Component {
               <HallOfFame
                 checkValidUser={this.checkValidUser}
                 background={this.state.background}
-                mostWorkouts={this.state.mostWorkouts}
-                mostRestDays={this.state.mostRestDays}
-                longestRun={this.state.longestRun}
-                maxClimb={this.state.maxClimb}
-                mostPushUps={this.state.mostPushUps}
-                mostPullUps={this.state.mostPullUps}
-                mostGoggins={this.state.mostGoggins}
-                mostRaces={this.state.mostRaces}
-                mostTime={this.state.mostTime}
-                mostRainyDays={this.state.mostRainyDays}
-                mostSwims={this.state.mostSwims}
-                hotdog={this.state.hotdog}
+                updateHof={this.updateHof}
               />
             } />
 

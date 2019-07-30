@@ -22,8 +22,6 @@ class ProfileHeader extends Component {
             lastName: this.props.lastName,
             hof: this.props.hof,
         });
-
-        
     }
 
     render() {

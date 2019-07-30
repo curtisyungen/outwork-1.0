@@ -1,13 +1,13 @@
-id,award,userName,value,createdAt,updatedAt
-1,mostWorkouts,,,2019-07-06 11:15:00,2019-07-06 11:15:00
-2,mostRestDays,,,2019-07-06 11:15:00,2019-07-06 11:15:00
-3,longestRun,,,2019-07-06 11:15:00,2019-07-06 11:15:00
-4,maxClimb,,,2019-07-06 11:15:00,2019-07-06 11:15:00
-5,mostPushups,,,2019-07-06 11:15:00,2019-07-06 11:15:00
-6,mostPullups,,,2019-07-06 11:15:00,2019-07-06 11:15:00
-7,mostGoggins,,,2019-07-06 11:15:00,2019-07-06 11:15:00
-8,mostTime,,,2019-07-06 11:15:00,2019-07-06 11:15:00
-9,mostRainyDays,,,2019-07-06 11:15:00,2019-07-06 11:15:00
-10,mostRaces,,,2019-07-06 11:15:00,2019-07-06 11:15:00
-11,mostSwims,,,2019-07-06 11:15:00,2019-07-06 11:15:00
-12,hotdog,,,2019-07-06 11:15:00,2019-07-06 11:15:00
+id,award,title,desc,icon,unit,userName,value,createdAt,updatedAt
+1,mostWorkouts,Hardest Worker,Highest number of workouts completed of any type.,faTrophy,workouts,,,7/6/2019 11:15,7/6/2019 11:15
+2,mostRestDays,Snoozer,"Most number of rest days. Person here needs to stop cuddling with blanky, get the fuck out of bed, and quit being a lazy bitch.",faBed,rest days,,,7/6/2019 11:15,7/6/2019 11:15
+3,longestRun,Endurer,Most number of miles run in one workout.,faRulerHorizontal,miles,,,7/6/2019 11:15,7/6/2019 11:15
+4,maxClimb,Climber,Most elevation climbed in single workout.,faMountain,feet,,,7/6/2019 11:15,7/6/2019 11:15
+5,mostPushups,Push-up Bro,Most push-ups done in a single workout.,faMedal,push-ups,,,7/6/2019 11:15,7/6/2019 11:15
+6,mostPullups,Prince of Pulls,Most pull-ups done in a single workout.,faMedal,pull-ups,,,7/6/2019 11:15,7/6/2019 11:15
+7,mostGoggins,Most Goggins,Most Goggins workouts completed. Winner here is a total badass.,faDragon,workouts,,,7/6/2019 11:15,7/6/2019 11:15
+8,mostTime,Competitor,Most number of races completed.,faFlagCheckered,races,,,7/6/2019 11:15,7/6/2019 11:15
+9,mostRainyDays,Most Time,Most time spent working out. Measured in minutes.,faClock,minutes,,,7/6/2019 11:15,7/6/2019 11:15
+10,mostRaces,Rain Man,Most days run in heavy rain.,faCloudShowersHeavy,rainy days,,,7/6/2019 11:15,7/6/2019 11:15
+11,mostSwims,Merman,Most swim workouts completed.,faFish,swims,,,7/6/2019 11:15,7/6/2019 11:15
+12,hotdog,Weiner,The coveted weiner award.,faHotdog,,,,7/6/2019 11:15,7/6/2019 11:15
