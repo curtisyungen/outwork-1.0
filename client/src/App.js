@@ -355,7 +355,7 @@ class App extends Component {
 
         // Get day number of year for today
         let dateNum = moment().dayOfYear();
-        let min = dateNum - min;
+        min = dateNum - min;
 
         hofAPI.updateHof("mosteRstDays", minName, min);
       });
