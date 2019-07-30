@@ -23,167 +23,45 @@ class HallOfFame extends Component {
         super(props);
 
         this.state = {
-            hotdog: [null, 0]
+
         }
     }
 
     componentDidMount = () => {
-        this.getUserMaxes();
+        this.props.checkValidUser();
+        this.props.updateHof();
+
+        let userId, firstName, lastName;
+
+        if (this.props.profileId !== null) {
+            userId = this.props.profileId;
+            firstName = this.props.otherUserFirst;
+            lastName = this.props.otherUserLast;
+        }
+        else {
+            userId = localStorage.getItem("userId");
+            firstName = localStorage.getItem("fn");
+            lastName = localStorage.getItem("ln");
+        }
+
+        this.setState({
+            userId: userId,
+            firstName: firstName,
+            lastName: lastName,
+        }, () => {
+            this.getHof();
+        });
+    }
+
+    getHof = () => {
+        hofAPI.getHof()
+            .then((res) => {
+                console.log(res);
+            });
     }
 
     // HALL OF FAME
     // ==================================
-
-    getUserMaxes = () => {
-        hofAPI.getMaxWorkouts()
-            .then((res) => {
-                let max = 0;
-                let maxName = "";
-                let min = 365;
-                let minName = "";
-
-                // Get maximum and minimum number of workouts
-                for (var r in res.data) {
-                    if (res.data[r].workouts > max) {
-                        max = res.data[r].workouts;
-                        maxName = res.data[r].firstName;
-                    }
-                    if (res.data[r].workouts < min) {
-                        min = res.data[r].workouts;
-                        minName = res.data[r].firstName;
-                    }
-                }
-
-                // Get day number of year for today
-                let dateNum = moment().dayOfYear();
-
-                this.setState({
-                    mostWorkouts: [max, maxName],
-                    mostRestDays: [dateNum - min, minName],
-                }, () => {
-                    this.updateUserHof("mostWorkouts", maxName, max);
-                    this.updateUserHof("mostRestDays", minName, min);
-                });
-            });
-
-        hofAPI.getLongestRun()
-            .then((res) => {
-                this.setState({
-                    longestRun: res.data[0],
-                }, () => {
-                    this.updateUserHof("longestRun", res.data[0].firstName, res.data[0].distance);
-                });
-            });
-
-        hofAPI.getMaxClimb()
-            .then((res) => {
-                this.setState({
-                    maxClimb: res.data[0],
-                }, () => {
-                    this.updateUserHof("maxClimb", res.data[0].firstName, res.data[0].climb);
-                });
-            });
-
-        hofAPI.getMaxPushups()
-            .then((res) => {
-                this.setState({
-                    mostPushUps: res.data[0],
-                }, () => {
-                    this.updateUserHof("mostPushups", res.data[0].firstName, res.data[0].pushups);
-                });
-            });
-
-        hofAPI.getMaxPullups()
-            .then((res) => {
-                this.setState({
-                    mostPullUps: res.data[0],
-                }, () => {
-                    this.updateUserHof("mostPullups", res.data[0].firstName, res.data[0].pullups);
-                });
-            });
-
-        hofAPI.getMaxGoggins()
-            .then((res) => {
-                let max = 0;
-                let maxName = "";
-                for (var r in res.data) {
-                    if (res.data[r].goggins > max) {
-                        max = res.data[r].goggins;
-                        maxName = res.data[r].firstName;
-                    }
-                }
-                this.setState({
-                    mostGoggins: [max, maxName],
-                }, () => {
-                    this.updateUserHof("mostGoggins", maxName, max);
-                });
-            });
-
-        // hofAPI.getTotalTime()
-        //   .then((res) => {
-        //     console.log("Time", res);
-        //   });
-
-        hofAPI.getMaxRaces()
-            .then((res) => {
-                let max = 0;
-                let maxName = 0;
-                for (var r in res.data) {
-                    if (res.data[r].race > max) {
-                        max = res.data[r].race;
-                        maxName = res.data[r].firstName;
-                    }
-                }
-                this.setState({
-                    mostRaces: [max, maxName],
-                }, () => {
-                    this.updateUserHof("mostRaces", maxName, max);
-                });
-            });
-
-        hofAPI.getRainyDays()
-            .then((res) => {
-                let max = 0;
-                let maxName = 0;
-                for (var r in res.data) {
-                    if (res.data[r].days > max) {
-                        max = res.data[r].days;
-                        maxName = res.data[r].firstName;
-                    }
-                }
-                this.setState({
-                    mostRainyDays: [max, maxName],
-                }, () => {
-                    this.updateUserHof("mostRainyDays", maxName, max);
-                });
-            });
-
-        hofAPI.getSwims()
-            .then((res) => {
-                let max = 0;
-                let maxName = "";
-                for (var r in res.data) {
-                    if (res.data[r].swims > max) {
-                        max = res.data[r].swims;
-                        maxName = res.data[r].firstName;
-                    }
-                }
-                this.setState({
-                    mostSwims: [max, maxName],
-                }, () => {
-                    this.updateUserHof("mostSwims", maxName, max);
-                });
-            })
-
-        // hofAPI.getHotdog()
-        //   .then((res) => {
-        //     console.log("Hotdog", res);
-        //   });
-    }
-
-    updateUserHof = (award, userName, value) => {
-        hofAPI.updateHof(award, userName, value);
-    }
 
     render() {
         return (
@@ -216,14 +94,14 @@ class HallOfFame extends Component {
                                 <div className="hofMetric longestRun">
                                     <div className="hofHover">Most number of miles run in one workout.</div>
                                     <div className="hofIcon"><FontAwesomeIcon className="fa-3x rulerIcon" icon={faRulerHorizontal} /></div>
-                                    <div className="hofTitle">Mr. Endurance</div>
+                                    <div className="hofTitle">Endurer</div>
                                     <div className="hofName">{this.state.longestRun.firstName}</div>
                                     <div className="hofValue">{this.state.longestRun.distance} miles</div>
                                 </div>
 
                                 {/* GREATEST CLIMB */}
                                 <div className="hofMetric mostClimb">
-                                    <div className="hofHover">Most elevation climbed in single workout. Measured in feet.</div>
+                                    <div className="hofHover">Most elevation climbed in single workout.</div>
                                     <div className="hofIcon"><FontAwesomeIcon className="fa-3x mountainIcon" icon={faMountain} /></div>
                                     <div className="hofTitle">Climber</div>
                                     <div className="hofName">{this.state.maxClimb.firstName}</div>
@@ -243,7 +121,7 @@ class HallOfFame extends Component {
                                 <div className="hofMetric mostPullUps">
                                     <div className="hofHover">Most pull-ups done in a single workout.</div>
                                     <div className="hofIcon"><FontAwesomeIcon className="fa-3x bronzeMedalIcon" icon={faMedal} /></div>
-                                    <div className="hofTitle">Prince o' Pulls</div>
+                                    <div className="hofTitle">Prince of Pulls</div>
                                     <div className="hofName">{this.state.mostPullUps.firstName}</div>
                                     <div className="hofValue">{this.state.mostPullUps.pullups} pull-ups</div>
                                 </div>
