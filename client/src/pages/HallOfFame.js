@@ -32,7 +32,7 @@ class HallOfFame extends Component {
 
     componentDidMount = () => {
         this.props.checkValidUser();
-        this.props.updateHof();
+        // this.props.updateHof();
 
         let userId, firstName, lastName;
 
@@ -98,7 +98,7 @@ class HallOfFame extends Component {
                             </div>
                         ))
                     ) : (
-                        <></>
+                        <p>Loading...</p>
                     )}
                 </div>
             </div>
