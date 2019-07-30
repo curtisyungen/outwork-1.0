@@ -35,9 +35,9 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING(1500),
             allowNull: true,
         },
-        // User's account privacy setting: public or private
-        privacy: {
-            type: DataTypes.STRING,
+        // User's list of hall of fame awards
+        hof: {
+            type: DataTypes.STRING(1000),
             allowNull: true,
         },
         // Array of users being followed by subject user, stored as string
