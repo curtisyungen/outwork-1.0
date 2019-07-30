@@ -343,7 +343,7 @@ class App extends Component {
         let dateNum = moment().dayOfYear();
         let minVal = dateNum - min[1];
 
-        hofAPI.updateHof("mosteRstDays", min[0], minVal);
+        hofAPI.updateHof("mostRestDays", min[0], minVal);
       });
 
     hofAPI.getLongestRun()
