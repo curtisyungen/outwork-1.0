@@ -21,28 +21,28 @@ class HofController {
     }
 
     getLongestRun(req, res) {
-        db.sequelize.query("SELECT MAX(distance) AS distance, firstName, userId FROM Workouts WHERE workoutType = 'run'", { type: sequelize.QueryTypes.SELECT })
+        db.sequelize.query("SELECT distance AS value, firstName, userId FROM Workouts WHERE workoutType = 'run'", { type: sequelize.QueryTypes.SELECT })
             .then(run => {
                 res.json(run);
             });
     }
 
     getMaxClimb(req, res) {
-        db.sequelize.query("SELECT MAX(climb) AS climb, firstName, userId FROM Workouts", { type: sequelize.QueryTypes.SELECT })
+        db.sequelize.query("SELECT climb AS value, firstName, userId FROM Workouts", { type: sequelize.QueryTypes.SELECT })
             .then(climb => {
                 res.json(climb);
             });
     }
 
     getMaxPushups(req, res) {
-        db.sequelize.query("SELECT MAX(pushups) AS pushups, firstName, userId FROM Workouts", { type: sequelize.QueryTypes.SELECT })
+        db.sequelize.query("SELECT pushups AS value, firstName, userId FROM Workouts", { type: sequelize.QueryTypes.SELECT })
             .then(pushups => {
                 res.json(pushups);
             });
     }
 
     getMaxPullups(req, res) {
-        db.sequelize.query("SELECT MAX(pullups) AS pullups, firstName, userId FROM Workouts", { type: sequelize.QueryTypes.SELECT })
+        db.sequelize.query("SELECT pullups AS value, firstName, userId FROM Workouts", { type: sequelize.QueryTypes.SELECT })
             .then(pullups => {
                 res.json(pullups);
             });
