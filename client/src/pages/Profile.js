@@ -4,8 +4,6 @@ import ProfileBody from "../components/ProfileBody/profileBody";
 import hofAPI from "../utils/hofAPI";
 import "./Profile.css";
 
-import moment from "moment";
-
 class Profile extends Component {
 
     constructor(props) {
@@ -22,7 +20,7 @@ class Profile extends Component {
 
     componentDidMount = () => {
         this.props.checkValidUser();
-        // this.props.updateHof();
+        this.props.updateHof();
 
         let userId, firstName, lastName;
 

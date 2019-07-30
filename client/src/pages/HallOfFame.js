@@ -61,14 +61,14 @@ class HallOfFame extends Component {
             .then((res) => {
                 let awards = [];
 
-                console.log("Awards", res);
-
                 for (var r in res.data) {
                     awards.push([res.data[r].userName, res.data[r].value]);
                 }
 
                 this.setState({
                     awards: awards,
+                }, () => {
+                    console.log("Awards", this.state.awards);
                 });
             });
     }
