@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Container from "../components/Container/container";
-import Sidebar from "../components/Sidebar/sidebar";
 import UserActivity from "../components/UserActivity/userActivity";
 import workoutAPI from "../utils/workoutAPI";
 import "./Home.css";
@@ -169,9 +168,6 @@ class Home extends Component {
     render() {
         return (
             <Container>
-
-                <Sidebar />
-
                 <div className={`homePage`}>
                     <div className="input-group mb-2 mt-4">
                         <div className="input-group-prepend">
