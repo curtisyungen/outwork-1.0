@@ -367,6 +367,7 @@ class App extends Component {
 
     hofAPI.getMaxClimb()
       .then((res) => {
+        console.log("Climb", res);
         hofAPI.updateHof("maxClimb", res.data[0].firstName, res.data[0].climb);
       });
 
