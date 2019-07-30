@@ -56,9 +56,13 @@ class Award extends Component {
             <span>
                 <Popup
                     trigger={
-                        <div className={`award ${this.state.icon.iconName}`}>
-                            <FontAwesomeIcon className="awardIcon" icon={this.state.icon} />
-                        </div>
+                        this.state.icon ? (
+                            <div className={`award ${this.state.icon.iconName}`}>
+                                <FontAwesomeIcon className="awardIcon" icon={this.state.icon} />
+                            </div>
+                        ) : (
+                            <></>
+                        )
                     }
                     on="hover"
                     position="top"
