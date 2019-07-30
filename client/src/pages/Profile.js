@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import ProfileHeader from "../components/ProfileHeader/profileHeader";
 import ProfileBody from "../components/ProfileBody/profileBody";
+import hofAPI from "../utils/hofAPI";
 import "./Profile.css";
+
+import moment from "moment";
 
 class Profile extends Component {
 
@@ -13,6 +16,7 @@ class Profile extends Component {
             firstName: null,
             lastName: null,
             userActivity: null,
+            hof: null,
         }
     }
 
@@ -31,32 +35,53 @@ class Profile extends Component {
             firstName = localStorage.getItem("fn");
             lastName = localStorage.getItem("ln");
         }
-    
+
         this.setState({
             userId: userId,
             firstName: firstName,
             lastName: lastName,
+        }, () => {
+            this.getHof();
         });
+    }
+
+    getHof = () => {
+        hofAPI.getHof()
+            .then((res) => {
+
+                let hof = [];
+
+                for (var a in res.data) {
+                    if (res.data[a].userName === this.state.firstName) {
+                        hof.push(res.data[a].award);
+                    }
+                }
+
+                this.setState({
+                    hof: hof,
+                });
+            });
     }
 
     render() {
         return (
             <div className="container pageContainer profileContainer">
-                {this.state.firstName && this.state.lastName ? (
+                {this.state.firstName && this.state.lastName && this.state.hof ? (
                     <span>
-                        <ProfileHeader 
+                        <ProfileHeader
                             userId={this.state.userId}
                             firstName={this.state.firstName}
                             lastName={this.state.lastName}
+                            hof={this.state.hof}
                         />
-                        <ProfileBody 
+                        <ProfileBody
                             userId={this.state.userId}
                             deleteActivity={this.props.deleteActivity}
-                        />   
-                    </span>          
+                        />
+                    </span>
                 ) : (
-                    <p>Loading...</p>
-                )   }    
+                        <p>Loading...</p>
+                    )}
             </div>
         )
     }

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import hofAPI from "../utils/hofAPI";
-import userAPI from "../utils/userAPI";
 import "./HallOfFame.css";
 
 import moment from "moment";
@@ -24,18 +23,7 @@ class HallOfFame extends Component {
         super(props);
 
         this.state = {
-            mostWorkouts: [0, null],
-            mostRestDays: [0, null],
-            longestRun: [0, null],
-            maxClimb: [0, null],
-            mostPushUps: [0, null],
-            mostPullUps: [0, null],
-            mostGoggins: [0, null],
-            mostRaces: [0, null],
-            mostTime: [0, null],
-            mostRainyDays: [0, null],
-            mostSwims: [0, null],
-            hotdog: [0, null],
+            hotdog: [null, 0]
         }
     }
 
@@ -43,27 +31,26 @@ class HallOfFame extends Component {
         this.getUserMaxes();
     }
 
+    // HALL OF FAME
+    // ==================================
+
     getUserMaxes = () => {
         hofAPI.getMaxWorkouts()
             .then((res) => {
                 let max = 0;
                 let maxName = "";
-                let maxId = null;
                 let min = 365;
                 let minName = "";
-                let minId = null;
 
                 // Get maximum and minimum number of workouts
                 for (var r in res.data) {
                     if (res.data[r].workouts > max) {
                         max = res.data[r].workouts;
                         maxName = res.data[r].firstName;
-                        maxId = res.data[r].userId;
                     }
                     if (res.data[r].workouts < min) {
                         min = res.data[r].workouts;
                         minName = res.data[r].firstName;
-                        minId = res.data[r].userId;
                     }
                 }
 
@@ -74,8 +61,8 @@ class HallOfFame extends Component {
                     mostWorkouts: [max, maxName],
                     mostRestDays: [dateNum - min, minName],
                 }, () => {
-                    this.updateUserHof(maxId, "mostWorkouts");
-                    this.updateUserHof(minId, "mostRestDays");
+                    this.updateUserHof("mostWorkouts", maxName, max);
+                    this.updateUserHof("mostRestDays", minName, min);
                 });
             });
 
@@ -84,7 +71,7 @@ class HallOfFame extends Component {
                 this.setState({
                     longestRun: res.data[0],
                 }, () => {
-                    this.updateUserHof(res.data[0].userId, "longestRun");
+                    this.updateUserHof("longestRun", res.data[0].firstName, res.data[0].distance);
                 });
             });
 
@@ -93,7 +80,7 @@ class HallOfFame extends Component {
                 this.setState({
                     maxClimb: res.data[0],
                 }, () => {
-                    this.updateUserHof(res.data[0].userId, "maxClimb");
+                    this.updateUserHof("maxClimb", res.data[0].firstName, res.data[0].climb);
                 });
             });
 
@@ -102,7 +89,7 @@ class HallOfFame extends Component {
                 this.setState({
                     mostPushUps: res.data[0],
                 }, () => {
-                    this.updateUserHof(res.data[0].userId, "mostPushUps");
+                    this.updateUserHof("mostPushups", res.data[0].firstName, res.data[0].pushups);
                 });
             });
 
@@ -111,7 +98,7 @@ class HallOfFame extends Component {
                 this.setState({
                     mostPullUps: res.data[0],
                 }, () => {
-                    this.updateUserHof(res.data[0].userId, "mostPullUps");
+                    this.updateUserHof("mostPullups", res.data[0].firstName, res.data[0].pullups);
                 });
             });
 
@@ -119,42 +106,38 @@ class HallOfFame extends Component {
             .then((res) => {
                 let max = 0;
                 let maxName = "";
-                let maxId = null;
                 for (var r in res.data) {
                     if (res.data[r].goggins > max) {
                         max = res.data[r].goggins;
                         maxName = res.data[r].firstName;
-                        maxId = res.data[r].userId;
                     }
                 }
                 this.setState({
                     mostGoggins: [max, maxName],
                 }, () => {
-                    this.updateUserHof(maxId, "mostGoggins");
+                    this.updateUserHof("mostGoggins", maxName, max);
                 });
             });
 
-        hofAPI.getTotalTime()
-            .then((res) => {
-                console.log("Time", res);
-            });
+        // hofAPI.getTotalTime()
+        //   .then((res) => {
+        //     console.log("Time", res);
+        //   });
 
         hofAPI.getMaxRaces()
             .then((res) => {
                 let max = 0;
                 let maxName = 0;
-                let maxId = null;
                 for (var r in res.data) {
                     if (res.data[r].race > max) {
                         max = res.data[r].race;
                         maxName = res.data[r].firstName;
-                        maxId = res.data[r].userId;
                     }
                 }
                 this.setState({
                     mostRaces: [max, maxName],
                 }, () => {
-                    this.updateUserHof(maxId, "mostRaces");
+                    this.updateUserHof("mostRaces", maxName, max);
                 });
             });
 
@@ -162,18 +145,16 @@ class HallOfFame extends Component {
             .then((res) => {
                 let max = 0;
                 let maxName = 0;
-                let maxId = null;
                 for (var r in res.data) {
                     if (res.data[r].days > max) {
                         max = res.data[r].days;
                         maxName = res.data[r].firstName;
-                        maxId = res.data[r].userId;
                     }
                 }
                 this.setState({
                     mostRainyDays: [max, maxName],
                 }, () => {
-                    this.updateUserHof(maxId, "mostRainyDays");
+                    this.updateUserHof("mostRainyDays", maxName, max);
                 });
             });
 
@@ -181,49 +162,35 @@ class HallOfFame extends Component {
             .then((res) => {
                 let max = 0;
                 let maxName = "";
-                let maxId = null;
                 for (var r in res.data) {
                     if (res.data[r].swims > max) {
                         max = res.data[r].swims;
                         maxName = res.data[r].firstName;
-                        maxId = res.data[r].userId;
                     }
                 }
                 this.setState({
                     mostSwims: [max, maxName],
                 }, () => {
-                    this.updateUserHof(maxId, "mostSwims");
+                    this.updateUserHof("mostSwims", maxName, max);
                 });
             })
 
-        hofAPI.getHotdog()
-            .then((res) => {
-                console.log("Hotdog", res);
-            });
+        // hofAPI.getHotdog()
+        //   .then((res) => {
+        //     console.log("Hotdog", res);
+        //   });
     }
 
-    updateUserHof = (userId, award) => {
-        console.log(userId, award);
-//         userAPI.getUserById(userId)
-//             .then((res) => {
-//                 console.log(res);
-
-//                 let userHof = res.data.hof || [];
-
-//                 userHof.push(award);
-
-//                 userAPI.updateUserHof(userId, userHof)
-//                     .then((res) => {
-//                         console.log(res);
-//                     });
-//             });
+    updateUserHof = (award, userName, value) => {
+        hofAPI.updateHof(award, userName, value);
     }
 
     render() {
         return (
             <div className="container pageContainer hofContainer">
-                {this.state.mostWorkouts && this.state.mostRestDays && this.state.longestRun && this.state.maxClimb &&
-                    this.state.mostPushUps && this.state.mostPullUps && this.state.mostGoggins && this.state.mostRaces ? (
+                {this.state.mostWorkouts && this.state.mostRestDays && this.state.longestRun && this.state.maxClimb && this.state.mostPushUps &&
+                    this.state.mostPullUps && this.state.mostGoggins && this.state.mostRainyDays && this.state.mostSwims && this.state.mostRaces
+                    ? (
                         <span>
                             <h4>Hall of Fame</h4>
                             <div className="hallOfFame">
