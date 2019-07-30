@@ -54,8 +54,8 @@ class Award extends Component {
         return (
             <span>
                 {this.state.icon ? (
-                    <div className={`award ${this.state.icon.iconName}`}>
-                        <FontAwesomeIcon className="awardIcon" icon={this.state.icon} />
+                    <div className={`award ${this.state.icon}`}>
+                        <FontAwesomeIcon className="awardIcon" icon={this.state.icon.iconName} />
                     </div>
                 ) : (
                         <></>
