@@ -490,6 +490,18 @@ class App extends Component {
               <HallOfFame
                 checkValidUser={this.checkValidUser}
                 background={this.state.background}
+                mostWorkouts={this.state.mostWorkouts}
+                mostRestDays={this.state.mostRestDays}
+                longestRun={this.state.longestRun}
+                maxClimb={this.state.maxClimb}
+                mostPushUps={this.state.mostPushUps}
+                mostPullUps={this.state.mostPullUps}
+                mostGoggins={this.state.mostGoggins}
+                mostRaces={this.state.mostRaces}
+                mostTime={this.state.mostTime}
+                mostRainyDays={this.state.mostRainyDays}
+                mostSwims={this.state.mostSwims}
+                hotdog={this.state.hotdog}
               />
             } />
 

@@ -32,9 +32,8 @@ class ProfileHeader extends Component {
                 <div className="jumbotron jumbotron-fluid profileHeader">
                     <h1 className="display-4">
                         {this.state.firstName} {this.state.lastName}
-                    </h1>
-                </div>
-                <div className="hof">
+
+                        <div className="hof">
                     {this.state.hof && this.state.hof.length > 0 ? (
                         this.state.hof.map(hof => (
                             <Award 
@@ -46,6 +45,9 @@ class ProfileHeader extends Component {
                             <></>
                         )}
                 </div>
+                    </h1>
+                </div>
+                
             </span>
         )
     }

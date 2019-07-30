@@ -1,0 +1,10 @@
+.award {
+    height: auto;
+    padding: 0;
+    text-align: center;
+    width: 50px;
+}
+
+.awardIcon {
+    height: 25px;
+}
