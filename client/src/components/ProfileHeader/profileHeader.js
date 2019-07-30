@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Award from "../Award/award";
 import "./profileHeader.css";
 
 class ProfileHeader extends Component {
@@ -10,6 +11,7 @@ class ProfileHeader extends Component {
             userId: null,
             firstName: null,
             lastName: null,
+            hof: null,
         }
     }
 
@@ -18,16 +20,33 @@ class ProfileHeader extends Component {
             userId: this.props.userId,
             firstName: this.props.firstName,
             lastName: this.props.lastName,
+            hof: this.props.hof,
         });
+
+        
     }
 
     render() {
         return (
-            <div className="jumbotron jumbotron-fluid profileHeader">
-                <h1 className="display-4">
-                    {this.state.firstName} {this.state.lastName}
-                </h1>                
-            </div>
+            <span>
+                <div className="jumbotron jumbotron-fluid profileHeader">
+                    <h1 className="display-4">
+                        {this.state.firstName} {this.state.lastName}
+                    </h1>
+                </div>
+                <div className="hof">
+                    {this.state.hof && this.state.hof.length > 0 ? (
+                        this.state.hof.map(hof => (
+                            <Award 
+                                key={Math.random() * 1000000}
+                                hof={hof}
+                            />
+                        ))
+                    ) : (
+                            <></>
+                        )}
+                </div>
+            </span>
         )
     }
 }
