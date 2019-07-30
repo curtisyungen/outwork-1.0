@@ -4,12 +4,14 @@ const controller = new HofController();
 
 // HALL OF FAME
 
-router.get("/getMaxWorkouts", (req, res) => {
-    controller.getMaxWorkouts(req, res);
+// GET ROUTES
+
+router.get("/getHof", (req, res) => {
+    controller.getHof(req, res);
 });
 
-router.get("/getMinWorkouts", (req, res) => {
-    controller.getMinWorkouts(req, res);
+router.get("/getMaxWorkouts", (req, res) => {
+    controller.getMaxWorkouts(req, res);
 });
 
 router.get("/getLongestRun", (req, res) => {
@@ -52,9 +54,7 @@ router.get("/getHotdog", (req, res) => {
     controller.getHotdog(req, res);
 });
 
-router.get("/getHof", (req, res) => {
-    controller.getHof(req, res);
-});
+// PUT ROUTES
 
 router.put("/updateHof", (req, res) => {
     controller.updateHof(req, res);
