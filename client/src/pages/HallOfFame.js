@@ -63,8 +63,12 @@ class HallOfFame extends Component {
 
                 for (var r in res.data) {
                     let award = {};
+                    award.title = res.data[r].title;
+                    award.icon = res.data[r].icon;
+                    award.desc = res.data[r].desc;
                     award.userName = res.data[r].userName;
                     award.value = res.data[r].value;
+                    award.unit = res.data[r].unit;
 
                     awards.push(award);
                 }
@@ -86,9 +90,9 @@ class HallOfFame extends Component {
                     {this.state.awards && this.state.awards.length > 0 ? (
                         this.state.awards.map(award => (
                             <div className="hofMetric mostWorkouts">
-                                <div className="hofHover">Description</div>
+                                <div className="hofHover">{award.desc}</div>
                                 <div className="hofIcon"><FontAwesomeIcon className="fa-3x trophyIcon" icon={faTrophy} /></div>
-                                <div className="hofTitle">Award Title</div>
+                                <div className="hofTitle">{award.title}</div>
                                 <div className="hofName">{award.userName}</div>
                                 <div className="hofValue">{award.value} units</div>
                             </div>
