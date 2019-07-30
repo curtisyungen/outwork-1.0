@@ -52,7 +52,7 @@ class Profile extends Component {
 
                 for (var a in res.data) {
                     if (res.data[a].userName === this.state.firstName) {
-                        hof.push(res.data[a].award);
+                        hof.push([res.data[a].title, res.data[a].icon]);
                     }
                 }
 
