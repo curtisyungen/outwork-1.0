@@ -20,8 +20,10 @@
 }
 
 .metricIcon {
+    border: 1px solid #727272;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
+    border-right: 0px;
     height: auto;
     padding: 5px 10px;
     text-align: center;
