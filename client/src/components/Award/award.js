@@ -54,23 +54,23 @@ class Award extends Component {
     render() {
         return (
             <span>
-                <Popup
-                    trigger={
-                        this.state.icon ? (
+                {this.state.icon ? (
+                    <Popup
+                        trigger={
                             <div className={`award ${this.state.icon.iconName}`}>
                                 <FontAwesomeIcon className="awardIcon" icon={this.state.icon} />
                             </div>
-                        ) : (
-                            <></>
-                        )
-                    }
-                    on="hover"
-                    position="top"
-                    closeOnDocumentClick
-                    className="popup"
-                >
-                    Award Name
+                        }
+                        on="hover"
+                        position="top"
+                        closeOnDocumentClick
+                        className="popup"
+                    >
+                        Award Name
                 </Popup>
+                ) : (
+                        <></>
+                    )}
             </span>
         )
     }
