@@ -25,7 +25,6 @@ class Award extends Component {
 
     componentDidMount = () => {
         let award = this.props.hof;
-        console.log(this.props);
         let icon = null;
 
         switch (award) {
@@ -33,8 +32,8 @@ class Award extends Component {
             case "mostRestDays": icon = faBed; break;
             case "longestRun": icon = faRulerHorizontal; break;
             case "maxClimb": icon = faMountain; break;
-            case "mostPushUps": icon = faMedal; break;
-            case "mostPullUps": icon = faMedal; break;
+            case "mostPushups": icon = faMedal; break;
+            case "mostPullups": icon = faMedal; break;
             case "mostGoggins": icon = faDragon; break;
             case "mostTime": icon = faClock; break;
             case "mostRaces": icon = faFlagCheckered; break;
