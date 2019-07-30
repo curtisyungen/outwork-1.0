@@ -1,5 +1,4 @@
 .metric {
-    background: #fff;
     border: 1px solid rgb(114, 114, 114);
     border-right: 0px;
     font-size: 13px;
@@ -50,6 +49,7 @@
 }
 
 .metricRow {
+    background: rgb(255, 251, 232);
     margin-bottom: 2px;
 }
 
