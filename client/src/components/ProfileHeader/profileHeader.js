@@ -32,17 +32,17 @@ class ProfileHeader extends Component {
                         {this.state.firstName} {this.state.lastName}
 
                         <div className="hof">
-                    {this.state.hof && this.state.hof.length > 0 ? (
-                        this.state.hof.map(hof => (
-                            <Award 
-                                key={Math.random() * 1000000}
-                                hof={hof}
-                            />
-                        ))
-                    ) : (
-                            <></>
-                        )}
-                </div>
+                            {this.state.hof && this.state.hof.length > 0 ? (
+                                this.state.hof.map(hof => (
+                                    <Award 
+                                        key={Math.random() * 1000000}
+                                        hof={hof}
+                                    />
+                                ))
+                            ) : (
+                                <></>
+                            )}
+                        </div>
                     </h1>
                 </div>
                 

@@ -18,7 +18,8 @@
 }
  
 .shoesBtn {
-    float: right;
+    /* float: right; */
+    margin-bottom: 5px;
 }
 
 @media only screen and (max-width: 520px) {
