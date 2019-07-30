@@ -24,7 +24,7 @@
     border-bottom-left-radius: 4px;
     border-right: 0px;
     height: auto;
-    padding: 5px 10px;
+    padding: 10px;
     text-align: center;
 }
 
@@ -50,6 +50,7 @@
 
 .metricRow {
     background: rgb(255, 251, 232);
+    height: 50px;
     margin-bottom: 2px;
 }
 
