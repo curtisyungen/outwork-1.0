@@ -62,7 +62,7 @@ class Award extends Component {
                             </div>
                         }
                         on="hover"
-                        position="top"
+                        position="bottom"
                         closeOnDocumentClick
                         className="popup"
                     >
