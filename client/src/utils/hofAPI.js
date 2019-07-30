@@ -7,6 +7,10 @@ dotenv.config();
 
 export default {
 
+    getHof: function() {
+        return axios.get("/api/hof/getHof");
+    },
+
     getMaxWorkouts: function() {
         return axios.get("/api/hof/getMaxWorkouts");
     },
@@ -54,4 +58,8 @@ export default {
     getHotdog: function() {
         return axios.get("/api/hof/getHotdog");
     },
+
+    updateHof: function(award, userName, value) {
+        return axios.put("/api/hof/updateHof", {award: award, userName: userName, value: value});
+    }
 }
