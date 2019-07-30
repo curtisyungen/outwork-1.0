@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import "./metrics.css";
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRunning } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faRunning);
+
 import moment from "moment";
 
 class RunMetrics extends Component {
@@ -111,7 +117,8 @@ class RunMetrics extends Component {
     render() {
         return (
             <span>
-                <h4 className="metricsSectionTitle">Runs</h4>
+                {/* <h4 className="metricsSectionTitle">Runs</h4> */}
+                <FontAwesomeIcon className="fa-2x icon" icon={faRunning} />
                 <div className={`d-flex flex-${this.props.flexDir} metricRow`}>
                     <div className="metric">
                         <div className="metricTitle">Workouts</div>
