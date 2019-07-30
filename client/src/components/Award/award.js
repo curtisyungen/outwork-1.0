@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import "./award.css";
+import "./award.css";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -54,7 +54,7 @@ class Award extends Component {
             <span>
                 {this.state.icon ? (
                     <div className="award">
-                        <FontAwesomeIcon className="fa-2x" icon={this.state.icon} />
+                        <FontAwesomeIcon className="awardIcon" icon={this.state.icon} />
                     </div>
                 ) : (
                         <></>

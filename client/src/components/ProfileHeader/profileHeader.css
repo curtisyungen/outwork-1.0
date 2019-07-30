@@ -3,6 +3,12 @@
     padding-bottom: 10px;
 }
 
+.hof {
+    display: flex;
+    flex-direction: row;
+    float: right;
+}
+
 .profileHeader {
     background: #fff;
     height: 150px;
