@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import "./metrics.css";
 
+import moment from "moment";
+
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRunning } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faRunning);
-
-import moment from "moment";
 
 class RunMetrics extends Component {
 
