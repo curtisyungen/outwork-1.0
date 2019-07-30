@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Popup from "reactjs-popup";
 import "./award.css";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -53,13 +54,19 @@ class Award extends Component {
     render() {
         return (
             <span>
-                {this.state.icon ? (
-                    <div className={`award ${this.state.icon.iconName}`}>
-                        <FontAwesomeIcon className="awardIcon" icon={this.state.icon} />
-                    </div>
-                ) : (
-                        <></>
-                    )}
+                <Popup
+                    trigger={
+                        <div className={`award ${this.state.icon.iconName}`}>
+                            <FontAwesomeIcon className="awardIcon" icon={this.state.icon} />
+                        </div>
+                    }
+                    on="hover"
+                    position="top"
+                    closeOnDocumentClick
+                    className="popup"
+                >
+                    Award Name
+                </Popup>
             </span>
         )
     }
