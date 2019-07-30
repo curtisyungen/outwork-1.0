@@ -334,51 +334,40 @@ class App extends Component {
   updateHof = () => {
     hofAPI.getMaxWorkouts()
       .then((res) => {
-        let max = 0;
-        let maxName = "";
-        let min = 365;
-        let minName = "";
+        // Get maximum number of workouts
+        let max = this.getMaximum(res.data);
+        hofAPI.updateHof("mostWorkouts", max[0], max[1]);
 
-        // Get maximum and minimum number of workouts
-        for (var r in res.data) {
-          if (res.data[r].workouts > max) {
-            max = res.data[r].workouts;
-            maxName = res.data[r].firstName;
-          }
-          if (res.data[r].workouts < min) {
-            min = res.data[r].workouts;
-            minName = res.data[r].firstName;
-          }
-        }
-
-        hofAPI.updateHof("mostWorkouts", maxName, max);
-
-        // Get day number of year for today
+        // Get maximum number of rest days
+        let min = this.getMinimum(res.data);
         let dateNum = moment().dayOfYear();
-        min = dateNum - min;
+        let minVal = dateNum - min[1];
 
-        hofAPI.updateHof("mosteRstDays", minName, min);
+        hofAPI.updateHof("mosteRstDays", min[0], minVal);
       });
 
     hofAPI.getLongestRun()
       .then((res) => {
-        hofAPI.updateHof("longestRun", res.data[0].firstName, res.data[0].distance);
+        let max = this.getMaximum(res.data);
+        hofAPI.updateHof("longestRun", max[0], max[1]);
       });
 
     hofAPI.getMaxClimb()
       .then((res) => {
-        console.log("Climb", res);
-        hofAPI.updateHof("maxClimb", res.data[0].firstName, res.data[0].climb);
+        let max = this.getMaximum(res.data);
+        hofAPI.updateHof("maxClimb", max[0], max[1]);
       });
 
     hofAPI.getMaxPushups()
       .then((res) => {
-        hofAPI.updateHof("mostPushups", res.data[0].firstName, res.data[0].pushups);
+        let max = this.getMaximum(res.data);
+        hofAPI.updateHof("mostPushups", max[0], max[1]);
       });
 
     hofAPI.getMaxPullups()
       .then((res) => {
-        hofAPI.updateHof("mostPullups", res.data[0].firstName, res.data[0].pullups);
+        let max = this.getMaximum(res.data);
+        hofAPI.updateHof("mostPullups", max[0], max[1]);
       });
 
     hofAPI.getMaxGoggins()
@@ -402,50 +391,54 @@ class App extends Component {
 
     hofAPI.getMaxRaces()
       .then((res) => {
-        let max = 0;
-        let maxName = 0;
-        for (var r in res.data) {
-          if (res.data[r].race > max) {
-            max = res.data[r].race;
-            maxName = res.data[r].firstName;
-          }
-        }
-
-        hofAPI.updateHof("mostRaces", maxName, max);
+        let max = this.getMaximum(res.data);
+        hofAPI.updateHof("mostRaces", max[0], max[1]);
       });
 
     hofAPI.getRainyDays()
       .then((res) => {
-        let max = 0;
-        let maxName = 0;
-        for (var r in res.data) {
-          if (res.data[r].days > max) {
-            max = res.data[r].days;
-            maxName = res.data[r].firstName;
-          }
-        }
-
-        hofAPI.updateHof("mostRainyDays", maxName, max);
+        let max = this.getMaximum(res.data);
+        hofAPI.updateHof("mostRainyDays", max[0], max[1]);
       });
 
     hofAPI.getSwims()
       .then((res) => {
-        let max = 0;
-        let maxName = "";
-        for (var r in res.data) {
-          if (res.data[r].swims > max) {
-            max = res.data[r].swims;
-            maxName = res.data[r].firstName;
-          }
-        }
-
-        hofAPI.updateHof("mostSwims", maxName, max);
+        let max = this.getMaximum(res.data);
+        hofAPI.updateHof("mostSwims", max[0], max[1]);
       });
 
     // hofAPI.getHotdog()
     //   .then((res) => {
     //     console.log("Hotdog", res);
     //   });
+  }
+
+  getMaximum = (data) => {
+    let max = 0;
+    let maxName = null;
+    
+    for (var d in data) {
+      if (data[d].value > max) {
+        max = res.data[r].value;
+        maxName = res.data[r].firstName;
+      }
+    }
+
+    return [maxName, max];
+  }
+
+  getMinimum = (data) => {
+    let min = 365;
+    let minName = null;
+
+    for (var d in data) {
+      if (data[d].value < min) {
+        min = res.data[r].value;
+        minName = res.data[r].firstName;
+      }
+    }
+
+    return [minName, min];
   }
 
   render() {
