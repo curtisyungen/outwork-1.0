@@ -45,6 +45,8 @@ class Award extends Component {
 
         this.setState({
             icon: icon,
+        }, () => {
+            console.log(this.state.icon.iconName);
         });
     }
 
@@ -52,8 +54,8 @@ class Award extends Component {
         return (
             <span>
                 {this.state.icon ? (
-                    <div className="award">
-                        <FontAwesomeIcon className="awardIcon" icon={this.state.icon} />
+                    <div className={`award ${this.state.icon}`}>
+                        <FontAwesomeIcon className="awardIcon" icon={this.state.icon.iconName} />
                     </div>
                 ) : (
                         <></>

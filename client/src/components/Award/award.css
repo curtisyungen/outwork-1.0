@@ -8,3 +8,47 @@
 .awardIcon {
     height: 25px;
 }
+
+.trophy {
+    color: gold;
+}
+
+.bed {
+    color: rgb(128, 179, 255);
+}
+
+.ruler-horizontal {
+    color: #DEB887;
+}
+
+.mountain {
+    color: rgb(156, 46, 156);
+}
+
+.medal {
+    color: rgb(205, 127, 50);
+}
+
+.dragon {
+    color: rgb(185, 0, 0);
+}
+
+.clock {
+    color: rgb(242, 242, 242);
+}   
+
+.flag-checkered {
+    color: #000;
+}
+
+.cloud-showers-heavy {
+    color: rgb(114, 114, 114);
+}
+
+.fish {
+    color: rgb(31, 153, 31);
+}
+
+.hotdog {
+    color: rgb(255, 145, 0);
+}
