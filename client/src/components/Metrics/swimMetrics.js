@@ -70,7 +70,7 @@ class SwimMetrics extends Component {
                 {/* <h4 className="metricsSectionTitle">Swims</h4> */}
                 <div className={`d-flex flex-${this.props.flexDir}`}>
                     <div className="metricIcon metricIcon-swim">
-                        <FontAwesomeIcon className="fa-2x" icon={faSwimmer} />
+                        <FontAwesomeIcon className="fa-2x icon" icon={faSwimmer} />
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Workouts</div>

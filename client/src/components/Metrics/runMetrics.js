@@ -120,7 +120,7 @@ class RunMetrics extends Component {
                 {/* <h4 className="metricsSectionTitle">Runs</h4> */}
                 <div className={`d-flex flex-${this.props.flexDir} metricRow`}>
                     <div className="metricIcon metricIcon-run">
-                        <FontAwesomeIcon className="fa-2x" icon={faRunning} />
+                        <FontAwesomeIcon className="fa-2x icon" icon={faRunning} />
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Workouts</div>

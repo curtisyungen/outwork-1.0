@@ -100,7 +100,7 @@ class BikeMetrics extends Component {
                 {/* <h4 className="metricsSectionTitle">Bikes</h4> */}
                 <div className={`d-flex flex-${this.props.flexDir}`}>
                     <div className="metricIcon metricIcon-bike">
-                        <FontAwesomeIcon className="fa-2x" icon={faBiking} />
+                        <FontAwesomeIcon className="fa-2x icon" icon={faBiking} />
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Workouts</div>
