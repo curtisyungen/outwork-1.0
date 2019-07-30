@@ -98,12 +98,21 @@ class Metrics extends Component {
         return (
             <div>
                 <div className="metricsTitleBlock">
-                    <h4>User Totals</h4>
+                    <h4 className="userTotalsTitle">User Totals</h4>
                     {this.state.userActivity === null ? (
                         <p>No activity found. What a loser!</p>
                     ) : (
-                        <></>
-                    )}
+                            <></>
+                        )}
+                    {this.state.userRuns && (this.props.userId === localStorage.getItem("userId")) ? (
+                        <ShoeMetrics
+                            userId={this.state.userId}
+                            userRuns={this.state.userRuns}
+                            flexDir={this.state.flexDir}
+                        />
+                    ) : (
+                            <></>
+                        )}
                 </div>
 
                 {this.state.userRuns && this.state.userRuns.length > 0 ? (
@@ -140,17 +149,6 @@ class Metrics extends Component {
                     <LiftMetrics
                         userId={this.state.userId}
                         userLifts={this.state.userLifts}
-                        flexDir={this.state.flexDir}
-                    />
-                ) : (
-                        <></>
-                    )}
-
-
-                {this.state.userRuns && (this.props.userId === localStorage.getItem("userId")) ? (
-                    <ShoeMetrics
-                        userId={this.state.userId}
-                        userRuns={this.state.userRuns}
                         flexDir={this.state.flexDir}
                     />
                 ) : (
