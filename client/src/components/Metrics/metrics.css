@@ -58,6 +58,10 @@
     font-weight: 700;
 }
 
+.metricsTitleBlock {
+    width: 100%;
+}
+
 .shoeList {
     margin-top: 30px;
 }
