@@ -70,7 +70,7 @@ class LiftMetrics extends Component {
         return (
             <span>
                 {/* <h4 className="metricsSectionTitle">Lifts</h4> */}
-                <div className={`d-flex flex-${this.props.flexDir}`}>
+                <div className={`d-flex flex-${this.props.flexDir} metricRow`}>
                     <div className="metricIcon metricIcon-lift">
                         <FontAwesomeIcon className="fa-2x icon" icon={faDumbbell} />
                     </div>

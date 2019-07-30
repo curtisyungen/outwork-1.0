@@ -98,7 +98,7 @@ class BikeMetrics extends Component {
         return (
             <span>
                 {/* <h4 className="metricsSectionTitle">Bikes</h4> */}
-                <div className={`d-flex flex-${this.props.flexDir}`}>
+                <div className={`d-flex flex-${this.props.flexDir} metricRow`}>
                     <div className="metricIcon metricIcon-bike">
                         <FontAwesomeIcon className="fa-2x icon" icon={faBiking} />
                     </div>
