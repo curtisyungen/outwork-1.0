@@ -22,7 +22,7 @@ class Profile extends Component {
 
     componentDidMount = () => {
         this.props.checkValidUser();
-        this.props.updateHof();
+        // this.props.updateHof();
 
         let userId, firstName, lastName;
 
