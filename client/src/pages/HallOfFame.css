@@ -15,7 +15,7 @@
     overflow-x: scroll;
     scrollbar-width: 0px;
     white-space: normal;
-    width: 25%;
+    width: 30%;
 }
 
 .hofDesc::-webkit-scrollbar {
@@ -24,7 +24,7 @@
 }
 
 .hofIcon {
-    width: 15%;
+    width: 10%;
 }
 
 .hofLogoImg {
