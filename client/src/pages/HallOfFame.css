@@ -8,9 +8,14 @@
 
 .hofDesc {
     font-size: 14px;
-    overflow: scroll;
+    overflow-x: scroll;
     white-space: normal;
     width: 25%;
+}
+
+.hofDesc::-webkit-scrollbar {
+    background: transparent;
+    width: 0px;
 }
 
 .hofIcon {
