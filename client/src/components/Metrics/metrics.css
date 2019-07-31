@@ -108,6 +108,8 @@
 
     .metricIcon {
         border-right: 1px solid rgb(114, 114, 114);
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
     }
 
     .metricRow {
