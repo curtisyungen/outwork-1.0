@@ -9,6 +9,11 @@
     height: 25px;
 }
 
+.popup-profile {
+    text-align: center;
+    width: 75px;
+}
+
 .trophy {
     color: gold;
 }

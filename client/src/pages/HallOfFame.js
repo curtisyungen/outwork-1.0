@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import hofAPI from "../utils/hofAPI";
 import "./HallOfFame.css";
 
-import moment from "moment";
-
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
