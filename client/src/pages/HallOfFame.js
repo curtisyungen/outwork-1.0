@@ -108,6 +108,12 @@ class HallOfFame extends Component {
             "http://www.fiebredegolf.com/wp-content/uploads/2016/03/Salo%CC%81n-de-la-Fama-del-Golf-Logo.jpg",
             "http://www.madisonbulldogs.org/_/rsrc/1368580498732/hall-of-fame/HOF.jpg?height=400&width=400",
             "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/64ecef39-bee4-4348-aee6-0909c8bcfa5f/dd1c0zj-e62723ed-a70e-4651-8136-4aff0d22495b.png/v1/fill/w_1082,h_739,strp/wwe_hall_of_fame_2019_logo_png_by_thebigdog1996_dd1c0zj-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9ODIwIiwicGF0aCI6IlwvZlwvNjRlY2VmMzktYmVlNC00MzQ4LWFlZTYtMDkwOWM4YmNmYTVmXC9kZDFjMHpqLWU2MjcyM2VkLWE3MGUtNDY1MS04MTM2LTRhZmYwZDIyNDk1Yi5wbmciLCJ3aWR0aCI6Ijw9MTIwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.L34KLGrQ87cnkshHhSBWHdiejnIZyAMrHPJgwgQIkRg",
+            "http://nationalcomedyhalloffame.com/wp-content/uploads/2018/12/Embossed-Circle-Logo.png",
+            "https://s3.amazonaws.com/swac.org/images/2018/8/3/swac_hof.jpg",
+            "https://halloffame.outreach.ou.edu/media/filer_public/2c/4f/2c4ff43e-1352-4bc9-82c5-cf637a6e074f/hof_logo_print_white.png",
+            "https://www.google.com/search?biw=1165&bih=456&tbm=isch&sa=1&ei=R-BBXdqxOfXi9AOugam4Aw&q=hall+of+fame+logo+&oq=hall+of+fame+logo+&gs_l=img.3..0l3j0i30j0i5i30l6.42849.42849..42971...0.0..0.107.107.0j1......0....1..gws-wiz-img.AttamHo5R1Y&ved=0ahUKEwia8YaE59_jAhV1MX0KHa5ACjcQ4dUDCAY&uact=5#imgdii=VEgb12e62m_zSM:&imgrc=KLcRaf9QlaZSKM:",
+            "https://www.uslacrosse.org/sites/default/files/public/images/logos/hall-of-fame-trans.png",
+            "https://www.galioninquirer.com/wp-content/uploads/sites/38/2018/01/Sports-Hall-of-Fame-2.png",
         ];
 
         let logoIdx = Math.floor(Math.random() * logos.length);
