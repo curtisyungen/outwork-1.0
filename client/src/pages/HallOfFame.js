@@ -106,6 +106,13 @@ class HallOfFame extends Component {
         return (
             <div className="container pageContainer hofContainer">
                 <h4>Hall of Fame</h4>
+                {/* <div>
+                    <img 
+                        className="hofLogo"
+                        src="https://vignette.wikia.nocookie.net/rsf-franchise/images/7/74/HoF.png/revision/latest?cb=20170603045124" 
+                        alt="Hall of Fame" 
+                    />
+                </div> */}
                 <div className="hallOfFame">
                     {this.state.awards && this.state.awards.length > 0 ? (
                         this.state.awards.map(award => (
