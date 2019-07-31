@@ -58,7 +58,7 @@
 .mostWorkouts {
     background: lightyellow;
 }
-.trophyIcon {
+.faTrophy {
     color: gold;
 }
 
@@ -66,7 +66,7 @@
 .mostRestDays {
     background: lightblue;
 }
-.restIcon {
+.faBed {
     color: rgb(128, 179, 255);
 }
 
@@ -74,7 +74,7 @@
 .longestRun {
     background: rgb(199, 151, 151);
 }
-.rulerIcon {
+.faRulerHorizontal {
     color: #DEB887;
 }
 
@@ -82,7 +82,7 @@
 .mostClimb {
     background: rgb(216, 189, 216);
 }
-.mountainIcon {
+.faMountain {
     color: rgb(156, 46, 156);
 }
 
@@ -90,15 +90,15 @@
 .mostPushUps {
     background: rgb(205, 216, 180);
 }
-.silverMedalIcon {
+/* .faMedal {
     color: rgb(155, 155, 155);
-}
+} */
 
 /* MOST PULL-UPS */
 .mostPullUps {
     background: rgb(250, 223, 223);
 }
-.bronzeMedalIcon {
+.faMedal {
     color: rgb(205, 127, 50);
 }
 
@@ -107,7 +107,7 @@
     background: black;
     color: white;
 }
-.dragonIcon {
+.faDragon {
     color: rgb(185, 0, 0);
 }
 
@@ -115,7 +115,7 @@
 .flagIcon {
     color: #000;
 }
-.mostRaces {
+.faFlagCheckered {
     background: rgb(190, 190, 190);
 }
 
@@ -123,7 +123,7 @@
 .clockIcon {
     color: #fff;
 }
-.mostTime {
+.faClock {
     background: rgb(199, 119, 166);
 }
 
@@ -131,7 +131,7 @@
 .rainIcon {
     color: rgb(114, 114, 114);
 }
-.mostRainyDays {
+.faCloudHeavyRain {
     background: rgb(194, 194, 194);
 }
 
@@ -139,7 +139,7 @@
 .fishIcon {
     color: rgb(31, 153, 31);
 }
-.mostSwims {
+.faFish {
     background: lightblue;
 }
 
@@ -147,6 +147,6 @@
 .hotdogIcon {
     color: rgb(255, 145, 0);
 }
-.hotdog {
+.faHotdog {
     background: rgb(110, 255, 110);
 }
