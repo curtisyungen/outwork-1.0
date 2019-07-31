@@ -8,6 +8,7 @@
 
 .hofDesc {
     font-size: 14px;
+    overflow: scroll;
     white-space: normal;
     width: 25%;
 }
@@ -150,4 +151,10 @@
 }
 .hotdog {
     background: rgb(110, 255, 110);
+}
+
+@media only screen and (max-width: 520px) {
+    .hofDesc{
+        display: none;
+    }
 }
