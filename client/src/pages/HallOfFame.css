@@ -79,16 +79,24 @@
     color: rgb(156, 46, 156);
 }
 
+.faMedal {
+    color: rgb(205, 127, 50);
+}
+
+.faDragon {
+    color: rgb(185, 0, 0);
+}
+
 .faFlagCheckered {
     color: #000;
 }
 
 .faClock {
-    color: rgb(156, 156, 156);
+    color: rgb(36, 36, 36);
 }
 
 .faCloudHeavyRain {
-    color: rgb(78, 78, 78);
+    color: rgb(150, 150, 150);
 }
 
 .faFish {
@@ -100,7 +108,15 @@
 }
 
 @media only screen and (max-width: 520px) {
+    .hofCol {
+        width: 25%;
+    }
+
     .hofDesc{
         display: none;
+    }
+    
+    .hofMetric {
+        font-size: 14px;
     }
 }
