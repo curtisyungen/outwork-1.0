@@ -16,7 +16,8 @@
 }
 
 .day-multiple {
-    background: rgb(196, 0, 163);
+    background: rgb(220, 255, 220);
+    border: 1px solid black;
 }
 
 .day-run {
