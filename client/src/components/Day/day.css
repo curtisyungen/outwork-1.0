@@ -15,6 +15,10 @@
     background: rgb(255, 191, 191);
 }
 
+.day-multiple {
+    background: green;
+}
+
 .day-run {
     background: lightgreen;
 }

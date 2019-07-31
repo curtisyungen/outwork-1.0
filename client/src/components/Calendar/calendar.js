@@ -20,10 +20,17 @@ class Calendar extends Component {
 
     componentDidMount = () => {
         let year = [];
+        let names = [
+            "January", "February", "March",
+            "April", "May", "June", "July",
+            "August", "September", "October",
+            "November", "December"];
+        let numDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
         for (var i = 0; i < 12; i++) {
-            let month = [i];
-            for (var m = 0; m < 31; m++) {
-                month.push(m);
+            let month = [names[i]];
+            for (var m = 0; m < numDays[i]; m++) {
+                month.push([m + 1]);
             }
 
             year.push(month);
@@ -48,6 +55,7 @@ class Calendar extends Component {
             });
     }
 
+    // Populate year array with activity by month and day
     processData = () => {
         let activity = this.state.activity;
         let year = this.state.year;
@@ -57,8 +65,7 @@ class Calendar extends Component {
         for (var a in activity) {
             month = moment(activity[a].date).month();
             day = moment(activity[a].date).date();
-
-            year[month][day] = (activity[a]);
+            year[month][day].push(activity[a]);
         }
 
         this.setState({
@@ -70,16 +77,16 @@ class Calendar extends Component {
     render() {
         return (
             <div className="calendar">
-                {this.state.processed ? (
+                {this.state.processed === true ? (
                     <span>
                         <h4>Calendar</h4>
                         <div className="calendarContainer">
-
                             {this.state.year && this.state.year.length > 0 ? (
                                 this.state.year.map(month => (
                                     <Month
-                                        key={Math.random() * 100000}
+                                        key={month[0]}
                                         month={month}
+                                        monthNum={month[0]}
                                     />
                                 ))
                             ) : (
