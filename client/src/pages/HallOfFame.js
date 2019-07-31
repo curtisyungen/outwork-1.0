@@ -77,6 +77,26 @@ class HallOfFame extends Component {
             });
     }
 
+    getIcon = (iconRef) => {
+
+        switch (iconRef) {
+            case "faTrophy": icon = faTrophy; break;
+            case "faBed": icon = faBed; break;
+            case "faRulerHorizontal": icon = faRulerHorizontal; break;
+            case "faMountain": icon = faMountain; break;
+            case "faMedal": icon = faMedal; break;
+            case "faDragon": icon = faDragon; break;
+            case "faClock": icon = faClock; break;
+            case "faFlagCheckered": icon = faFlagCheckered; break;
+            case "faCloudShowersHeavy": icon = faCloudShowersHeavy; break;
+            case "faFish": icon = faFish; break;
+            case "faHotdog": icon = faHotdog; break;
+            default: icon = faTrophy;
+        }
+
+        return icon;
+    }
+
     // HALL OF FAME
     // ==================================
 
@@ -89,7 +109,7 @@ class HallOfFame extends Component {
                         this.state.awards.map(award => (
                             <div className="hofMetric mostWorkouts">
                                 <div className="hofHover">{award.desc}</div>
-                                <div className="hofIcon"><FontAwesomeIcon className={`fa-3x ${award.icon}`} icon={faTrophy} /></div>
+                                <div className="hofIcon"><FontAwesomeIcon className={`fa-3x ${award.icon}`} icon={this.getIcon(award.icon)} /></div>
                                 <div className="hofTitle">{award.title}</div>
                                 <div className="hofName">{award.userName}</div>
                                 <div className="hofValue">{award.value} units</div>
