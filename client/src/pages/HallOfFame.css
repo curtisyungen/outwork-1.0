@@ -3,10 +3,16 @@
 }
 
 .hofCol {
+    width: 20%;
+}
+
+.hofDesc {
+    font-size: 14px;
+    white-space: normal;
     width: 25%;
 }
 
-.hofCol-sm {
+.hofIcon {
     width: 15%;
 }
 
@@ -15,11 +21,11 @@
 }
 
 .hofHover {
-    background: rgb(218, 218, 218);
+    background: #fff;
     border-radius: 4px;
     color: #000;
     display: flex;
-    font-size: 18px;
+    font-size: 14px;
     height: 75px;
     margin-top: -11px;
     opacity: 0;
@@ -29,7 +35,6 @@
 }
 
 .hofHover:hover {
-    border: 1px solid rgb(114, 114, 114);
     opacity: 1;
 }
 
@@ -38,10 +43,10 @@
     border: 1px solid rgb(252, 252, 252);
     border-radius: 4px;
     display: flex;
-    font-size: 20px;
+    font-size: 18px;
     height: 75px;
     margin: 5px;
-    padding: 10px 0px;
+    padding-top: 15px;
     text-align: left;
     vertical-align: middle;
 }
@@ -52,7 +57,7 @@
 
 /* MOST WORKOUTS */
 .mostWorkouts {
-    /* background: lightyellow; */
+    background: #fff;
 }
 .faTrophy {
     color: gold;
