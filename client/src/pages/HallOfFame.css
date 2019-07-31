@@ -61,101 +61,42 @@
     font-weight: 700;
 }
 
-/* MOST WORKOUTS */
-.mostWorkouts {
-    background: #fff;
-}
+/* ICONS */
+
 .faTrophy {
     color: gold;
 }
 
-/* MOST REST DAYS */
-.mostRestDays {
-    background: lightblue;
-}
 .faBed {
     color: rgb(128, 179, 255);
 }
 
-/* LONGEST RUN */
-.longestRun {
-    background: rgb(199, 151, 151);
-}
 .faRulerHorizontal {
     color: #DEB887;
 }
 
-/* BEST CLIMB */
-.mostClimb {
-    background: rgb(216, 189, 216);
-}
 .faMountain {
     color: rgb(156, 46, 156);
 }
 
-/* MOST PUSH-UPS */
-.mostPushUps {
-    background: rgb(205, 216, 180);
-}
-/* .faMedal {
-    color: rgb(155, 155, 155);
-} */
-
-/* MOST PULL-UPS */
-.mostPullUps {
-    background: rgb(250, 223, 223);
-}
-.faMedal {
-    color: rgb(205, 127, 50);
-}
-
-/* MOST GOGGINS */
-.mostGoggins {
-    background: black;
-    color: white;
-}
-.faDragon {
-    color: rgb(185, 0, 0);
-}
-
-/* MOST RACES */
 .faFlagCheckered {
     color: #000;
 }
-.mostRaces {
-    background: rgb(190, 190, 190);
-}
 
-/* MOST TIME */
 .faClock {
-    color: #fff;
-}
-.mostTime {
-    background: rgb(199, 119, 166);
+    color: rgb(156, 156, 156);
 }
 
-/* MOST RAINY DAYS */
 .faCloudHeavyRain {
-    color: rgb(114, 114, 114);
-}
-.mostRainyDays {
-    background: rgb(194, 194, 194);
+    color: rgb(78, 78, 78);
 }
 
-/* MOST SWIMS */
 .faFish {
     color: rgb(31, 153, 31);
 }
-.mostSwims {
-    background: lightblue;
-}
 
-/* HOT DOG */
 .faHotdog {
     color: rgb(255, 145, 0);
-}
-.hotdog {
-    background: rgb(110, 255, 110);
 }
 
 @media only screen and (max-width: 520px) {
