@@ -117,8 +117,8 @@ class HallOfFame extends Component {
                     {this.state.awards && this.state.awards.length > 0 ? (
                         this.state.awards.map(award => (
                             <div className="hofMetric mostWorkouts">
-                                <div className="hofHover hofCol">{award.desc}</div>
-                                <div className="hofIcon hofCol"><FontAwesomeIcon className={`fa-3x ${award.icon}`} icon={this.getIcon(award.icon)} /></div>
+                                <div className="hofHover">{award.desc}</div>
+                                <div className="hofIcon hofCol-sm"><FontAwesomeIcon className={`fa-2x ${award.icon}`} icon={this.getIcon(award.icon)} /></div>
                                 <div className="hofTitle hofCol">{award.title}</div>
                                 <div className="hofName hofCol">{award.userName}</div>
                                 <div className="hofValue hofCol">{award.value} units</div>
