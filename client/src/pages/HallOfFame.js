@@ -89,9 +89,16 @@ class HallOfFame extends Component {
             "https://ungathletics.com/common/controls/image_handler.aspx?thumb_id=0&image_path=/images/2016/10/14/UNG_HOF_Logo2016.png",
             "https://umdearborn.edu/sites/default/files/styles/opengraph/public/group-library/341/athletics_hall_of_fame.png?itok=2mkwgrcg",
             "https://www.limusichalloffame.org/wp-content/uploads/2017/10/limhof-badge-v2.png",
-            "https://www.womenofthehall.org/wp-content/themes/NWHoF/assets/imgs/logo-nwhof.png",
+            "https://i2.wp.com/flwomenshalloffame.org/wp-content/uploads/2017/09/wine-logo-revised.jpg?fit=862%2C527&ssl=1",
             "https://1190915.v1.pressablecdn.com/wp-content/uploads/2017/12/logo-white-outline.png",
             "https://dbukjj6eu5tsf.cloudfront.net/sidearm.sites/glenville.sidearmsports.com/images/2016/9/22/GSC_Curtis_Elam_Hall_of_Fame_71.jpg",
+            "https://chambermaster.blob.core.windows.net/userfiles/UserFiles/chambers/719/CMS/Hall-of-Fame-Logo.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Country_Music_Hall_of_Fame_logo.svg/1200px-Country_Music_Hall_of_Fame_logo.svg.png",
+            "https://music.missouri.edu/sites/default/files/event-img/junior_honor_band_logo.png",
+            "https://images.squarespace-cdn.com/content/5af2084a85ede1521a2990fa/1530807908955-PXU0EDB52ANHVLJI06TY/logo_red.png?content-type=image%2Fpng",
+            "https://www.mdsahof.com/assets/site/msahf.png",
+            "http://garyhayescountry.com/wp-content/uploads/2018/05/BGM.jpg",
+            "http://www.coaaa.org/cms/images/HOF/HOF_2019/Inductee-Group-Photo_2019.jpg",
         ];
 
         let logoIdx = Math.floor(Math.random() * logos.length);
