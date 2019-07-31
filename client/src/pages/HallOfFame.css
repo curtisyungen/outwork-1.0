@@ -27,10 +27,13 @@
     width: 15%;
 }
 
-.hofLogo {
-    margin: 5px auto;
+.hofLogoImg {
+    width: 125px;
+}
+
+.hofLogoDiv {
     margin-bottom: 20px;
-    width: 100px;
+    text-align: center;
 }
 
 .hofMetric {
