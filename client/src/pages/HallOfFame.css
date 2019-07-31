@@ -6,6 +6,10 @@
     width: 25%;
 }
 
+.hofCol-sm {
+    width: 15%;
+}
+
 .hofContainer {
     background: rgb(114, 114, 114);
 }
