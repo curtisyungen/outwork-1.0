@@ -99,6 +99,15 @@ class HallOfFame extends Component {
             "https://www.mdsahof.com/assets/site/msahf.png",
             "http://garyhayescountry.com/wp-content/uploads/2018/05/BGM.jpg",
             "http://www.coaaa.org/cms/images/HOF/HOF_2019/Inductee-Group-Photo_2019.jpg",
+            "https://upload.wikimedia.org/wikipedia/en/thumb/0/09/ICC_Hall_Of_Fame.svg/981px-ICC_Hall_Of_Fame.svg.png",
+            "https://www.bakemag.com/ext/resources/images/b/a/k/i/n/e/m/a/a/f/2017/BakingHallofFame.jpg",
+            "https://www.bowlingmuseum.com/portals/0/images/HomepageBuckets/IBMHOFLogo.png",
+            "http://mynssa.nssa-nsca.org/wp-content/uploads/sites/6/2010/08/NSSA-HoF-Logo-2018.jpg",
+            "https://i.pinimg.com/originals/de/ce/ec/deceec0d604d4245aa48d7898d39231d.png",
+            "https://naturallycaron.files.wordpress.com/2011/08/crochet-hof-logo.jpg",
+            "http://www.fiebredegolf.com/wp-content/uploads/2016/03/Salo%CC%81n-de-la-Fama-del-Golf-Logo.jpg",
+            "http://www.madisonbulldogs.org/_/rsrc/1368580498732/hall-of-fame/HOF.jpg?height=400&width=400",
+            "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/64ecef39-bee4-4348-aee6-0909c8bcfa5f/dd1c0zj-e62723ed-a70e-4651-8136-4aff0d22495b.png/v1/fill/w_1082,h_739,strp/wwe_hall_of_fame_2019_logo_png_by_thebigdog1996_dd1c0zj-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9ODIwIiwicGF0aCI6IlwvZlwvNjRlY2VmMzktYmVlNC00MzQ4LWFlZTYtMDkwOWM4YmNmYTVmXC9kZDFjMHpqLWU2MjcyM2VkLWE3MGUtNDY1MS04MTM2LTRhZmYwZDIyNDk1Yi5wbmciLCJ3aWR0aCI6Ijw9MTIwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.L34KLGrQ87cnkshHhSBWHdiejnIZyAMrHPJgwgQIkRg",
         ];
 
         let logoIdx = Math.floor(Math.random() * logos.length);
