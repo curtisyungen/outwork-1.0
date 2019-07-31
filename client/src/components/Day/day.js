@@ -9,10 +9,16 @@ class Day extends Component {
 
         this.state = {
             type: null,
+            workoutType: null,
         }
     }
 
     componentDidMount = () => {
+        this.getType();
+        this.getWorkoutData();
+    }
+
+    getType = () => {
         let type;
         let day = this.props.day;
 
@@ -28,6 +34,22 @@ class Day extends Component {
         });
     }
 
+    getWorkoutData = () => {
+        let day = this.props.day;
+        let workoutType = [];
+
+        if (day.length >= 2) {
+            for (var i=1; i<day.length; i++) {
+                workoutType.push(day[i].workoutType);
+            }
+        }
+
+        this.setState({
+            workoutType: workoutType,
+        });
+
+    }
+
     render() {
         return (
             <span>
@@ -40,49 +62,18 @@ class Day extends Component {
                     closeOnDocumentClick
                     className="popup"
                 >
-                    {this.props.day.date ? (
+                    {this.state.workoutType && this.state.workoutType.length > 0 ? (
                         <span>
                             <p>{`${this.props.month} ${parseInt(this.props.day[0])}, 2019`}</p>
-                            <div>{this.props.day.workoutType.toUpperCase()}</div>
+                            {this.state.workoutType.map(type => (
+                                <div>{type.toUpperCase()}</div>
+                            ))}
                         </span>
                     ) : (
                         <span>
                             <div>{`${this.props.month} ${parseInt(this.props.day[0])}, 2019`}</div>
                             <div>Rest Day</div>
                         </span>
-                    )}
-                    {this.props.day.workoutType === "run" ? (
-                        <span>
-                            <div>Miles: {this.props.day.distance}</div>
-                            <div>Time: {this.props.day.duration}</div>
-                            <div>Climb: {this.props.day.climb} Feet</div>
-                        </span>
-                    ) : (
-                        <></>
-                    )}
-                    {this.props.day.workoutType === "bike" ? (
-                        <span>
-                            <div>Miles: {this.props.day.distance}</div>
-                            <div>Time: {this.props.day.duration}</div>
-                            <div>Climb: {this.props.day.climb} Feet</div>
-                        </span>
-                    ): (
-                        <></>
-                    )}
-                    {this.props.day.workoutType === "swim" ? (
-                        <span>
-                            <div>Distance: {this.props.day.distance}</div>
-                            <div>Time: {this.props.day.duration}</div>
-                        </span>
-                    ): (
-                        <></>
-                    )}
-                    {this.props.day.workoutType === "lift" ? (
-                        <span>
-                            <div>Generator: {this.props.day.generator}</div>
-                        </span>
-                    ): (
-                        <></>
                     )}
                 </Popup>
             </span>
