@@ -3,12 +3,37 @@ import Popup from "reactjs-popup";
 import "./day.css";
 
 class Day extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            type: null,
+        }
+    }
+
+    componentDidMount = () => {
+        let type;
+        let day = this.props.day;
+
+        if (day.length > 2) {
+            type = "multiple";
+        }
+        else if (day.length === 2) {
+            type = day[1].workoutType;
+        }
+
+        this.setState({
+            type: type,
+        });
+    }
+
     render() {
         return (
             <span>
                 <Popup
                     trigger={
-                        <div className={`day day-${this.props.type}`}></div>
+                        <div className={`day day-${this.state.type}`}></div>
                     }
                     on="hover"
                     position="top right"
@@ -17,12 +42,12 @@ class Day extends Component {
                 >
                     {this.props.day.date ? (
                         <span>
-                            <p>{this.props.day.date}</p>
+                            <p>{`${this.props.month} ${parseInt(this.props.day[0])}, 2019`}</p>
                             <div>{this.props.day.workoutType.toUpperCase()}</div>
                         </span>
                     ) : (
                         <span>
-                            <div>2019-{this.props.month}-{parseInt(this.props.day) + 1}</div>
+                            <div>{`${this.props.month} ${parseInt(this.props.day[0])}, 2019`}</div>
                             <div>Rest Day</div>
                         </span>
                     )}
