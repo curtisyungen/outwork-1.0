@@ -111,7 +111,7 @@ class HallOfFame extends Component {
             "http://nationalcomedyhalloffame.com/wp-content/uploads/2018/12/Embossed-Circle-Logo.png",
             "https://s3.amazonaws.com/swac.org/images/2018/8/3/swac_hof.jpg",
             "https://halloffame.outreach.ou.edu/media/filer_public/2c/4f/2c4ff43e-1352-4bc9-82c5-cf637a6e074f/hof_logo_print_white.png",
-            "https://www.google.com/search?biw=1165&bih=456&tbm=isch&sa=1&ei=R-BBXdqxOfXi9AOugam4Aw&q=hall+of+fame+logo+&oq=hall+of+fame+logo+&gs_l=img.3..0l3j0i30j0i5i30l6.42849.42849..42971...0.0..0.107.107.0j1......0....1..gws-wiz-img.AttamHo5R1Y&ved=0ahUKEwia8YaE59_jAhV1MX0KHa5ACjcQ4dUDCAY&uact=5#imgdii=VEgb12e62m_zSM:&imgrc=KLcRaf9QlaZSKM:",
+            "https://uillinois_microsites.sidearmsports.com/halloffame/img/halloffame/illinois-halloffame-logo.png",
             "https://www.uslacrosse.org/sites/default/files/public/images/logos/hall-of-fame-trans.png",
             "https://www.galioninquirer.com/wp-content/uploads/sites/38/2018/01/Sports-Hall-of-Fame-2.png",
         ];
