@@ -33,7 +33,6 @@ class Award extends Component {
             case "faRulerHorizontal": icon = faRulerHorizontal; break;
             case "faMountain": icon = faMountain; break;
             case "faMedal": icon = faMedal; break;
-            case "faMedal": icon = faMedal; break;
             case "faDragon": icon = faDragon; break;
             case "faClock": icon = faClock; break;
             case "faFlagCheckered": icon = faFlagCheckered; break;
@@ -59,12 +58,11 @@ class Award extends Component {
                             </div>
                         }
                         on="hover"
-                        position="bottom"
                         closeOnDocumentClick
-                        className="popup"
+                        className="popup-profile"
                     >
                         {this.props.hof[0]}
-                </Popup>
+                    </Popup>
                 ) : (
                         <></>
                     )}
