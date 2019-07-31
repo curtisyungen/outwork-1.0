@@ -25,6 +25,7 @@ class HallOfFame extends Component {
             firstName: null,
             lastName: null,
             awards: null,
+            hofLogo: null,
         }
     }
 
@@ -51,6 +52,7 @@ class HallOfFame extends Component {
             lastName: lastName,
         }, () => {
             this.getHof();
+            this.getHofLogo();
         });
     }
 
@@ -75,6 +77,28 @@ class HallOfFame extends Component {
                     awards: awards,
                 });
             });
+    }
+
+    getHofLogo = () => {
+        let logos = [
+            "http://nmshof.com//wp-content/uploads/2013/09/NMSHOF-2014-logo-web.png",
+            "https://kysportshof.com/wp-content/themes/ky-hall-of-fame/img/kahof-logo.png",
+            "https://upload.wikimedia.org/wikipedia/en/thumb/e/e8/College_Football_Hall_of_Fame_logo.svg/1200px-College_Football_Hall_of_Fame_logo.svg.png",
+            "https://upload.wikimedia.org/wikipedia/en/thumb/7/71/Pro_Football_Hall_of_Fame_logo.svg/1200px-Pro_Football_Hall_of_Fame_logo.svg.png",
+            "http://img1.wsimg.com/isteam/ip/07c0eb80-1bb1-4598-abd8-021a8704cd7c/49e3fd09-8ce1-4e9b-83c2-6472103e38da.png",
+            "https://ungathletics.com/common/controls/image_handler.aspx?thumb_id=0&image_path=/images/2016/10/14/UNG_HOF_Logo2016.png",
+            "https://umdearborn.edu/sites/default/files/styles/opengraph/public/group-library/341/athletics_hall_of_fame.png?itok=2mkwgrcg",
+            "https://www.limusichalloffame.org/wp-content/uploads/2017/10/limhof-badge-v2.png",
+            "https://www.womenofthehall.org/wp-content/themes/NWHoF/assets/imgs/logo-nwhof.png",
+            "https://1190915.v1.pressablecdn.com/wp-content/uploads/2017/12/logo-white-outline.png",
+            "https://dbukjj6eu5tsf.cloudfront.net/sidearm.sites/glenville.sidearmsports.com/images/2016/9/22/GSC_Curtis_Elam_Hall_of_Fame_71.jpg",
+        ];
+
+        let logoIdx = Math.floor(Math.random() * logos.length);
+
+        this.setState({
+            hofLogo: logos[logoIdx],
+        });
     }
 
     getIcon = (iconRef) => {
@@ -105,14 +129,14 @@ class HallOfFame extends Component {
     render() {
         return (
             <div className="container pageContainer hofContainer">
-                <h4>Hall of Fame</h4>
-                {/* <div>
+                {/* <h4>Hall of Fame</h4> */}
+                <div>
                     <img 
                         className="hofLogo"
-                        src="https://vignette.wikia.nocookie.net/rsf-franchise/images/7/74/HoF.png/revision/latest?cb=20170603045124" 
+                        src={this.state.hofLogo} 
                         alt="Hall of Fame" 
                     />
-                </div> */}
+                </div>
                 <div className="hallOfFame">
                     {this.state.awards && this.state.awards.length > 0 ? (
                         this.state.awards.map(award => (
