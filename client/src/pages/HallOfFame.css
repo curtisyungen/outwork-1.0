@@ -7,8 +7,9 @@
 }
 
 .hofDesc {
-    font-size: 14px;
+    font-size: 12px;
     overflow-x: scroll;
+    scrollbar-width: 0px;
     white-space: normal;
     width: 25%;
 }
@@ -26,28 +27,12 @@
     background: rgb(114, 114, 114);
 }
 
-.hofHover {
-    background: #fff;
-    border-radius: 4px;
-    color: #000;
-    display: flex;
-    font-size: 14px;
-    height: 75px;
-    margin-top: -11px;
-    opacity: 0;
-    padding: 10px 20px;
-    position: absolute;
-    text-align: left;
-}
-
-.hofHover:hover {
-    opacity: 1;
-}
-
 .hofMetric {
     background: #fff;
     border: 1px solid rgb(252, 252, 252);
+    border-left: 0px;
     border-radius: 4px;
+    border-right: 0px;
     display: flex;
     font-size: 18px;
     height: 75px;
