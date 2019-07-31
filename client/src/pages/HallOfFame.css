@@ -2,24 +2,27 @@
     max-width: 1000px;
 }
 
+.hofCol {
+    width: 25%;
+}
+
 .hofContainer {
     background: rgb(114, 114, 114);
 }
 
 .hofHover {
-    background: rgb(114, 114, 114);
+    background: rgb(218, 218, 218);
     border-radius: 4px;
-    color: #fff;
-    display: inline-block;
+    color: #000;
+    display: flex;
     font-size: 13px;
-    height: 150px;
+    height: 75px;
     margin-left: -100px;
     margin-top: -11px;
     opacity: 0;
-    padding: 10px;
+    padding: 10px 0px;
     position: absolute;
     text-align: left;
-    width: 200px;
 }
 
 .hofHover:hover {
@@ -31,27 +34,27 @@
     background: #fff;
     border: 1px solid rgb(252, 252, 252);
     border-radius: 4px;
-    display: inline-block;
-    height: 150px;
+    display: flex;
+    font-size: 20px;
+    height: 75px;
     margin: 5px;
-    max-width: 200px;
-    padding: 10px 20px;
+    padding: 10px 0px;
     text-align: center;
     vertical-align: middle;
-    width: 200px;
 }
 
 .hofName {
-    font-size: 18px;
+    /* font-size: 18px; */
+    text-align: left;
 }
 
 .hofTitle {
-    font-size: 20px;
+    /* font-size: 20px; */
     font-weight: 700;
 }
 
 .hofValue {
-    font-size: 12px;
+    /* font-size: 12px; */
 }
 
 /* MOST WORKOUTS */
