@@ -79,6 +79,8 @@ class HallOfFame extends Component {
 
     getIcon = (iconRef) => {
 
+        let icon;
+
         switch (iconRef) {
             case "faTrophy": icon = faTrophy; break;
             case "faBed": icon = faBed; break;
