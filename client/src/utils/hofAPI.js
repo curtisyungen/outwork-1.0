@@ -15,10 +15,6 @@ export default {
         return axios.get("/api/hof/getMaxWorkouts");
     },
 
-    getMinWorkouts: function() {
-        return axios.get("/api/hof/getMinWorkouts");
-    },
-
     getLongestRun: function() {
         return axios.get("/api/hof/getLongestRun");
     },
