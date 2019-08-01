@@ -59,7 +59,7 @@ class CreatePassword extends Component {
         }
 
         if (valid === "good") {
-            userAPI.submitNewPassword(this.state.email, this.state.newPassword)
+            userAPI.updatePassword(this.state.email, this.state.newPassword)
                 .then((res) => {
                     this.props.setRedirectToLogin();
                 });

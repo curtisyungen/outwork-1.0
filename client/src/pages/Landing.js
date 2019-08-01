@@ -58,7 +58,7 @@ class Landing extends Component {
                 <hr/>
 
                 <div className="sitePreview">
-                    <a className="btn btn-outline-dark btn-sm videoDemo" href="">Video Demo</a>
+                    <a className="btn btn-outline-dark btn-sm videoDemo" href="">Video Demo (Coming Soon)</a>
                 </div>
             </span>
         )
