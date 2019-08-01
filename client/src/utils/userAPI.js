@@ -68,8 +68,8 @@ export default {
     // PASSWORD RESET ROUTES
     // =============================================================
 
-    updatePassword: function(userId, password) {
-        return axios.put("/api/users/updatePassword", {userId: userId, password: password});
+    updatePassword: function(email, password) {
+        return axios.put("/api/users/updatePassword", {email: email, password: password});
     },
 
     setResetCode: function (email) {
