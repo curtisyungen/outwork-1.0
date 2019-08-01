@@ -1,3 +1,7 @@
-.landingPage {
-    color: black;
+.jumbotron {
+    background: #fff;
+}
+
+.loginBtns {
+    margin-top: 12px;
 }

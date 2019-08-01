@@ -37,7 +37,7 @@ class Landing extends Component {
                         <a href="/">
                             <img className="loginLogo" src={require('../images/logo2.png')} alt="congo" />
                         </a>
-                        <h4>Outwork</h4>
+                        <h4 className="standardTitle">Outwork</h4>
                     </div>
                     <div className="loginBtns btn-group col-lg-2 text-center">
                         <button 
