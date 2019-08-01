@@ -35,7 +35,7 @@ class ResetController {
             If you continue to have issues, please contact us by responding to this email. 
             We'll be happy to assist you in recovering your account.
             Sincerely, 
-            Congo`
+            Outwork`
         };
 
         transporter.sendMail(mailOptions, function (err, info) {
