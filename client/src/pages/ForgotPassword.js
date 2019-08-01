@@ -30,7 +30,7 @@ class ForgotPassword extends Component {
         if (this.state.email !== null && this.state.email !== "") {
             
             // Check if email exists in database
-            userAPI.findExistingUser(this.state.email)
+            userAPI.getUser(this.state.email)
                 .then((res) => {
 
                     // If email is found, send password reset message
@@ -79,18 +79,23 @@ class ForgotPassword extends Component {
     render() {
         return (
             <span className="forgotPage">
-                <a className="logo" href="/">
-                    <img className="loginLogo" src={require('../images/logo2.png')} alt="congo" />
-                </a>
+                <div className="logo">
+                    <a href="/">
+                        <img className="loginLogo" src={require('../images/logo2.png')} alt="congo" />
+                    </a>
+                </div>
 
                 <div className="forgot">
                     <form>
                         <h4 className="formHeader">Password assistance</h4>
-                        <p className="formSubHeader">Enter the email address associated with your Congo account.</p>
+                        <p className="formSubHeader">
+                            You forgot your password? Wow, that's really stupid and annoying of you.
+                            Well, enter your email address below then.
+                        </p>
                         <p className="formLabel">Email</p>
                         <input
                             autoFocus
-                            className="formInput"
+                            className="formInput fp-wide"
                             name="email"
                             type="email"
                             value={this.state.email}

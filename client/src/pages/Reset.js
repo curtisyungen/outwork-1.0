@@ -47,25 +47,26 @@ class Reset extends Component {
     render() {
         return (
             <span className="resetPage">
-                <a className="logo" href="/">
-                    <img className="loginLogo" src={require('../images/logo2.png')} alt="Outwork Logo" />
-                </a>
-
+                <div className="logo">
+                    <a href="/">
+                        <img className="loginLogo" src={require('../images/logo2.png')} alt="congo" />
+                    </a>
+                </div>
                 <div className="reset">
                     <form>
-                        <h4 className="resetFormHeader">Authentication required</h4>
-                        <p className="formSubHeader">{`For your security, we need to authenticate your request. We've sent a One Time Password (OTP) to the email ${this.state.email}. Please enter it below.`}</p>
+                        <h4 className="resetFormHeader">WE DON'T TRUST YOU</h4>
+                        <p className="formSubHeader">{`Alright genius. Check your stupid email and enter the six-digit code you got from us in the box below. Try not to mess THIS up too.`}</p>
                         <p className="formLabel">Enter OTP</p>
                         <input
                             autoFocus
-                            className="formInput"
+                            className="formInput fp-wide"
                             name="resetCode"
                             value={this.state.resetCode}
                             onChange={this.handleInputChange}
                         />
 
                         <button
-                            className="submitResetCodeBtn"
+                            className="submitEmailBtn"
                             onClick={this.submitResetCode}
                         >
                             Continue
