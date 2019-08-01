@@ -247,6 +247,7 @@ class SubmitRun extends Component {
                 .then((res) => {
                     if (res.status === 200) {
                         alert("Run submitted!");
+                        window.location.reload();
                     }
                     else {
                         alert("Error submitting run.");
