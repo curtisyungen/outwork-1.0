@@ -6,6 +6,9 @@ import Navbar from "./components/Navbar/navbar";
 import Backgrounds from "./components/Backgrounds/backgrounds";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
+import ForgotPassword from "./pages/ForgotPassword";
+import Reset from "./pages/Reset";
+import CreatePassword from "./pages/CreatePassword";
 import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
@@ -34,6 +37,8 @@ class App extends Component {
     this.state = {
       redirectToSignUp: false,
       redirectToLogin: false,
+      redirectToPasswordReset: false,
+      redirectToCreatePassword: false,
       redirectToHome: false,
       redirectToLanding: false,
       redirectToProfile: false,
@@ -43,6 +48,7 @@ class App extends Component {
       otherUserLast: null,
       allActivity: [],
       background: "none",
+      resetEmail: null,
     }
   }
 
@@ -66,6 +72,8 @@ class App extends Component {
       isLoggedIn: loginStatus,
       redirectToSignUp: false,
       redirectToLogin: false,
+      redirectToPasswordReset: false,
+      redirectToCreatePassword: false,
       redirectToHome: false,
       redirectToLanding: false,
       redirectToProfile: false,
@@ -81,7 +89,7 @@ class App extends Component {
       userAPI.getUserById(userId)
         .then((res) => {
           if (res.data.length === 0) {
-            this.logoutUser();
+            // this.logoutUser();
             return;
           }
           else {
@@ -106,6 +114,18 @@ class App extends Component {
   setRedirectToLogin = () => {
     this.setState({
       redirectToLogin: true,
+    });
+  }
+
+  setRedirectToPasswordReset = () => {
+    this.setState({
+      redirectToPasswordReset: true,
+    });
+  }
+
+  setRedirectToCreatePassword = () => {
+    this.setState({
+      redirectToCreatePassword: true,
     });
   }
 
@@ -139,6 +159,14 @@ class App extends Component {
     return <Redirect to="/login" />
   }
 
+  redirectToPasswordReset = () => {
+    return <Redirect to="/reset" />
+  }
+
+  redirectToCreatePassword = () => {
+    return <Redirect to="/createPassword" />
+  }
+
   redirectToHome = () => {
     return <Redirect to="/home" />
   }
@@ -154,6 +182,8 @@ class App extends Component {
       redirectToSignup: false,
       redirectToLanding: false,
       redirectToProfile: false,
+      redirectToPasswordReset: false,
+      redirectToCreatePassword: false,
     });
   }
 
@@ -441,6 +471,15 @@ class App extends Component {
     return [minName, min];
   }
 
+  // PASSWORD RESET
+  // ==================================
+  
+  setResetEmail = (resetEmail) => {
+    this.setState({
+      resetEmail: resetEmail,
+    });
+  }
+
   render() {
     return (
       <Router>
@@ -448,7 +487,7 @@ class App extends Component {
 
           {/* Redirect To Landing Page */}
 
-          {this.state.redirectToLanding ? (
+          {this.state.redirectToLanding === true ? (
             this.redirectToLanding()
           ) : (
               <></>
@@ -456,15 +495,31 @@ class App extends Component {
 
           {/* Redirect to Login Page */}
 
-          {this.state.redirectToLogin ? (
+          {this.state.redirectToLogin === true ? (
             this.redirectToLogin()
           ) : (
               <></>
             )}
 
+            {/* Redirect to Password Reset Page */}
+
+          {this.state.redirectToPasswordReset === true ? (
+            this.redirectToPasswordReset()
+          ) : (
+            <></>
+          )}
+
+          {/* Redirect to Create Password Page */}
+
+          {this.state.redirectToCreatePassword === true ? (
+            this.redirectToCreatePassword()
+          ) : (
+            <></>
+          )}
+
           {/* Redirect to Sign Up Page */}
 
-          {this.state.redirectToSignUp ? (
+          {this.state.redirectToSignUp === true ? (
             this.redirectToSignUp()
           ) : (
               <></>
@@ -472,7 +527,7 @@ class App extends Component {
 
           {/* Redirect to Home */}
 
-          {this.state.redirectToHome ? (
+          {this.state.redirectToHome === true ? (
             this.redirectToHome()
           ) : (
               <></>
@@ -480,7 +535,7 @@ class App extends Component {
 
           {/* Redirect To Profile */}
 
-          {this.state.redirectToProfile ? (
+          {this.state.redirectToProfile === true ? (
             this.redirectToProfile()
           ) : (
               <></>
@@ -524,6 +579,30 @@ class App extends Component {
                 setRedirectToSignUp={this.setRedirectToSignUp}
                 setRedirectToHome={this.setRedirectToHome}
                 loginUser={this.loginUser}
+              />
+            } />
+
+            {/* Forgot Password Page */}
+            <Route exact path="/forgot" render={() => 
+              <ForgotPassword 
+                setRedirectToPasswordReset={this.setRedirectToPasswordReset}
+                setResetEmail={this.setResetEmail}
+              />
+            } />
+            
+            {/* Reset Password Page */}
+            <Route exact path="/reset" render={() => 
+              <Reset 
+                email={this.state.resetEmail}
+                setRedirectToCreatePassword={this.setRedirectToCreatePassword}
+              />
+            } />
+
+            {/* Create Password Page */}
+            <Route exact path="/createPassword" render={() => 
+              <CreatePassword 
+                email={this.state.resetEmail}
+                setRedirectToLogin={this.setRedirectToLogin}
               />
             } />
 
