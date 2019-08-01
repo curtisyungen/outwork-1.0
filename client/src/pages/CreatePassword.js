@@ -72,13 +72,12 @@ class CreatePassword extends Component {
     render() {
         return (
             <span className="createPasswordPage">
-                <div className="logo">
-                    <a href="/">
-                        <img className="loginLogo" src={require('../images/logo2.png')} alt="congo" />
-                    </a>
-                </div>
-
                 <div className="reset">
+                    <div className="logo">
+                        <a href="/">
+                            <img className="loginLogo" src={require('../images/logo2.png')} alt="congo" />
+                        </a>
+                    </div>
                     <form>
                         <h4 className="passwordFormHeader">Create New Password</h4>
                         <p className="formSubHeader">We'll ask for this password whenever you Sign-In.</p>
@@ -94,7 +93,7 @@ class CreatePassword extends Component {
                         />
                         <label className="passwordLabel">
                             Passwords must be at least 6 characters. 
-                            Count on your fat fingers if you have to, once you're done licking the Cheeto dust off of them.
+                            Count on your fat fingers if you have to once you're done licking the Cheeto dust off of them.
                         </label>
 
                         <p className="formLabel">Re-enter Password</p>

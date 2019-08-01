@@ -30,15 +30,15 @@ class SignUp extends Component {
     render() {
         return (
             <span className="resetPage">
-                <div className="logo">
-                    <a href="/">
-                        <img className="loginLogo" src={require('../images/logo2.png')} alt="congo" />
-                    </a>
-                    <h4 className="standardTitle">Outwork</h4>
-                </div>
                 <div className="reset">
-
+                    <div className="logo">
+                        <a href="/">
+                            <img className="loginLogo" src={require('../images/logo2.png')} alt="congo" />
+                        </a>
+                        <h4 className="standardTitle">Outwork</h4>
+                    </div>
                     <form>
+                        <h4 className="resetFormHeader">Sign up</h4>
                         <div className="form-group">
                             <label>First Name</label>
                             <input

@@ -79,13 +79,12 @@ class ForgotPassword extends Component {
     render() {
         return (
             <span className="forgotPage">
-                <div className="logo">
-                    <a href="/">
-                        <img className="loginLogo" src={require('../images/logo2.png')} alt="congo" />
-                    </a>
-                </div>
-
                 <div className="forgot">
+                    <div className="logo">
+                        <a href="/">
+                            <img className="loginLogo" src={require('../images/logo2.png')} alt="congo" />
+                        </a>
+                    </div>
                     <form>
                         <h4 className="formHeader">Password assistance</h4>
                         <p className="formSubHeader">
