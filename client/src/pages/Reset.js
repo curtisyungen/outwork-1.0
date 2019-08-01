@@ -47,12 +47,12 @@ class Reset extends Component {
     render() {
         return (
             <span className="resetPage">
-                <div className="logo">
-                    <a href="/">
-                        <img className="loginLogo" src={require('../images/logo2.png')} alt="congo" />
-                    </a>
-                </div>
                 <div className="reset">
+                    <div className="logo">
+                        <a href="/">
+                            <img className="loginLogo" src={require('../images/logo2.png')} alt="congo" />
+                        </a>
+                    </div>
                     <form>
                         <h4 className="resetFormHeader">WE DON'T TRUST YOU</h4>
                         <p className="formSubHeader">{`Alright genius. Check your stupid email and enter the six-digit code you got from us in the box below. Try not to mess THIS up too.`}</p>
