@@ -35,7 +35,7 @@ class SubmitRun extends Component {
     }
 
     componentDidMount = () => {
-        this.props.checkValidUser();
+        console.log("Submit Run User Check", this.props.checkValidUser());
 
         // Get user info
         let userId = localStorage.getItem("userId");
@@ -69,6 +69,29 @@ class SubmitRun extends Component {
         this.setState({
             [name]: value,
         });
+    }
+
+    validateForm = () => {
+        let date = this.state.date;
+        let dist = this.state.distance;
+        let time = this.state.duration;
+
+        if (date === null || date === "" || date.length < 10) {
+            alert("Inputted date is not valid.");
+            return false;
+        }
+
+        if (dist === null || dist === "" || dist < 0 || isNaN(dist)) {
+            alert("Distance must be a positive integer.");
+            return false;
+        }
+
+        if (time === null || time === "" || time.length < 8) {
+            alert("Duration must be in hh:mm:ss format.");
+            return false;
+        }
+
+        return true;
     }
 
     getMilePace = () => {
@@ -187,7 +210,9 @@ class SubmitRun extends Component {
     }
 
     submitRun = () => {
-        if (this.props.checkValidUser()) {
+        this.props.checkValidUser();
+        
+        if (this.validateForm()) {
             let runData = {
                 workoutType: "run",
                 userId: this.state.userId,
