@@ -82,7 +82,7 @@ class SubmitSwim extends Component {
             return false;
         }
 
-        if (workout === null || workout === "" || workout.length >= 0) {
+        if (workout === null || workout === "" || workout.length <= 0) {
             alert("Must input workout completed.");
             return false;
         }
