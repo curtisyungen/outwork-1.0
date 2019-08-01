@@ -125,7 +125,16 @@
     padding: 2px;
 }
 
+@media only screen and (max-width: 1024px) {
+
+}
+
 @media only screen and (max-width: 990px) {
+    .cell {
+        min-width: 13%;
+        max-width: 13%;
+    }
+
     .cell7 {
         border-right: 0px;
     }
@@ -136,6 +145,11 @@
 }
 
 @media only screen and (max-width: 768px) {
+    .cell {
+        min-width: 15%;
+        max-width: 15%;
+    }
+
     .cell6 {
         border-right: 0px;
     }
