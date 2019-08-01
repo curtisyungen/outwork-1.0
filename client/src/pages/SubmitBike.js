@@ -95,7 +95,7 @@ class SubmitBike extends Component {
                 date: this.state.date,
                 time: this.state.time,
                 location: this.state.location,
-                distance: this.state.distance,
+                distance: Math.round((this.state.distance * 100) / 100),
                 duration: this.state.duration,
                 milePace: null,
                 runType: null,
