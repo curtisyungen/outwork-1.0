@@ -50,6 +50,7 @@ class Login extends Component {
                         </div>
                         <div className="form-group">
                             <label>Password</label>
+                            <a className="forgotYourPassword" href="/forgot">Forgot your password?</a>
                             <input 
                                 name="password"
                                 type="password" 
