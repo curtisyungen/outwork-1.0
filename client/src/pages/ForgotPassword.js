@@ -86,7 +86,7 @@ class ForgotPassword extends Component {
                         </a>
                     </div>
                     <form>
-                        <h4 className="formHeader">Password assistance</h4>
+                        <h4 className="formHeader pwordAssist">Password assistance</h4>
                         <p className="formSubHeader">
                             You forgot your password? Wow, that's really stupid and annoying of you.
                             Well, enter your email address below then.
