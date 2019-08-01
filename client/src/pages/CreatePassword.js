@@ -72,9 +72,11 @@ class CreatePassword extends Component {
     render() {
         return (
             <span className="createPasswordPage">
-                <a className="logo" href="/">
-                    <img className="loginLogo" src={require('../images/logo2.png')} alt="Outwork Logo" />
-                </a>
+                <div className="logo">
+                    <a href="/">
+                        <img className="loginLogo" src={require('../images/logo2.png')} alt="congo" />
+                    </a>
+                </div>
 
                 <div className="reset">
                     <form>
@@ -83,18 +85,21 @@ class CreatePassword extends Component {
                         <p className="formLabel">New Password</p>
                         <input
                             autoFocus
-                            className="formInput"
+                            className="formInput fp-wide"
                             name="newPassword"
                             type="password"
                             value={this.state.newPassword}
                             onChange={this.handleInputChange}
                             autoComplete="off"
                         />
-                        <label className="passwordLabel">Passwords must be at least 6 characters.</label>
+                        <label className="passwordLabel">
+                            Passwords must be at least 6 characters. 
+                            Count on your fat fingers if you have to, once you're done licking the Cheeto dust off of them.
+                        </label>
 
                         <p className="formLabel">Re-enter Password</p>
                         <input
-                            className="formInput"
+                            className="formInput fp-wide"
                             name="verifyPassword"
                             type="password"
                             value={this.state.verifyPassword}
@@ -103,7 +108,7 @@ class CreatePassword extends Component {
                         />
 
                         <button
-                            className="submitNewPasswordBtn"
+                            className="submitEmailBtn"
                             onClick={this.submitNewPassword}
                         >
                             Save changes and Sign-In
