@@ -14,10 +14,6 @@ class SignUp extends Component {
         }
     }
 
-    componentDidMount = () => {
-
-    }
-
     handleInputChange = (event) => {
         const { name, value } = event.target;
 
@@ -43,7 +39,6 @@ class SignUp extends Component {
                             className="form-control"
                             autoComplete="off"
                             onChange={this.handleInputChange}
-                        // value={this.state.firstName}
                         />
                     </div>
                     <div className="form-group">
@@ -54,7 +49,6 @@ class SignUp extends Component {
                             className="form-control"
                             autoComplete="off"
                             onChange={this.handleInputChange}
-                        // value={this.state.lastName}
                         />
                     </div>
                     <div className="form-group">
@@ -65,7 +59,6 @@ class SignUp extends Component {
                             className="form-control"
                             autoComplete="off"
                             onChange={this.handleInputChange}
-                        // value={this.state.email}
                         />
                     </div>
                     <div className="form-group">
@@ -76,7 +69,6 @@ class SignUp extends Component {
                             autoComplete="off"
                             className="form-control"
                             onChange={this.handleInputChange}
-                        // value={this.state.password}
                         />
                     </div>
                     <button
