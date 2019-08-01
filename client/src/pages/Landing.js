@@ -33,9 +33,11 @@ class Landing extends Component {
         return (
             <span>
                 <div className="jumbotron jumbotron-fluid text-center">
-                    <div>
-                        <h1 className="display-12">Outwork</h1>
-                        <p className="lead">Welcome.</p>
+                    <div className="logo">
+                        <a href="/">
+                            <img className="loginLogo" src={require('../images/logo2.png')} alt="congo" />
+                        </a>
+                        <h4>Outwork</h4>
                     </div>
                     <div className="loginBtns btn-group col-lg-2 text-center">
                         <button 

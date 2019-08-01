@@ -1,3 +1,9 @@
+.forgotYourPassword {
+    float: right;
+    font-size: 13px;
+    margin-top: 3px;
+}
+
 .loginContainer {
     border-radius: 4px;
     left: 0;
@@ -7,10 +13,10 @@
 }
 
 .loginForm {
-    background: rgb(85, 85, 85);
+    background: #fff;
     border: 2px solid rgb(53, 53, 53);
     border-radius: 4px;
-    color: #fff;
+    color: #000;
     margin: 10px auto;
     padding: 25px;
     width: 350px;
@@ -27,10 +33,14 @@
 }
 
 .logo a { 
-    color: #fff;
+    color: #000;
     font-size: 30px;
 }
 
 .logo a:hover {
     text-decoration: none;
+}
+
+.standardTitle {
+    margin-top: 15px;
 }
