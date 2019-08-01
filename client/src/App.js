@@ -88,14 +88,8 @@ class App extends Component {
       // Verify userId
       userAPI.getUserById(userId)
         .then((res) => {
-          if (res.data.length === 0) {
-            // this.logoutUser();
-            return;
-          }
-          else {
             localStorage.setItem("fn", res.data[0].firstName);
             localStorage.setItem("ln", res.data[0].lastName);
-          }
         });
     }
 
