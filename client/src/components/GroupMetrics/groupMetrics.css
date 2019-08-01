@@ -1,0 +1,27 @@
+.groupMetrics {
+    border-left: 1px solid rgb(114, 114, 114);
+    border-top: 1px solid rgb(114, 114, 114);
+    display: flex;
+    flex-direction: row;
+    font-size: 13px;
+    margin: 25px auto;
+}
+
+.gm-cell {
+    border: 1px solid rgb(114, 114, 114);
+    border-left: 0px;
+    border-top: 0px;
+    padding: 5px;
+}
+
+.gm-col {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.gm-row {
+    display: flex;
+    flex-direction: row;
+    width: 25%;
+}
