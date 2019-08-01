@@ -31,7 +31,7 @@ class Landing extends Component {
 
     render() {
         return (
-            <span>
+            <div className="landingPage">
                 <div className="jumbotron jumbotron-fluid text-center">
                     <div className="logo">
                         <a href="/">
@@ -60,7 +60,7 @@ class Landing extends Component {
                 <div className="sitePreview">
                     <a className="btn btn-outline-dark btn-sm videoDemo" href="">Video Demo (Coming Soon)</a>
                 </div>
-            </span>
+            </div>
         )
     }
 }
