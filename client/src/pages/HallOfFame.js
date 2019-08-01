@@ -162,7 +162,7 @@ class HallOfFame extends Component {
                 <div className="hallOfFame">
                     {this.state.awards && this.state.awards.length > 0 ? (
                         this.state.awards.map(award => (
-                            <div className="hofMetric">
+                            <div key={award.title} className="hofMetric">
                                 <div className="hofIcon hofCol"><FontAwesomeIcon className={`fa-2x ${award.icon}`} icon={this.getIcon(award.icon)} /></div>
                                 <div className="hofTitle hofCol">{award.title}</div>
                                 <div className="hofName hofCol">{award.userName}</div>
