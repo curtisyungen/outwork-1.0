@@ -88,8 +88,10 @@ class App extends Component {
       // Verify userId
       userAPI.getUserById(userId)
         .then((res) => {
+          if (res.data > 0) {
             localStorage.setItem("fn", res.data[0].firstName);
             localStorage.setItem("ln", res.data[0].lastName);
+          }
         });
     }
 
@@ -245,6 +247,7 @@ class App extends Component {
   logoutUser = () => {
     localStorage.setItem("isLoggedIn", "false");
     localStorage.setItem("userId", null);
+    localStorage.setItem("background", "white");
 
     this.setState({
       isLoggedIn: "false",
