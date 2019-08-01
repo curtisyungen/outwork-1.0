@@ -12,14 +12,16 @@ class UserController {
             }
         })
         .then((user) => {
-            bcrypt.compare(req.query.password, user.password, function(err, result) {
+            let compare = bcrypt.compare(req.query.password, user.password, function(err, result) {
                 if (result === true) {
-                    res.json(user);
+                    return true;
                 }
                 else {
-                    res.json("Incorrect password.");
+                    return false;
                 }
             });
+
+            res.json(user);
         });
     }
 
