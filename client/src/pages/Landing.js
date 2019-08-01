@@ -54,6 +54,12 @@ class Landing extends Component {
                         </button>
                     </div>
                 </div>
+
+                <hr/>
+
+                <div className="sitePreview">
+                    <a className="btn btn-outline-dark btn-sm videoDemo" href="">Video Demo</a>
+                </div>
             </span>
         )
     }

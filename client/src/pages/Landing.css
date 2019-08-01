@@ -5,3 +5,12 @@
 .loginBtns {
     margin-top: 12px;
 }
+
+.sitePreview {
+    text-align: center;
+}
+
+.videoDemo:hover {
+    color: white;
+    text-decoration: none;
+}
