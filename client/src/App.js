@@ -411,11 +411,6 @@ class App extends Component {
     //   .then((res) => {
     //     console.log("Hotdog", res);
     //   });
-
-    hofAPI.getHof()
-      .then((res) => {
-        console.log("Hof", res);
-      });
   }
 
   getMaximum = (data) => {
