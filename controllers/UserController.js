@@ -1,7 +1,7 @@
 const db = require("../models/index.js");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
-// const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt");
 
 class UserController {
 
@@ -84,20 +84,18 @@ class UserController {
     }
 
     createUser(req, res) {
-        // bcrypt.genSalt(11, function (err, salt) {
-        //     if (err) {
-        //         return console.log(err);
-        //     }
+        bcrypt.genSalt(11, function (err, salt) {
+            if (err) {
+                return console.log(err);
+            }
 
-        //     bcrypt.hash(req.body.password, salt, function(err, hash) {
+            bcrypt.hash(req.body.password, salt, function(err, hash) {
                 db.Users.create({
                     userId: req.body.userId,
                     firstName: req.body.firstName,
                     lastName: req.body.lastName,
                     email: req.body.email,
-                    password: req.body.password,
-                    weight: req.body.weight,
-                    privacy: req.body.privacy,
+                    password: hash,
                 })
                 .then((user) => {
                     res.json(user);
@@ -105,17 +103,17 @@ class UserController {
                 .catch((err) => {
                     console.log(err);
                 });
-        //     });
-        // });
+            });
+        });
     }
 
     updatePassword(req, res) {
-        // bcrypt.genSalt(11, function (err, salt) {
-        //     if (err) {
-        //         return console.log(err);
-        //     }
+        bcrypt.genSalt(11, function (err, salt) {
+            if (err) {
+                return console.log(err);
+            }
 
-        //     bcrypt.hash(req.body.password, salt, function(err, hash) {
+            bcrypt.hash(req.body.password, salt, function(err, hash) {
                 db.Users.update(
                     {password: hash},
                     {where: {
@@ -127,8 +125,8 @@ class UserController {
                     .catch((err) => {
                         console.log(err);
                     });
-        //     });
-        // });
+            });
+        });
     }
 
     updateWeight(req, res) {
