@@ -30,7 +30,7 @@ export default {
         return axios.get("/api/users/searchForUser/" + userName);
     },
 
-    createUser: function(firstName, lastName, email, password, weight, privacy) {
+    createUser: function(firstName, lastName, email, password) {
         let initials = firstName.charAt(0) + lastName.charAt(0);
         let userId = Math.floor(100000 + Math.random() * 900000).toString().concat(initials);
 
@@ -40,8 +40,6 @@ export default {
             lastName: lastName,
             email: email,
             password: password, 
-            weight: weight, 
-            privacy: privacy,
         }
         
         return axios.post("/api/users/createUser", user);
