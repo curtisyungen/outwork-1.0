@@ -29,57 +29,66 @@ class SignUp extends Component {
 
     render() {
         return (
-            <div className="container">
-                <form className="col-md-4">
-                    <div className="form-group">
-                        <label>First Name</label>
-                        <input
-                            name="firstName"
-                            type="text"
-                            className="form-control"
-                            autoComplete="off"
-                            onChange={this.handleInputChange}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Last Name</label>
-                        <input
-                            name="lastName"
-                            type="text"
-                            className="form-control"
-                            autoComplete="off"
-                            onChange={this.handleInputChange}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Email</label>
-                        <input
-                            name="email"
-                            type="email"
-                            className="form-control"
-                            autoComplete="off"
-                            onChange={this.handleInputChange}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Password</label>
-                        <input
-                            name="password"
-                            type="password"
-                            autoComplete="off"
-                            className="form-control"
-                            onChange={this.handleInputChange}
-                        />
-                    </div>
-                    <button
-                        type="submit"
-                        className="btn btn-primary"
-                        onClick={this.handleSubmit}
-                    >
-                        Submit
+            <span className="resetPage">
+                <div className="logo">
+                    <a href="/">
+                        <img className="loginLogo" src={require('../images/logo2.png')} alt="congo" />
+                    </a>
+                    <h4 className="standardTitle">Outwork</h4>
+                </div>
+                <div className="reset">
+
+                    <form>
+                        <div className="form-group">
+                            <label>First Name</label>
+                            <input
+                                name="firstName"
+                                type="text"
+                                className="form-control"
+                                autoComplete="off"
+                                onChange={this.handleInputChange}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>Last Name</label>
+                            <input
+                                name="lastName"
+                                type="text"
+                                className="form-control"
+                                autoComplete="off"
+                                onChange={this.handleInputChange}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>Email</label>
+                            <input
+                                name="email"
+                                type="email"
+                                className="form-control"
+                                autoComplete="off"
+                                onChange={this.handleInputChange}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>Password</label>
+                            <input
+                                name="password"
+                                type="password"
+                                autoComplete="off"
+                                className="form-control"
+                                onChange={this.handleInputChange}
+                            />
+                        </div>
+                        <button
+                            type="submit"
+                            className="submitEmailBtn"
+                            onClick={this.handleSubmit}
+                        >
+                            Submit
                     </button>
-                </form>
-            </div>
+                    </form>
+                </div>
+            </span>
         )
     }
 }

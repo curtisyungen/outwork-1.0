@@ -32,16 +32,22 @@ class Login extends Component {
 
     render() {
         return (
-            <div className="container loginContainer">
-                <div className="row loginRow">
-                    <form className="loginForm">
-                        <div className="logo"><a href="/landing">Outwork</a></div>
-                        <h4>Sign in</h4>
+            <span className="resetPage">
+                <div className="logo">
+                    <a href="/">
+                        <img className="loginLogo" src={require('../images/logo2.png')} alt="congo" />
+                    </a>
+                    <h4 className="standardTitle">Outwork</h4>
+                </div>
+                <div className="reset">
+                    <form>
+
+                        <h4 className="resetFormHeader">Sign in</h4>
                         <div className="form-group">
                             <label>Email address</label>
-                            <input 
+                            <input
                                 name="email"
-                                type="email" 
+                                type="email"
                                 className="form-control"
                                 autoComplete="off"
                                 onChange={this.handleInputChange}
@@ -51,25 +57,25 @@ class Login extends Component {
                         <div className="form-group">
                             <label>Password</label>
                             <a className="forgotYourPassword" href="/forgot">Forgot your password?</a>
-                            <input 
+                            <input
                                 name="password"
-                                type="password" 
+                                type="password"
                                 autoComplete="off"
-                                className="form-control" 
+                                className="form-control"
                                 onChange={this.handleInputChange}
                                 value={this.state.password}
                             />
                         </div>
-                        <button 
-                            type="submit" 
-                            className="btn btn-primary"
+                        <button
+                            type="submit"
+                            className="submitEmailBtn"
                             onClick={this.handleSubmit}
                         >
                             Submit
                         </button>
                     </form>
                 </div>
-            </div>
+            </span>
         )
     }
 }
