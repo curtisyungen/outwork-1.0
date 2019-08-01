@@ -28,14 +28,14 @@ class ResetController {
         let mailOptions = {
             from: "congoserver@gmail.com",
             to: req.body.email,
-            subject: "Congo password assistance",
+            subject: "Outwork password assistance",
             text: `
-            Hi there,
-            Here is your One Time Password: ${req.body.resetCode}.
-            If you continue to have issues, please contact us by responding to this email. 
-            We'll be happy to assist you in recovering your account.
+            Here's your One Time Password: ${req.body.resetCode}.
+            Enter it on the site, if you can even figure that out. 
+            Don't forget your password again. 
+
             Sincerely, 
-            Congo`
+            Outwork`
         };
 
         transporter.sendMail(mailOptions, function (err, info) {
