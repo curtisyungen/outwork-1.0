@@ -210,6 +210,20 @@ class SubmitSwim extends Component {
         });
     }
 
+    convertMetersToMiles = () => {
+        let dist = this.state.distance;
+
+        if (this.state.units === "Meters") {
+            dist = Math.round((dist / 1609.344) * 100) / 100;
+        }
+
+        this.setState({
+            distance: dist,
+        }, () => {
+            this.submitSwim();
+        });
+    }
+
     submitSwim = () => {
         this.props.checkValidUser();
 
@@ -439,7 +453,7 @@ class SubmitSwim extends Component {
                         />
                     </div>
 
-                    <button className="btn btn-primary" onClick={this.submitSwim}>Submit</button>
+                    <button className="btn btn-primary" onClick={this.convertMetersToMiles}>Submit</button>
                 </div>
             </div>
         )
