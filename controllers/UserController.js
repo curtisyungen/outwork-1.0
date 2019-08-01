@@ -9,14 +9,17 @@ class UserController {
         db.Users.findAll({
             where: {
                 email: req.query.email,
-                password: req.query.password,
             }
         })
         .then((user) => {
-            res.json(user);
-        })
-        .catch((err) => {
-            console.log(err);
+            bcrypt.compare(req.query.password, user.password, function(err, result) {
+                if (result === true) {
+                    res.json(user);
+                }
+                else {
+                    res.json("Incorrect password.");
+                }
+            });
         });
     }
 

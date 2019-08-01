@@ -14,6 +14,10 @@ router.get("/submitResetCode", (req, res) => {
     controller.submitResetCode(req, res);
 });
 
+router.put("/updatePassword", (req, res) => {
+    controller.updatePassword(req, res);
+});
+
 router.delete("/clearResetCode/:email", (req, res) => {
     controller.clearResetCode(req, res);
 });
