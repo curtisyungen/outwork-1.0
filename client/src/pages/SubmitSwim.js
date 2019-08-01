@@ -82,7 +82,7 @@ class SubmitSwim extends Component {
             return false;
         }
 
-        if (workout === null || workout === "" || workout.length <= 0) {
+        if (workout === null || workout === "" || workout.length === 0) {
             alert("Must input workout completed.");
             return false;
         }
@@ -220,8 +220,10 @@ class SubmitSwim extends Component {
         let dist = this.state.distance;
 
         if (this.state.units === "Miles") {
-            dist = Math.round((dist * 1609.344) * 100) / 100;
+            dist = dist * 1609.344;
         }
+
+        dist = Math.round((dist * 100) / 100);
 
         this.setState({
             distance: dist,
