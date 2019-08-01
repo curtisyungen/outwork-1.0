@@ -78,6 +78,29 @@ class SubmitLift extends Component {
         });
     }
 
+    validateLiftForm = () => {
+        let date = this.state.date;
+        let exer = this.state.exercises;
+        let time = this.state.duration;
+
+        if (date === null || date === "" || date.length < 10) {
+            alert("Inputted date is not valid.");
+            return false;
+        }
+
+        if (exer === null || exer === "" || exer <= 0) {
+            alert("Must input the list of exercises completed.");
+            return false;
+        }
+
+        if (time === null || time === "" || time.length < 8) {
+            alert("Duration must be in hh:mm:ss format.");
+            return false;
+        }
+
+        return true;
+    }
+
     getPushUps = () => {
         let exercises = this.state.exercises;
         let pushups = 0;
@@ -177,8 +200,9 @@ class SubmitLift extends Component {
     }
 
     submitLift = () => {
+        this.props.checkValidUser();
 
-        if (this.props.checkValidUser()) {
+        if (this.validateLiftForm()) {
 
             let generator = "Standard";
             switch (this.state.generator) {
