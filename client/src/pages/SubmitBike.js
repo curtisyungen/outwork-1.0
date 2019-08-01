@@ -54,6 +54,29 @@ class SubmitBike extends Component {
         });
     }
 
+    validateBikeForm = () => {
+        let date = this.state.date;
+        let dist = this.state.distance;
+        let time = this.state.duration;
+
+        if (date === null || date === "" || date.length < 10) {
+            alert("Inputted date is not valid.");
+            return false;
+        }
+
+        if (dist === null || dist === "" || dist < 0 || isNaN(dist)) {
+            alert("Distance must be a positive integer.");
+            return false;
+        }
+
+        if (time === null || time === "" || time.length < 8) {
+            alert("Duration must be in hh:mm:ss format.");
+            return false;
+        }
+
+        return true;
+    }
+
     setWeather = (weather) => {
         this.setState({
             weather: weather,
@@ -61,7 +84,9 @@ class SubmitBike extends Component {
     }
 
     submitBike = () => {
-        if (this.props.checkValidUser()) {
+        this.props.checkValidUser()
+
+        if (this.validateBikeForm()) {
             let bikeData = {
                 workoutType: "bike",
                 userId: this.state.userId,

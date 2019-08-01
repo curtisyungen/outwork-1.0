@@ -71,7 +71,7 @@ class SubmitRun extends Component {
         });
     }
 
-    validateForm = () => {
+    validateRunForm = () => {
         let date = this.state.date;
         let dist = this.state.distance;
         let time = this.state.duration;
@@ -212,7 +212,7 @@ class SubmitRun extends Component {
     submitRun = () => {
         this.props.checkValidUser();
         
-        if (this.validateForm()) {
+        if (this.validateRunForm()) {
             let runData = {
                 workoutType: "run",
                 userId: this.state.userId,
