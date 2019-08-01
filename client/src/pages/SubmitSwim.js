@@ -65,6 +65,7 @@ class SubmitSwim extends Component {
         let date = this.state.date;
         let dist = this.state.distance;
         let time = this.state.duration;
+        let workout = this.state.workout;
 
         if (date === null || date === "" || date.length < 10) {
             alert("Inputted date is not valid.");
@@ -78,6 +79,11 @@ class SubmitSwim extends Component {
 
         if (time === null || time === "" || time.length < 8) {
             alert("Duration must be in hh:mm:ss format.");
+            return false;
+        }
+
+        if (workout === null || workout === "" || workout.length >= 0) {
+            alert("Must input workout completed.");
             return false;
         }
 
@@ -210,11 +216,11 @@ class SubmitSwim extends Component {
         });
     }
 
-    convertMetersToMiles = () => {
+    convertMilesToMeters = () => {
         let dist = this.state.distance;
 
-        if (this.state.units === "Meters") {
-            dist = Math.round((dist / 1609.344) * 100) / 100;
+        if (this.state.units === "Miles") {
+            dist = Math.round((dist * 1609.344) * 100) / 100;
         }
 
         this.setState({
@@ -453,7 +459,7 @@ class SubmitSwim extends Component {
                         />
                     </div>
 
-                    <button className="btn btn-primary" onClick={this.convertMetersToMiles}>Submit</button>
+                    <button className="btn btn-primary" onClick={this.convertMilesToMeters}>Submit</button>
                 </div>
             </div>
         )
