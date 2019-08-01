@@ -257,10 +257,8 @@ class App extends Component {
     });
   }
 
-  // Called on each page load
   // Checks userId in local storage to see if it exists in database
-  // If it doesn't exist/it is a fake userId, automatically logs out user and redirects to landing page
-  // This prevents users from navigating to pages without being properly logged in
+  // If it doesn't exist/it is a fake userId, automatically logs out user
   checkValidUser = () => {
     let userId;
     if (localStorage.getItem("userId") && localStorage.getItem("userId") !== null) {
@@ -271,9 +269,6 @@ class App extends Component {
           if (res.data.length === 0) {
             this.logoutUser();
             return false;
-          }
-          else {
-            return true;
           }
         });
     }
