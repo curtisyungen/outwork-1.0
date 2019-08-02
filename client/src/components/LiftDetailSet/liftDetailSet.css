@@ -1,5 +1,5 @@
 .liftDetailSet {
-    opacity: 1;
+    min-width: 100px !important;
 }
 
 .styles_overlay__CLSq- {

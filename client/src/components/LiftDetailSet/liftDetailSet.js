@@ -21,7 +21,7 @@ class LiftDetailSet extends Component {
 
     render() {
         return (
-            <table className="table table-striped table-bordered table-responsive table-sm text-center align-middle liftDetails">
+            <table className="table table-striped table-bordered table-responsive table-sm text-center align-middle liftDetails liftDetailSet">
                 <thead className="thead-dark">
                     <tr>
                         <th>Exercise</th>
