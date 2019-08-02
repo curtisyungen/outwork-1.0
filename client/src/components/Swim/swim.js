@@ -97,6 +97,7 @@ class Swim extends Component {
                                                 <span className="swimLapModal">Distance: {lap.distance}</span>
                                                 <span className="swimLapModal">Time: {lap.time}</span>
                                                 <span className="swimLapModal">Stroke: {lap.stroke}</span>
+                                                <span className="swimLapModal">Sets: {lap.sets}</span>
                                                 <span className="swimLapModal">Rest: {lap.rest}</span>
                                             </div>
                                         ))

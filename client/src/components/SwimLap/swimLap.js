@@ -18,6 +18,7 @@ class SwimLap extends Component {
             units: "",
             time: "",
             stroke: "",
+            sets: "",
             rest: "",
             saved: false,
         }
@@ -51,6 +52,7 @@ class SwimLap extends Component {
         this.props.setDistance(this.props.id, this.state.distance);
         this.props.setTime(this.props.id, this.state.time);
         this.props.setStroke(this.props.id, this.state.stroke);
+        this.props.setSets(this.props.id, this.state.sets);
         this.props.setRest(this.props.id, this.state.rest);
     }
 
@@ -89,6 +91,17 @@ class SwimLap extends Component {
                     onChange={this.handleInputChange}
                     onBlur={this.updateParent}
                     value={this.state.stroke}
+                />
+                {/* SETS */}
+                <input
+                    autoComplete="off"
+                    name="sets"
+                    type="text"
+                    className="form-control lapInput-md"
+                    placeholder="Sets"
+                    onChange={this.handleInputChange}
+                    onBlur={this.updateParent}
+                    value={this.state.sets}
                 />
                 {/* REST */}
                 <input
