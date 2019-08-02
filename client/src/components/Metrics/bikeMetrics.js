@@ -127,8 +127,8 @@ class BikeMetrics extends Component {
                         <div>{this.state.maxMiles}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Metric</div>
-                        <div>0</div>
+                        <div className="metricTitle"></div>
+                        <div></div>
                     </div>
                 </div>
             </span>

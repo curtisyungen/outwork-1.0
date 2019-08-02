@@ -19,6 +19,7 @@ class LiftMetrics extends Component {
             pushups: 0,
             pullups: 0,
             workouts: "NA",
+            goggins: 0,
         }
     }
 
@@ -36,6 +37,7 @@ class LiftMetrics extends Component {
         let totalTime = 0;
         let pushups = 0;
         let pullups = 0;
+        let goggins = 0;
 
         for (var l in lifts) {
 
@@ -56,6 +58,11 @@ class LiftMetrics extends Component {
             if (lifts[l].pullups) {
                 pullups += parseFloat(lifts[l].pullups);
             }
+
+            // Get total Goggins workouts
+            if (lifts[l].generator === "Goggins") {
+                goggins += 1;
+            }
         }
 
         this.setState({
@@ -63,6 +70,7 @@ class LiftMetrics extends Component {
             pushups: pushups,
             pullups: pullups,
             workouts: lifts.length,
+            goggins: goggins,
         });
     }
 
@@ -91,8 +99,8 @@ class LiftMetrics extends Component {
                         <div>{this.state.pullups}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Metric</div>
-                        <div>0</div>
+                        <div className="metricTitle">Goggins</div>
+                        <div>{this.state.goggins}</div>
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Metric</div>
