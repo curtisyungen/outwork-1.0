@@ -86,10 +86,6 @@ class Bike extends Component {
                                     <div className="dataPoint">{this.props.duration}</div>
                                 </div>
                                 <div className="border-bottom">
-                                    <div className="dataTitle">Pace (min./mi.)</div>
-                                    <div className="dataPoint">{this.props.milePace}</div>
-                                </div>
-                                <div className="border-bottom">
                                     <div className="dataTitle">Climb (ft.)</div>
                                     <div className="dataPoint">{this.props.climb}</div>
                                 </div>

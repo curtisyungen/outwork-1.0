@@ -171,6 +171,8 @@ class Workout extends Component {
                 let exercise = {
                     id: s,
                     name: name,
+                    superset: s,
+                    sets: 1,
                     weight: null,
                     reps: this.getReps(filtered[randEx]),
                     rest: null,

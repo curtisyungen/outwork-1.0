@@ -157,7 +157,7 @@ class Run extends Component {
                                 {/* SHOES */}
                                 <div className="border-bottom">
                                     <div className="dataTitle">Shoes</div>
-                                    <div className="dataPoint">{this.props.shoes}</div>
+                                    <div className="dataPoint">{this.props.shoe}</div>
                                 </div>
                                 {/* NOTES */}
                                 <div className="border-bottom">
