@@ -23,10 +23,6 @@ class Generator extends Component {
             firstName: null,
             lastName: null,
             difficulty: null,
-            date: null,
-            location: null,
-            duration: null,
-            notes: null,
             openModal: false,
             equipment: [],
             userEquipment: [],
@@ -229,10 +225,6 @@ class Generator extends Component {
                         </div>
                     </div>
 
-                    {/* <Stopwatch 
-                        recordTime={this.recordTime}
-                    /> */}
-
                     {/* WORKOUT */}
                     <Workout
                         userId={this.state.userId}
@@ -242,6 +234,7 @@ class Generator extends Component {
                         userEquipment={this.state.userEquipment}
                         difficulty={this.state.difficulty}
                         timeString={this.state.timeString}
+                        checkValidUser={this.props.checkValidUser}
                     />
                 </div>
             </div >
