@@ -63,7 +63,7 @@ class HofController {
     }
 
     getTotalTime(req, res) {
-        db.sequelize.query("SELECT id AS value, firstName, duration, userId FROM Workouts", { type: sequelize.QueryTypes.SELECT })
+        db.sequelize.query("SELECT SUM(ttlMins) AS value, firstName, userId FROM Workouts GROUP BY firstName", { type: sequelize.QueryTypes.SELECT })
             .then(time => {
                 res.json(time);
             });
