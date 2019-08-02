@@ -77,7 +77,7 @@ class HofController {
     }
 
     getSwims(req, res) {
-        db.sequelize.query("SELECT COUNT(id) AS value, firstName, userId FROM Workouts WHERE workoutType = 'swim'", { type: sequelize.QueryTypes.SELECT })
+        db.sequelize.query("SELECT COUNT(id) AS value, firstName, userId FROM Workouts WHERE workoutType = 'swim' GROUP BY firstName", { type: sequelize.QueryTypes.SELECT })
             .then(swims => {
                 res.json(swims);
             });
