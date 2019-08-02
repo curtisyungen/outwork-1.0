@@ -394,16 +394,8 @@ class App extends Component {
 
     hofAPI.getMaxGoggins()
       .then((res) => {
-        let max = 0;
-        let maxName = "";
-        for (var r in res.data) {
-          if (res.data[r].value > max) {
-            max = res.data[r].value;
-            maxName = res.data[r].firstName;
-          }
-        }
-
-        hofAPI.updateHof("mostGoggins", maxName, max);
+        let max = this.getMaximum(res.data);
+        hofAPI.updateHof("mostGoggins", max[0], max[1]);
       });
 
     // hofAPI.getTotalTime()
