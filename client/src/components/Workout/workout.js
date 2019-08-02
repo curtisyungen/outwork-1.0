@@ -19,6 +19,7 @@ class Workout extends Component {
             date: null,
             location: null,
             duration: null,
+            ttlMins: null,
             notes: null,
             difficulty: null,
             exercises: null,
@@ -63,6 +64,23 @@ class Workout extends Component {
         this.setState({
             [name]: value,
         });
+    }
+    
+    validateLiftForm = () => {
+        let date = this.state.date;
+        let time = this.state.duration;
+
+        if (date === null || date === "" || date.length < 10) {
+            alert("Inputted date is not valid.");
+            return false;
+        }
+
+        if (time === null || time === "" || time.length < 8) {
+            alert("Duration must be in hh:mm:ss format.");
+            return false;
+        }
+
+        return true;
     }
 
     // Get all exercises from database
@@ -156,6 +174,7 @@ class Workout extends Component {
                     weight: null,
                     reps: this.getReps(filtered[randEx]),
                     rest: null,
+                    primaryMG: filtered[randEx].primaryMG,
                 }
 
                 set.push(exercise);
@@ -196,6 +215,7 @@ class Workout extends Component {
                 }
             }
 
+            // Prevents duplicate exercises in single set
             if (count === 0) {
                 validName = true;
             }
@@ -253,6 +273,25 @@ class Workout extends Component {
 
         this.setState({
             pullups: pullups,
+        });
+    }
+
+    getMuscleGroups = () => {
+        let sets = this.state.sets;
+        let muscleGroups = [];
+
+        for (var s in sets) {
+            for (var ex=0; ex<5; ex++) {
+                let group = sets[s][ex].primaryMG;
+
+                if (muscleGroups.indexOf(group) === -1) {
+                    muscleGroups.push(group);
+                }
+            }
+        }
+
+        this.setState({
+            muscleGroups: muscleGroups,
         });
     }
 
@@ -314,6 +353,7 @@ class Workout extends Component {
         }, () => {
             // this.getPushUps();
             // this.getPullUps();
+            this.getMuscleGroups();
         });
     }
 
@@ -323,61 +363,91 @@ class Workout extends Component {
         });
     }
 
-    submitWorkout = () => {
-        let generator = "Standard";
-        switch (this.props.difficulty) {
-            case "1": generator = "Baby"; break;
-            case "2": generator = "Easy"; break;
-            case "3": generator = "Average"; break;
-            case "4": generator = "Superior"; break;
-            case "5": generator = "Hero"; break;
-            case "6": generator = "Superman"; break;
-            case "7": generator = "Rogan"; break;
-            case "8": generator = "Goggins"; break;
-            default: generator = "Standard";
+    getTtlMins = () => {
+        let time = this.state.duration;
+        let hours, mins, secs;
+
+        if (time === null || time.length < 8) {
+            alert("Invalid duration format. Must be hh:mm:ss.");
+            return;
         }
 
-        let liftData = {
-                workoutType: "lift",
-                userId: this.props.userId,
-                firstName: this.props.firstName,
-                lastName: this.props.lastName,
-                date: this.state.date,
-                location: this.state.location,
-                distance: null,
-                duration: this.state.duration,
-                milePace: null,
-                runType: null,
-                laps: null,
-                repeats: null,
-                race: null,
-                surface: null,
-                weather: null,
-                climb: null,
-                grade: null,
-                shoe: null,
-                bike: null,
-                generator: generator,
-                pushups: this.state.pushups,
-                pullups: this.state.pullups,
-                workout: JSON.stringify(this.state.workout),
-                muscleGroups: JSON.stringify(this.state.muscleGroups),
-                notes: this.state.notes,
-                map: null,
-            };
+        hours = parseFloat(time.split(":")[0]);
+        mins = parseFloat(time.split(":")[1]);
+        secs = parseFloat(time.split(":")[2]);
 
-            workoutAPI.createWorkout(liftData)
-                .then((res) => {
-                    if (res.status === 200) {
-                        alert("Workout submitted!");
-                        sessionStorage.setItem("sets", null);
-                        sessionStorage.setItem("diff", null);
-                        window.location.reload();
-                    }
-                    else {
-                        alert("Error submitting workout.");
-                    }
-                });
+        let ttlMins = 0;
+
+        ttlMins = Math.round(((hours * 60) + mins + (secs / 60)) * 100) / 100;
+
+        this.setState({
+            ttlMins: ttlMins,
+        }, () => {
+            this.submitWorkout();
+        });
+    }
+
+    submitWorkout = () => {
+        this.props.checkValidUser();
+
+        if (this.validateLiftForm()) {
+
+            let generator = "Standard";
+            switch (this.props.difficulty) {
+                case "1": generator = "Baby"; break;
+                case "2": generator = "Easy"; break;
+                case "3": generator = "Average"; break;
+                case "4": generator = "Superior"; break;
+                case "5": generator = "Hero"; break;
+                case "6": generator = "Superman"; break;
+                case "7": generator = "Rogan"; break;
+                case "8": generator = "Goggins"; break;
+                default: generator = "Standard";
+            }
+
+            let liftData = {
+                    workoutType: "lift",
+                    userId: this.props.userId,
+                    firstName: this.props.firstName,
+                    lastName: this.props.lastName,
+                    date: this.state.date,
+                    location: this.state.location,
+                    distance: null,
+                    duration: this.state.duration,
+                    ttlMins: this.state.ttlMins,
+                    milePace: null,
+                    runType: null,
+                    laps: null,
+                    repeats: null,
+                    race: null,
+                    surface: null,
+                    weather: null,
+                    climb: null,
+                    grade: null,
+                    shoe: null,
+                    bike: null,
+                    generator: generator,
+                    pushups: this.state.pushups,
+                    pullups: this.state.pullups,
+                    workout: JSON.stringify(this.state.workout),
+                    muscleGroups: JSON.stringify(this.state.muscleGroups),
+                    notes: this.state.notes,
+                    map: null,
+                };
+
+                workoutAPI.createWorkout(liftData)
+                    .then((res) => {
+                        if (res.status === 200) {
+                            alert("Workout submitted!");
+                            sessionStorage.setItem("sets", null);
+                            sessionStorage.setItem("diff", null);
+                            window.location.reload();
+                        }
+                        else {
+                            alert("Error submitting workout.");
+                        }
+                    });
+            }
     }
 
     recordTime = (timeString) => {
@@ -391,10 +461,6 @@ class Workout extends Component {
             <div>
                 {this.state.sets && this.state.sets.length > 0 ? (
                     <span>
-                        {/* <Stopwatch 
-                            recordTime={this.recordTime}
-                        /> */}
-
                         {this.state.sets.map(set => (
                             <Set
                                 key={Math.random() * 100000}
@@ -491,7 +557,7 @@ class Workout extends Component {
                             />
                         </div>
 
-                        <button className="btn btn-success btn-sm submitWorkoutBtn" onClick={this.submitWorkout}>Submit</button>
+                        <button className="btn btn-success btn-sm submitWorkoutBtn" onClick={this.getTtlMins}>Submit</button>
                     </Modal>
                 ) : (
                         <></>
