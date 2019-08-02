@@ -23,7 +23,7 @@ class Set extends Component {
             {this.state.set && this.state.set.length > 0 ? (
                 this.state.set.map(item => (
                     <SetItem 
-                        key={item.id}
+                        key={`${item.name}${item.reps}`}
                         id={item.id}
                         assignName={item.name}
                         assignReps={item.reps}
