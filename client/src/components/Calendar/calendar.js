@@ -15,10 +15,13 @@ class Calendar extends Component {
             activity: [],
             year: [],
             processed: false,
+            screenWidth: null,
         }
     }
 
     componentDidMount = () => {
+        let screenWidth = window.screen.width;
+
         let year = [];
         let names = [
             "January", "February", "March",
@@ -39,6 +42,7 @@ class Calendar extends Component {
         this.setState({
             userId: this.props.userId,
             year: year,
+            screenWidth: screenWidth,
         }, () => {
             this.getUserActivity();
         });
@@ -87,6 +91,7 @@ class Calendar extends Component {
                                         key={month[0]}
                                         month={month}
                                         monthNum={month[0]}
+                                        screenWidth={this.state.screenWidth}
                                     />
                                 ))
                             ) : (

@@ -53,15 +53,32 @@ class Day extends Component {
         });
     }
 
+    refCallBack = (el) => {
+        let screenWidth = this.props.screenWidth;
+        let objLeft = el.getBoundingClientRect().left;
+
+        let position;
+        if (objLeft >= screenWidth / 2) {
+            position = "top right";
+        }
+        else {
+            position = "top left";
+        }
+
+        this.setState({
+            position: position,
+        });
+    };
+
     render() {
         return (
-            <span>
+            <span ref={this.refCallBack}>
                 <Popup
                     trigger={
                         <div className={`day day-${this.state.type}`}></div>
                     }
                     on="hover"
-                    position="top right"
+                    position={this.state.position}
                     closeOnDocumentClick
                     className="popup"
                 >
