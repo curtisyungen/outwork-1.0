@@ -20,6 +20,7 @@ class SubmitLift extends Component {
             time: null,
             location: null,
             duration: null,
+            ttlMins: null,
             generator: null,
             pushups: null,
             pullups: null,
@@ -199,67 +200,6 @@ class SubmitLift extends Component {
         });
     }
 
-    submitLift = () => {
-        this.props.checkValidUser();
-
-        if (this.validateLiftForm()) {
-
-            let generator = "Standard";
-            switch (this.state.generator) {
-                case "1": generator = "Baby"; break;
-                case "2": generator = "Easy"; break;
-                case "3": generator = "Average"; break;
-                case "4": generator = "Superior"; break;
-                case "5": generator = "Hero"; break;
-                case "6": generator = "Superman"; break;
-                case "7": generator = "Rogan"; break;
-                case "8": generator = "Goggins"; break;
-                default: generator = "Standard";
-            }
-
-            let liftData = {
-                workoutType: "lift",
-                userId: this.state.userId,
-                firstName: this.state.firstName,
-                lastName: this.state.lastName,
-                date: this.state.date,
-                time: this.state.time,
-                location: this.state.location,
-                distance: null,
-                duration: this.state.duration,
-                milePace: null,
-                runType: null,
-                laps: null,
-                repeats: null,
-                race: null,
-                surface: null,
-                weather: null,
-                climb: null,
-                grade: null,
-                shoe: null,
-                bike: null,
-                generator: generator,
-                pushups: this.getPushUps(),
-                pullups: this.getPullUps(),
-                workout: JSON.stringify([this.state.exercises]),
-                muscleGroups: JSON.stringify(this.state.muscleGroups),
-                notes: this.state.notes,
-                map: null,
-            };
-
-            workoutAPI.createWorkout(liftData)
-                .then((res) => {
-                    if (res.status === 200) {
-                        alert("Workout submitted!");
-                        window.location.reload();
-                    }
-                    else {
-                        alert("Error submitting workout.");
-                    }
-                });
-        }
-    }
-
     updateMuscleGroups = (muscleGroup) => {
         let muscleGroups = this.state.muscleGroups;
         let idx = muscleGroups.indexOf(muscleGroup);
@@ -372,6 +312,86 @@ class SubmitLift extends Component {
         this.setState({
             exercises: exercises,
         });
+    }
+
+    getTtlMins = () => {
+        let time = this.state.duration;
+        let hours, mins, secs;
+
+        hours = parseFloat(time.split(":")[0]);
+        mins = parseFloat(time.split(":")[1]);
+        secs = parseFloat(time.split(":")[2]);
+
+        let ttlMins = 0;
+
+        ttlMins = Math.round(((hours * 60) + mins + (secs / 60)) * 100) / 100;
+
+        this.setState({
+            ttlMins: ttlMins,
+        }, () => {
+            this.submitLift();
+        });
+    }
+
+    submitLift = () => {
+        this.props.checkValidUser();
+
+        if (this.validateLiftForm()) {
+
+            let generator = "Standard";
+            switch (this.state.generator) {
+                case "1": generator = "Baby"; break;
+                case "2": generator = "Easy"; break;
+                case "3": generator = "Average"; break;
+                case "4": generator = "Superior"; break;
+                case "5": generator = "Hero"; break;
+                case "6": generator = "Superman"; break;
+                case "7": generator = "Rogan"; break;
+                case "8": generator = "Goggins"; break;
+                default: generator = "Standard";
+            }
+
+            let liftData = {
+                workoutType: "lift",
+                userId: this.state.userId,
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                date: this.state.date,
+                time: this.state.time,
+                location: this.state.location,
+                distance: null,
+                duration: this.state.duration,
+                milePace: null,
+                runType: null,
+                laps: null,
+                repeats: null,
+                race: null,
+                surface: null,
+                weather: null,
+                climb: null,
+                grade: null,
+                shoe: null,
+                bike: null,
+                generator: generator,
+                pushups: this.getPushUps(),
+                pullups: this.getPullUps(),
+                workout: JSON.stringify([this.state.exercises]),
+                muscleGroups: JSON.stringify(this.state.muscleGroups),
+                notes: this.state.notes,
+                map: null,
+            };
+
+            workoutAPI.createWorkout(liftData)
+                .then((res) => {
+                    if (res.status === 200) {
+                        alert("Workout submitted!");
+                        window.location.reload();
+                    }
+                    else {
+                        alert("Error submitting workout.");
+                    }
+                });
+        }
     }
 
     render() {
@@ -546,7 +566,7 @@ class SubmitLift extends Component {
                         />
                     </div>
 
-                    <button className="btn btn-primary" onClick={this.submitLift}>Submit</button>
+                    <button className="btn btn-primary" onClick={this.getTtlMins}>Submit</button>
                 </div>
             </div>
         )

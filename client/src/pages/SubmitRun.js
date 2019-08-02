@@ -18,6 +18,7 @@ class SubmitRun extends Component {
             time: null,
             distance: null,
             duration: null,
+            ttlMins: null,
             milePace: null,
             runType: "Training",
             repeats: [],
@@ -117,6 +118,7 @@ class SubmitRun extends Component {
 
             this.setState({
                 milePace: milePace,
+                ttlMins: totalMinutes,
             });
         }
     }
@@ -223,6 +225,7 @@ class SubmitRun extends Component {
                 location: this.state.location,
                 distance: Math.round((this.state.distance * 100) / 100),
                 duration: this.state.duration,
+                ttlMins: this.state.ttlMins,
                 milePace: this.state.milePace,
                 runType: this.state.runType,
                 laps: null,
