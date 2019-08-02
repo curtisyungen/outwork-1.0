@@ -421,7 +421,7 @@ class SubmitSwim extends Component {
                     {/* LAPS */}
                     <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
-                            <span className="input-group-text" id="inputGroup-sizing-sm">Laps</span>
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Total Laps</span>
                         </div>
                         <input
                             autoComplete="off"
