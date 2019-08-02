@@ -47,7 +47,7 @@ class App extends Component {
       otherUserFirst: null,
       otherUserLast: null,
       allActivity: [],
-      background: "none",
+      background: "tiles",
       resetEmail: null,
     }
   }
@@ -59,13 +59,13 @@ class App extends Component {
       loginStatus = JSON.parse(localStorage.getItem("isLoggedIn"));
     }
 
-    // Get background image from local storage or default to None
-    let background = "none";
+    // Get background image from local storage or default to Tiles
+    let background = "tiles";
     if (localStorage.getItem("background") && localStorage.getItem("background") !== null) {
       background = localStorage.getItem("background");
     }
     else {
-      localStorage.setItem("background", "none");
+      localStorage.setItem("background", background);
     }
 
     this.setState({
