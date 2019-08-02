@@ -28,7 +28,7 @@ class HofController {
     }
 
     getMaxClimb(req, res) {
-        db.sequelize.query("SELECT SUM(climb) AS value, firstName, userId FROM Workouts GROUP BY firstName", { type: sequelize.QueryTypes.SELECT })
+        db.sequelize.query("SELECT SUM(climb) AS value, firstName, userId FROM Workouts WHERE workoutType = 'run' GROUP BY firstName", { type: sequelize.QueryTypes.SELECT })
             .then(climb => {
                 res.json(climb);
             });
