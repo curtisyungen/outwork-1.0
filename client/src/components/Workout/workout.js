@@ -240,17 +240,16 @@ class Workout extends Component {
     }
 
     getPushUps = () => {
-        let sets = this.state.sets;
-
-        console.log(sets);
-
+        let workout = this.state.workout;
         let pushups = 0;
         let name;
 
-        for (var i in sets) {
-            name = sets[i].name.toLowerCase();
-            if (name.indexOf("push") > -1) {
-                pushups += parseInt(sets[i].reps);
+        for (var s in workout) {
+            for (var i=0; i<5; i++) {
+                name = workout[s][i].name;
+                if (name && name.toLowerCase().indexOf("push") > -1) {
+                    pushups += parseInt(workout[s][i].reps);
+                }
             }
         }
 
@@ -260,14 +259,16 @@ class Workout extends Component {
     }
 
     getPullUps = () => {
-        let sets = this.state.sets;
+        let workout = this.state.workout;
         let pullups = 0;
         let name;
 
-        for (var i in sets) {
-            name = sets[i].name.toLowerCase();
-            if (name.indexOf("pull") > -1 && name.indexOf("up") > -1) {
-                pullups += parseInt(sets[i].reps);
+        for (var s in workout) {
+            for (var i=0; i<5; i++) {
+                name = workout[s][i].name;
+                if (name && name.toLowerCase().indexOf("pull") > -1 && name.toLowerCase().indexOf("up") > -1) {
+                    pullups += parseInt(workout[s][i].reps);
+                }
             }
         }
 
@@ -351,8 +352,8 @@ class Workout extends Component {
         this.setState({
             complete: true,
         }, () => {
-            // this.getPushUps();
-            // this.getPullUps();
+            this.getPushUps();
+            this.getPullUps();
             this.getMuscleGroups();
         });
     }
