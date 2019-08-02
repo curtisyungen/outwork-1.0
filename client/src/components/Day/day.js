@@ -35,12 +35,14 @@ class Day extends Component {
 
         if (day.length >= 2) {
             for (var i=1; i<day.length; i++) {
-
-                if (day[i].workoutType !== "lift") {
-                    workoutTypes.push([day[i].workoutType, `${day[i].distance} miles`]);
+                if (day[i].workoutType === "lift") {
+                    workoutTypes.push([day[i].workoutType, `${day[i].generator}`]);
+                }
+                else if (day[i].workoutType === "swim") {
+                    workoutTypes.push([day[i].workoutType, `${day[i].distance} meters`]);
                 }
                 else {
-                    workoutTypes.push([day[i].workoutType, `${day[i].generator}`]);
+                    workoutTypes.push([day[i].workoutType, `${day[i].distance} miles`]);
                 }
             }
         }

@@ -81,7 +81,7 @@ class SwimMetrics extends Component {
                         <div>{this.state.totalTime}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Miles</div>
+                        <div className="metricTitle">Meters</div>
                         <div>{this.state.totalMiles}</div>
                     </div>
                     <div className="metric">
@@ -93,12 +93,12 @@ class SwimMetrics extends Component {
                         <div>{this.state.maxMiles}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Metric</div>
-                        <div>0</div>
+                        <div className="metricTitle"></div>
+                        <div></div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Metric</div>
-                        <div>0</div>
+                        <div className="metricTitle"></div>
+                        <div></div>
                     </div>
                 </div>
             </span>
