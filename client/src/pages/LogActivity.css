@@ -1,5 +1,5 @@
 .activity {
-    background: rgb(242, 242, 242);
+    background: rgb(202, 202, 202);
     border: 1px solid black;
     border-radius: 4px;
     color: white;
@@ -9,7 +9,7 @@
     margin: 5px;
     padding-top: 50px;
     text-align: center;
-    transition: 0.5s;
+    transition: 0.6s;
     width: 150px;
 }
 
