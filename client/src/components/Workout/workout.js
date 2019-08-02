@@ -491,6 +491,7 @@ class Workout extends Component {
                         open={this.state.complete}
                         onClose={this.closeModal}
                     >
+                        <h4>Details</h4>
 
                         {/* DATE */}
                         <div className="input-group input-group-sm mb-3 workoutModalForm">
