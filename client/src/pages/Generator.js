@@ -20,7 +20,7 @@ class Generator extends Component {
             userId: null,
             firstName: null,
             lastName: null,
-            difficulty: null,
+            difficulty: "0",
             openModal: false,
             equipment: [],
             userEquipment: [],
@@ -204,7 +204,8 @@ class Generator extends Component {
                             type="text"
                             aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
-                            defaultValue={this.state.difficulty || "0"}
+                            defaultValue={"0"}
+                            value={this.state.difficulty}
                         >
                             <option value="0">Select Difficulty</option>
                             <option value="1">Baby</option>
