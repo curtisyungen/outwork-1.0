@@ -397,8 +397,8 @@ class App extends Component {
         let max = 0;
         let maxName = "";
         for (var r in res.data) {
-          if (res.data[r].goggins > max) {
-            max = res.data[r].goggins;
+          if (res.data[r].value > max) {
+            max = res.data[r].value;
             maxName = res.data[r].firstName;
           }
         }
@@ -425,6 +425,7 @@ class App extends Component {
 
     hofAPI.getSwims()
       .then((res) => {
+        
         let max = this.getMaximum(res.data);
         hofAPI.updateHof("mostSwims", max[0], max[1]);
       });
