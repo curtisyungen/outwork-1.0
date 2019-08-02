@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import hofAPI from "../../utils/hofAPI";
 import "./metrics.css";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -15,10 +16,12 @@ class LiftMetrics extends Component {
         this.state = {
             userId: null,
             userLifts: null,
+            workouts: "NA",
             totalTime: 0,
             pushups: 0,
             pullups: 0,
-            workouts: "NA",
+            maxPushups: 0,
+            maxPullups: 0,
             goggins: 0,
         }
     }
@@ -65,6 +68,16 @@ class LiftMetrics extends Component {
             }
         }
 
+        hofAPI.getMaxPushups()
+            .then((res) => {
+                console.log("Push Ups", res);
+            });
+
+        hofAPI.getMaxPullups() 
+            .then((res) => {
+                console.log("Pull Ups", res);
+            });
+
         this.setState({
             totalTime: totalTime,
             pushups: pushups,
@@ -91,24 +104,24 @@ class LiftMetrics extends Component {
                         <div>{this.state.totalTime}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Push-Ups</div>
+                        <div className="metricTitle">Ttl. Push-Ups</div>
                         <div>{this.state.pushups}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Pull-Ups</div>
+                        <div className="metricTitle">Ttl. Pull-Ups</div>
                         <div>{this.state.pullups}</div>
+                    </div>
+                    <div className="metric">
+                        <div className="metricTitle">Most Push-Ups</div>
+                        <div>{this.state.maxPushups}</div>
+                    </div>
+                    <div className="metric">
+                        <div className="metricTitle">Most Pull-Ups</div>
+                        <div>{this.state.maxPullups}</div>
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Goggins</div>
                         <div>{this.state.goggins}</div>
-                    </div>
-                    <div className="metric">
-                        <div className="metricTitle"></div>
-                        <div></div>
-                    </div>
-                    <div className="metric">
-                        <div className="metricTitle"></div>
-                        <div></div>
                     </div>
                 </div>
             </span>
