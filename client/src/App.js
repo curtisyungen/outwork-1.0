@@ -398,10 +398,11 @@ class App extends Component {
         hofAPI.updateHof("mostGoggins", max[0], max[1]);
       });
 
-    // hofAPI.getTotalTime()
-    //   .then((res) => {
-    //     console.log("Time", res);
-    //   });
+    hofAPI.getTotalTime()
+      .then((res) => {
+        let max = this.getMaximum(res.data);
+        hofAPI.updateHof("mostTime", max[0], max[1]);
+      });
 
     hofAPI.getMaxRaces()
       .then((res) => {
