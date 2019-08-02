@@ -118,7 +118,7 @@ class SubmitRun extends Component {
 
             this.setState({
                 milePace: milePace,
-                ttlMins: totalMinutes,
+                ttlMins: Math.round((totalMinutes * 100) / 100),
             });
         }
     }
