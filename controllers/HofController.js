@@ -49,7 +49,7 @@ class HofController {
     }
 
     getMaxGoggins(req, res) {
-        db.sequelize.query("SELECT COUNT(id) AS value, firstName, userId FROM Workouts WHERE generator = 'Goggins'", { type: sequelize.QueryTypes.SELECT })
+        db.sequelize.query("SELECT COUNT(id) AS value, firstName, userId FROM Workouts WHERE generator = 'Goggins' GROUP BY firstName", { type: sequelize.QueryTypes.SELECT })
             .then(goggins => {
                 res.json(goggins);
             });
@@ -70,7 +70,7 @@ class HofController {
     }
 
     getRainyDays(req, res) {
-        db.sequelize.query("SELECT COUNT(id) AS value, firstName, userId FROM Workouts WHERE weather = 'Heavy Rain'", { type: sequelize.QueryTypes.SELECT })
+        db.sequelize.query("SELECT COUNT(id) AS value, firstName, userId FROM Workouts WHERE weather = 'Heavy Rain' GROUP BY firstName", { type: sequelize.QueryTypes.SELECT })
             .then(days => {
                 res.json(days);
             });
