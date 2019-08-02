@@ -51,6 +51,7 @@ class UserActivity extends Component {
                 firstName={activity.firstName}
                 lastName={activity.lastName}
                 date={activity.date}
+                time={activity.time}
                 distance={activity.distance}
                 duration={activity.duration}
                 milePace={activity.milePace}
@@ -78,6 +79,7 @@ class UserActivity extends Component {
                 firstName={activity.firstName}
                 lastName={activity.lastName}
                 date={activity.date}
+                time={activity.time}
                 distance={activity.distance}
                 duration={activity.duration}
                 location={activity.location}
@@ -101,6 +103,7 @@ class UserActivity extends Component {
                 firstName={activity.firstName}
                 lastName={activity.lastName}
                 date={activity.date}
+                time={activity.time}
                 distance={activity.distance}
                 laps={activity.laps}
                 duration={activity.duration}
@@ -121,6 +124,7 @@ class UserActivity extends Component {
                 firstName={activity.firstName}
                 lastName={activity.lastName}
                 date={activity.date}
+                time={activity.time}
                 location={activity.location}
                 duration={activity.duration}
                 generator={activity.generator}

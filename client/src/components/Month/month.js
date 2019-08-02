@@ -16,7 +16,6 @@ class Month extends Component {
     }
 
     componentDidMount = () => {
-
         let month = this.props.month;
         let monthName = month[0];
 
@@ -39,6 +38,7 @@ class Month extends Component {
                             key={Math.random() * 100000}
                             month={this.state.monthNum}
                             day={day}
+                            screenWidth={this.props.screenWidth}
                         />
                     ))
                 ) : (
