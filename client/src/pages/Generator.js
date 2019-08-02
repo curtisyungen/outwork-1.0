@@ -154,6 +154,8 @@ class Generator extends Component {
         this.setState({
             generate: !this.state.generate,
             difficulty: Math.floor(Math.random() * 8) + 1,
+        }, () => {
+            window.location.reload();
         });
     }
 
@@ -218,7 +220,7 @@ class Generator extends Component {
                         </select>
                         <div className="input-group-append">
                             <button className="btn btn-dark" onClick={this.generateWorkout}>Generate</button>
-                            <button className="btn btn-warning" onClick={this.randomWorkout}>Random</button>
+                            <button className="btn btn-secondary" onClick={this.randomWorkout}>Random</button>
                         </div>
                     </div>
 
