@@ -16,6 +16,7 @@
 .activity:hover,
 .activity-sm:hover {
     background: rgb(212, 212, 212);
+    color: black;
     text-decoration: none;
 }
 
