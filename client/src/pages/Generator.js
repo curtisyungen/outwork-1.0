@@ -154,8 +154,6 @@ class Generator extends Component {
         this.setState({
             generate: !this.state.generate,
             difficulty: Math.floor(Math.random() * 8) + 1,
-        }, () => {
-            window.location.reload();
         });
     }
 
@@ -206,7 +204,7 @@ class Generator extends Component {
                             type="text"
                             aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
-                            defaultValue={this.props.difficulty || "0"}
+                            defaultValue={this.state.difficulty || "0"}
                         >
                             <option value="0">Select Difficulty</option>
                             <option value="1">Baby</option>
