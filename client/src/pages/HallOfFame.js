@@ -166,7 +166,7 @@ class HallOfFame extends Component {
                                 <div className="hofIcon hofCol"><FontAwesomeIcon className={`fa-2x ${award.icon}`} icon={this.getIcon(award.icon)} /></div>
                                 <div className="hofTitle hofCol">{award.title}</div>
                                 <div className="hofName hofCol">{award.userName}</div>
-                                <div className="hofValue hofCol">{award.value}&nbsp;{award.unit}</div>
+                                <div className="hofValue hofCol">{Math.round((award.value * 100) / 100)}&nbsp;{award.unit}</div>
                                 <div className="hofDesc hofCol">{award.desc}</div>
                             </div>
                         ))
