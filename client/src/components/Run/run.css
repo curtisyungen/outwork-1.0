@@ -6,6 +6,7 @@
     height: 50px;
     line-height: 1.0;
     margin: 2px 0px;
+    transition: 0.5s;
 }
 
 .actCard:first-child {

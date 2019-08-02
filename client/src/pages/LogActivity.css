@@ -9,6 +9,7 @@
     margin: 5px;
     padding-top: 50px;
     text-align: center;
+    transition: 0.5s;
     width: 150px;
 }
 
