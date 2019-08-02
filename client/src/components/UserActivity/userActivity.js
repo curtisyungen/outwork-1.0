@@ -105,7 +105,7 @@ class UserActivity extends Component {
                 laps={activity.laps}
                 duration={activity.duration}
                 location={activity.location}
-                waterType={activity.waterType}
+                surface={activity.surface}
                 workout={activity.workout}
                 notes={activity.notes}
                 deleteActivity={this.props.deleteActivity}

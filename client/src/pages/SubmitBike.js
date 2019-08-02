@@ -84,6 +84,16 @@ class SubmitBike extends Component {
         });
     }
 
+    getGrade = () => {
+        let distance = this.state.distance;
+        let climb = this.state.climb;
+        let grade = Math.round(((climb / (distance * 5280)) * 100) * 100) / 100;
+
+        this.setState({
+            grade: grade,
+        });
+    }
+
     getTtlMins = () => {
         let time = this.state.duration;
         let hours, mins, secs;
@@ -128,7 +138,7 @@ class SubmitBike extends Component {
                 climb: this.state.climb,
                 grade: this.state.grade,
                 shoe: null,
-                bike: this.state.shoe,
+                bike: this.state.bike,
                 generator: null,
                 pushups: null,
                 pullups: null,
@@ -210,6 +220,7 @@ class SubmitBike extends Component {
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
+                            onBlur={this.getGrade}
                         />
                     </div>
 
@@ -296,6 +307,7 @@ class SubmitBike extends Component {
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
+                            onBlur={this.getGrade}
                         />
                     </div>
 
