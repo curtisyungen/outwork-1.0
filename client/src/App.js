@@ -235,6 +235,7 @@ class App extends Component {
                 localStorage.setItem("isLoggedIn", "true");
                 localStorage.setItem("userId", res.data[0].userId);
                 localStorage.setItem("fn", res.data[0].firstName);
+                localStorage.setItem("ln", res.data[0].lastName);
 
                 this.getAllWorkouts();
                 this.setRedirectToHome();
@@ -247,6 +248,8 @@ class App extends Component {
   logoutUser = () => {
     localStorage.setItem("isLoggedIn", "false");
     localStorage.setItem("userId", null);
+    localStorage.setItem("fn", null);
+    localStorage.setItem("ln", null);
     localStorage.setItem("background", "white");
 
     this.setState({
