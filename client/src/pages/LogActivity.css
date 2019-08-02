@@ -37,22 +37,22 @@
 
 .bikeIcon:hover {
     background: rgb(255, 216, 116);
-    box-shadow: 0px 0px 3px gold;
+    box-shadow: 0px 0px 5px gold;
 }
 
 .liftIcon:hover {
     background: rgb(255, 191, 191);
-    box-shadow: 0px 0px 3px rgb(255, 168, 183);
+    box-shadow: 0px 0px 5px rgb(255, 168, 183);
 }
 
 .runIcon:hover {
     background: lightgreen;
-    box-shadow: 0px 0px 3px rgba(25, 255, 25, 0.822);
+    box-shadow: 0px 0px 5px rgba(25, 255, 25, 0.822);
 }
 
 .swimIcon:hover {
     background: lightblue;
-    box-shadow: 0px 0px 3px rgb(115, 220, 255);
+    box-shadow: 0px 0px 5px rgb(115, 220, 255);
 }
 
 @media only screen and (max-width: 520px) {
