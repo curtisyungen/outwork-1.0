@@ -281,6 +281,7 @@ class SubmitSwim extends Component {
                 location: this.state.location,
                 distance: Math.round((this.state.distance * 100) / 100),
                 duration: this.state.duration,
+                ttlMins: this.state.ttlMins,
                 milePace: null,
                 runType: null,
                 laps: this.state.laps,
