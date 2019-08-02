@@ -410,7 +410,7 @@ class SubmitLift extends Component {
                     {/* DATE */}
                     <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
-                            <span className="input-group-text" id="inputGroup-sizing-sm">Date</span>
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Date*</span>
                         </div>
                         <input
                             autoComplete="off"
@@ -459,7 +459,7 @@ class SubmitLift extends Component {
                     {/* DURATION */}
                     <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
-                            <span className="input-group-text" id="inputGroup-sizing-sm">Duration</span>
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Duration*</span>
                         </div>
                         <input
                             autoComplete="off"
@@ -501,7 +501,7 @@ class SubmitLift extends Component {
                     {/* WORKOUT */}
                     <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend submitFormSectTitle">
-                            Workout
+                            Workout*
                         </div>
                     </div>
 

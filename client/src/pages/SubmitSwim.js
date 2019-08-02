@@ -314,7 +314,7 @@ class SubmitSwim extends Component {
                     {/* DATE */}
                     <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
-                            <span className="input-group-text" id="inputGroup-sizing-sm">Date</span>
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Date*</span>
                         </div>
                         <input
                             autoComplete="off"
@@ -347,7 +347,7 @@ class SubmitSwim extends Component {
                     {/* DISTANCE */}
                     <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
-                            <span className="input-group-text" id="inputGroup-sizing-sm">Distance</span>
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Distance*</span>
                         </div>
                         <input
                             autoComplete="off"
@@ -372,7 +372,7 @@ class SubmitSwim extends Component {
                     {/* DURATION */}
                     <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend">
-                            <span className="input-group-text" id="inputGroup-sizing-sm">Duration</span>
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Duration*</span>
                         </div>
                         <input
                             autoComplete="off"
@@ -442,7 +442,7 @@ class SubmitSwim extends Component {
                     {/* SWIM WORKOUT */}
                     <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend submitFormSectTitle">
-                            Workout
+                            Workout*
                         </div>
                     </div>
 
