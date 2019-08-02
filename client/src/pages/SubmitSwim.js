@@ -205,16 +205,16 @@ class SubmitSwim extends Component {
     }
 
     setSets = (id, sets) => {
-        let worout = this.state.workout;
+        let workout = this.state.workout;
 
         for (var w in workout) {
             if (workout[w].id === id) {
-                worout[w].sets = sets;
+                workout[w].sets = sets;
             }
         }
 
         this.setState({
-            worout: workout,
+            workout: workout,
         });
     }
 
