@@ -39,6 +39,11 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        // Total time converted into minutes
+        ttlMins: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         // Average mile pace for run
         milePace: {
             type: DataTypes.STRING,

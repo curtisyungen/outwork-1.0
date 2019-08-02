@@ -17,6 +17,7 @@ class SubmitSwim extends Component {
             distance: null,
             units: "Meters",
             duration: null,
+            ttlMins: null,
             laps: null,
             location: null,
             surface: null,
@@ -227,6 +228,25 @@ class SubmitSwim extends Component {
 
         this.setState({
             distance: dist,
+        }, () => {
+            this.getTtlMins();
+        });
+    }
+
+    getTtlMins = () => {
+        let time = this.state.duration;
+        let hours, mins, secs;
+
+        hours = parseFloat(time.split(":")[0]);
+        mins = parseFloat(time.split(":")[1]);
+        secs = parseFloat(time.split(":")[2]);
+
+        let ttlMins = 0;
+
+        ttlMins = Math.round(((hours * 60) + mins + (secs / 60)) * 100) / 100;
+
+        this.setState({
+            ttlMins: ttlMins,
         }, () => {
             this.submitSwim();
         });

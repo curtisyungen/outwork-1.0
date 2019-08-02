@@ -19,6 +19,7 @@ class SubmitBike extends Component {
             time: null,
             distance: null,
             duration: null,
+            ttlMins: null,
             location: null,
             surface: null,
             weather: null,
@@ -83,6 +84,25 @@ class SubmitBike extends Component {
         });
     }
 
+    getTtlMins = () => {
+        let time = this.state.duration;
+        let hours, mins, secs;
+
+        hours = parseFloat(time.split(":")[0]);
+        mins = parseFloat(time.split(":")[1]);
+        secs = parseFloat(time.split(":")[2]);
+
+        let ttlMins = 0;
+
+        ttlMins = Math.round(((hours * 60) + mins + (secs / 60)) * 100) / 100;
+
+        this.setState({
+            ttlMins: ttlMins,
+        }, () => {
+            this.submitBike();
+        });
+    }
+
     submitBike = () => {
         this.props.checkValidUser()
 
@@ -97,6 +117,7 @@ class SubmitBike extends Component {
                 location: this.state.location,
                 distance: Math.round((this.state.distance * 100) / 100),
                 duration: this.state.duration,
+                ttlMins: this.state.ttlMins,
                 milePace: null,
                 runType: null,
                 laps: null,
@@ -329,7 +350,7 @@ class SubmitBike extends Component {
                         />
                     </div>
 
-                    <button className="btn btn-primary" onClick={this.submitBike}>Submit</button>
+                    <button className="btn btn-primary" onClick={this.getTtlMins}>Submit</button>
                 </div>
             </div>
         )
