@@ -361,6 +361,7 @@ class SubmitLift extends Component {
                 location: this.state.location,
                 distance: null,
                 duration: this.state.duration,
+                ttlMins: this.state.ttlMins,
                 milePace: null,
                 runType: null,
                 laps: null,
