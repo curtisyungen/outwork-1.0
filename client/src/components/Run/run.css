@@ -29,6 +29,10 @@
     max-width: 26% !important;
 }
 
+.border-true {
+    border-right: 3px solid green;
+}
+
 .cell {
     border-right: 1px solid rgb(114, 114, 114);
     min-width: 10%;
