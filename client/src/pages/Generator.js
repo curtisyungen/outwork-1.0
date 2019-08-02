@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-// import Container from "../components/Container/container";
 import Equipment from "../components/Equipment/equipment";
 import Workout from "../components/Workout/workout";
-// import Stopwatch from "../components/Stopwatch/stopwatch";
 import Modal from "react-responsive-modal";
 import userAPI from "../utils/userAPI";
 import exerAPI from "../utils/exerAPI";
@@ -49,8 +47,6 @@ class Generator extends Component {
                     });
                 });
         }
-
-        
     }
 
     handleInputChange = (event) => {
@@ -151,13 +147,13 @@ class Generator extends Component {
     generateWorkout = () => {
         this.setState({
             generate: !this.state.generate,
-            showWatch: true,
         });
     }
 
-    recordTime = (timeString) => {
+    randomWorkout = () => {
         this.setState({
-            timeString: timeString,
+            generate: !this.state.generate,
+            difficulty: Math.floor(Math.random() * 8) + 1,
         });
     }
 
@@ -192,8 +188,8 @@ class Generator extends Component {
                         </div>
                     </Modal>
                 ) : (
-                        <></>
-                    )}
+                    <></>
+                )}
 
                 <div className={`difficultyBar`}>
 
@@ -222,6 +218,7 @@ class Generator extends Component {
                         </select>
                         <div className="input-group-append">
                             <button className="btn btn-dark" onClick={this.generateWorkout}>Generate</button>
+                            <button className="btn btn-warning" onClick={this.randomWorkout}>Random</button>
                         </div>
                     </div>
 
