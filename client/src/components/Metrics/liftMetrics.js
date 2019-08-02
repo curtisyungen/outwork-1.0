@@ -103,12 +103,12 @@ class LiftMetrics extends Component {
                         <div>{this.state.goggins}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Metric</div>
-                        <div>0</div>
+                        <div className="metricTitle"></div>
+                        <div></div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Metric</div>
-                        <div>0</div>
+                        <div className="metricTitle"></div>
+                        <div></div>
                     </div>
                 </div>
             </span>
