@@ -126,7 +126,7 @@ class Lift extends Component {
                                     <div className="dataTitle">Muscle Groups</div>
                                     <div className="dataPoint">{this.props.muscleGroups ? (
                                         JSON.parse(this.props.muscleGroups).map(group => (
-                                            <span key={group}>{group}&nbsp;&nbsp;</span>
+                                            <span key={group} className="mg">{group}</span>
                                         ))
                                     ) : (
                                         <></>

@@ -52,3 +52,7 @@
 .liftWorkout {
     margin-top: 25px;
 }
+
+.mg:not(first-child) {
+    margin-right: 4px;
+}
