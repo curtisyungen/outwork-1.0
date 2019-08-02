@@ -40,6 +40,7 @@ class SubmitSwim extends Component {
                     distance: "",
                     time: "",
                     stroke: "",
+                    sets: "",
                     rest: "",
                 }
 
@@ -200,6 +201,20 @@ class SubmitSwim extends Component {
 
         this.setState({
             workout: workout,
+        });
+    }
+
+    setSets = (id, sets) => {
+        let worout = this.state.workout;
+
+        for (var w in workout) {
+            if (workout[w].id === id) {
+                worout[w].sets = sets;
+            }
+        }
+
+        this.setState({
+            worout: workout,
         });
     }
 
@@ -454,6 +469,7 @@ class SubmitSwim extends Component {
                             setDistance={this.setDistance}
                             setTime={this.setTime}
                             setStroke={this.setStroke}
+                            setSets={this.setSets}
                             setRest={this.setRest}
                             getLap={this.getLap}
                             deleteLap={this.deleteLap}
