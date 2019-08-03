@@ -129,19 +129,19 @@ class RunMetrics extends Component {
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Total Time (min.)</div>
-                        <div>{Math.round((this.state.time * 100) / 100)}</div>
+                        <div>{this.state.time.toFixed(2)}</div>
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Total Miles</div>
-                        <div>{Math.round((this.state.totalMiles * 100) / 100)}</div>
+                        <div>{this.state.totalMiles.toFixed(2)}</div>
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Avg. Miles / Week</div>
-                        <div>{Math.round((this.state.avgMilesPerWeek * 100) / 100)}</div>
+                        <div>{this.state.avgMilesPerWeek.toFixed(2)}</div>
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Climb (ft.)</div>
-                        <div>{Math.round((this.state.totalClimb * 100) / 100)}</div>
+                        <div>{this.state.totalClimb.toFixed(2)}</div>
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Avg. Mile Pace</div>
