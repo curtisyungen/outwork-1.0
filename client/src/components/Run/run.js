@@ -55,7 +55,7 @@ class Run extends Component {
         return (
             <span>
                 <div className="d-flex flex-row actCard" onClick={this.openModal}>
-                    <div className={`runIcon border-${this.props.race !== null}`}><FontAwesomeIcon className={`fa-2x icon`} icon={faRunning} /></div>
+                    <div className={`runIcon border-${this.props.race !== null && this.props.race !== ""}`}><FontAwesomeIcon className={`fa-2x icon`} icon={faRunning} /></div>
                     <div className="cell"><span className="cellDesc">Name</span>{this.props.firstName}</div>
                     <div className="cell"><span className="cellDesc">Date</span>{this.props.date}</div>
                     <div className="cell"><span className="cellDesc">Miles</span>{this.props.distance}</div>
