@@ -28,7 +28,7 @@ module.exports = function(sequelize, DataTypes) {
         // Time of Day workout was completed
         time: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         // General location where run took place
         location: {
