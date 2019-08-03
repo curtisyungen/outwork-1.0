@@ -16,11 +16,11 @@ class SwimMetrics extends Component {
             userId: null,
             userSwims: null,
             workouts: "NA",
-            totalMiles: 0,
+            totalMeters: 0,
             totalTime: 0,
-            avgMilesPerWeek: 0,
-            avgMiles: 0,
-            maxMiles: 0,
+            avgMeters: 0,
+            avgKnots: 0,
+            maxMeters: 0,
         }
     }
 
@@ -35,19 +35,22 @@ class SwimMetrics extends Component {
 
     getMetrics = () => {
         let swims = this.state.userSwims;
-        let totalMiles = 0;
+        let totalMeters = 0;
         let totalTime = 0;
-        let maxMiles = 0;
+        let maxMeters = 0;
 
         for (var s in swims) {
             let dist = parseFloat(swims[s].distance);
 
-            totalMiles += dist;
+            // Get total meters
+            totalMeters += dist;
 
-            if (maxMiles < dist) {
-                maxMiles = dist;
+            // Get max meters
+            if (maxMeters < dist) {
+                maxMeters = dist;
             }
 
+            // Get total time
             let time = swims[s].duration.split(":");
             let hours = parseFloat(time[0]);
             let minutes = parseFloat(time[1]);
@@ -56,11 +59,19 @@ class SwimMetrics extends Component {
             totalTime = (hours * 60) + minutes + Math.round(((seconds / 60) * 100) / 100);
         }
 
+        // Get avg. meters / workout
+        let avgMeters = Math.round((totalMeters / swims.length) * 100) / 100;
+
+        // Convert meters / min. to nautical miles / hour to get avg. knots
+        let avgKnots = Math.round(((totalMeters / totalTime) / 30.867) * 100) / 100;
+
         this.setState({
             workouts: swims.length,
-            totalMiles: totalMiles,
+            totalMeters: totalMeters,
             totalTime: totalTime,
-            maxMiles: maxMiles,
+            maxMeters: maxMeters,
+            avgMeters: avgMeters,
+            avgKnots: avgKnots,
         });
     }
 
@@ -77,28 +88,28 @@ class SwimMetrics extends Component {
                         <div>{this.state.workouts}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Time (min.)</div>
+                        <div className="metricTitle">Total Time (min.)</div>
                         <div>{this.state.totalTime}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Meters</div>
-                        <div>{this.state.totalMiles}</div>
+                        <div className="metricTitle">Total Meters</div>
+                        <div>{this.state.totalMeters}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Avg. Dist. (mi.)</div>
-                        <div>{this.state.avgMiles}</div>
+                        <div className="metricTitle">Avg. Meters / Wrkt.</div>
+                        <div>{this.state.avgMeters}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Max. Dist. (mi.)</div>
-                        <div>{this.state.maxMiles}</div>
+                        <div className="metricTitle">Climb (ft.)</div>
+                        <div>0</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle"></div>
-                        <div></div>
+                        <div className="metricTitle">Avg. Knots</div>
+                        <div>{this.state.avgKnots}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle"></div>
-                        <div></div>
+                        <div className="metricTitle">Max. Dist. (m)</div>
+                        <div>{this.state.maxMeters}</div>
                     </div>
                 </div>
             </span>
