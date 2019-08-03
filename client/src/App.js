@@ -250,7 +250,7 @@ class App extends Component {
     localStorage.setItem("userId", null);
     localStorage.setItem("fn", null);
     localStorage.setItem("ln", null);
-    localStorage.setItem("background", "white");
+    localStorage.setItem("background", "tiles");
 
     this.setState({
       isLoggedIn: "false",
