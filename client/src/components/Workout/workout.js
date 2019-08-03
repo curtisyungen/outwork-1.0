@@ -69,8 +69,6 @@ class Workout extends Component {
     validateLiftForm = () => {
         let date = this.state.date;
         let duration = this.state.duration;
-        let time = this.state.time;
-
 
         if (date === null || date === "" || date.length < 10) {
             alert("Inputted date is not valid.");
@@ -79,11 +77,6 @@ class Workout extends Component {
 
         if (duration === null || duration === "" || duration.length !== 8) {
             alert("Duration must be in hh:mm:ss format.");
-            return false;
-        }
-
-        if (time === null || time === "") {
-            alert("Time of day must not be empty.");
             return false;
         }
 
@@ -516,7 +509,7 @@ class Workout extends Component {
                         {/* TIME */}
                         <div className="input-group input-group-sm mb-3">
                             <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-sm">Time of Day*</span>
+                                <span className="input-group-text" id="inputGroup-sizing-sm">Time of Day</span>
                             </div>
                             <input
                                 autoComplete="off"
