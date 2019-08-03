@@ -54,8 +54,6 @@ class App extends Component {
 
   componentDidMount = () => {
 
-    this.calcTtlMinutes();
-
     // Check if logged in
     let loginStatus = false;
     if (localStorage.getItem("isLoggedIn")) {
@@ -469,7 +467,6 @@ class App extends Component {
   calcTtlMinutes = () => {
     workoutAPI.getAllWorkouts()
       .then((res) => {
-        console.log(workouts);
         let workouts = res.data;
         let ttlMins;
         
