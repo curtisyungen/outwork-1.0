@@ -223,7 +223,7 @@ class SubmitRun extends Component {
                 date: this.state.date,
                 time: this.state.time,
                 location: this.state.location,
-                distance: Math.round((this.state.distance * 100) / 100),
+                distance: this.state.distance,
                 duration: this.state.duration,
                 ttlMins: this.state.ttlMins,
                 milePace: this.state.milePace,

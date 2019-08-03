@@ -125,7 +125,7 @@ class SubmitBike extends Component {
                 date: this.state.date,
                 time: this.state.time,
                 location: this.state.location,
-                distance: Math.round((this.state.distance * 100) / 100),
+                distance: this.state.distance,
                 duration: this.state.duration,
                 ttlMins: this.state.ttlMins,
                 milePace: null,
@@ -310,9 +310,6 @@ class SubmitBike extends Component {
                             onBlur={this.getGrade}
                         />
                     </div>
-
-                    {/* GRADE */}
-
 
                     {/* BIKE */}
                     <div className="input-group input-group-sm mb-3">
