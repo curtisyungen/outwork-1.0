@@ -18,4 +18,8 @@ router.delete("/deleteWorkoutById", (req, res) => {
     controller.deleteWorkoutById(req, res);
 });
 
+router.put("/setTtlMins", (req, res) => {
+    controller.setTtlMins(req, res);
+});
+
 module.exports = router;

@@ -466,6 +466,26 @@ class App extends Component {
     });
   }
 
+  calcTtlMinutes = () => {
+    workoutAPI.getAllWorkouts()
+      .then((res) => {
+        console.log(workouts);
+        let workouts = res.data;
+        let ttlMins;
+        
+        for (var w in workouts) {
+          let time = workouts[w].duration;
+          let hours = parseFloat(time.split(":")[0]);
+          let mins = parseFloat(time.split(":")[1]);
+          let secs = parseFloat(time.split(":")[2]);
+          
+          ttlMins = (hours * 60) + mins + (secs / 60);
+
+          workoutAPI.setTtlMins(workouts[w].id, ttlMins);
+        }
+      });
+  }
+
   render() {
     return (
       <Router>
