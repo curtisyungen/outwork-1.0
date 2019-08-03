@@ -475,8 +475,8 @@ class App extends Component {
         for (var w in workouts) {
           let time = workouts[w].duration;
           let hours = parseFloat(time.split(":")[0]);
-          let mins = parseFloat(time.split(":")[0]);
-          let secs = parseFloat(time.split(":")[0]);
+          let mins = parseFloat(time.split(":")[1]);
+          let secs = parseFloat(time.split(":")[2]);
           
           ttlMins = (hours * 60) + mins + (secs / 60);
 
