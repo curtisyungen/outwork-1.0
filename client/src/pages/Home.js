@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import Modal from "react-responsive-modal";
 import Container from "../components/Container/container";
+import GroupMetrics from "../components/GroupMetrics/groupMetrics";
 import UserActivity from "../components/UserActivity/userActivity";
 import workoutAPI from "../utils/workoutAPI";
 import "./Home.css";
@@ -16,6 +18,7 @@ class Home extends Component {
             category: null,
             activitySearch: "",
             message: null,
+            openQuickStats: false,
         }
     }
 
@@ -162,7 +165,18 @@ class Home extends Component {
         }, () => {
             this.searchForActivity();
         });
-       
+    }
+
+    openQuickStats = () => {
+        this.setState({
+            openQuickStats: true,
+        });
+    }
+
+    closeQuickStats = () => {
+        this.setState({
+            openQuickStats: false,
+        });
     }
 
     render() {
@@ -222,7 +236,8 @@ class Home extends Component {
                         <button className="btn btn-light btn-sm filterBikes" onClick={this.filterBy.bind(null, "bike")}>Bikes</button>
                         <button className="btn btn-light btn-sm filterSwims" onClick={this.filterBy.bind(null, "swim")}>Swims</button>
                         <button className="btn btn-light btn-sm filterLifts" onClick={this.filterBy.bind(null, "lift")}>Lifts</button>
-                    </div>
+                        <button className="btn btn-light btn-sm quickStatsBtn" onClick={this.openQuickStats}>Quick Stats</button>      
+                   </div>
 
                     <span>
                         {this.state.filtered && this.state.filtered.length === 0 ? (
@@ -239,6 +254,13 @@ class Home extends Component {
                                 </span>
                             )}
                     </span>
+
+                    <Modal 
+                        open={this.state.openQuickStats}
+                        onClose={this.closeQuickStats}
+                    >
+                        <GroupMetrics />
+                    </Modal>
                 </div>
             </Container>
         )

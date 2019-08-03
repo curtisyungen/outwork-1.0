@@ -83,13 +83,6 @@ class HofController {
             });
     }
 
-    getHotdog(req, res) {
-        db.sequelize.query("SELECT id AS value, firstName, milePace, userId FROM Workouts WHERE weather = 'Sunny'", { type: sequelize.QueryTypes.SELECT })
-            .then(days => {
-                res.json(days);
-            });
-    }
-
     updateHof(req, res) {
         db.Hof.update(
             {

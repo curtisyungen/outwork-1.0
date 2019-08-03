@@ -37,6 +37,7 @@
 .filterBtns {
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 
 .filterString {
@@ -45,6 +46,12 @@
 
 .homePage {
     padding-bottom: 50px;
+}
+
+.quickStatsBtn {
+    float: right;
+    font-size: 12px;
+
 }
 
 .resultsSummary {
