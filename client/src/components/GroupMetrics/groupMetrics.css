@@ -5,6 +5,7 @@
     flex-direction: row;
     font-size: 13px;
     margin: 25px auto;
+    width: 600px;
 }
 
 .gm-cell {
