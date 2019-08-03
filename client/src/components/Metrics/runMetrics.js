@@ -19,6 +19,7 @@ class RunMetrics extends Component {
             userRuns: null,
             workouts: "NA",
             totalMiles: 0,
+            totalMins: 0,
             avgMilesPerWeek: 0,
             totalClimb: 0,
             avgMilePace: 0,
@@ -40,9 +41,10 @@ class RunMetrics extends Component {
         let runs = this.state.userRuns;
         let totalMiles = 0, totalClimb = 0, totalSecs = 0;
         let maxMiles = 0, avgMilePace;
-        let totalTime = 0;
+        let totalMins = 0;
 
         for (var r in runs) {
+            
             let miles = parseFloat(runs[r].distance);
             let climb = parseFloat(runs[r].climb);
             let time = parseFloat(runs[r].ttlMins);
@@ -52,9 +54,13 @@ class RunMetrics extends Component {
                 maxMiles = miles;
             }
 
-            // Get total miles, total climb
+            // Get total miles
             totalMiles += miles;
-            totalClimb += climb;
+
+            // Get total climb (if climb is not null)
+            if (climb) {
+                totalClimb += climb;
+            }
 
             // Get total mile pace in seconds
             let milePace = runs[r].milePace;
@@ -64,7 +70,7 @@ class RunMetrics extends Component {
             totalSecs += (paceMins * 60) + paceSecs;
 
             // Add time to total time
-            totalTime += time;
+            totalMins += time;
         }
 
         // Get avg. mile pace
@@ -80,7 +86,7 @@ class RunMetrics extends Component {
 
         this.setState({
             workouts: runs.length,
-            time: totalTime,
+            totalMins: totalMins,
             totalMiles: totalMiles,
             totalClimb: totalClimb,
             maxMiles: maxMiles,
@@ -118,7 +124,6 @@ class RunMetrics extends Component {
     render() {
         return (
             <span>
-                {/* <h4 className="metricsSectionTitle">Runs</h4> */}
                 <div className={`d-flex flex-${this.props.flexDir} metricRow`}>
                     <div className="metricIcon metricIcon-run">
                         <FontAwesomeIcon className="fa-2x icon" icon={faRunning} />
@@ -129,7 +134,7 @@ class RunMetrics extends Component {
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Total Time (min.)</div>
-                        <div>{this.state.time.toFixed(2)}</div>
+                        <div>{this.state.totalMins.toFixed(2)}</div>
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Total Miles</div>

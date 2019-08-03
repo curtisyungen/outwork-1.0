@@ -17,7 +17,7 @@ class SwimMetrics extends Component {
             userSwims: null,
             workouts: "NA",
             totalMeters: 0,
-            totalTime: 0,
+            totalMins: 0,
             avgMeters: 0,
             avgKnots: 0,
             maxMeters: 0,
@@ -36,7 +36,7 @@ class SwimMetrics extends Component {
     getMetrics = () => {
         let swims = this.state.userSwims;
         let totalMeters = 0;
-        let totalTime = 0;
+        let totalMins = 0;
         let maxMeters = 0;
 
         for (var s in swims) {
@@ -56,19 +56,19 @@ class SwimMetrics extends Component {
             let minutes = parseFloat(time[1]);
             let seconds = parseFloat(time[2]);
 
-            totalTime = (hours * 60) + minutes + Math.round(((seconds / 60) * 100) / 100);
+            totalMins = (hours * 60) + minutes + Math.round(((seconds / 60) * 100) / 100);
         }
 
         // Get avg. meters / workout
         let avgMeters = Math.round((totalMeters / swims.length) * 100) / 100;
 
         // Convert meters / min. to nautical miles / hour to get avg. knots
-        let avgKnots = Math.round(((totalMeters / totalTime) / 30.867) * 100) / 100;
+        let avgKnots = Math.round(((totalMeters / totalMins) / 30.867) * 100) / 100;
 
         this.setState({
             workouts: swims.length,
             totalMeters: totalMeters,
-            totalTime: totalTime,
+            totalMins: totalMins,
             maxMeters: maxMeters,
             avgMeters: avgMeters,
             avgKnots: avgKnots,
@@ -89,23 +89,23 @@ class SwimMetrics extends Component {
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Total Time (min.)</div>
-                        <div>{this.state.totalTime}</div>
+                        <div>{this.state.totalMins.toFixed(2)}</div>
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Total Meters</div>
-                        <div>{this.state.totalMeters}</div>
+                        <div>{this.state.totalMeters.toFixed(2)}</div>
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Avg. Meters / Wrkt.</div>
-                        <div>{this.state.avgMeters}</div>
+                        <div>{this.state.avgMeters.toFixed(2)}</div>
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Climb (ft.)</div>
-                        <div>0</div>
+                        <div>0.00</div>
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Avg. Knots</div>
-                        <div>{this.state.avgKnots}</div>
+                        <div>{this.state.avgKnots.toFixed(2)}</div>
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Max. Dist. (m)</div>
