@@ -21,6 +21,7 @@ class BikeMetrics extends Component {
             avgMilesPerWeek: 0,
             totalClimb: 0,
             avgMiles: 0,
+            speed: 0,
             maxMiles: 0,
             workouts: "NA",
         }
@@ -38,8 +39,8 @@ class BikeMetrics extends Component {
 
     getMetrics = () => {
         let bikes = this.state.userBikes;
-        let totalMiles = 0, totalClimb = 0;
-        let maxMiles = 0;
+        let totalMiles = 0, totalClimb = 0, totalSecs = 0;
+        let maxMiles = 0, avgMilePace;
         let totalTime = 0;
 
         for (var b in bikes) {
@@ -58,15 +59,20 @@ class BikeMetrics extends Component {
             totalTime += time;
         }
 
+        // Get avg. speed (mph)
+        let speed = Math.round((totalMiles / (totalTime / 60)) * 100) / 100;
+
         this.setState({
             totalMiles: totalMiles,
             totalClimb: totalClimb,
             time: totalTime,
             maxMiles: maxMiles,
             workouts: bikes.length,
+            speed: speed,
         });
     }
 
+    // Calculates miles per week for current year only
     getAvgMilesPerWeek = () => {
         let bikes = this.state.userBikes;
         let year = [];
@@ -107,11 +113,11 @@ class BikeMetrics extends Component {
                         <div>{this.state.workouts}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Time (min.)</div>
+                        <div className="metricTitle">Total Time (min.)</div>
                         <div>{this.state.time}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Miles</div>
+                        <div className="metricTitle">Total Miles</div>
                         <div>{this.state.totalMiles}</div>
                     </div>
                     <div className="metric">
@@ -123,12 +129,12 @@ class BikeMetrics extends Component {
                         <div>{this.state.totalClimb}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Max. Dist. (mi.)</div>
-                        <div>{this.state.maxMiles}</div>
+                        <div className="metricTitle">Avg. Speed (mph)</div>
+                        <div>{this.state.speed}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle"></div>
-                        <div></div>
+                        <div className="metricTitle">Max. Dist. (mi.)</div>
+                        <div>{this.state.maxMiles}</div>
                     </div>
                 </div>
             </span>

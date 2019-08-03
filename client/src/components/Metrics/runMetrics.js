@@ -22,7 +22,6 @@ class RunMetrics extends Component {
             avgMilesPerWeek: 0,
             totalClimb: 0,
             avgMilePace: 0,
-            avgMiles: 0,
             maxMiles: 0,
         }
     }
@@ -129,11 +128,11 @@ class RunMetrics extends Component {
                         <div>{this.state.workouts}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Time (min.)</div>
+                        <div className="metricTitle">Total Time (min.)</div>
                         <div>{this.state.time}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Miles</div>
+                        <div className="metricTitle">Total Miles</div>
                         <div>{this.state.totalMiles}</div>
                     </div>
                     <div className="metric">
@@ -145,7 +144,7 @@ class RunMetrics extends Component {
                         <div>{this.state.totalClimb}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Avg. Pace</div>
+                        <div className="metricTitle">Avg. Mile Pace</div>
                         <div>{this.state.avgMilePace}</div>
                     </div>
                     <div className="metric">

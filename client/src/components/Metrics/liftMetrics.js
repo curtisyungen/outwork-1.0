@@ -100,15 +100,15 @@ class LiftMetrics extends Component {
                         <div>{this.state.workouts}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Time (min.)</div>
+                        <div className="metricTitle">Total Time (min.)</div>
                         <div>{this.state.totalTime}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Ttl. Push-Ups</div>
+                        <div className="metricTitle">Total Push-Ups</div>
                         <div>{this.state.pushups}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Ttl. Pull-Ups</div>
+                        <div className="metricTitle">Total Pull-Ups</div>
                         <div>{this.state.pullups}</div>
                     </div>
                     <div className="metric">
