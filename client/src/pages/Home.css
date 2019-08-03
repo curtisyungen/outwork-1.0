@@ -29,12 +29,12 @@
 
 .filterAll, .filterRuns,
 .filterBikes, .filterSwims,
-.filterLifts {
+.filterLifts, .filterRaces {
     font-size: 12px;
     margin-right: 3px;
 }
 
-.filterBtns {
+.homePageBtns {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -51,7 +51,6 @@
 .quickStatsBtn {
     float: right;
     font-size: 12px;
-
 }
 
 .resultsSummary {
