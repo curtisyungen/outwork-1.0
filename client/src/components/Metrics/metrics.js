@@ -19,6 +19,7 @@ class Metrics extends Component {
             userBikes: null,
             userSwims: null,
             userLifts: null,
+            loading: true,
         }
     }
 
@@ -91,6 +92,7 @@ class Metrics extends Component {
             userBikes: bikes,
             userSwims: swims,
             userLifts: lifts,
+            loading: false,
         });
     }
 
@@ -114,6 +116,12 @@ class Metrics extends Component {
                             <></>
                         )}
                 </div>
+
+                {this.state.loading ? (
+                    <p className="text-center">Loading metrics...</p>
+                ) : (
+                    <></>
+                )}
 
                 {this.state.userRuns && this.state.userRuns.length > 0 ? (
                     <RunMetrics
