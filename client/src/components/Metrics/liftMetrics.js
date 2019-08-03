@@ -17,7 +17,7 @@ class LiftMetrics extends Component {
             userId: null,
             userLifts: null,
             workouts: "NA",
-            totalTime: 0,
+            totalMins: 0,
             pushups: 0,
             pullups: 0,
             maxPushups: 0,
@@ -37,7 +37,7 @@ class LiftMetrics extends Component {
 
     getMetrics = () => {
         let lifts = this.state.userLifts;
-        let totalTime = 0;
+        let totalMins = 0;
         let pushups = 0;
         let pullups = 0;
         let goggins = 0;
@@ -50,7 +50,7 @@ class LiftMetrics extends Component {
             let minutes = parseFloat(time[1]);
             let seconds = parseFloat(time[2]);
 
-            totalTime += (hours * 60) + minutes + Math.round(seconds / 60);
+            totalMins += (hours * 60) + minutes + Math.round(seconds / 60);
 
             // Get total push-ups
             if (lifts[l].pushups) {
@@ -79,7 +79,7 @@ class LiftMetrics extends Component {
             });
 
         this.setState({
-            totalTime: totalTime,
+            totalMins: totalMins,
             pushups: pushups,
             pullups: pullups,
             workouts: lifts.length,
@@ -101,7 +101,7 @@ class LiftMetrics extends Component {
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Total Time (min.)</div>
-                        <div>{this.state.totalTime}</div>
+                        <div>{this.state.totalMins.toFixed(2)}</div>
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Total Push-Ups</div>
