@@ -101,9 +101,9 @@ class GroupMetrics extends Component {
                                 <div className="gm-col">
                                     <div className="gm-cell">{indiv.firstName}</div>
                                     <div className="gm-cell">{indiv.workouts}</div>
-                                    <div className="gm-cell">{indiv.currWkMiles}</div>
-                                    <div className="gm-cell">{indiv.totalMilesRun}</div>
-                                    <div className="gm-cell">{indiv.distClimbed}</div>
+                                    <div className="gm-cell">{Math.round((indiv.currWkMiles * 100) / 100)}</div>
+                                    <div className="gm-cell">{Math.round((indiv.totalMilesRun * 100) / 100)}</div>
+                                    <div className="gm-cell">{Math.round((indiv.distClimbed * 100) / 100)}</div>
                                     <div className="gm-cell">{indiv.pushups}</div>
                                     <div className="gm-cell">{indiv.pullups}</div>
                                 </div>
