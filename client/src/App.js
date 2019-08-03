@@ -425,11 +425,6 @@ class App extends Component {
         let max = this.getMaximum(res.data);
         hofAPI.updateHof("mostSwims", max[0], max[1]);
       });
-
-    hofAPI.getHotdog()
-      .then((res) => {
-        console.log("Hotdog", res);
-      });
   }
 
   getMaximum = (data) => {
