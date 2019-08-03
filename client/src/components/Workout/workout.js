@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Modal from "react-responsive-modal";
 import Set from "../Set/set";
-// import Stopwatch from "../Stopwatch/stopwatch";
 import workoutAPI from "../../utils/workoutAPI";
 import exerAPI from "../../utils/exerAPI";
 import "./workout.css";
@@ -17,6 +16,7 @@ class Workout extends Component {
             lastName: null,
             userEquipment: null,
             date: null,
+            time: null,
             location: null,
             duration: null,
             ttlMins: null,
@@ -68,15 +68,22 @@ class Workout extends Component {
     
     validateLiftForm = () => {
         let date = this.state.date;
-        let time = this.state.duration;
+        let duration = this.state.duration;
+        let time = this.state.time;
+
 
         if (date === null || date === "" || date.length < 10) {
             alert("Inputted date is not valid.");
             return false;
         }
 
-        if (time === null || time === "" || time.length < 8) {
+        if (duration === null || duration === "" || duration.length !== 8) {
             alert("Duration must be in hh:mm:ss format.");
+            return false;
+        }
+
+        if (time === null || time === "") {
+            alert("Time of day must not be empty.");
             return false;
         }
 
@@ -396,7 +403,7 @@ class Workout extends Component {
         if (this.validateLiftForm()) {
 
             let generator = "Standard";
-            switch (this.props.difficulty) {
+            switch (this.state.difficulty) {
                 case "1": generator = "Baby"; break;
                 case "2": generator = "Easy"; break;
                 case "3": generator = "Average"; break;
@@ -414,6 +421,7 @@ class Workout extends Component {
                     firstName: this.props.firstName,
                     lastName: this.props.lastName,
                     date: this.state.date,
+                    time: this.state.time,
                     location: this.state.location,
                     distance: null,
                     duration: this.state.duration,
@@ -451,12 +459,6 @@ class Workout extends Component {
                         }
                     });
             }
-    }
-
-    recordTime = (timeString) => {
-        this.setState({
-            timeString: timeString,
-        });
     }
 
     render() {
@@ -505,6 +507,23 @@ class Workout extends Component {
                                 name="date"
                                 type="date"
                                 className="form-control"
+                                aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-sm"
+                                onChange={this.handleInputChange}
+                            />
+                        </div>
+
+                        {/* TIME */}
+                        <div className="input-group input-group-sm mb-3">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text" id="inputGroup-sizing-sm">Time of Day*</span>
+                            </div>
+                            <input
+                                autoComplete="off"
+                                name="time"
+                                type="text"
+                                className="form-control"
+                                placeholder="3:00pm"
                                 aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-sm"
                                 onChange={this.handleInputChange}
