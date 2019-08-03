@@ -53,6 +53,9 @@ class App extends Component {
   }
 
   componentDidMount = () => {
+
+    this.calcTtlMinutes();
+
     // Check if logged in
     let loginStatus = false;
     if (localStorage.getItem("isLoggedIn")) {
@@ -287,7 +290,6 @@ class App extends Component {
   getAllWorkouts = () => {
     workoutAPI.getAllWorkouts()
       .then((res) => {
-
         this.sortByDate(res.data);
       });
   }
@@ -462,6 +464,25 @@ class App extends Component {
     this.setState({
       resetEmail: resetEmail,
     });
+  }
+
+  calcTtlMinutes = () => {
+    workoutAPI.getAllWorkouts()
+      .then((res) => {
+        let workouts = res.data;
+        let ttlMins;
+        
+        for (var w in workouts) {
+          let time = workouts[w].duration;
+          let hours = parseFloat(time.split(":")[0]);
+          let mins = parseFloat(time.split(":")[0]);
+          let secs = parseFloat(time.split(":")[0]);
+          
+          ttlMins = (hours * 60) + mins + (secs / 60);
+
+          workoutAPI.setTtlMins(workouts[w].id, ttlMins);
+        }
+      });
   }
 
   render() {
