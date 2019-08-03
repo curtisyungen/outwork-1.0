@@ -3,18 +3,6 @@ const sequelize = require("sequelize");
 
 class WorkoutController {
 
-    setTtlMins(req, res) {
-        db.Workouts.update(
-            {ttlMins: req.body.ttlMins},
-            {where: {
-                id: req.body.workoutId,
-            }}
-        )
-        .then((wrkt) => {
-            res.json(wrkt);
-        });
-    }
-
     getAllWorkoutsByUserId(req, res) {
         db.Workouts.findAll({
             where: {
