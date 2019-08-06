@@ -23,22 +23,7 @@ class GenMetrics extends Component {
     }
 
     componentDidMount = () => {
-        this.setState({
-            userId: this.props.userId,
-            userBikes: this.props.userBikes,
-        }, () => {
-            this.getMetrics();
-        });
-    }
 
-    getMetrics = () => {
-        for (var b in bikes) {
-
-        }
-
-        this.setState({
-
-        });
     }
 
     render() {
