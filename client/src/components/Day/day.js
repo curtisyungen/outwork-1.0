@@ -11,10 +11,13 @@ class Day extends Component {
             type: null,
             workoutTypes: null,
         }
+
+        this.myRef - React.createRef();
     }
 
     componentDidMount = () => {
         this.getWorkoutData();
+        this.refCallBack();
     }
 
     getWorkoutData = () => {
@@ -53,8 +56,9 @@ class Day extends Component {
         });
     }
 
-    refCallBack = (el) => {
+    refCallBack = () => {
         let screenWidth = this.props.screenWidth;
+        let el = this.myRef.current;
         let objLeft = el.getBoundingClientRect().left;
 
         let position;
@@ -72,7 +76,7 @@ class Day extends Component {
 
     render() {
         return (
-            <span ref={this.refCallBack}>
+            <span ref={this.myRef}>
                 <Popup
                     trigger={
                         <div className={`day day-${this.state.type}`}></div>
