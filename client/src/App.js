@@ -373,6 +373,7 @@ class App extends Component {
 
     hofAPI.getLongestRun()
       .then((res) => {
+        console.log(res);
         let max = this.getMaximum(res.data);
         hofAPI.updateHof("longestRun", max[0], max[1]);
       });
@@ -381,7 +382,6 @@ class App extends Component {
       .then((res) => {
         let max = this.getMaximum(res.data);
         hofAPI.updateHof("maxClimb", max[0], max[1]);
-        console.log(max);
       });
 
     hofAPI.getMaxPushups()
