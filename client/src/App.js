@@ -373,7 +373,6 @@ class App extends Component {
 
     hofAPI.getLongestRun()
       .then((res) => {
-        console.log(res);
         let max = this.getMaximum(res.data);
         hofAPI.updateHof("longestRun", max[0], max[1]);
       });
@@ -437,6 +436,10 @@ class App extends Component {
         max = data[d].value;
         maxName = data[d].firstName;
       }
+    }
+
+    if (max) {
+      max = max.toFixed(2);
     }
 
     return [maxName, max];
