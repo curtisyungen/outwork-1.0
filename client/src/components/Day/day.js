@@ -12,7 +12,7 @@ class Day extends Component {
             workoutTypes: null,
         }
 
-        this.myRef - React.createRef();
+        this.myRef = React.createRef();
     }
 
     componentDidMount = () => {
