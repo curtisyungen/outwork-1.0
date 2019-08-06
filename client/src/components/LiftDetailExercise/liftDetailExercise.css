@@ -8,6 +8,14 @@
     font-size: 13px;
 }
 
+.super-0 {
+    background: rgb(242, 242, 242);
+}
+
+.super-1 {
+    background: #fff;
+}
+
 @media only screen and (max-width: 520px) {
     .liftDetail {
         font-size: 12px;
