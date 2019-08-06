@@ -57,6 +57,10 @@ class GenMetrics extends Component {
                         <div className="metricTitle"></div>
                         <div>{this.state.workouts}</div>
                     </div>
+                    <div className="metric">
+                        <div className="metricTitle"></div>
+                        <div>{this.state.workouts}</div>
+                    </div>
                 </div>
             </span>
         )
