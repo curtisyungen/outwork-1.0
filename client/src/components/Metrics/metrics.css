@@ -36,6 +36,10 @@
     background: rgb(255, 216, 116);
 }
 
+.metricIcon-bullseye {
+    background: rgb(162, 162, 162);
+}
+
 .metricIcon-swim {
     background: lightblue;
 }

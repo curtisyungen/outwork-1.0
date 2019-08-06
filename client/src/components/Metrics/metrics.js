@@ -4,6 +4,7 @@ import BikeMetrics from "./bikeMetrics";
 import SwimMetrics from "./swimMetrics";
 import LiftMetrics from "./liftMetrics";
 import ShoeMetrics from "./shoeMetrics";
+import GeneralMetrics from "./genMetrics";
 import workoutAPI from "../../utils/workoutAPI";
 // import "./Metrics.css";
 
@@ -162,6 +163,11 @@ class Metrics extends Component {
                 ) : (
                         <></>
                     )}
+
+                <GeneralMetrics 
+                    userId={this.state.userId}
+                    flexDir={this.state.flexDir}
+                />
             </div>
         )
     }
