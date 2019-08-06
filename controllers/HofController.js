@@ -21,7 +21,7 @@ class HofController {
     }
 
     getLongestRun(req, res) {
-        db.sequelize.query("SELECT distance AS value, firstName, userId FROM Workouts WHERE workoutType = 'run'", { type: sequelize.QueryTypes.SELECT })
+        db.sequelize.query("SELECT MAX(distance) AS value, firstName, userId FROM Workouts WHERE workoutType = 'run'", { type: sequelize.QueryTypes.SELECT })
             .then(run => {
                 res.json(run);
             });
