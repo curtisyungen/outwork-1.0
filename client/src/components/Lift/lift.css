@@ -40,6 +40,10 @@
     width: 0;
 }
 
+.cell-muscleGroups {
+    font-size: 11px;
+}
+
 .deleteActivity {
     float: right;
 }
