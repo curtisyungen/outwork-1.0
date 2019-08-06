@@ -438,8 +438,8 @@ class App extends Component {
       }
     }
 
-    max = Math.round((max * 100) / 100);
-    
+    max = Math.round(max * 100) / 100;
+
     return [maxName, max];
   }
 
