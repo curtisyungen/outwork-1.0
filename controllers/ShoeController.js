@@ -18,7 +18,14 @@ class ShoeController {
     }
 
     getShoeMiles(req, res) {
-        db.sequelize.query("SELECT SUM(miles), shoe, userId FROM Shoes GROUP BY userId", { type: sequelize.QueryTypes.SELECT })
+        db.sequelize.query("SELECT SUM(distance) AS miles, id, shoe, userId FROM Workouts WHERE workoutType = 'run' GROUP BY id", { type: sequelize.QueryTypes.SELECT })
+            .then(shoe => {
+                res.json(shoe);
+            });
+    }
+
+    getShoeWears(req, res) {
+        db.sequelize.query("SELECT COUNT(id) AS wears, id, shoe, userId FROM Workouts HWERE workoutType = 'run' GROUP BY id", { type: sequelize.QueryTypes.SELECT })
             .then(shoe => {
                 res.json(shoe);
             });
