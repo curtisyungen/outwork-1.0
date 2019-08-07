@@ -76,9 +76,11 @@ class App extends Component {
             for (var ex in lift[set]) {
               if (lift[set][ex].name.toLowerCase().indexOf("push-ups") > -1 || 
                   lift[set][ex].name.toLowerCase().indexOf("push ups") > -1) {
+
+                    let sets = parseFloat(lift[set][ex].sets) || 1;
                 
                     if (!isNaN(parseFloat(lift[set][ex].reps))) {
-                      pushups += (parseFloat(lift[set][ex].sets) * parseFloat(lift[set][ex].reps));
+                      pushups += sets * parseFloat(lift[set][ex].reps);
                     }
               }
 
@@ -87,12 +89,15 @@ class App extends Component {
                   lift[set][ex].name.toLowerCase().indexOf("chin-ups") > -1 ||
                   lift[set][ex].name.toLowerCase().indexOf("chin ups") > -1) {
 
+                    let sets = parseFloat(lift[set][ex].sets) || 1;
+
                     if (!isNaN(parseFloat(lift[set][ex].reps))) {
-                      pullups += (parseFloat(lift[set][ex].sets) * parseFloat(lift[set][ex].reps));
+                      pullups += (sets * parseFloat(lift[set][ex].reps));
                     }
               }
             }
           }
+
           console.log(lifts[l].id, pushups, pullups);
           this.setMetrics(lifts[l].id, pushups, pullups);
         }
