@@ -52,7 +52,7 @@ class ShoeMetrics extends Component {
         //             shoes: res.data,
         //         });
         //     });
-        shoeAPI.getShoeMiles()
+        shoeAPI.getShoeMiles(this.state.userId)
             .then((res) => {
                 console.log("All shoes", res);
 
