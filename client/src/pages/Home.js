@@ -18,6 +18,7 @@ class Home extends Component {
             activitySearch: "",
             message: null,
             openQuickStats: false,
+            displayOpt: "View Recent",
         }
     }
 
@@ -40,6 +41,7 @@ class Home extends Component {
                 filtered: this.props.allActivity,
                 category: "Name",
                 message: "Loading activity...",
+                displayOpt: this.props.displayOpt,
             });
         }
     }
@@ -49,6 +51,7 @@ class Home extends Component {
             this.setState({
                 allActivity: this.props.allActivity,
                 filtered: this.props.allActivity,
+                displayOpt: this.props.displayOpt,
             });
         }
     }
