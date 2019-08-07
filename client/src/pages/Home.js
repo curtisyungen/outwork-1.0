@@ -25,6 +25,7 @@ class Home extends Component {
 
     componentDidMount = () => {
         this.props.updateParentState();
+        this.displayData();
 
         for (var i = 0; i < 5; i++) {
             this.props.getAllWorkouts();
@@ -41,7 +42,7 @@ class Home extends Component {
                 category: "Name",
                 message: "Loading activity...",
             }, () => {
-                this.displayData();
+                console.log(this.state);
             });
         }
     }
@@ -51,6 +52,8 @@ class Home extends Component {
             this.setState({
                 allActivity: this.props.allActivity,
                 filtered: this.props.allActivity,
+            }, () => {
+                this.displayData();
             });
         }
     }
