@@ -14,12 +14,12 @@ router.post("/createWorkout", (req, res) => {
     controller.createWorkout(req, res);
 });
 
-router.delete("/deleteWorkoutById", (req, res) => {
-    controller.deleteWorkoutById(req, res);
+router.put("/updateworkout", (req, res) => {
+    controller.updateWorkout(req, res);
 });
 
-router.put("/setTtlMins", (req, res) => {
-    controller.setTtlMins(req, res);
+router.delete("/deleteWorkoutById", (req, res) => {
+    controller.deleteWorkoutById(req, res);
 });
 
 module.exports = router;

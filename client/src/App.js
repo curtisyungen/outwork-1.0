@@ -52,6 +52,32 @@ class App extends Component {
     }
   }
 
+  correctMetrics = () => {
+    workoutAPI.getAllWorkouts()
+      .then((res) => {
+        console.log(res);
+
+        let lifts = [];
+
+        for (var r in res.data) {
+          if (res.data[r].workoutType === "lift") {
+            lifts.push(res.data[r]);
+          }
+        }
+
+        for (var l in lifts) {
+          
+        }
+      });
+  }
+
+  setMetrics = (id, workout) => {
+    workoutAPI.updateWorkout(id, workout)
+      .then((res) => {
+        console.log("Updated", res);
+      });
+  }
+
   componentDidMount = () => {
 
     // Check if logged in
