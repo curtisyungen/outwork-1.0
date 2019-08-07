@@ -19,6 +19,10 @@ export default {
         return axios.post("/api/workouts/createWorkout", {workoutData: workoutData});
     },
 
+    updateWorkout: function(id, workout) {
+        return axios.put("/api/workouts/updateWorkout", { id: id, workout: workout });
+    },
+
     deleteWorkoutById: function(userId, workoutId) {
         return axios.delete("/api/workouts/deleteWorkoutById", {params: {userId: userId, workoutId: workoutId}});
     },
