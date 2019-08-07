@@ -47,7 +47,7 @@ class App extends Component {
       allActivity: [],
       background: "tiles",
       resetEmail: null,
-      displayOpt: "View Recent",
+      displayOpt: "View All",
     }
   }
 
@@ -353,17 +353,21 @@ class App extends Component {
     let opt = this.state.displayOpt;
 
     if (opt === "View Recent") {
-      opt = "View All";
-      this.getRecentWorkouts();
+      this.setState({
+        displayOpt: "View All",
+        // allActivity: [],
+      }, () => {
+        this.getRecentWorkouts();
+      });      
     }
     else {
-      opt = "View Recent";
-      this.getAllWorkouts();
+      this.setState({
+        displayOpt: "View Recent",
+        // allActivity: [],
+      }, () => {
+        this.getAllWorkouts();
+      }); 
     }
-
-    this.setState({
-      displayOpt: opt,
-    });
   }
 
   getAllWorkouts = () => {
