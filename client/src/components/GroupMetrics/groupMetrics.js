@@ -72,8 +72,8 @@ class GroupMetrics extends Component {
 
                 userMetrics.firstName = firstName;
                 userMetrics.workouts = workouts.length;
-                userMetrics.currWkMiles = currWkMiles;
-                userMetrics.totalMilesRun = miles;
+                userMetrics.currWkMiles = Math.round(currWkMiles * 100) / 100;
+                userMetrics.totalMilesRun = Math.round(miles * 100) / 100;
                 userMetrics.distClimbed = climb;
                 userMetrics.pushups = pushups;
                 userMetrics.pullups = pullups;
