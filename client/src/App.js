@@ -99,7 +99,6 @@ class App extends Component {
             }
           }
 
-          console.log(lifts[l].id, pushups, pullups);
           this.setMetrics(lifts[l].id, pushups, pullups);
         }
       });
@@ -111,7 +110,7 @@ class App extends Component {
 
   componentDidMount = () => {
 
-    this.correctMetrics();
+    // this.correctMetrics();
 
     // Check if logged in
     let loginStatus = false;
@@ -263,7 +262,7 @@ class App extends Component {
                 localStorage.setItem("isLoggedIn", "true");
                 localStorage.setItem("userId", res.data.userId);
 
-                this.getAllWorkouts();
+                this.getRecentWorkouts();
                 this.setRedirectToHome();
               }
             });

@@ -255,7 +255,9 @@ class Home extends Component {
                         </div>
 
                         <div className="toggleDisplayBtn">
-                            <button className="btn btn-dark btn-sm toggleDisplayBtn" onClick={this.props.toggleDisplay}>{this.props.displayOpt}</button>
+                            <button className="btn btn-dark btn-sm toggleDisplayBtn" onClick={this.props.toggleDisplay}>
+                                {this.props.displayOpt === "View Recent" ? ("View All"):("View Recent")}
+                            </button>
                         </div>
                     </div>
 
