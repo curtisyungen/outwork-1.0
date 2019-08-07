@@ -11,6 +11,10 @@ export default {
         return axios.get("/api/shoes/getShoesByUserId/" + userId);
     },
 
+    getShoeMiles: function() {
+        return axios.get("/api/shoes/getShoeMiles");
+    },
+
     addShoe: function(shoe) {
         return axios.post("/api/shoes/addShoe", shoe);
     },

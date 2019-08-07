@@ -1,4 +1,5 @@
 const db = require("../models/index.js");
+const sequelize = require("sequelize");
 
 class ShoeController {
 
@@ -14,6 +15,13 @@ class ShoeController {
         .catch((err) => {
             console.log(err);
         });
+    }
+
+    getShoeMiles(req, res) {
+        db.sequelize.query("SELECT SUM(miles), shoe, userId FROM Shoes GROUP BY userId", { type: sequelize.QueryTypes.SELECT })
+            .then(shoe => {
+                res.json(shoe);
+            });
     }
 
     addShoe(req, res) {
