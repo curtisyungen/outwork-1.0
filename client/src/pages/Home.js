@@ -83,8 +83,8 @@ class Home extends Component {
         this.setState({
             display: display,
         }, () => {
-            console.log("Display", this.state.display);
-        };
+            console.log("Display", this.state.display),
+        });
     }
 
     toggleDisplay = () => {
