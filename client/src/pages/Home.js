@@ -18,7 +18,7 @@ class Home extends Component {
             activitySearch: "",
             message: null,
             openQuickStats: false,
-            displayOpt: "View Recent",
+            displayOpt: "View All",
         }
     }
 
