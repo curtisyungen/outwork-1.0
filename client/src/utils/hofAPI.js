@@ -55,7 +55,7 @@ export default {
         return axios.get("/api/hof/getHotdog");
     },
 
-    updateHof: function(award, userName, value) {
-        return axios.put("/api/hof/updateHof", {award: award, userName: userName, value: value});
+    updateHof: function(award, firstName, value) {
+        return axios.put("/api/hof/updateHof", {award: award, firstName: firstName, value: value});
     }
 }
