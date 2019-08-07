@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Modal from "react-responsive-modal";
 import Navbar from "./components/Navbar/navbar";
-// import Footer from "./components/Footer/footer";
 import Backgrounds from "./components/Backgrounds/backgrounds";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
@@ -19,7 +18,6 @@ import SubmitSwim from "./pages/SubmitSwim";
 import SubmitLift from "./pages/SubmitLift";
 import Generator from "./pages/Generator";
 import HallOfFame from "./pages/HallOfFame";
-// import FindUsers from "./pages/FindUsers";
 import AllUsers from "./pages/AllUsers";
 import Error from "./pages/Error";
 import userAPI from "./utils/userAPI";
@@ -348,11 +346,11 @@ class App extends Component {
 
     if (opt === "View Recent") {
       opt = "View All";
-      this.getAllWorkouts();
+      this.getRecentWorkouts();
     }
     else {
       opt = "View Recent";
-      this.getRecentWorkouts();
+      this.getAllWorkouts();
     }
 
     this.setState({
