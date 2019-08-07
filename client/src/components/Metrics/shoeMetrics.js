@@ -53,7 +53,7 @@ class ShoeMetrics extends Component {
                     shoes: res.data,
                 });
             }, () => {
-                console.log("Get Shoes", res.data);
+                console.log("Get Shoes",  this.state);
             });
     }
 
@@ -110,7 +110,7 @@ class ShoeMetrics extends Component {
         this.setState({
             shoeMiles: shoeMiles,
         }, () => {
-            console.log("Shoe Miles", shoeMiles);
+            console.log("Shoe Miles",shoeMiles);
         });
     }
 
