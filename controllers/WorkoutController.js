@@ -41,6 +41,7 @@ class WorkoutController {
     getRecentWorkouts(req, res) {
         db.Workouts.findAll({
                 limit: 15,
+                order: [[ 'date', 'DESC' ]]
             })
             .then((workouts) => {
                 res.json(workouts);
