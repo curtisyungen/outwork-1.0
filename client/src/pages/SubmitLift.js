@@ -102,42 +102,53 @@ class SubmitLift extends Component {
         return true;
     }
 
+    // Counts exercises that contain "push-up" or "push up"
     getPushUps = () => {
         let exercises = this.state.exercises;
         let pushups = 0;
 
         for (var e in exercises) {
-            if (exercises[e].name.toLowerCase().indexOf("push-ups") > -1) {
-                pushups += parseInt(exercises[e].reps) * parseInt(exercises[e].sets);
+            let name = exercises[e].name.toLowerCase();
+            let reps = parseFloat(exercises[e].reps);
+            let sets = parseFloat(exercises[e].sets);
+
+            if (name.indexOf("push-up") > -1) {
+                pushups += reps * sets;
             }
 
-            if (exercises[e].name.toLowerCase().indexOf("push ups") > -1) {
-                pushups += parseInt(exercises[e].reps) * parseInt(exercises[e].sets);
+            if (name.indexOf("push up") > -1) {
+                pushups += reps * sets;
             }
         }
 
         return pushups;
     }
 
+    // Counts exercises that contain "pull-up", "pull up", "chin-up", "chin up", AND
+    // that do NOT contain "static", such as Pull-Up Static Hold
     getPullUps = () => {
         let exercises = this.state.exercises;
         let pullups = 0;
 
         for (var e in exercises) {
-            if (exercises[e].name.toLowerCase().indexOf("pull-ups") > -1) {
-                pullups += parseInt(exercises[e].reps) * parseInt(exercises[e].sets);
+            let name = exercises[e].name.toLowerCase();
+            let reps = parseFloat(exercises[e].reps);
+            let sets = parseFloat(exercises[e].sets);
+
+            if (name.indexOf("pull-up") > -1 && name.indexOf("static") === -1) {
+                pullups += reps * sets;
             }
 
-            if (exercises[e].name.toLowerCase().indexOf("pull ups") > -1) {
-                pullups += parseInt(exercises[e].reps) * parseInt(exercises[e].sets);
+            if (name.indexOf("pull up") > -1 && name.indexOf("static") === -1) {
+                pullups += reps * sets;
             }
 
-            if (exercises[e].name.toLowerCase().indexOf("chin-ups") > -1) {
-                pullups += parseInt(exercises[e].reps) * parseInt(exercises[e].sets);
+            if (name.indexOf("chin-up") > -1 && name.indexOf("static") === -1) {
+                pullups += reps * sets;
             }
 
-            if (exercises[e].name.toLowerCase().indexOf("chin ups") > -1) {
-                pullups += parseInt(exercises[e].reps) * parseInt(exercises[e].sets);
+            if (name.indexOf("chin up") > -1 && name.indexOf("static") === -1) {
+                pullups += reps * sets;
             }
         }
 
