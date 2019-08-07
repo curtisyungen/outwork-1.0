@@ -51,9 +51,9 @@ class ShoeMetrics extends Component {
             .then((res) => {
                 this.setState({
                     shoes: res.data,
+                }, () => {
+                    console.log("Get Shoes",  this.state);
                 });
-            }, () => {
-                console.log("Get Shoes",  this.state);
             });
     }
 
