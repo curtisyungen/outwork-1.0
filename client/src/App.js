@@ -108,7 +108,7 @@ class App extends Component {
 
   componentDidMount = () => {
 
-    // this.correctMetrics();
+    this.correctMetrics();
 
     // Check if logged in
     let loginStatus = false;
@@ -484,7 +484,7 @@ class App extends Component {
     hofAPI.getTotalTime()
       .then((res) => {
         let max = this.getMaximum(res.data);
-        hofAPI.updateHof("mostTime", max[0], max[1]);
+        hofAPI.updateHof("mostTime", max[0], Math.round(max[1]));
       });
 
     hofAPI.getMaxRaces()
