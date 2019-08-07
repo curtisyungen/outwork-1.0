@@ -1,5 +1,4 @@
 const db = require("../models/index.js");
-const sequelize = require("sequelize");
 
 class WorkoutController {
 
@@ -41,6 +40,20 @@ class WorkoutController {
 
     createWorkout(req, res) {
         db.Workouts.create(req.body.workoutData)
+            .then((workout) => {
+                res.json(workout);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+    updateWorkout(req, res) {
+        db.Workouts.update(
+            req.body.workout,
+            { where: {
+                id: req.body.id,
+            }})
             .then((workout) => {
                 res.json(workout);
             })
