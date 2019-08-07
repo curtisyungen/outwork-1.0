@@ -73,8 +73,11 @@ class App extends Component {
           for (var set in lift) {
             // For each exercise...
             for (var ex in lift[set]) {
-              if (lift[set][ex].name.toLowerCase().indexOf("push-ups") > -1 || 
-                  lift[set][ex].name.toLowerCase().indexOf("push ups") > -1) {
+
+              let name = lift[set][ex].name.toLowerCase();
+
+              if (name.indexOf("push-ups") > -1 || 
+                  name.indexOf("push ups") > -1) {
 
                     let sets = parseFloat(lift[set][ex].sets) || 1;
                     let reps = parseFloat(lift[set][ex].reps) || 1;
@@ -84,16 +87,19 @@ class App extends Component {
                     }
               }
 
-              if (lift[set][ex].name.toLowerCase().indexOf("pull-ups") > -1 || 
-                  lift[set][ex].name.toLowerCase().indexOf("pull ups") > -1 ||
-                  lift[set][ex].name.toLowerCase().indexOf("chin-ups") > -1 ||
-                  lift[set][ex].name.toLowerCase().indexOf("chin ups") > -1) {
+              if (name.indexOf("pull-ups") > -1 || 
+                  name.indexOf("pull ups") > -1 ||
+                  name.indexOf("chin-ups") > -1 ||
+                  name.indexOf("chin ups") > -1) {
 
-                    let sets = parseFloat(lift[set][ex].sets) || 1;
-                    let reps = parseFloat(lift[set][ex].reps) || 1;
+                    if (name.indexOf("static") === -1) {
 
-                    if (!isNaN(reps)) {
-                      pullups += sets * reps;
+                      let sets = parseFloat(lift[set][ex].sets) || 1;
+                      let reps = parseFloat(lift[set][ex].reps) || 1;
+
+                      if (!isNaN(reps)) {
+                        pullups += sets * reps;
+                      }
                     }
               }
             }
