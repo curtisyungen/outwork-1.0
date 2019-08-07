@@ -14,8 +14,6 @@ class Home extends Component {
             userId: null,
             allActivity: [],
             filtered: [],
-            display: [],
-            displayOpt: "View Recent",
             category: null,
             activitySearch: "",
             message: null,
@@ -25,7 +23,6 @@ class Home extends Component {
 
     componentDidMount = () => {
         this.props.updateParentState();
-        this.displayData();
 
         for (var i = 0; i < 5; i++) {
             this.props.getAllWorkouts();
@@ -38,11 +35,8 @@ class Home extends Component {
                 userId: userId,
                 allActivity: this.props.allActivity,
                 filtered: this.props.allActivity,
-                display: this.props.allActivity,
                 category: "Name",
                 message: "Loading activity...",
-            }, () => {
-                console.log(this.state);
             });
         }
     }
@@ -52,8 +46,6 @@ class Home extends Component {
             this.setState({
                 allActivity: this.props.allActivity,
                 filtered: this.props.allActivity,
-            }, () => {
-                this.displayData();
             });
         }
     }
@@ -63,44 +55,6 @@ class Home extends Component {
 
         this.setState({
             [name]: value,
-        });
-    }
-
-    displayData = () => {
-        let opt = this.state.displayOpt;
-        let display = [];
-        let allActivity = this.props.allActivity;
-
-        if (opt === "View Recent") {
-            for (var a=0; a<15; a++) {
-                display.push(allActivity[a]);
-            }
-        }
-        else {
-            display = allActivity;
-        }
-
-        this.setState({
-            display: display,
-        }, () => {
-            console.log("Display", this.state.display),
-        });
-    }
-
-    toggleDisplay = () => {
-        let opt = this.state.displayOpt;
-
-        if (opt === "View Recent") {
-            opt = "View All";
-        }
-        else {
-            opt = "View Recent";
-        }
-
-        this.setState({
-            displayOpt: opt,
-        }, () => {
-            this.displayData();
         });
     }
 
@@ -299,26 +253,24 @@ class Home extends Component {
                         <div className="quickStatsBtn">
                             <button className="btn btn-info btn-sm quickStatsBtn" onClick={this.openQuickStats}>Quick Stats</button>
                         </div>
-
-                        <div className="toggleDisplayBtn">
-                            <button className="btn btn-dark btn-sm toggleDisplayBtn" onClick={this.toggleDisplay}>{this.state.displayOpt}</button>
-                        </div>
                     </div>
 
+                    
+
                     <span>
-                        {this.state.display && this.state.display.length === 0 ? (
+                        {this.state.filtered && this.state.filtered.length === 0 ? (
                             <p className="text-center">{this.state.message}</p>
                         ) : (
-                            <span>
-                                {this.state.display.map(activity => (
-                                    <UserActivity
-                                        key={Math.random() * 100000}
-                                        activity={activity}
-                                        deleteActivity={this.props.deleteActivity}
-                                    />
-                                ))}
-                            </span>
-                        )}
+                                <span>
+                                    {this.state.filtered.map(activity => (
+                                        <UserActivity
+                                            key={Math.random() * 100000}
+                                            activity={activity}
+                                            deleteActivity={this.props.deleteActivity}
+                                        />
+                                    ))}
+                                </span>
+                            )}
                     </span>
 
                     <Modal
