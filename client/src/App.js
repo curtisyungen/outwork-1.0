@@ -77,9 +77,10 @@ class App extends Component {
                   lift[set][ex].name.toLowerCase().indexOf("push ups") > -1) {
 
                     let sets = parseFloat(lift[set][ex].sets) || 1;
+                    let reps = parseFloat(lift[set][ex].reps) || 1;
                 
-                    if (!isNaN(parseFloat(lift[set][ex].reps))) {
-                      pushups += sets * parseFloat(lift[set][ex].reps);
+                    if (!isNaN(reps)) {
+                      pushups += sets * reps;
                     }
               }
 
@@ -89,9 +90,10 @@ class App extends Component {
                   lift[set][ex].name.toLowerCase().indexOf("chin ups") > -1) {
 
                     let sets = parseFloat(lift[set][ex].sets) || 1;
+                    let reps = parseFloat(lift[set][ex].reps) || 1;
 
-                    if (!isNaN(parseFloat(lift[set][ex].reps))) {
-                      pullups += (sets * parseFloat(lift[set][ex].reps));
+                    if (!isNaN(reps)) {
+                      pullups += sets * reps;
                     }
               }
             }
