@@ -44,17 +44,8 @@ class Home extends Component {
         }
     }
 
-    componentDidUpdate = (prevProps) => {
-        if (prevProps.allActivity !== this.props.allActivity || 
-            prevProps.displayOpt !== this.props.displayOpt) {
-
-            if (this.props.displayOpt === "View Recent") {
-                this.props.getRecentWorkouts();
-            }
-            else {
-                this.props.getAllWorkouts();
-            }
-
+    componentDidUpdate = (prevProps, prevState) => {
+        if (prevProps.allActivity !== this.props.allActivity) {
             this.setState({
                 allActivity: this.props.allActivity,
                 filtered: this.props.allActivity,
@@ -268,7 +259,7 @@ class Home extends Component {
 
                         <div className="toggleDisplayBtn">
                             <button className="btn btn-dark btn-sm toggleDisplayBtn" onClick={this.props.toggleDisplay}>
-                                {this.props.displayOpt === "View Recent" ? ("View All"):("View Recent")}
+                                {this.state.displayOpt === "View Recent" ? ("View All"):("View Recent")}
                             </button>
                         </div>
                     </div>
