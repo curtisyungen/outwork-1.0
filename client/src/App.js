@@ -429,7 +429,7 @@ class App extends Component {
     hofAPI.getHotdog()
       .then((res) => {
         let min = this.getMinimum(res.data);
-        hofAPI.updateHof("hotdog", min[0], min[1]);
+        hofAPI.updateHof("hotdog", min[0], "");
       });
   }
 
