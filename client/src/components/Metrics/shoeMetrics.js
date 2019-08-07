@@ -34,7 +34,7 @@ class ShoeMetrics extends Component {
             userRuns: this.props.userRuns,
         }, () => {
             this.getShoes();
-            // this.getMiles();
+            this.getMiles();
         });
     }
 
@@ -52,6 +52,8 @@ class ShoeMetrics extends Component {
                 this.setState({
                     shoes: res.data,
                 });
+            }, () => {
+                console.log("Get Shoes", res.data);
             });
     }
 
@@ -107,6 +109,8 @@ class ShoeMetrics extends Component {
 
         this.setState({
             shoeMiles: shoeMiles,
+        }, () => {
+            console.log("Shoe Miles", shoeMiles);
         });
     }
 
