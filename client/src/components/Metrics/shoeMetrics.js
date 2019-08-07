@@ -56,16 +56,21 @@ class ShoeMetrics extends Component {
             .then((res) => {
                 console.log("All shoes", res);
 
-                let allShoes = res.data;
-                let shoes = [];
+                // let allShoes = res.data;
+                // let shoes = [];
 
-                for (var s in shoes) {
-                    if (allShoes[s].userId === this.state.userId) {
-                        shoes.push(allShoes[s]);
-                    }
-                }
+                // for (var s in shoes) {
+                //     if (allShoes[s].userId === this.state.userId) {
+                //         shoes.push(allShoes[s]);
+                //     }
+                // }
 
-                console.log("Shoes", shoes);
+                // console.log("Shoes", shoes);
+            });
+
+        shoeAPI.getShoeWears()
+            .then((res) => {
+                console.log("Wears", res);
             });
     }
 

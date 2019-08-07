@@ -10,6 +10,10 @@ router.get("/getShoeMiles", (req, res) => {
     controller.getShoeMiles(req, res);
 });
 
+router.get("/getShoeWears", (req, res) => {
+    controller.getShoeWears(req, res);
+});
+
 router.post("/addShoe", (req, res) => {
     controller.addShoe(req, res);
 });
