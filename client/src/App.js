@@ -65,7 +65,7 @@ class App extends Component {
         }
 
         // For each lift...
-        for (var l=0; l<2; l++) {
+        for (var l=0; l<lifts.length; l++) {
           let pushups = 0;
           let pullups = 0;
           let lift = JSON.parse(lifts[l].workout);
@@ -74,19 +74,22 @@ class App extends Component {
           for (var set in lift) {
             // For each exercise...
             for (var ex in lift[set]) {
-              if (lift[set][ex].name.toLowerCase().indexOf("push-ups") > -1 || lift[set][ex].name.toLowerCase().indexOf("push ups") > -1) {
-                if (!isNaN(parseFloat(lift[set][ex].reps))) {
-                  pushups += (parseFloat(lift[set][ex].sets) * parseFloat(lift[set][ex].reps));
-                }
+              if (lift[set][ex].name.toLowerCase().indexOf("push-ups") > -1 || 
+                  lift[set][ex].name.toLowerCase().indexOf("push ups") > -1) {
+                
+                    if (!isNaN(parseFloat(lift[set][ex].reps))) {
+                      pushups += (parseFloat(lift[set][ex].sets) * parseFloat(lift[set][ex].reps));
+                    }
               }
 
               if (lift[set][ex].name.toLowerCase().indexOf("pull-ups") > -1 || 
                   lift[set][ex].name.toLowerCase().indexOf("pull ups") > -1 ||
                   lift[set][ex].name.toLowerCase().indexOf("chin-ups") > -1 ||
                   lift[set][ex].name.toLowerCase().indexOf("chin ups") > -1) {
-                if (!isNaN(parseFloat(lift[set][ex].reps))) {
-                  pullups += (parseFloat(lift[set][ex].sets) * parseFloat(lift[set][ex].reps));
-                }
+
+                    if (!isNaN(parseFloat(lift[set][ex].reps))) {
+                      pullups += (parseFloat(lift[set][ex].sets) * parseFloat(lift[set][ex].reps));
+                    }
               }
             }
           }
