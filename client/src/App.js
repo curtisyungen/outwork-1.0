@@ -355,6 +355,8 @@ class App extends Component {
 
     this.setState({
       displayOpt: opt,
+    }, () => {
+      console.log(this.state.displayOpt);
     });
   }
 
