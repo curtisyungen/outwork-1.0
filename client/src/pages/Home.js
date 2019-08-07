@@ -253,6 +253,10 @@ class Home extends Component {
                         <div className="quickStatsBtn">
                             <button className="btn btn-info btn-sm quickStatsBtn" onClick={this.openQuickStats}>Quick Stats</button>
                         </div>
+
+                        <div className="toggleDisplayBtn">
+                            <button className="btn btn-dark btn-sm toggleDisplayBtn" onClick={this.props.toggleDisplay}>{this.props.displayOpt}</button>
+                        </div>
                     </div>
 
                     

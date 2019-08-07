@@ -49,6 +49,7 @@ class App extends Component {
       allActivity: [],
       background: "tiles",
       resetEmail: null,
+      displayOpt: "View Recent",
     }
   }
 
@@ -110,7 +111,7 @@ class App extends Component {
 
   componentDidMount = () => {
 
-//     this.correctMetrics();
+    this.correctMetrics();
 
     // Check if logged in
     let loginStatus = false;
@@ -296,7 +297,7 @@ class App extends Component {
                 localStorage.setItem("fn", res.data[0].firstName);
                 localStorage.setItem("ln", res.data[0].lastName);
 
-                this.getAllWorkouts();
+                this.getRecentWorkouts();
                 this.setRedirectToHome();
               }
             });
@@ -343,8 +344,32 @@ class App extends Component {
   // WORKOUTS
   // ==================================
 
+  toggleDisplay = () => {
+    let opt = this.state.displayOpt;
+
+    if (opt === "View Recent") {
+      opt = "View All";
+      this.getAllWorkouts();
+    }
+    else {
+      opt = "View Recent";
+      this.getRecentWorkouts();
+    }
+
+    this.setState({
+      displayOpt: opt,
+    });
+  }
+
   getAllWorkouts = () => {
     workoutAPI.getAllWorkouts()
+      .then((res) => {
+        this.sortByDate(res.data);
+      });
+  }
+
+  getRecentWorkouts = () => {
+    workoutAPI.getRecentWorkouts()
       .then((res) => {
         this.sortByDate(res.data);
       });
@@ -693,6 +718,8 @@ class App extends Component {
                 allActivity={this.state.allActivity}
                 deleteActivity={this.deleteActivity}
                 background={this.state.background}
+                toggleDisplay={this.toggleDisplay}
+                displayOpt={this.state.displayOpt}
               />
             } />
 
