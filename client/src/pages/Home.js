@@ -23,7 +23,16 @@ class Home extends Component {
 
     componentDidMount = () => {
         this.props.updateParentState();
+        this.setUp();
+    }
 
+    componentDidUpdate = (prevProps) => {
+        if (prevProps.displayOpt !== this.props.displayOpt) {
+            this.setUp();
+        }
+    }
+
+    setUp = () => {
         if (this.props.displayOpt === "View Recent") {
             this.props.getRecentWorkouts();
         }
@@ -40,15 +49,6 @@ class Home extends Component {
                 filtered: this.props.allActivity,
                 category: "Name",
                 message: "Loading activity...",
-            });
-        }
-    }
-
-    componentDidUpdate = (prevProps, prevState) => {
-        if (prevProps.allActivity !== this.props.allActivity) {
-            this.setState({
-                allActivity: this.props.allActivity,
-                filtered: this.props.allActivity,
             });
         }
     }
