@@ -83,10 +83,17 @@ class HofController {
             });
     }
 
+    getHotdog(req, res) {
+        db.sequelize.query("SELECT COUNT(id) AS value, firstName FROM Hofs WHERE award != 'hotdog' GROUP BY firstName", { type: sequelize.QueryTypes.SELECT })
+            .then(hofs => {
+                res.json(hofs);
+            });
+    }
+
     updateHof(req, res) {
         db.Hof.update(
             {
-                userName: req.body.userName,
+                firstName: req.body.firstName,
                 value: req.body.value
             },
             {where: {
