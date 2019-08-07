@@ -10,6 +10,10 @@ router.get("/getAllWorkouts", (req, res) => {
     controller.getAllWorkouts(req, res);
 });
 
+router.get("/getRecentWorkouts", (req, res) => {
+    controller.getRecentWorkouts(req, res);
+});
+
 router.post("/createWorkout", (req, res) => {
     controller.createWorkout(req, res);
 });
