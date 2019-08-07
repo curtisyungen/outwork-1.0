@@ -51,7 +51,7 @@ class Profile extends Component {
                 let hof = [];
 
                 for (var a in res.data) {
-                    if (res.data[a].userName === this.state.firstName) {
+                    if (res.data[a].firstName === this.state.firstName) {
                         hof.push([res.data[a].title, res.data[a].icon]);
                     }
                 }
