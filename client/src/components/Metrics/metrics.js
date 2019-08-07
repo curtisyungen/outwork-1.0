@@ -137,7 +137,7 @@ class Metrics extends Component {
                 let time = 0;
                 for (var t in res.data) {
                     if (res.data[t].firstName === this.state.firstName) {
-                        time = res.data[t].value;
+                        time = Math.round(res.data[t].value * 100) / 100;
                     }
                 }
 
