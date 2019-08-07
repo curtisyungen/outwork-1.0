@@ -262,7 +262,7 @@ class Home extends Component {
 
                         <div className="toggleDisplayBtn">
                             <button className="btn btn-dark btn-sm toggleDisplayBtn" onClick={this.props.toggleDisplay}>
-                                {this.state.displayOpt === "View Recent" ? ("View All"):("View Recent")}
+                                {this.state.displayOpt === "View Recent" ? ("View Recent"):("View All")}
                             </button>
                         </div>
                     </div>
