@@ -1,4 +1,4 @@
-id,award,title,desc,icon,unit,userName,value,createdAt,updatedAt
+id,award,title,desc,icon,unit,firstName,value,createdAt,updatedAt
 1,mostWorkouts,Hardest Worker,Highest number of workouts completed of all types.,faTrophy,workouts,,,7/6/2019 11:15,7/6/2019 11:15
 2,mostRestDays,Snoozer,Most number of rest days. Person here needs to stop cuddling with blanky and get to work.,faBed,rest days,,,7/6/2019 11:15,7/6/2019 11:15
 3,longestRun,Endurer,Most number of miles run in one workout.,faRulerHorizontal,miles,,,7/6/2019 11:15,7/6/2019 11:15
@@ -10,4 +10,4 @@ id,award,title,desc,icon,unit,userName,value,createdAt,updatedAt
 9,mostTime,Most Time,Most time spent working out.,faClock,minutes,,,7/6/2019 11:15,7/6/2019 11:15
 10,mostRainyDays,Rain Man,Most days run in heavy rain.,faCloudShowersHeavy,rainy days,,,7/6/2019 11:15,7/6/2019 11:15
 11,mostSwims,Merman,Most swim workouts completed.,faFish,swims,,,7/6/2019 11:15,7/6/2019 11:15
-12,hotdog,Weiner,The coveted weiner award.,faHotdog,,,,7/6/2019 11:15,7/6/2019 11:15
+12,hotdog,Weiner,The coveted weiner award.,faHotdog,weiner,,,7/6/2019 11:15,7/6/2019 11:15
