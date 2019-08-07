@@ -18,19 +18,14 @@ class Home extends Component {
             activitySearch: "",
             message: null,
             openQuickStats: false,
-            displayOpt: "View All",
+            displayOpt: "",
         }
     }
 
     componentDidMount = () => {
         this.props.updateParentState();
 
-        if (this.props.displayOpt === "View Recent") {
-            this.props.getRecentWorkouts();
-        }
-        else {
-            this.props.getAllWorkouts();
-        }
+        this.props.getRecentWorkouts();
 
         // Validate user and then call getUserById
         if (true) {
@@ -41,7 +36,7 @@ class Home extends Component {
                 filtered: this.props.allActivity,
                 category: "Name",
                 message: "Loading activity...",
-                displayOpt: this.props.displayOpt,
+                displayOpt: "View All",
             });
         }
     }
