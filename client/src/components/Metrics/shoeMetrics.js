@@ -33,7 +33,7 @@ class ShoeMetrics extends Component {
             userRuns: this.props.userRuns,
         }, () => {
             this.getShoes();
-            this.getMiles();
+            // this.getMiles();
         });
     }
 
@@ -46,11 +46,26 @@ class ShoeMetrics extends Component {
     }
 
     getShoes = () => {
-        shoeAPI.getShoesByUserId(this.props.userId)
+        // shoeAPI.getShoesByUserId(this.props.userId)
+        //     .then((res) => {
+        //         this.setState({
+        //             shoes: res.data,
+        //         });
+        //     });
+        shoeAPI.getShoeMiles()
             .then((res) => {
-                this.setState({
-                    shoes: res.data,
-                });
+                console.log("All shoes", res);
+
+                let allShoes = res.data;
+                let shoes = [];
+
+                for (var s in shoes) {
+                    if (allShoes[s].userId === this.state.userId) {
+                        shoes.push(allShoes[s]);
+                    }
+                }
+
+                console.log("Shoes", shoes);
             });
     }
 
