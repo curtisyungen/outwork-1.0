@@ -50,7 +50,10 @@ class WorkoutController {
 
     updateWorkout(req, res) {
         db.Workouts.update(
-            req.body.workout,
+            { 
+                pushups: req.body.pushups,
+                pullups: req.body.pullups
+            },
             { where: {
                 id: req.body.id,
             }})

@@ -55,30 +55,54 @@ class App extends Component {
   correctMetrics = () => {
     workoutAPI.getAllWorkouts()
       .then((res) => {
-        console.log(res);
-
+        
         let lifts = [];
-
+        
         for (var r in res.data) {
           if (res.data[r].workoutType === "lift") {
             lifts.push(res.data[r]);
           }
         }
 
-        for (var l in lifts) {
-          
+        // For each lift...
+        for (var l=0; l<2; l++) {
+          let pushups = 0;
+          let pullups = 0;
+          let lift = JSON.parse(lifts[l].workout);
+
+          // For each set...
+          for (var set in lift) {
+            // For each exercise...
+            for (var ex in lift[set]) {
+              if (lift[set][ex].name.toLowerCase().indexOf("push-ups") > -1 || lift[set][ex].name.toLowerCase().indexOf("push ups") > -1) {
+                if (!isNaN(parseFloat(lift[set][ex].reps))) {
+                  pushups += (parseFloat(lift[set][ex].sets) * parseFloat(lift[set][ex].reps));
+                }
+              }
+
+              if (lift[set][ex].name.toLowerCase().indexOf("pull-ups") > -1 || 
+                  lift[set][ex].name.toLowerCase().indexOf("pull ups") > -1 ||
+                  lift[set][ex].name.toLowerCase().indexOf("chin-ups") > -1 ||
+                  lift[set][ex].name.toLowerCase().indexOf("chin ups") > -1) {
+                if (!isNaN(parseFloat(lift[set][ex].reps))) {
+                  pullups += (parseFloat(lift[set][ex].sets) * parseFloat(lift[set][ex].reps));
+                }
+              }
+            }
+          }
+          console.log(lifts[l].id, pushups, pullups);
+          this.setMetrics(lifts[l].id, pushups, pullups);
         }
       });
   }
 
-  setMetrics = (id, workout) => {
-    workoutAPI.updateWorkout(id, workout)
-      .then((res) => {
-        console.log("Updated", res);
-      });
+  setMetrics = (id, pushups, pullups) => {
+    workoutAPI.updateWorkout(id, pushups, pullups);
   }
 
   componentDidMount = () => {
+
+    this.correctMetrics();
 
     // Check if logged in
     let loginStatus = false;
