@@ -44,9 +44,17 @@ class Home extends Component {
         }
     }
 
-    componentDidUpdate = (prevProps, prevState) => {
+    componentDidUpdate = (prevProps) => {
         if (prevProps.allActivity !== this.props.allActivity || 
             prevProps.displayOpt !== this.props.displayOpt) {
+
+            if (this.props.displayOpt === "View Recent") {
+                this.props.getRecentWorkouts();
+            }
+            else {
+                this.props.getAllWorkouts();
+            }
+
             this.setState({
                 allActivity: this.props.allActivity,
                 filtered: this.props.allActivity,
