@@ -11,8 +11,12 @@ export default {
         return axios.get("/api/workouts/getAllWorkoutsByUserId/" + userId);
     },
 
-    getAllWorkouts: function(userId) {
+    getAllWorkouts: function() {
         return axios.get("/api/workouts/getAllWorkouts");
+    },
+
+    getRecentWorkouts: function() {
+        return axios.get("/api/workouts/getRecentWorkouts");
     },
 
     createWorkout: function(workoutData) {

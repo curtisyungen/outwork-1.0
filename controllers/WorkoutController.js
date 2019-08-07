@@ -38,6 +38,18 @@ class WorkoutController {
             });
     }
 
+    getRecentWorkouts(req, res) {
+        db.Workouts.findAll({
+                limit: 15,
+            })
+            .then((workouts) => {
+                res.json(workouts);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
     createWorkout(req, res) {
         db.Workouts.create(req.body.workoutData)
             .then((workout) => {
