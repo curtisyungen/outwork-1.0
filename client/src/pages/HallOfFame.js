@@ -66,7 +66,7 @@ class HallOfFame extends Component {
                     award.title = res.data[r].title;
                     award.icon = res.data[r].icon;
                     award.desc = res.data[r].desc;
-                    award.userName = res.data[r].userName;
+                    award.firstName = res.data[r].firstName;
                     award.value = res.data[r].value;
                     award.unit = res.data[r].unit;
 
@@ -165,7 +165,7 @@ class HallOfFame extends Component {
                             <div key={award.title} className="hofMetric">
                                 <div className="hofIcon hofCol"><FontAwesomeIcon className={`fa-2x ${award.icon}`} icon={this.getIcon(award.icon)} /></div>
                                 <div className="hofTitle hofCol">{award.title}</div>
-                                <div className="hofName hofCol">{award.userName}</div>
+                                <div className="hofName hofCol">{award.firstName}</div>
                                 <div className="hofValue hofCol">{award.value}&nbsp;{award.unit}</div>
                                 <div className="hofDesc hofCol">{award.desc}</div>
                             </div>
