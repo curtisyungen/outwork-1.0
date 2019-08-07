@@ -37,6 +37,7 @@ class Home extends Component {
                 userId: userId,
                 allActivity: this.props.allActivity,
                 filtered: this.props.allActivity,
+                display: this.props.allActivity,
                 category: "Name",
                 message: "Loading activity...",
             }, () => {
