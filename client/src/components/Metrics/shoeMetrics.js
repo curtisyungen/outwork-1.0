@@ -28,6 +28,7 @@ class ShoeMetrics extends Component {
     }
 
     componentDidMount = () => {
+        console.log("Props", this.props);
         this.setState({
             userId: this.props.userId,
             userRuns: this.props.userRuns,
@@ -46,31 +47,11 @@ class ShoeMetrics extends Component {
     }
 
     getShoes = () => {
-        // shoeAPI.getShoesByUserId(this.props.userId)
-        //     .then((res) => {
-        //         this.setState({
-        //             shoes: res.data,
-        //         });
-        //     });
-        shoeAPI.getShoeMiles(this.state.userId)
+        shoeAPI.getShoesByUserId(this.props.userId)
             .then((res) => {
-                console.log("All shoes", res);
-
-                // let allShoes = res.data;
-                // let shoes = [];
-
-                // for (var s in shoes) {
-                //     if (allShoes[s].userId === this.state.userId) {
-                //         shoes.push(allShoes[s]);
-                //     }
-                // }
-
-                // console.log("Shoes", shoes);
-            });
-
-        shoeAPI.getShoeWears()
-            .then((res) => {
-                console.log("Wears", res);
+                this.setState({
+                    shoes: res.data,
+                });
             });
     }
 
