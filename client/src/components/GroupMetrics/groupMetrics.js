@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import hofAPI from "../../utils/hofAPI";
 import workoutAPI from "../../utils/workoutAPI";
 import userAPI from "../../utils/userAPI";
 import "./groupMetrics.css";
+
+import moment from "moment";
 
 class GroupMetrics extends Component {
 
@@ -41,14 +42,21 @@ class GroupMetrics extends Component {
         workoutAPI.getAllWorkoutsByUserId(userId)
             .then((res) => {
                 let workouts = res.data;
-                let pushups = 0, pullups = 0, climb = 0, miles = 0, currWkMiles = 0;
+                let pushups = 0, pullups = 0, climb = 0;
+                let miles = 0, currWkMiles = 0;
+                let today = new Date();
+                let week = moment(today).getWeek();
 
                 for (var w in workouts) {
 
-                    // Get miles run, climb
+                    // Get miles run, climb, current week miles
                     if (workouts[w].workoutType === "run") {
                         miles += parseFloat(workouts[w].distance);
                         climb += parseFloat(workouts[w].climb);
+
+                        if (moment(workouts[w].date).getWeek() === week) {
+                            currWkMiles += workouts[w].distance;
+                        }
                     }
 
                     // Get pushups
@@ -64,7 +72,7 @@ class GroupMetrics extends Component {
 
                 userMetrics.firstName = firstName;
                 userMetrics.workouts = workouts.length;
-                userMetrics.currWkMiles = 0;
+                userMetrics.currWkMiles = currWkMiles;
                 userMetrics.totalMilesRun = miles;
                 userMetrics.distClimbed = climb;
                 userMetrics.pushups = pushups;
@@ -101,9 +109,9 @@ class GroupMetrics extends Component {
                                 <div className="gm-col">
                                     <div className="gm-cell">{indiv.firstName}</div>
                                     <div className="gm-cell">{indiv.workouts}</div>
-                                    <div className="gm-cell">{indiv.currWkMiles.toFixed(2)}</div>
-                                    <div className="gm-cell">{indiv.totalMilesRun.toFixed(2)}</div>
-                                    <div className="gm-cell">{indiv.distClimbed.toFixed(2)}</div>
+                                    <div className="gm-cell">{indiv.currWkMiles}</div>
+                                    <div className="gm-cell">{indiv.totalMilesRun}</div>
+                                    <div className="gm-cell">{indiv.distClimbed}</div>
                                     <div className="gm-cell">{indiv.pushups}</div>
                                     <div className="gm-cell">{indiv.pullups}</div>
                                 </div>

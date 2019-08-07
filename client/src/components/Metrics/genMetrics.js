@@ -38,12 +38,12 @@ class GenMetrics extends Component {
                         <div>{this.props.workouts}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Total Rest Days</div>
-                        <div>{this.props.restDays}</div>
-                    </div>
-                    <div className="metric">
                         <div className="metricTitle">Total Time (min.)</div>
                         <div>{this.props.time}</div>
+                    </div>
+                    <div className="metric">
+                        <div className="metricTitle">Total Rest Days</div>
+                        <div>{this.props.restDays}</div>
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Total Races</div>
