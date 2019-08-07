@@ -26,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
         },
         // First name of user who won award
-        userName: {
+        firstName: {
             type: DataTypes.STRING,
             allowNull: true,
         },
