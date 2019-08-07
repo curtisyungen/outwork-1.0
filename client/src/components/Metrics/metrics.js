@@ -6,7 +6,10 @@ import LiftMetrics from "./liftMetrics";
 import ShoeMetrics from "./shoeMetrics";
 import GeneralMetrics from "./genMetrics";
 import workoutAPI from "../../utils/workoutAPI";
+import hofAPI from "../../utils/hofAPI";
 // import "./Metrics.css";
+
+import moment from "moment";
 
 class Metrics extends Component {
 
@@ -36,6 +39,9 @@ class Metrics extends Component {
         }, () => {
             this.getScreenSize();
             this.getUserActivity();
+            this.getTotalTime();
+            this.getRainyDays();
+            this.getTotalRaces();
         });
     }
 
@@ -88,13 +94,73 @@ class Metrics extends Component {
             }
         }
 
+        let workouts = 0;
+        if (userActivity) {
+            workouts = userActivity.length;
+        }
+
+        let restDays = 0;
+        let dateNum = moment().dayOfYear();
+        restDays = dateNum - workouts;
+
         this.setState({
             userRuns: runs,
             userBikes: bikes,
             userSwims: swims,
             userLifts: lifts,
             loading: false,
+            totalWorkouts: workouts,
+            restDays: restDays,
         });
+    }
+
+    getRainyDays = () => {
+        hofAPI.getRainyDays() 
+            .then((res) => {
+                let days = 0;
+                for (var d in res.data) {
+                    if (res.data[d].firstName === this.state.firstName) {
+                        days = res.data[d].value;
+                    }
+                }
+
+                this.setState({
+                    days: days,
+                });
+            });
+    }
+
+    getTotalTime = () => {
+        hofAPI.getTotalTime()
+            .then((res) => {
+
+                let time = 0;
+                for (var t in res.data) {
+                    if (res.data[t].firstName === this.state.firstName) {
+                        time = res.data[t].value;
+                    }
+                }
+
+                this.setState({
+                    time: time,
+                });
+            })
+    }
+
+    getTotalRaces = () => {
+        hofAPI.getMaxRaces()
+            .then((res) => {
+                let races = 0;
+                for (var r in res.data) {
+                    if (res.data[r].firstName === this.state.firstName) {
+                        races = res.data[r].value;
+                    }
+                }
+
+                this.setState({
+                    races: races,
+                });
+            })
     }
 
     render() {
@@ -121,8 +187,7 @@ class Metrics extends Component {
                 {this.state.loading ? (
                     <p className="text-center">Loading metrics...</p>
                 ) : (
-                    <></>
-                )}
+                    <span>
 
                 {this.state.userRuns && this.state.userRuns.length > 0 ? (
                     <RunMetrics
@@ -167,7 +232,14 @@ class Metrics extends Component {
                 <GeneralMetrics 
                     userId={this.state.userId}
                     flexDir={this.state.flexDir}
+                    workouts={this.state.totalWorkouts}
+                    time={this.state.time}
+                    rainyDays={this.state.days}
+                    races={this.state.races}
+                    restDays={this.state.restDays}
                 />
+                </span>
+                )}
             </div>
         )
     }

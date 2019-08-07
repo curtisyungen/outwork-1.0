@@ -35,31 +35,31 @@ class GenMetrics extends Component {
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Total Workouts</div>
-                        <div>{this.state.workouts}</div>
+                        <div>{this.props.workouts}</div>
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Total Rest Days</div>
-                        <div>{this.state.restDays}</div>
+                        <div>{this.props.restDays}</div>
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Total Time (min.)</div>
-                        <div>{this.state.time}</div>
+                        <div>{this.props.time}</div>
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Total Races</div>
-                        <div>{this.state.races}</div>
+                        <div>{this.props.races}</div>
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Rainy Days</div>
-                        <div>{this.state.rainyDays}</div>
+                        <div>{this.props.rainyDays}</div>
                     </div>
                     <div className="metric">
                         <div className="metricTitle"></div>
-                        <div>{this.state.workouts}</div>
+                        <div></div>
                     </div>
                     <div className="metric">
                         <div className="metricTitle"></div>
-                        <div>{this.state.workouts}</div>
+                        <div></div>
                     </div>
                 </div>
             </span>
