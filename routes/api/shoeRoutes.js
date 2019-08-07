@@ -6,6 +6,10 @@ router.get("/getShoesByUserId/:userId", (req, res) => {
     controller.getShoesByUserId(req, res);
 });
 
+router.get("/getShoeMiles", (req, res) => {
+    controller.getShoeMiles(req, res);
+});
+
 router.post("/addShoe", (req, res) => {
     controller.addShoe(req, res);
 });
