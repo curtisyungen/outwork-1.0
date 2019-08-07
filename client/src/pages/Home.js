@@ -54,12 +54,12 @@ class Home extends Component {
             }
         }
 
-        if (prevProps.allActivity !== this.props.allActivity) {
-            this.setState({
-                allActivity: this.props.allActivity,
-                filtered: this.props.allActivity,
-            });
-        }
+        // if (prevProps.allActivity !== this.props.allActivity) {
+        //     this.setState({
+        //         allActivity: this.props.allActivity,
+        //         filtered: this.props.allActivity,
+        //     });
+        // }
     }
 
     handleInputChange = (event) => {
