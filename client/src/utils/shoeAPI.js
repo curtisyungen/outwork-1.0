@@ -11,8 +11,8 @@ export default {
         return axios.get("/api/shoes/getShoesByUserId/" + userId);
     },
 
-    getShoeMiles: function() {
-        return axios.get("/api/shoes/getShoeMiles");
+    getShoeMiles: function(userId) {
+        return axios.get("/api/shoes/getShoeMiles", { userId: userId });
     },
 
     getShoeWears: function() {
