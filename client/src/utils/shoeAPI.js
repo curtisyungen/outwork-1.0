@@ -15,6 +15,10 @@ export default {
         return axios.get("/api/shoes/getShoeMiles");
     },
 
+    getShoeWears: function() {
+        return axios.get("/api/shoes/getShoeWears");
+    },
+
     addShoe: function(shoe) {
         return axios.post("/api/shoes/addShoe", shoe);
     },
