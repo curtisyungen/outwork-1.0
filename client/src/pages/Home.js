@@ -45,7 +45,8 @@ class Home extends Component {
     }
 
     componentDidUpdate = (prevProps, prevState) => {
-        if (prevProps.allActivity !== this.props.allActivity) {
+        if (prevProps.allActivity !== this.props.allActivity || 
+            prevProps.displayOpt !== this.props.displayOpt) {
             this.setState({
                 allActivity: this.props.allActivity,
                 filtered: this.props.allActivity,
