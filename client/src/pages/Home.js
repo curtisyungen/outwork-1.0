@@ -14,7 +14,7 @@ class Home extends Component {
             userId: null,
             allActivity: [],
             filtered: [],
-            display: null,
+            display: [],
             displayOpt: "View Recent",
             category: null,
             activitySearch: "",
