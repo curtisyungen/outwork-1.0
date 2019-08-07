@@ -23,12 +23,12 @@ class Home extends Component {
 
     componentDidMount = () => {
         this.props.updateParentState();
-        
+
         if (this.props.displayOpt === "View Recent") {
-            this.props.getAllWorkouts();
+            this.props.getRecentWorkouts();
         }
         else {
-            this.props.getRecentWorkouts();
+            this.props.getAllWorkouts();
         }
 
         // Validate user and then call getUserById
