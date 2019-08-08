@@ -646,6 +646,7 @@ class App extends Component {
                 setRedirectToLogin={this.setRedirectToLogin}
                 setRedirectToHome={this.setRedirectToHome}
                 checkValidUser={this.checkValidUser}
+                loginUser={this.loginUser}
                 logoutUser={this.logoutUser}
               />
             } />
