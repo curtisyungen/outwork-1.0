@@ -10,12 +10,12 @@ class MuscleGroup extends Component {
     render() {
         return (
             <div className="form-group muscleGroup">
-                <input 
-                    className="form-check-input" 
-                    type="checkbox" 
-                    onChange={this.toggleCheck}
-                    checked={this.props.checked}
-                />
+                <div
+                    className={`muscleGroupDiv checked-${this.props.checked}`}
+                    onClick={this.toggleCheck}
+                >
+                    {this.props.muscleGroup}
+                </div>
                 {this.props.muscleGroup}
             </div>
         )

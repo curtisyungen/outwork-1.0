@@ -1,3 +1,14 @@
 .muscleGroup {
     color: black;
 }
+
+.muscleGroupDiv {
+    background: rgb(242, 242, 242);
+    border: 1px solid black;
+    height: 15px;
+    width: 15px;
+}
+
+.checked-true {
+    background: rgb(157, 255, 214);
+}
