@@ -6,6 +6,7 @@
     background: rgb(242, 242, 242);
     border: 1px solid black;
     height: 15px;
+    transition: 0.5s;
     width: 15px;
 }
 
