@@ -1,0 +1,9 @@
+.profileFilterBtns {
+    display: flex;
+    flex-direction: row;
+}
+
+.profileFilterBtn {
+    font-size: 12px;
+    margin-right: 2px;
+}
