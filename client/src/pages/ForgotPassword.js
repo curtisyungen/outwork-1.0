@@ -145,9 +145,9 @@ class ForgotPassword extends Component {
                                 ) : (
                                     <></>
                                 )}
-                                
+
                                 <button 
-                                    className="submitEmailBtn agree" onHover={this.hover} onClick={this.agree}>
+                                    className="submitEmailBtn agree" onMouseEnter={this.hover} onClick={this.agree}>
                                     Agree and Acknowledge
                                 </button>
                             </span>
