@@ -45,12 +45,12 @@ class Landing extends Component {
                         <h4 className="standardTitle">Outwork</h4>
                     </div>
                     <div className="loginBtns btn-group col-lg-2 text-center">
-                        <button 
+                        {/* <button 
                             className="btn btn-outline-dark btn-sm" 
                             onClick={this.props.setRedirectToSignUp}
                         >
                             Sign Up
-                        </button>
+                        </button> */}
                         <button 
                             className="btn btn-outline-dark btn-sm" 
                             onClick={this.props.setRedirectToLogin}
@@ -58,7 +58,7 @@ class Landing extends Component {
                             Sign In
                         </button>
                         <button 
-                            className="btn btn-outline-warning btn-sm" 
+                            className="btn btn-warning btn-sm" 
                             onClick={this.loginGuest}
                         >
                             Guest
