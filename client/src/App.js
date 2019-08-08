@@ -281,7 +281,6 @@ class App extends Component {
   }
 
   loginUser = (email, password) => {
-
     // Check if email exists in database
     userAPI.getUser(email)
       .then((res) => {
@@ -292,15 +291,15 @@ class App extends Component {
         else {
           userAPI.loginUser(email, password)
             .then((res) => {
-              if (res.data.length === 0) {
+              if (res.data === "Incorrect password.") {
                 alert("Incorrect password.");
               }
               else {
                 // Store login status and userId in local storage
                 localStorage.setItem("isLoggedIn", "true");
-                localStorage.setItem("userId", res.data[0].userId);
-                localStorage.setItem("fn", res.data[0].firstName);
-                localStorage.setItem("ln", res.data[0].lastName);
+                localStorage.setItem("userId", res.data.userId);
+                localStorage.setItem("fn", res.data.firstName);
+                localStorage.setItem("ln", res.data.lastName);
 
                 this.getRecentWorkouts();
                 this.setRedirectToHome();
