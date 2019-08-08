@@ -24,8 +24,7 @@ class AllUsers extends Component {
                 let users = res.data;
                 let idx = -1;
                 for (var u in users) {
-                    if (users[u].firstName === "Guest") {
-                        console.log(users[u]);
+                    if (users[u].userId === "834292GU") {
                         idx = u;
                     }
                 }
