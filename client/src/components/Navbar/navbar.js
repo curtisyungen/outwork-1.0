@@ -49,7 +49,7 @@ class Navbar extends Component {
                             <a className="nav-link" href="/home">Home</a>
                         </li>
                         <li className="nav-item">
-                            <a className={`nav-link ${localStorage.getItem("userId") === "834292GU" ? ("disabled"):("")}`} href="/profile">Profile</a>
+                            <a className={`nav-link`} href="/profile">Profile</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="/logActivity">Log Activity</a>
