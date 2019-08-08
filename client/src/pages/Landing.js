@@ -68,9 +68,8 @@ class Landing extends Component {
                             </button>
                             <p className="guestText">
                                 Outwork is currently not accepting new users.
-                                You may still tour the site as a guest.
-                                However, guests do not have a Profile page, nor
-                                can they submit workouts. 
+                                You may still tour the site as a guest but you 
+                                won't be able to submit workouts.
                             </p>
                         </div>
                     </div>
