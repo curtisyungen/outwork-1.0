@@ -14,6 +14,7 @@ class Navbar extends Component {
         super(props);
 
         this.state = {
+            userId: null,
             renderNames: 
                 [
                     "/home", 
@@ -47,7 +48,7 @@ class Navbar extends Component {
                         <li className="nav-item">
                             <a className="nav-link" href="/home">Home</a>
                         </li>
-                        <li className="nav-item">
+                        <li className={`nav-item ${localStorage.getItem("userId") === "834292GU"}`}>
                             <a className="nav-link" href="/profile">Profile</a>
                         </li>
                         <li className="nav-item">
