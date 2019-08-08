@@ -36,7 +36,7 @@ class SubmitRun extends Component {
     }
 
     componentDidMount = () => {
-        this.props.checkValidUser();
+        console.log(this.props.checkValidUser());
 
         // Get user info
         let userId = localStorage.getItem("userId");
@@ -603,7 +603,11 @@ class SubmitRun extends Component {
                             />
                         </div>
 
-                        <button className="btn btn-primary" onClick={this.submitRun}>Submit</button>
+                        {this.state.userId === "834292GU" ? (
+                            <></>
+                        ) : (
+                            <button className="btn btn-primary" onClick={this.submitRun}>Submit</button>
+                        )}
                     </div>
                 </div>
             </div>

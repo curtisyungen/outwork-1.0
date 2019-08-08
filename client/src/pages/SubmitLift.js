@@ -586,7 +586,11 @@ class SubmitLift extends Component {
                         />
                     </div>
 
-                    <button className="btn btn-primary" onClick={this.getTtlMins}>Submit</button>
+                    {this.state.userId === "834292GU" ? (
+                        <></>
+                    ) : (
+                        <button className="btn btn-primary" onClick={this.getTtlMins}>Submit</button>
+                    )}
                 </div>
             </div>
         )
