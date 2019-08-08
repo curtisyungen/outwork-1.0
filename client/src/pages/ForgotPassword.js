@@ -113,7 +113,7 @@ class ForgotPassword extends Component {
                             Continue
                         </button>
                         
-                        {this.state.email !== null && this.state.email.length > 0 ? (
+                        {this.state.email !== null && this.state.email.length > 0 && this.state.agree === false ? (
                             <span>
                                 <p className="lecture">
                                     Look, try not to forget your password anymore. 
