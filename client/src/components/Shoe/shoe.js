@@ -48,7 +48,7 @@ class Shoe extends Component {
         }
 
         this.setState({
-            miles: miles,
+            miles: Math.round(miles * 100) / 100,
             wears: wears,
         });
     }
