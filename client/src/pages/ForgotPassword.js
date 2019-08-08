@@ -119,12 +119,14 @@ class ForgotPassword extends Component {
                                     Look, try not to forget your password anymore. 
                                     It's just a lot of trouble to have to reset it and use up time and computing energy.
                                     I work hard all day and then come home and you've forgotten your stupid password.
-                                    How do you think I feel about you always doing that? 
+                                    How do you think I feel about you always being the way that you are? 
                                     It's important to keep track of information like this for yourself. I can't always help you.
                                     Do you do the same with your bank PIN number? Or your phone number? 
                                     Seriously, figure this out. If you have to write it down somewhere then fine, do that.
                                     But don't keep coming back again and again saying "waa waa I forgot my password help me."
-                                    It's really annoying and it's time for you to grow up.
+                                    It's really annoying and pathetic. Ask anyone and they'll agree with me.
+                                    You need to keep track of your own things. It's ridiculous. 
+                                    I honestly don't know what you'd do without me.
                                 </p>
                                 <button className="submitEmailBtn agree" onClick={this.agree}>
                                     Agree and Acknowledge
