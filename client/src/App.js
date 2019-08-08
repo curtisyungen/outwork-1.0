@@ -116,7 +116,7 @@ class App extends Component {
 
   componentDidMount = () => {
 
-    this.correctMetrics();
+    // this.correctMetrics();
 
     // Check if logged in
     let loginStatus = false;
@@ -328,22 +328,27 @@ class App extends Component {
   // Checks userId in local storage to see if it exists in database
   // If it doesn't exist/it is a fake userId, automatically logs out user
   checkValidUser = () => {
+    let returnVal = true;
     let userId;
+
     if (localStorage.getItem("userId") && localStorage.getItem("userId") !== null) {
       userId = localStorage.getItem("userId");
 
       return userAPI.getUserById(userId)
         .then((res) => {
           if (res.data.length === 0) {
+            returnVal = false;
             this.logoutUser();
-            return false;
+            return returnVal;
           }
         });
     }
     else {
+      returnVal = false;
       this.logoutUser();
-      return false;
     }
+
+    return returnVal;
   }
 
   // WORKOUTS
