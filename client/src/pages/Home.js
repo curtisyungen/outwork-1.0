@@ -22,6 +22,7 @@ class Home extends Component {
     }
 
     componentDidMount = () => {
+        this.props.checkValidUser();
         this.props.updateParentState();
 
         this.props.getRecentWorkouts();
