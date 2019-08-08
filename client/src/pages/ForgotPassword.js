@@ -94,6 +94,7 @@ class ForgotPassword extends Component {
                         <p className="formLabel">Email</p>
                         <input
                             autoFocus
+                            autoComplete="off"
                             className="formInput fp-wide"
                             name="email"
                             type="email"
