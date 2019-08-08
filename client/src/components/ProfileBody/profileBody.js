@@ -55,6 +55,7 @@ class ProfileBody extends Component {
             .then((res) => {
                 this.setState({
                     userActivity: res.data,
+                    displayOpt: "Runs",
                 });
             });
     }
@@ -65,6 +66,7 @@ class ProfileBody extends Component {
             .then((res) => {
                 this.setState({
                     userActivity: res.data,
+                    displayOpt: "Bikes",
                 });
             });
     }
@@ -75,6 +77,7 @@ class ProfileBody extends Component {
             .then((res) => {
                 this.setState({
                     userActivity: res.data,
+                    displayOpt: "Swims",
                 });
             });
     }
@@ -85,6 +88,7 @@ class ProfileBody extends Component {
             .then((res) => {
                 this.setState({
                     userActivity: res.data,
+                    displayOpt: "Lifts",
                 });
             });
     }
@@ -128,25 +132,25 @@ class ProfileBody extends Component {
                             Recent
                         </button>
                         <button
-                            className="btn btn-light btn-sm profileFilterBtn"
+                            className={`btn btn-light btn-sm profileFilterBtn opt-${this.state.displayOpt === "Runs"}`}
                             onClick={this.getRuns}
                         >
                             Runs
                         </button>
                         <button
-                            className="btn btn-light btn-sm profileFilterBtn"
+                            className={`btn btn-light btn-sm profileFilterBtn opt-${this.state.displayOpt === "Bikes"}`}
                             onClick={this.getBikes}
                         >
                             Bikes
                         </button>
                         <button
-                            className="btn btn-light btn-sm profileFilterBtn"
+                            className={`btn btn-light btn-sm profileFilterBtn opt-${this.state.displayOpt === "Swims"}`}
                             onClick={this.getSwims}
                         >
                             Swims
                         </button>
                         <button
-                            className="btn btn-light btn-sm profileFilterBtn"
+                            className={`btn btn-light btn-sm profileFilterBtn opt-${this.state.displayOpt === "Lifts"}`}
                             onClick={this.getLifts}
                         >
                             Lifts
