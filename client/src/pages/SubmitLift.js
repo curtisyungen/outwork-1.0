@@ -523,6 +523,7 @@ class SubmitLift extends Component {
                         <div className="input-group-prepend submitFormSectTitle">
                             Workout*
                         </div>
+                        <p className="infoMsg">For proper counting of push-ups and pull-ups use hyphenated, plural format: "Push-Ups", "Pull-Ups", "Chin-Ups". </p>
                     </div>
 
                     {this.state.exercises.map(exercise => (
