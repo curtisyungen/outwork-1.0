@@ -47,7 +47,7 @@ class App extends Component {
       allActivity: [],
       background: "tiles",
       resetEmail: null,
-      displayOpt: "View All",
+      displayOpt: "Recent",
     }
   }
 
@@ -349,37 +349,25 @@ class App extends Component {
   // WORKOUTS
   // ==================================
 
-  toggleDisplay = () => {
-    let opt = this.state.displayOpt;
-
-    if (opt === "View Recent") {
-      this.setState({
-        displayOpt: "View All",
-        // allActivity: [],
-      }, () => {
-        this.getRecentWorkouts();
-      });      
-    }
-    else {
-      this.setState({
-        displayOpt: "View Recent",
-        // allActivity: [],
-      }, () => {
-        this.getAllWorkouts();
-      }); 
-    }
-  }
-
   getAllWorkouts = () => {
     workoutAPI.getAllWorkouts()
       .then((res) => {
         this.sortByDate(res.data);
+
+        this.setState({
+          displayOpt: "All",
+        });
       });
   }
 
   getRecentWorkouts = () => {
     workoutAPI.getRecentWorkouts()
       .then((res) => {
+
+        this.setState({
+          displayOpt: "Recent",
+        });
+
         this.sortByDate(res.data);
       });
   }
@@ -709,7 +697,6 @@ class App extends Component {
                 allActivity={this.state.allActivity}
                 deleteActivity={this.deleteActivity}
                 background={this.state.background}
-                toggleDisplay={this.toggleDisplay}
                 displayOpt={this.state.displayOpt}
               />
             } />
