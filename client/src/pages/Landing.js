@@ -44,25 +44,35 @@ class Landing extends Component {
                         </a>
                         <h4 className="standardTitle">Outwork</h4>
                     </div>
-                    <div className="loginBtns btn-group col-lg-2 text-center">
+                    <div className="loginBtns text-center">
                         {/* <button 
                             className="btn btn-outline-dark btn-sm" 
                             onClick={this.props.setRedirectToSignUp}
                         >
                             Sign Up
                         </button> */}
-                        <button 
-                            className="btn btn-outline-dark btn-sm" 
-                            onClick={this.props.setRedirectToLogin}
-                        >
-                            Sign In
-                        </button>
-                        <button 
-                            className="btn btn-warning btn-sm" 
-                            onClick={this.loginGuest}
-                        >
-                            Guest
-                        </button>
+                        <div>
+                            <button 
+                                className="btn btn-outline-dark btn-sm loginBtn" 
+                                onClick={this.props.setRedirectToLogin}
+                            >
+                                Sign In
+                            </button>
+                        </div>
+                        <div>
+                            <button 
+                                className="btn btn-warning btn-sm loginBtn" 
+                                onClick={this.loginGuest}
+                            >
+                                Guest
+                            </button>
+                            <p className="guestText">
+                                Outwork is currently not accepting new users.
+                                You may still tour the site as a guest.
+                                However, guests do not have a Profile page, nor
+                                can they submit workouts. 
+                            </p>
+                        </div>
                     </div>
                 </div>
 
