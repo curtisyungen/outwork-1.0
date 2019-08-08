@@ -573,7 +573,11 @@ class Workout extends Component {
                             />
                         </div>
 
-                        <button className="btn btn-success btn-sm submitWorkoutBtn" onClick={this.getTtlMins}>Submit</button>
+                        {this.state.userId === "834292GU" ? (
+                            <></>
+                        ) : (
+                            <button className="btn btn-success btn-sm submitWorkoutBtn" onClick={this.getTtlMins}>Submit</button>
+                        )}
                     </Modal>
                 ) : (
                         <></>
