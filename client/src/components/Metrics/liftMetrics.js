@@ -70,12 +70,12 @@ class LiftMetrics extends Component {
 
         hofAPI.getMaxPushups()
             .then((res) => {
-                console.log("Push Ups", res);
+                // console.log("Push Ups", res);
             });
 
         hofAPI.getMaxPullups() 
             .then((res) => {
-                console.log("Pull Ups", res);
+                // console.log("Pull Ups", res);
             });
 
         this.setState({

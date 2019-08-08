@@ -38,6 +38,8 @@
 
 .metricIcon-bullseye {
     background: rgb(162, 162, 162);
+    color: rgb(185, 0, 0);
+    padding-top: 11px;
 }
 
 .metricIcon-swim {
