@@ -28,7 +28,7 @@ class ShoeMetrics extends Component {
     }
 
     componentDidMount = () => {
-        console.log("Props", this.props);
+        // console.log("Props", this.props);
         this.setState({
             userId: this.props.userId,
             userRuns: this.props.userRuns,
@@ -52,7 +52,7 @@ class ShoeMetrics extends Component {
                 this.setState({
                     shoes: res.data,
                 }, () => {
-                    console.log("Get Shoes",  this.state);
+                    // console.log("Get Shoes",  this.state);
                 });
             });
     }
@@ -110,7 +110,7 @@ class ShoeMetrics extends Component {
         this.setState({
             shoeMiles: shoeMiles,
         }, () => {
-            console.log("Shoe Miles",shoeMiles);
+            // console.log("Shoe Miles",shoeMiles);
         });
     }
 
