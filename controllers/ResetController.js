@@ -20,13 +20,13 @@ class ResetController {
         let transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {
-                user: "congoserver@gmail.com",
+                user: process.env.GMAIL_ADDRESS,
                 pass: process.env.GMAIL_PASSWORD,
             }
         });
 
         let mailOptions = {
-            from: "congoserver@gmail.com",
+            from: process.env.GMAIL_ADDRESS,
             to: req.body.email,
             subject: "Outwork password assistance",
             text: `
