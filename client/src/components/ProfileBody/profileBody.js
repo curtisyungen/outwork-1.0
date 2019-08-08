@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import Container from "../Container/container";
 import UserActivity from "../UserActivity/userActivity";
-import Metrics from "../Metrics/metrics";
-import Calendar from "../Calendar/calendar";
 import workoutAPI from "../../utils/workoutAPI";
-// import "./profileBody.css";
+import "./profileBody.css";
 
 class ProfileBody extends Component {
 
@@ -24,21 +22,20 @@ class ProfileBody extends Component {
             userId: this.props.userId,
             userActivity: this.props.userActivity,
         }, () => {
-            this.getRecentWorkouts(this.state.userId);
+            this.getRecentWorkouts();
         });
     }
 
     toggleDisplay = () => {
         let opt = this.state.displayOpt;
-        let userId = this.state.userId;
 
         if (opt === "View All") {
             opt = "View Recent";
-            this.getAllWorkouts(userId);
+            this.getAllWorkouts();
         }
         else {
             opt = "View All";
-            this.getRecentWorkouts(userId);
+            this.getRecentWorkouts();
         }
 
         this.setState({
@@ -46,7 +43,8 @@ class ProfileBody extends Component {
         });
     }
 
-    getRecentWorkouts = (userId) => {
+    getRecentWorkouts = () => {
+        let userId = this.props.userId;
         workoutAPI.getRecentWorkoutsByUserId(userId)
             .then((res) => {
                 this.setState({
@@ -55,31 +53,52 @@ class ProfileBody extends Component {
             });
     }
     
-    getAllWorkouts = (userId) => {
+    getAllWorkouts = () => {
+        let userId = this.props.userId;
         workoutAPI.getAllWorkoutsByUserId(userId)
             .then((res) => {
                 this.sortByDate(res.data);
             });
+    }
 
-        // workoutAPI.getRunsByUserId(userId)
-        //     .then((res) => {
-        //         console.log(res);
-        //     });
+    getRuns = () => {
+        let userId = this.props.userId;
+        workoutAPI.getRunsByUserId(userId)
+            .then((res) => {
+                this.setState({
+                    userActivity: res.data,
+                });
+            });
+    }
 
-        // workoutAPI.getBikesByUserId(userId)
-        //     .then((res) => {
-        //         console.log(res);
-        //     });
+    getBikes = () => {
+        let userId = this.props.userId;
+        workoutAPI.getBikesByUserId(userId)
+            .then((res) => {
+                this.setState({
+                    userActivity: res.data,
+                });
+            });
+    }
 
-        // workoutAPI.getSwimsByUserId(userId)
-        //     .then((res) => {
-        //         console.log(res);
-        //     });
+    getSwims = () => {
+        let userId = this.props.userId;
+        workoutAPI.getSwimsByUserId(userId)
+            .then((res) => {
+                this.setState({
+                    userActivity: res.data,
+                });
+            });
+    }
 
-        // workoutAPI.getLiftsByUserId(userId)
-        //     .then((res) => {
-        //         console.log(res);
-        //     });
+    getLifts = () => {
+        let userId = this.props.userId;
+        workoutAPI.getLiftsByUserId(userId)
+            .then((res) => {
+                this.setState({
+                    userActivity: res.data,
+                });
+            });
     }
     
     sortByDate = (userActivity) => {
@@ -103,17 +122,45 @@ class ProfileBody extends Component {
     render() {
         return (
             <Container>
-
-
                 <div className="myActivity">
                     <h4>User Activity</h4>
-                    <div className="toggleDisplayBtn">
+                    <div className="profileFilterBtns mb-1">
+                        <button
+                            className="btn btn-light btn-sm profileFilterBtn"
+                            onClick={this.getAllWorkouts}
+                        >
+                            All
+                        </button>
+                        <button
+                            className="btn btn-light btn-sm profileFilterBtn"
+                            onClick={this.getRuns}
+                        >
+                            Runs
+                        </button>
+                        <button
+                            className="btn btn-light btn-sm profileFilterBtn"
+                            onClick={this.getBikes}
+                        >
+                            Bikes
+                        </button>
+                        <button
+                            className="btn btn-light btn-sm profileFilterBtn"
+                            onClick={this.getSwims}
+                        >
+                            Swims
+                        </button>
+                        <button
+                            className="btn btn-light btn-sm profileFilterBtn"
+                            onClick={this.getLifts}
+                        >
+                            Lifts
+                        </button>
                         <button 
-                        className="btn btn-dark btn-sm toggleDisplayBtn" 
-                        onClick={(event) => {
-                            event.preventDefault();
-                            this.toggleDisplay();
-                        }}>
+                            className="btn btn-dark btn-sm toggleDisplayBtn" 
+                            onClick={(event) => {
+                                event.preventDefault();
+                                this.toggleDisplay();
+                            }}>
                             {"View Recent"}
                         </button>
                     </div>

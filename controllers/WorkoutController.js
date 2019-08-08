@@ -68,6 +68,70 @@ class WorkoutController {
             });
     }
 
+    getRunsByUserId(req, res) {
+        db.Workouts.findAll({
+            where: {
+                userId: req.params.userId,
+                workoutType: 'run',
+            },
+            order: [[ 'date', 'DESC' ]],
+        })
+        .then((workouts) => {
+            res.json(workouts);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    }
+
+    getBikesByUserId(req, res) {
+        db.Workouts.findAll({
+            where: {
+                userId: req.params.userId,
+                workoutType: 'bike',
+            },
+            order: [[ 'date', 'DESC' ]],
+        })
+        .then((workouts) => {
+            res.json(workouts);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    }
+
+    getSwimsByUserId(req, res) {
+        db.Workouts.findAll({
+            where: {
+                userId: req.params.userId,
+                workoutType: 'swim',
+            },
+            order: [[ 'date', 'DESC' ]],
+        })
+        .then((workouts) => {
+            res.json(workouts);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    }
+
+    getLiftsByUserId(req, res) {
+        db.Workouts.findAll({
+            where: {
+                userId: req.params.userId,
+                workoutType: 'lift',
+            },
+            order: [[ 'date', 'DESC' ]],
+        })
+        .then((workouts) => {
+            res.json(workouts);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    }
+
     createWorkout(req, res) {
         db.Workouts.create(req.body.workoutData)
             .then((workout) => {
