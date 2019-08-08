@@ -48,7 +48,7 @@ class Navbar extends Component {
                         <li className="nav-item">
                             <a className="nav-link" href="/home">Home</a>
                         </li>
-                        <li className={`nav-item ${localStorage.getItem("userId") === "834292GU"}`}>
+                        <li className={`nav-item ${localStorage.getItem("userId") === "834292GU" ? ("disabled"):("")}`}>
                             <a className="nav-link" href="/profile">Profile</a>
                         </li>
                         <li className="nav-item">
