@@ -359,7 +359,7 @@ class SubmitBike extends Component {
                         />
                     </div>
 
-                    {this.state.userId === "834292GU" ? (
+                    {localStorage.getItem("userId") === "834292GU" ? (
                         <></>
                     ) : (
                         <button className="btn btn-primary" onClick={this.getTtlMins}>Submit</button>
