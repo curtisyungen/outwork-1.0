@@ -10,6 +10,7 @@ class ForgotPassword extends Component {
         this.state = {
             email: "",
             agree: false,
+            hover: 0,
         }
     }
 
@@ -79,6 +80,12 @@ class ForgotPassword extends Component {
         });
     }
 
+    hover = () => {
+        this.setState({
+            hover: this.state.hover + 1,
+        });
+    }
+
     render() {
         return (
             <span className="forgotPage">
@@ -128,7 +135,19 @@ class ForgotPassword extends Component {
                                     You need to keep track of your own things. It's ridiculous. 
                                     I honestly don't know what you'd do without me.
                                 </p>
-                                <button className="submitEmailBtn agree" onClick={this.agree}>
+
+                                {this.state.hover >= 1 ? (
+                                    <p className="lecture">
+                                        Since you started working out you've become like a total meathead.
+                                        Forgetful, slow, careless. I'd be seriously worried if I were you. 
+                                        Sheesh.
+                                    </p>
+                                ) : (
+                                    <></>
+                                )}
+                                
+                                <button 
+                                    className="submitEmailBtn agree" onHover={this.hover} onClick={this.agree}>
                                     Agree and Acknowledge
                                 </button>
                             </span>
