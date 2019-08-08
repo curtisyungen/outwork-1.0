@@ -7,6 +7,10 @@
     width: 100%;
 }
 
+.infoMsg {
+    font-size: 12px;
+}
+
 .liftContainer {
     width: 800px !important;
 }
