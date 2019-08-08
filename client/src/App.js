@@ -287,7 +287,7 @@ class App extends Component {
       .then((res) => {
         if (res.data.length === 0) {
           alert("No account exists for this email address.");
-          this.setRedirectToSignUp();
+          // this.setRedirectToSignUp();
         }
         else {
           userAPI.loginUser(email, password)

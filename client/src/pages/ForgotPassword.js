@@ -107,6 +107,17 @@ class ForgotPassword extends Component {
                         >
                             Continue
                         </button>
+                        <p className="formSubHeader">
+                            Look, try not to forget your password anymore. 
+                            It's just a lot of trouble to have to reset it and use up time and computing energy.
+                            I work hard all day and then come home and you've forgotten your stupid password.
+                            How do you think I feel about you always doing that? 
+                            It's important to keep track of information like this for yourself. I can't always help you.
+                            Do you do the same with your bank PIN number? Or your phone number? 
+                            Seriously, figure this out. If you have to write it down somewhere then fine, do that.
+                            But don't keep coming back again and again saying "waa waa I forgot my password help me."
+                            It's really annoying and it's time for you to grow up.
+                        </p>
                     </form>
                 </div>
             </span>

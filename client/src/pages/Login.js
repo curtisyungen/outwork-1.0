@@ -13,10 +13,6 @@ class Login extends Component {
         }
     }
 
-    componentDidMount = () => {
-
-    }
-
     handleInputChange = (event) => {
         const { name, value } = event.target;
 
