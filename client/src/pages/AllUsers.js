@@ -57,7 +57,7 @@ class AllUsers extends Component {
                         )}
                     </div>
                 ) : (
-                    <p>Loading users...</p>
+                    <></>
                 )}
             </Container>
         )
