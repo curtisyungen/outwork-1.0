@@ -185,6 +185,7 @@ class ShoeMetrics extends Component {
                             <button
                                 className="btn btn-success btn-sm exerciseBtn saveBtn"
                                 onClick={this.addShoe}
+                                disabled={localStorage.getItem("userId") === "834292GU"}
                             >
                                 <FontAwesomeIcon className="fa-2x faSave" icon={faSave} />
                             </button>
