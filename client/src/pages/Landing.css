@@ -1,5 +1,7 @@
 .guestText {
     font-size: 11px;
+    margin: 15px auto;
+    width: 300px;
 }
 
 .jumbotron {
@@ -12,7 +14,7 @@
 }
 
 .loginBtn {
-    margin-top: 5px;
+    margin-top: 10px;
     width: 300px;
 }
 
