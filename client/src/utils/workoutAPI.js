@@ -23,6 +23,22 @@ export default {
         return axios.get("/api/workouts/getRecentWorkoutsByUserId/" + userId);
     },
 
+    getRunsByUserId: function(userId) {
+        return axios.get("/api/workouts/getRunsByUserId/" + userId);
+    },
+
+    getBikesByUserId: function(userId) {
+        return axios.get("/api/workouts/getBikesByUserId/" + userId);
+    },
+
+    getSwimsByUserId: function(userId) {
+        return axios.get("/api/workouts/getSwimsByUserId/" + userId);
+    },
+
+    getLiftsByUserId: function(userId) {
+        return axios.get("/api/workouts/getLiftsByUserId/" + userId);
+    },
+
     createWorkout: function(workoutData) {
         return axios.post("/api/workouts/createWorkout", {workoutData: workoutData});
     },
