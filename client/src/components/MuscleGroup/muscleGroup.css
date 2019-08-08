@@ -5,6 +5,7 @@
 .muscleGroupDiv {
     background: rgb(242, 242, 242);
     border: 1px solid black;
+    border-radius: 4px;
     display: inline-block;
     height: 25px;
     margin-right: 8px;
