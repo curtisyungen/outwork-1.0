@@ -19,6 +19,10 @@ export default {
         return axios.get("/api/workouts/getRecentWorkouts");
     },
 
+    getRecentWorkoutsByUserId: function(userId) {
+        return axios.get("/api/workouts/getRecentWorkoutsByUserId/" + userId);
+    },
+
     createWorkout: function(workoutData) {
         return axios.post("/api/workouts/createWorkout", {workoutData: workoutData});
     },

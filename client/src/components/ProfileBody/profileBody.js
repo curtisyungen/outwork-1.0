@@ -15,6 +15,7 @@ class ProfileBody extends Component {
             userId: null,
             userActivity: null,
             message: null,
+            displayOpt: "View All",
         }
     }
 
@@ -23,20 +24,62 @@ class ProfileBody extends Component {
             userId: this.props.userId,
             userActivity: this.props.userActivity,
         }, () => {
-            this.getAllWorkoutsByUserId(this.state.userId);
+            this.getRecentWorkouts(this.state.userId);
         });
     }
 
-    
-    getAllWorkoutsByUserId = (userId) => {
-        this.setState({
-            message: "Loading activity...",
-        });
+    toggleDisplay = () => {
+        let opt = this.state.displayOpt;
+        let userId = this.state.userId;
 
-        workoutAPI.getAllWorkoutsByUserId(userId)
-        .then((res) => {
-            this.sortByDate(res.data);
+        if (opt === "View All") {
+            opt = "View Recent";
+            this.getAllWorkouts(userId);
+        }
+        else {
+            opt = "View All";
+            this.getRecentWorkouts(userId);
+        }
+
+        this.setState({
+            displayOpt: opt,
         });
+    }
+
+    getRecentWorkouts = (userId) => {
+        workoutAPI.getRecentWorkoutsByUserId(userId)
+            .then((res) => {
+                this.setState({
+                    userActivity: res.data,
+                });
+            });
+    }
+    
+    getAllWorkouts = (userId) => {
+        workoutAPI.getAllWorkoutsByUserId(userId)
+            .then((res) => {
+                this.sortByDate(res.data);
+            });
+
+        // workoutAPI.getRunsByUserId(userId)
+        //     .then((res) => {
+        //         console.log(res);
+        //     });
+
+        // workoutAPI.getBikesByUserId(userId)
+        //     .then((res) => {
+        //         console.log(res);
+        //     });
+
+        // workoutAPI.getSwimsByUserId(userId)
+        //     .then((res) => {
+        //         console.log(res);
+        //     });
+
+        // workoutAPI.getLiftsByUserId(userId)
+        //     .then((res) => {
+        //         console.log(res);
+        //     });
     }
     
     sortByDate = (userActivity) => {
@@ -60,22 +103,20 @@ class ProfileBody extends Component {
     render() {
         return (
             <Container>
-                {this.state.userId ? (
-                    <span>
-                        <Metrics 
-                            userId={this.props.userId}
-                        />
 
-                        <Calendar 
-                            userId={this.props.userId}
-                        />
-                    </span>
-                ) : (
-                    <p className="text-center">Loading metrics...</p>
-                )}
 
                 <div className="myActivity">
                     <h4>User Activity</h4>
+                    <div className="toggleDisplayBtn">
+                        <button 
+                        className="btn btn-dark btn-sm toggleDisplayBtn" 
+                        onClick={(event) => {
+                            event.preventDefault();
+                            this.toggleDisplay();
+                        }}>
+                            {"View Recent"}
+                        </button>
+                    </div>
                     {this.state.userActivity && this.state.userActivity.length > 0 ? (
                         this.state.userActivity.map(act => (
                             <UserActivity
