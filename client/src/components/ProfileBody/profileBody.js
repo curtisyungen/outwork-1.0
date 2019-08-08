@@ -13,7 +13,7 @@ class ProfileBody extends Component {
             userId: null,
             userActivity: null,
             message: null,
-            displayOpt: "View All",
+            displayOpt: "Recent",
         }
     }
 
@@ -32,6 +32,7 @@ class ProfileBody extends Component {
             .then((res) => {
                 this.setState({
                     userActivity: res.data,
+                    displayOpt: "Recent",
                 });
             });
     }
@@ -40,6 +41,10 @@ class ProfileBody extends Component {
         let userId = this.props.userId;
         workoutAPI.getAllWorkoutsByUserId(userId)
             .then((res) => {
+                this.setState({
+                    displayOpt: "All",
+                });
+
                 this.sortByDate(res.data);
             });
     }
@@ -109,13 +114,13 @@ class ProfileBody extends Component {
                     <h4>User Activity</h4>
                     <div className="profileFilterBtns mb-1">
                         <button
-                            className="btn btn-light btn-sm profileFilterBtn"
+                            className={`btn btn-light btn-sm profileFilterBtn opt-${this.state.displayOpt === "All"}`}
                             onClick={this.getAllWorkouts}
                         >
                             All
                         </button>
                         <button 
-                            className="btn btn-light btn-sm toggleDisplayBtn" 
+                            className={`btn btn-light btn-sm toggleDisplayBtn opt-${this.state.displayOpt === "Recent"}`}
                             onClick={(event) => {
                                 event.preventDefault();
                                 this.getRecentWorkouts();
