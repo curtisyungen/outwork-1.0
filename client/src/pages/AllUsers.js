@@ -19,8 +19,21 @@ class AllUsers extends Component {
 
         userAPI.getAllUsers()
             .then((res) => {
+
+                // Remove guest user from results
+                let users = res.data;
+                let idx = -1;
+                for (var u in users) {
+                    if (users[u].firstName === guest) {
+                        console.log(users[u]);
+                        idx = u;
+                    }
+                }
+
+                users.splice(idx, 1);
+
                 this.setState({
-                    users: res.data,
+                    users: users,
                 });
             });
     }
@@ -33,12 +46,10 @@ class AllUsers extends Component {
                         {this.state.users && this.state.users.length > 0 ? (
                             this.state.users.map(user => (
                                 <User 
-                                    key={Math.random() * 100000}
+                                    key={user.userId}
                                     userId={user.userId}
                                     firstName={user.firstName}
                                     lastName={user.lastName}
-                                    followers={user.followers}
-                                    // updateUserFollowings={this.updateUserFollowings}
                                     loadProfile={this.props.loadProfile}
                                 />
                             ))
