@@ -51,6 +51,23 @@ class WorkoutController {
             });
     }
 
+    getRecentWorkoutsByUserId(req, res) {
+        db.Workouts.findAll({
+            where: {
+                userId: req.params.userId,
+            },
+            limit: 10,
+            order: [[ 'date', 'DESC' ]],
+            })
+            .then((workouts) => {
+                res.json(workouts);
+
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
     createWorkout(req, res) {
         db.Workouts.create(req.body.workoutData)
             .then((workout) => {
