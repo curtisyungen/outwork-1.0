@@ -32,9 +32,10 @@ class ResetController {
             text: `
             Here's your One Time Password: ${req.body.resetCode}.
             Enter it on the site, if you can even figure that out. 
-            Don't forget your password again. 
+            Don't ever forget your password again. 
 
-            Sincerely, 
+            Kindly, 
+
             Outwork`
         };
 
@@ -44,7 +45,7 @@ class ResetController {
             }
             else {
                 // Used only to fulfill axios promise
-                db.Books.findAll({})
+                db.Workouts.findAll({})
                     .then(() => {
                         res.json("Complete");
                     });
