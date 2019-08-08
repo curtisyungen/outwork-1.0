@@ -685,13 +685,13 @@ class App extends Component {
             } />
 
             {/* Sign Up Page */}
-            <Route exact path="/signUp" render={() =>
+            {/* <Route exact path="/signUp" render={() =>
               <SignUp
                 setRedirectToLogin={this.setRedirectToLogin}
                 setRedirectToHome={this.setRedirectToHome}
                 createUser={this.createUser}
               />
-            } />
+            } /> */}
 
             {/* Home Page */}
             <Route exact path="/home" render={() =>
