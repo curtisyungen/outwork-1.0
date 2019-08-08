@@ -5,9 +5,15 @@
 .muscleGroupDiv {
     background: rgb(242, 242, 242);
     border: 1px solid black;
+    display: inline-block;
     height: 15px;
-    transition: 0.5s;
+    margin-right: 8px;
     width: 15px;
+}
+
+.muscleGroupText {
+    display: inline-block;
+    margin-top: -1px;
 }
 
 .checked-true {

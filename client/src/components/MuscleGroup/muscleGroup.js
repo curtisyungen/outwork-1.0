@@ -15,7 +15,7 @@ class MuscleGroup extends Component {
                     onClick={this.toggleCheck}
                 >
                 </div>
-                <div>{this.props.muscleGroup}</div>
+                <div className="muscleGroupText">{this.props.muscleGroup}</div>
             </div>
         )
     }
