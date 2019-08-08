@@ -9,11 +9,8 @@ class ForgotPassword extends Component {
 
         this.state = {
             email: "",
+            agree: false,
         }
-    }
-
-    componentDidMount = () => {
-
     }
 
     handleInputChange = (event) => {
@@ -76,6 +73,12 @@ class ForgotPassword extends Component {
         }
     }
 
+    agree = () => {
+        this.setState({
+            agree: true,
+        });
+    }
+
     render() {
         return (
             <span className="forgotPage">
@@ -105,22 +108,28 @@ class ForgotPassword extends Component {
                         <button
                             className="submitEmailBtn"
                             onClick={this.getPasswordReset}
+                            disabled={this.state.agree === false}
                         >
                             Continue
                         </button>
                         
                         {this.state.email !== null && this.state.email.length > 0 ? (
-                            <p className="lecture">
-                                Look, try not to forget your password anymore. 
-                                It's just a lot of trouble to have to reset it and use up time and computing energy.
-                                I work hard all day and then come home and you've forgotten your stupid password.
-                                How do you think I feel about you always doing that? 
-                                It's important to keep track of information like this for yourself. I can't always help you.
-                                Do you do the same with your bank PIN number? Or your phone number? 
-                                Seriously, figure this out. If you have to write it down somewhere then fine, do that.
-                                But don't keep coming back again and again saying "waa waa I forgot my password help me."
-                                It's really annoying and it's time for you to grow up.
-                            </p>
+                            <span>
+                                <p className="lecture">
+                                    Look, try not to forget your password anymore. 
+                                    It's just a lot of trouble to have to reset it and use up time and computing energy.
+                                    I work hard all day and then come home and you've forgotten your stupid password.
+                                    How do you think I feel about you always doing that? 
+                                    It's important to keep track of information like this for yourself. I can't always help you.
+                                    Do you do the same with your bank PIN number? Or your phone number? 
+                                    Seriously, figure this out. If you have to write it down somewhere then fine, do that.
+                                    But don't keep coming back again and again saying "waa waa I forgot my password help me."
+                                    It's really annoying and it's time for you to grow up.
+                                </p>
+                                <button className="submitEmailBtn agree" onClick={this.agree}>
+                                    Agree and Acknowledge
+                                </button>
+                            </span>
                         ) : (
                             <></>
                         )}
