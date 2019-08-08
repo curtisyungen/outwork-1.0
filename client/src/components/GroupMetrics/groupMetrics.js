@@ -23,10 +23,21 @@ class GroupMetrics extends Component {
     getUsers = () => {
         userAPI.getAllUsers()
             .then((res) => {
+
+                // Remove guest from user list
+                let users = res.data;
+                let idx = -1;
+                for (var u in users) {
+                    if (users[u].userId === "834292GU") {
+                        idx = u;
+                    }
+                }
+
+                users.splice(idx, 1);
+
                 this.setState({
-                    users: res.data,
+                    users: users,
                 }, () => {
-                    let users = res.data;
                     for (var u in users) {
                         this.getMetrics(users[u].userId, users[u].firstName);
                     }
