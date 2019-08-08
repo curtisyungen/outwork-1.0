@@ -525,7 +525,7 @@ class SubmitLift extends Component {
                         </div>
                         <p className="infoMsg">
                             Only exercises containing "push-up", "pull-up", or "chin-up" count toward
-                            respective totals. Static holds are not counted. 
+                            overall push-up/pull-up totals. Static holds are not counted. 
                         </p>
                     </div>
 
