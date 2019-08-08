@@ -14,6 +14,10 @@ router.get("/getRecentWorkouts", (req, res) => {
     controller.getRecentWorkouts(req, res);
 });
 
+router.get("/getRecentWorkoutsByUserId/:userId", (req, res) => {
+    controller.getRecentWorkoutsByUserId(req, res);
+});
+
 router.post("/createWorkout", (req, res) => {
     controller.createWorkout(req, res);
 });
