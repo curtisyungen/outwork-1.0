@@ -18,7 +18,6 @@ class Home extends Component {
             activitySearch: "",
             message: null,
             openQuickStats: false,
-            displayOpt: "",
         }
     }
 
@@ -36,7 +35,6 @@ class Home extends Component {
                 filtered: this.props.allActivity,
                 category: "Name",
                 message: "Loading activity...",
-                displayOpt: "View All",
             });
         }
     }
@@ -46,7 +44,6 @@ class Home extends Component {
             this.setState({
                 allActivity: this.props.allActivity,
                 filtered: this.props.allActivity,
-                displayOpt: this.props.displayOpt,
             });
         }
     }
@@ -243,7 +240,10 @@ class Home extends Component {
                     {/* FILTER BUTTONS */}
                     <div className="homePageBtns mb-2">
                         <div className="filterBtns">
-                            <button className="btn btn-light btn-sm filterAll" onClick={this.filterBy.bind(null, "")}>All</button>
+                            <button className={`btn btn-light btn-sm filterAll opt-${this.props.displayOpt === "All"}`} onClick={this.props.getAllWorkouts}>All</button>
+                            <button className={`btn btn-light btn-sm toggleDisplayBtn opt-${this.props.displayOpt === "Recent"}`} onClick={this.props.getRecentWorkouts}>
+                                Recent
+                            </button>
                             <button className="btn btn-light btn-sm filterRuns" onClick={this.filterBy.bind(null, "run")}>Runs</button>
                             <button className="btn btn-light btn-sm filterBikes" onClick={this.filterBy.bind(null, "bike")}>Bikes</button>
                             <button className="btn btn-light btn-sm filterSwims" onClick={this.filterBy.bind(null, "swim")}>Swims</button>
@@ -256,9 +256,7 @@ class Home extends Component {
                         </div>
 
                         <div className="toggleDisplayBtn">
-                            <button className="btn btn-dark btn-sm toggleDisplayBtn" onClick={this.props.toggleDisplay}>
-                                {this.state.displayOpt === "View Recent" ? ("View Recent"):("View All")}
-                            </button>
+                            
                         </div>
                     </div>
 
