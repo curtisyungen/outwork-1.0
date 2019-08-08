@@ -8,7 +8,8 @@ class Landing extends Component {
         super(props);
 
         this.state = {
-
+            email: "outworkguest@gmail.com",
+            password: "guest",
         }
     }
 
@@ -27,6 +28,10 @@ class Landing extends Component {
                     }
             });
         }
+    }
+
+    loginGuest = () => {
+        this.props.loginUser(this.state.email, this.state.password);
     }
 
     render() {
@@ -51,6 +56,12 @@ class Landing extends Component {
                             onClick={this.props.setRedirectToLogin}
                         >
                             Sign In
+                        </button>
+                        <button 
+                            className="btn btn-outline-warning btn-sm" 
+                            onClick={this.loginGuest}
+                        >
+                            Guest
                         </button>
                     </div>
                 </div>
