@@ -26,23 +26,6 @@ class ProfileBody extends Component {
         });
     }
 
-    toggleDisplay = () => {
-        let opt = this.state.displayOpt;
-
-        if (opt === "View All") {
-            opt = "View Recent";
-            this.getAllWorkouts();
-        }
-        else {
-            opt = "View All";
-            this.getRecentWorkouts();
-        }
-
-        this.setState({
-            displayOpt: opt,
-        });
-    }
-
     getRecentWorkouts = () => {
         let userId = this.props.userId;
         workoutAPI.getRecentWorkoutsByUserId(userId)
@@ -131,6 +114,14 @@ class ProfileBody extends Component {
                         >
                             All
                         </button>
+                        <button 
+                            className="btn btn-light btn-sm toggleDisplayBtn" 
+                            onClick={(event) => {
+                                event.preventDefault();
+                                this.getRecentWorkouts();
+                            }}>
+                            Recent
+                        </button>
                         <button
                             className="btn btn-light btn-sm profileFilterBtn"
                             onClick={this.getRuns}
@@ -154,14 +145,6 @@ class ProfileBody extends Component {
                             onClick={this.getLifts}
                         >
                             Lifts
-                        </button>
-                        <button 
-                            className="btn btn-dark btn-sm toggleDisplayBtn" 
-                            onClick={(event) => {
-                                event.preventDefault();
-                                this.toggleDisplay();
-                            }}>
-                            {"View Recent"}
                         </button>
                     </div>
                     {this.state.userActivity && this.state.userActivity.length > 0 ? (
