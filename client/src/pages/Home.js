@@ -262,8 +262,6 @@ class Home extends Component {
                         </div>
                     </div>
 
-                    
-
                     <span>
                         {this.state.filtered && this.state.filtered.length === 0 ? (
                             <p className="text-center">{this.state.message}</p>

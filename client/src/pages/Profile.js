@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ProfileHeader from "../components/ProfileHeader/profileHeader";
 import ProfileBody from "../components/ProfileBody/profileBody";
+import Metrics from "../components/Metrics/metrics";
+import Calendar from "../components/Calendar/calendar";
 import hofAPI from "../utils/hofAPI";
 import "./Profile.css";
 
@@ -73,6 +75,21 @@ class Profile extends Component {
                             lastName={this.state.lastName}
                             hof={this.state.hof}
                         />
+
+                        {this.state.userId ? (
+                            <span>
+                                <Metrics 
+                                    userId={this.state.userId}
+                                />
+
+                                <Calendar 
+                                    userId={this.state.userId}
+                                />
+                            </span>
+                        ) : (
+                            <></>
+                        )}
+
                         <ProfileBody
                             userId={this.state.userId}
                             deleteActivity={this.props.deleteActivity}
