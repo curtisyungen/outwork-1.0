@@ -91,8 +91,8 @@ class ForgotPassword extends Component {
                     <form>
                         <h4 className="formHeader pwordAssist">Password assistance</h4>
                         <p className="formSubHeader">
-                            You forgot your password? Wow, that's really stupid and annoying of you.
-                            Well, enter your email address below then.
+                            You forgot your password? Alright then. 
+                            Enter your email address below and we'll get this sorted out.
                         </p>
                         <p className="formLabel">Email</p>
                         <input
