@@ -77,6 +77,10 @@
     float: right;
 }
 
+.dataPoint-map {
+    font-size: 12px;
+}
+
 .dataTitle {
     display: inline-block;
 }
