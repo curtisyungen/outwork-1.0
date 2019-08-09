@@ -362,7 +362,12 @@ class SubmitLift extends Component {
     submitLift = () => {
         this.props.checkValidUser();
 
-        if (this.validateLiftForm()) {
+        let confirm = true;
+        if (this.state.errorDetected) {
+            confirm = confirm(`Heads up! There is a potential error in your exercise names. Check that you used 'Push-Ups', 'Pull-Ups', 'Chin-Ups'.`)
+        }
+
+        if (confirm && this.validateLiftForm()) {
 
             let generator = "Standard";
             switch (this.state.generator) {
@@ -556,7 +561,7 @@ class SubmitLift extends Component {
                             setRest={this.setRest}
                             setNotes={this.setNotes}
                             getExercise={this.getExercise}
-                            alertError={this.alertError}
+                            errorDetected={this.errorDetected}
                             deleteExercise={this.deleteExercise}
                         />
                     ))}
