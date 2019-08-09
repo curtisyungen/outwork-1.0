@@ -258,6 +258,9 @@ class Home extends Component {
                             <button className="btn btn-info btn-sm quickStatsBtn" onClick={this.openQuickStats}>Quick Stats</button>
                         </div>
                     </div>
+
+                    {/* BACK TO TOP */}
+                    <div className="backToTopBtn" onClick={this.backToTop}>Back to Top</div>
    
                     <span>
                         {this.state.filtered && this.state.filtered.length === 0 ? (
@@ -274,9 +277,6 @@ class Home extends Component {
                                 </span>
                             )}
                     </span>
-
-                    {/* BACK TO TOP */}
-                    <div className="backToTopBtn" onClick={this.backToTop}>Back to Top</div>
 
                     <Modal
                         open={this.state.openQuickStats}
