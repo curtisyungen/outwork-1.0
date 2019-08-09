@@ -19,10 +19,13 @@ class Month extends Component {
         let month = this.props.month;
         let monthName = month[0];
 
-        month.shift();
+        let cutMonth = [];
+        for (var d=1; d<month.length; d++) {
+            cutMonth.push(month[d]);
+        }
 
         this.setState({
-            month: month,
+            month: cutMonth,
             monthName: monthName,
             monthNum: this.props.monthNum,
         });
@@ -31,7 +34,7 @@ class Month extends Component {
     render() {
         return (
             <div className="month">
-                <h4 className="monthName">{this.state.monthName}</h4>
+                <h4 className="monthName">{this.props.month[0]}</h4>
                 {this.state.month && this.state.month.length > 0 ? (
                     this.state.month.map(day => (
                         <Day
