@@ -17,7 +17,7 @@ class Error extends Component {
 
     render() {
         return (
-            <div className="container text-center errorPage">
+            <div className="jumbotron fluid-jumbotron text-center errorPage">
                 <div className="logo">
                     <a href="/">
                         <img className="loginLogo" src={require('../images/logo2.png')} alt="congo" />

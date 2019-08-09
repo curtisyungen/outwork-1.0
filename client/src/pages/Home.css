@@ -53,7 +53,6 @@
 }
 
 .quickStatsBtn {
-    float: right;
     font-size: 12px;
 }
 
@@ -98,47 +97,8 @@
     margin-right: 2px;
 }
 
-@media only screen and (max-width: 1325px) {
-    .bookList {
-        width: 75vw;
-    }
-}
-
-@media only screen and (max-width: 768px) {
-    .bookList {
-        width: 650px;
-    }
-
-    .content {
-        margin-left: 15px;
-    }
-}
-
-@media only screen and (max-width: 670px) {
-    .bookList {
-        width: 600px;
-    }
-}
-
-@media only screen and (max-width: 420px) {
-    .bookList {
-        left: 15px;
-        margin-top: 25px;
-        max-width: 100%;
-        top: 160px;
-    }
-
-    .content {
-        display: flex;
-        flex-direction: column;
-        margin: 0;
-    }
-
-    .resultsSummary {
-        display: none;
-    }
-
-    .underConstruction {
-        display: none;
+@media only screen and (max-width: 520px) {
+    .quickStatsBtn {
+        margin-top: 2px;
     }
 }
