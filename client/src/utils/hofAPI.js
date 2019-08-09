@@ -55,6 +55,10 @@ export default {
         return axios.get("/api/hof/getSwims");
     },
 
+    getBikes: function() {
+        return axios.get("/api/hof/getBikes");
+    },
+
     getHotdog: function() {
         return axios.get("/api/hof/getHotdog");
     },
