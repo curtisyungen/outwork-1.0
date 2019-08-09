@@ -1,0 +1,14 @@
+.errorPage {
+    /* background: rgb(242, 242, 242); */
+    background: transparent;
+    font-size: 42px;
+    margin-top: 35px;
+}
+
+.errorMessage {
+    margin-top: 35px;
+}
+
+.errorSubMessage {
+    font-size: 18px;
+}
