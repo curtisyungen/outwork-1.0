@@ -45,7 +45,9 @@ class Exercise extends Component {
         this.setState({
             [name]: value,
         }, () => {
-            this.spellCheck(value);
+            if (name === "name") {
+                this.spellCheck(value);
+            }
         });
     }
 
@@ -73,6 +75,8 @@ class Exercise extends Component {
         
         this.setState({
             errorDetected: errorDetected,
+        }, () => {
+            this.props.errorDetected(errorDetected);
         });
     }
 
@@ -88,7 +92,6 @@ class Exercise extends Component {
         this.props.setReps(this.props.id, this.state.reps);
         this.props.setRest(this.props.id, this.state.rest);
         this.props.setNotes(this.props.id, this.state.notes);
-        this.props.errorDetected(this.state.errorDetected);
     }
 
     render() {
