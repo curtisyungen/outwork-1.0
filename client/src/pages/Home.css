@@ -19,6 +19,7 @@
     position: fixed;
     text-align: center;
     transform: translate(-50%);
+    transition: 0.5s;
     width: 75px;
     z-index: 105;
 }
