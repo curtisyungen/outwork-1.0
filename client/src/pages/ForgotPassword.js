@@ -126,13 +126,12 @@ class ForgotPassword extends Component {
                             <span>
                                 <p className="lecture">
                                     Look, try not to forget your password anymore. 
-                                    It's just a lot of trouble to have to reset it and use up time and computing energy. 
+                                    It's just a lot of trouble to have to reset it and it uses up lots of time and computing energy. 
                                 </p>
 
                                 {this.state.hover >= 1 ? (
                                     <p className="lecture">
                                         I work hard all day and then come home and you've forgotten your stupid password.
-                                        How do you think I feel about you always being the way that you are? 
                                         It's important to keep track of information like this for yourself. I can't always help you.
                                         Do you do the same with your bank PIN number? Or your phone number? 
                                         Seriously, figure this out. If you have to write it down somewhere then fine, do that.
@@ -147,7 +146,7 @@ class ForgotPassword extends Component {
 
                                 {this.state.hover >= 2 ? (
                                     <p className="lecture">
-                                        Since you started working out you've become like a total meathead.
+                                        You know, since you started working out you've become like a total meathead.
                                         Forgetful, slow, careless. I'd be seriously worried if I were you. 
                                         Sheesh.
                                     </p>
