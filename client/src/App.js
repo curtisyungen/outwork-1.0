@@ -443,15 +443,16 @@ class App extends Component {
   updateHof = () => {
     hofAPI.getMaxWorkouts()
       .then((res) => {
-        // Get maximum number of workouts
+        
         let max = this.getMaximum(res.data);
         hofAPI.updateHof("mostWorkouts", max[0], max[1]);
+      });
 
-        // Get maximum number of rest days
+    hofAPI.getMaxRestDays()
+      .then((res) => {
         let min = this.getMinimum(res.data);
         let dateNum = moment().dayOfYear();
         let minVal = dateNum - min[1];
-
         hofAPI.updateHof("mostRestDays", min[0], minVal);
       });
 

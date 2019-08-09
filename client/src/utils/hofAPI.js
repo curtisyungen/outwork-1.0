@@ -15,6 +15,10 @@ export default {
         return axios.get("/api/hof/getMaxWorkouts");
     },
 
+    getMaxRestDays: function() {
+        return axios.get("/api/hof/getMaxRestDays");
+    },
+
     getLongestRun: function() {
         return axios.get("/api/hof/getLongestRun");
     },
