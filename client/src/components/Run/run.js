@@ -167,7 +167,7 @@ class Run extends Component {
                                 {/* MAP */}
                                 <div className="border-bottom">
                                     <div className="dataTitle">Map</div>
-                                    <div className="dataPoint">{this.props.map}</div>
+                                    <div className="dataPoint dataPoint-map">{this.props.map}</div>
                                 </div>
                             </div>
                         </div>
