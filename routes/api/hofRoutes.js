@@ -54,6 +54,10 @@ router.get("/getSwims", (req, res) => {
     controller.getSwims(req, res);
 });
 
+router.get("/getBikes", (req, res) => {
+    controller.getBikes(req, res);
+});
+
 router.get("/getHotdog", (req, res) => {
     controller.getHotdog(req, res);
 });

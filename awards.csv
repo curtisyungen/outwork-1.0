@@ -11,3 +11,4 @@ id,award,title,desc,icon,unit,firstName,value,createdAt,updatedAt
 10,mostRainyDays,Rain Man,Most days run in heavy rain.,faCloudShowersHeavy,rainy days,,,7/6/2019 11:15,7/6/2019 11:15
 11,mostSwims,Merman,Most swim workouts completed.,faFish,swims,,,7/6/2019 11:15,7/6/2019 11:15
 12,hotdog,Weiner,The coveted weiner award.,faHotdog,weiner,,,7/6/2019 11:15,7/6/2019 11:15
+13,mostBikes,Yellow Jersey,Most biking workouts completed.,faTShirt,bikes,,,7/6/2019 11:15,7/6/2019 11:15
