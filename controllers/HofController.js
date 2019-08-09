@@ -98,7 +98,7 @@ class HofController {
     }
 
     getHotdog(req, res) {
-        db.sequelize.query("SELECT COUNT(id) AS value, firstName FROM Hofs WHERE award != 'hotdog' GROUP BY firstName", { type: sequelize.QueryTypes.SELECT })
+        db.sequelize.query("SELECT COUNT(id) AS value, firstName FROM Hofs WHERE award != 'hotdog' AND firstName != 'NULL' GROUP BY firstName", { type: sequelize.QueryTypes.SELECT })
             .then(hofs => {
                 res.json(hofs);
             });
