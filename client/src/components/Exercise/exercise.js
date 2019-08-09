@@ -62,6 +62,7 @@ class Exercise extends Component {
                 "push-pu", "pull-pu", "chin-pu",
                 "psh-up", "psh up", "pll-up" ,"pll up",
                 "chi-up", "chi up", "pushu", "pullu", "chinu", 
+                "_", "--", "-_", "=",
             ];
 
         for (var m in mistakes) {
