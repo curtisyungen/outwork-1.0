@@ -141,7 +141,7 @@ class Home extends Component {
                 }
                 // Search for all races
                 else {
-                    if (activity[a].runType === "Race" && activity[a].race) {
+                    if (activity[a].runType === "Race") {
                         filtered.push(activity[a]);
                     }
                 }
