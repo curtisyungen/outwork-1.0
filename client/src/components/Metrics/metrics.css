@@ -96,16 +96,6 @@
 }
 
 @media only screen and (max-width: 768px) {
-    .metric {
-        overflow: scroll;
-    }
-    
-    .metricTitleBlock {
-        margin-top: 40px;
-    }
-}
-
-@media only screen and (max-width: 520px) {
     .hof {
         margin-bottom: 15px;
         margin-top: -10px;
@@ -141,5 +131,9 @@
 
     .metricRow {
         height: auto;
+    }
+
+    .metricTitleBlock {
+        margin-top: 40px;
     }
 }
