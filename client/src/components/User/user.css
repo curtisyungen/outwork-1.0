@@ -18,6 +18,7 @@
     text-align: center;
     transition: 0.6s;
     width: 250px;
+    vertical-align: middle;
 }
 
 .user:hover {
@@ -36,6 +37,7 @@
 
 .userText {
     transition: 0.5s;
+    white-space: nowrap;
 }
 
 .userText:hover {
