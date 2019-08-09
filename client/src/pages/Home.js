@@ -18,16 +18,12 @@ class Home extends Component {
             activitySearch: "",
             message: null,
             openQuickStats: false,
-            scrollPos: null,
         }
     }
 
     componentDidMount = () => {
         this.props.checkValidUser();
         this.props.updateParentState();
-
-        window.addEventListener("scroll", this.listenToScroll);
-
         this.props.getRecentWorkouts();
 
         // Validate user and then call getUserById
@@ -52,31 +48,11 @@ class Home extends Component {
         }
     }
 
-    componentWillUnmount = () => {
-        window.removeEventListener("scroll", this.listenToScroll);
-    }
-
     handleInputChange = (event) => {
         const { name, value } = event.target;
 
         this.setState({
             [name]: value,
-        });
-    }
-    
-    listenToScroll = () => {
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-
-        const height = 
-            document.documentElement.scrollHeight - 
-            document.documentElement.clientHeight;
-
-        const scrolled = winScroll / height;
-
-        this.setState({
-            scrollPos: scrolled,
-        }, () => {
-            console.log("Scroll", this.state.scrollPos);
         });
     }
 
@@ -220,13 +196,6 @@ class Home extends Component {
             <Container>
                 <div className={`homePage`}>
 
-                    {/* BACK TO TOP */}
-                    {this.state.scrollPos > 0.015 ? (
-                        <div className="backToTopBtn" onClick={this.backToTop}>Back to Top</div>
-                    ) : (
-                        <></>
-                    )}
-
                     {/* SEARCH BAR */}
                     <div className="input-group mb-2 mt-4">
                         <div className="input-group-prepend">
@@ -305,6 +274,9 @@ class Home extends Component {
                                 </span>
                             )}
                     </span>
+
+                    {/* BACK TO TOP */}
+                    <div className="backToTopBtn" onClick={this.backToTop}>Back to Top</div>
 
                     <Modal
                         open={this.state.openQuickStats}
