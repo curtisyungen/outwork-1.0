@@ -35,6 +35,7 @@ class Exercise extends Component {
             reps: this.props.reps,
             rest: this.props.rest,
             notes: this.props.notes,
+            errorDetected: false,
         });
     }
 
@@ -43,6 +44,24 @@ class Exercise extends Component {
 
         this.setState({
             [name]: value,
+        }, () => {
+            this.spellCheck(value);
+        });
+    }
+
+    spellCheck = (value) => {
+
+        let errorDetected = false;
+        let mistakes = ["psuh", "plul", "chni", "pushup", "pullup", "chinup"];
+
+        for (var m in mistakes) {
+            if (value.indexOf(mistakes[m]) > -1) {
+                errorDetected = true;
+            }
+        }
+        
+        this.setState({
+            errorDetected: errorDetected,
         });
     }
 
@@ -62,7 +81,7 @@ class Exercise extends Component {
 
     render() {
         return (
-            <div className={`input-group input-group-sm mb-1 saved-${this.state.saved}`}>
+            <div className={`input-group input-group-sm mb-1 saved-${this.state.saved} error-${this.state.errorDetected}`}>
                 <div className="workoutBlock">
                     <div className="sect1">
                         {/* NAME */}
