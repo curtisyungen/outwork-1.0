@@ -37,8 +37,8 @@
 }
 
 .metricIcon-bullseye {
-    background: skyblue;
-    color: rgb(185, 0, 0);
+    background: rgb(75, 75, 75);
+    color: #fff;
     padding-top: 11px;
 }
 
@@ -58,6 +58,10 @@
     background: rgb(239, 251, 255);
     height: 50px;
     margin-bottom: 2px;
+}
+
+.metricRow-gen {
+    background: rgb(242, 242, 242) !important;
 }
 
 .metricTitle {

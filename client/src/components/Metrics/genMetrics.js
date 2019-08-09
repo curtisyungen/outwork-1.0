@@ -22,14 +22,10 @@ class GenMetrics extends Component {
         }
     }
 
-    componentDidMount = () => {
-
-    }
-
     render() {
         return (
             <span>
-                <div className={`d-flex flex-${this.props.flexDir} metricRow`}>
+                <div className={`d-flex flex-${this.props.flexDir} metricRow metricRow-gen`}>
                     <div className="metricIcon metricIcon-bullseye">
                         <FontAwesomeIcon className="fa-2x icon" icon={faBullseye} />
                     </div>
