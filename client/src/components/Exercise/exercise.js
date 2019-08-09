@@ -75,8 +75,6 @@ class Exercise extends Component {
         
         this.setState({
             errorDetected: errorDetected,
-        }, () => {
-            this.props.errorDetected(errorDetected);
         });
     }
 
