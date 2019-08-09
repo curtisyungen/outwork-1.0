@@ -87,10 +87,10 @@ class App extends Component {
                     }
               }
 
-              if (name.indexOf("pull-ups") > -1 || 
-                  name.indexOf("pull ups") > -1 ||
-                  name.indexOf("chin-ups") > -1 ||
-                  name.indexOf("chin ups") > -1) {
+              if (name.indexOf("pull-up") > -1 || 
+                  name.indexOf("pull up") > -1 ||
+                  name.indexOf("chin-up") > -1 ||
+                  name.indexOf("chin up") > -1) {
 
                     if (name.indexOf("static") === -1) {
 
@@ -116,7 +116,7 @@ class App extends Component {
 
   componentDidMount = () => {
 
-    // this.correctMetrics();
+    this.correctMetrics();
 
     // Check if logged in
     let loginStatus = false;
