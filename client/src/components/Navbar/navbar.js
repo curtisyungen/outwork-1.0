@@ -74,10 +74,10 @@ class Navbar extends Component {
                             closeOnDocumentClick
                             className="popup"
                         >
-                            <li className="nav-item">
+                            <li className="nav-item popup-item">
                                 <div className="popupBackground" onClick={this.props.openBackgrounds}>{`Background`}</div>
                             </li>
-                            <li className="nav-item">
+                            <li className="nav-item popup-item">
                                 <div className="popupLogout" onClick={this.props.logoutUser}>Logout</div>
                             </li>
                         </Popup>
