@@ -7,13 +7,13 @@
 }
 
 .backToTopBtn {
-    display: block;
-    margin: 5px auto 15px auto;
-}
-
-.bookList {
-    margin-top: 45px;
-    width: 1200px;
+    background: #fff;
+    border: 1px solid black;
+    border-radius: 4px;
+    display: fixed;
+    margin: 15px auto 15px auto;
+    padding: 5px;
+    width: 200px;
 }
 
 .container {
