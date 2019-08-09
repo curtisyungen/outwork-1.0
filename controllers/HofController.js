@@ -77,7 +77,7 @@ class HofController {
     }
 
     getRainyDays(req, res) {
-        db.sequelize.query("SELECT COUNT(id) AS value, firstName, userId FROM Workouts WHERE weather = 'Heavy Rain' OR weather = 'Light Rain' OR weather = 'Rainy' GROUP BY firstName", { type: sequelize.QueryTypes.SELECT })
+        db.sequelize.query("SELECT COUNT(id) AS value, firstName, userId FROM Workouts WHERE weather = 'Heavy Rain' OR weather = 'Light Rain' OR weather = 'Rainy' OR weather = 'Snowy' OR weather = 'Shitstorm' GROUP BY firstName", { type: sequelize.QueryTypes.SELECT })
             .then(days => {
                 res.json(days);
             });
