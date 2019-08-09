@@ -36,7 +36,7 @@ class ProfileBody extends Component {
                 });
             });
     }
-    
+
     getAllWorkouts = () => {
         let userId = this.props.userId;
         workoutAPI.getAllWorkoutsByUserId(userId)
@@ -92,7 +92,7 @@ class ProfileBody extends Component {
                 });
             });
     }
-    
+
     sortByDate = (userActivity) => {
         userActivity.sort(this.compare);
 
@@ -111,6 +111,10 @@ class ProfileBody extends Component {
         }
     }
 
+    backToTop = () => {
+        window.scrollTo(0, 0);
+    }
+
     render() {
         return (
             <Container>
@@ -123,7 +127,7 @@ class ProfileBody extends Component {
                         >
                             All
                         </button>
-                        <button 
+                        <button
                             className={`btn btn-light btn-sm toggleDisplayBtn opt-${this.state.displayOpt === "Recent"}`}
                             onClick={(event) => {
                                 event.preventDefault();
@@ -156,6 +160,14 @@ class ProfileBody extends Component {
                             Lifts
                         </button>
                     </div>
+
+                    {/* BACK TO TOP */}
+                    {this.state.userActivity && this.state.userActivity.length >= 15 ? (
+                        <div className="backToTopBtn" onClick={this.backToTop}>Back to Top</div>
+                    ) : (
+                        <></>
+                    )}
+
                     {this.state.userActivity && this.state.userActivity.length > 0 ? (
                         this.state.userActivity.map(act => (
                             <UserActivity
@@ -165,8 +177,8 @@ class ProfileBody extends Component {
                             />
                         ))
                     ) : (
-                        <p className="text-center">{this.state.message}</p>
-                    )}
+                            <p className="text-center">{this.state.message}</p>
+                        )}
                 </div>
             </Container>
         )
