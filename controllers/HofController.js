@@ -90,6 +90,13 @@ class HofController {
             });
     }
 
+    getBikes(req, res) {
+        db.sequelize.query("SELECT COUNT(id) AS value, firstName, userId FROM Workouts WHERE workoutType = 'bike' GROUP BY firstName", { type: sequelize.QueryTypes.SELECT })
+            .then(bikes => {
+                res.json(bikes);
+            });
+    }
+
     getHotdog(req, res) {
         db.sequelize.query("SELECT COUNT(id) AS value, firstName FROM Hofs WHERE award != 'hotdog' GROUP BY firstName", { type: sequelize.QueryTypes.SELECT })
             .then(hofs => {
