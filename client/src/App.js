@@ -116,7 +116,7 @@ class App extends Component {
 
   componentDidMount = () => {
 
-    this.correctMetrics();
+    // this.correctMetrics();
 
     // Check if logged in
     let loginStatus = false;
