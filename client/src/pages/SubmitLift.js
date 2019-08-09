@@ -355,12 +355,7 @@ class SubmitLift extends Component {
     submitLift = () => {
         this.props.checkValidUser();
 
-        let confirm = true;
-        if (this.state.errorDetected > 0) {
-            confirm = window.confirm(`Heads up! There is a potential error in your exercise names. Check that you used 'Push-Ups', 'Pull-Ups', 'Chin-Ups'.`);
-        }
-
-        if (confirm && this.validateLiftForm()) {
+        if (this.validateLiftForm()) {
 
             let generator = "Standard";
             switch (this.state.generator) {
