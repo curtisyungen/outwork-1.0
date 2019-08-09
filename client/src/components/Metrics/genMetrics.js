@@ -46,7 +46,7 @@ class GenMetrics extends Component {
                         <div>{this.props.races}</div>
                     </div>
                     <div className="metric">
-                        <div className="metricTitle">Rainy Days</div>
+                        <div className="metricTitle">Bad Weather Days</div>
                         <div>{this.props.rainyDays}</div>
                     </div>
                     <div className="metric">
