@@ -6,22 +6,20 @@ const bcrypt = require("bcrypt");
 class UserController {
 
     loginUser(req, res) {
-        db.Users.findAll({
+        db.Users.findOne({
             where: {
                 email: req.query.email,
             }
         })
         .then((user) => {
-            let compare = bcrypt.compare(req.query.password, user.password, function(err, result) {
+            bcrypt.compare(req.query.password, user.password, function(err, result) {
                 if (result === true) {
-                    return true;
+                    res.json(user);
                 }
                 else {
-                    return false;
+                    res.json("Incorrect password.");
                 }
             });
-
-            res.json(user);
         });
     }
 
@@ -134,51 +132,9 @@ class UserController {
         });
     }
 
-    updateWeight(req, res) {
-        db.Users.update(
-            {weight: req.body.weight},
-            {where: {
-                email: req.body.email,
-            }})
-            .then((user) => {
-                res.json(user);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }
-
     updateEquipment(req, res) {
         db.Users.update(
             {equipment: req.body.equipment},
-            {where: {
-                userId: req.body.userId,
-            }})
-            .then((user) => {
-                res.json(user);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }
-    
-    updateUserFollowings(req, res) {
-        db.Users.update(
-            {following: req.body.following},
-            {where: {
-                userId: req.body.userId,
-            }})
-            .then((user) => {
-                res.json(user);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }
-
-    updateUserFollowers(req, res) {
-        db.Users.update(
-            {followers: req.body.followers},
             {where: {
                 userId: req.body.userId,
             }})
@@ -203,20 +159,6 @@ class UserController {
         .catch((err) => {
             console.log(err);
         });
-    }
-
-    followUser(req, res) {
-        db.Users.update(
-            {following: req.body.following},
-            {where: {
-                userId: req.body.userId,
-            }})
-            .then((user) => {
-                res.json(user);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
     }
 }
 
