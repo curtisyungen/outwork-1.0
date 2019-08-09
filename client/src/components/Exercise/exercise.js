@@ -52,10 +52,20 @@ class Exercise extends Component {
     spellCheck = (value) => {
 
         let errorDetected = false;
-        let mistakes = ["psuh", "plul", "chni", "pushup", "pullup", "chinup"];
+        let mistakes = 
+            [
+                "psuh", "plul", "chni", 
+                "pushup", "pullup", "chinup", 
+                "pul-up", "pul up", "pus-up", "pus up", 
+                "puh-up", "puh up", "chn-up", "chn up",
+                "push pu", "pull pu", "chin pu",
+                "push-pu", "pull-pu", "chin-pu",
+                "psh-up", "psh up", "pll-up" ,"pll up",
+                "chi-up", "chi up", "pushu", "pullu", "chinu", 
+            ];
 
         for (var m in mistakes) {
-            if (value.indexOf(mistakes[m]) > -1) {
+            if (value.toLowerCase().indexOf(mistakes[m]) > -1) {
                 errorDetected = true;
             }
         }
