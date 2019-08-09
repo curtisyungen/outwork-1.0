@@ -21,8 +21,6 @@ class Run extends Component {
     }
 
     componentDidMount = () => {
-        let width = window.screen.width;
-
         this.setState({
             userId: this.props.userId,
             repeats: JSON.parse(this.props.repeats),

@@ -16,10 +16,6 @@
     height: 55px;
 }
 
-.nav-item {
-    /* margin-right: 10px; */
-}
-
 .nav-link {
     cursor: pointer;
     font-size: 14px;
@@ -55,6 +51,11 @@
 .popup {
     background: white;
     z-index: 1000;
+}
+
+.popup-item {
+    font-size: 16px !important;
+    line-height: 25px;
 }
 
 .popupBackground,
