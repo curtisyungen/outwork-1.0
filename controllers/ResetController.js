@@ -20,13 +20,13 @@ class ResetController {
         let transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {
-                user: process.env.GMAIL_ADDRESS,
+                user: "congoserver@gmail.com",
                 pass: process.env.GMAIL_PASSWORD,
             }
         });
 
         let mailOptions = {
-            from: process.env.GMAIL_ADDRESS,
+            from: "congoserver@gmail.com",
             to: req.body.email,
             subject: "Outwork password assistance",
             text: `
@@ -45,7 +45,7 @@ class ResetController {
             }
             else {
                 // Used only to fulfill axios promise
-                db.Workouts.findAll({})
+                db.Users.findAll({})
                     .then(() => {
                         res.json("Complete");
                     });
