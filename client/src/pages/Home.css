@@ -15,6 +15,8 @@
     cursor: pointer;
     font-size: 12px;
     left: 50%;
+    min-width: 175px;
+    opacity: 0.65;
     padding: 5px;
     position: fixed;
     text-align: center;
@@ -27,6 +29,7 @@
 .backToTopBtn:hover {
     background: rgb(242, 242, 242);
     color: black;
+    opacity: 1;
 }
 
 .container {
