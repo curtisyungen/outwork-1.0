@@ -18,6 +18,7 @@ class Metrics extends Component {
 
         this.state = {
             screenWidth: null,
+            firstName: null,
             flexDir: null,
             userRuns: null,
             userBikes: null,
@@ -28,14 +29,11 @@ class Metrics extends Component {
     }
 
     componentDidMount = () => {
-        let firstName = localStorage.getItem("fn");
-        let userId = localStorage.getItem("userId");
-
         window.addEventListener("resize", this.getScreenSize.bind(this));
 
         this.setState({
-            firstName: firstName,
-            userId: userId,
+            firstName: this.props.firstName,
+            userId: this.props.userId,
         }, () => {
             this.getScreenSize();
             this.getUserActivity();
