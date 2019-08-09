@@ -511,6 +511,12 @@ class App extends Component {
         hofAPI.updateHof("mostSwims", max[0], max[1]);
       });
 
+    // hofAPI.getBikes()
+    //   .then((res) => {
+    //     let max = this.getMaximum(res.data);
+    //     hofAPI.updateHof("mostBikes", max[0], max[1]);
+    //   });
+
     hofAPI.getHotdog()
       .then((res) => {
         let min = this.getMinimum(res.data);
