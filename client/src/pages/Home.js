@@ -260,7 +260,7 @@ class Home extends Component {
                     </div>
 
                     {/* BACK TO TOP */}
-                    {this.state.userActivity && this.state.userActivity.length >= 15  ? (
+                    {this.state.filtered && this.state.filtered.length >= 15  ? (
                         <div className="backToTopBtn" onClick={this.backToTop}>Back to Top</div>
                     ) : (
                         <></>
