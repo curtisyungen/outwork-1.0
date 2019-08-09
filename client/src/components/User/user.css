@@ -23,3 +23,21 @@
 .user:hover {
     background: rgb(157, 255, 214);
 }
+
+.userNinja {
+    margin-bottom: 15px;
+    margin-top: -32px;
+    transition: 1s;
+}
+
+.userNinja:hover {
+    color: rgb(157, 255, 214);
+}
+
+.userText {
+    transition: 0.5s;
+}
+
+.userText:hover {
+    letter-spacing: 2px;
+}
