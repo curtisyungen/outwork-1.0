@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-// import Container from "../components/Container/container";
-// import "./Error.css";
+import "./Error.css";
 
 class Error extends Component {
 
@@ -8,7 +7,7 @@ class Error extends Component {
         super(props);
 
         this.state = {
-            
+
         }
     }
 
@@ -18,8 +17,14 @@ class Error extends Component {
 
     render() {
         return (
-            <div className="errorPage">
-                Error
+            <div className="container text-center errorPage">
+                <div className="logo">
+                    <a href="/">
+                        <img className="loginLogo" src={require('../images/logo2.png')} alt="congo" />
+                    </a>
+                </div>
+                <div className="errorMessage">Page not found.</div>
+                <div className="errorSubMessage">Click logo to go home.</div>
             </div>
         )
     }
