@@ -14,6 +14,10 @@ router.get("/getMaxWorkouts", (req, res) => {
     controller.getMaxWorkouts(req, res);
 });
 
+router.get("/getMaxRestDays", (req, res) => {
+    controller.getMaxRestDays(req, res);
+});
+
 router.get("/getLongestRun", (req, res) => {
     controller.getLongestRun(req, res);
 });
