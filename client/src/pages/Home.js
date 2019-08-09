@@ -250,17 +250,10 @@ class Home extends Component {
                             <button className="btn btn-light btn-sm filterSwims" onClick={this.filterBy.bind(null, "swim")}>Swims</button>
                             <button className="btn btn-light btn-sm filterLifts" onClick={this.filterBy.bind(null, "lift")}>Lifts</button>
                             <button className="btn btn-light btn-sm filterRaces" onClick={this.filterBy.bind(null, "race")}>Races</button>
-                        </div>
-
-                        <div className="quickStatsBtn">
                             <button className="btn btn-info btn-sm quickStatsBtn" onClick={this.openQuickStats}>Quick Stats</button>
                         </div>
-
-                        <div className="toggleDisplayBtn">
-                            
-                        </div>
                     </div>
-
+   
                     <span>
                         {this.state.filtered && this.state.filtered.length === 0 ? (
                             <p className="text-center">{this.state.message}</p>
