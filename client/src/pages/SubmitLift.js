@@ -28,7 +28,6 @@ class SubmitLift extends Component {
             muscleGroups: [],
             muscleGroupList: [],
             notes: null,
-            errorDetected: false,
         }
     }
 
@@ -334,12 +333,6 @@ class SubmitLift extends Component {
         });
     }
 
-    errorDetected = (status) => {
-        this.setState({
-            errorDetected: status,
-        });
-    }
-
     getTtlMins = () => {
         let time = this.state.duration;
         let hours, mins, secs;
@@ -363,8 +356,8 @@ class SubmitLift extends Component {
         this.props.checkValidUser();
 
         let confirm = true;
-        if (this.state.errorDetected) {
-            confirm = confirm(`Heads up! There is a potential error in your exercise names. Check that you used 'Push-Ups', 'Pull-Ups', 'Chin-Ups'.`)
+        if (this.state.errorDetected > 0) {
+            confirm = window.confirm(`Heads up! There is a potential error in your exercise names. Check that you used 'Push-Ups', 'Pull-Ups', 'Chin-Ups'.`);
         }
 
         if (confirm && this.validateLiftForm()) {
@@ -534,14 +527,6 @@ class SubmitLift extends Component {
                     <div className="input-group input-group-sm mb-3">
                         <div className="input-group-prepend submitFormSectTitle">
                             Workout*
-                            {this.state.errorDetected ? (
-                                <span className="errorDetected">
-                                    Potential formatting error detected.
-                                    Double check "Push-Up", "Pull-Up", or "Chin-Up".
-                                </span>
-                            ) : (
-                                <></>
-                            )}
                         </div>
                         <p className="infoMsg">
                             Only exercises containing "push-up", "pull-up", or "chin-up" count toward
@@ -561,7 +546,6 @@ class SubmitLift extends Component {
                             setRest={this.setRest}
                             setNotes={this.setNotes}
                             getExercise={this.getExercise}
-                            errorDetected={this.errorDetected}
                             deleteExercise={this.deleteExercise}
                         />
                     ))}
