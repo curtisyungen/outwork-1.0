@@ -20,8 +20,13 @@
     text-align: center;
     transform: translate(-50%);
     transition: 0.5s;
-    width: 75px;
+    width: auto;
     z-index: 105;
+}
+
+.backToTopBtn:hover {
+    background: rgb(242, 242, 242);
+    color: black;
 }
 
 .container {
