@@ -20,6 +20,13 @@ class HofController {
             });
     }
 
+    getMaxRestDays(req, res) {
+        db.sequelize.query("SELECT COUNT(DISTINCT date) as value, firstName FROM Workouts GROUP BY firstName", { type: sequelize.QueryTypes.SELECT })
+            .then(days => {
+                res.json(days);
+            });
+    }
+
     getLongestRun(req, res) {
         db.sequelize.query("SELECT MAX(distance) AS value, firstName, userId FROM Workouts WHERE workoutType = 'run' GROUP BY firstName", { type: sequelize.QueryTypes.SELECT })
             .then(run => {
