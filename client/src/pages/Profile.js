@@ -80,6 +80,7 @@ class Profile extends Component {
                             <span>
                                 <Metrics 
                                     userId={this.state.userId}
+                                    firstName={this.state.firstName}
                                 />
 
                                 <Calendar 
