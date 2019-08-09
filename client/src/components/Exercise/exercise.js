@@ -88,6 +88,7 @@ class Exercise extends Component {
         this.props.setReps(this.props.id, this.state.reps);
         this.props.setRest(this.props.id, this.state.rest);
         this.props.setNotes(this.props.id, this.state.notes);
+        this.props.errorDetected(this.state.errorDetected);
     }
 
     render() {

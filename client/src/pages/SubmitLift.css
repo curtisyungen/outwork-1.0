@@ -7,6 +7,11 @@
     width: 100%;
 }
 
+.errorDetected {
+    color: red;
+    font-size: 12px;
+}
+
 .infoMsg {
     font-size: 11px;
     margin-bottom: 0px;
