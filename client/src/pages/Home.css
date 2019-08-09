@@ -10,6 +10,7 @@
     background: rgb(75, 75, 75);
     border: 1px solid black;
     border-radius: 4px;
+    bottom: 5px;
     color: white;
     cursor: pointer;
     font-size: 12px;
@@ -19,6 +20,7 @@
     text-align: center;
     transform: translate(-50%);
     width: 75px;
+    z-index: 105;
 }
 
 .container {
