@@ -39,6 +39,7 @@ class Metrics extends Component {
         }, () => {
             this.getScreenSize();
             this.getUserActivity();
+            this.getRestDays();
             this.getTotalTime();
             this.getRainyDays();
             this.getTotalRaces();
@@ -99,10 +100,6 @@ class Metrics extends Component {
             workouts = userActivity.length;
         }
 
-        let restDays = 0;
-        let dateNum = moment().dayOfYear();
-        restDays = dateNum - workouts;
-
         this.setState({
             userRuns: runs,
             userBikes: bikes,
@@ -110,8 +107,26 @@ class Metrics extends Component {
             userLifts: lifts,
             loading: false,
             totalWorkouts: workouts,
-            restDays: restDays,
         });
+    }
+
+    getRestDays = () => {
+        hofAPI.getMaxRestDays()
+            .then((res) => {
+                let workDays = 0;
+                for (var d in res.data) {
+                    if (res.data[d].firstName === this.state.firstName) {
+                        workDays = res.data[d].value;
+                    }
+                }
+
+                let dateNum = moment().dayOfYear();
+                let restDays = dateNum - workDays;
+
+                this.setState({
+                    restDays: restDays,
+                });
+            });
     }
 
     getRainyDays = () => {
