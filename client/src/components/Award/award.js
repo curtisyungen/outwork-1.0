@@ -61,7 +61,7 @@ class Award extends Component {
                         closeOnDocumentClick
                         className="popup-profile"
                     >
-                        {this.props.hof[0]}
+                        <div className="popup-profile-data">{this.props.hof[0]}</div>
                     </Popup>
                 ) : (
                         <></>

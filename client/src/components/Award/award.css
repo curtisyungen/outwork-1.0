@@ -10,8 +10,13 @@
 }
 
 .popup-profile {
+    width: 50px !important;
+}
+
+.popup-profile-data {
+    font-size: 16px;
     text-align: center;
-    width: 75px;
+    width: 100%;
 }
 
 .trophy {
