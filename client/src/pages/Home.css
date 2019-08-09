@@ -7,13 +7,19 @@
 }
 
 .backToTopBtn {
-    background: #fff;
+    background: rgb(75, 75, 75);
     border: 1px solid black;
     border-radius: 4px;
-    display: fixed;
-    margin: 15px auto 15px auto;
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+    left: 50%;
+    margin-top: 30px;
     padding: 5px;
-    width: 200px;
+    position: fixed;
+    text-align: center;
+    transform: translate(-50%);
+    width: 75px;
 }
 
 .container {

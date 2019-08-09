@@ -219,6 +219,15 @@ class Home extends Component {
         return (
             <Container>
                 <div className={`homePage`}>
+
+                    {/* BACK TO TOP */}
+                    {this.state.scrollPos > 0.015 ? (
+                        <div className="backToTopBtn" onClick={this.backToTop}>Back to Top</div>
+                    ) : (
+                        <></>
+                    )}
+
+                    {/* SEARCH BAR */}
                     <div className="input-group mb-2 mt-4">
                         <div className="input-group-prepend">
                             <button
@@ -280,8 +289,6 @@ class Home extends Component {
                             <button className="btn btn-info btn-sm quickStatsBtn" onClick={this.openQuickStats}>Quick Stats</button>
                         </div>
                     </div>
-
-                    <div className="backToTopBtn">Back to Top</div>
    
                     <span>
                         {this.state.filtered && this.state.filtered.length === 0 ? (
