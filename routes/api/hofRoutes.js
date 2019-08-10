@@ -10,6 +10,26 @@ router.get("/getHof", (req, res) => {
     controller.getHof(req, res);
 });
 
+router.get("/getWeekWorkouts/:date", (req, res) => {
+    controller.getWeekWorkouts(req, res);
+});
+
+router.get("/getWeekPushUps/:date", (req, res) => {
+    controller.getWeekPushUps(req, res);
+});
+
+router.get("/getWeekPullUps/:date", (req, res) => {
+    controller.getWeekPullUps(req, res);
+});
+
+router.get("/getWeekClimb/:date", (req, res) => {
+    controller.getWeekClimb(req, res);
+});
+
+router.get("/getWeekTime/:date", (req, res) => {
+    controller.getWeekTime(req, res);
+});
+
 router.get("/getMaxWorkouts", (req, res) => {
     controller.getMaxWorkouts(req, res);
 });
