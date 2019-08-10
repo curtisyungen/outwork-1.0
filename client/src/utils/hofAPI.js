@@ -11,6 +11,26 @@ export default {
         return axios.get("/api/hof/getHof");
     },
 
+    getWeekWorkouts: function(date) {
+        return axios.get("/api/hof/getWeekWorkouts/" + date);
+    },
+
+    getWeekPushUps: function(date) {
+        return axios.get("/api/hof/getWeekPushUps/" + date);
+    },
+
+    getWeekPullUps: function(date) {
+        return axios.get("/api/hof/getWeekPullUps/" + date);
+    },
+
+    getWeekClimb: function(date) {
+        return axios.get("/api/hof/getWeekClimb/" + date);
+    },
+
+    getWeekTime: function(date) {
+        return axios.get("/api/hof/getWeekTime/" + date);
+    },
+
     getMaxWorkouts: function() {
         return axios.get("/api/hof/getMaxWorkouts");
     },
