@@ -604,7 +604,7 @@ class App extends Component {
         champ = "Tie";
       }
 
-      hofAPI.updateHof("champ", champ, null);
+      hofAPI.updateHof("champ", champ, 1);
     }
   }
 
