@@ -1,6 +1,6 @@
 .equipment {
     background: rgb(242, 242, 242);
-    border: 1px solid black;
+    border: 1px solid rgba(61, 61, 61, .500);
     border-radius: 4px;
     cursor: pointer;
     display: inline-block;
@@ -9,8 +9,13 @@
     margin-right: 2px;
     padding: 25px;
     text-align: center;
+    transition: 0.6s;
     width: 150px;
     vertical-align: middle;
+}
+
+.equipment:hover {
+    border: 2px solid rgba(61, 61, 61);
 }
 
 .equip-true {
