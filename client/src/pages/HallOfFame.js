@@ -9,13 +9,15 @@ import {
     faMountain, faMedal, faDragon, faClock,
     faFlagCheckered, faCloudShowersHeavy, faFish, 
     faHotdog, faTshirt, faGlobeAfrica, faCrown,
+    faHammer,
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
     faTrophy, faBed, faRulerHorizontal,
     faMountain, faMedal, faDragon, faClock,
     faFlagCheckered, faCloudShowersHeavy, faFish, 
-    faHotdog, faTshirt, faGlobeAfrica, faCrown);
+    faHotdog, faTshirt, faGlobeAfrica, faCrown,
+    faHammer);
 
 class HallOfFame extends Component {
 
@@ -144,6 +146,7 @@ class HallOfFame extends Component {
             case "faHotdog": icon = faHotdog; break;
             case "faTshirt": icon = faTshirt; break;
             case "faGlobeAfrica": icon = faGlobeAfrica; break;
+            case "faHammer": icon = faHammer; break;
             default: icon = faTrophy;
         }
 

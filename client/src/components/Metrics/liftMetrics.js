@@ -20,8 +20,8 @@ class LiftMetrics extends Component {
             totalMins: 0,
             pushups: 0,
             pullups: 0,
-            maxPushups: 0,
-            maxPullups: 0,
+            maxPushUps: 0,
+            maxPullUps: 0,
             goggins: 0,
         }
     }
@@ -30,6 +30,8 @@ class LiftMetrics extends Component {
         this.setState({
             userId: this.props.userId,
             userLifts: this.props.userLifts,
+            maxPushUps: this.props.maxPushUps,
+            maxPullUps: this.props.maxPullUps,
         }, () => {
             this.getMetrics();
         });
@@ -68,36 +70,6 @@ class LiftMetrics extends Component {
             }
         }
 
-        hofAPI.getMaxPushups()
-            .then((res) => {
-                let results = res.data;
-                let pushups = 0;
-                for (var u in results) {
-                    if (results[u].userId === this.state.userId) {
-                        pushups = results[u].value;
-                    }
-                }
-
-                this.setState({
-                    maxPushups: pushups,
-                });
-            });
-
-        hofAPI.getMaxPullups() 
-            .then((res) => {
-                let results = res.data;
-                let pullups = 0;
-                for (var u in results) {
-                    if (results[u].userId === this.state.userId) {
-                        pullups = results[u].value;
-                    }
-                }
-
-                this.setState({
-                    maxPullups: pullups,
-                });
-            });
-
         this.setState({
             totalMins: totalMins,
             pushups: pushups,
@@ -133,11 +105,11 @@ class LiftMetrics extends Component {
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Most Push-Ups</div>
-                        <div>{this.state.maxPushups}</div>
+                        <div>{this.props.maxPushUps}</div>
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Most Pull-Ups</div>
-                        <div>{this.state.maxPullups}</div>
+                        <div>{this.props.maxPullUps}</div>
                     </div>
                     <div className="metric">
                         <div className="metricTitle">Goggins</div>
