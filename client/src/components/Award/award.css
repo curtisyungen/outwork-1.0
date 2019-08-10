@@ -43,6 +43,10 @@
     color: rgb(205, 127, 50);
 }
 
+.crown {
+    color: gold;
+}
+
 .dragon {
     color: rgb(185, 0, 0);
 }
@@ -64,7 +68,7 @@
 }
 
 .hotdog {
-    color: rgb(255, 145, 0);
+    color: #7b5804;
 }
 
 .tshirt {
