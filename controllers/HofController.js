@@ -49,14 +49,14 @@ class HofController {
     }
 
     getMaxPushups(req, res) {
-        db.sequelize.query("SELECT pushups AS value, firstName, userId FROM Workouts", { type: sequelize.QueryTypes.SELECT })
+        db.sequelize.query("SELECT MAX(pushups) AS value, firstName, userId FROM Workouts GROUP BY firstName", { type: sequelize.QueryTypes.SELECT })
             .then(pushups => {
                 res.json(pushups);
             });
     }
 
     getMaxPullups(req, res) {
-        db.sequelize.query("SELECT pullups AS value, firstName, userId FROM Workouts", { type: sequelize.QueryTypes.SELECT })
+        db.sequelize.query("SELECT MAX(pullups) AS value, firstName, userId FROM Workouts GROUP BY firstName", { type: sequelize.QueryTypes.SELECT })
             .then(pullups => {
                 res.json(pullups);
             });
