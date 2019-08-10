@@ -30,7 +30,10 @@ class Calendar extends Component {
             "November", "December"];
         let numDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-        for (var i = 0; i < 12; i++) {
+        let today = new Date();
+        let currMonth = moment(today).month();
+
+        for (var i = 0; i <= currMonth; i++) {
             let month = [names[i]];
             for (var m = 0; m < numDays[i]; m++) {
                 month.push([m + 1]);
