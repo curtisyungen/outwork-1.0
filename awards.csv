@@ -2,13 +2,14 @@ id,award,title,desc,icon,unit,firstName,value,createdAt,updatedAt
 1,mostWorkouts,Hardest Worker,Highest number of workouts completed of all types.,faTrophy,workouts,,,7/6/2019 11:15,7/6/2019 11:15
 2,mostRestDays,Snoozer,Most number of rest days. Person here needs to stop cuddling with blanky and get to work.,faBed,rest days,,,7/6/2019 11:15,7/6/2019 11:15
 3,longestRun,Endurer,Most number of miles run in one workout.,faRulerHorizontal,miles,,,7/6/2019 11:15,7/6/2019 11:15
-4,maxClimb,Climber,Highest total elevation climbed over all runs.,faMountain,feet,,,7/6/2019 11:15,7/6/2019 11:15
-5,mostPushups,Push-up Bro,Most push-ups done in a single workout.,faMedal,push-ups,,,7/6/2019 11:15,7/6/2019 11:15
-6,mostPullups,Prince of Pulls,Most pull-ups done in a single workout.,faMedal,pull-ups,,,7/6/2019 11:15,7/6/2019 11:15
-7,mostGoggins,Most Goggins,Most Goggins workouts completed.,faDragon,workouts,,,7/6/2019 11:15,7/6/2019 11:15
-8,mostRaces,Competitor,Most number of races completed.,faFlagCheckered,races,,,7/6/2019 11:15,7/6/2019 11:15
-9,mostTime,Most Time,Most time spent working out.,faClock,minutes,,,7/6/2019 11:15,7/6/2019 11:15
-10,mostRainyDays,Weather Man,Most days run in bad weather.,faCloudShowersHeavy,days,,,7/6/2019 11:15,7/6/2019 11:15
-11,mostSwims,Merman,Most swim workouts completed.,faFish,swims,,,7/6/2019 11:15,7/6/2019 11:15
-12,hotdog,Weiner,The coveted weiner award.,faHotdog,weiner,,,7/6/2019 11:15,7/6/2019 11:15
-13,mostBikes,Yellow Jersey,Most biking workouts completed.,fatShirt,bikes,,,7/6/2019 11:15,7/6/2019 11:15
+4,mostMiles,Globetrotter,Most total miles run.,faGlobeAfrica,miles,,,7/6/2019 11:15,7/6/2019 11:15
+5,maxClimb,Climber,Highest total elevation climbed over all runs.,faMountain,feet,,,7/6/2019 11:15,7/6/2019 11:15
+6,mostPushups,Push-up Bro,Most push-ups done in a single workout.,faMedal,push-ups,,,7/6/2019 11:15,7/6/2019 11:15
+7,mostPullups,Prince of Pulls,Most pull-ups done in a single workout.,faMedal,pull-ups,,,7/6/2019 11:15,7/6/2019 11:15
+8,mostGoggins,Most Goggins,Most Goggins workouts completed.,faDragon,workouts,,,7/6/2019 11:15,7/6/2019 11:15
+9,mostRaces,Competitor,Most number of races completed.,faFlagCheckered,races,,,7/6/2019 11:15,7/6/2019 11:15
+10,mostTime,Most Time,Most time spent working out.,faClock,minutes,,,7/6/2019 11:15,7/6/2019 11:15
+11,mostRainyDays,Weather Man,Most days run in bad weather.,faCloudShowersHeavy,days,,,7/6/2019 11:15,7/6/2019 11:15
+12,mostSwims,Merman,Most swim workouts completed.,faFish,swims,,,7/6/2019 11:15,7/6/2019 11:15
+13,mostBikes,Yellow Jersey,Most biking workouts completed.,faTshirt,bikes,,,7/6/2019 11:15,7/6/2019 11:15
+14,hotdog,Weiner,The coveted weiner award.,faHotdog,weiner,,,7/6/2019 11:15,7/6/2019 11:15

@@ -69,7 +69,11 @@
 
 .tshirt {
     color: rgb(241, 241, 0);
+    margin-left: -5px;
+    margin-right: -5px;
+    width: 1em !important;
 }
+
 /* .svg-inline--fa.fa-w-20 {
     width: 1em !important;
 } */
