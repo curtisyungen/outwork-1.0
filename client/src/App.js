@@ -77,8 +77,8 @@ class App extends Component {
 
               let name = lift[set][ex].name.toLowerCase();
 
-              if (name.indexOf("push-ups") > -1 || 
-                  name.indexOf("push ups") > -1) {
+              if (name.indexOf("push-up") > -1 || 
+                  name.indexOf("push up") > -1) {
 
                     let sets = parseFloat(lift[set][ex].sets) || 1;
                     let reps = parseFloat(lift[set][ex].reps) || 1;
