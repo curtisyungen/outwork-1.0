@@ -136,3 +136,9 @@
         font-size: 14px;
     }
 }
+
+@media only screen and (max-width: 380px) {
+    .hofCol {
+        font-size: 13px;
+    }
+}
