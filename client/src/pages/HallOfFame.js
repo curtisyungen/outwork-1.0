@@ -159,7 +159,6 @@ class HallOfFame extends Component {
     render() {
         return (
             <div className="container pageContainer hofContainer">
-                {/* <h4>Hall of Fame</h4> */}
                 <div className="hofLogoDiv">
                     <img 
                         className="hofLogoImg"
