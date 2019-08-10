@@ -31,7 +31,7 @@ class ProfileHeader extends Component {
                     <h1 className="display-4">
                         {this.state.firstName} {this.state.lastName}
 
-                        <div className="hof">
+                        <div className="hof flex-wrap">
                             {this.state.hof && this.state.hof.length > 0 ? (
                                 this.state.hof.map(hof => (
                                     <Award 
