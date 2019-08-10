@@ -51,7 +51,6 @@ class App extends Component {
     }
   }
 
-  // When running this, double check Curtis's Goggins workout totals from 7/25/2019
   correctMetrics = () => {
     workoutAPI.getAllWorkouts()
       .then((res) => {
@@ -117,7 +116,7 @@ class App extends Component {
 
   componentDidMount = () => {
 
-    this.correctMetrics();
+    // this.correctMetrics();
 
     // Check if logged in
     let loginStatus = false;
