@@ -51,6 +51,7 @@ class App extends Component {
     }
   }
 
+  // When running this, double check Curtis's Goggins workout totals from 7/25/2019
   correctMetrics = () => {
     workoutAPI.getAllWorkouts()
       .then((res) => {
@@ -92,7 +93,7 @@ class App extends Component {
                   name.indexOf("chin-up") > -1 ||
                   name.indexOf("chin up") > -1) {
 
-                    if (name.indexOf("static") === -1) {
+                    if (name.indexOf("static") === -1 && name.indexOf("hold") === -1) {
 
                       let sets = parseFloat(lift[set][ex].sets) || 1;
                       let reps = parseFloat(lift[set][ex].reps) || 1;
@@ -116,7 +117,7 @@ class App extends Component {
 
   componentDidMount = () => {
 
-    // this.correctMetrics();
+    this.correctMetrics();
 
     // Check if logged in
     let loginStatus = false;
