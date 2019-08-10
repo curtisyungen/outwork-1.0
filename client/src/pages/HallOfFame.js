@@ -8,14 +8,14 @@ import {
     faTrophy, faBed, faRulerHorizontal,
     faMountain, faMedal, faDragon, faClock,
     faFlagCheckered, faCloudShowersHeavy, faFish, 
-    faHotdog, faTshirt, faGlobeAfrica,
+    faHotdog, faTshirt, faGlobeAfrica, faCrown,
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
     faTrophy, faBed, faRulerHorizontal,
     faMountain, faMedal, faDragon, faClock,
     faFlagCheckered, faCloudShowersHeavy, faFish, 
-    faHotdog, faTshirt, faGlobeAfrica);
+    faHotdog, faTshirt, faGlobeAfrica, faCrown);
 
 class HallOfFame extends Component {
 
@@ -135,6 +135,7 @@ class HallOfFame extends Component {
             case "faRulerHorizontal": icon = faRulerHorizontal; break;
             case "faMountain": icon = faMountain; break;
             case "faMedal": icon = faMedal; break;
+            case "faCrown": icon = faCrown; break;
             case "faDragon": icon = faDragon; break;
             case "faClock": icon = faClock; break;
             case "faFlagCheckered": icon = faFlagCheckered; break;
