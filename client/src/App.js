@@ -462,6 +462,12 @@ class App extends Component {
         hofAPI.updateHof("longestRun", max[0], max[1]);
       });
 
+    hofAPI.getMaxMiles()
+      .then((res) => {
+        let max = this.getMaximum(res.data);
+        hofAPI.updateHof("mostMiles", max[0], max[1]);
+      });
+
     hofAPI.getMaxClimb()
       .then((res) => {
         let max = this.getMaximum(res.data);

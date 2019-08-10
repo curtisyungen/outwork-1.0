@@ -7,13 +7,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faTrophy, faBed, faRulerHorizontal,
     faMountain, faMedal, faDragon, faClock,
-    faFlagCheckered, faCloudShowersHeavy, faFish, faHotdog, faTshirt,
+    faFlagCheckered, faCloudShowersHeavy, faFish, 
+    faHotdog, faTshirt, faGlobeAfrica,
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
     faTrophy, faBed, faRulerHorizontal,
     faMountain, faMedal, faDragon, faClock,
-    faFlagCheckered, faCloudShowersHeavy, faFish, faHotdog, faTshirt);
+    faFlagCheckered, faCloudShowersHeavy, faFish, 
+    faHotdog, faTshirt, faGlobeAfrica);
 
 class HallOfFame extends Component {
 
@@ -140,6 +142,7 @@ class HallOfFame extends Component {
             case "faFish": icon = faFish; break;
             case "faHotdog": icon = faHotdog; break;
             case "faTshirt": icon = faTshirt; break;
+            case "faGlobeAfrica": icon = faGlobeAfrica; break;
             default: icon = faTrophy;
         }
 

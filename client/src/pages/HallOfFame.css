@@ -63,11 +63,15 @@
 }
 
 .faBed {
-    color: rgb(128, 179, 255);
+    color: pink;
 }
 
 .faRulerHorizontal {
     color: #DEB887;
+}
+
+.faGlobeAfrica {
+    color: #0077be;
 }
 
 .faMountain {

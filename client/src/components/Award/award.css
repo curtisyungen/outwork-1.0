@@ -24,11 +24,15 @@
 }
 
 .bed {
-    color: rgb(128, 179, 255);
+    color: pink;
 }
 
 .ruler-horizontal {
     color: #DEB887;
+}
+
+.globe-africa {
+    color: #0077be;
 }
 
 .mountain {

@@ -22,6 +22,10 @@ router.get("/getLongestRun", (req, res) => {
     controller.getLongestRun(req, res);
 });
 
+router.get("/getMaxMiles", (req, res) => {
+    controller.getMaxMiles(req, res);
+});
+
 router.get("/getMaxClimb", (req, res) => {
     controller.getMaxClimb(req, res);
 });

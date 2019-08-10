@@ -23,6 +23,10 @@ export default {
         return axios.get("/api/hof/getLongestRun");
     },
 
+    getMaxMiles: function() {
+        return axios.get("/api/hof/getMaxMiles");
+    },
+
     getMaxClimb: function() {
         return axios.get("/api/hof/getMaxClimb");
     },

@@ -34,6 +34,13 @@ class HofController {
             });
     }
 
+    getMaxMiles(req, res) {
+        db.sequelize.query("SELECT SUM(distance) AS value, firstName, userId FROM Workouts WHERE workoutType = 'run' GROUP BY firstName", { type: sequelize.QueryTypes.SELECT })
+            .then(miles => {
+                res.json(miles);
+            });
+    }
+
     getMaxClimb(req, res) {
         db.sequelize.query("SELECT SUM(climb) AS value, firstName, userId FROM Workouts WHERE workoutType = 'run' GROUP BY firstName", { type: sequelize.QueryTypes.SELECT })
             .then(climb => {
