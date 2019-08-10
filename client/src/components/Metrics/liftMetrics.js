@@ -70,12 +70,32 @@ class LiftMetrics extends Component {
 
         hofAPI.getMaxPushups()
             .then((res) => {
-                // console.log("Push Ups", res);
+                let results = res.data;
+                let pushups = 0;
+                for (var u in results) {
+                    if (results[u].userId === this.state.userId) {
+                        pushups = results[u].value;
+                    }
+                }
+
+                this.setState({
+                    maxPushups: pushups,
+                });
             });
 
         hofAPI.getMaxPullups() 
             .then((res) => {
-                // console.log("Pull Ups", res);
+                let results = res.data;
+                let pullups = 0;
+                for (var u in results) {
+                    if (results[u].userId === this.state.userId) {
+                        pullups = results[u].value;
+                    }
+                }
+
+                this.setState({
+                    maxPullups: pullups,
+                });
             });
 
         this.setState({
