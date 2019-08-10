@@ -111,7 +111,6 @@ class Metrics extends Component {
     getRestDays = () => {
         hofAPI.getMaxRestDays()
             .then((res) => {
-                console.log(res);
                 let workDays = 0;
                 for (var d in res.data) {
                     if (res.data[d].firstName === this.state.firstName) {
