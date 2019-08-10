@@ -24,6 +24,12 @@ class Metrics extends Component {
             userBikes: null,
             userSwims: null,
             userLifts: null,
+            maxPushUps: null,
+            maxPullUps: null,
+            restDays: null,
+            rainyDays: null,
+            time: null,
+            races: null,
             loading: true,
         }
     }
@@ -41,6 +47,8 @@ class Metrics extends Component {
             this.getTotalTime();
             this.getRainyDays();
             this.getTotalRaces();
+            this.getMaxPushUps();
+            this.getMaxPullUps();
         });
     }
 
@@ -138,7 +146,7 @@ class Metrics extends Component {
                 }
 
                 this.setState({
-                    days: days,
+                    rainyDays: days,
                 });
             });
     }
@@ -174,6 +182,40 @@ class Metrics extends Component {
                     races: races,
                 });
             })
+    }
+
+    getMaxPushUps = () => {
+        hofAPI.getMaxPushups()
+            .then((res) => {
+                let results = res.data;
+                let pushups = 0;
+                for (var u in results) {
+                    if (results[u].userId === this.state.userId) {
+                        pushups = results[u].value;
+                    }
+                }
+
+                this.setState({
+                    maxPushUps: pushups,
+                });
+            });
+    }
+
+    getMaxPullUps = () => {
+        hofAPI.getMaxPullups() 
+            .then((res) => {
+                let results = res.data;
+                let pullups = 0;
+                for (var u in results) {
+                    if (results[u].userId === this.state.userId) {
+                        pullups = results[u].value;
+                    }
+                }
+
+                this.setState({
+                    maxPullUps: pullups,
+                });
+            });
     }
 
     render() {
@@ -237,6 +279,8 @@ class Metrics extends Component {
                         userId={this.state.userId}
                         userLifts={this.state.userLifts}
                         flexDir={this.state.flexDir}
+                        maxPushUps={this.state.maxPushUps}
+                        maxPullUps={this.state.maxPullUps}
                     />
                 ) : (
                         <></>
@@ -247,7 +291,7 @@ class Metrics extends Component {
                     flexDir={this.state.flexDir}
                     workouts={this.state.totalWorkouts}
                     time={this.state.time}
-                    rainyDays={this.state.days}
+                    rainyDays={this.state.rainyDays}
                     races={this.state.races}
                     restDays={this.state.restDays}
                 />
