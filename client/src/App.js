@@ -51,69 +51,6 @@ class App extends Component {
     }
   }
 
-  correctMetrics = () => {
-    workoutAPI.getAllWorkouts()
-      .then((res) => {
-        
-        let lifts = [];
-        
-        for (var r in res.data) {
-          if (res.data[r].workoutType === "lift") {
-            lifts.push(res.data[r]);
-          }
-        }
-
-        // For each lift...
-        for (var l=0; l<lifts.length; l++) {
-          let pushups = 0;
-          let pullups = 0;
-          let lift = JSON.parse(lifts[l].workout);
-
-          // For each set...
-          for (var set in lift) {
-            // For each exercise...
-            for (var ex in lift[set]) {
-
-              let name = lift[set][ex].name.toLowerCase();
-
-              if (name.indexOf("push-up") > -1 || 
-                  name.indexOf("push up") > -1) {
-
-                    let sets = parseFloat(lift[set][ex].sets) || 1;
-                    let reps = parseFloat(lift[set][ex].reps) || 1;
-                
-                    if (!isNaN(reps)) {
-                      pushups += sets * reps;
-                    }
-              }
-
-              if (name.indexOf("pull-up") > -1 || 
-                  name.indexOf("pull up") > -1 ||
-                  name.indexOf("chin-up") > -1 ||
-                  name.indexOf("chin up") > -1) {
-
-                    if (name.indexOf("static") === -1 && name.indexOf("hold") === -1) {
-
-                      let sets = parseFloat(lift[set][ex].sets) || 1;
-                      let reps = parseFloat(lift[set][ex].reps) || 1;
-
-                      if (!isNaN(reps)) {
-                        pullups += sets * reps;
-                      }
-                    }
-              }
-            }
-          }
-
-          this.setMetrics(lifts[l].id, pushups, pullups);
-        }
-      });
-  }
-
-  setMetrics = (id, pushups, pullups) => {
-    workoutAPI.updateWorkout(id, pushups, pullups);
-  }
-
   componentDidMount = () => {
 
     // this.correctMetrics();
@@ -161,6 +98,7 @@ class App extends Component {
     }
 
     this.updateHof();
+    this.getChamp();
   }
 
   // REDIRECTS
@@ -443,7 +381,7 @@ class App extends Component {
   updateHof = () => {
     hofAPI.getMaxWorkouts()
       .then((res) => {
-        
+
         let max = this.getMaximum(res.data);
         hofAPI.updateHof("mostWorkouts", max[0], max[1]);
       });
@@ -512,7 +450,7 @@ class App extends Component {
 
     hofAPI.getSwims()
       .then((res) => {
-        
+
         let max = this.getMaximum(res.data);
         hofAPI.updateHof("mostSwims", max[0], max[1]);
       });
@@ -533,7 +471,7 @@ class App extends Component {
   getMaximum = (data) => {
     let max = 0;
     let maxName = null;
-    
+
     for (var d in data) {
       if (data[d].value > max) {
         max = data[d].value;
@@ -560,9 +498,119 @@ class App extends Component {
     return [minName, min];
   }
 
+  // GET OUTWORKER OF THE WEEK
+  // ==================================
+
+  getChamp = () => {
+    // +1 for most workouts
+    // +1 for most time
+    // +1 for most pushups
+    // +1 for most pullups
+    // +1 for most elevation
+
+    // Get date of most recent Sunday in yyyy-mm-dd format
+    let today = new Date();
+    let day = moment(today).day();
+    let year = moment(today).year();
+    let month = moment(today).month() + 1;
+    let currDOW = moment(today).date();
+
+    let moZero = "";
+    let dayZero = "";
+
+    if (month < 10) {
+      moZero = 0;
+    }
+
+    if (currDOW - day < 10) {
+      dayZero = 0;
+    }
+
+    let firstDOW = `${year}-${moZero}${month}-${dayZero}${currDOW - day}`;
+    
+    let maxes = [];
+
+    hofAPI.getWeekWorkouts(firstDOW)
+      .then((res) => {
+        let max = this.getMaximum(res.data);
+        maxes.push(max[0]);
+
+        this.checkMaxes(maxes);
+      });
+
+    hofAPI.getWeekPushUps(firstDOW)
+      .then((res) => {
+        let max = this.getMaximum(res.data);
+        maxes.push(max[0]);
+
+        this.checkMaxes(maxes);
+      });
+
+    hofAPI.getWeekPullUps(firstDOW)
+      .then((res) => {
+        let max = this.getMaximum(res.data);
+        maxes.push(max[0]);
+
+        this.checkMaxes(maxes);
+      });
+
+    hofAPI.getWeekClimb(firstDOW)
+      .then((res) => {
+        let max = this.getMaximum(res.data);
+        maxes.push(max[0]);
+
+        this.checkMaxes(maxes);
+      });
+
+    hofAPI.getWeekTime(firstDOW)
+      .then((res) => {
+        let max = this.getMaximum(res.data);
+        maxes.push(max[0]);
+
+        this.checkMaxes(maxes);
+      });
+  }
+
+  checkMaxes = (maxes) => {
+    if (maxes.length === 5) {
+      let curtis = 0;
+      let jason = 0;
+      let joseph = 0;
+
+      let champ = "";
+
+      for (var m in maxes) {
+        if (maxes[m] === "Curtis") {
+          curtis += 1;
+        }
+        if (maxes[m] === "Jason") {
+          jason += 1;
+        }
+        if (maxes[m] === "Joseph") {
+          joseph += 1;
+        }
+      }
+
+      if (curtis > jason && curtis > joseph) {
+        champ = "Curtis";
+      }
+      else if (jason > curtis && jason > joseph) {
+        champ = "Jason";
+      }
+      else if (joseph > curtis && joseph > jason) {
+        champ = "Joseph";
+      }
+      else {
+        champ = "Tie";
+      }
+
+      hofAPI.updateHof("champ", champ, null);
+    }
+  }
+
   // PASSWORD RESET
   // ==================================
-  
+
   setResetEmail = (resetEmail) => {
     this.setState({
       resetEmail: resetEmail,
@@ -590,21 +638,21 @@ class App extends Component {
               <></>
             )}
 
-            {/* Redirect to Password Reset Page */}
+          {/* Redirect to Password Reset Page */}
 
           {this.state.redirectToPasswordReset === true ? (
             this.redirectToPasswordReset()
           ) : (
-            <></>
-          )}
+              <></>
+            )}
 
           {/* Redirect to Create Password Page */}
 
           {this.state.redirectToCreatePassword === true ? (
             this.redirectToCreatePassword()
           ) : (
-            <></>
-          )}
+              <></>
+            )}
 
           {/* Redirect to Sign Up Page */}
 
@@ -673,24 +721,24 @@ class App extends Component {
             } />
 
             {/* Forgot Password Page */}
-            <Route exact path="/forgot" render={() => 
-              <ForgotPassword 
+            <Route exact path="/forgot" render={() =>
+              <ForgotPassword
                 setRedirectToPasswordReset={this.setRedirectToPasswordReset}
                 setResetEmail={this.setResetEmail}
               />
             } />
-            
+
             {/* Reset Password Page */}
-            <Route exact path="/reset" render={() => 
-              <Reset 
+            <Route exact path="/reset" render={() =>
+              <Reset
                 email={this.state.resetEmail}
                 setRedirectToCreatePassword={this.setRedirectToCreatePassword}
               />
             } />
 
             {/* Create Password Page */}
-            <Route exact path="/createPassword" render={() => 
-              <CreatePassword 
+            <Route exact path="/createPassword" render={() =>
+              <CreatePassword
                 email={this.state.resetEmail}
                 setRedirectToLogin={this.setRedirectToLogin}
               />
