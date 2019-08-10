@@ -13,6 +13,41 @@ class HofController {
             });
     }
 
+    getWeekWorkouts(req, res) {
+        db.sequelize.query(`SELECT COUNT(id) AS value, firstName FROM Workouts WHERE date >= '${req.params.date}'`, { type: sequelize.QueryTypes.SELECT })
+            .then(workouts => {
+                res.json(workouts);
+            });
+    }
+
+    getWeekPushUps(req, res) {
+        db.sequelize.query(`SELECT SUM(pushups) AS value, firstName FROM Workouts WHERE date >= '${req.params.date}'`, { type: sequelize.QueryTypes.SELECT })
+            .then(pushups => {
+                res.json(pushups);
+            });
+    }
+
+    getWeekPullUps(req, res) {
+        db.sequelize.query(`SELECT SUM(pullups) AS value, firstName FROM Workouts WHERE date >= '${req.params.date}'`, { type: sequelize.QueryTypes.SELECT })
+            .then(pullups => {
+                res.json(pullups);
+            });
+    }
+
+    getWeekClimb(req, res) {
+        db.sequelize.query(`SELECT SUM(climb) AS value, firstName FROM Workouts WHERE date >= '${req.params.date}'`, { type: sequelize.QueryTypes.SELECT })
+            .then(climb => {
+                res.json(climb);
+            });
+    }
+
+    getWeekTime(req, res) {
+        db.sequelize.query(`SELECT SUM(ttlMins) AS value, firstName FROM Workouts WHERE date >= '${req.params.date}'`, { type: sequelize.QueryTypes.SELECT })
+            .then(time => {
+                res.json(time);
+            });
+    }
+
     getMaxWorkouts(req, res) {
         db.sequelize.query("SELECT COUNT(id) AS value, firstName, userId FROM Workouts GROUP BY firstName", { type: sequelize.QueryTypes.SELECT })
             .then(max => {
