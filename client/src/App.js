@@ -513,7 +513,7 @@ class App extends Component {
 
     // Get date of most recent Sunday in yyyy-mm-dd format
     let today = new Date();
-    let day = moment(today).day();
+    let day = moment(today).startOf('week').isoWeekday(6).day();
     let year = moment(today).year();
     let month = moment(today).month() + 1;
     let currDOW = moment(today).date();
