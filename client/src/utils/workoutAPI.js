@@ -27,6 +27,10 @@ export default {
         return axios.get("/api/workouts/getRunsByUserId/" + userId);
     },
 
+    getRunById: function(runId) {
+        return axios.get("/api/workouts/getRunById/" + runId);
+    },
+
     getBikesByUserId: function(userId) {
         return axios.get("/api/workouts/getBikesByUserId/" + userId);
     },
@@ -43,8 +47,8 @@ export default {
         return axios.post("/api/workouts/createWorkout", {workoutData: workoutData});
     },
 
-    updateWorkout: function(id, pushups, pullups) {
-        return axios.put("/api/workouts/updateWorkout", { id: id, pushups: pushups, pullups: pullups });
+    updateWorkout: function(id, workout) {
+        return axios.put("/api/workouts/updateWorkout", { id: id, workout: workout });
     },
 
     deleteWorkoutById: function(userId, workoutId) {
