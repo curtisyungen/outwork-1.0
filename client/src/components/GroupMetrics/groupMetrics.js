@@ -58,8 +58,6 @@ class GroupMetrics extends Component {
                 let today = new Date();
                 let week = moment(today).startOf('week').isoWeekday(6).week();
 
-                console.log(week);
-
                 for (var w in workouts) {
 
                     // Get miles run, climb, current week miles
@@ -67,7 +65,7 @@ class GroupMetrics extends Component {
                         miles += parseFloat(workouts[w].distance);
                         climb += parseFloat(workouts[w].climb);
 
-                        if (moment(workouts[w].date).week() === week) {
+                        if (moment(workouts[w].date).startOf('week').isoWeekday(6).week() === week) {
                             currWkMiles += workouts[w].distance;
                         }
                     }
