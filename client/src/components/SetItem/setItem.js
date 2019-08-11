@@ -18,6 +18,10 @@ class SetItem extends Component {
     componentDidMount = () => {
         this.setState({
             id: this.props.id,
+            actualReps: this.props.actualReps || "",
+            weight: this.props.weight || "",
+            rest: this.props.rest || "",
+            notes: this.props.notes || "",
         });
     }
 
@@ -73,6 +77,7 @@ class SetItem extends Component {
                         placeholder="Reps"
                         onChange={this.handleInputChange}
                         onBlur={this.updateParent}
+                        // defaultValue={this.state.actualReps}
                         value={this.state.actualReps}
                     />
                     {/* WEIGHT */}
@@ -84,6 +89,7 @@ class SetItem extends Component {
                         placeholder="Lbs."
                         onChange={this.handleInputChange}
                         onBlur={this.updateParent}
+                        // defaultValue={this.state.weight}
                         value={this.state.weight}
                     />
                     {/* REST */}
@@ -95,6 +101,7 @@ class SetItem extends Component {
                         placeholder="Rest"
                         onChange={this.handleInputChange}
                         onBlur={this.updateParent}
+                        // defaultValue={this.state.rest}
                         value={this.state.rest}
                     />
                     {/* NOTES */}
@@ -106,6 +113,7 @@ class SetItem extends Component {
                         placeholder="Notes"
                         onChange={this.handleInputChange}
                         onBlur={this.updateParent}
+                        // defaultValue={this.state.notes}
                         value={this.state.notes}
                     />
                     
