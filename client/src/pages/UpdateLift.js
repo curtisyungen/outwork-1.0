@@ -98,6 +98,7 @@ class UpdateLift extends Component {
         return true;
     }
 
+    // Adds exercise to form
     addExercise = () => {
         let exercises = this.state.exercises;
 
@@ -123,6 +124,7 @@ class UpdateLift extends Component {
         });
     }
 
+    // Deletes exercise from form
     deleteExercise = (exercise) => {
         let exercises = this.state.exercises;
         let idx;
@@ -140,6 +142,7 @@ class UpdateLift extends Component {
         });
     }
 
+    // Add or remove muscle group worked during workout
     updateMuscleGroups = (muscleGroup) => {
         let muscleGroups = this.state.muscleGroups;
         let idx = muscleGroups.indexOf(muscleGroup);
@@ -156,6 +159,7 @@ class UpdateLift extends Component {
         });
     }
 
+    // User input: sets name of exercise
     setName = (id, name) => {
         let exercises = this.state.exercises;
 
@@ -170,6 +174,7 @@ class UpdateLift extends Component {
         });
     }
 
+    // User input: sets weight used for exercise
     setWeight = (id, weight) => {
         let exercises = this.state.exercises;
 
@@ -184,6 +189,7 @@ class UpdateLift extends Component {
         });
     }
 
+    // User input: sets superset ID of exercise
     setSuperset = (id, superset) => {
         let exercises = this.state.exercises;
 
@@ -198,6 +204,7 @@ class UpdateLift extends Component {
         });
     }
 
+    // User input: sets number of sets for exercise
     setSets = (id, sets) => {
         let exercises = this.state.exercises;
 
@@ -212,6 +219,7 @@ class UpdateLift extends Component {
         });
     }
 
+    // User input: sets number of reps for exercise
     setReps = (id, reps) => {
         let exercises = this.state.exercises;
 
@@ -226,7 +234,7 @@ class UpdateLift extends Component {
         });
     }
 
-    
+    // User input: sets rest for exercise
     setRest = (id, rest) => {
         let exercises = this.state.exercises;
 
@@ -241,6 +249,7 @@ class UpdateLift extends Component {
         });
     }
 
+    // User input: sets notes for exercise
     setNotes = (id, notes) => {
         let exercises = this.state.exercises;
 
@@ -255,6 +264,7 @@ class UpdateLift extends Component {
         });
     }
 
+    // Converts total workout duration into minutes
     getTtlMins = () => {
         let time = this.state.duration;
         let hours, mins, secs;
@@ -273,9 +283,9 @@ class UpdateLift extends Component {
             this.getPushUps();
         });
     }
-
     
     // Counts exercises that contain "push-up" or "push up"
+    // Then calls getPullUps
     getPushUps = () => {
         let exercises = this.state.exercises;
         let pushups = 0;
@@ -303,6 +313,7 @@ class UpdateLift extends Component {
 
     // Counts exercises that contain "pull-up", "pull up", "chin-up", "chin up", AND
     // that do NOT contain "static", such as Pull-Up Static Hold
+    // Then calls submitLift
     getPullUps = () => {
         let exercises = this.state.exercises;
         let pullups = 0;
