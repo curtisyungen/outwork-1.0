@@ -30,6 +30,12 @@ import './App.css';
 
 import moment from "moment";
 
+moment.locale('zh-cn', {
+  week : {
+      dow : 1 // Monday is the first day of the week
+  }
+});
+
 class App extends Component {
 
   constructor(props) {
@@ -547,7 +553,7 @@ class App extends Component {
     }
 
     let firstDOW = `${year}-${moZero}${month}-${dayZero}${currDOW - day}`;
-    
+
     let maxes = [];
 
     hofAPI.getWeekWorkouts(firstDOW)
