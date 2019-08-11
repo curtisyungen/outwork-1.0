@@ -112,7 +112,7 @@ class RunMetrics extends Component {
         let totalMiles = 0;
         for (var r in runs) {
             miles = parseFloat(runs[r].distance);
-            week = moment(runs[r].date).week();
+            week = moment(runs[r].date).startOf('week').isoWeekday(1).week();
             year[week] += miles;
 
             totalMiles += miles;
@@ -120,7 +120,7 @@ class RunMetrics extends Component {
 
         let avgMiles = 0;
         let today = new Date();
-        avgMiles = Math.round((totalMiles / moment(today).week()) * 100) / 100;
+        avgMiles = Math.round((totalMiles / moment(today).startOf('week').isoWeekday(1).week()) * 100) / 100;
 
         this.setState({
             avgMilesPerWeek: avgMiles,
