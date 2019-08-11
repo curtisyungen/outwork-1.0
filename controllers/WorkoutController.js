@@ -79,7 +79,8 @@ class WorkoutController {
         db.Workouts.findOne({
             where: {
                 id: req.params.runId,
-            }
+            },
+            order: [[ 'date', 'DESC' ], [ 'id', 'DESC' ]],
         })
         .then((run) => {
             res.json(run);
@@ -95,7 +96,7 @@ class WorkoutController {
                 userId: req.params.userId,
                 workoutType: 'bike',
             },
-            order: [[ 'date', 'DESC' ]],
+            order: [[ 'date', 'DESC' ], [ 'id', 'DESC' ]],
         })
         .then((workouts) => {
             res.json(workouts);
@@ -111,7 +112,7 @@ class WorkoutController {
                 userId: req.params.userId,
                 workoutType: 'swim',
             },
-            order: [[ 'date', 'DESC' ]],
+            order: [[ 'date', 'DESC' ], [ 'id', 'DESC' ]],
         })
         .then((workouts) => {
             res.json(workouts);
@@ -127,7 +128,7 @@ class WorkoutController {
                 userId: req.params.userId,
                 workoutType: 'lift',
             },
-            order: [[ 'date', 'DESC' ]],
+            order: [[ 'date', 'DESC' ], [ 'id', 'DESC' ]],
         })
         .then((workouts) => {
             res.json(workouts);
