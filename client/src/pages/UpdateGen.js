@@ -71,6 +71,8 @@ class UpdateGen extends Component {
         return true;
     }
 
+    // Loops through exercises in workout and adds up push-ups
+    // Then calls getPullUps
     getPushUps = () => {
         let workout = this.state.workout;
         let pushups = 0;
@@ -97,12 +99,12 @@ class UpdateGen extends Component {
         });
     }
 
+    // Loops through exercises in workout and adds up pull-ups and chin-ups
+    // Then calls updateGen
     getPullUps = () => {
         let workout = this.state.workout;
         let pullups = 0;
         let name;
-
-        console.log(workout);
 
         for (var s in workout) {
             for (var i=0; i<workout[s].length; i++) {
@@ -136,6 +138,7 @@ class UpdateGen extends Component {
         });
     }
 
+    // User input: sets actual reps for exercise, if different from assigned reps
     setActualReps = (setId, exName, reps) => {
         let workout = this.state.workout;
 
@@ -153,6 +156,7 @@ class UpdateGen extends Component {
         });
     }
 
+    // User input: sets weight used for exercise
     setWeight = (setId, exName, weight) => {
         let workout = this.state.workout;
 
@@ -170,6 +174,7 @@ class UpdateGen extends Component {
         });
     }
 
+    // User input: sets rest taken for exercise
     setRest = (setId, exName, rest) => {
         let workout = this.state.workout;
 
@@ -187,6 +192,7 @@ class UpdateGen extends Component {
         });
     }
 
+    // User input: notes on exercise
     setNotes = (setId, exName, notes) => {
         let workout = this.state.workout;
 
