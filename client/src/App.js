@@ -471,7 +471,7 @@ class App extends Component {
 
         // Remove champ from results -- champ cannot also be weiner
         let champ = this.state.champ;
-        console.log(champ);
+
         let idx = -1;
         if (champ) {
           for (var u in res.data) {
