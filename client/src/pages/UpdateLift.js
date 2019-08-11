@@ -553,8 +553,11 @@ class UpdateLift extends Component {
                     )}
 
                     {/* ADD EXERCISE BUTTON */}
-                    <div className="addExerciseDiv">
-                        <button className="btn btn-dark btn-sm addExerciseBtn" onClick={this.addExercise}>
+                    <div className="text-center">
+                        <button 
+                            className="btn btn-success btn-sm addExerciseBtn addExerciseBtn-main"
+                            onClick={this.addExercise.bind(null, "")}
+                        >
                             Add Exercise
                         </button>
                     </div>
