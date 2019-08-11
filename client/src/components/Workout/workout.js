@@ -175,6 +175,7 @@ class Workout extends Component {
                     sets: 1,
                     weight: null,
                     reps: this.getReps(filtered[randEx]),
+                    actualReps: null,
                     rest: null,
                     primaryMG: filtered[randEx].primaryMG,
                 }
