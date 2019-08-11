@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import Modal from "react-responsive-modal";
-import workoutAPI from "../../utils/workoutAPI";
-
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRunning } from '@fortawesome/free-solid-svg-icons';
