@@ -250,7 +250,12 @@ class Workout extends Component {
             for (var i=0; i<5; i++) {
                 name = workout[s][i].name;
                 if (name && name.toLowerCase().indexOf("push") > -1 && name.toLowerCase().indexOf("up") > -1) {
-                    pushups += parseInt(workout[s][i].reps);
+                    if (parseFloat(workout[s][i].actualReps) > 0) {
+                        pushups += parseFloat(workout[s][i].actualReps);
+                    }
+                    else {
+                        pushups += parseFloat(workout[s][i].reps);
+                    }
                 }
             }
         }
@@ -268,8 +273,25 @@ class Workout extends Component {
         for (var s in workout) {
             for (var i=0; i<5; i++) {
                 name = workout[s][i].name;
+
+                // Get Pull-Ups
                 if (name && name.toLowerCase().indexOf("pull") > -1 && name.toLowerCase().indexOf("up") > -1) {
-                    pullups += parseInt(workout[s][i].reps);
+                    if (parseFloat(workout[s][i].actualReps) > 0) {
+                        pullups += parseFloat(workout[s][i].actualReps);
+                    }
+                    else {
+                        pullups += parseFloat(workout[s][i].reps);
+                    }
+                }
+
+                // Get Chin-Ups
+                if (name && name.toLowerCase().indexOf("chin") > -1 && name.toLowerCase().indexOf("up") > -1) {
+                    if (parseFloat(workout[s][i].actualReps) > 0) {
+                        pullups += parseFloat(workout[s][i].actualReps);
+                    }
+                    else {
+                        pullups += parseFloat(workout[s][i].reps);
+                    }
                 }
             }
         }

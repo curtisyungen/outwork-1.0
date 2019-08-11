@@ -25,6 +25,12 @@ class Set extends Component {
                     <SetItem 
                         key={`${item.name}${item.reps}`}
                         id={item.id}
+                        name={item.name}
+                        weight={item.weight}
+                        reps={item.reps}
+                        actualReps={item.actualReps}
+                        rest={item.rest}
+                        notes={item.notes}
                         assignName={item.name}
                         assignReps={item.reps}
                         setActualReps={this.props.setActualReps}

@@ -25,6 +25,8 @@ class Navbar extends Component {
                     "/allusers",
                     "/run",
                     "/updaterun",
+                    "/updatelift",
+                    "/updategen",
                     "/bike",
                     "/swim",
                     "/lift",

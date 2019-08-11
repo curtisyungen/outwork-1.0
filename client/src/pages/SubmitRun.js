@@ -36,7 +36,7 @@ class SubmitRun extends Component {
     }
 
     componentDidMount = () => {
-        console.log(this.props.checkValidUser());
+        this.props.checkValidUser();
 
         // Get user info
         let userId = localStorage.getItem("userId");

@@ -106,7 +106,7 @@ class Exercise extends Component {
                             placeholder="Exercise"
                             onChange={this.handleInputChange}
                             onBlur={this.updateParent}
-                            value={this.state.name}
+                            defaultValue={this.state.name}
                         />
                         {/* WEIGHT */}
                         <input
@@ -117,7 +117,7 @@ class Exercise extends Component {
                             placeholder="Lbs."
                             onChange={this.handleInputChange}
                             onBlur={this.updateParent}
-                            value={this.state.weight}
+                            defaultValue={this.state.weight}
                         />
                         {/* SUPERSET ID */}
                         <input
@@ -128,7 +128,7 @@ class Exercise extends Component {
                             placeholder="Superset ID"
                             onChange={this.handleInputChange}
                             onBlur={this.updateParent}
-                            value={this.state.superset}
+                            defaultValue={this.state.superset}
                         />
                     </div>
                     <div className="sect2">
@@ -141,7 +141,7 @@ class Exercise extends Component {
                             placeholder="Sets"
                             onChange={this.handleInputChange}
                             onBlur={this.updateParent}
-                            value={this.state.sets}
+                            defaultValue={this.state.sets}
                         />
                         {/* REPS */}
                         <input
@@ -152,7 +152,7 @@ class Exercise extends Component {
                             placeholder="Reps or Time"
                             onChange={this.handleInputChange}
                             onBlur={this.updateParent}
-                            value={this.state.reps}
+                            defaultValue={this.state.reps}
                         />
                         {/* REST */}
                         <input
@@ -163,7 +163,7 @@ class Exercise extends Component {
                             placeholder="Rest (Min.)"
                             onChange={this.handleInputChange}
                             onBlur={this.updateParent}
-                            value={this.state.rest}
+                            defaultValue={this.state.rest}
                         />
                     </div>
                     <div className="sect3">
@@ -176,7 +176,7 @@ class Exercise extends Component {
                             placeholder="Notes"
                             onChange={this.handleInputChange}
                             onBlur={this.updateParent}
-                            value={this.state.notes}
+                            defaultValue={this.state.notes}
                         />
                         {/* DELETE */}
                         <button

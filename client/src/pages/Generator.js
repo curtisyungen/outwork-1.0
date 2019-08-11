@@ -204,7 +204,7 @@ class Generator extends Component {
                             type="text"
                             aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
-                            defaultValue={"0"}
+                            // defaultValue={"0"}
                             value={this.state.difficulty}
                         >
                             <option value="0">Select Difficulty</option>

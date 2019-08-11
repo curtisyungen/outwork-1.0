@@ -17,7 +17,9 @@ import UpdateRun from "./pages/UpdateRun";
 import SubmitBike from "./pages/SubmitBike";
 import SubmitSwim from "./pages/SubmitSwim";
 import SubmitLift from "./pages/SubmitLift";
+import UpdateLift from "./pages/UpdateLift";
 import Generator from "./pages/Generator";
+import UpdateGen from "./pages/UpdateGen";
 import HallOfFame from "./pages/HallOfFame";
 import AllUsers from "./pages/AllUsers";
 import Error from "./pages/Error";
@@ -830,12 +832,31 @@ class App extends Component {
               />
             } />
 
+            {/* Update Lift Page */}
+            <Route exact path="/updateLift" render={() =>
+              <UpdateLift
+                checkValidUser={this.checkValidUser}
+                background={this.state.background}
+                setRedirectToHome={this.setRedirectToHome}
+              />
+            } />
+
             {/* Generator Page */}
             <Route exact path="/generator" render={() =>
               <Generator
                 checkValidUser={this.checkValidUser}
                 background={this.state.background}
                 difficulty={sessionStorage.getItem("diff")}
+              />
+            } />
+
+            {/* Update Generator Page */}
+            {/* Update Lift Page */}
+            <Route exact path="/updateGen" render={() =>
+              <UpdateGen
+                checkValidUser={this.checkValidUser}
+                background={this.state.background}
+                setRedirectToHome={this.setRedirectToHome}
               />
             } />
 

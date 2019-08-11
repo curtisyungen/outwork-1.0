@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import Modal from "react-responsive-modal";
 import LiftDetailSet from "../LiftDetailSet/liftDetailSet";
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -20,6 +21,8 @@ class Lift extends Component {
             generator: null,
             generatorText: null,
             muscleGroups: null,
+            updateLift: false,
+            updateGen: false,
         }
     }
 
@@ -59,6 +62,28 @@ class Lift extends Component {
         });
     }
 
+    updateLift = (event) => {
+        event.preventDefault();
+
+        let liftId = this.props.id;
+        sessionStorage.setItem("id", liftId);
+
+        let updateLift = false; 
+        let updateGen = false;
+
+        if (this.props.generator === "Standard" || this.props.generator === "Non-generated") {
+            updateLift = true;
+        }
+        else {
+            updateGen = true;
+        }
+
+        this.setState({
+            updateLift: updateLift,
+            updateGen: updateGen,
+        });
+    }
+
     deleteLift = (event) => {
         event.preventDefault();
 
@@ -83,6 +108,26 @@ class Lift extends Component {
                     <div className="cell cell7"><span className="cellDesc">Pull-Ups</span>{this.props.pullups}</div>
                     <div className="cell cell8 actNotes"><span className="cellDesc">Notes</span>{this.props.notes}</div>
                 </div>
+
+                {this.state.updateLift ? (
+                    <Redirect 
+                        to={{
+                            pathname: "/updateLift",
+                        }}
+                    />
+                ) : (
+                    <></>
+                )}
+
+                {this.state.updateGen ? (
+                    <Redirect 
+                        to={{
+                            pathname: "/updateGen",
+                        }}
+                    />
+                ) : (
+                    <></>
+                )}
 
                 {this.state.openModal ? (
                     <Modal 
@@ -155,7 +200,10 @@ class Lift extends Component {
                         </div>
 
                         {this.props.userId === localStorage.getItem("userId") ? (
-                            <button className="btn btn-danger btn-sm deleteActivity" onClick={this.deleteLift}>Delete Workout</button>
+                            <span>
+                                <button className="btn btn-danger btn-sm deleteActivity" onClick={this.deleteLift}>Delete Workout</button>
+                                <button className="btn btn-success btn-sm updateActivity" onClick={this.updateLift}>Update</button>
+                            </span>
                         ) : (
                             <></>
                         )}

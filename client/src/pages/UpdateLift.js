@@ -1,18 +1,16 @@
 import React, { Component } from "react";
-// import Container from "../components/Container/container";
 import Exercise from "../components/Exercise/exercise";
 import MuscleGroup from "../components/MuscleGroup/muscleGroup";
-import ActivityIcons from "../components/ActivityIcons/activityIcons";
-import userAPI from "../utils/userAPI";
 import workoutAPI from "../utils/workoutAPI";
 import "./SubmitLift.css";
 
-class SubmitLift extends Component {
+class UpdateLift extends Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
+            liftId: null,
             userId: null,
             firstName: null,
             lastName: null,
@@ -21,7 +19,7 @@ class SubmitLift extends Component {
             location: null,
             duration: null,
             ttlMins: null,
-            generator: null,
+            generator: "",
             pushups: null,
             pullups: null,
             exercises: [],
@@ -34,41 +32,39 @@ class SubmitLift extends Component {
     componentDidMount = () => {
         this.props.checkValidUser();
 
-        // Get user info
-        let userId = localStorage.getItem("userId");     
+        let muscleGroupList = [
+            "Chest", "Shoulders", 
+            "Back", "Biceps", 
+            "Triceps", "Forearms", 
+            "Quadriceps", "Hamstrings", 
+            "Calves", "Abdominals"];
 
-        userAPI.getUserById(userId)
+        let liftId = sessionStorage.getItem("id");
+
+        workoutAPI.getRunById(liftId)
             .then((res) => {
-                // Get exercises 
-                let exercises = [];   
-                let exercise = {
-                    id: 0,
-                    name: "",
-                    weight: "",
-                    superset: "",
-                    sets: "",
-                    reps: "",
-                    rest: "",
-                    notes: "",
-                }
-
-                exercises.push(exercise);
                 
-                let muscleGroupList = [
-                    "Chest", "Shoulders", 
-                    "Back", "Biceps", 
-                    "Triceps", "Forearms", 
-                    "Quadriceps", "Hamstrings", 
-                    "Calves", "Abdominals"];
+                let lift = res.data;
 
                 this.setState({
-                    userId: userId,
-                    firstName: res.data[0].firstName,
-                    lastName: res.data[0].lastName,
-                    exercises: exercises,
+                    liftId: liftId,
+                    userId: lift.userId,
+                    firstName: lift.firstName,
+                    lastName: lift.lastName,
+                    date: lift.date,
+                    time: lift.time,
+                    location: lift.location,
+                    duration: lift.duration,
+                    ttlMins: lift.ttlMins,
+                    generator: lift.generator,
+                    pushups: lift.pushups,
+                    pullups: lift.pullups,
+                    exercises: JSON.parse(lift.workout)[0],
+                    muscleGroups: JSON.parse(lift.muscleGroups),
                     muscleGroupList: muscleGroupList,
+                    notes: lift.notes,
                 });
-            });      
+            });    
     }
 
     handleInputChange = (event) => {
@@ -81,7 +77,7 @@ class SubmitLift extends Component {
 
     validateLiftForm = () => {
         let date = this.state.date;
-        let exer = this.state.exercises;
+        let exer = this.state.exercises[0];
         let time = this.state.duration;
 
         if (date === null || date === "" || date.length < 10) {
@@ -100,59 +96,6 @@ class SubmitLift extends Component {
         }
 
         return true;
-    }
-
-    // Counts exercises that contain "push-up" or "push up"
-    getPushUps = () => {
-        let exercises = this.state.exercises;
-        let pushups = 0;
-
-        for (var e in exercises) {
-            let name = exercises[e].name.toLowerCase();
-            let reps = parseFloat(exercises[e].reps);
-            let sets = parseFloat(exercises[e].sets);
-
-            if (name.indexOf("push-up") > -1) {
-                pushups += reps * sets;
-            }
-
-            if (name.indexOf("push up") > -1) {
-                pushups += reps * sets;
-            }
-        }
-
-        return pushups;
-    }
-
-    // Counts exercises that contain "pull-up", "pull up", "chin-up", "chin up", AND
-    // that do NOT contain "static", such as Pull-Up Static Hold
-    getPullUps = () => {
-        let exercises = this.state.exercises;
-        let pullups = 0;
-
-        for (var e in exercises) {
-            let name = exercises[e].name.toLowerCase();
-            let reps = parseFloat(exercises[e].reps);
-            let sets = parseFloat(exercises[e].sets);
-
-            if (name.indexOf("pull-up") > -1 && name.indexOf("static") === -1) {
-                pullups += reps * sets;
-            }
-
-            if (name.indexOf("pull up") > -1 && name.indexOf("static") === -1) {
-                pullups += reps * sets;
-            }
-
-            if (name.indexOf("chin-up") > -1 && name.indexOf("static") === -1) {
-                pullups += reps * sets;
-            }
-
-            if (name.indexOf("chin up") > -1 && name.indexOf("static") === -1) {
-                pullups += reps * sets;
-            }
-        }
-
-        return pullups;
     }
 
     addExercise = () => {
@@ -174,28 +117,6 @@ class SubmitLift extends Component {
         }
 
         exercises.push(exercise);
-
-        this.setState({
-            exercises: exercises,
-        });
-    }
-
-    getExercise = (exercise) => {
-        let exercises = this.state.exercises;
-        let idx = -1;
-
-        for (var e in exercises) {
-            if (exercises[e].id === exercise.id) {
-                idx = e;
-            }
-        }
-
-        if (idx > -1) {
-            exercises[idx] = exercise;
-        }
-        else {
-            exercises.push(exercise);
-        }
 
         this.setState({
             exercises: exercises,
@@ -304,6 +225,7 @@ class SubmitLift extends Component {
             exercises: exercises,
         });
     }
+
     
     setRest = (id, rest) => {
         let exercises = this.state.exercises;
@@ -348,6 +270,68 @@ class SubmitLift extends Component {
         this.setState({
             ttlMins: ttlMins,
         }, () => {
+            this.getPushUps();
+        });
+    }
+
+    
+    // Counts exercises that contain "push-up" or "push up"
+    getPushUps = () => {
+        let exercises = this.state.exercises;
+        let pushups = 0;
+
+        for (var e in exercises) {
+            let name = exercises[e].name.toLowerCase();
+            let reps = parseFloat(exercises[e].reps);
+            let sets = parseFloat(exercises[e].sets);
+
+            if (name.indexOf("push-up") > -1) {
+                pushups += reps * sets;
+            }
+
+            if (name.indexOf("push up") > -1) {
+                pushups += reps * sets;
+            }
+        }
+
+        this.setState({
+            pushups: pushups,
+        }, () => {
+            this.getPullUps();
+        });
+    }
+
+    // Counts exercises that contain "pull-up", "pull up", "chin-up", "chin up", AND
+    // that do NOT contain "static", such as Pull-Up Static Hold
+    getPullUps = () => {
+        let exercises = this.state.exercises;
+        let pullups = 0;
+
+        for (var e in exercises) {
+            let name = exercises[e].name.toLowerCase();
+            let reps = parseFloat(exercises[e].reps);
+            let sets = parseFloat(exercises[e].sets);
+
+            if (name.indexOf("pull-up") > -1 && name.indexOf("static") === -1) {
+                pullups += reps * sets;
+            }
+
+            if (name.indexOf("pull up") > -1 && name.indexOf("static") === -1) {
+                pullups += reps * sets;
+            }
+
+            if (name.indexOf("chin-up") > -1 && name.indexOf("static") === -1) {
+                pullups += reps * sets;
+            }
+
+            if (name.indexOf("chin up") > -1 && name.indexOf("static") === -1) {
+                pullups += reps * sets;
+            }
+        }
+
+        this.setState({
+            pullups: pullups,
+        }, () => {
             this.submitLift();
         });
     }
@@ -371,6 +355,7 @@ class SubmitLift extends Component {
             }
 
             let liftData = {
+                id: this.state.liftId,
                 workoutType: "lift",
                 userId: this.state.userId,
                 firstName: this.state.firstName,
@@ -393,22 +378,24 @@ class SubmitLift extends Component {
                 shoe: null,
                 bike: null,
                 generator: generator,
-                pushups: this.getPushUps(),
-                pullups: this.getPullUps(),
+                pushups: this.state.pushups,
+                pullups: this.state.pullups,
                 workout: JSON.stringify([this.state.exercises]),
                 muscleGroups: JSON.stringify(this.state.muscleGroups),
                 notes: this.state.notes,
                 map: null,
             };
 
-            workoutAPI.createWorkout(liftData)
+            let liftId = this.state.liftId;
+
+            workoutAPI.updateWorkout(liftId, liftData)
                 .then((res) => {
                     if (res.status === 200) {
-                        alert("Workout submitted!");
-                        window.location.reload();
+                        alert("Workout updated!");
+                        this.props.setRedirectToHome();
                     }
                     else {
-                        alert("Error submitting workout.");
+                        alert("Error updating workout.");
                     }
                 });
         }
@@ -418,13 +405,8 @@ class SubmitLift extends Component {
         return (
             <div className="container pageContainer submitContainer liftContainer">
                 <div>
-
                     <div className="titleBar">
-                        <h4>Lifting Workout</h4>
-
-                        <ActivityIcons 
-                            hidden="lift"
-                        />
+                        <h4>Update Lift</h4>
                     </div>
 
                     {/* DATE */}
@@ -440,6 +422,7 @@ class SubmitLift extends Component {
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
+                            defaultValue={this.state.date}
                         />
                     </div>
 
@@ -457,6 +440,7 @@ class SubmitLift extends Component {
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
+                            defaultValue={this.state.time}
                         />
                     </div>
 
@@ -473,6 +457,7 @@ class SubmitLift extends Component {
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
+                            defaultValue={this.state.location}
                         />
                     </div>
 
@@ -490,6 +475,7 @@ class SubmitLift extends Component {
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
+                            defaultValue={this.state.duration}
                         />
                     </div>
 
@@ -504,7 +490,7 @@ class SubmitLift extends Component {
                             name="generator"
                             type="text"
                             onChange={this.handleInputChange}
-                            defaultValue={null}
+                            value={this.state.generator}
                         >
                             <option value=""></option>
                             <option value="1">Baby</option>
@@ -529,21 +515,31 @@ class SubmitLift extends Component {
                         </p>
                     </div>
 
-                    {this.state.exercises.map(exercise => (
-                        <Exercise
-                            key={exercise.id}
-                            id={exercise.id}
-                            setName={this.setName}
-                            setWeight={this.setWeight}
-                            setSuperset={this.setSuperset}
-                            setSets={this.setSets}
-                            setReps={this.setReps}
-                            setRest={this.setRest}
-                            setNotes={this.setNotes}
-                            getExercise={this.getExercise}
-                            deleteExercise={this.deleteExercise}
-                        />
-                    ))}
+                    {this.state.exercises && this.state.exercises.length > 0 ? (
+                        this.state.exercises.map(exercise => (
+                            <Exercise
+                                key={`${exercise.id}${exercise.name}`}
+                                id={exercise.id}
+                                name={exercise.name}
+                                weight={exercise.weight}
+                                superset={exercise.superset}
+                                sets={exercise.sets}
+                                reps={exercise.reps}
+                                rest={exercise.rest}
+                                notes={exercise.notes}
+                                setName={this.setName}
+                                setWeight={this.setWeight}
+                                setSuperset={this.setSuperset}
+                                setSets={this.setSets}
+                                setReps={this.setReps}
+                                setRest={this.setRest}
+                                setNotes={this.setNotes}
+                                deleteExercise={this.deleteExercise}
+                            />
+                        ))
+                    ) : (
+                        <></>
+                    )}
 
                     {/* ADD EXERCISE BUTTON */}
                     <div className="addExerciseDiv">
@@ -587,6 +583,7 @@ class SubmitLift extends Component {
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
+                            defaultValue={this.state.notes}
                         />
                     </div>
 
@@ -601,4 +598,4 @@ class SubmitLift extends Component {
     }
 }
 
-export default SubmitLift;
+export default UpdateLift;

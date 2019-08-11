@@ -42,7 +42,7 @@ class LiftDetailSet extends Component {
                                 weight={exercise.weight}
                                 superset={exercise.superset}
                                 sets={exercise.sets}
-                                reps={exercise.reps}
+                                reps={exercise.actualReps || exercise.reps}
                                 rest={exercise.rest}
                                 notes={exercise.notes}
                             />
