@@ -22,6 +22,10 @@ router.get("/getRunsByUserId/:userId", (req, res) => {
     controller.getRunsByUserId(req, res);
 });
 
+router.get("/getRunById/:runId", (req, res) => {
+    controller.getRunById(req, res);
+});
+
 router.get("/getBikesByUserId/:userId", (req, res) => {
     controller.getBikesByUserId(req, res);
 });
