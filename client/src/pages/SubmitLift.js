@@ -357,7 +357,7 @@ class SubmitLift extends Component {
 
         if (this.validateLiftForm()) {
 
-            let generator = "Standard";
+            let generator = "Non-generated";
             switch (this.state.generator) {
                 case "1": generator = "Baby"; break;
                 case "2": generator = "Easy"; break;
@@ -367,7 +367,7 @@ class SubmitLift extends Component {
                 case "6": generator = "Superman"; break;
                 case "7": generator = "Rogan"; break;
                 case "8": generator = "Goggins"; break;
-                default: generator = "Standard";
+                default: generator = "Non-generated";
             }
 
             let liftData = {
