@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import Modal from "react-responsive-modal";
+import workoutAPI from "../../utils/workoutAPI";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,6 +19,7 @@ class Run extends Component {
             openModal: false,
             userId: null,
             repeats: null,
+            update: false,
         }
     }
 
@@ -24,6 +27,14 @@ class Run extends Component {
         this.setState({
             userId: this.props.userId,
             repeats: JSON.parse(this.props.repeats),
+        });
+    }
+    
+    handleInputChange = (event) => {
+        const { name, value } = event.target;
+
+        this.setState({
+            [name]: value,
         });
     }
 
@@ -36,6 +47,17 @@ class Run extends Component {
     closeModal = () => {
         this.setState({
             openModal: false,
+        });
+    }
+
+    updateRun = (event) => {
+        event.preventDefault();
+
+        let runId = this.props.id;
+        sessionStorage.setItem("id", runId);
+
+        this.setState({
+            update: true,
         });
     }
 
@@ -63,6 +85,16 @@ class Run extends Component {
                     <div className="cell cell7"><span className="cellDesc">Weather</span>{this.props.weather}</div>
                     <div className="cell cell8 actNotes"><span className="cellDesc">Notes</span>{this.props.notes}</div>
                 </div>
+
+                {this.state.update ? (
+                    <Redirect 
+                        to={{
+                            pathname: "/updateRun",
+                        }}
+                    />
+                ) : (
+                    <></>
+                )}
 
                 {this.state.openModal ? (
                     <Modal
@@ -123,7 +155,7 @@ class Run extends Component {
                                         <div className="dataTitle">Repeats</div>
                                         <div className="">
                                             {JSON.parse(this.props.repeats).map(repeat => (
-                                                <div className="repeatDiv">
+                                                <div key={repeat.id} className="repeatDiv">
                                                     <span className="repeatSpan">Miles: {repeat.distance}</span>
                                                     <span className="repeatSpan">Time: {repeat.time}</span>
                                                     <span className="repeatSpan">Rest: {repeat.rest}</span>
@@ -170,41 +202,16 @@ class Run extends Component {
                                     <div className="dataPoint dataPoint-map">{this.props.map}</div>
                                 </div>
                             </div>
-                        </div>
 
-                        {/* REPEATS */}
-                        {/* <div>
-                            {this.props.runType && this.props.runType.toLowerCase() === "repeats" ? (
+                            {this.props.userId === localStorage.getItem("userId") ? (
                                 <span>
-                                    <h5 className="title">Repeats</h5>
-                                    <table className="table table-striped table-bordered table-sm text-center align-middle runDetails">
-                                        <thead className="thead-dark">
-                                            <tr>
-                                                <th>Miles</th>
-                                                <th>Time (mm:ss)</th>
-                                                <th>Rest (min.)</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {this.state.repeats.map(repeat => (
-                                                <tr key={Math.random() * 100000}>
-                                                    <td>{repeat.distance}</td>
-                                                    <td>{repeat.time}</td>
-                                                    <td>{repeat.rest}</td>
-                                                </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
+                                    <button className="btn btn-danger btn-sm deleteActivity" onClick={this.deleteRun}>Delete Run</button>
+                                    <button className="btn btn-success btn-sm updateActivity" onClick={this.updateRun}>Update</button>
                                 </span>
                             ) : (
-                                    <></>
-                                )}
-                        </div> */}
-                        {this.props.userId === localStorage.getItem("userId") ? (
-                            <button className="btn btn-danger btn-sm deleteActivity" onClick={this.deleteRun}>Delete Run</button>
-                        ) : (
                                 <></>
-                            )}
+                            )}    
+                        </div>            
                     </Modal>
                 ) : (
                         <></>

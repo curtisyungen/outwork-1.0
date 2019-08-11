@@ -85,8 +85,14 @@
     display: inline-block;
 }
 
-.deleteActivity {
+.deleteActivity,
+.updateActivity {
+    float: right;
     margin-top: 10px;
+}
+
+.updateActivity {
+    margin-right: 5px;
 }
 
 .icon {
