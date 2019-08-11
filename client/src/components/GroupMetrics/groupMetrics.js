@@ -56,7 +56,9 @@ class GroupMetrics extends Component {
                 let pushups = 0, pullups = 0, climb = 0;
                 let miles = 0, currWkMiles = 0;
                 let today = new Date();
-                let week = moment(today).week();
+                let week = moment(today).startOf('week').isoWeekday(6).week();
+
+                console.log(week);
 
                 for (var w in workouts) {
 
