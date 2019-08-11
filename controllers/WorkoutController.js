@@ -84,6 +84,20 @@ class WorkoutController {
         });
     }
 
+    getRunById(req, res) {
+        db.Workouts.findOne({
+            where: {
+                id: req.params.runId,
+            }
+        })
+        .then((run) => {
+            res.json(run);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    }
+
     getBikesByUserId(req, res) {
         db.Workouts.findAll({
             where: {
@@ -144,10 +158,7 @@ class WorkoutController {
 
     updateWorkout(req, res) {
         db.Workouts.update(
-            { 
-                pushups: req.body.pushups,
-                pullups: req.body.pullups
-            },
+            req.body.workout,
             { where: {
                 id: req.body.id,
             }})

@@ -13,6 +13,7 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import LogActivity from "./pages/LogActivity";
 import SubmitRun from "./pages/SubmitRun";
+import UpdateRun from "./pages/UpdateRun";
 import SubmitBike from "./pages/SubmitBike";
 import SubmitSwim from "./pages/SubmitSwim";
 import SubmitLift from "./pages/SubmitLift";
@@ -793,6 +794,15 @@ class App extends Component {
               <SubmitRun
                 checkValidUser={this.checkValidUser}
                 background={this.state.background}
+              />
+            } />
+
+            {/* Update Run Page */}
+            <Route exact path="/updateRun" render={() =>
+              <UpdateRun
+                checkValidUser={this.checkValidUser}
+                background={this.state.background}
+                setRedirectToHome={this.setRedirectToHome}
               />
             } />
 
