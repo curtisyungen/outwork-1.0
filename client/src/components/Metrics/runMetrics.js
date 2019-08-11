@@ -3,6 +3,12 @@ import "./metrics.css";
 
 import moment from "moment";
 
+moment.locale('zh-cn', {
+    week : {
+        dow : 1 // Monday is the first day of the week
+    }
+});
+
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRunning } from '@fortawesome/free-solid-svg-icons';
