@@ -463,9 +463,26 @@ class App extends Component {
         let max = this.getMaximum(res.data);
         hofAPI.updateHof("mostBikes", max[0], max[1]);
       });
+  }
 
+  getHotDog = () => {
     hofAPI.getHotdog()
       .then((res) => {
+
+        // Remove champ from results -- champ cannot also be weiner
+        let champ = this.state.champ;
+        console.log(champ);
+        let idx = -1;
+        if (champ) {
+          for (var u in res.data) {
+            if (res.data[u].firstName === champ) {
+              idx = u;
+            }
+          }
+
+          res.data.splice(idx, 1);
+        }
+
         let min = this.getMinimum(res.data);
         hofAPI.updateHof("hotdog", min[0], 1);
       });
@@ -606,6 +623,12 @@ class App extends Component {
       else {
         champ = "Tie";
       }
+
+      this.setState({
+        champ: champ,
+      }, () => {
+        this.getHotDog();
+      });
 
       hofAPI.updateHof("champ", champ, 1);
     }
