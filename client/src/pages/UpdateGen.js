@@ -77,7 +77,7 @@ class UpdateGen extends Component {
         let name;
 
         for (var s in workout) {
-            for (var i=0; i<5; i++) {
+            for (var i=0; i<workout[s].length; i++) {
                 name = workout[s][i].name;
                 if (name && name.toLowerCase().indexOf("push") > -1 && name.toLowerCase().indexOf("up") > -1) {
                     if (parseFloat(workout[s][i].actualReps) > 0) {
@@ -102,8 +102,10 @@ class UpdateGen extends Component {
         let pullups = 0;
         let name;
 
+        console.log(workout);
+
         for (var s in workout) {
-            for (var i=0; i<5; i++) {
+            for (var i=0; i<workout[s].length; i++) {
                 name = workout[s][i].name;
                 // Get Pull-ups
                 if (name && name.toLowerCase().indexOf("pull") > -1 && name.toLowerCase().indexOf("up") > -1) {
