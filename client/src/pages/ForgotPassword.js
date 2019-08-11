@@ -75,8 +75,6 @@ class ForgotPassword extends Component {
     }
 
     agree = () => {
-        alert("Oh yeah, act all annoyed. Boo hoo. You're the annoying one. Stop doing stupid shit. It's not funny.");
-
         this.setState({
             agree: true,
         });
