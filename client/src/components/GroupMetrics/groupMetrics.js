@@ -5,6 +5,12 @@ import "./groupMetrics.css";
 
 import moment from "moment";
 
+moment.locale('zh-cn', {
+    week : {
+        dow : 1 // Monday is the first day of the week
+    }
+});
+
 class GroupMetrics extends Component {
 
     constructor(props) {
@@ -56,7 +62,7 @@ class GroupMetrics extends Component {
                 let pushups = 0, pullups = 0, climb = 0;
                 let miles = 0, currWkMiles = 0;
                 let today = new Date();
-                let week = moment(today).startOf('week').isoWeekday(6).week();
+                let week = moment(today).week();
 
                 for (var w in workouts) {
 
@@ -65,7 +71,7 @@ class GroupMetrics extends Component {
                         miles += parseFloat(workouts[w].distance);
                         climb += parseFloat(workouts[w].climb);
 
-                        if (moment(workouts[w].date).startOf('week').isoWeekday(6).week() === week) {
+                        if (moment(workouts[w].date).week() === week) {
                             currWkMiles += workouts[w].distance;
                         }
                     }
@@ -116,7 +122,7 @@ class GroupMetrics extends Component {
                         </div>
 
                         {this.state.groupMetrics.map(indiv => (
-                            <div key={indiv.name} className="gm-row">
+                            <div key={indiv.firstName} className="gm-row">
                                 <div className="gm-col">
                                     <div className="gm-cell">{indiv.firstName}</div>
                                     <div className="gm-cell">{indiv.workouts}</div>
