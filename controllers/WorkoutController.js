@@ -2,23 +2,12 @@ const db = require("../models/index.js");
 
 class WorkoutController {
 
-    setTtlMins(req, res) {
-        db.Workouts.update(
-            {ttlMins: req.body.ttlMins},
-            {where: {
-                id: req.body.workoutId,
-            }}
-        )
-        .then((wrkt) => {
-            res.json(wrkt);
-        });
-    }
-
     getAllWorkoutsByUserId(req, res) {
         db.Workouts.findAll({
             where: {
                 userId: req.params.userId,
-            }
+            },
+            order: [[ 'date', 'DESC' ], [ 'id', 'DESC' ]],
         })
             .then((workouts) => {
                 res.json(workouts);
@@ -29,7 +18,9 @@ class WorkoutController {
     }
 
     getAllWorkouts(req, res) {
-        db.Workouts.findAll({})
+        db.Workouts.findAll({
+                order: [[ 'date', 'DESC' ], [ 'id', 'DESC' ]],
+            })
             .then((workouts) => {
                 res.json(workouts);
             })
