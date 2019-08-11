@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-// import Container from "../components/Container/container";
 import Exercise from "../components/Exercise/exercise";
 import MuscleGroup from "../components/MuscleGroup/muscleGroup";
+import AddExerciseBtn from "../components/AddExerciseBtn/addExerciseBtn";
 import ActivityIcons from "../components/ActivityIcons/activityIcons";
 import userAPI from "../utils/userAPI";
 import workoutAPI from "../utils/workoutAPI";
@@ -28,6 +28,7 @@ class SubmitLift extends Component {
             muscleGroups: [],
             muscleGroupList: [],
             notes: null,
+            exBtns: null,
         }
     }
 
@@ -59,7 +60,19 @@ class SubmitLift extends Component {
                     "Back", "Biceps", 
                     "Triceps", "Forearms", 
                     "Quadriceps", "Hamstrings", 
-                    "Calves", "Abdominals"];
+                    "Calves", "Abdominals",
+                ];
+
+                let exBtns = [
+                    "Push-Ups", "Pull-Ups", "Chin-Ups", 
+                    "Pull-Up Weighted Negatives", 
+                    "Chin-Up Weighted Negatives", "Pull-Up Static Hold", 
+                    "Chin-Up Static Hold", "Kettle Bell Swings",
+                    "Seated In and Outs", "Plank", "Plank Knee to Elbow", "Hanging Knee Raises",
+                    "Twisting Crunches", "Weighted Calf Raises", "Bodyweight Squats",
+                    "Wall Sit", "Clap Push-Ups", "Diamond Push-Ups", "Triangle Push-Ups", 
+                    "Incline Push-Ups", "Decline Push-Ups"
+                ];
 
                 this.setState({
                     userId: userId,
@@ -67,6 +80,7 @@ class SubmitLift extends Component {
                     lastName: res.data[0].lastName,
                     exercises: exercises,
                     muscleGroupList: muscleGroupList,
+                    exBtns: exBtns,
                 });
             });      
     }
@@ -155,7 +169,7 @@ class SubmitLift extends Component {
         return pullups;
     }
 
-    addExercise = () => {
+    addExercise = (name) => {
         let exercises = this.state.exercises;
 
         let maxId = -1;
@@ -167,7 +181,7 @@ class SubmitLift extends Component {
 
         let exercise = {
             id: maxId + 1,
-            name: "",
+            name: name,
             weight: "",
             reps: "",
             rest: "",
@@ -533,6 +547,7 @@ class SubmitLift extends Component {
                         <Exercise
                             key={exercise.id}
                             id={exercise.id}
+                            name={exercise.name}
                             setName={this.setName}
                             setWeight={this.setWeight}
                             setSuperset={this.setSuperset}
@@ -540,16 +555,30 @@ class SubmitLift extends Component {
                             setReps={this.setReps}
                             setRest={this.setRest}
                             setNotes={this.setNotes}
-                            getExercise={this.getExercise}
                             deleteExercise={this.deleteExercise}
                         />
                     ))}
 
-                    {/* ADD EXERCISE BUTTON */}
-                    <div className="addExerciseDiv">
-                        <button className="btn btn-dark btn-sm addExerciseBtn" onClick={this.addExercise}>
+                    {/* ADD EXERCISE BUTTONS */}
+                    <div className="text-center">
+                        <button 
+                            className="btn btn-success btn-sm addExerciseBtn addExerciseBtn-main"
+                            onClick={this.addExercise.bind(null, "")}
+                        >
                             Add Exercise
                         </button>
+                    </div>
+                    <div className="addExerciseDiv">
+                        {this.state.exBtns ? (
+                            this.state.exBtns.map(btn => (
+                                <AddExerciseBtn 
+                                    name={btn}
+                                    addExercise={this.addExercise}
+                                />
+                            ))
+                        ) : (
+                            <></>
+                        )}
                     </div>
 
                     {/* MUSCLE GROUPS */}
