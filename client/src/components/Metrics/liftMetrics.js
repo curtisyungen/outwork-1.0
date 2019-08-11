@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import hofAPI from "../../utils/hofAPI";
 import "./metrics.css";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
