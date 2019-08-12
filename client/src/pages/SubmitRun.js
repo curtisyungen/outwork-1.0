@@ -356,7 +356,7 @@ class SubmitRun extends Component {
                                 aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-sm"
                                 onChange={this.handleInputChange}
-                                defaultValue={this.state.today}
+                                //defaultValue={this.state.today}
                             />
                         </div>
 
