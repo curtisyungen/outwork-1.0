@@ -136,7 +136,7 @@
 .welcomeNote {
     font-size: 36px;
     text-align: left;   
-    width: 350px;
+    width: 500px;
 }
 
 @media only screen and (max-width: 520px) {
