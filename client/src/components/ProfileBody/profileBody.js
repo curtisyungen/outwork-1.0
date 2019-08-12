@@ -183,7 +183,7 @@ class ProfileBody extends Component {
                             className={`btn btn-dark btn-sm reverseSort opt-${this.state.displayOpt === "Reverse Sort"}`}
                             onClick={this.reverseSort}
                         >
-                            Reverse Sort
+                            Older First
                         </button>
 
                     </div>
@@ -198,7 +198,7 @@ class ProfileBody extends Component {
                     {this.state.userActivity && this.state.userActivity.length > 0 ? (
                         this.state.userActivity.map(act => (
                             <UserActivity
-                                key={Math.random() * 100000}
+                                key={act.id}
                                 activity={act}
                                 deleteActivity={this.props.deleteActivity}
                             />
