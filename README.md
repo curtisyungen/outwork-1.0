@@ -1,6 +1,7 @@
 # Outwork
 **by Curtis Yungen**
-***August 2019***
+
+August 2019
 
 Outwork is a website where my friend, brother, and I can log our running, biking, swimming, or lifting workouts, track metrics, and compete for awards. Check it out by visiting https://outwork-cjy.herokuapp.com.
 
