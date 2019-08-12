@@ -14,6 +14,7 @@ class Home extends Component {
         this.state = {
             userId: null,
             firstName: "",
+            background: "",
             allActivity: [],
             filtered: [],
             category: null,
@@ -30,9 +31,12 @@ class Home extends Component {
 
         let userId = localStorage.getItem("userId");
         let firstName = localStorage.getItem("fn");
+        let background = localStorage.getItem("background");
+        
         this.setState({
             userId: userId,
             firstName: firstName,
+            background: background,
             allActivity: this.props.allActivity,
             filtered: this.props.allActivity,
             category: "Name",
@@ -218,7 +222,7 @@ class Home extends Component {
                 <div className={`homePage`}>
                     
                     <div className="activityIcons-home">
-                        <div className="welcomeNote">
+                        <div className={`welcomeNote color-${this.state.background}`}>
                             <span>Welcome, {this.state.firstName}.</span>
                         </div>
             
