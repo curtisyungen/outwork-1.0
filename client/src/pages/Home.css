@@ -37,7 +37,13 @@
     opacity: 1;
 }
 
-.color-alex {
+.color-alex,
+.color-blue,
+.color-bundy,
+.color-darkGray,
+.color-goggins, 
+.color-gravel,
+.color-trump {
     color: white;   
 }
 
