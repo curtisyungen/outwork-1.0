@@ -27,10 +27,13 @@ class Workout extends Component {
             sets: null,
             workout: null,
             complete: false,
+            today: null,
         }
     }
 
     componentDidMount = () => {
+        this.getToday();
+
         this.setState({
             userId: this.props.userId,
             firstName: this.props.firstName,
@@ -413,6 +416,30 @@ class Workout extends Component {
         });
     }
 
+    getToday = () => {
+        let today = new Date();
+        let month = today.getMonth() + 1;
+        let date = today.getDate();
+
+        let moZero = "";
+
+        if (month < 10) {
+            moZero = 0;
+        }
+
+        let dateZero = "";
+
+        if (date < 10) {
+            dateZero = 0;
+        }
+
+        let defaultDate = `2019-${moZero}${month}-${dateZero}${date}`
+
+        this.setState({
+            today: defaultDate,
+        });
+    }
+
     submitWorkout = () => {
         this.props.checkValidUser();
 
@@ -526,6 +553,7 @@ class Workout extends Component {
                                 aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-sm"
                                 onChange={this.handleInputChange}
+                                defaultValue={this.state.today}
                             />
                         </div>
 
