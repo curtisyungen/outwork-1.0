@@ -219,7 +219,7 @@ class Home extends Component {
                     
                     <div className="activityIcons-home">
                         <div className="welcomeNote">
-                            <h4>Welcome, {this.state.firstName}</h4>
+                            <h4>Welcome, {this.state.firstName}.</h4>
                         </div>
             
                         <ActivityIcons />
