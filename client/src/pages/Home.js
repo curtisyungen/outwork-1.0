@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Modal from "react-responsive-modal";
 import Container from "../components/Container/container";
 import GroupMetrics from "../components/GroupMetrics/groupMetrics";
+import ActivityIcons from "../components/ActivityIcons/activityIcons";
 import UserActivity from "../components/UserActivity/userActivity";
 import "./Home.css";
 
@@ -214,6 +215,8 @@ class Home extends Component {
         return (
             <Container>
                 <div className={`homePage`}>
+            
+                    <ActivityIcons />
 
                     {/* SEARCH BAR */}
                     <div className="input-group mb-2 mt-4">
