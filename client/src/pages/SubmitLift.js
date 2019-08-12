@@ -118,6 +118,172 @@ class SubmitLift extends Component {
         return true;
     }
 
+    // Adds exercise to Workout list
+    addExercise = (name) => {
+        let exercises = this.state.exercises;
+
+        let maxId = -1;
+        for (var e in exercises) {
+            if (exercises[e].id > maxId) {
+                maxId = parseInt(exercises[e].id);
+            }
+        }
+
+        let exercise = {
+            id: maxId + 1,
+            name: name,
+            weight: "",
+            reps: "",
+            rest: "",
+        }
+
+        exercises.push(exercise);
+
+        this.setState({
+            exercises: exercises,
+        });
+    }
+
+    // Delete exercise from Workout list
+    deleteExercise = (exercise) => {
+        let exercises = this.state.exercises;
+        let idx;
+
+        for (var i = 0; i < exercises.length; i++) {
+            if (exercises[i].id === exercise) {
+                idx = i;
+            }
+        }
+
+        exercises.splice(idx, 1);
+
+        this.setState({
+            exercises: exercises,
+        });
+    }
+
+    // Updates list of muscle groups targeted in this workout
+    updateMuscleGroups = (muscleGroup) => {
+        let muscleGroups = this.state.muscleGroups;
+        let idx = muscleGroups.indexOf(muscleGroup);
+
+        if (idx === -1) {
+            muscleGroups.push(muscleGroup);
+        }
+        else {
+            muscleGroups.splice(idx, 1);
+        }
+
+        this.setState({
+            muscleGroups: muscleGroups,
+        });
+    }
+
+    // User input: sets name of exercise
+    setName = (id, name) => {
+        let exercises = this.state.exercises;
+
+        for (var e in exercises) {
+            if (exercises[e].id === id) {
+                exercises[e].name = name;
+            }
+        }
+
+        this.setState({
+            exercises: exercises,
+        });
+    }
+
+    // User input: sets weight used for exercise
+    setWeight = (id, weight) => {
+        let exercises = this.state.exercises;
+
+        for (var e in exercises) {
+            if (exercises[e].id === id) {
+                exercises[e].weight = weight;
+            }
+        }
+
+        this.setState({
+            exercises: exercises,
+        });
+    }
+
+    // User input: sets Superset ID for exercise
+    setSuperset = (id, superset) => {
+        let exercises = this.state.exercises;
+
+        for (var e in exercises) {
+            if (exercises[e].id === id) {
+                exercises[e].superset = superset;
+            }
+        }
+
+        this.setState({
+            exercises: exercises,
+        });
+    }
+
+    // User input: sets number of sets for exercise
+    setSets = (id, sets) => {
+        let exercises = this.state.exercises;
+
+        for (var e in exercises) {
+            if (exercises[e].id === id) {
+                exercises[e].sets = sets;
+            }
+        }
+
+        this.setState({
+            exercises: exercises,
+        });
+    }
+
+    // User input: sets reps for exercise
+    setReps = (id, reps) => {
+        let exercises = this.state.exercises;
+
+        for (var e in exercises) {
+            if (exercises[e].id === id) {
+                exercises[e].reps = reps;
+            }
+        }
+
+        this.setState({
+            exercises: exercises,
+        });
+    }
+    
+    // User input: sets rest for exercise
+    setRest = (id, rest) => {
+        let exercises = this.state.exercises;
+
+        for (var e in exercises) {
+            if (exercises[e].id === id) {
+                exercises[e].rest = rest;
+            }
+        }
+
+        this.setState({
+            exercises: exercises,
+        });
+    }
+
+    // User input: sets notes for exercise
+    setNotes = (id, notes) => {
+        let exercises = this.state.exercises;
+
+        for (var e in exercises) {
+            if (exercises[e].id === id) {
+                exercises[e].notes = notes;
+            }
+        }
+
+        this.setState({
+            exercises: exercises,
+        });
+    }
+
     // Counts exercises that contain "push-up" or "push up"
     getPushUps = () => {
         let exercises = this.state.exercises;
@@ -171,184 +337,7 @@ class SubmitLift extends Component {
         return pullups;
     }
 
-    addExercise = (name) => {
-        let exercises = this.state.exercises;
-
-        let maxId = -1;
-        for (var e in exercises) {
-            if (exercises[e].id > maxId) {
-                maxId = parseInt(exercises[e].id);
-            }
-        }
-
-        let exercise = {
-            id: maxId + 1,
-            name: name,
-            weight: "",
-            reps: "",
-            rest: "",
-        }
-
-        exercises.push(exercise);
-
-        this.setState({
-            exercises: exercises,
-        });
-    }
-
-    getExercise = (exercise) => {
-        let exercises = this.state.exercises;
-        let idx = -1;
-
-        for (var e in exercises) {
-            if (exercises[e].id === exercise.id) {
-                idx = e;
-            }
-        }
-
-        if (idx > -1) {
-            exercises[idx] = exercise;
-        }
-        else {
-            exercises.push(exercise);
-        }
-
-        this.setState({
-            exercises: exercises,
-        });
-    }
-
-    deleteExercise = (exercise) => {
-        let exercises = this.state.exercises;
-        let idx;
-
-        for (var i = 0; i < exercises.length; i++) {
-            if (exercises[i].id === exercise) {
-                idx = i;
-            }
-        }
-
-        exercises.splice(idx, 1);
-
-        this.setState({
-            exercises: exercises,
-        });
-    }
-
-    updateMuscleGroups = (muscleGroup) => {
-        let muscleGroups = this.state.muscleGroups;
-        let idx = muscleGroups.indexOf(muscleGroup);
-
-        if (idx === -1) {
-            muscleGroups.push(muscleGroup);
-        }
-        else {
-            muscleGroups.splice(idx, 1);
-        }
-
-        this.setState({
-            muscleGroups: muscleGroups,
-        });
-    }
-
-    setName = (id, name) => {
-        let exercises = this.state.exercises;
-
-        for (var e in exercises) {
-            if (exercises[e].id === id) {
-                exercises[e].name = name;
-            }
-        }
-
-        this.setState({
-            exercises: exercises,
-        });
-    }
-
-    setWeight = (id, weight) => {
-        let exercises = this.state.exercises;
-
-        for (var e in exercises) {
-            if (exercises[e].id === id) {
-                exercises[e].weight = weight;
-            }
-        }
-
-        this.setState({
-            exercises: exercises,
-        });
-    }
-
-    setSuperset = (id, superset) => {
-        let exercises = this.state.exercises;
-
-        for (var e in exercises) {
-            if (exercises[e].id === id) {
-                exercises[e].superset = superset;
-            }
-        }
-
-        this.setState({
-            exercises: exercises,
-        });
-    }
-
-    setSets = (id, sets) => {
-        let exercises = this.state.exercises;
-
-        for (var e in exercises) {
-            if (exercises[e].id === id) {
-                exercises[e].sets = sets;
-            }
-        }
-
-        this.setState({
-            exercises: exercises,
-        });
-    }
-
-    setReps = (id, reps) => {
-        let exercises = this.state.exercises;
-
-        for (var e in exercises) {
-            if (exercises[e].id === id) {
-                exercises[e].reps = reps;
-            }
-        }
-
-        this.setState({
-            exercises: exercises,
-        });
-    }
-    
-    setRest = (id, rest) => {
-        let exercises = this.state.exercises;
-
-        for (var e in exercises) {
-            if (exercises[e].id === id) {
-                exercises[e].rest = rest;
-            }
-        }
-
-        this.setState({
-            exercises: exercises,
-        });
-    }
-
-    setNotes = (id, notes) => {
-        let exercises = this.state.exercises;
-
-        for (var e in exercises) {
-            if (exercises[e].id === id) {
-                exercises[e].notes = notes;
-            }
-        }
-
-        this.setState({
-            exercises: exercises,
-        });
-    }
-
+    // Converts workout duration into minutes
     getTtlMins = () => {
         let time = this.state.duration;
         let hours, mins, secs;
@@ -368,6 +357,7 @@ class SubmitLift extends Component {
         });
     }
 
+    // Gets today's date and formats as yyyy-mm-dd for defaultValue in Date field
     getToday = () => {
         let today = new Date();
         let month = today.getMonth() + 1;

@@ -25,7 +25,7 @@ class SubmitRun extends Component {
             race: null,
             location: null,
             surface: null,
-            weather: null,
+            weather: "Sunny",
             climb: null,
             grade: 0.00,
             shoe: "",

@@ -22,7 +22,7 @@ class SubmitBike extends Component {
             ttlMins: null,
             location: null,
             surface: null,
-            weather: null,
+            weather: "Sunny",
             climb: null,
             grade: null,
             bike: null,
