@@ -86,6 +86,11 @@
     width: 100%;
 }
 
+.reverseSort {
+    font-size: 12px;
+    margin-right: 3px;
+}
+
 .sortBy {
     font-size: 12px; 
     height: 20px;

@@ -191,6 +191,25 @@ class Home extends Component {
         });
     }
 
+    reverseSort = () => {
+        let filtered = this.state.filtered;
+
+        filtered.sort(this.compareReverse);
+
+        this.setState({
+            filtered: filtered,
+        });
+    }
+
+    compareReverse = (a, b) => {
+        if (a.date === b.date) {
+            return 0;
+        }
+        else {
+            return (a.date < b.date) ? -1 : 1;
+        }
+    }
+
     render() {
         return (
             <Container>
@@ -255,6 +274,7 @@ class Home extends Component {
                             <button className="btn btn-light btn-sm filterSwims" onClick={this.filterBy.bind(null, "swim")}>Swims</button>
                             <button className="btn btn-light btn-sm filterLifts" onClick={this.filterBy.bind(null, "lift")}>Lifts</button>
                             <button className="btn btn-light btn-sm filterRaces" onClick={this.filterBy.bind(null, "race")}>Races</button>
+                            <button className="btn btn-light btn-sm reverseSort" onClick={this.reverseSort}>Reverse Sort</button>
                             <button className="btn btn-info btn-sm quickStatsBtn" onClick={this.openQuickStats}>Quick Stats</button>
                         </div>
                     </div>
