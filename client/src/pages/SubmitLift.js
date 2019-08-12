@@ -55,7 +55,7 @@ class SubmitLift extends Component {
                     notes: "",
                 }
 
-                exercises.push(exercise);
+                //exercises.push(exercise);
                 
                 let muscleGroupList = [
                     "Chest", "Shoulders", 
