@@ -19,7 +19,7 @@ class BarChart extends Component {
         // Scale chart
         let yScale = scaleLinear()
             .domain([0, dataMax])
-            .range([0, this.props.size[1]]);
+            .range([0, 200]);
 
         // Create rectangles
         select(node)
@@ -42,7 +42,7 @@ class BarChart extends Component {
             .style("fill", "#424242")
             .style("border", "1x solid black")
             .attr("x", (d, i) => i * 25)
-            .attr("y", d => this.props.size[1] - yScale(d))
+            .attr("y", d => 200 - yScale(d))
             .attr("height", d => yScale(d))
             .attr("width", 25)
             .attr("transform", (d, i) => {
