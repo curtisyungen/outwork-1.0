@@ -118,6 +118,7 @@ class ProfileBody extends Component {
 
         this.setState({
             userActivity: userActivity,
+            displayOpt: "Reverse Sort",
         });
     }
 
@@ -179,7 +180,7 @@ class ProfileBody extends Component {
                             Lifts
                         </button>
                         <button 
-                            className="btn btn-dark btn-sm reverseSort" 
+                            className={`btn btn-dark btn-sm reverseSort opt-${this.state.displayOpt === "Reverse Sort"}`}
                             onClick={this.reverseSort}
                         >
                             Reverse Sort
