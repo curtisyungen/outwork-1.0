@@ -110,6 +110,25 @@ class ProfileBody extends Component {
             return (a.date > b.date) ? -1 : 1;
         }
     }
+    
+    reverseSort = () => {
+        let userActivity = this.state.userActivity;
+
+        userActivity.sort(this.compareReverse);
+
+        this.setState({
+            userActivity: userActivity,
+        });
+    }
+
+    compareReverse = (a, b) => {
+        if (a.date === b.date) {
+            return 0;
+        }
+        else {
+            return (a.date < b.date) ? -1 : 1;
+        }
+    }
 
     backToTop = () => {
         window.scrollTo(0, 0);
@@ -122,13 +141,13 @@ class ProfileBody extends Component {
                     <h4>User Activity</h4>
                     <div className="profileFilterBtns mb-1">
                         <button
-                            className={`btn btn-light btn-sm profileFilterBtn opt-${this.state.displayOpt === "All"}`}
+                            className={`btn btn-dark btn-sm profileFilterBtn opt-${this.state.displayOpt === "All"}`}
                             onClick={this.getAllWorkouts}
                         >
                             All
                         </button>
                         <button
-                            className={`btn btn-light btn-sm toggleDisplayBtn opt-${this.state.displayOpt === "Recent"}`}
+                            className={`btn btn-dark btn-sm toggleDisplayBtn opt-${this.state.displayOpt === "Recent"}`}
                             onClick={(event) => {
                                 event.preventDefault();
                                 this.getRecentWorkouts();
@@ -136,29 +155,36 @@ class ProfileBody extends Component {
                             Recent
                         </button>
                         <button
-                            className={`btn btn-light btn-sm profileFilterBtn opt-${this.state.displayOpt === "Runs"}`}
+                            className={`btn btn-dark btn-sm profileFilterBtn opt-${this.state.displayOpt === "Runs"}`}
                             onClick={this.getRuns}
                         >
                             Runs
                         </button>
                         <button
-                            className={`btn btn-light btn-sm profileFilterBtn opt-${this.state.displayOpt === "Bikes"}`}
+                            className={`btn btn-dark btn-sm profileFilterBtn opt-${this.state.displayOpt === "Bikes"}`}
                             onClick={this.getBikes}
                         >
                             Bikes
                         </button>
                         <button
-                            className={`btn btn-light btn-sm profileFilterBtn opt-${this.state.displayOpt === "Swims"}`}
+                            className={`btn btn-dark btn-sm profileFilterBtn opt-${this.state.displayOpt === "Swims"}`}
                             onClick={this.getSwims}
                         >
                             Swims
                         </button>
                         <button
-                            className={`btn btn-light btn-sm profileFilterBtn opt-${this.state.displayOpt === "Lifts"}`}
+                            className={`btn btn-dark btn-sm profileFilterBtn opt-${this.state.displayOpt === "Lifts"}`}
                             onClick={this.getLifts}
                         >
                             Lifts
                         </button>
+                        <button 
+                            className="btn btn-dark btn-sm reverseSort" 
+                            onClick={this.reverseSort}
+                        >
+                            Reverse Sort
+                        </button>
+
                     </div>
 
                     {/* BACK TO TOP */}

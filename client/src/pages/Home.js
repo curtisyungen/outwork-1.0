@@ -265,16 +265,16 @@ class Home extends Component {
                     {/* FILTER BUTTONS */}
                     <div className="homePageBtns mb-2">
                         <div className="filterBtns">
-                            <button className={`btn btn-light btn-sm filterAll opt-${this.props.displayOpt === "All"}`} onClick={this.props.getAllWorkouts}>All</button>
-                            <button className={`btn btn-light btn-sm toggleDisplayBtn opt-${this.props.displayOpt === "Recent"}`} onClick={this.props.getRecentWorkouts}>
+                            <button className={`btn btn-dark btn-sm filterAll opt-${this.props.displayOpt === "All"}`} onClick={this.props.getAllWorkouts}>All</button>
+                            <button className={`btn btn-dark btn-sm toggleDisplayBtn opt-${this.props.displayOpt === "Recent"}`} onClick={this.props.getRecentWorkouts}>
                                 Recent
                             </button>
-                            <button className="btn btn-light btn-sm filterRuns" onClick={this.filterBy.bind(null, "run")}>Runs</button>
-                            <button className="btn btn-light btn-sm filterBikes" onClick={this.filterBy.bind(null, "bike")}>Bikes</button>
-                            <button className="btn btn-light btn-sm filterSwims" onClick={this.filterBy.bind(null, "swim")}>Swims</button>
-                            <button className="btn btn-light btn-sm filterLifts" onClick={this.filterBy.bind(null, "lift")}>Lifts</button>
-                            <button className="btn btn-light btn-sm filterRaces" onClick={this.filterBy.bind(null, "race")}>Races</button>
-                            <button className="btn btn-light btn-sm reverseSort" onClick={this.reverseSort}>Reverse Sort</button>
+                            <button className="btn btn-dark btn-sm filterRuns" onClick={this.filterBy.bind(null, "run")}>Runs</button>
+                            <button className="btn btn-dark btn-sm filterBikes" onClick={this.filterBy.bind(null, "bike")}>Bikes</button>
+                            <button className="btn btn-dark btn-sm filterSwims" onClick={this.filterBy.bind(null, "swim")}>Swims</button>
+                            <button className="btn btn-dark btn-sm filterLifts" onClick={this.filterBy.bind(null, "lift")}>Lifts</button>
+                            <button className="btn btn-dark btn-sm filterRaces" onClick={this.filterBy.bind(null, "race")}>Races</button>
+                            <button className="btn btn-dark btn-sm reverseSort" onClick={this.reverseSort}>Reverse Sort</button>
                             <button className="btn btn-info btn-sm quickStatsBtn" onClick={this.openQuickStats}>Quick Stats</button>
                         </div>
                     </div>
