@@ -20,7 +20,7 @@ class User extends Component {
                 onClick={this.loadProfile}
             >
                 <FontAwesomeIcon className="fa-4x userNinja" icon={faUserNinja} />
-                <div className="userText">{this.props.firstName} {this.props.lastName}</div>
+                <div className="userText">{this.props.firstName}</div>
             </div>
         )
     }
