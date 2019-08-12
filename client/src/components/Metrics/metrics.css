@@ -74,6 +74,10 @@
     width: 100%;
 }
 
+.barChartBtn {
+    color: black;
+}
+
 .shoesBtn {
     float: right;
 }

@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import Modal from "react-responsive-modal";
 import RunMetrics from "./runMetrics";
 import BikeMetrics from "./bikeMetrics";
 import SwimMetrics from "./swimMetrics";
 import LiftMetrics from "./liftMetrics";
 import ShoeMetrics from "./shoeMetrics";
 import GeneralMetrics from "./genMetrics";
-// import BarChart from "../BarChart/barChart";
+import BarChart from "../BarChart/barChart";
 import workoutAPI from "../../utils/workoutAPI";
 import hofAPI from "../../utils/hofAPI";
 // import "./Metrics.css";
@@ -32,6 +33,8 @@ class Metrics extends Component {
             time: null,
             races: null,
             loading: true,
+            year: null,
+            openBarChart: false,
         }
     }
 
@@ -137,7 +140,7 @@ class Metrics extends Component {
     }
 
     getRainyDays = () => {
-        hofAPI.getRainyDays() 
+        hofAPI.getRainyDays()
             .then((res) => {
                 let days = 0;
                 for (var d in res.data) {
@@ -203,7 +206,7 @@ class Metrics extends Component {
     }
 
     getMaxPullUps = () => {
-        hofAPI.getMaxPullups() 
+        hofAPI.getMaxPullups()
             .then((res) => {
                 let results = res.data;
                 let pullups = 0;
@@ -220,7 +223,21 @@ class Metrics extends Component {
     }
 
     getYearData = (year) => {
-        console.log(year);
+        this.setState({
+            year: year,
+        });
+    }
+
+    openBarChart = () => {
+        this.setState({
+            openBarChart: true,
+        });
+    }
+
+    closeBarChart = () => {
+        this.setState({
+            openBarChart: false,
+        });
     }
 
     render() {
@@ -233,6 +250,24 @@ class Metrics extends Component {
                     ) : (
                             <></>
                         )}
+
+                    {/* BAR CHART */}
+
+                    <button className="btn btn-outline-light btn-sm barChartBtn" onClick={this.openBarChart}>
+                        Chart
+                    </button>
+
+                    <Modal
+                        open={this.openBarChart}
+                        onClose={this.closeBarChart}
+                    >
+                        <BarChart
+                            data={this.state.year}
+                        />
+                    </Modal>
+
+                    {/* SHOE METRICS */}
+
                     {this.state.userRuns && (this.props.userId === localStorage.getItem("userId")) ? (
                         <ShoeMetrics
                             userId={this.state.userId}
@@ -247,62 +282,70 @@ class Metrics extends Component {
                 {this.state.loading ? (
                     <p className="text-center">Loading metrics...</p>
                 ) : (
-                    <span>
+                        <span>
 
-                {this.state.userRuns && this.state.userRuns.length > 0 ? (
-                    <RunMetrics
-                        userId={this.state.userId}
-                        userRuns={this.state.userRuns}
-                        flexDir={this.state.flexDir}
-                        getYearData={this.getYearData}
-                    />
-                ) : (
-                        <></>
+                            {/* RUN METRICS */}
+
+                            {this.state.userRuns && this.state.userRuns.length > 0 ? (
+                                <RunMetrics
+                                    userId={this.state.userId}
+                                    userRuns={this.state.userRuns}
+                                    flexDir={this.state.flexDir}
+                                    getYearData={this.getYearData}
+                                />
+                            ) : (
+                                    <></>
+                                )}
+
+                            {/* BIKE METRICS */}
+
+                            {this.state.userBikes && this.state.userBikes.length > 0 ? (
+                                <BikeMetrics
+                                    userId={this.state.userId}
+                                    userBikes={this.state.userBikes}
+                                    flexDir={this.state.flexDir}
+                                />
+                            ) : (
+                                    <></>
+                                )}
+
+                            {/* SWIM METRICS */}
+
+                            {this.state.userSwims && this.state.userSwims.length > 0 ? (
+                                <SwimMetrics
+                                    userId={this.state.userId}
+                                    userSwims={this.state.userSwims}
+                                    flexDir={this.state.flexDir}
+                                />
+                            ) : (
+                                    <></>
+                                )}
+
+                            {/* LIFT METRICS */}
+
+                            {this.state.userLifts && this.state.userLifts.length > 0 ? (
+                                <LiftMetrics
+                                    userId={this.state.userId}
+                                    userLifts={this.state.userLifts}
+                                    flexDir={this.state.flexDir}
+                                    maxPushUps={this.state.maxPushUps}
+                                    maxPullUps={this.state.maxPullUps}
+                                />
+                            ) : (
+                                    <></>
+                                )}
+
+                            <GeneralMetrics
+                                userId={this.state.userId}
+                                flexDir={this.state.flexDir}
+                                workouts={this.state.totalWorkouts}
+                                time={this.state.time}
+                                rainyDays={this.state.rainyDays}
+                                races={this.state.races}
+                                restDays={this.state.restDays}
+                            />
+                        </span>
                     )}
-
-                {this.state.userBikes && this.state.userBikes.length > 0 ? (
-                    <BikeMetrics
-                        userId={this.state.userId}
-                        userBikes={this.state.userBikes}
-                        flexDir={this.state.flexDir}
-                    />
-                ) : (
-                        <></>
-                    )}
-
-                {this.state.userSwims && this.state.userSwims.length > 0 ? (
-                    <SwimMetrics
-                        userId={this.state.userId}
-                        userSwims={this.state.userSwims}
-                        flexDir={this.state.flexDir}
-                    />
-                ) : (
-                        <></>
-                    )}
-
-                {this.state.userLifts && this.state.userLifts.length > 0 ? (
-                    <LiftMetrics
-                        userId={this.state.userId}
-                        userLifts={this.state.userLifts}
-                        flexDir={this.state.flexDir}
-                        maxPushUps={this.state.maxPushUps}
-                        maxPullUps={this.state.maxPullUps}
-                    />
-                ) : (
-                        <></>
-                    )}
-
-                <GeneralMetrics 
-                    userId={this.state.userId}
-                    flexDir={this.state.flexDir}
-                    workouts={this.state.totalWorkouts}
-                    time={this.state.time}
-                    rainyDays={this.state.rainyDays}
-                    races={this.state.races}
-                    restDays={this.state.restDays}
-                />
-                </span>
-                )}
             </div>
         )
     }
