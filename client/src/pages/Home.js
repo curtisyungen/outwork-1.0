@@ -13,6 +13,7 @@ class Home extends Component {
 
         this.state = {
             userId: null,
+            firstName: "",
             allActivity: [],
             filtered: [],
             category: null,
@@ -27,17 +28,17 @@ class Home extends Component {
         this.props.updateParentState();
         this.props.getRecentWorkouts();
 
-        // Validate user and then call getUserById
-        if (true) {
-            let userId = localStorage.getItem("userId");
-            this.setState({
-                userId: userId,
-                allActivity: this.props.allActivity,
-                filtered: this.props.allActivity,
-                category: "Name",
-                message: "Loading activity...",
-            });
-        }
+        let userId = localStorage.getItem("userId");
+        let firstName = localStorage.getItem("fn");
+        this.setState({
+            userId: userId,
+            firstName: firstName,
+            allActivity: this.props.allActivity,
+            filtered: this.props.allActivity,
+            category: "Name",
+            message: "Loading activity...",
+        });
+        
     }
 
     componentDidUpdate = (prevProps, prevState) => {
@@ -215,6 +216,10 @@ class Home extends Component {
         return (
             <Container>
                 <div className={`homePage`}>
+            
+                    <div className="welcomeNote">
+                        <h4>Welcome, ${this.state.firstName}</h4>
+                    </div>
             
                     <div className="activityIcons-home">
                         <ActivityIcons />
