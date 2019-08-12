@@ -450,7 +450,7 @@ class SubmitRun extends Component {
                                 onChange={this.handleInputChange}
                                 defaultValue={null}
                             >
-                                <option value=""></option>
+                                <option value="">Training</option>
                                 <option value="Repeats">Repeats</option>
                                 <option value="Race">Race</option>
                             </select>
