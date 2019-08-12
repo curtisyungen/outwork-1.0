@@ -284,7 +284,7 @@ class Home extends Component {
                             <button className="btn btn-dark btn-sm filterSwims" onClick={this.filterBy.bind(null, "swim")}>Swims</button>
                             <button className="btn btn-dark btn-sm filterLifts" onClick={this.filterBy.bind(null, "lift")}>Lifts</button>
                             <button className="btn btn-dark btn-sm filterRaces" onClick={this.filterBy.bind(null, "race")}>Races</button>
-                            <button className="btn btn-dark btn-sm reverseSort" onClick={this.reverseSort}>Reverse Sort</button>
+                            <button className="btn btn-dark btn-sm reverseSort" onClick={this.reverseSort}>Older First</button>
                             <button className="btn btn-info btn-sm quickStatsBtn" onClick={this.openQuickStats}>Quick Stats</button>
                         </div>
                     </div>
