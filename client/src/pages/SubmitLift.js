@@ -547,7 +547,7 @@ class SubmitLift extends Component {
                             onChange={this.handleInputChange}
                             defaultValue={null}
                         >
-                            <option value=""></option>
+                            <option value="">Non-generated</option>
                             <option value="1">Baby</option>
                             <option value="2">Easy</option>
                             <option value="3">Average</option>
