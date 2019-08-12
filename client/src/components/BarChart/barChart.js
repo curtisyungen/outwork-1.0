@@ -41,7 +41,7 @@ class BarChart extends Component {
             .data(this.props.data)
             .style("fill", "#424242")
             .style("border", "1x solid black")
-            .attr("x", (d, i) => i * 25)
+            .attr("x", (d, i) => i * 10)
             .attr("y", d => this.props.height - yScale(d))
             .attr("height", d => yScale(d))
             .attr("width", 15)
