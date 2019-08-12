@@ -261,9 +261,13 @@ class Metrics extends Component {
                         open={this.openBarChart}
                         onClose={this.closeBarChart}
                     >
-                        <BarChart
-                            data={this.state.year}
-                        />
+                        {this.state.year && this.state.year.length > 0 ? (
+                            <BarChart
+                                data={this.state.year}
+                            />
+                        ) : (
+                            <></>
+                        )}
                     </Modal>
 
                     {/* SHOE METRICS */}

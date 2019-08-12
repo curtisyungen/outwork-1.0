@@ -7,7 +7,9 @@ import "./barChart.css";
 class BarChart extends Component {
 
     componentDidMount = () => {
-        this.createBarChart();
+        if (this.props.data && this.props.data.length > 0) {
+            this.createBarChart();
+        }
     }
 
     createBarChart = () => {
