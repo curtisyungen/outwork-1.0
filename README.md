@@ -12,6 +12,7 @@ Outwork is a website where my friend, brother, and I can log our running, biking
 4) MySQL
 5) Bootstrap
 6) Heroku
+7) D3 Analytics
 
 ### NPM Dependencies
 1) axios
