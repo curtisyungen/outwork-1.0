@@ -29,11 +29,13 @@ class SubmitLift extends Component {
             muscleGroupList: [],
             notes: null,
             exBtns: null,
+            today: null,
         }
     }
 
     componentDidMount = () => {
         this.props.checkValidUser();
+        this.getToday();
 
         // Get user info
         let userId = localStorage.getItem("userId");     
@@ -366,6 +368,30 @@ class SubmitLift extends Component {
         });
     }
 
+    getToday = () => {
+        let today = new Date();
+        let month = today.getMonth();
+        let date = today.getDate();
+
+        let moZero = "";
+
+        if (month < 10) {
+            moZero = 0;
+        }
+
+        let dateZero = "";
+
+        if (date < 10) {
+            dateZero = 0;
+        }
+
+        let defaultDate = `2019-${moZero}${month}-${dateZero}${date}`
+
+        this.setState({
+            today: defaultDate,
+        });
+    }
+
     submitLift = () => {
         this.props.checkValidUser();
 
@@ -454,6 +480,7 @@ class SubmitLift extends Component {
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
+                            defaultValue={this.state.today}
                         />
                     </div>
 
@@ -572,6 +599,7 @@ class SubmitLift extends Component {
                         {this.state.exBtns ? (
                             this.state.exBtns.map(btn => (
                                 <AddExerciseBtn 
+                                    key={btn}
                                     name={btn}
                                     addExercise={this.addExercise}
                                 />

@@ -32,11 +32,14 @@ class SubmitRun extends Component {
             shoes: null,
             notes: null,
             map: null,
+            today: null,
         }
     }
 
     componentDidMount = () => {
         this.props.checkValidUser();
+
+        this.getToday();
 
         // Get user info
         let userId = localStorage.getItem("userId");
@@ -301,6 +304,30 @@ class SubmitRun extends Component {
         });
     }
 
+    getToday = () => {
+        let today = new Date();
+        let month = today.getMonth();
+        let date = today.getDate();
+
+        let moZero = "";
+
+        if (month < 10) {
+            moZero = 0;
+        }
+
+        let dateZero = "";
+
+        if (date < 10) {
+            dateZero = 0;
+        }
+
+        let defaultDate = `2019-${moZero}${month}-${dateZero}${date}`
+
+        this.setState({
+            today: defaultDate,
+        });
+    }
+
     render() {
         return (
             <div className="container pageContainer submitContainer">
@@ -329,6 +356,7 @@ class SubmitRun extends Component {
                                 aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-sm"
                                 onChange={this.handleInputChange}
+                                defaultValue={this.state.today}
                             />
                         </div>
 
