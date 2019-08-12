@@ -216,7 +216,9 @@ class Home extends Component {
             <Container>
                 <div className={`homePage`}>
             
-                    <ActivityIcons />
+                    <div className="activityIcons-home">
+                        <ActivityIcons />
+                    </div>
 
                     {/* SEARCH BAR */}
                     <div className="input-group mb-2 mt-4">
