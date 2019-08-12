@@ -23,12 +23,14 @@ class SubmitSwim extends Component {
             surface: null,
             workout: [],
             notes: null,
+            today: null,
         }
     }
 
     componentDidMount = () => {
         this.props.checkValidUser();
-
+        this.getToday();
+        
         // Get user info
         let userId = localStorage.getItem("userId");
 
@@ -267,6 +269,30 @@ class SubmitSwim extends Component {
         });
     }
 
+    getToday = () => {
+        let today = new Date();
+        let month = today.getMonth();
+        let date = today.getDate();
+
+        let moZero = "";
+
+        if (month < 10) {
+            moZero = 0;
+        }
+
+        let dateZero = "";
+
+        if (date < 10) {
+            dateZero = 0;
+        }
+
+        let defaultDate = `2019-${moZero}${month}-${dateZero}${date}`
+
+        this.setState({
+            today: defaultDate,
+        });
+    }
+
     submitSwim = () => {
         this.props.checkValidUser();
 
@@ -340,6 +366,7 @@ class SubmitSwim extends Component {
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
+                            defaultValue={this.state.today}
                         />
                     </div>
 
@@ -375,12 +402,12 @@ class SubmitSwim extends Component {
                             onChange={this.handleInputChange}
                         />
                         <div className="input-group-append">
-                            <button class="btn btn-outline-secondary dropdown-toggle unitDropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button className="btn btn-outline-secondary dropdown-toggle unitDropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {this.state.units}
                             </button>
-                            <div class="dropdown-menu">
-                                <div class="dropdown-item" onClick={this.changeUnits.bind(null, "Meters")}>Meters</div>
-                                <div class="dropdown-item" onClick={this.changeUnits.bind(null, "Miles")}>Miles</div>
+                            <div className="dropdown-menu">
+                                <div className="dropdown-item" onClick={this.changeUnits.bind(null, "Meters")}>Meters</div>
+                                <div className="dropdown-item" onClick={this.changeUnits.bind(null, "Miles")}>Miles</div>
                             </div>
                         </div>
                     </div>
