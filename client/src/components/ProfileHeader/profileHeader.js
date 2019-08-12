@@ -10,7 +10,6 @@ class ProfileHeader extends Component {
         this.state = {
             userId: null,
             firstName: null,
-            lastName: null,
             hof: null,
         }
     }
@@ -19,7 +18,6 @@ class ProfileHeader extends Component {
         this.setState({
             userId: this.props.userId,
             firstName: this.props.firstName,
-            lastName: this.props.lastName,
             hof: this.props.hof,
         });
     }
@@ -29,13 +27,13 @@ class ProfileHeader extends Component {
             <span>
                 <div className="jumbotron jumbotron-fluid profileHeader">
                     <h1 className="display-4">
-                        {this.state.firstName} {this.state.lastName}
+                        {this.state.firstName}
 
                         <div className="hof flex-wrap">
                             {this.state.hof && this.state.hof.length > 0 ? (
                                 this.state.hof.map(hof => (
                                     <Award 
-                                        key={Math.random() * 1000000}
+                                        key={hof[1]}
                                         hof={hof}
                                     />
                                 ))
