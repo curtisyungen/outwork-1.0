@@ -5,6 +5,7 @@ import SwimMetrics from "./swimMetrics";
 import LiftMetrics from "./liftMetrics";
 import ShoeMetrics from "./shoeMetrics";
 import GeneralMetrics from "./genMetrics";
+// import BarChart from "../BarChart/barChart";
 import workoutAPI from "../../utils/workoutAPI";
 import hofAPI from "../../utils/hofAPI";
 // import "./Metrics.css";
@@ -218,6 +219,10 @@ class Metrics extends Component {
             });
     }
 
+    getYearData = (year) => {
+        console.log(year);
+    }
+
     render() {
         return (
             <div>
@@ -249,6 +254,7 @@ class Metrics extends Component {
                         userId={this.state.userId}
                         userRuns={this.state.userRuns}
                         flexDir={this.state.flexDir}
+                        getYearData={this.getYearData}
                     />
                 ) : (
                         <></>

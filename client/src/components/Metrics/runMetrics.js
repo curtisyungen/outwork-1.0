@@ -124,6 +124,8 @@ class RunMetrics extends Component {
 
         this.setState({
             avgMilesPerWeek: avgMiles,
+        }, () => {
+            this.props.getYearData(year);
         });
     }
 
