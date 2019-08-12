@@ -31,19 +31,19 @@
 }
 
 .bikeIcon:hover {
-    background: rgb(255, 216, 116);
+    background: rgb(255, 216, 116) !important;
 }
 
 .liftIcon:hover {
-    background: rgb(255, 191, 191);
+    background: rgb(255, 191, 191) !important;
 }
 
 .runIcon:hover {
-    background: lightgreen;
+    background: lightgreen !important;
 }
 
 .swimIcon:hover {
-    background: lightblue;
+    background: lightblue !important;
 }
 
 @media only screen and (max-width: 768px) {
