@@ -306,7 +306,7 @@ class SubmitRun extends Component {
 
     getToday = () => {
         let today = new Date();
-        let month = today.getMonth();
+        let month = today.getMonth() + 1;
         let date = today.getDate();
 
         let moZero = "";
