@@ -216,12 +216,12 @@ class Home extends Component {
         return (
             <Container>
                 <div className={`homePage`}>
-            
-                    <div className="welcomeNote">
-                        <h4>Welcome, ${this.state.firstName}</h4>
-                    </div>
-            
+                    
                     <div className="activityIcons-home">
+                        <div className="welcomeNote">
+                            <h4>Welcome, {this.state.firstName}</h4>
+                        </div>
+            
                         <ActivityIcons />
                     </div>
 
