@@ -19,7 +19,7 @@ class BarChart extends Component {
         // Scale chart
         let yScale = scaleLinear()
             .domain([0, dataMax])
-            .range([0, 200]);
+            .range([0, this.props.height]);
 
         // Create rectangles
         select(node)
@@ -42,9 +42,9 @@ class BarChart extends Component {
             .style("fill", "#424242")
             .style("border", "1x solid black")
             .attr("x", (d, i) => i * 25)
-            .attr("y", d => 200 - yScale(d))
+            .attr("y", d => this.props.height - yScale(d))
             .attr("height", d => yScale(d))
-            .attr("width", 25)
+            .attr("width", 15)
             .attr("transform", (d, i) => {
                 let translate = [10 * i, 0]
                 return "translate(" + translate + ")";
@@ -56,8 +56,8 @@ class BarChart extends Component {
             <div className="container">
                 <svg 
                     ref={node => this.node = node}
-                    width={500} 
-                    height={500}
+                    width={this.props.width} 
+                    height={this.props.height}
                 >
                 </svg>
             </div>

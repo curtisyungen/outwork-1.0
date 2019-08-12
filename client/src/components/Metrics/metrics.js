@@ -9,7 +9,7 @@ import GeneralMetrics from "./genMetrics";
 import BarChart from "../BarChart/barChart";
 import workoutAPI from "../../utils/workoutAPI";
 import hofAPI from "../../utils/hofAPI";
-// import "./Metrics.css";
+import "./metrics.css";
 
 import moment from "moment";
 
@@ -253,7 +253,7 @@ class Metrics extends Component {
 
                     {/* BAR CHART */}
 
-                    <button className="btn btn-outline-light btn-sm barChartBtn" onClick={this.openBarChart}>
+                    <button className="btn btn-outline-dark btn-sm barChartBtn" onClick={this.openBarChart}>
                         Chart
                     </button>
 
@@ -262,9 +262,13 @@ class Metrics extends Component {
                             open={this.openBarChart}
                             onClose={this.closeBarChart}
                         >
+                            <h4>Currently in work...</h4>
+                            
                             {this.state.year && this.state.year.length > 0 ? (
                                 <BarChart
                                     data={this.state.year}
+                                    height={500}
+                                    width={1200}
                                 />
                             ) : (
                                 <></>
