@@ -76,6 +76,8 @@
 
 .barChartBtn {
     color: black;
+    float: right;
+    margin-left: 3px;
 }
 
 .shoesBtn {
