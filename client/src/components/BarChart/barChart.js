@@ -46,14 +46,14 @@ class BarChart extends Component {
             .attr("height", d => yScale(d))
             .attr("width", 15)
             .attr("transform", (d, i) => {
-                let translate = [10 * i, 0]
+                let translate = [5 * i, 0]
                 return "translate(" + translate + ")";
             });
     }
 
     render() {
         return (
-            <div className="container">
+            <div className="container barChartContainer">
                 <svg 
                     ref={node => this.node = node}
                     width={this.props.width} 
