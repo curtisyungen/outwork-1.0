@@ -50,9 +50,9 @@ One big improvement compared to Congo was my use of Bootstrap. This made the for
 
 One thing I will do differently next time is I would comment my code better as I worked, because now that the project is essentially completed, I really don't want to have to go back through all my code and write informative comments about how it works or what does what. It would've been easier to do that as I worked rather than after everything is finished.
 
-Another thing I'd like to improve is the structure of my files. Some files, such as App.js, become so weighty and contain so much functionality and information that it becomes confusing to sort through. I'd like to split files like this one up and perhaps import the functions into App.js from other, smaller files, just so the program is more neatly written and organized and easier to decipher. 
+Another thing I'd like to improve is the structure of my files. Some files, such as App.js, become so weighty with functionality and information that it becomes confusing to sort through. I'd like to split files like this one up and perhaps import the functions into App.js from other, smaller files, just so the program is more neatly written and easier to decipher. 
 
-I also realize that a number of my functions are pretty...chunky, or inefficient. There is also some duplicate code across components. Lots of variables, API calls, bulky IF statements...I would like to improve on my knowledge and use of algorithms over my next projects so that I can write cleaner, more efficient code. This may not be too big of an issue as there are only three users allowed on Outwork. However, if there were 100,000 users, it'd be a different story, and the algorithms would have to be a lot more polished. 
+I also realize that a number of my functions are pretty chunky/inefficient. Lots of variables, API calls, bulky IF statements.... There is also some duplicate code across components. I would like to improve on my knowledge and use of algorithms over my next projects so that I can write cleaner, more efficient code. This may not be too big of an issue as there are only three users allowed on Outwork. However, if there were 100,000 users, it'd be a different story, and the algorithms would have to be a lot more polished. 
 
 Nevertheless, it still works. 
 
