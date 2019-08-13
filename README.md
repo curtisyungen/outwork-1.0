@@ -52,7 +52,7 @@ One thing I will do differently next time is I would comment my code better as I
 
 Another thing I'd like to improve is the structure of my files. Some files, such as App.js, become so weighty and contain so much functionality and information that it becomes confusing to sort through. I'd like to split files like this one up and perhaps import the functions into App.js from other, smaller files, just so the program is more neatly written and organized and easier to decipher. 
 
-I also realize that a number of my functions are pretty...chunky, or inefficient. There is also some duplicate code across components. Lots of variables, API calls, bulky IF statements...I would like to improve on my knowledge and use of algorithms over my next projects so that I can write cleaner, more efficient code.
+I also realize that a number of my functions are pretty...chunky, or inefficient. There is also some duplicate code across components. Lots of variables, API calls, bulky IF statements...I would like to improve on my knowledge and use of algorithms over my next projects so that I can write cleaner, more efficient code. This may not be too big of an issue as there are only three users allowed on Outwork. However, if there were 100,000 users, it'd be a different story, and the algorithms would have to be a lot more polished. 
 
 Nevertheless, it still works. 
 
