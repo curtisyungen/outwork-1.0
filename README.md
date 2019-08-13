@@ -57,5 +57,5 @@ Nevertheless, it still works.
 ### Screenshots
 
 ![](client/src/images/screenshots/home.png)
-Home page. This page shows all books as well as filter options for exploring the inventory.  
+
 <br/><br/> 
