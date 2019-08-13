@@ -46,11 +46,13 @@ Installation instructions for Node.js can be found here: https://nodejs.org/en/d
 
 I tried to approach this project in a more organized way than I did Congo. This meant that I spent a couple days planning instead of jumping straight into coding. In this phase, I put together the Outline PPT file included in this repository. Nonetheless, I still found that the project evolved considerably along the way, as I discovered challenges, issues, and ideas that I had not forseen. 
 
-One big improvement compared to Congo was my use of Bootstrap. This made the formatting and mobile responsiveness infinitely easier than having to create a bunch of media queries that adjusts each element individually. 
+One big improvement compared to Congo was my use of Bootstrap. This made the formatting and mobile responsiveness infinitely easier than having to create a bunch of media queries to target each individual element.
 
-One thing I would do differently is I would comment my code better as I worked, because now that the project is essentially completed, I really don't want to have to go back through all my code and write informative comments about how it works or what does what. It would've been easier to do that as I worked rather than after everything is finished.
+One thing I will do differently next time is I would comment my code better as I worked, because now that the project is essentially completed, I really don't want to have to go back through all my code and write informative comments about how it works or what does what. It would've been easier to do that as I worked rather than after everything is finished.
 
-I also realize that a number of my functions are pretty...chunky, or inefficient. Lots of variables, API calls, bulky IF statements...I would like to improve on my knowledge and use of algorithms over my next projects so that I can write cleaner, more efficient code.
+Another thing I'd like to improve is the structure of my files. Some files, such as App.js, become so weighty and contain so much functionality and information that it becomes confusing to sort through. I'd like to split files like this one up and perhaps import the functions into App.js from other, smaller files, just so the program is more neatly written and organized and easier to decipher. 
+
+I also realize that a number of my functions are pretty...chunky, or inefficient. There is also some duplicate code across components. Lots of variables, API calls, bulky IF statements...I would like to improve on my knowledge and use of algorithms over my next projects so that I can write cleaner, more efficient code.
 
 Nevertheless, it still works. 
 
