@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { scaleLinear, scaleBand, axisLeft, axisBottom } from "d3";
+import { scaleLinear } from "d3-scale";
 import { max } from "d3-array";
 import { select } from "d3-selection";
 import "./barChart.css";
@@ -7,7 +7,6 @@ import "./barChart.css";
 class BarChart extends Component {
 
     componentDidMount = () => {
-        console.log(this.props.data);
         if (this.props.data && this.props.data.length > 0) {
             this.createBarChart();
         }
@@ -15,58 +14,39 @@ class BarChart extends Component {
 
     createBarChart = () => {
         let node = this.node;
-        let svg = select(node);
-        let data = this.props.data;
-        let margin = { top: 20, right: 20, bottom: 20, left: 50 };
-        let innerWidth = this.props.width - margin.left - margin.right;
-        let innerHeight = this.props.height - margin.top - margin.bottom;
+        let dataMax = max(this.props.data)
 
-        let xValue = d => d.weekNum;
-        let yValue = d => parseInt(d.miles);
+        // Scale chart
+        let yScale = scaleLinear()
+            .domain([0, dataMax])
+            .range([0, this.props.height]);
 
-        const xScale = scaleLinear()
-            .domain([0, max(data, xValue)])
-            .range([0, innerWidth]);
+        // Create rectangles
+        select(node)
+            .selectAll("rect")
+            .data(this.props.data)
+            .enter()
+            .append("rect");
 
-        const yScale = scaleBand()
-            .domain(data.map(yValue))
-            .range([0, innerHeight]);
-
-        const g = svg.append("g")
-            .attr("transform", `translate(${margin.left}, ${margin.top})`);
-
-        g.append("g").call(axisBottom(xScale))
-            .attr("transform", `translate(0, ${innerHeight})`);
-
-        g.append("g").call(axisLeft(yScale));
-
-        g.selectAll("rect").data(data)
-            .enter().append("rect")
-                .attr("width", d => xScale(xValue(d)))
-                .attr("height", yScale.bandwidth());
-
-        // // Create rectangles
-        // g.selectAll("rect")
-        //     .data(this.props.data)
-        //     .enter()
-        //     .append("rect");
-
-        // // Insert data
-        // g.selectAll("rect")
-        //     .data(this.props.data)
-        //     .exit()
-        //     .remove();
+        // Insert data
+        select(node)
+            .selectAll("rect")
+            .data(this.props.data)
+            .exit()
+            .remove();
 
         // Style rectangles
-        g.selectAll("rect")
-            .data(data.map(yValue))
-            .style("fill", "steelblue")
-            // .attr("x", (d, i) => i * 15)
-            .attr("y", innerHeight - yValue)
+        select(node)
+            .selectAll("rect")
+            .data(this.props.data)
+            .style("fill", "#424242")
+            .style("border", "1x solid black")
+            .attr("x", (d, i) => i * 15)
+            .attr("y", d => this.props.height - yScale(d))
             .attr("height", d => yScale(d))
             .attr("width", 15)
             .attr("transform", (d, i) => {
-                let translate = [15 * i, 0]
+                let translate = [5 * i, 0]
                 return "translate(" + translate + ")";
             });
     }
