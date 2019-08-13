@@ -223,8 +223,19 @@ class Metrics extends Component {
     }
 
     getYearData = (year) => {
+        let yearData = [];
+
+        for (var w in year) {
+            let week = {
+                weekNum: parseInt(w),
+                miles: parseFloat(year[w]),
+            }
+
+            yearData.push(week);
+        }
+
         this.setState({
-            year: year,
+            year: yearData,
         });
     }
 
@@ -259,7 +270,7 @@ class Metrics extends Component {
 
                     {this.state.openBarChart ? (
                         <Modal
-                            open={this.openBarChart}
+                            open={this.state.openBarChart}
                             onClose={this.closeBarChart}
                         >
                             <h4>Currently in work...</h4>
@@ -267,8 +278,8 @@ class Metrics extends Component {
                             {this.state.year && this.state.year.length > 0 ? (
                                 <BarChart
                                     data={this.state.year}
-                                    height={500}
-                                    width={1200}
+                                    height={200}
+                                    width={500}
                                 />
                             ) : (
                                 <></>
