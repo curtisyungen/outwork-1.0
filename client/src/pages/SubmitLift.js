@@ -44,16 +44,6 @@ class SubmitLift extends Component {
             .then((res) => {
                 // Get exercises 
                 let exercises = [];   
-                let exercise = {
-                    id: 0,
-                    name: "",
-                    weight: "",
-                    superset: "",
-                    sets: "",
-                    reps: "",
-                    rest: "",
-                    notes: "",
-                }
 
                 //exercises.push(exercise);
                 
