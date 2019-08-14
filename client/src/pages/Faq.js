@@ -23,7 +23,6 @@ class Faq extends Component {
                 <div className="inWork">
                     <h4>Outwork In Work</h4>
                     <div className="iw">08/13/2019: Adding bar chart for visualizing weekly running mileage.</div>
-                    <div className="iw">08/13/2019: Making muscle group names consistent between Lift and Generator submissions ("legs" vs. "quadriceps").</div>
                 </div>
                 
                 <div className="questions">
