@@ -1,0 +1,21 @@
+.inWork {
+    background: rgb(242, 242, 242);
+    margin: 20px 0px;
+    padding: 10px;
+}
+
+.iw:nth-child(2) {
+    margin-top: 20px;
+}
+
+.q {
+    margin-bottom: 10px;
+}
+
+.qaDiv {
+    border: 1px solid rgb(242, 242, 242);
+    border-left: 10px solid blue;
+    font-size: 15px;
+    margin-top: 20px;
+    padding: 10px;
+}
