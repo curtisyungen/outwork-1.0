@@ -123,12 +123,20 @@ class SetItem extends Component {
                 ) : (
                     <span>
                         <button 
-                            className="btn btn-outline-dark btn-sm gogginsRunBtn"
+                            className="btn btn-outline-success btn-sm gogginsRunBtn"
                             onClick={this.props.completeGoggins}
                         >
                             Roger that.
                         </button>
-                        <span className="disclaimer-xs">Click when complete.</span>
+                        <a
+                            className="btn btn-outline-dark btn-sm gogginsRunBtn"
+                            href="https://www.youtube.com/watch?v=PNaTy5K4Pr0"
+                            rel="noopener noreferrer"
+                            target="_blank"
+                        >
+                            Video
+                        </a>
+                        {/* <span className="disclaimer-xs">Click when complete.</span> */}
                     </span>
                 )}
             </div>

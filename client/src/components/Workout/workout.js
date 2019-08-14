@@ -46,6 +46,8 @@ class Workout extends Component {
             lastName: this.props.lastName,
             userEquipment: this.props.userEquipment,
             difficulty: this.props.difficulty,
+            checkGoggins: false,
+            completeGoggins: false,
         }, () => {
             if (sessionStorage.getItem("sets") !== null && sessionStorage.getItem("sets").length > 0) {
                 this.getSetsFromSessionStorage();
@@ -62,6 +64,7 @@ class Workout extends Component {
                 userEquipment: this.props.userEquipment,
                 difficulty: this.props.difficulty,
                 checkGoggins: false,
+                completeGoggins: false,
             }, () => {
                 this.getExercises();
             });
@@ -525,10 +528,18 @@ class Workout extends Component {
 
     // If this is a Goggins workout, this adds on a surprise 1-3 mile run at the end
     checkGoggins = () => {
-        if (this.state.difficulty === "8") {
+        if (this.state.checkGoggins === false && this.state.difficulty === "8") {
 
             let dist = Math.floor(Math.random() * 3) + 1;
             let gogginsRun = [{ id: 999, name: "The Goggins Surprise Run", reps: `${dist} miles` }];
+
+            let quotes = [
+                "Merry Christmas mothafucka!",
+                "Lace 'em up!",
+                "It ain't over yet!",
+            ];
+
+            alert(quotes[dist - 1]);
 
             this.setState({
                 checkGoggins: true,
@@ -611,7 +622,7 @@ class Workout extends Component {
                         {/* GOGGINS INSTRUCTIONS */}
                         {this.state.completeGoggins === true ? (
                             <div className="disclaimer-goggins">
-                                Note: Do not include Goggins Run data here. 
+                                Note: Do not include Goggins Surprise Run data here. 
                                 You will automatically be redirected to Submit Run page after
                                 completing this form. 
                             </div>
