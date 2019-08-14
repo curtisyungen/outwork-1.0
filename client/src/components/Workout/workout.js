@@ -545,6 +545,7 @@ class Workout extends Component {
                 checkGoggins: true,
                 gogginsRun: gogginsRun,
                 gogginsRunDist: dist,
+                notes: `Plus a ${dist} mile run`,
             });
         }
     }
@@ -694,7 +695,6 @@ class Workout extends Component {
                                 aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-sm"
                                 onChange={this.handleInputChange}
-                                defaultValue={this.props.timeString}
                             />
                         </div>
 
