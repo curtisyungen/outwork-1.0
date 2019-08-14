@@ -44,6 +44,9 @@ class Lift extends Component {
         if (muscleGroups !== null && muscleGroups.length > 1) {
             groups = muscleGroups.join(", ");
         }
+        else if (muscleGroups !== null && muscleGroups.length === 1) {
+            groups = muscleGroups;
+        }
 
         this.setState({
             muscleGroups: groups,
