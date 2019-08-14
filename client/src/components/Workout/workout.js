@@ -623,9 +623,9 @@ class Workout extends Component {
                         {/* GOGGINS INSTRUCTIONS */}
                         {this.state.completeGoggins === true ? (
                             <div className="disclaimer-goggins">
-                                Note: Do not include Goggins Surprise Run data here. 
-                                You will automatically be redirected to Submit Run page after
-                                completing this form. 
+                                Note: <strong>Do not include Goggins Surprise Run data here.</strong>
+                                You will be automatically redirected to the Submit Run page after
+                                submitting this form. 
                             </div>
                         ) : (
                             <></>
