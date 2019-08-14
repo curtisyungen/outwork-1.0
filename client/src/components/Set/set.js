@@ -38,6 +38,7 @@ class Set extends Component {
                         setRest={this.props.setRest}
                         setNotes={this.props.setNotes}
                         difficulty={this.props.difficulty}
+                        completeGoggins={this.props.completeGoggins}
                     />
                 ))
             ) : (

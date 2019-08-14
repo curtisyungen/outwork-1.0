@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import Modal from "react-responsive-modal";
 import Set from "../Set/set";
 import workoutAPI from "../../utils/workoutAPI";
@@ -28,6 +29,11 @@ class Workout extends Component {
             workout: null,
             complete: false,
             today: null,
+            checkGoggins: false,
+            completeGoggins: false,
+            gogginsRun: null,
+            gogginsRunDist: 0,
+            setRedirectToSubmitRun: false,
         }
     }
 
@@ -55,13 +61,10 @@ class Workout extends Component {
             this.setState({
                 userEquipment: this.props.userEquipment,
                 difficulty: this.props.difficulty,
+                checkGoggins: false,
             }, () => {
                 this.getExercises();
             });
-        }
-
-        if (prevState.workout !== this.state.workout) {
-            console.log(this.state.workout);
         }
     }
 
@@ -148,7 +151,6 @@ class Workout extends Component {
     getSetsFromSessionStorage = () => {
         let sets = JSON.parse(sessionStorage.getItem("sets"));
         let workout = JSON.parse(sessionStorage.getItem("sets"));
-        console.log(workout);
         let difficulty = sessionStorage.getItem("diff");
         
         this.setState({
@@ -504,7 +506,15 @@ class Workout extends Component {
                             alert("Workout submitted!");
                             sessionStorage.setItem("sets", null);
                             sessionStorage.setItem("diff", null);
-                            window.location.reload();
+                            
+                            if (this.state.completeGoggins === true) {
+                                this.setState({
+                                    redirectToSubmitRun: true,
+                                });
+                            }
+                            else {
+                                window.location.reload();
+                            }
                         }
                         else {
                             alert("Error submitting workout.");
@@ -513,9 +523,38 @@ class Workout extends Component {
             }
     }
 
+    // If this is a Goggins workout, this adds on a surprise 1-3 mile run at the end
+    checkGoggins = () => {
+        if (this.state.difficulty === "8") {
+
+            let dist = Math.floor(Math.random() * 3) + 1;
+            let gogginsRun = [{ id: 999, name: "The Goggins Surprise Run", reps: `${dist} miles` }];
+
+            this.setState({
+                checkGoggins: true,
+                gogginsRun: gogginsRun,
+                gogginsRunDist: dist,
+            });
+        }
+    }
+
+    completeGoggins = () => {
+        this.setState({
+            completeGoggins: true,
+        });
+    }
+
     render() {
         return (
             <div>
+
+                {/* Redirect to Submit Run -- for Goggins Workouts only */}
+                {this.state.redirectToSubmitRun ? (
+                    <Redirect to="/run" />
+                ) : (
+                    <></>
+                )}
+
                 {this.state.sets && this.state.sets.length > 0 ? (
                     <span>
                         {this.state.sets.map(set => (
@@ -534,13 +573,33 @@ class Workout extends Component {
                         <></>
                     )}
 
-                {this.state.sets && this.state.sets.length > 0 ? (
-                    <div className="completeBtn">
-                        <button className="btn btn-outline-dark" onClick={this.completeWorkout}>Complete</button>
+                {this.state.checkGoggins ? (
+                    <div className="gogginsRun">
+                        <Set 
+                            set={this.state.gogginsRun}
+                            completeGoggins={this.completeGoggins}
+                        />
                     </div>
                 ) : (
-                        <></>
-                    )}
+                    <></>
+                )}
+
+                {/* COMPLETE BUTTON */}
+
+                {this.state.sets && this.state.sets.length > 0 ? (
+                    <div className="completeBtn">
+                        <button 
+                            className="btn btn-success" 
+                            onMouseEnter={this.checkGoggins} 
+                            onClick={this.completeWorkout}
+                            disabled={!this.state.completeGoggins && this.state.difficulty === "8"}
+                        >
+                            Complete
+                        </button>
+                    </div>
+                ) : (
+                    <></>
+                )}
 
                 {this.state.complete ? (
                     <Modal
@@ -549,6 +608,17 @@ class Workout extends Component {
                     >
                         <h4>Details</h4>
 
+                        {/* GOGGINS INSTRUCTIONS */}
+                        {this.state.completeGoggins === true ? (
+                            <div className="disclaimer-goggins">
+                                Note: Do not include Goggins Run data here. 
+                                You will automatically be redirected to Submit Run page after
+                                completing this form. 
+                            </div>
+                        ) : (
+                            <></>
+                        )}
+                        
                         {/* DATE */}
                         <div className="input-group input-group-sm mb-3 workoutModalForm">
                             <div className="input-group-prepend">
@@ -630,6 +700,7 @@ class Workout extends Component {
                                 aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-sm"
                                 onChange={this.handleInputChange}
+                                defaultValue={this.state.gogginsRunDist > 0 ? (`Plus a ${this.state.gogginsRunDist} mile run`):("")}
                             />
                         </div>
 
