@@ -77,7 +77,6 @@
 
 .homePage {
     padding-bottom: 50px;
-    padding-top: 35px;  /* FOR USE WITH BANNER */
 }
 
 .opt-true {
@@ -142,15 +141,11 @@
 
 @media only screen and (max-width: 990px) {
     .homePage {
-        padding-top: 50px;
+        padding-top: 40px;
     }
 }
 
 @media only screen and (max-width: 520px) {
-    .homePage {
-        /* padding-top: 40px; */
-    }
-
     .quickStatsBtn {
         margin-top: 2px;
     }

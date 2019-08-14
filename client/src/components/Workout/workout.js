@@ -59,6 +59,10 @@ class Workout extends Component {
                 this.getExercises();
             });
         }
+
+        if (prevState.workout !== this.state.workout) {
+            console.log(this.state.workout);
+        }
     }
 
     handleInputChange = (event) => {
@@ -144,6 +148,7 @@ class Workout extends Component {
     getSetsFromSessionStorage = () => {
         let sets = JSON.parse(sessionStorage.getItem("sets"));
         let workout = JSON.parse(sessionStorage.getItem("sets"));
+        console.log(workout);
         let difficulty = sessionStorage.getItem("diff");
         
         this.setState({
@@ -296,7 +301,9 @@ class Workout extends Component {
                         pullups += parseFloat(workout[s][i].actualReps);
                     }
                     else {
-                        pullups += parseFloat(workout[s][i].reps);
+                        if (!isNaN(parseFloat(workout[s][i].reps))) {
+                            pullups += parseFloat(workout[s][i].reps);
+                        }
                     }
                 }
             }

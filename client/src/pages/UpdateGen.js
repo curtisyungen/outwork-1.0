@@ -86,7 +86,9 @@ class UpdateGen extends Component {
                         pushups += parseFloat(workout[s][i].actualReps);
                     }
                     else {
-                        pushups += parseFloat(workout[s][i].reps);
+                        if (!isNaN(parseFloat(workout[s][i].reps))) {
+                            pushups += parseFloat(workout[s][i].reps);
+                        }
                     }
                 }
             }
@@ -115,7 +117,9 @@ class UpdateGen extends Component {
                         pullups += parseFloat(workout[s][i].actualReps);
                     }
                     else {
-                        pullups += parseFloat(workout[s][i].reps);
+                        if (!isNaN(parseFloat(workout[s][i].reps))) {
+                            pullups += parseFloat(workout[s][i].reps);
+                        }
                     }
                 }
 
