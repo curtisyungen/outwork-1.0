@@ -67,6 +67,9 @@ class SetItem extends Component {
                     {this.props.assignReps}
                 </div>
 
+                {/* ID 999 is the Goggins run */}
+                {this.props.id !== 999 ? (
+
                 <div className={`exActual saved-${this.state.saved}`}>
                     {/* ACTUAL REPS */}
                     <input
@@ -116,8 +119,18 @@ class SetItem extends Component {
                         // defaultValue={this.state.notes}
                         value={this.state.notes}
                     />
-                    
                 </div>
+                ) : (
+                    <span>
+                        <button 
+                            className="btn btn-outline-dark btn-sm gogginsRunBtn"
+                            onClick={this.props.completeGoggins}
+                        >
+                            Roger that.
+                        </button>
+                        <span className="disclaimer-xs">Click when complete.</span>
+                    </span>
+                )}
             </div>
         )
     }
