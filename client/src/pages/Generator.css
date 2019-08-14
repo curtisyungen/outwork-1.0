@@ -3,6 +3,10 @@
     z-index: 1;
 }
 
+.disclaimer {
+    font-size: 13px;
+}
+
 .equipIcon {
     margin-left: -4px;
     margin-top: 2px;
