@@ -19,11 +19,22 @@ class Faq extends Component {
     render() {
         return (
             <div className="container pageContainer faqContainer">
+                
+                <div className="inWork">
+                    <h4>Outwork In Work</h4>
+                    <div className="iw">08/13/2019: Adding bar chart for visualizing weekly running mileage.</div>
+                    <div className="iw">08/13/2019: Fixing push-up count on Generator workout submissions.</div>
+                    <div className="iw">08/13/2019: Making muscle group names consistent between Lift and Generator submissions ("legs" vs. "quadriceps").</div>
+                </div>
+                
                 <div className="questions">
                     <h4>Frequently Asked Questions</h4>
                     <div className="qaDiv">
-                        <div className="q">Q: How do you win the weiner award?</div>
-                        <div className="a">A: Trade secret. Rest assured that everyone has an equal opportunity to win the coveted Weiner Award!</div>
+                        <div className="q">Q: What was the inspiration behind the name Outwork?</div>
+                        <div className="a">
+                            A: It's an obvious play on the word "workout". In fact, the name itself inspired the Hall of Fame,
+                            which aims to inspire users to outwork each other or simply outwork their earlier selves.
+                        </div>
                     </div>
 
                     <div className="qaDiv">
@@ -35,19 +46,15 @@ class Faq extends Component {
                     </div>
 
                     <div className="qaDiv">
-                        <div className="q">Q: What was the inspiration behind the name Outwork?</div>
-                        <div className="a">
-                            A: It's an obvious play on the word "workout". In fact, the name itself inspired the Hall of Fame,
-                            which aims to inspire users to outwork each other or simply outwork their earlier selves.
-                        </div>
+                        <div className="q">Q: How do you win the weiner award?</div>
+                        <div className="a">A: Trade secret. Rest assured that everyone has an equal opportunity to win the coveted Weiner Award!</div>
                     </div>
-                </div>
 
-                <div className="inWork">
-                    <h4>Outwork In Work</h4>
-                    <div className="iw">08/13/2019: Adding bar chart for visualizing weekly running mileage.</div>
-                    <div className="iw">08/13/2019: Fixing push-up count on Generator workout submissions.</div>
-                    <div className="iw">08/13/2019: Making muscle group names consistent between Lift and Generator submissions ("legs" vs. "quadriceps").</div>
+                    <div className="qaDiv">
+                        <div className="q">Q: What are bad weather days?</div>
+                        <div className="a">A: Bad weather is considered light rain, heavy rain, snow, or shitstorm weather. Each counts toward winning the Storm Chaser award.</div>
+                    </div>
+                    
                 </div>
             </div>
         )
