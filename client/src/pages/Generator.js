@@ -193,11 +193,11 @@ class Generator extends Component {
 
                 <div className={`difficultyBar`}>
 
+                    <h4>Generator</h4>
+
                     <p className="disclaimer">
                         It is recommended that you screenshot your completed workout before submitting it in case there is a loss of data.
                     </p>
-
-                    <h4>Generator</h4>
 
                     {/* SELECT DIFFICULTY */}
                     <div className="input-group mb-0">
