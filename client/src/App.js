@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Modal from "react-responsive-modal";
 import Navbar from "./components/Navbar/navbar";
+import Banner from "./components/Banner/banner";
 import Backgrounds from "./components/Backgrounds/backgrounds";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
@@ -732,6 +733,8 @@ class App extends Component {
             openBackgrounds={this.openBackgrounds}
             logoutUser={this.logoutUser}
           />
+
+          <Banner />
 
           <Switch>
             {/* Landing Page */}
