@@ -59,6 +59,7 @@ class App extends Component {
       background: "tiles",
       resetEmail: null,
       displayOpt: "Recent",
+      message: "",
     }
   }
 
@@ -734,7 +735,14 @@ class App extends Component {
             logoutUser={this.logoutUser}
           />
 
-          <Banner />
+          {/* Banner */}
+          {this.state.message !== "" ? (
+            <Banner 
+              message={this.state.message}
+            />
+          ) : (
+            <></>
+          )}
 
           <Switch>
             {/* Landing Page */}
