@@ -258,7 +258,9 @@ class Workout extends Component {
                         pushups += parseFloat(workout[s][i].actualReps);
                     }
                     else {
-                        pushups += parseFloat(workout[s][i].reps);
+                        if (!isNaN(parseFloat(workout[s][i].reps))) {
+                            pushups += parseFloat(workout[s][i].reps);
+                        }
                     }
                 }
             }
