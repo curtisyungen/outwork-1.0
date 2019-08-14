@@ -3,7 +3,6 @@ import Modal from "react-responsive-modal";
 import Container from "../components/Container/container";
 import GroupMetrics from "../components/GroupMetrics/groupMetrics";
 import ActivityIcons from "../components/ActivityIcons/activityIcons";
-import Banner from "../components/Banner/banner";
 import UserActivity from "../components/UserActivity/userActivity";
 import "./Home.css";
 
