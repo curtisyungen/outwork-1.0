@@ -30,6 +30,7 @@ class Navbar extends Component {
                     "/bike",
                     "/swim",
                     "/lift",
+                    "/faq",
                 ],
         }
     }
@@ -65,6 +66,9 @@ class Navbar extends Component {
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="/allUsers">Users</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/faq">FAQ</a>
                         </li>
                         
                         <Popup
