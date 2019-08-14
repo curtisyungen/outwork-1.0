@@ -22,6 +22,7 @@ import Generator from "./pages/Generator";
 import UpdateGen from "./pages/UpdateGen";
 import HallOfFame from "./pages/HallOfFame";
 import AllUsers from "./pages/AllUsers";
+import Faq from "./pages/Faq";
 import Error from "./pages/Error";
 import userAPI from "./utils/userAPI";
 import workoutAPI from "./utils/workoutAPI";
@@ -710,6 +711,8 @@ class App extends Component {
               <></>
             )}
 
+          {/* Set Background Image */}
+
           {this.state.openModal ? (
             <Modal
               open={this.state.openModal}
@@ -903,6 +906,14 @@ class App extends Component {
               <AllUsers
                 checkValidUser={this.checkValidUser}
                 loadProfile={this.loadProfile}
+                background={this.state.background}
+              />
+            } />
+
+            {/* FAQ Page */}
+            <Route exact path="/faq" render={() =>
+              <Faq
+                checkValidUser={this.checkValidUser}
                 background={this.state.background}
               />
             } />
