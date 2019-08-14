@@ -1,11 +1,11 @@
 id,name,equipment,primaryMG,secondaryMG,low,med,high,extreme,createdAt,updatedAt
 1,Ab Wheel Plank,Ab Wheel,Abs,,20 secs,30 secs,45 secs,60 secs,6/2/2019 21:12,6/2/2019 21:12
-2,Bar Hang,Pull-Up Bar,Forearms,,30 secs,45 secs,60 secs,max,7/6/2019 0:00,7/7/2019 11:15
+2,Bar Hang,Pull-Up Bar,Forearms,,30 secs,45 secs,60 secs,90 secs,7/6/2019 0:00,7/7/2019 11:15
 3,Bent Rows,"Kettle Bell, Dumbbell, Barbell",Back,Biceps,8 reps,12 reps,15 reps,20 reps,6/2/2019 21:12,6/2/2019 21:12
 4,Bent-Leg Rows (Baseblocks),Baseblocks Trainer,Back,Biceps,3 reps,5 reps,7 reps,10 reps,6/2/2019 21:12,6/2/2019 21:12
 5,Bicep Curls,"Dumbbell, Barbell",Biceps,,8 reps,10 reps,12 reps,15 reps,6/2/2019 21:12,6/2/2019 21:12
-6,Bodyweight Squats,,Legs,,20 reps,30 reps ,40 reps,50 reps,6/2/2019 21:12,6/2/2019 21:12
-7,Burpees,,Legs,Chest,8 reps,10 reps,12 reps,15 reps,6/2/2019 21:12,6/2/2019 21:12
+6,Bodyweight Squats,,Quadriceps,,20 reps,30 reps ,40 reps,50 reps,6/2/2019 21:12,6/2/2019 21:12
+7,Burpees,,Quadriceps,Chest,8 reps,10 reps,12 reps,15 reps,6/2/2019 21:12,6/2/2019 21:12
 8,Calf Raises,,Calves,,20 reps,30 reps,40 reps,50 reps,6/2/2019 21:12,6/2/2019 21:12
 9,Chair Sit-Ups,,Abs,,25 reps,35 reps,50 reps,75 reps,6/2/2019 21:12,6/2/2019 21:12
 10,Chin-Up Static Hold,Pull-Up Bar,Biceps,,15 secs,20 secs,30 secs,45 secs,6/2/2019 21:12,6/2/2019 21:12
@@ -18,20 +18,20 @@ id,name,equipment,primaryMG,secondaryMG,low,med,high,extreme,createdAt,updatedAt
 17,Flutter Kicks,,Abs,,30 secs,45 secs,60 secs,75 secs,6/2/2019 21:12,6/2/2019 21:12
 18,Handstand (Wall),,Shoulders,Triceps,10 secs,20 secs,30 secs,60 secs,6/2/2019 21:12,6/2/2019 21:12
 19,Handstand Push-Up Negatives (Wall),,Shoulders,Triceps,2 reps,4 reps,6 reps,8 reps,6/2/2019 21:12,6/2/2019 21:12
-20,Handstand Push-Ups (Wall),,Shoulders,Triceps,1 reps,2 reps,3 reps,max,6/2/2019 21:12,6/2/2019 21:12
+20,Handstand Push-Ups (Wall),,Shoulders,Triceps,1 reps,2 reps,3 reps,3 reps,6/2/2019 21:12,6/2/2019 21:12
 21,Hanging Knee Raises,Pull-Up Bar,Abs,,8 reps,12 reps,15 reps,20 reps,6/2/2019 21:12,6/2/2019 21:12
 22,Hip Raises,,Glutes,,30 secs,45 secs,60 secs,75 secs,6/2/2019 21:12,6/2/2019 21:12
 23,Incline Push-Ups,,Chest,Shoulders,8 reps,12 reps,15 reps,20 reps,6/2/2019 21:12,6/2/2019 21:12
 24,Kettle Bell Swings,,Glutes,Back,15 reps,25 reps,35 reps,50 reps,6/2/2019 21:12,6/2/2019 21:12
 25,Kneeling Ab Wheel Rollout,Ab Wheel,Abs,,5 reps,8 reps,12 reps,15 reps,6/2/2019 21:12,6/2/2019 21:12
 26,Leg Lifts,,Abs,,30 secs,45 secs,60 secs,75 secs,6/2/2019 21:12,6/2/2019 21:12
-27,L-Sit Hold,"Parallettes, Dip Rack",Abs,,10 secs,15 secs,20 secs,max,6/2/2019 21:12,6/2/2019 21:12
+27,L-Sit Hold,"Parallettes, Dip Rack",Abs,,10 secs,12 secs,15 secs,20 secs,6/2/2019 21:12,6/2/2019 21:12
 28,Plank,,Abs,,30 secs,60 secs,90 secs,120 secs,6/2/2019 21:12,6/2/2019 21:12
 29,Plank Knee to Elbow,,Abs,,30 secs,45 secs,60 secs,90 secs,6/2/2019 21:12,6/2/2019 21:12
 30,Pull-Up Static Hold,Pull-Up Bar,Back,Biceps,15 secs,20 secs,30 secs,45 secs,6/2/2019 21:12,6/2/2019 21:12
 31,Pull-Up Weighted Negatives,Pull-Up Bar,Back,Biceps,3 reps,4 reps,5 reps,8 reps,6/2/2019 21:12,6/2/2019 21:12
 32,Pull-Ups,Pull-Up Bar,Back,Biceps,5 reps,6 reps,8 reps,10 reps,6/2/2019 21:12,6/2/2019 21:12
-33,Push-Ups,,Chest,Shoulders,15 reps,20 reps,30 reps,max,6/2/2019 21:12,6/2/2019 21:12
+33,Push-Ups,,Chest,Shoulders,15 reps,20 reps,25 reps,30 reps,6/2/2019 21:12,6/2/2019 21:12
 34,Reverse Ab Wheel Rollout,Ab Wheel,Abs,,5 reps,8 reps,12 reps,15 reps,6/2/2019 21:12,6/2/2019 21:12
 35,Reverse Barbell Curls,Barbell,Forearms,Biceps,6 reps,8 reps,10 reps,12 reps,6/2/2019 21:12,6/2/2019 21:12
 36,Russian Twists,,Abs,,30 secs,45 secs,60 secs,75 secs,6/2/2019 21:12,6/2/2019 21:12
@@ -42,10 +42,10 @@ id,name,equipment,primaryMG,secondaryMG,low,med,high,extreme,createdAt,updatedAt
 41,Tricep Push-Ups,,Triceps,,12 reps,15 reps,18 reps,25 reps,6/2/2019 21:12,6/2/2019 21:12
 42,Twisting Crunches,,Abs,,20 reps,30 reps,50 reps,80 reps,6/2/2019 21:12,6/2/2019 21:12
 43,V-Ups,,Abs,,5 reps,8 reps,12 reps,15 reps,6/2/2019 21:12,6/2/2019 21:12
-44,Wall Sit,,Legs,,30 secs,60 secs,90 secs,120 secs,6/2/2019 21:12,6/2/2019 21:12
-45,Weighted Calf Raises,"Weight Vest, Dumbbell, Barbell, Kettle Bell",Legs,,20 reps,30 reps,40 reps,50 reps,6/2/2019 21:12,6/2/2019 21:12
-46,Weighted Push-Ups,Weight Vest,Chest,Shoulders,8 reps,10 reps,12 reps,max,6/2/2019 21:12,6/2/2019 21:12
+44,Wall Sit,,Quadriceps,,30 secs,60 secs,90 secs,120 secs,6/2/2019 21:12,6/2/2019 21:12
+45,Weighted Calf Raises,"Weight Vest, Dumbbell, Barbell, Kettle Bell",Calves,,20 reps,30 reps,40 reps,50 reps,6/2/2019 21:12,6/2/2019 21:12
+46,Weighted Push-Ups,Weight Vest,Chest,Shoulders,8 reps,10 reps,12 reps,15 reps,6/2/2019 21:12,6/2/2019 21:12
 47,Weighted Shoulder Shrugs,"Kettle Bell, Dumbbell, Barbell",Back,,10 reps,15 reps,20 reps,25 reps,6/2/2019 21:12,6/2/2019 21:12
-48,Weighted Squats,"Weight Vest, Barbell, Dumbbell, Kettle Bell",Legs,,10 reps,15 reps,20 reps,25 reps,6/2/2019 21:12,6/2/2019 21:12
-49,Weighted Wall Sit,"Weight Vest, Dumbbell, Kettle Bell",Legs,,30 secs,45 secs,60 secs,120 secs,6/2/2019 21:12,6/2/2019 21:12
-50,Wide-Arm Push-Ups,,Chest,Shoulders,15 reps,18 reps,20 reps,max,6/2/2019 21:12,6/2/2019 21:12
+48,Weighted Squats,"Weight Vest, Barbell, Dumbbell, Kettle Bell",Quadriceps,,10 reps,15 reps,20 reps,25 reps,6/2/2019 21:12,6/2/2019 21:12
+49,Weighted Wall Sit,"Weight Vest, Dumbbell, Kettle Bell",Quadriceps,,30 secs,45 secs,60 secs,120 secs,6/2/2019 21:12,6/2/2019 21:12
+50,Wide-Arm Push-Ups,,Chest,Shoulders,15 reps,18 reps,20 reps,30 reps,6/2/2019 21:12,6/2/2019 21:12
