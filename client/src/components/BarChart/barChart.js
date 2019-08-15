@@ -39,14 +39,17 @@ class BarChart extends Component {
         let yValue = d => d.miles;
         let maxMiles = this.state.maxMiles;
 
+        // X-axis scale
         let x = scaleLinear()
             .domain([0, max(data, xValue)])
             .range([0, width]);
 
+        // Y-axis scale
         let y = scaleLinear()
             .domain([0, maxMiles])
             .range([this.props.height, 0]);
 
+        // Insert and format data
         select(node).attr("width", width + 2 * margin)
             .attr("height", height + 2 * margin)
             .append("g")
@@ -58,6 +61,25 @@ class BarChart extends Component {
             .attr("height", function (d) { return height - y(d); })
             .attr("x", function (d, i) { return x(i); })
             .attr("y", function (d) { return y(d); });
+
+        // let yTextPadding = 0;
+        // select(node)
+        //     .selectAll(".barText")
+        //     .data(data.map(yValue))
+        //     .enter()
+        //     .append("text")
+        //     .attr("class", "barText")
+        //     .attr("text-anchor", "middle")
+        //     .attr("fill", "black")
+        //     .attr("x", function(d, i) {
+        //         return x(i) + margin;
+        //     })
+        //     .attr("y", function(d) {
+        //         return y(d);
+        //     })
+        //     .text(function(d) {
+        //         return d;
+        //     });
 
         let xAxis = axisBottom(x);
         let yAxis = axisLeft(y);
