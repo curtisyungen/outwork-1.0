@@ -206,6 +206,7 @@ class Workout extends Component {
         }, () => {
             sessionStorage.setItem("sets", JSON.stringify(sets));
             sessionStorage.setItem("diff", difficulty);
+            sessionStorage.setItem("gsr", null);
         });
     }
 
