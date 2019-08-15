@@ -1,4 +1,5 @@
-<div class="text-center"><img src="./client/src/images/logo2.png" alt="logo" /></div>
+<div style="text-align: center"><img src="./client/src/images/logo2.png" alt="logo" /></div>
+
 # Outwork
 **by Curtis Yungen**
 
