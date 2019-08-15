@@ -63,7 +63,7 @@ class SetItem extends Component {
             "Quit being soft!",
         ];
 
-        let rand = Math.floor(Math.random() * quotes.length) + 1;
+        let rand = Math.floor(Math.random() * quotes.length);
 
         alert(quotes[rand]);
     }
