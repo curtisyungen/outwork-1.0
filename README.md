@@ -2,6 +2,8 @@
   <img src="./client/src/images/logo2.png" alt="logo" />
 </p>
 
+<br/>
+
 # Outwork
 **by Curtis Yungen**
 
