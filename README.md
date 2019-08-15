@@ -46,13 +46,11 @@ Installation instructions for Node.js can be found here: https://nodejs.org/en/d
 
 ### Personal Reflection
 
-#### Changes to approach from last project:
+#### Improvements from last project:
 * I spent more time planning. However, project still evolved considerably during the coding process due to unforseen challenges and ideas.
-
-#### Big improvement from last project:
 * Utilized Bootstrap instead of media queries
 
-#### What I would change: 
+#### Improvements for future projects:
 * Add descriptive comments to functions as I go instead of waiting until the end
 * Break up large files into smaller ones, namely App.js. 
 * Improve algorithm efficiency. Works for three users but would scale poorly.
