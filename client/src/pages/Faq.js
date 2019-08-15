@@ -36,6 +36,11 @@ class Faq extends Component {
                     </div>
 
                     <div className="qaDiv">
+                        <div className="q">Q: Why isn't Outwork accepting new users?</div>
+                        <div className="a">A: Because.</div>
+                    </div>
+
+                    <div className="qaDiv">
                         <div className="q">Q: How is the Champ of the Week award determined?</div>
                         <div className="a">
                             A: It's based on weekly stats for most workouts, most push-ups, most pull-ups,
