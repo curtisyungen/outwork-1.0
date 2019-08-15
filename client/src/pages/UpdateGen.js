@@ -343,6 +343,23 @@ class UpdateGen extends Component {
                         />
                     </div>
 
+                    {/* NOTES */}
+                    <div className="input-group input-group-sm mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="inputGroup-sizing-sm">Notes</span>
+                        </div>
+                        <input
+                            autoComplete="off"
+                            name="notes"
+                            type="text"
+                            className="form-control"
+                            aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm"
+                            onChange={this.handleInputChange}
+                            defaultValue={this.state.notes}
+                        />
+                    </div>
+
                     {this.state.workout && this.state.workout.length > 0 ? (
                         this.state.workout.map(set => (
                             <Set
