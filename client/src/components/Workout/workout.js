@@ -88,9 +88,13 @@ class Workout extends Component {
             return false;
         }
 
-        if (duration === null || duration === "" || duration.length !== 8) {
-            alert("Duration must be in hh:mm:ss format.");
-            return false;
+        if (duration === null || 
+            duration === "" || 
+            duration.length !== 8 || 
+            duration.charAt(2) !== ":" ||
+            duration.charAt(5) !== ":") {
+                alert("Duration must be in hh:mm:ss format.");
+                return false;
         }
 
         return true;
