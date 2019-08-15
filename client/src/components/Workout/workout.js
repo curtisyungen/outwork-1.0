@@ -59,6 +59,7 @@ class Workout extends Component {
     }
 
     componentDidUpdate = (prevProps, prevState) => {
+        console.log(this.props);
         if (prevProps.generate !== this.props.generate) {
             this.setState({
                 userEquipment: this.props.userEquipment,
