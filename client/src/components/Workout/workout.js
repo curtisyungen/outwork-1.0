@@ -30,7 +30,7 @@ class Workout extends Component {
             complete: false,
             today: null,
             checkGoggins: false,
-            completeGoggins: false,
+            completeGoggins: true,
             gogginsRun: null,
             gogginsRunDist: 0,
             setRedirectToSubmitRun: false,
@@ -543,10 +543,14 @@ class Workout extends Component {
 
             this.setState({
                 checkGoggins: true,
+                completeGoggins: false,
                 gogginsRun: gogginsRun,
                 gogginsRunDist: dist,
                 notes: `Plus a ${dist} mile run`,
             });
+        }
+        else {
+            this.completeWorkout();
         }
     }
 
@@ -598,13 +602,12 @@ class Workout extends Component {
 
                 {/* COMPLETE BUTTON */}
 
-                {this.state.sets && this.state.sets.length > 0 ? (
+                {this.state.sets && this.state.sets.length > 0 && this.state.completeGoggins ? (
                     <div className="completeBtn">
                         <button 
                             className="btn btn-success" 
-                            onMouseEnter={this.checkGoggins} 
-                            onClick={this.completeWorkout}
-                            disabled={!this.state.completeGoggins && this.state.difficulty === "8"}
+                            onClick={this.checkGoggins}
+                            // disabled={!this.state.completeGoggins && this.state.difficulty === "8"}
                         >
                             Complete
                         </button>
