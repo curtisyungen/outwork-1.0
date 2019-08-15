@@ -167,7 +167,7 @@ class SetItem extends Component {
                             className="btn btn-outline-danger btn-sm gogginsRunBtn"
                             onClick={this.handleExcuse}
                         >
-                            Excuse
+                            Make Excuse
                         </button>
                         {/* <span className="disclaimer-xs">Click when complete.</span> */}
                     </span>
