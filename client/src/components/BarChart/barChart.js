@@ -6,28 +6,45 @@ import "./barChart.css";
 
 class BarChart extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            maxMiles: 0,
+        }
+    }
+
     componentDidMount = () => {
-        console.log(this.props.data);
         if (this.props.data && this.props.data.length > 0) {
-            this.createBarChart();
+
+            let maxMiles = 0;
+            for (var m in this.props.data) {
+                maxMiles = Math.max(this.props.data[m].miles, maxMiles);
+            }
+            this.setState({
+                maxMiles: Math.ceil((maxMiles + 1) / 10) * 10,
+            }, () => {
+                this.createBarChart();
+            });
         }
     }
 
     createBarChart = () => {
         let node = this.node;
         let data = this.props.data;
-        var margin = 20;
-        var width = this.props.width;
-        var height = this.props.height;
+        let margin = 50;
+        let width = this.props.width;
+        let height = this.props.height;
         let xValue = d => d.weekNum;
         let yValue = d => d.miles;
+        let maxMiles = this.state.maxMiles;
 
-        var x = scaleLinear()
+        let x = scaleLinear()
             .domain([0, max(data, xValue)])
             .range([0, width]);
 
-        var y = scaleLinear()
-            .domain(data.map(yValue))
+        let y = scaleLinear()
+            .domain([0, maxMiles])
             .range([this.props.height, 0]);
 
         select(node).attr("width", width + 2 * margin)
@@ -45,15 +62,35 @@ class BarChart extends Component {
         let xAxis = axisBottom(x);
         let yAxis = axisLeft(y);
 
+        // X-axis Labels
         select(node).append("g")
             .attr("transform", "translate(" + margin + "," + (height + margin) + ")")
             .attr("class", "axis")
             .call(xAxis);
 
+        // Y-axis Labels
         select(node).append("g")
             .attr("transform", "translate(" + margin + "," + margin + ")")
             .attr("class", "axis")
             .call(yAxis);
+
+        // X-axis Title
+        select(node).append("text")
+            .attr("class", "x-label")
+            .attr("text-anchor", "end")
+            .attr("x", width * 0.5 + margin)
+            .attr("y", height + margin + margin - 5)
+            .text("Weeks");
+
+        // Y-axis Title
+        select(node).append("text")
+            .attr("class", "y-label")
+            .attr("text-anchor", "end")
+            .attr("x", height * -0.5 - (margin / 2))
+            .attr("y", 0)
+            .attr("dy", ".75em")
+            .attr("transform", "rotate(-90)")
+            .text("Miles");
     }
 
     render() {
