@@ -47,7 +47,7 @@ class Workout extends Component {
             userEquipment: this.props.userEquipment,
             difficulty: this.props.difficulty,
             checkGoggins: false,
-            completeGoggins: false,
+            completeGoggins: true,
         }, () => {
             if (sessionStorage.getItem("sets") !== null && sessionStorage.getItem("sets").length > 0) {
                 this.getSetsFromSessionStorage();
@@ -64,7 +64,7 @@ class Workout extends Component {
                 userEquipment: this.props.userEquipment,
                 difficulty: this.props.difficulty,
                 checkGoggins: false,
-                completeGoggins: false,
+                completeGoggins: true,
             }, () => {
                 this.getExercises();
             });
