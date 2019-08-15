@@ -65,7 +65,7 @@ Installation instructions for Node.js can be found here: https://nodejs.org/en/d
 #### Improvements for future projects:
 * Add descriptive comments to functions as I go instead of waiting until the end.
 * Break up large files into smaller ones, namely App.js. 
-* Improve algorithm efficiency. Works for three users but would scale poorly.
+* Improve algorithm efficiency. Site works well for three users but would scale poorly.
 
 <hr/>
 
