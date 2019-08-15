@@ -45,7 +45,7 @@ class Workout extends Component {
             firstName: this.props.firstName,
             lastName: this.props.lastName,
             userEquipment: this.props.userEquipment,
-            difficulty: this.props.difficulty,
+            difficulty: this.props.difficulty.toString(),
             checkGoggins: false,
             completeGoggins: true,
         }, () => {
@@ -59,11 +59,10 @@ class Workout extends Component {
     }
 
     componentDidUpdate = (prevProps, prevState) => {
-        console.log(this.props);
         if (prevProps.generate !== this.props.generate) {
             this.setState({
                 userEquipment: this.props.userEquipment,
-                difficulty: this.props.difficulty,
+                difficulty: this.props.difficulty.toString(),
                 checkGoggins: false,
                 completeGoggins: true,
             }, () => {
