@@ -1,4 +1,4 @@
-![](client/src/images/logo2.png)
+<div class="text-center">![](client/src/images/logo2.png)</div>
 # Outwork
 **by Curtis Yungen**
 
