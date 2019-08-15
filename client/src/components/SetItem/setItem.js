@@ -12,6 +12,7 @@ class SetItem extends Component {
             weight: "",
             rest: "",
             notes: "",
+            count: 0,
         }
     }
 
@@ -52,6 +53,8 @@ class SetItem extends Component {
     }
 
     handleExcuse = () => {
+        let count = this.state.count;
+
         let quotes = [
             "Too busy? We're all busy! Learn how to manage your time!",
             "Tired? Waa! Waa! Get out there and quit being a sissy!",
@@ -63,9 +66,16 @@ class SetItem extends Component {
             "Quit being soft!",
         ];
 
-        let rand = Math.floor(Math.random() * quotes.length);
+        alert(quotes[count]);
+        count += 1;
 
-        alert(quotes[rand]);
+        if (count === quotes.length) {
+            count = 0;
+        }
+
+        this.setState({
+            count: count,
+        });
     }
 
     render() {
