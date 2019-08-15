@@ -60,10 +60,10 @@ Installation instructions for Node.js can be found here: https://nodejs.org/en/d
 
 #### Improvements from last project:
 * I spent more time planning. However, project still evolved considerably during the coding process due to unforseen challenges and ideas.
-* Utilized Bootstrap instead of media queries
+* Utilized Bootstrap instead of media queries.
 
 #### Improvements for future projects:
-* Add descriptive comments to functions as I go instead of waiting until the end
+* Add descriptive comments to functions as I go instead of waiting until the end.
 * Break up large files into smaller ones, namely App.js. 
 * Improve algorithm efficiency. Works for three users but would scale poorly.
 
