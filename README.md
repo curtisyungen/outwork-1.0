@@ -61,6 +61,6 @@ Nevertheless, it still works.
 
 ### Screenshots
 
-![](client/src/images/screenshots/home.png)
+![](Screenshots/home.png)
 
 <br/><br/> 
