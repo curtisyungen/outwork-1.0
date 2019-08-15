@@ -6,6 +6,10 @@
     padding: 10px;
 }
 
+.barText { 
+    font-size: 12px;
+}
+
 .x-label {
     font-size: 12px;
 }
