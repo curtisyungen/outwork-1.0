@@ -3,6 +3,8 @@
 
 August 2019
 
+![](client/src/images/logo2.png)
+
 Outwork is a website where my two friends and I can log our running, biking, swimming, or lifting workouts, track metrics, and compete for awards. 
 
 Check it out by visiting https://outwork-cjy.herokuapp.com.
