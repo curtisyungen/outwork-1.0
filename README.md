@@ -61,6 +61,16 @@ Nevertheless, it still works.
 
 ### Screenshots
 
+![](Screenshots/landing.png)
 ![](Screenshots/home.png)
+![](Screenshots/profile.png)
+![](Screenshots/run.png)
+![](Screenshots/lift.png)
+![](Screenshots/generator.png)
+![](Screenshots/equip.png)
+![](Screenshots/hof.png)
+![](Screenshots/stats.png)
+![](Screenshots/runDetail.png)
+![](Screenshots/liftDetail.png)
 
 <br/><br/> 
