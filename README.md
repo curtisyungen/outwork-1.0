@@ -44,10 +44,10 @@ Installation instructions for Node.js can be found here: https://nodejs.org/en/d
 
 ### Personal Reflection
 
-#### Changes to approach from last project
+#### Changes to approach from last project:
 * I spent more time planning. However, project still evolved considerably during the coding process due to unforseen challenges and ideas.
 
-#### Big improvement from last project
+#### Big improvement from last project:
 * Utilized Bootstrap instead of media queries
 
 #### What I would change: 
