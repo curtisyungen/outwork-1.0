@@ -4,6 +4,8 @@ import { max } from "d3-array";
 import { select } from "d3-selection";
 import "./barChart.css";
 
+const d3 = require("d3");
+
 class BarChart extends Component {
 
     constructor(props) {
@@ -81,6 +83,30 @@ class BarChart extends Component {
         //         return d;
         //     });
 
+        select(node).selectAll("rect")
+            .on("click", function(d) {
+
+                let val = Math.round(d * 100) / 100;
+                let xPos = parseFloat(d3.select(this).attr("x"));
+                let yPos = parseFloat(d3.select(this).attr("y"));
+                let height = parseFloat(d3.select(this).attr("height"));
+
+                d3.selectAll("rect").attr("fill", "black");
+                select(node).selectAll(".barText").remove();
+
+                d3.select(this).attr("fill", "gold");
+
+                select(node)
+                    .append("text")
+                    .attr("class", "barText")
+                    .attr("text-anchor", "middle")
+                    .attr("fill", "black")
+                    .attr("x", (width + margin + margin) * 0.5)
+                    .attr("y", margin)
+                    .text(`${val} miles`);
+                    
+            });
+            
         let xAxis = axisBottom(x);
         let yAxis = axisLeft(y);
 
