@@ -5,3 +5,11 @@
     overflow: scroll;
     padding: 10px;
 }
+
+.x-label {
+    font-size: 12px;
+}
+
+.y-label {
+    font-size: 12px;
+}
