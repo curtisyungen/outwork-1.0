@@ -530,7 +530,14 @@ class Workout extends Component {
     checkGoggins = () => {
         if (this.state.checkGoggins === false && this.state.difficulty === "8") {
 
-            let dist = Math.floor(Math.random() * 3) + 1;
+            let dist;
+            if (sessionStorage.getItem("gsr") && sessionStorage.getItem("gsr") > 0) {
+                dist = sessionStorage.getItem("gsr");
+            }
+            else {
+                dist = Math.floor(Math.random() * 3) + 1;
+            }
+            
             let gogginsRun = [{ id: 999, name: "The Goggins Surprise Run", reps: `${dist} miles` }];
 
             let quotes = [
@@ -547,6 +554,8 @@ class Workout extends Component {
                 gogginsRun: gogginsRun,
                 gogginsRunDist: dist,
                 notes: `Plus a ${dist} mile run`,
+            }, () => {
+                sessionStorage.setItem("gsr", dist);
             });
         }
         else {
