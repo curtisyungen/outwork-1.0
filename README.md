@@ -1,4 +1,4 @@
-<div style="text-align:center; width: 100%;"><img align="center" src="./client/src/images/logo2.png" alt="logo" /></div>
+![](client/src/images/logo2.png)
 
 # Outwork
 **by Curtis Yungen**
