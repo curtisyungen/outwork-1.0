@@ -1,4 +1,6 @@
-![](client/src/images/logo2.png)
+<p align="center">
+  <img src="./client/src/images/logo2.png" alt="logo" />
+</p>
 
 # Outwork
 **by Curtis Yungen**
