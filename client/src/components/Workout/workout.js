@@ -634,7 +634,7 @@ class Workout extends Component {
                         <h4>Details</h4>
 
                         {/* GOGGINS INSTRUCTIONS */}
-                        {this.state.completeGoggins === true ? (
+                        {this.state.completeGoggins === true && this.state.difficulty === "8" ? (
                             <div className="disclaimer-goggins">
                                 Note: <strong>Do not include Goggins Surprise Run data here.</strong>
                                 You will be automatically redirected to the Submit Run page after
@@ -724,7 +724,7 @@ class Workout extends Component {
                                 aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-sm"
                                 onChange={this.handleInputChange}
-                                defaultValue={this.state.gogginsRunDist > 0 ? (`Plus a ${this.state.gogginsRunDist} mile run`):("")}
+                                defaultValue={this.state.gogginsRunDist > 0 && this.state.difficulty === "8" ? (`Plus a ${this.state.gogginsRunDist} mile run`):("")}
                             />
                         </div>
 
