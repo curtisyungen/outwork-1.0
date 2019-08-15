@@ -44,20 +44,16 @@ Installation instructions for Node.js can be found here: https://nodejs.org/en/d
 
 ### Personal Reflection
 
-#### I spent more time planning...
-I tried to approach this project in a more organized way than I did Congo. This meant that I spent a couple days planning instead of jumping straight into coding. In this phase, I put together the Outline PPT file included in this repository. Nonetheless, I still found that the project evolved considerably along the way, as I discovered challenges, issues, and ideas that I had not forseen. 
+#### Changes to approach from last project
+* I spent more time planning. However, project still evolved considerably during the coding process due to unforseen challenges and ideas.
 
-#### Big improvement: I utilized Bootstrap.
-One big improvement compared to Congo was my use of Bootstrap. This made the formatting and mobile responsiveness infinitely easier than having to create a bunch of media queries to target each individual element.
+#### Big improvement from last project
+* Utilized Bootstrap instead of media queries
 
-#### What I would change: comment as I go, break up large files into smaller ones, improve algorithm efficiency.
-One thing I will do differently next time is I would comment my code better as I worked, because now that the project is essentially completed, I really don't want to have to go back through all my code and write informative comments about how it works or what does what. It would've been easier to do that as I worked rather than after everything is finished.
-
-Another thing I'd like to improve is the structure of my files. Some files, such as App.js, become so weighty with functionality and information that it becomes confusing to sort through. I'd like to split files like this one up and perhaps import the functions into App.js from other, smaller files, just so the program is more neatly written and easier to decipher. 
-
-I also realize that a number of my functions are pretty chunky/inefficient. Lots of variables, API calls, bulky IF statements.... There is also some duplicate code across components. I would like to improve on my knowledge and usage of algorithms over my next projects so that I can write cleaner, more efficient code. This may not be too big of an issue as there are only three users allowed on Outwork. However, if there were 100,000 users, it'd be a different story, and the algorithms would have to be a lot more polished. 
-
-Nevertheless, it still works. 
+#### What I would change: 
+* Add descriptive comments to functions as I go instead of waiting until the end
+* Break up large files into smaller ones, namely App.js. 
+* Improve algorithm efficiency. Works for three users but would scale poorly.
 
 ### Screenshots
 
