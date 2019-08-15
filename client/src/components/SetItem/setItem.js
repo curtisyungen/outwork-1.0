@@ -51,6 +51,23 @@ class SetItem extends Component {
         }
     }
 
+    handleExcuse = () => {
+        let quotes = [
+            "Too busy? We're all busy! Learn how to manage your time!",
+            "Tired? Waa! Waa! Get out there and quit being a sissy!",
+            "Your leg hurts? Poor baby. More like you just want to quit!",
+            "Bad weather? That's a weak excuse! Don't puss out on me!",
+            "Quit being a baby! Get out there and run!",
+            "Don't feel good? Good! Now get your shit on and run!",
+            "Get your fuckin' shit on and stop being a punk!",
+            "Quit being soft!",
+        ];
+
+        let rand = Math.floor(Math.random() * quotes.length) + 1;
+
+        alert(quotes[rand]);
+    }
+
     render() {
         return (
             <div className={`setItem`}>
@@ -136,6 +153,12 @@ class SetItem extends Component {
                         >
                             Video
                         </a>
+                        <button 
+                            className="btn btn-outline-danger btn-sm gogginsRunBtn"
+                            onClick={this.handleExcuse}
+                        >
+                            Excuse
+                        </button>
                         {/* <span className="disclaimer-xs">Click when complete.</span> */}
                     </span>
                 )}

@@ -534,9 +534,9 @@ class Workout extends Component {
             let gogginsRun = [{ id: 999, name: "The Goggins Surprise Run", reps: `${dist} miles` }];
 
             let quotes = [
-                "Merry Christmas mothafucka!",
                 "Lace 'em up!",
                 "It ain't over yet!",
+                "Merry Christmas mothafucka!",
             ];
 
             alert(quotes[dist - 1]);
