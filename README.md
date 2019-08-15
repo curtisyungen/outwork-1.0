@@ -61,31 +61,38 @@ Nevertheless, it still works.
 
 ### Screenshots
 
-Landing Page
+#### Landing Page
 ![](Screenshots/landing.png)
+<br/>
 
-Home Page
+#### Home Page
 ![](Screenshots/home.png)
+<br/>
 
-Profile Page
+#### Profile Page
 ![](Screenshots/profile.png)
+<br/>
 
-Submit Run Page
+#### Submit Run Page
 ![](Screenshots/run.png)
+<br/>
 
-Submit Lift Page
+#### Submit Lift Page
 ![](Screenshots/lift.png)
+<br/>
 
-Generator Page
+#### Generator Page
 ![](Screenshots/generator.png)
+<br/>
 
-Hall of Fame
+#### Hall of Fame
 ![](Screenshots/hof.png)
+<br/>
 
-Run Workout Detail
+#### Run Workout Detail
 ![](Screenshots/runDetail.png)
+<br/>
 
-Lift Working Detail
+#### Lift Working Detail
 ![](Screenshots/liftDetail.png)
-
-<br/><br/> 
+<br/> 
