@@ -13,6 +13,8 @@ Outwork is a website where my two friends and I can log our running, biking, swi
 
 Check it out by visiting https://outwork-cjy.herokuapp.com.
 
+<hr/>
+
 ### Technologies
 1) Node.js
 2) Express.js
