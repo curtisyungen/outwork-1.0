@@ -235,7 +235,7 @@ class Metrics extends Component {
         }
 
         this.setState({
-            year: year,
+            year: yearData,
         });
     }
 
