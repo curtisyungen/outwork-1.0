@@ -37,6 +37,8 @@ Check it out by visiting https://outwork-cjy.herokuapp.com.
 10) sequelize
 11) d3
 
+<hr/>
+
 ### Download Instructions
 
 *Ensure that you have installed a Code Editor such as Visual Studio Code as well as Node.js.
@@ -52,6 +54,8 @@ Installation instructions for Node.js can be found here: https://nodejs.org/en/d
 8) Start the program by typing the command "npm start" in your terminal
 9) The program will open locally in your browser
 
+<hr/>
+
 ### Personal Reflection
 
 #### Improvements from last project:
@@ -62,6 +66,8 @@ Installation instructions for Node.js can be found here: https://nodejs.org/en/d
 * Add descriptive comments to functions as I go instead of waiting until the end
 * Break up large files into smaller ones, namely App.js. 
 * Improve algorithm efficiency. Works for three users but would scale poorly.
+
+<hr/>
 
 ### Screenshots
 
