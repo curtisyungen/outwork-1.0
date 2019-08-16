@@ -102,7 +102,7 @@ class BarChart extends Component {
                     .attr("text-anchor", "middle")
                     .attr("fill", "black")
                     .attr("x", (width + margin + margin) * 0.5)
-                    .attr("y", margin)
+                    .attr("y", margin - 10)
                     .text(`${val} miles`);
                     
             });
