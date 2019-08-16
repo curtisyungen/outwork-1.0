@@ -39,7 +39,9 @@ class Faq extends Component {
                         <div className="q">Q: Why isn't Outwork accepting new users?</div>
                         <div className="a">
                             A: Outwork started as a private Google Docs Spreadsheet for Curtis, Jason, and Joseph to track workouts.
-                            Outwork has replaced the spreadsheet but still remains true to its initial objective. 
+                            Outwork's creator, Curtis, built it to replace the old, clunky spreadsheet and to add to his web development portfolio. 
+                            It was preferential to keep Outwork private while still being able to showcase its
+                            interface and functionality. 
                         </div>
                     </div>
 
