@@ -62,34 +62,16 @@ class BarChart extends Component {
             .attr("width", 8)
             .attr("height", function (d) { return height - y(d); })
             .attr("x", function (d, i) { return x(i); })
-            .attr("y", function (d) { return y(d); });
-
-        // let yTextPadding = 0;
-        // select(node)
-        //     .selectAll(".barText")
-        //     .data(data.map(yValue))
-        //     .enter()
-        //     .append("text")
-        //     .attr("class", "barText")
-        //     .attr("text-anchor", "middle")
-        //     .attr("fill", "black")
-        //     .attr("x", function(d, i) {
-        //         return x(i) + margin;
-        //     })
-        //     .attr("y", function(d) {
-        //         return y(d);
-        //     })
-        //     .text(function(d) {
-        //         return d;
-        //     });
+            .attr("y", function (d) { return y(d); })
+            .attr("class", "bar");
 
         select(node).selectAll("rect")
             .on("click", function(d) {
 
                 let val = Math.round(d * 100) / 100;
-                let xPos = parseFloat(d3.select(this).attr("x"));
-                let yPos = parseFloat(d3.select(this).attr("y"));
-                let height = parseFloat(d3.select(this).attr("height"));
+                // let xPos = parseFloat(d3.select(this).attr("x"));
+                // let yPos = parseFloat(d3.select(this).attr("y"));
+                // let height = parseFloat(d3.select(this).attr("height"));
 
                 d3.selectAll("rect").attr("fill", "black");
                 select(node).selectAll(".barText").remove();
