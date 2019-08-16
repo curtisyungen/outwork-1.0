@@ -37,7 +37,10 @@ class Faq extends Component {
 
                     <div className="qaDiv">
                         <div className="q">Q: Why isn't Outwork accepting new users?</div>
-                        <div className="a">A: Because.</div>
+                        <div className="a">
+                            A: Outwork started as a private Google Docs Spreadsheet for Curtis, Jason, and Joseph to track workouts.
+                            Outwork has replaced the spreadsheet but still remains true to its initial objective. 
+                        </div>
                     </div>
 
                     <div className="qaDiv">
