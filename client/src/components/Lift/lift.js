@@ -183,7 +183,7 @@ class Lift extends Component {
                                 </div>
                                 <div className="border-bottom">
                                     <div className="dataTitle">Notes</div>
-                                    <div className="dataPoint">{this.props.notes}</div>
+                                    <div className="dataPoint dataPoint-notes">{this.props.notes}</div>
                                 </div>
                             </div>
                         </div>
