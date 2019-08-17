@@ -68,8 +68,13 @@ class GroupMetrics extends Component {
 
                     // Get miles run, climb, current week miles
                     if (workouts[w].workoutType === "run") {
-                        miles += parseFloat(workouts[w].distance);
-                        climb += parseFloat(workouts[w].climb);
+                        if (workouts[w].distance) {
+                            miles += parseFloat(workouts[w].distance);
+                        }
+                        
+                        if (workouts[w].climb) {
+                            climb += parseFloat(workouts[w].climb);
+                        }
 
                         if (moment(workouts[w].date).week() === week) {
                             currWkMiles += workouts[w].distance;
