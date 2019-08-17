@@ -77,12 +77,13 @@
     float: right;
 }
 
-.dataPoint-map {
+.dataPoint-map,
+.datPoint-notes {
     font-size: 12px;
-}
-
-.dataPoint-notes {
-    font-size: 12px;
+    margin-left: 20px;
+    max-width: 200px;
+    text-align: justify;
+    white-space: normal;
 }
 
 .dataTitle {
