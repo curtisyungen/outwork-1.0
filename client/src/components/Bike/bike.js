@@ -107,11 +107,11 @@ class Bike extends Component {
                                 </div>
                                 <div className="border-bottom">
                                     <div className="dataTitle">Notes</div>
-                                    <div className="dataPoint">{this.props.notes}</div>
+                                    <div className="dataPoint dataPoint-notes">{this.props.notes}</div>
                                 </div>
                                 <div className="border-bottom">
                                     <div className="dataTitle">Map</div>
-                                    <div className="dataPoint">{this.props.map}</div>
+                                    <div className="dataPoint dataPoint-map">{this.props.map}</div>
                                 </div>
                             </div>
                         </div>
