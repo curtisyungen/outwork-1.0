@@ -192,7 +192,7 @@ class Run extends Component {
                                 {/* NOTES */}
                                 <div className="border-bottom">
                                     <div className="dataTitle">Notes</div>
-                                    <div className="dataPoint">{this.props.notes}</div>
+                                    <div className="dataPoint dataPoint-notes">{this.props.notes}</div>
                                 </div>
                                 {/* MAP */}
                                 <div className="border-bottom">
