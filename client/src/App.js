@@ -561,6 +561,7 @@ class App extends Component {
 
     hofAPI.getWeekWorkouts(firstDOW)
       .then((res) => {
+        console.log("Workouts", res);
         let max = this.getMaximum(res.data);
         maxes.push(max[0]);
 
@@ -569,6 +570,7 @@ class App extends Component {
 
     hofAPI.getWeekPushUps(firstDOW)
       .then((res) => {
+        console.log("PushUps", res);
         let max = this.getMaximum(res.data);
         maxes.push(max[0]);
 
@@ -577,6 +579,7 @@ class App extends Component {
 
     hofAPI.getWeekPullUps(firstDOW)
       .then((res) => {
+        console.log("PullUps", res);
         let max = this.getMaximum(res.data);
         maxes.push(max[0]);
 
@@ -585,6 +588,7 @@ class App extends Component {
 
     hofAPI.getWeekClimb(firstDOW)
       .then((res) => {
+        console.log("Climb", res);
         let max = this.getMaximum(res.data);
         maxes.push(max[0]);
 
@@ -593,6 +597,7 @@ class App extends Component {
 
     hofAPI.getWeekTime(firstDOW)
       .then((res) => {
+        console.log("Time", res);
         let max = this.getMaximum(res.data);
         maxes.push(max[0]);
 
