@@ -77,7 +77,10 @@
     float: right;
 }
 
-.dataPoint-map,
+.dataPoint-map {
+    font-size: 12px;
+}
+
 .dataPoint-notes {
     font-size: 12px;
     margin-left: 20px;
