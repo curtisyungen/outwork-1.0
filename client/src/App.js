@@ -559,6 +559,8 @@ class App extends Component {
 
     let maxes = [];
 
+    console.log(firstDOW);
+
     hofAPI.getWeekWorkouts(firstDOW)
       .then((res) => {
         console.log("Workouts", res);
