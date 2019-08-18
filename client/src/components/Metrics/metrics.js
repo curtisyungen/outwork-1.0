@@ -273,16 +273,17 @@ class Metrics extends Component {
                             open={this.state.openBarChart}
                             onClose={this.closeBarChart}
                         >
-                            <h4>Currently in work...</h4>
-                            
                             {this.state.year && this.state.year.length > 0 ? (
-                                <BarChart
-                                    data={this.state.year}
-                                    height={200}
-                                    width={500}
-                                />
+                                <span>
+                                    <h4>Currently in work...</h4>
+                                    <BarChart
+                                        data={this.state.year}
+                                        height={200}
+                                        width={500}
+                                    />
+                                </span>
                             ) : (
-                                <></>
+                                <h4>No data available.</h4>
                             )}
                         </Modal>
                     ) : (
