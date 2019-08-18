@@ -23,6 +23,7 @@ class BarChart extends Component {
             for (var m in this.props.data) {
                 maxMiles = Math.max(this.props.data[m].miles, maxMiles);
             }
+
             this.setState({
                 maxMiles: Math.ceil((maxMiles + 1) / 10) * 10,
             }, () => {
@@ -126,12 +127,16 @@ class BarChart extends Component {
     render() {
         return (
             <div className="container barChartContainer">
-                <svg
-                    ref={node => this.node = node}
-                    width={this.props.width}
-                    height={this.props.height}
-                >
-                </svg>
+                {this.props.data && this.props.data.length > 0 ? (
+                    <svg
+                        ref={node => this.node = node}
+                        width={this.props.width}
+                        height={this.props.height}
+                    >
+                    </svg>
+                ) : (
+                    <p>No data available.</p>
+                )}
             </div>
         )
     }
