@@ -38,33 +38,40 @@ class SubmitLift extends Component {
         this.getToday();
 
         // Get user info
-        let userId = localStorage.getItem("userId");     
+        let userId = localStorage.getItem("userId");
 
         userAPI.getUserById(userId)
             .then((res) => {
-                // Get exercises 
-                let exercises = [];   
-
-                //exercises.push(exercise);
-                
                 let muscleGroupList = [
-                    "Chest", "Shoulders", 
-                    "Back", "Biceps", 
-                    "Triceps", "Forearms", 
-                    "Quadriceps", "Hamstrings", 
+                    "Chest", "Shoulders",
+                    "Back", "Biceps",
+                    "Triceps", "Forearms",
+                    "Quadriceps", "Hamstrings",
                     "Calves", "Abdominals",
                 ];
 
                 let exBtns = [
-                    "Push-Ups", "Pull-Ups", "Chin-Ups", 
-                    "Pull-Up Weighted Negatives", 
-                    "Chin-Up Weighted Negatives", "Pull-Up Static Hold", 
+                    "Push-Ups", "Pull-Ups", "Chin-Ups",
+                    "Pull-Up Weighted Negatives",
+                    "Chin-Up Weighted Negatives", "Pull-Up Static Hold",
                     "Chin-Up Static Hold", "Kettle Bell Swings",
                     "Seated In and Outs", "Plank", "Plank Knee to Elbow", "Hanging Knee Raises",
                     "Twisting Crunches", "Weighted Calf Raises", "Bodyweight Squats",
-                    "Wall Sit", "Clap Push-Ups", "Diamond Push-Ups", "Triangle Push-Ups", 
+                    "Wall Sit", "Clap Push-Ups", "Diamond Push-Ups", "Triangle Push-Ups",
                     "Incline Push-Ups", "Decline Push-Ups"
                 ];
+
+                // Get exercises 
+                let exercises = [];
+                let confirm = false;
+
+                if (JSON.parse(localStorage.getItem("exercises")) && JSON.parse(localStorage.getItem("exercises")).length > 0) {
+                    confirm = window.confirm("Load workout?");
+                }
+
+                if (confirm) {
+                    exercises = this.loadExercisesFromLocalStorage();
+                }
 
                 this.setState({
                     userId: userId,
@@ -74,7 +81,7 @@ class SubmitLift extends Component {
                     muscleGroupList: muscleGroupList,
                     exBtns: exBtns,
                 });
-            });      
+            });
     }
 
     handleInputChange = (event) => {
@@ -83,6 +90,14 @@ class SubmitLift extends Component {
         this.setState({
             [name]: value,
         });
+    }
+
+    saveExerciesInLocalStorage = () => {
+        localStorage.setItem("exercises", JSON.stringify(this.state.exercises));
+    }
+
+    loadExercisesFromLocalStorage = () => {
+        return JSON.parse(localStorage.getItem("exercises"));
     }
 
     validateLiftForm = () => {
@@ -131,6 +146,8 @@ class SubmitLift extends Component {
 
         this.setState({
             exercises: exercises,
+        }, () => {
+            this.saveExerciesInLocalStorage();
         });
     }
 
@@ -149,6 +166,8 @@ class SubmitLift extends Component {
 
         this.setState({
             exercises: exercises,
+        }, () => {
+            this.saveExerciesInLocalStorage();
         });
     }
 
@@ -181,6 +200,8 @@ class SubmitLift extends Component {
 
         this.setState({
             exercises: exercises,
+        }, () => {
+            this.saveExerciesInLocalStorage();
         });
     }
 
@@ -196,6 +217,8 @@ class SubmitLift extends Component {
 
         this.setState({
             exercises: exercises,
+        }, () => {
+            this.saveExerciesInLocalStorage();
         });
     }
 
@@ -211,6 +234,8 @@ class SubmitLift extends Component {
 
         this.setState({
             exercises: exercises,
+        }, () => {
+            this.saveExerciesInLocalStorage();
         });
     }
 
@@ -226,6 +251,8 @@ class SubmitLift extends Component {
 
         this.setState({
             exercises: exercises,
+        }, () => {
+            this.saveExerciesInLocalStorage();
         });
     }
 
@@ -241,9 +268,11 @@ class SubmitLift extends Component {
 
         this.setState({
             exercises: exercises,
+        }, () => {
+            this.saveExerciesInLocalStorage();
         });
     }
-    
+
     // User input: sets rest for exercise
     setRest = (id, rest) => {
         let exercises = this.state.exercises;
@@ -256,6 +285,8 @@ class SubmitLift extends Component {
 
         this.setState({
             exercises: exercises,
+        }, () => {
+            this.saveExerciesInLocalStorage();
         });
     }
 
@@ -271,6 +302,8 @@ class SubmitLift extends Component {
 
         this.setState({
             exercises: exercises,
+        }, () => {
+            this.saveExerciesInLocalStorage();
         });
     }
 
@@ -425,6 +458,7 @@ class SubmitLift extends Component {
                 .then((res) => {
                     if (res.status === 200) {
                         alert("Workout submitted!");
+                        localStorage.setItem("exercises", null);
                         window.location.reload();
                     }
                     else {
@@ -442,7 +476,7 @@ class SubmitLift extends Component {
                     <div className="titleBar">
                         <h4>Lifting Workout</h4>
 
-                        <ActivityIcons 
+                        <ActivityIcons
                             hidden="lift"
                         />
                     </div>
@@ -460,7 +494,7 @@ class SubmitLift extends Component {
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
-                            //defaultValue={this.state.today}
+                        //defaultValue={this.state.today}
                         />
                     </div>
 
@@ -546,7 +580,7 @@ class SubmitLift extends Component {
                         </div>
                         <p className="infoMsg">
                             Only exercises containing "push-up", "pull-up", or "chin-up" count toward
-                            overall push-up/pull-up totals. Static holds are not counted. 
+                            overall push-up/pull-up totals. Static holds are not counted.
                         </p>
                     </div>
 
@@ -555,6 +589,12 @@ class SubmitLift extends Component {
                             key={exercise.id}
                             id={exercise.id}
                             name={exercise.name}
+                            weight={exercise.weight}
+                            superset={exercise.superset}
+                            sets={exercise.sets}
+                            reps={exercise.reps}
+                            rest={exercise.rest}
+                            notes={exercise.notes}
                             setName={this.setName}
                             setWeight={this.setWeight}
                             setSuperset={this.setSuperset}
@@ -568,7 +608,7 @@ class SubmitLift extends Component {
 
                     {/* ADD EXERCISE BUTTONS */}
                     <div className="text-center">
-                        <button 
+                        <button
                             className="btn btn-success btn-sm addExerciseBtn addExerciseBtn-main"
                             onClick={this.addExercise.bind(null, "")}
                         >
@@ -578,15 +618,15 @@ class SubmitLift extends Component {
                     <div className="addExerciseDiv">
                         {this.state.exBtns ? (
                             this.state.exBtns.map(btn => (
-                                <AddExerciseBtn 
+                                <AddExerciseBtn
                                     key={btn}
                                     name={btn}
                                     addExercise={this.addExercise}
                                 />
                             ))
                         ) : (
-                            <></>
-                        )}
+                                <></>
+                            )}
                     </div>
 
                     {/* MUSCLE GROUPS */}
@@ -607,8 +647,8 @@ class SubmitLift extends Component {
                                 />
                             ))
                         ) : (
-                            <></>
-                        )}
+                                <></>
+                            )}
                     </div>
 
                     {/* NOTES */}
@@ -630,8 +670,8 @@ class SubmitLift extends Component {
                     {localStorage.getItem("userId") === "834292GU" ? (
                         <></>
                     ) : (
-                        <button className="btn btn-primary" onClick={this.getTtlMins}>Submit</button>
-                    )}
+                            <button className="btn btn-primary" onClick={this.getTtlMins}>Submit</button>
+                        )}
                 </div>
             </div>
         )
