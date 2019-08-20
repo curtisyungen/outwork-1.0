@@ -66,7 +66,7 @@ class SubmitLift extends Component {
                 let confirm = false;
 
                 if (JSON.parse(localStorage.getItem("exercises")) && JSON.parse(localStorage.getItem("exercises")).length > 0) {
-                    confirm = window.confirm("Load workout?");
+                    confirm = window.confirm("Load your last unsubmitted workout from storage?");
                 }
 
                 if (confirm) {
