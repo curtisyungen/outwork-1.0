@@ -114,6 +114,7 @@ class UpdateLift extends Component {
             name: "",
             weight: "",
             reps: "",
+            totalReps: "",
             rest: "",
         }
 
@@ -234,6 +235,20 @@ class UpdateLift extends Component {
         });
     }
 
+    setTotalReps = (id, totalReps) => {
+        let exercises = this.state.exercises;
+
+        for (var e in exercises) {
+            if (exercises[e].id === id) {
+                exercises[e].totalReps = totalReps;
+            }
+        }
+
+        this.setState({
+            exercises: exercises,
+        });
+    }
+
     // User input: sets rest for exercise
     setRest = (id, rest) => {
         let exercises = this.state.exercises;
@@ -292,15 +307,26 @@ class UpdateLift extends Component {
 
         for (var e in exercises) {
             let name = exercises[e].name.toLowerCase();
+            let totalReps = parseFloat(exercises[e].totalReps);
             let reps = parseFloat(exercises[e].reps);
             let sets = parseFloat(exercises[e].sets);
 
             if (name.indexOf("push-up") > -1) {
-                pushups += reps * sets;
+                if (totalReps && totalReps > 0 && !isNaN(totalReps)) {
+                    pushups += totalReps;
+                }
+                else {
+                    pushups += reps * sets;
+                }
             }
 
             if (name.indexOf("push up") > -1) {
-                pushups += reps * sets;
+                if (totalReps && totalReps > 0 && !isNaN(totalReps)) {
+                    pushups += totalReps;
+                }
+                else {
+                    pushups += reps * sets;
+                }
             }
         }
 
@@ -320,23 +346,44 @@ class UpdateLift extends Component {
 
         for (var e in exercises) {
             let name = exercises[e].name.toLowerCase();
+            let totalReps = parseFloat(exercises[e].totalReps);
             let reps = parseFloat(exercises[e].reps);
             let sets = parseFloat(exercises[e].sets);
 
             if (name.indexOf("pull-up") > -1 && name.indexOf("static") === -1) {
-                pullups += reps * sets;
+                if (totalReps && totalReps > 0 && !isNaN(totalReps)) {
+                    pullups += totalReps;
+                }
+                else {
+                    pullups += reps * sets;
+                }
             }
 
             if (name.indexOf("pull up") > -1 && name.indexOf("static") === -1) {
-                pullups += reps * sets;
+                if (totalReps && totalReps > 0 && !isNaN(totalReps)) {
+                    pullups += totalReps;
+                }
+                else {
+                    pullups += reps * sets;
+                }
             }
 
             if (name.indexOf("chin-up") > -1 && name.indexOf("static") === -1) {
-                pullups += reps * sets;
+                if (totalReps && totalReps > 0 && !isNaN(totalReps)) {
+                    pullups += totalReps;
+                }
+                else {
+                    pullups += reps * sets;
+                }
             }
 
             if (name.indexOf("chin up") > -1 && name.indexOf("static") === -1) {
-                pullups += reps * sets;
+                if (totalReps && totalReps > 0 && !isNaN(totalReps)) {
+                    pullups += totalReps;
+                }
+                else {
+                    pullups += reps * sets;
+                }
             }
         }
 
@@ -536,6 +583,7 @@ class UpdateLift extends Component {
                                 superset={exercise.superset}
                                 sets={exercise.sets}
                                 reps={exercise.reps}
+                                totalReps={exercise.totalReps}
                                 rest={exercise.rest}
                                 notes={exercise.notes}
                                 setName={this.setName}
@@ -543,6 +591,7 @@ class UpdateLift extends Component {
                                 setSuperset={this.setSuperset}
                                 setSets={this.setSets}
                                 setReps={this.setReps}
+                                setTotalReps={this.setTotalReps}
                                 setRest={this.setRest}
                                 setNotes={this.setNotes}
                                 deleteExercise={this.deleteExercise}
