@@ -105,6 +105,8 @@ class SubmitLift extends Component {
         let exer = this.state.exercises;
         let time = this.state.duration;
 
+        console.log(date);
+
         if (date === null || date === "" || date.length < 10) {
             alert("Inputted date is not valid.");
             return false;
@@ -139,6 +141,7 @@ class SubmitLift extends Component {
             name: name,
             weight: "",
             reps: "",
+            totalReps: "",
             rest: "",
         }
 
@@ -273,6 +276,22 @@ class SubmitLift extends Component {
         });
     }
 
+    setTotalReps = (id, totalReps) => {
+        let exercises = this.state.exercises;
+
+        for (var e in exercises) {
+            if (exercises[e].id === id) {
+                exercises[e].totalReps = totalReps;
+            }
+        }
+
+        this.setState({
+            exercises: exercises,
+        }, () => {
+            this.saveExerciesInLocalStorage();
+        });
+    }
+
     // User input: sets rest for exercise
     setRest = (id, rest) => {
         let exercises = this.state.exercises;
@@ -314,15 +333,26 @@ class SubmitLift extends Component {
 
         for (var e in exercises) {
             let name = exercises[e].name.toLowerCase();
+            let totalReps = parseFloat(exercises[e].totalReps);
             let reps = parseFloat(exercises[e].reps);
             let sets = parseFloat(exercises[e].sets);
 
             if (name.indexOf("push-up") > -1) {
-                pushups += reps * sets;
+                if (totalReps && totalReps > 0 && !isNaN(totalReps)) {
+                    pushups += totalReps;
+                }
+                else {
+                    pushups += reps * sets;
+                }
             }
 
             if (name.indexOf("push up") > -1) {
-                pushups += reps * sets;
+                if (totalReps && totalReps > 0 && !isNaN(totalReps)) {
+                    pushups += totalReps;
+                }
+                else {
+                    pushups += reps * sets;
+                }
             }
         }
 
@@ -337,23 +367,44 @@ class SubmitLift extends Component {
 
         for (var e in exercises) {
             let name = exercises[e].name.toLowerCase();
+            let totalReps = parseFloat(exercises[e].totalReps);
             let reps = parseFloat(exercises[e].reps);
             let sets = parseFloat(exercises[e].sets);
 
             if (name.indexOf("pull-up") > -1 && name.indexOf("static") === -1) {
-                pullups += reps * sets;
+                if (totalReps && totalReps > 0 && !isNaN(totalReps)) {
+                    pullups += totalReps;
+                }
+                else {
+                    pullups += reps * sets;
+                }
             }
 
             if (name.indexOf("pull up") > -1 && name.indexOf("static") === -1) {
-                pullups += reps * sets;
+                if (totalReps && totalReps > 0 && !isNaN(totalReps)) {
+                    pullups += totalReps;
+                }
+                else {
+                    pullups += reps * sets;
+                }
             }
 
             if (name.indexOf("chin-up") > -1 && name.indexOf("static") === -1) {
-                pullups += reps * sets;
+                if (totalReps && totalReps > 0 && !isNaN(totalReps)) {
+                    pullups += totalReps;
+                }
+                else {
+                    pullups += reps * sets;
+                }
             }
 
             if (name.indexOf("chin up") > -1 && name.indexOf("static") === -1) {
-                pullups += reps * sets;
+                if (totalReps && totalReps > 0 && !isNaN(totalReps)) {
+                    pullups += totalReps;
+                }
+                else {
+                    pullups += reps * sets;
+                }
             }
         }
 
@@ -365,9 +416,11 @@ class SubmitLift extends Component {
         let time = this.state.duration;
         let hours, mins, secs;
 
-        hours = parseFloat(time.split(":")[0]);
-        mins = parseFloat(time.split(":")[1]);
-        secs = parseFloat(time.split(":")[2]);
+        if (time) {
+            hours = parseFloat(time.split(":")[0]);
+            mins = parseFloat(time.split(":")[1]);
+            secs = parseFloat(time.split(":")[2]);
+        }
 
         let ttlMins = 0;
 
@@ -402,6 +455,7 @@ class SubmitLift extends Component {
 
         this.setState({
             today: defaultDate,
+            date: defaultDate,
         });
     }
 
@@ -494,7 +548,7 @@ class SubmitLift extends Component {
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-sm"
                             onChange={this.handleInputChange}
-                        //defaultValue={this.state.today}
+                            defaultValue={this.state.today}
                         />
                     </div>
 
@@ -593,6 +647,7 @@ class SubmitLift extends Component {
                             superset={exercise.superset}
                             sets={exercise.sets}
                             reps={exercise.reps}
+                            totalReps={exercise.totalReps}
                             rest={exercise.rest}
                             notes={exercise.notes}
                             setName={this.setName}
@@ -600,6 +655,7 @@ class SubmitLift extends Component {
                             setSuperset={this.setSuperset}
                             setSets={this.setSets}
                             setReps={this.setReps}
+                            setTotalReps={this.setTotalReps}
                             setRest={this.setRest}
                             setNotes={this.setNotes}
                             deleteExercise={this.deleteExercise}
