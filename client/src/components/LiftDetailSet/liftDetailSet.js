@@ -29,6 +29,7 @@ class LiftDetailSet extends Component {
                         <th>Lbs.</th>
                         <th>Sets</th>
                         <th>Reps</th>
+                        <th>Total Reps</th>
                         <th>Rest</th>
                         <th>Notes</th>
                     </tr>
@@ -37,12 +38,13 @@ class LiftDetailSet extends Component {
                     {this.state.set && this.state.set.length > 0 ? (
                         this.state.set.map(exercise => (
                             <LiftDetailExercise
-                                key={Math.random() * 100000}
+                                key={`${exercise.name}${exercise.sets}${exercise.reps}${exercise.totalReps}`}
                                 name={exercise.name}
                                 weight={exercise.weight}
                                 superset={exercise.superset}
                                 sets={exercise.sets}
                                 reps={exercise.actualReps || exercise.reps}
+                                totalReps={exercise.totalReps}
                                 rest={exercise.rest}
                                 notes={exercise.notes}
                             />

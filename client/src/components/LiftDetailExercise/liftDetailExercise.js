@@ -10,6 +10,7 @@ class LiftDetailExercise extends Component {
                 <td className="align-middle liftDetail">{this.props.weight}</td>
                 <td className="align-middle liftDetail">{this.props.sets}</td>
                 <td className="align-middle liftDetail">{this.props.reps}</td>
+                <td className="align-middle liftDetail">{this.props.totalReps}</td>
                 <td className="align-middle liftDetail">{this.props.rest}</td>
                 <td className="align-middle liftDetail">{this.props.notes}</td>
             </tr>

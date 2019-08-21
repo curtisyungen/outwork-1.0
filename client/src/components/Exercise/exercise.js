@@ -19,6 +19,7 @@ class Exercise extends Component {
             superset: "",
             sets: "",
             reps: "",
+            totalReps: "",
             rest: "",
             notes: "",
             saved: false,
@@ -33,6 +34,7 @@ class Exercise extends Component {
             superset: this.props.superset,
             sets: this.props.sets,
             reps: this.props.reps,
+            totalReps: this.props.totalReps,
             rest: this.props.rest,
             notes: this.props.notes,
             errorDetected: false,
@@ -88,6 +90,7 @@ class Exercise extends Component {
         this.props.setSuperset(this.props.id, this.state.superset);
         this.props.setSets(this.props.id, this.state.sets);
         this.props.setReps(this.props.id, this.state.reps);
+        this.props.setTotalReps(this.props.id, this.state.totalReps);
         this.props.setRest(this.props.id, this.state.rest);
         this.props.setNotes(this.props.id, this.state.notes);
     }
@@ -153,6 +156,17 @@ class Exercise extends Component {
                             onChange={this.handleInputChange}
                             onBlur={this.updateParent}
                             defaultValue={this.state.reps}
+                        />
+                        {/* TOTAL REPS */}
+                        <input
+                            autoComplete="off"
+                            name="totalReps"
+                            type="text"
+                            className="form-control exerciseInput-md"
+                            placeholder="Total Reps"
+                            onChange={this.handleInputChange}
+                            onBlur={this.updateParent}
+                            defaultValue={this.state.totalReps}
                         />
                         {/* REST */}
                         <input
