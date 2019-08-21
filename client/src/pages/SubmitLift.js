@@ -56,9 +56,9 @@ class SubmitLift extends Component {
                     "Chin-Up Weighted Negatives", "Pull-Up Static Hold",
                     "Chin-Up Static Hold", "Kettle Bell Swings",
                     "Seated In and Outs", "Plank", "Plank Knee to Elbow", "Hanging Knee Raises",
-                    "Twisting Crunches", "Weighted Calf Raises", "Bodyweight Squats",
+                    "Twisting Crunches", "Weighted Calf Raises", "Bodyweight Squats", "Goblet Squats",
                     "Wall Sit", "Clap Push-Ups", "Diamond Push-Ups", "Triangle Push-Ups",
-                    "Incline Push-Ups", "Decline Push-Ups"
+                    "Incline Push-Ups", "Decline Push-Ups", "Burpee Push-Ups", "Farmer's Carry", 
                 ];
 
                 // Get exercises 
