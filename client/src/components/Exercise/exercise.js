@@ -174,7 +174,7 @@ class Exercise extends Component {
                             name="rest"
                             type="text"
                             className="form-control exerciseInput-md"
-                            placeholder="Rest (Min.)"
+                            placeholder="Rest"
                             onChange={this.handleInputChange}
                             onBlur={this.updateParent}
                             defaultValue={this.state.rest}
