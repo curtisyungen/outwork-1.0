@@ -18,13 +18,7 @@ class Faq extends Component {
 
     render() {
         return (
-            <div className="container pageContainer faqContainer">
-                
-//                 <div className="inWork">
-//                     <h4>Outwork In Work</h4>
-//                     <div className="iw">08/13/2019: Adding bar chart for visualizing weekly running mileage.</div>
-//                 </div>
-                
+            <div className="container pageContainer faqContainer">                
                 <div className="questions">
                     <h4>Frequently Asked Questions</h4>
                     <div className="qaDiv">
