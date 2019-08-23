@@ -57,6 +57,9 @@ class SetItem extends Component {
 
         let quotes = [
             "Get your fuckin' shit on and stop being a punk!",
+            "Think this is hard!? You can do TEN TIMES MORE than what you're doing now!",
+            "Don't let your mind trick you into being a little BITCH!",
+            "Stop whining and run!",
             "Quit being a baby! Get out there and run!",
             "Tired? Waa! Waa! Get out there and quit being a sissy!",
             "Your leg hurts? Poor baby. More like you just want to quit!",
