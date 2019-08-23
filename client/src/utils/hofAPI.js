@@ -15,6 +15,10 @@ export default {
         return axios.get("/api/hof/getWeekWorkouts/" + date);
     },
 
+    getWeekUniqueWorkouts: function(date) {
+        return axios.get("/api/hof/getWeekUniqueWorkouts/" + date);
+    },
+
     getWeekPushUps: function(date) {
         return axios.get("/api/hof/getWeekPushUps/" + date);
     },
