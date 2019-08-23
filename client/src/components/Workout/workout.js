@@ -167,6 +167,11 @@ class Workout extends Component {
         });
     }
 
+    saveSetsInSessionStorage = () => {
+        let sets = this.state.workout;
+        sessionStorage.setItem("sets", JSON.stringify(sets));
+    }
+
     getSets = () => {
         let difficulty = this.state.difficulty;
         let filtered = this.state.filtered;
@@ -347,7 +352,7 @@ class Workout extends Component {
         });
     }
 
-    setActualReps = (setId, exName, reps) => {
+    setActualReps = (setId, exName, actualReps) => {
         let workout = this.state.workout;
 
         let idx;
@@ -357,7 +362,7 @@ class Workout extends Component {
             }
         }
 
-        workout[setId][idx].reps = reps;
+        workout[setId][idx].actualReps = actualReps;
     }
 
     setWeight = (setId, exName, weight) => {
@@ -600,6 +605,7 @@ class Workout extends Component {
                                 setRest={this.setRest}
                                 setNotes={this.setNotes}
                                 difficulty={this.state.difficulty}
+                                saveSetsInSessionStorage={this.saveSetsInSessionStorage}
                             />
                         ))}
                     </span>
@@ -612,6 +618,7 @@ class Workout extends Component {
                         <Set 
                             set={this.state.gogginsRun}
                             completeGoggins={this.completeGoggins}
+                            saveSetsInSessionStorage={this.saveSetsInSessionStorage}
                         />
                     </div>
                 ) : (
@@ -625,7 +632,6 @@ class Workout extends Component {
                         <button 
                             className="btn btn-success" 
                             onClick={this.checkGoggins}
-                            // disabled={!this.state.completeGoggins && this.state.difficulty === "8"}
                         >
                             Complete
                         </button>
