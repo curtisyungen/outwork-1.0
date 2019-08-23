@@ -111,8 +111,12 @@ class UpdateGen extends Component {
         for (var s in workout) {
             for (var i=0; i<workout[s].length; i++) {
                 name = workout[s][i].name;
-                // Get Pull-ups
-                if (name && name.toLowerCase().indexOf("pull") > -1 && name.toLowerCase().indexOf("up") > -1) {
+                
+                // Get Pull-ups, exclude static holds
+                if (name && name.toLowerCase().indexOf("pull") > -1 
+                        && name.toLowerCase().indexOf("up") > -1 
+                        && name.toLowerCase().indexOf("static") === -1) {
+
                     if (parseFloat(workout[s][i].actualReps) > 0) {
                         pullups += parseFloat(workout[s][i].actualReps);
                     }
@@ -123,8 +127,10 @@ class UpdateGen extends Component {
                     }
                 }
 
-                // Get Chin-ups
-                if (name && name.toLowerCase().indexOf("chin") > -1 && name.toLowerCase().indexOf("up") > -1) {
+                // Get Chin-ups, exclude static holds
+                if (name && name.toLowerCase().indexOf("chin") > -1 
+                        && name.toLowerCase().indexOf("up") > -1
+                        && name.toLowerCase().indexOf("static") === -1) {
                     if (parseFloat(workout[s][i].actualReps > 0)) {
                         pullups += parseFloat(workout[s][i].actualReps);
                     }
