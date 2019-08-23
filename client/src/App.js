@@ -557,6 +557,7 @@ class App extends Component {
 
     let maxes = [];
 
+    // Gets maximum number of workouts from current week
     hofAPI.getWeekWorkouts(firstDOW)
       .then((res) => {
         let max = this.getMaximum(res.data);
@@ -565,6 +566,7 @@ class App extends Component {
         this.checkMaxes(maxes);
       });
 
+    // Gets maximum time worked out in current week
     hofAPI.getWeekTime(firstDOW)
       .then((res) => {
         let max = this.getMaximum(res.data);
@@ -573,6 +575,7 @@ class App extends Component {
         this.checkMaxes(maxes);
       });
 
+    // Gets maximum unique dates worked out in current week
     hofAPI.getWeekUniqueWorkouts(firstDOW)
       .then((res) => {
         let max = this.getMaximum(res.data);
