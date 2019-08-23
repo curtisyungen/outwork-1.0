@@ -14,6 +14,10 @@ router.get("/getWeekWorkouts/:date", (req, res) => {
     controller.getWeekWorkouts(req, res);
 });
 
+router.get("/getWeekUniqueWorkouts/:date", (req, res) => {
+    controller.getWeekUniqueWorkouts(req, res);
+});
+
 router.get("/getWeekPushUps/:date", (req, res) => {
     controller.getWeekPushUps(req, res);
 });
