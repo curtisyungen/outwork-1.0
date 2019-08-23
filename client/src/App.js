@@ -533,9 +533,7 @@ class App extends Component {
   getChamp = () => {
     // +1 for most workouts
     // +1 for most time
-    // +1 for most pushups
-    // +1 for most pullups
-    // +1 for most elevation
+    // +1 for least rest days
 
     // Get date of most recent Sunday in yyyy-mm-dd format
     let today = new Date();
@@ -567,35 +565,19 @@ class App extends Component {
         this.checkMaxes(maxes);
       });
 
-    hofAPI.getWeekPushUps(firstDOW)
-      .then((res) => {
-        let max = this.getMaximum(res.data);
-        maxes.push(max[0]);
-
-        this.checkMaxes(maxes);
-      });
-
-    hofAPI.getWeekPullUps(firstDOW)
-      .then((res) => {
-        let max = this.getMaximum(res.data);
-        maxes.push(max[0]);
-
-        this.checkMaxes(maxes);
-      });
-
-    hofAPI.getWeekClimb(firstDOW)
-      .then((res) => {
-        let max = this.getMaximum(res.data);
-        maxes.push(max[0]);
-
-        this.checkMaxes(maxes);
-      });
-
     hofAPI.getWeekTime(firstDOW)
       .then((res) => {
         let max = this.getMaximum(res.data);
         maxes.push(max[0]);
 
+        this.checkMaxes(maxes);
+      });
+
+    hofAPI.getWeekUniqueWorkouts(firstDOW)
+      .then((res) => {
+        let max = this.getMaximum(res.data);
+        maxes.push(max[0]);
+        
         this.checkMaxes(maxes);
       });
   }
