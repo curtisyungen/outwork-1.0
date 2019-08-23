@@ -39,6 +39,7 @@ class Set extends Component {
                         setNotes={this.props.setNotes}
                         difficulty={this.props.difficulty}
                         completeGoggins={this.props.completeGoggins}
+                        saveSetsInSessionStorage={this.props.saveSetsInSessionStorage}
                     />
                 ))
             ) : (

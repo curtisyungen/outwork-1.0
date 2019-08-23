@@ -50,6 +50,8 @@ class SetItem extends Component {
         if (this.state.notes !== null) {
             this.props.setNotes(this.props.id, this.props.assignName, this.state.notes);
         }
+
+        this.props.saveSetsInSessionStorage();
     }
 
     handleExcuse = () => {
@@ -99,7 +101,7 @@ class SetItem extends Component {
                 {/* ID 999 is the Goggins run */}
                 {this.props.id !== 999 ? (
 
-                <div className={`exActual saved-${this.state.saved}`}>
+                <div className={`exActual`}>
                     {/* ACTUAL REPS */}
                     <input
                         autoComplete="off"
