@@ -57,13 +57,15 @@ class SetItem extends Component {
 
         let quotes = [
             "Get your fuckin' shit on and stop being a punk!",
+            "Think this is hard!? You can do TEN TIMES MORE than what you're doing now!",
+            "Don't let your mind trick you into being a little BITCH!",
+            "Stop whining and run!",
             "Quit being a baby! Get out there and run!",
-            "Too busy? We're all busy! Learn how to manage your time!",
             "Tired? Waa! Waa! Get out there and quit being a sissy!",
             "Your leg hurts? Poor baby. More like you just want to quit!",
             "Bad weather? That's a weak excuse! Don't puss out on me!",
             "Don't feel good? Good! Now get your shit on and run!",
-            "Quit being soft!",
+            "Quit being soft! Go run, NOW!",
         ];
 
         alert(quotes[count]);
