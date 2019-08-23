@@ -593,7 +593,7 @@ class Workout extends Component {
                     <span>
                         {this.state.sets.map(set => (
                             <Set
-                                key={Math.random() * 100000}
+                                key={set[0].id}
                                 set={set}
                                 setActualReps={this.setActualReps}
                                 setWeight={this.setWeight}
