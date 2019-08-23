@@ -622,7 +622,7 @@ class UpdateLift extends Component {
                         {this.state.muscleGroupList && this.state.muscleGroupList.length > 0 ? (
                             this.state.muscleGroupList.map(group => (
                                 <MuscleGroup
-                                    key={Math.random() * 100000}
+                                    key={group.muscleGroup}
                                     muscleGroup={group}
                                     updateMuscleGroups={this.updateMuscleGroups}
                                     checked={this.state.muscleGroups.indexOf(group) > -1}

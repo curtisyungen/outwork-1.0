@@ -369,7 +369,7 @@ class UpdateGen extends Component {
                     {this.state.workout && this.state.workout.length > 0 ? (
                         this.state.workout.map(set => (
                             <Set
-                                key={Math.random() * 100000}
+                                key={set[0].id}
                                 set={set}
                                 setActualReps={this.setActualReps}
                                 setWeight={this.setWeight}
