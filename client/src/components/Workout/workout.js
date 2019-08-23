@@ -295,8 +295,10 @@ class Workout extends Component {
             for (var i=0; i<5; i++) {
                 name = workout[s][i].name;
 
-                // Get Pull-Ups
-                if (name && name.toLowerCase().indexOf("pull") > -1 && name.toLowerCase().indexOf("up") > -1) {
+                // Get Pull-Ups, exclude static holds
+                if (name && name.toLowerCase().indexOf("pull") > -1 
+                        && name.toLowerCase().indexOf("up") > -1
+                        && name.toLowerCase().indexOf("static") === -1) {
                     if (parseFloat(workout[s][i].actualReps) > 0) {
                         pullups += parseFloat(workout[s][i].actualReps);
                     }
@@ -305,8 +307,10 @@ class Workout extends Component {
                     }
                 }
 
-                // Get Chin-Ups
-                if (name && name.toLowerCase().indexOf("chin") > -1 && name.toLowerCase().indexOf("up") > -1) {
+                // Get Chin-Ups, exclude static holds
+                if (name && name.toLowerCase().indexOf("chin") > -1 
+                        && name.toLowerCase().indexOf("up") > -1
+                        && name.toLowerCase().indexOf("static") === -1) {
                     if (parseFloat(workout[s][i].actualReps) > 0) {
                         pullups += parseFloat(workout[s][i].actualReps);
                     }
