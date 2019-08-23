@@ -376,6 +376,7 @@ class UpdateGen extends Component {
                                 setRest={this.setRest}
                                 setNotes={this.setNotes}
                                 difficulty={this.state.difficulty}
+                                saveSetsInSessionStorage={() => null}
                             />
                         ))
                     ) : (
