@@ -26,10 +26,10 @@ class LiftDetailSet extends Component {
                     <tr>
                         <th>Superset ID</th>
                         <th>Exercise</th>
-                        <th>Lbs.</th>
                         <th>Sets</th>
                         <th>Reps</th>
                         <th>Total Reps</th>
+                        <th>Lbs.</th>
                         <th>Rest</th>
                         <th>Notes</th>
                     </tr>
