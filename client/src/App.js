@@ -67,7 +67,7 @@ class App extends Component {
 
     // this.correctMetrics();
 
-    // Check if logged in
+    // Check if logged in 
     let loginStatus = false;
     if (localStorage.getItem("isLoggedIn")) {
       loginStatus = JSON.parse(localStorage.getItem("isLoggedIn"));
