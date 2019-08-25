@@ -22,6 +22,14 @@ class Faq extends Component {
                 <div className="questions">
                     <h4>Frequently Asked Questions</h4>
                     <div className="qaDiv">
+                        <div className="q">Q: Who is the genius/superstar programmer who created this amazing website?</div>
+                        <div className="a">
+                            A: Curtis Yungen. Check out his web development portfolio here: 
+                            <a className="btn btn-warning btn-sm hireCurtis">Hire Curtis!</a>
+                        </div>
+                    </div>
+
+                    <div className="qaDiv">
                         <div className="q">Q: What was the inspiration behind the name Outwork?</div>
                         <div className="a">
                             A: It's an obvious play on the word "workout". In fact, the name itself inspired the Hall of Fame,

@@ -1,3 +1,10 @@
+.hireCurtis {
+    display: block;
+    margin: 15px auto;
+    margin-bottom: 0px;
+    width: 200px;
+}
+
 .inWork {
     background: rgb(242, 242, 242);
     margin: 20px 0px;
