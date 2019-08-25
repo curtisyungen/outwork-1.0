@@ -25,7 +25,14 @@ class Faq extends Component {
                         <div className="q">Q: Who is the genius/superstar programmer who created this amazing website?</div>
                         <div className="a">
                             A: Curtis Yungen. Check out his web development portfolio here: 
-                            <a className="btn btn-warning btn-sm hireCurtis">Hire Curtis!</a>
+                            <a 
+                                className="btn btn-warning btn-sm hireCurtis"
+                                href="https://curtisyungen.github.io/Portfolio"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                            >
+                                Hire Curtis!
+                            </a>
                         </div>
                     </div>
 
