@@ -105,8 +105,6 @@ class SubmitLift extends Component {
         let exer = this.state.exercises;
         let time = this.state.duration;
 
-        console.log(date);
-
         if (date === null || date === "" || date.length < 10) {
             alert("Inputted date is not valid.");
             return false;
