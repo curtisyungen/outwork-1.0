@@ -325,6 +325,7 @@ class SubmitRun extends Component {
 
         this.setState({
             today: defaultDate,
+            date: defaultDate,
         });
     }
 
@@ -356,7 +357,7 @@ class SubmitRun extends Component {
                                 aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-sm"
                                 onChange={this.handleInputChange}
-                                //defaultValue={this.state.today}
+                                defaultValue={this.state.today}
                             />
                         </div>
 
