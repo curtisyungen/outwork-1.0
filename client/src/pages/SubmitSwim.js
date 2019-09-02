@@ -290,6 +290,7 @@ class SubmitSwim extends Component {
 
         this.setState({
             today: defaultDate,
+            date: defaultDate,
         });
     }
 

@@ -136,6 +136,7 @@ class SubmitBike extends Component {
 
         this.setState({
             today: defaultDate,
+            date: defaultDate,
         });
     }
 
