@@ -92,6 +92,32 @@ class GroupMetrics extends Component {
                     }
                 }
 
+                // Get current week metrics for Champ of Week 
+                let weekWorkouts = this.props.weekWorkouts;
+                let weekTime = this.props.weekTime;
+                let weekRestDays = this.props.weekRestDays;
+
+                let currWkWrkts = 0;
+                let currWkTime = 0;
+                let currWkRestDays = 0;
+                for (w in weekWorkouts) {
+                    if (weekWorkouts[w].firstName === firstName) {
+                        currWkWrkts = weekWorkouts[w].value;
+                    }
+                }
+
+                for (w in weekTime) {
+                    if (weekTime[w].firstName === firstName) {
+                        currWkTime = weekTime[w].value;
+                    }
+                }
+
+                for (w in weekRestDays) {
+                    if (weekRestDays[w].firstName === firstName) {
+                        currWkRestDays = weekRestDays[w].value;
+                    }
+                }
+
                 userMetrics.firstName = firstName;
                 userMetrics.workouts = workouts.length;
                 userMetrics.currWkMiles = Math.round(currWkMiles * 100) / 100;
@@ -99,6 +125,9 @@ class GroupMetrics extends Component {
                 userMetrics.distClimbed = climb;
                 userMetrics.pushups = pushups;
                 userMetrics.pullups = pullups;
+                userMetrics.currWkWrkts = currWkWrkts;
+                userMetrics.currWkTime = currWkTime;
+                userMetrics.currWkRestDays = currWkRestDays;
 
                 groupMetrics.push(userMetrics);
 
@@ -123,6 +152,9 @@ class GroupMetrics extends Component {
                                 <div className="gm-cell">Distance Climbed (ft.)</div>
                                 <div className="gm-cell">Push-Ups</div>
                                 <div className="gm-cell">Pull-Ups</div>
+                                <div className="gm-cell">Curr. Week's Workouts</div>
+                                <div className="gm-cell">Curr. Week's Time</div>
+                                <div className="gm-cell">Curr. Week's Rest Days</div>
                             </div>
                         </div>
 
@@ -136,6 +168,9 @@ class GroupMetrics extends Component {
                                     <div className="gm-cell">{indiv.distClimbed}</div>
                                     <div className="gm-cell">{indiv.pushups}</div>
                                     <div className="gm-cell">{indiv.pullups}</div>
+                                    <div className="gm-cell">{indiv.currWkWrkts}</div>
+                                    <div className="gm-cell">{indiv.currWkTime}</div>
+                                    <div className="gm-cell">{indiv.currWkRestDays}</div>
                                 </div>
                             </div>
                         ))}
