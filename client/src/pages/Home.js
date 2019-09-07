@@ -320,7 +320,11 @@ class Home extends Component {
                         open={this.state.openQuickStats}
                         onClose={this.closeQuickStats}
                     >
-                        <GroupMetrics />
+                        <GroupMetrics 
+                            weekWorkouts={this.props.weekWorkouts}
+                            weekTime={this.props.weekTime}
+                            weekRestDays={this.props.weekRestDays}
+                        />
                     </Modal>
                 </div>
             </Container>
