@@ -1,5 +1,5 @@
 .currWeek {
-    background: rgb(255, 233, 110)
+    background: rgb(255, 240, 154)
 }
 
 .groupMetrics {
@@ -25,8 +25,12 @@
     width: 100%;
 }
 
+.gm-label {
+    width: 40% !important;
+}
+
 .gm-row {
     display: flex;
     flex-direction: row;
-    width: 25%;
+    width: 20%;
 }
