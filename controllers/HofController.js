@@ -21,7 +21,7 @@ class HofController {
     }
 
     getWeekUniqueWorkouts(req, res) {
-        db.sequelize.query(`SELECT COUNT(DISTINCT date) as value, firstName FROM Workouts WHERE date >= ${req.params.date} GROUP BY firstName`, { type: sequelize.QueryTypes.SELECT })
+        db.sequelize.query(`SELECT COUNT(DISTINCT date) as value, firstName FROM Workouts WHERE date >= '${req.params.date}' GROUP BY firstName`, { type: sequelize.QueryTypes.SELECT })
             .then(workouts => {
                 res.json(workouts);
             }); 
