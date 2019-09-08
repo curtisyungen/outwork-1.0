@@ -624,44 +624,46 @@ class App extends Component {
 
     let curtis = 0, jason = 0, joseph = 0;
 
-    for (var i in ww) {
-      if (ww[i].value === wwMax) {
-        if (ww[i].firstName === "Curtis") {
-          curtis += 1;
-        }
-        if (ww[i].firstName === "Jason") {
-          jason += 1;
-        }
-        if (ww[i].firstName === "Joseph") {
-          joseph += 1;
-        }
-      }
-    }
-
-    for (var j in wt) {
-      if (wt[j].value === wtMax) {
-        if (wt[j].firstName === "Curtis") {
-          curtis += 1;
-        }
-        if (wt[j].firstName === "Jason") {
-          jason += 1;
-        }
-        if (wt[j].firstName === "Joseph") {
-          joseph += 1;
+    if (ww && wt && wuw) {
+      for (var i in ww) {
+        if (ww[i].value === wwMax) {
+          if (ww[i].firstName === "Curtis") {
+            curtis += 1;
+          }
+          if (ww[i].firstName === "Jason") {
+            jason += 1;
+          }
+          if (ww[i].firstName === "Joseph") {
+            joseph += 1;
+          }
         }
       }
-    }
 
-    for (var k in wuw) {
-      if (wuw[k].value === wuwMax) {
-        if (ww[k].firstName === "Curtis") {
-          curtis += 1;
+      for (var j in wt) {
+        if (wt[j].value === wtMax) {
+          if (wt[j].firstName === "Curtis") {
+            curtis += 1;
+          }
+          if (wt[j].firstName === "Jason") {
+            jason += 1;
+          }
+          if (wt[j].firstName === "Joseph") {
+            joseph += 1;
+          }
         }
-        if (wuw[k].firstName === "Jason") {
-          jason += 1;
-        }
-        if (wuw[k].firstName === "Joseph") {
-          joseph += 1;
+      }
+
+      for (var k in wuw) {
+        if (wuw[k].value === wuwMax) {
+          if (ww[k].firstName === "Curtis") {
+            curtis += 1;
+          }
+          if (wuw[k].firstName === "Jason") {
+            jason += 1;
+          }
+          if (wuw[k].firstName === "Joseph") {
+            joseph += 1;
+          }
         }
       }
     }
