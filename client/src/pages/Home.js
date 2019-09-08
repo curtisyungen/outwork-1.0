@@ -323,7 +323,7 @@ class Home extends Component {
                         <GroupMetrics 
                             weekWorkouts={this.props.weekWorkouts}
                             weekTime={this.props.weekTime}
-                            weekRestDays={this.props.weekRestDays}
+                            weekUniqueWorkouts={this.props.weekUniqueWorkouts}
                         />
                     </Modal>
                 </div>
