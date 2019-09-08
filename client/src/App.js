@@ -33,8 +33,8 @@ import './App.css';
 import moment from "moment";
 
 moment.locale('zh-cn', {
-  week : {
-      dow : 1 // Monday is the first day of the week
+  week: {
+    dow: 1 // Monday is the first day of the week
   }
 });
 
@@ -558,34 +558,24 @@ class App extends Component {
 
     let firstDOW = `${year}-${moZero}${month}-${dayZero}${currDOW - day}`;
 
-    let maxes = [];
-
     // Gets maximum number of workouts from current week
     hofAPI.getWeekWorkouts(firstDOW)
       .then((res) => {
-
         this.setState({
           weekWorkouts: res.data,
+        }, () => {
+          this.getScores();
         });
-
-        let max = this.getMaximum(res.data);
-        maxes.push(max[0]);
-
-        this.checkMaxes(maxes);
       });
 
     // Gets maximum time worked out in current week
     hofAPI.getWeekTime(firstDOW)
       .then((res) => {
-
         this.setState({
           weekTime: res.data,
+        }, () => {
+          this.getScores();
         });
-
-        let max = this.getMaximum(res.data);
-        maxes.push(max[0]);
-
-        this.checkMaxes(maxes);
       });
 
     // Gets maximum unique dates worked out in current week
@@ -593,57 +583,121 @@ class App extends Component {
       .then((res) => {
         this.setState({
           weekUniqueWorkouts: res.data,
+        }, () => {
+          this.getScores();
         });
-
-        let max = this.getMaximum(res.data);
-        maxes.push(max[0]);
-        
-        this.checkMaxes(maxes);
       });
   }
 
-  checkMaxes = (maxes) => {
-    if (maxes.length >= 3) {
-      let curtis = 0;
-      let jason = 0;
-      let joseph = 0;
+  getScores = () => {
+    let ww = this.state.weekWorkouts;
+    let wt = this.state.weekTime;
+    let wuw = this.state.weekUniqueWorkouts;
 
-      let champ = "";
+    let wwMax = 0;
+    for (var i in ww) {
+      if (ww[i].value > wwMax) {
+        wwMax = ww[i].value;
+      }
+    }
 
-      for (var m in maxes) {
-        if (maxes[m] === "Curtis") {
+    let wtMax = 0;
+    for (var j in wt) {
+      if (wt[j].value > wtMax) {
+        wtMax = wt[j].value;
+      }
+    }
+
+    let wuwMax = 0;
+    for (var k in wuw) {
+      if (wuw[k].value > wuwMax) {
+        wuwMax = wuw[k].value;
+      }
+    }
+
+    this.checkMaxes(wwMax, wtMax, wuwMax, ww, wt, wuw);
+
+  }
+
+  checkMaxes = (wwMax, wtMax, wuwMax, ww, wt, wuw) => {
+
+    let curtis = 0, jason = 0, joseph = 0;
+
+    for (var i in ww) {
+      if (ww[i].value === wwMax) {
+        if (ww[i].firstName === "Curtis") {
           curtis += 1;
         }
-        if (maxes[m] === "Jason") {
+        if (ww[i].firstName === "Jason") {
           jason += 1;
         }
-        if (maxes[m] === "Joseph") {
+        if (ww[i].firstName === "Joseph") {
           joseph += 1;
         }
       }
-
-      if (curtis > jason && curtis > joseph) {
-        champ = "Curtis";
-      }
-      else if (jason > curtis && jason > joseph) {
-        champ = "Jason";
-      }
-      else if (joseph > curtis && joseph > jason) {
-        champ = "Joseph";
-      }
-      else {
-        champ = "Tie";
-      }
-
-      this.setState({
-        champ: champ,
-      }, () => {
-        this.getHotDog();
-      });
-
-      hofAPI.updateHof("champ", champ, 1);
     }
+
+    for (var j in wt) {
+      if (wt[j].value === wtMax) {
+        if (wt[j].firstName === "Curtis") {
+          curtis += 1;
+        }
+        if (wt[j].firstName === "Jason") {
+          jason += 1;
+        }
+        if (wt[j].firstName === "Joseph") {
+          joseph += 1;
+        }
+      }
+    }
+
+    for (var k in wuw) {
+      if (wuw[k].value === wuwMax) {
+        if (ww[k].firstName === "Curtis") {
+          curtis += 1;
+        }
+        if (wuw[k].firstName === "Jason") {
+          jason += 1;
+        }
+        if (wuw[k].firstName === "Joseph") {
+          joseph += 1;
+        }
+      }
+    }
+
+    let champ = [];
+    let max = Math.max(curtis, jason, joseph);
+    
+    if (curtis === max) {
+      champ.push("Curtis");
+    }
+
+    if (jason === max) {
+      champ.push("Jason");
+    }
+
+    if (joseph === max) {
+      champ.push("Joseph");
+    }
+
+    if (champ.length === 1) {
+      champ = champ[0];
+    }
+    else {
+      champ = "Tie";
+    }
+
+    console.log(champ);
+
+    this.setState({
+      champ: champ,
+    }, () => {
+      this.getHotDog();
+    });
+
+    hofAPI.updateHof("champ", champ, 1);
   }
+
 
   // PASSWORD RESET
   // ==================================
@@ -739,12 +793,12 @@ class App extends Component {
 
           {/* Banner */}
           {this.state.message !== "" ? (
-            <Banner 
+            <Banner
               message={this.state.message}
             />
           ) : (
-            <></>
-          )}
+              <></>
+            )}
 
           <Switch>
             {/* Landing Page */}
