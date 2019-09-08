@@ -590,34 +590,36 @@ class App extends Component {
       });
   }
 
+  // Perhaps the most inelegant and clunky algorithm in the history of JavaScript
   getScores = () => {
     let ww = this.state.weekWorkouts;
     let wt = this.state.weekTime;
     let wuw = this.state.weekUniqueWorkouts;
 
-    let wwMax = 0;
-    for (var i in ww) {
-      if (ww[i].value > wwMax) {
-        wwMax = ww[i].value;
+    if (ww && wt && wuw) {
+      let wwMax = 0;
+      for (var i in ww) {
+        if (ww[i].value > wwMax) {
+          wwMax = ww[i].value;
+        }
       }
-    }
 
-    let wtMax = 0;
-    for (var j in wt) {
-      if (wt[j].value > wtMax) {
-        wtMax = wt[j].value;
+      let wtMax = 0;
+      for (var j in wt) {
+        if (wt[j].value > wtMax) {
+          wtMax = wt[j].value;
+        }
       }
-    }
 
-    let wuwMax = 0;
-    for (var k in wuw) {
-      if (wuw[k].value > wuwMax) {
-        wuwMax = wuw[k].value;
+      let wuwMax = 0;
+      for (var k in wuw) {
+        if (wuw[k].value > wuwMax) {
+          wuwMax = wuw[k].value;
+        }
       }
+
+      this.checkMaxes(wwMax, wtMax, wuwMax, ww, wt, wuw);
     }
-
-    this.checkMaxes(wwMax, wtMax, wuwMax, ww, wt, wuw);
-
   }
 
   checkMaxes = (wwMax, wtMax, wuwMax, ww, wt, wuw) => {
