@@ -665,8 +665,6 @@ class App extends Component {
       }
     }
 
-    console.log(curtis, jason, joseph);
-
     let champ = [];
     let max = Math.max(curtis, jason, joseph);
     
