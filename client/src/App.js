@@ -60,6 +60,9 @@ class App extends Component {
       resetEmail: null,
       displayOpt: "Recent",
       message: "",
+      weekWorkouts: null,
+      weekTime: null,
+      weekUniqueWorkouts: null,
     }
   }
 
@@ -588,9 +591,8 @@ class App extends Component {
     // Gets maximum unique dates worked out in current week
     hofAPI.getWeekUniqueWorkouts(firstDOW)
       .then((res) => {
-
         this.setState({
-          weekRestDays: res.data,
+          weekUniqueWorkouts: res.data,
         });
 
         let max = this.getMaximum(res.data);
@@ -812,7 +814,7 @@ class App extends Component {
                 displayOpt={this.state.displayOpt}
                 weekWorkouts={this.state.weekWorkouts}
                 weekTime={this.state.weekTime}
-                weekRestDays={this.state.weekRestDays}
+                weekUniqueWorkouts={this.state.weekUniqueWorkouts}
               />
             } />
 
