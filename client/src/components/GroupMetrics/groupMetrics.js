@@ -143,7 +143,7 @@ class GroupMetrics extends Component {
                 <h4>Quick Stats</h4>
                 {this.state.groupMetrics && this.state.groupMetrics.length > 0 ? (
                     <div className="groupMetrics">
-                        <div className="gm-row">
+                        <div className="gm-row gm-label">
                             <div className="gm-col">
                                 <div className="gm-cell">User Name</div>
                                 <div className="gm-cell">Total Workouts</div>
@@ -152,9 +152,9 @@ class GroupMetrics extends Component {
                                 <div className="gm-cell">Distance Climbed (ft.)</div>
                                 <div className="gm-cell">Push-Ups</div>
                                 <div className="gm-cell">Pull-Ups</div>
-                                <div className="gm-cell currWeek">Workouts</div>
-                                <div className="gm-cell currWeek">Time</div>
-                                <div className="gm-cell currWeek">Days Worked Out</div>
+                                <div className="gm-cell currWeek">Curr. Wk. Workouts</div>
+                                <div className="gm-cell currWeek">Curr. Wk. Time (min.)</div>
+                                <div className="gm-cell currWeek">Curr. Wk. Days Worked Out</div>
                             </div>
                         </div>
 
