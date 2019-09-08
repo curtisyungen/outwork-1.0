@@ -687,8 +687,6 @@ class App extends Component {
       champ = "Tie";
     }
 
-    console.log(champ);
-
     this.setState({
       champ: champ,
     }, () => {
