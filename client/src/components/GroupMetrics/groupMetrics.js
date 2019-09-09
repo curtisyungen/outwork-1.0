@@ -169,7 +169,7 @@ class GroupMetrics extends Component {
                                     <div className="gm-cell">{indiv.pushups}</div>
                                     <div className="gm-cell">{indiv.pullups}</div>
                                     <div className="gm-cell currWeek">{indiv.currWkWrkts}</div>
-                                    <div className="gm-cell currWeek">{indiv.currWkTime}</div>
+                                    <div className="gm-cell currWeek">{indiv.currWkTime.toFixed(2)}</div>
                                     <div className="gm-cell currWeek">{indiv.currWkUniqueWrkts}</div>
                                 </div>
                             </div>
