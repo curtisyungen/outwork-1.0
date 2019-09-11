@@ -32,12 +32,6 @@ import './App.css';
 
 import moment from "moment";
 
-moment.locale('zh-cn', {
-  week: {
-    dow: 1 // Monday is the first day of the week
-  }
-});
-
 class App extends Component {
 
   constructor(props) {
@@ -63,6 +57,7 @@ class App extends Component {
       weekWorkouts: null,
       weekTime: null,
       weekUniqueWorkouts: null,
+      firstDOW: null,
     }
   }
 
@@ -540,10 +535,10 @@ class App extends Component {
 
     // Get date of most recent Sunday in yyyy-mm-dd format
     let today = new Date();
-    let day = moment(today).startOf('week').isoWeekday(1).day();
     let year = moment(today).year();
     let month = moment(today).month() + 1;
-    let currDOW = moment(today).date();
+    let date = moment(today).date();
+    let currDOW = moment(today).day();
 
     let moZero = "";
     let dayZero = "";
@@ -552,12 +547,15 @@ class App extends Component {
       moZero = 0;
     }
 
-    if (currDOW - day < 10) {
+    if (currDOW - date < 10) {
       dayZero = 0;
     }
 
-    let firstDOW = `${year}-${moZero}${month}-${dayZero}${currDOW - day}`;
-    console.log(firstDOW);
+    let firstDOW = `${year}-${moZero}${month}-${dayZero}${date - currDOW}`;
+    
+    this.setState({
+      firstDOW: firstDOW,
+    });
 
     // Gets maximum number of workouts from current week
     hofAPI.getWeekWorkouts(firstDOW)
@@ -872,6 +870,7 @@ class App extends Component {
                 weekWorkouts={this.state.weekWorkouts}
                 weekTime={this.state.weekTime}
                 weekUniqueWorkouts={this.state.weekUniqueWorkouts}
+                firstDOW={this.state.firstDOW}
               />
             } />
 
