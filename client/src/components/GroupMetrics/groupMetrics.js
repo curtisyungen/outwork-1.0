@@ -5,12 +5,6 @@ import "./groupMetrics.css";
 
 import moment from "moment";
 
-moment.locale('zh-cn', {
-    week: {
-        dow : "Sunday" // Sunday is the first day of the week
-    }
-});
-
 class GroupMetrics extends Component {
 
     constructor(props) {
