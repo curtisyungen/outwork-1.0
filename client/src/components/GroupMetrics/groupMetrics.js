@@ -6,7 +6,7 @@ import "./groupMetrics.css";
 import moment from "moment";
 
 moment.locale('zh-cn', {
-    week : {
+    week: {
         dow : "Sunday" // Sunday is the first day of the week
     }
 });
