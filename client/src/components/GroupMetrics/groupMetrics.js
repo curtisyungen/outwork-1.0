@@ -152,9 +152,6 @@ class GroupMetrics extends Component {
                                 <div className="gm-cell">Distance Climbed (ft.)</div>
                                 <div className="gm-cell">Push-Ups</div>
                                 <div className="gm-cell">Pull-Ups</div>
-                                <div className="gm-cell currWeek">Curr. Wk. Workouts</div>
-                                <div className="gm-cell currWeek">Curr. Wk. Time (min.)</div>
-                                <div className="gm-cell currWeek">Curr. Wk. Days Worked Out</div>
                             </div>
                         </div>
 
@@ -168,6 +165,31 @@ class GroupMetrics extends Component {
                                     <div className="gm-cell">{indiv.distClimbed}</div>
                                     <div className="gm-cell">{indiv.pushups}</div>
                                     <div className="gm-cell">{indiv.pullups}</div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <p>Loading stats...</p>
+                )}
+
+            <h4>Weekly Champ</h4>
+                <div className="firstDOW">First day of week: {this.props.firstDOW}</div>
+                {this.state.groupMetrics && this.state.groupMetrics.length > 0 ? (
+                    <div className="groupMetrics">
+                        <div className="gm-row gm-label">
+                            <div className="gm-col">
+                                <div className="gm-cell">User Name</div>
+                                <div className="gm-cell currWeek">Curr. Wk. Workouts</div>
+                                <div className="gm-cell currWeek">Curr. Wk. Time (min.)</div>
+                                <div className="gm-cell currWeek">Curr. Wk. Days Worked Out</div>
+                            </div>
+                        </div>
+
+                        {this.state.groupMetrics.map(indiv => (
+                            <div key={indiv.firstName} className="gm-row">
+                                <div className="gm-col">
+                                    <div className="gm-cell">{indiv.firstName}</div>
                                     <div className="gm-cell currWeek">{indiv.currWkWrkts}</div>
                                     <div className="gm-cell currWeek">{indiv.currWkTime.toFixed(2)}</div>
                                     <div className="gm-cell currWeek">{indiv.currWkUniqueWrkts}</div>
