@@ -324,6 +324,7 @@ class Home extends Component {
                             weekWorkouts={this.props.weekWorkouts}
                             weekTime={this.props.weekTime}
                             weekUniqueWorkouts={this.props.weekUniqueWorkouts}
+                            firstDOW={this.props.firstDOW}
                         />
                     </Modal>
                 </div>
