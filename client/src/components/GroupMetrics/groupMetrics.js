@@ -62,7 +62,7 @@ class GroupMetrics extends Component {
                 let pushups = 0, pullups = 0, climb = 0;
                 let miles = 0, currWkMiles = 0;
                 let today = new Date();
-                let week = moment(this.props.firstDOW).week();
+                let week = moment(this.props.firstDOW).week() + 1;
 
                 for (var w in workouts) {
 
