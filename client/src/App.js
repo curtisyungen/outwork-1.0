@@ -547,7 +547,7 @@ class App extends Component {
       moZero = 0;
     }
 
-    if (currDOW - date < 10) {
+    if (date - currDOW < 10) {
       dayZero = 0;
     }
 
