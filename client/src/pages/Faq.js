@@ -22,7 +22,7 @@ class Faq extends Component {
                 <div className="questions">
                     <h4>Frequently Asked Questions</h4>
                     <div className="qaDiv">
-                        <div className="q">Q: Who is the genius/superstar programmer who created this amazing website?</div>
+                        <div className="q">Q: Who created Outwork?</div>
                         <div className="a">
                             A: Curtis Yungen. Check out his web development portfolio here: 
                             <a 
