@@ -71,7 +71,7 @@ class GroupMetrics extends Component {
                         }
 
                         console.log(workouts[w].date);
-                        console.log(workouts[w].date >= this.props.firstDOW && workouts[w].date <= this.props.firstDOW + 6);
+                        console.log(this.props.firstDOW + 6);
                         
                         if (moment(workouts[w].date).week() === week) {
                             currWkMiles += workouts[w].distance;
