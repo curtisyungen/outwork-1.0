@@ -71,7 +71,7 @@ class GroupMetrics extends Component {
                         }
                         
                         let tDate = console.log(workouts[w].date);
-                        let tDay = console.log(tDate.day);
+                        let tDay = console.log(tDate.day());
                         console.log(tDay + 6);
                         
                         if (moment(workouts[w].date).week() === week) {                            
