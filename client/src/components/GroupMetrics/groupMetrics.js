@@ -49,6 +49,8 @@ class GroupMetrics extends Component {
         let groupMetrics = this.state.groupMetrics;
 
         let userMetrics = {};
+        
+        console.log(this.props.firstDOW);
 
         workoutAPI.getAllWorkoutsByUserId(userId)
             .then((res) => {
