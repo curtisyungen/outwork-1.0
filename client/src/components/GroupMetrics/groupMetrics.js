@@ -49,8 +49,6 @@ class GroupMetrics extends Component {
         let groupMetrics = this.state.groupMetrics;
 
         let userMetrics = {};
-        
-        console.log(this.props.firstDOW);
 
         workoutAPI.getAllWorkoutsByUserId(userId)
             .then((res) => {
@@ -72,6 +70,9 @@ class GroupMetrics extends Component {
                             climb += parseFloat(workouts[w].climb);
                         }
 
+                        console.log(workouts[w].date);
+                        console.log(workouts[w].date >= this.props.firstDOW && workouts[w].date <= this.props.firstDOW + 6);
+                        
                         if (moment(workouts[w].date).week() === week) {
                             currWkMiles += workouts[w].distance;
                         }
