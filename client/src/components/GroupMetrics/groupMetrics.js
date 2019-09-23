@@ -70,10 +70,6 @@ class GroupMetrics extends Component {
                             climb += parseFloat(workouts[w].climb);
                         }
                         
-                        console.log(workouts[w].date);
-                        let tDay = workouts[w].date.day();
-                        console.log(tDay + 6);
-                        
                         if (moment(workouts[w].date).week() === week) {                            
                             currWkMiles += workouts[w].distance;
                         }
