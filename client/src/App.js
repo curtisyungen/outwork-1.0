@@ -552,7 +552,7 @@ class App extends Component {
     }
 
     //let firstDOW = `${year}-${moZero}${month}-${dayZero}${date - currDOW}`;
-    let firstDOW = "2019-10-01";
+    let firstDOW = "2019-09-30";
     
     this.setState({
       firstDOW: firstDOW,
