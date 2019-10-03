@@ -1,0 +1,212 @@
+.actCard {
+    background: #fff;
+    border: 1px solid rgb(114, 114, 114);
+    cursor: pointer;
+    font-size: 13px;
+    height: 50px;
+    line-height: 1.0;
+    margin: 2px 0px;
+    transition: 0.5s;
+}
+
+.actCard:first-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.actCard:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.actCard:hover {
+    background: rgb(242, 242, 242);
+}
+
+.actNotes {
+    border-right: 0px !important;
+    font-size: 11px;
+    min-width: 26% !important;
+    max-width: 26% !important;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+.border-true {
+    border-right: 4px solid green;
+}
+
+.cell {
+    border-right: 1px solid rgb(114, 114, 114);
+    min-width: 10%;
+    max-width: 10%;
+    overflow: hidden;
+    padding-left: 5px;
+    padding-top: 15px;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
+.cellDesc {
+    color: rgb(150, 150, 150);
+    font-size: 11px;
+    margin: 0;
+    margin-top: -15px;
+    padding: 0;
+    padding-right: 5px;
+    position: absolute;
+    text-align: left;
+}
+
+.dataPoint-xl {
+    border-bottom: 1px solid black;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 600;
+    padding-bottom: 5px;
+    min-width: 300px;
+    text-align: center;
+    width: 100%;
+}
+
+.dataPoint {
+    float: right;
+}
+
+.dataPoint-map {
+    font-size: 12px;
+}
+
+.dataPoint-notes {
+    font-size: 12px;
+    margin-left: 20px;
+    max-width: 200px;
+    text-align: right;
+    white-space: normal;
+}
+
+.dataTitle {
+    display: inline-block;
+}
+
+.deleteActivity,
+.updateActivity {
+    float: right;
+    margin-top: 10px;
+}
+
+.updateActivity {
+    margin-right: 5px;
+}
+
+.icon {
+    text-align: center !important;
+    width: 25px !important;
+}
+
+.dataIcon {
+    border-top-right-radius: 4px !important;
+    border-bottom-right-radius: 4px !important;
+}
+
+.bikeIcon, .liftIcon, 
+.runIcon, .swimIcon {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    min-width: 45px !important;
+    padding: 10px;
+    width: 4%;
+}
+
+.bikeIcon {
+    background: rgb(255, 216, 116);
+}
+
+.liftIcon {
+    background: rgb(255, 191, 191);
+}
+
+.runIcon {
+    background: lightgreen;
+}
+
+.swimIcon {
+    background: lightblue;
+}
+
+.runDetails {
+    font-size: 13px;
+    width: auto;
+}
+
+.repeatDiv {
+    background: rgb(242, 242, 242);
+    border: 1px solid darkgray;
+    font-size: 12px;
+    margin: 2px 0px;
+}
+
+.repeatSpan {
+    margin-left: 5px;
+    padding: 2px;
+}
+
+@media only screen and (max-width: 1024px) {
+
+}
+
+@media only screen and (max-width: 990px) {
+    .cell {
+        min-width: 13%;
+        max-width: 13%;
+    }
+
+    .cell7 {
+        border-right: 0px;
+    }
+
+    .cell8 {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .cell {
+        min-width: 15%;
+        max-width: 15%;
+    }
+
+    .cell6 {
+        border-right: 0px;
+    }
+
+    .cell7 {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 520px) {
+    .cell {
+        min-width: 22.5%;
+        max-width: 22.5%;
+    }
+
+    .cell4 {
+        border-right: 0px;
+    }
+
+    .cell5,
+    .cell6 {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .dataPoint-xl {
+        min-width: 240px;
+    }
+}
