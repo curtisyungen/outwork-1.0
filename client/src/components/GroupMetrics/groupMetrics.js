@@ -54,13 +54,11 @@ class GroupMetrics extends Component {
             .then((res) => {
                 let workouts = res.data;
                 let pushups = 0, pullups = 0, climb = 0;
-                let miles = 0, currWkMiles = 0;
-                let today = new Date();
-                let week = moment("2019-09-30").week() + 1;
+                let miles = 0;
 
                 for (var w in workouts) {
 
-                    // Get miles run, climb, current week miles
+                    // Get miles run, climb
                     if (workouts[w].workoutType === "run") {
                         if (workouts[w].distance) {
                             miles += parseFloat(workouts[w].distance);
@@ -68,10 +66,6 @@ class GroupMetrics extends Component {
                         
                         if (workouts[w].climb) {
                             climb += parseFloat(workouts[w].climb);
-                        }
-                        
-                        if (moment(workouts[w].date).week() === week) {                            
-                            currWkMiles += workouts[w].distance;
                         }
                     }
 
@@ -114,7 +108,6 @@ class GroupMetrics extends Component {
 
                 userMetrics.firstName = firstName;
                 userMetrics.workouts = workouts.length;
-                userMetrics.currWkMiles = Math.round(currWkMiles * 100) / 100;
                 userMetrics.totalMilesRun = Math.round(miles * 100) / 100;
                 userMetrics.distClimbed = climb;
                 userMetrics.pushups = pushups;
@@ -141,7 +134,6 @@ class GroupMetrics extends Component {
                             <div className="gm-col">
                                 <div className="gm-cell">User Name</div>
                                 <div className="gm-cell">Total Workouts</div>
-                                <div className="gm-cell">Current Week's Miles</div>
                                 <div className="gm-cell">Total Miles Run</div>
                                 <div className="gm-cell">Distance Climbed (ft.)</div>
                                 <div className="gm-cell">Push-Ups</div>
@@ -154,7 +146,6 @@ class GroupMetrics extends Component {
                                 <div className="gm-col">
                                     <div className="gm-cell">{indiv.firstName}</div>
                                     <div className="gm-cell">{indiv.workouts}</div>
-                                    <div className="gm-cell">{indiv.currWkMiles}</div>
                                     <div className="gm-cell">{indiv.totalMilesRun}</div>
                                     <div className="gm-cell">{indiv.distClimbed}</div>
                                     <div className="gm-cell">{indiv.pushups}</div>
