@@ -32,6 +32,8 @@ import './App.css';
 
 import moment from "moment";
 
+const FIRSTDOW = "2019-10-07";
+
 class App extends Component {
 
   constructor(props) {
@@ -552,7 +554,7 @@ class App extends Component {
     }
 
     //let firstDOW = `${year}-${moZero}${month}-${dayZero}${date - currDOW}`;
-    let firstDOW = "2019-09-30";
+    let firstDOW = FIRSTDOW;
     
     this.setState({
       firstDOW: firstDOW,
