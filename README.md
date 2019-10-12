@@ -6,7 +6,7 @@
 # Outwork
 **by Curtis Yungen**
 
-August 2019
+August 2019 
 
 Outwork is a website where two of my friends and I can log our running, biking, swimming, or lifting workouts, track metrics, and compete for awards. Currently, only these three users are allowed to have accounts on the site. However, the entire site is viewable in a read-only format via the Guest account.
 
