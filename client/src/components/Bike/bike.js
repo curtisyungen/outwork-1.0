@@ -47,7 +47,7 @@ class Bike extends Component {
                     <div className="bikeIcon"><FontAwesomeIcon className="fa-2x icon" icon={faBiking} /></div>
                     <div className="cell"><span className="cellDesc">Name</span>{this.props.firstName}</div>
                     <div className="cell"><span className="cellDesc">Date</span>{this.props.date}</div>
-                    <div className="cell"><span className="cellDesc">Miles</span>{this.props.distance} miles</div>
+                    <div className="cell"><span className="cellDesc">Miles</span>{this.props.distance}</div>
                     <div className="cell cell4"><span className="cellDesc">Time</span>{this.props.duration}</div>
                     <div className="cell cell5"><span className="cellDesc">Location</span>{this.props.location}</div>
                     <div className="cell cell6"><span className="cellDesc">Climb</span>{this.props.climb}</div>
