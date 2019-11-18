@@ -32,7 +32,7 @@ import './App.css';
 
 import moment from "moment";
 
-const FIRSTDOW = "2019-11-11";
+const FIRSTDOW = "2019-11-18";
 
 class App extends Component {
 
