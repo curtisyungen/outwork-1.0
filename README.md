@@ -3,10 +3,10 @@
 </p>
 <br/>
 
+#### This version is obsolete. Check out Outwork 2.0 here: https://outwork-cjy.herokuapp.com.
+
 # Outwork
 **by Curtis Yungen**
-
-#### This version is obsolete. Check out Outwork 2.0 here: https://outwork-cjy.herokuapp.com.
 
 August 2019  
 
