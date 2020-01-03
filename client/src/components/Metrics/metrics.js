@@ -14,365 +14,356 @@ import "./metrics.css";
 import moment from "moment";
 
 class Metrics extends Component {
+  constructor(props) {
+    super(props);
 
-    constructor(props) {
-        super(props);
+    this.state = {
+      screenWidth: null,
+      firstName: null,
+      flexDir: null,
+      userRuns: null,
+      userBikes: null,
+      userSwims: null,
+      userLifts: null,
+      maxPushUps: null,
+      maxPullUps: null,
+      restDays: null,
+      rainyDays: null,
+      time: null,
+      races: null,
+      loading: true,
+      year: null,
+      openBarChart: false
+    };
+  }
 
-        this.state = {
-            screenWidth: null,
-            firstName: null,
-            flexDir: null,
-            userRuns: null,
-            userBikes: null,
-            userSwims: null,
-            userLifts: null,
-            maxPushUps: null,
-            maxPullUps: null,
-            restDays: null,
-            rainyDays: null,
-            time: null,
-            races: null,
-            loading: true,
-            year: null,
-            openBarChart: false,
+  componentDidMount = () => {
+    window.addEventListener("resize", this.getScreenSize.bind(this));
+
+    this.setState(
+      {
+        firstName: this.props.firstName,
+        userId: this.props.userId
+      },
+      () => {
+        this.getScreenSize();
+        this.getUserActivity();
+        this.getRestDays();
+        this.getTotalTime();
+        this.getRainyDays();
+        this.getTotalRaces();
+        this.getMaxPushUps();
+        this.getMaxPullUps();
+      }
+    );
+  };
+
+  getScreenSize = () => {
+    let width =
+      window.innerWidth ||
+      document.documentElement.clientWidth ||
+      document.body.clientWidth;
+
+    let flexDir = "row";
+    if (width <= 768) {
+      flexDir = "column";
+    }
+
+    this.setState({
+      screenWidth: width,
+      flexDir: flexDir
+    });
+  };
+
+  getUserActivity = () => {
+    workoutAPI.getAllWorkoutsByUserId(this.props.userId).then(res => {
+      this.setState(
+        {
+          userActivity: res.data
+        },
+        () => {
+          this.categorizeActivities();
         }
+      );
+    });
+  };
+
+  categorizeActivities = () => {
+    let userActivity = this.state.userActivity;
+    let runs = [];
+    let bikes = [];
+    let swims = [];
+    let lifts = [];
+
+    for (var a in userActivity) {
+      if (userActivity[a].workoutType === "run") {
+        runs.push(userActivity[a]);
+      } else if (userActivity[a].workoutType === "bike") {
+        bikes.push(userActivity[a]);
+      } else if (userActivity[a].workoutType === "swim") {
+        swims.push(userActivity[a]);
+      } else if (userActivity[a].workoutType === "lift") {
+        lifts.push(userActivity[a]);
+      }
     }
 
-    componentDidMount = () => {
-        window.addEventListener("resize", this.getScreenSize.bind(this));
-
-        this.setState({
-            firstName: this.props.firstName,
-            userId: this.props.userId,
-        }, () => {
-            this.getScreenSize();
-            this.getUserActivity();
-            this.getRestDays();
-            this.getTotalTime();
-            this.getRainyDays();
-            this.getTotalRaces();
-            this.getMaxPushUps();
-            this.getMaxPullUps();
-        });
+    let workouts = 0;
+    if (userActivity) {
+      workouts = userActivity.length;
     }
 
-    getScreenSize = () => {
-        let width = window.innerWidth
-            || document.documentElement.clientWidth
-            || document.body.clientWidth;
+    this.setState({
+      userRuns: runs,
+      userBikes: bikes,
+      userSwims: swims,
+      userLifts: lifts,
+      loading: false,
+      totalWorkouts: workouts
+    });
+  };
 
-        let flexDir = "row";
-        if (width <= 768) {
-            flexDir = "column";
+  getRestDays = () => {
+    hofAPI.getMaxRestDays().then(res => {
+      let workDays = 0;
+      for (var d in res.data) {
+        if (res.data[d].firstName === this.state.firstName) {
+          workDays = res.data[d].value;
         }
+      }
 
-        this.setState({
-            screenWidth: width,
-            flexDir: flexDir,
-        });
-    }
+      let dateNum = 365;
+      let restDays = dateNum - workDays;
 
-    getUserActivity = () => {
-        workoutAPI.getAllWorkoutsByUserId(this.props.userId)
-            .then((res) => {
-                this.setState({
-                    userActivity: res.data,
-                }, () => {
-                    this.categorizeActivities();
-                });
-            });
-    }
+      this.setState({
+        restDays: restDays
+      });
+    });
+  };
 
-    categorizeActivities = () => {
-        let userActivity = this.state.userActivity;
-        let runs = [];
-        let bikes = [];
-        let swims = [];
-        let lifts = [];
-
-        for (var a in userActivity) {
-            if (userActivity[a].workoutType === "run") {
-                runs.push(userActivity[a]);
-            }
-            else if (userActivity[a].workoutType === "bike") {
-                bikes.push(userActivity[a]);
-            }
-            else if (userActivity[a].workoutType === "swim") {
-                swims.push(userActivity[a]);
-            }
-            else if (userActivity[a].workoutType === "lift") {
-                lifts.push(userActivity[a]);
-            }
+  getRainyDays = () => {
+    hofAPI.getRainyDays().then(res => {
+      let days = 0;
+      for (var d in res.data) {
+        if (res.data[d].firstName === this.state.firstName) {
+          days = res.data[d].value;
         }
+      }
 
-        let workouts = 0;
-        if (userActivity) {
-            workouts = userActivity.length;
+      this.setState({
+        rainyDays: days
+      });
+    });
+  };
+
+  getTotalTime = () => {
+    hofAPI.getTotalTime().then(res => {
+      let time = 0;
+      for (var t in res.data) {
+        if (res.data[t].firstName === this.state.firstName) {
+          time = Math.round(res.data[t].value * 100) / 100;
         }
+      }
 
-        this.setState({
-            userRuns: runs,
-            userBikes: bikes,
-            userSwims: swims,
-            userLifts: lifts,
-            loading: false,
-            totalWorkouts: workouts,
-        });
-    }
+      this.setState({
+        time: time
+      });
+    });
+  };
 
-    getRestDays = () => {
-        hofAPI.getMaxRestDays()
-            .then((res) => {
-                let workDays = 0;
-                for (var d in res.data) {
-                    if (res.data[d].firstName === this.state.firstName) {
-                        workDays = res.data[d].value;
-                    }
-                }
-
-                let dateNum = moment().dayOfYear();
-                let restDays = dateNum - workDays;
-
-                this.setState({
-                    restDays: restDays,
-                });
-            });
-    }
-
-    getRainyDays = () => {
-        hofAPI.getRainyDays()
-            .then((res) => {
-                let days = 0;
-                for (var d in res.data) {
-                    if (res.data[d].firstName === this.state.firstName) {
-                        days = res.data[d].value;
-                    }
-                }
-
-                this.setState({
-                    rainyDays: days,
-                });
-            });
-    }
-
-    getTotalTime = () => {
-        hofAPI.getTotalTime()
-            .then((res) => {
-
-                let time = 0;
-                for (var t in res.data) {
-                    if (res.data[t].firstName === this.state.firstName) {
-                        time = Math.round(res.data[t].value * 100) / 100;
-                    }
-                }
-
-                this.setState({
-                    time: time,
-                });
-            })
-    }
-
-    getTotalRaces = () => {
-        hofAPI.getMaxRaces()
-            .then((res) => {
-                let races = 0;
-                for (var r in res.data) {
-                    if (res.data[r].firstName === this.state.firstName) {
-                        races = res.data[r].value;
-                    }
-                }
-
-                this.setState({
-                    races: races,
-                });
-            })
-    }
-
-    getMaxPushUps = () => {
-        hofAPI.getMaxPushups()
-            .then((res) => {
-                let results = res.data;
-                let pushups = 0;
-                for (var u in results) {
-                    if (results[u].userId === this.state.userId) {
-                        pushups = results[u].value;
-                    }
-                }
-
-                this.setState({
-                    maxPushUps: pushups,
-                });
-            });
-    }
-
-    getMaxPullUps = () => {
-        hofAPI.getMaxPullups()
-            .then((res) => {
-                let results = res.data;
-                let pullups = 0;
-                for (var u in results) {
-                    if (results[u].userId === this.state.userId) {
-                        pullups = results[u].value;
-                    }
-                }
-
-                this.setState({
-                    maxPullUps: pullups,
-                });
-            });
-    }
-
-    getYearData = (year) => {
-        let yearData = [];
-
-        for (var w in year) {
-            let week = {
-                weekNum: parseInt(w),
-                miles: parseFloat(year[w]),
-            }
-
-            yearData.push(week);
+  getTotalRaces = () => {
+    hofAPI.getMaxRaces().then(res => {
+      let races = 0;
+      for (var r in res.data) {
+        if (res.data[r].firstName === this.state.firstName) {
+          races = res.data[r].value;
         }
+      }
 
-        this.setState({
-            year: yearData,
-        });
+      this.setState({
+        races: races
+      });
+    });
+  };
+
+  getMaxPushUps = () => {
+    hofAPI.getMaxPushups().then(res => {
+      let results = res.data;
+      let pushups = 0;
+      for (var u in results) {
+        if (results[u].userId === this.state.userId) {
+          pushups = results[u].value;
+        }
+      }
+
+      this.setState({
+        maxPushUps: pushups
+      });
+    });
+  };
+
+  getMaxPullUps = () => {
+    hofAPI.getMaxPullups().then(res => {
+      let results = res.data;
+      let pullups = 0;
+      for (var u in results) {
+        if (results[u].userId === this.state.userId) {
+          pullups = results[u].value;
+        }
+      }
+
+      this.setState({
+        maxPullUps: pullups
+      });
+    });
+  };
+
+  getYearData = year => {
+    let yearData = [];
+
+    for (var w in year) {
+      let week = {
+        weekNum: parseInt(w),
+        miles: parseFloat(year[w])
+      };
+
+      yearData.push(week);
     }
 
-    openBarChart = () => {
-        this.setState({
-            openBarChart: true,
-        });
-    }
+    this.setState({
+      year: yearData
+    });
+  };
 
-    closeBarChart = () => {
-        this.setState({
-            openBarChart: false,
-        });
-    }
+  openBarChart = () => {
+    this.setState({
+      openBarChart: true
+    });
+  };
 
-    render() {
-        return (
-            <div>
-                <div className="metricsTitleBlock">
-                    <h4 className="userTotalsTitle">User Totals</h4>
-                    {this.state.userActivity === null ? (
-                        <p>No activity found. What a loser!</p>
-                    ) : (
-                            <></>
-                        )}
+  closeBarChart = () => {
+    this.setState({
+      openBarChart: false
+    });
+  };
 
-                    {/* BAR CHART */}
+  render() {
+    return (
+      <div>
+        <div className="metricsTitleBlock">
+          <h4 className="userTotalsTitle">User Totals</h4>
+          {this.state.userActivity === null ? (
+            <p>No activity found. What a loser!</p>
+          ) : (
+            <></>
+          )}
 
-                    <button className="btn btn-outline-dark btn-sm barChartBtn" onClick={this.openBarChart}>
-                        Chart
-                    </button>
+          {/* BAR CHART */}
 
-                    {this.state.openBarChart ? (
-                        <Modal
-                            open={this.state.openBarChart}
-                            onClose={this.closeBarChart}
-                        >
-                            {this.state.year && this.state.year.length > 0 ? (
-                                <span>
-                                    <h4>Currently in work...</h4>
-                                    <BarChart
-                                        data={this.state.year}
-                                        height={200}
-                                        width={500}
-                                    />
-                                </span>
-                            ) : (
-                                <h4>No data available.</h4>
-                            )}
-                        </Modal>
-                    ) : (
-                        <></>
-                    )}
+          <button
+            className="btn btn-outline-dark btn-sm barChartBtn"
+            onClick={this.openBarChart}
+          >
+            Chart
+          </button>
 
-                    {/* SHOE METRICS */}
+          {this.state.openBarChart ? (
+            <Modal open={this.state.openBarChart} onClose={this.closeBarChart}>
+              {this.state.year && this.state.year.length > 0 ? (
+                <span>
+                  <h4>Currently in work...</h4>
+                  <BarChart data={this.state.year} height={200} width={500} />
+                </span>
+              ) : (
+                <h4>No data available.</h4>
+              )}
+            </Modal>
+          ) : (
+            <></>
+          )}
 
-                    {this.state.userRuns && (this.props.userId === localStorage.getItem("userId")) ? (
-                        <ShoeMetrics
-                            userId={this.state.userId}
-                            userRuns={this.state.userRuns}
-                            flexDir={this.state.flexDir}
-                        />
-                    ) : (
-                            <></>
-                        )}
-                </div>
+          {/* SHOE METRICS */}
 
-                {this.state.loading ? (
-                    <p className="text-center">Loading metrics...</p>
-                ) : (
-                        <span>
+          {this.state.userRuns &&
+          this.props.userId === localStorage.getItem("userId") ? (
+            <ShoeMetrics
+              userId={this.state.userId}
+              userRuns={this.state.userRuns}
+              flexDir={this.state.flexDir}
+            />
+          ) : (
+            <></>
+          )}
+        </div>
 
-                            {/* RUN METRICS */}
+        {this.state.loading ? (
+          <p className="text-center">Loading metrics...</p>
+        ) : (
+          <span>
+            {/* RUN METRICS */}
 
-                            {this.state.userRuns && this.state.userRuns.length > 0 ? (
-                                <RunMetrics
-                                    userId={this.state.userId}
-                                    userRuns={this.state.userRuns}
-                                    flexDir={this.state.flexDir}
-                                    getYearData={this.getYearData}
-                                />
-                            ) : (
-                                    <></>
-                                )}
+            {this.state.userRuns && this.state.userRuns.length > 0 ? (
+              <RunMetrics
+                userId={this.state.userId}
+                userRuns={this.state.userRuns}
+                flexDir={this.state.flexDir}
+                getYearData={this.getYearData}
+              />
+            ) : (
+              <></>
+            )}
 
-                            {/* BIKE METRICS */}
+            {/* BIKE METRICS */}
 
-                            {this.state.userBikes && this.state.userBikes.length > 0 ? (
-                                <BikeMetrics
-                                    userId={this.state.userId}
-                                    userBikes={this.state.userBikes}
-                                    flexDir={this.state.flexDir}
-                                />
-                            ) : (
-                                    <></>
-                                )}
+            {this.state.userBikes && this.state.userBikes.length > 0 ? (
+              <BikeMetrics
+                userId={this.state.userId}
+                userBikes={this.state.userBikes}
+                flexDir={this.state.flexDir}
+              />
+            ) : (
+              <></>
+            )}
 
-                            {/* SWIM METRICS */}
+            {/* SWIM METRICS */}
 
-                            {this.state.userSwims && this.state.userSwims.length > 0 ? (
-                                <SwimMetrics
-                                    userId={this.state.userId}
-                                    userSwims={this.state.userSwims}
-                                    flexDir={this.state.flexDir}
-                                />
-                            ) : (
-                                    <></>
-                                )}
+            {this.state.userSwims && this.state.userSwims.length > 0 ? (
+              <SwimMetrics
+                userId={this.state.userId}
+                userSwims={this.state.userSwims}
+                flexDir={this.state.flexDir}
+              />
+            ) : (
+              <></>
+            )}
 
-                            {/* LIFT METRICS */}
+            {/* LIFT METRICS */}
 
-                            {this.state.userLifts && this.state.userLifts.length > 0 ? (
-                                <LiftMetrics
-                                    userId={this.state.userId}
-                                    userLifts={this.state.userLifts}
-                                    flexDir={this.state.flexDir}
-                                    maxPushUps={this.state.maxPushUps}
-                                    maxPullUps={this.state.maxPullUps}
-                                />
-                            ) : (
-                                    <></>
-                                )}
+            {this.state.userLifts && this.state.userLifts.length > 0 ? (
+              <LiftMetrics
+                userId={this.state.userId}
+                userLifts={this.state.userLifts}
+                flexDir={this.state.flexDir}
+                maxPushUps={this.state.maxPushUps}
+                maxPullUps={this.state.maxPullUps}
+              />
+            ) : (
+              <></>
+            )}
 
-                            <GeneralMetrics
-                                userId={this.state.userId}
-                                flexDir={this.state.flexDir}
-                                workouts={this.state.totalWorkouts}
-                                time={this.state.time}
-                                rainyDays={this.state.rainyDays}
-                                races={this.state.races}
-                                restDays={this.state.restDays}
-                            />
-                        </span>
-                    )}
-            </div>
-        )
-    }
+            <GeneralMetrics
+              userId={this.state.userId}
+              flexDir={this.state.flexDir}
+              workouts={this.state.totalWorkouts}
+              time={this.state.time}
+              rainyDays={this.state.rainyDays}
+              races={this.state.races}
+              restDays={this.state.restDays}
+            />
+          </span>
+        )}
+      </div>
+    );
+  }
 }
 
 export default Metrics;
