@@ -1,12 +1,12 @@
 .banner {
-    background: orange;
-    border-bottom: 1px solid black;
-    color: black;
-    display: inline-block;
-    font-size: 13px;
-    padding: 5px;
-    position: absolute;
-    text-align: center;
-    width: 100%;
-    z-index: 999;
+  background: orange;
+  border-bottom: 1px solid black;
+  color: black;
+  display: inline-block;
+  font-size: 13px;
+  padding: 5px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  z-index: 104;
 }
