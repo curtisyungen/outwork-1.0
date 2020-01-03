@@ -2,221 +2,253 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import Modal from "react-responsive-modal";
 import LiftDetailSet from "../LiftDetailSet/liftDetailSet";
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDumbbell } from '@fortawesome/free-solid-svg-icons';
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
 import "./lift.css";
 
 library.add(faDumbbell);
 
 class Lift extends Component {
-    
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            openModal: false,
-            userId: null,
-            workout: null,
-            generator: null,
-            generatorText: null,
-            muscleGroups: null,
-            updateLift: false,
-            updateGen: false,
-        }
+    this.state = {
+      openModal: false,
+      userId: null,
+      workout: null,
+      generator: null,
+      generatorText: null,
+      muscleGroups: null,
+      updateLift: false,
+      updateGen: false
+    };
+  }
+
+  componentDidMount = () => {
+    let workout = JSON.parse(this.props.workout);
+
+    this.getMuscleGroups();
+
+    this.setState({
+      userId: this.props.userId,
+      workout: workout
+    });
+  };
+
+  getMuscleGroups = () => {
+    let muscleGroups = JSON.parse(this.props.muscleGroups);
+    let groups = [];
+
+    if (muscleGroups !== null && muscleGroups.length > 1) {
+      groups = muscleGroups.join(", ");
+    } else if (muscleGroups !== null && muscleGroups.length === 1) {
+      groups = muscleGroups;
     }
 
-    componentDidMount = () => {
-        let workout = JSON.parse(this.props.workout);
+    this.setState({
+      muscleGroups: groups
+    });
+  };
 
-        this.getMuscleGroups();
+  openModal = () => {
+    this.setState({
+      openModal: true
+    });
+  };
 
-        this.setState({
-            userId: this.props.userId,
-            workout: workout,
-        });
+  closeModal = () => {
+    this.setState({
+      openModal: false
+    });
+  };
+
+  updateLift = event => {
+    event.preventDefault();
+
+    let liftId = this.props.id;
+    sessionStorage.setItem("id", liftId);
+
+    let updateLift = false;
+    let updateGen = false;
+
+    if (
+      this.props.generator === "Standard" ||
+      this.props.generator === "Non-generated"
+    ) {
+      updateLift = true;
+    } else {
+      updateGen = true;
     }
 
-    getMuscleGroups = () => {
-        let muscleGroups = JSON.parse(this.props.muscleGroups);
-        let groups = [];
-        
-        if (muscleGroups !== null && muscleGroups.length > 1) {
-            groups = muscleGroups.join(", ");
-        }
-        else if (muscleGroups !== null && muscleGroups.length === 1) {
-            groups = muscleGroups;
-        }
+    this.setState({
+      updateLift: updateLift,
+      updateGen: updateGen
+    });
+  };
 
-        this.setState({
-            muscleGroups: groups,
-        });
+  deleteLift = event => {
+    event.preventDefault();
+
+    let confirm = window.confirm("Delete this workout?");
+
+    if (confirm) {
+      this.props.deleteActivity(this.props.id);
     }
+  };
 
-    openModal = () => {
-        this.setState({
-            openModal: true,
-        });
-    }
+  render() {
+    return (
+      <span>
+        <div className="d-flex flex-row actCard" onClick={this.openModal}>
+          <div
+            className={`liftIcon border-${this.props.generator.toLowerCase()}`}
+          >
+            <FontAwesomeIcon className="fa-2x icon" icon={faDumbbell} />
+          </div>
+          <div className="cell">
+            <span className="cellDesc">Name</span>
+            {this.props.firstName}
+          </div>
+          <div className="cell">
+            <span className="cellDesc">Date</span>
+            {this.props.date}
+          </div>
+          <div className="cell">
+            <span className="cellDesc">Generator</span>
+            {this.props.generator}
+          </div>
+          <div className="cell cell4">
+            <span className="cellDesc">Time</span>
+            {this.props.duration}
+          </div>
+          <div className={`cell cell5 cell-muscleGroups`}>
+            <span className="cellDesc">Muscle Grps.</span>
+            {this.state.muscleGroups}
+          </div>
+          <div className="cell cell6">
+            <span className="cellDesc">Push-Ups</span>
+            {this.props.pushups}
+          </div>
+          <div className="cell cell7">
+            <span className="cellDesc">Pull-Ups</span>
+            {this.props.pullups}
+          </div>
+          <div className="cell cell8 actNotes">
+            <span className="cellDesc">Notes</span>
+            {this.props.notes}
+          </div>
+        </div>
 
-    closeModal = () => {
-        this.setState({
-            openModal: false,
-        });
-    }
+        {this.state.updateLift ? (
+          <Redirect
+            to={{
+              pathname: "/updateLift"
+            }}
+          />
+        ) : (
+          <></>
+        )}
 
-    updateLift = (event) => {
-        event.preventDefault();
+        {this.state.updateGen ? (
+          <Redirect
+            to={{
+              pathname: "/updateGen"
+            }}
+          />
+        ) : (
+          <></>
+        )}
 
-        let liftId = this.props.id;
-        sessionStorage.setItem("id", liftId);
+        {this.state.openModal ? (
+          <Modal open={this.state.openModal} onClose={this.closeModal}>
+            {/* ICON, DATE */}
+            <div className="">
+              <FontAwesomeIcon
+                className="fa-3x liftIcon dataIcon"
+                icon={faDumbbell}
+              />
+              <h5 className="dataPoint-xl">
+                {this.props.firstName} | {this.props.date}
+              </h5>
+            </div>
 
-        let updateLift = false; 
-        let updateGen = false;
-
-        if (this.props.generator === "Standard" || this.props.generator === "Non-generated") {
-            updateLift = true;
-        }
-        else {
-            updateGen = true;
-        }
-
-        this.setState({
-            updateLift: updateLift,
-            updateGen: updateGen,
-        });
-    }
-
-    deleteLift = (event) => {
-        event.preventDefault();
-
-        let confirm = window.confirm("Delete this workout?");
-
-        if (confirm) {
-            this.props.deleteActivity(this.props.id);
-        }
-    }
-
-    render() {
-        return (
-            <span>
-                <div className="d-flex flex-row actCard" onClick={this.openModal}>
-                    <div className={`liftIcon border-${this.props.generator.toLowerCase()}`}><FontAwesomeIcon className="fa-2x icon" icon={faDumbbell} /></div>
-                    <div className="cell"><span className="cellDesc">Name</span>{this.props.firstName}</div>
-                    <div className="cell"><span className="cellDesc">Date</span>{this.props.date}</div>
-                    <div className="cell"><span className="cellDesc">Generator</span>{this.props.generator}</div>
-                    <div className="cell cell4"><span className="cellDesc">Time</span>{this.props.duration}</div>
-                    <div className={`cell cell5 cell-muscleGroups`}><span className="cellDesc">Muscle Grps.</span>{this.state.muscleGroups}</div>
-                    <div className="cell cell6"><span className="cellDesc">Push-Ups</span>{this.props.pushups}</div>
-                    <div className="cell cell7"><span className="cellDesc">Pull-Ups</span>{this.props.pullups}</div>
-                    <div className="cell cell8 actNotes"><span className="cellDesc">Notes</span>{this.props.notes}</div>
+            {/* DATA */}
+            <div>
+              <div className="d-flex flex-column">
+                <div className="border-bottom">
+                  <div className="dataTitle">Location</div>
+                  <div className="dataPoint">{this.props.location}</div>
                 </div>
+                <div className="border-bottom">
+                  <div className="dataTitle">Time of Day</div>
+                  <div className="dataPoint">{this.props.time}</div>
+                </div>
+                <div className="border-bottom">
+                  <div className="dataTitle">Duration</div>
+                  <div className="dataPoint">{this.props.duration}</div>
+                </div>
+                <div className="border-bottom">
+                  <div className="dataTitle">Generator</div>
+                  <div className="dataPoint">{this.props.generator}</div>
+                </div>
+                <div className="border-bottom">
+                  <div className="dataTitle">Push-Ups</div>
+                  <div className="dataPoint">{this.props.pushups}</div>
+                </div>
+                <div className="border-bottom">
+                  <div className="dataTitle">Pull-Ups</div>
+                  <div className="dataPoint">{this.props.pullups}</div>
+                </div>
+                <div className="border-bottom">
+                  <div className="dataTitle">Muscle Groups</div>
+                  <div className="dataPoint">
+                    {this.props.muscleGroups ? (
+                      JSON.parse(this.props.muscleGroups).map(group => (
+                        <span key={group} className="mg">
+                          {group}
+                        </span>
+                      ))
+                    ) : (
+                      <></>
+                    )}
+                  </div>
+                </div>
+                <div className="border-bottom">
+                  <div className="dataTitle">Notes</div>
+                  <div className="dataPoint dataPoint-notes">
+                    {this.props.notes}
+                  </div>
+                </div>
+              </div>
+            </div>
 
-                {this.state.updateLift ? (
-                    <Redirect 
-                        to={{
-                            pathname: "/updateLift",
-                        }}
-                    />
-                ) : (
-                    <></>
-                )}
+            <div className="liftWorkout">
+              <h5>Workout</h5>
+              {this.state.workout && this.state.workout.length > 0 ? (
+                this.state.workout.map(set => (
+                  <LiftDetailSet key={Math.random() * 100000} set={set} />
+                ))
+              ) : (
+                <></>
+              )}
+            </div>
 
-                {this.state.updateGen ? (
-                    <Redirect 
-                        to={{
-                            pathname: "/updateGen",
-                        }}
-                    />
-                ) : (
-                    <></>
-                )}
-
-                {this.state.openModal ? (
-                    <Modal 
-                        open={this.state.openModal}
-                        onClose={this.closeModal}
-                    >
-                        {/* ICON, DATE */}
-                        <div className="">
-                            <FontAwesomeIcon className="fa-3x liftIcon dataIcon" icon={faDumbbell} />
-                            <h5 className="dataPoint-xl">{this.props.firstName} | {this.props.date}</h5>
-                        </div>
-
-                        {/* DATA */}
-                        <div>
-                            <div className="d-flex flex-column">
-                                <div className="border-bottom">
-                                    <div className="dataTitle">Location</div>
-                                    <div className="dataPoint">{this.props.location}</div>
-                                </div>
-                                <div className="border-bottom">
-                                    <div className="dataTitle">Time of Day</div>
-                                    <div className="dataPoint">{this.props.time}</div>
-                                </div>
-                                <div className="border-bottom">
-                                    <div className="dataTitle">Duration</div>
-                                    <div className="dataPoint">{this.props.duration}</div>
-                                </div>
-                                <div className="border-bottom">
-                                    <div className="dataTitle">Generator</div>
-                                    <div className="dataPoint">{this.props.generator}</div>
-                                </div>
-                                <div className="border-bottom">
-                                    <div className="dataTitle">Push-Ups</div>
-                                    <div className="dataPoint">{this.props.pushups}</div>
-                                </div>
-                                <div className="border-bottom">
-                                    <div className="dataTitle">Pull-Ups</div>
-                                    <div className="dataPoint">{this.props.pullups}</div>
-                                </div>
-                                <div className="border-bottom">
-                                    <div className="dataTitle">Muscle Groups</div>
-                                    <div className="dataPoint">{this.props.muscleGroups ? (
-                                        JSON.parse(this.props.muscleGroups).map(group => (
-                                            <span key={group} className="mg">{group}</span>
-                                        ))
-                                    ) : (
-                                        <></>
-                                    )}
-                                    </div>
-                                </div>
-                                <div className="border-bottom">
-                                    <div className="dataTitle">Notes</div>
-                                    <div className="dataPoint dataPoint-notes">{this.props.notes}</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="liftWorkout">
-                            <h5>Workout</h5>
-                            {this.state.workout && this.state.workout.length > 0 ? (
-                                this.state.workout.map(set => (
-                                    <LiftDetailSet
-                                        key={Math.random() * 100000}
-                                        set={set}
-                                    />
-                                ))
-                            ) : (
-                                <></>
-                            )}
-                        </div>
-
-                        {this.props.userId === localStorage.getItem("userId") ? (
+            {/* {this.props.userId === localStorage.getItem("userId") ? (
                             <span>
                                 <button className="btn btn-danger btn-sm deleteActivity" onClick={this.deleteLift}>Delete Workout</button>
                                 <button className="btn btn-success btn-sm updateActivity" onClick={this.updateLift}>Update</button>
                             </span>
                         ) : (
                             <></>
-                        )}
-                    </Modal>
-                ) : (
-                    <></>
-                )}
-            </span>
-        )
-    }
+                        )} */}
+          </Modal>
+        ) : (
+          <></>
+        )}
+      </span>
+    );
+  }
 }
 
 export default Lift;
