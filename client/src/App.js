@@ -408,7 +408,7 @@ class App extends Component {
 
     hofAPI.getMaxRestDays().then(res => {
       let min = this.getMinimum(res.data);
-      let dateNum = moment().dayOfYear();
+      let dateNum = 365;
       let minVal = dateNum - min[1];
       hofAPI.updateHof("mostRestDays", min[0], minVal);
     });
