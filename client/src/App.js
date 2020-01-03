@@ -37,7 +37,12 @@ import "./App.css";
 
 import moment from "moment";
 
-const FIRSTDOW = "2019-12-30";
+let week = moment().week();
+const FIRSTDOW = moment()
+  .year(2020)
+  .day("Monday")
+  .week(week)
+  .format("YYYY-MM-DD");
 
 class App extends Component {
   constructor(props) {
