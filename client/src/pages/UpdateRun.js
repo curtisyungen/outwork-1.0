@@ -6,634 +6,667 @@ import shoeAPI from "../utils/shoeAPI";
 import "./SubmitRun.css";
 
 class UpdateRun extends Component {
+  constructor(props) {
+    super(props);
 
-    constructor(props) {
-        super(props);
+    this.state = {
+      runId: null,
+      userId: null,
+      date: null,
+      time: null,
+      distance: null,
+      duration: null,
+      ttlMins: null,
+      milePace: null,
+      runType: "Training",
+      repeats: [{ id: 0, distance: "", time: "", rest: "" }],
+      race: null,
+      location: null,
+      surface: null,
+      weather: null,
+      climb: null,
+      grade: 0.0,
+      shoe: "",
+      shoes: null,
+      notes: null,
+      map: null
+    };
+  }
 
-        this.state = {
-            runId: null,
-            userId: null,
-            date: null,
-            time: null,
-            distance: null,
-            duration: null,
-            ttlMins: null,
-            milePace: null,
-            runType: "Training",
-            repeats: [{"id":0,"distance":"","time":"","rest":""}],
-            race: null,
-            location: null,
-            surface: null,
-            weather: null,
-            climb: null,
-            grade: 0.00,
-            shoe: "",
-            shoes: null,
-            notes: null,
-            map: null,
+  componentDidMount = () => {
+    this.props.checkValidUser();
+
+    let runId = sessionStorage.getItem("id");
+
+    workoutAPI.getRunById(runId).then(res => {
+      let run = res.data;
+
+      console.log(res.data);
+
+      this.setState(
+        {
+          runId: runId,
+          userId: run.userId,
+          date: run.date,
+          time: run.time,
+          distance: run.distance,
+          duration: run.duration,
+          ttlMins: run.ttlMins,
+          milePace: run.milePace,
+          runType: run.runType,
+          repeats: JSON.parse(run.repeats),
+          race: run.race,
+          location: run.location,
+          surface: run.surface,
+          weather: run.weather,
+          climb: run.climb,
+          grade: run.grade,
+          shoe: run.shoe,
+          notes: run.notes,
+          map: run.map
+        },
+        () => {
+          this.getShoes();
         }
+      );
+    });
+  };
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+
+    this.setState({
+      [name]: value
+    });
+  };
+
+  validateRunForm = () => {
+    let date = this.state.date;
+    let dist = this.state.distance;
+    let time = this.state.duration;
+
+    if (date === null || date === "" || date.length < 10) {
+      alert("Inputted date is not valid.");
+      return false;
     }
 
-    componentDidMount = () => {
-        this.props.checkValidUser();
-
-        let runId = sessionStorage.getItem("id");
-
-        workoutAPI.getRunById(runId)
-            .then((res) => {
-
-                let run = res.data;
-
-                console.log(res.data);
-
-                this.setState({
-                    runId: runId,
-                    userId: run.userId,
-                    date: run.date,
-                    time: run.time,
-                    distance: run.distance,
-                    duration: run.duration,
-                    ttlMins: run.ttlMins,
-                    milePace: run.milePace,
-                    runType: run.runType,
-                    repeats: JSON.parse(run.repeats),
-                    race: run.race,
-                    location: run.location,
-                    surface: run.surface,
-                    weather: run.weather,
-                    climb: run.climb,
-                    grade: run.grade,
-                    shoe: run.shoe,
-                    notes: run.notes,
-                    map: run.map,
-                }, () => {
-                    this.getShoes();
-                });
-            });
+    if (dist === null || dist === "" || dist < 0 || isNaN(dist)) {
+      alert("Distance must be a positive integer.");
+      return false;
     }
 
-    handleInputChange = (event) => {
-        const { name, value } = event.target;
-
-        this.setState({
-            [name]: value,
-        });
+    if (time === null || time === "" || time.length < 8) {
+      alert("Duration must be in hh:mm:ss format.");
+      return false;
     }
 
-    validateRunForm = () => {
-        let date = this.state.date;
-        let dist = this.state.distance;
-        let time = this.state.duration;
+    return true;
+  };
 
-        if (date === null || date === "" || date.length < 10) {
-            alert("Inputted date is not valid.");
-            return false;
-        }
+  getMilePace = () => {
+    let milePace, hours, minutes, seconds, totalMinutes;
+    let paceMins, paceSecs;
+    let addZeroSecs = "";
 
-        if (dist === null || dist === "" || dist < 0 || isNaN(dist)) {
-            alert("Distance must be a positive integer.");
-            return false;
-        }
+    if (Number(this.state.distance) && this.state.duration) {
+      hours = parseFloat(this.state.duration.split(":")[0]);
+      minutes = parseFloat(this.state.duration.split(":")[1]);
+      seconds = parseFloat(this.state.duration.split(":")[2]);
 
-        if (time === null || time === "" || time.length < 8) {
-            alert("Duration must be in hh:mm:ss format.");
-            return false;
-        }
+      totalMinutes = hours * 60 + minutes + seconds / 60;
 
-        return true;
+      paceMins = Math.floor(totalMinutes / this.state.distance);
+      paceSecs = Math.round(
+        (totalMinutes / this.state.distance - paceMins) * 60
+      );
+
+      if (paceSecs < 10) {
+        addZeroSecs = 0;
+      }
+
+      milePace = `${paceMins}:${addZeroSecs}${paceSecs}`;
+
+      this.setState({
+        milePace: milePace,
+        ttlMins: Math.round((totalMinutes * 100) / 100)
+      });
+    }
+  };
+
+  addRepeat = () => {
+    let repeats = this.state.repeats;
+
+    let maxId = -1;
+    for (var r in repeats) {
+      if (repeats[r].id > maxId) {
+        maxId = parseInt(repeats[r].id);
+      }
     }
 
-    getMilePace = () => {
-        let milePace, hours, minutes, seconds, totalMinutes;
-        let paceMins, paceSecs;
-        let addZeroSecs = "";
+    let repeat = {
+      id: maxId + 1,
+      distance: "",
+      time: "",
+      rest: ""
+    };
 
-        if (Number(this.state.distance) && this.state.duration) {
-            hours = parseFloat(this.state.duration.split(":")[0]);
-            minutes = parseFloat(this.state.duration.split(":")[1]);
-            seconds = parseFloat(this.state.duration.split(":")[2]);
+    repeats.push(repeat);
 
-            totalMinutes = (hours * 60) + minutes + (seconds / 60);
+    this.setState({
+      repeats: repeats
+    });
+  };
 
-            paceMins = Math.floor(totalMinutes / this.state.distance);
-            paceSecs = Math.round(((totalMinutes / this.state.distance) - paceMins) * 60);
+  deleteRepeat = repeat => {
+    let repeats = this.state.repeats;
+    let idx;
 
-            if (paceSecs < 10) {
-                addZeroSecs = 0;
-            }
-
-            milePace = `${paceMins}:${addZeroSecs}${paceSecs}`;
-
-            this.setState({
-                milePace: milePace,
-                ttlMins: Math.round((totalMinutes * 100) / 100),
-            });
-        }
+    for (var i = 0; i < repeats.length; i++) {
+      if (repeats[i].id === repeat) {
+        idx = i;
+      }
     }
 
-    addRepeat = () => {
-        let repeats = this.state.repeats;
+    repeats.splice(idx, 1);
 
-        let maxId = -1;
-        for (var r in repeats) {
-            if (repeats[r].id > maxId) {
-                maxId = parseInt(repeats[r].id);
-            }
-        }
+    this.setState({
+      repeats: repeats
+    });
+  };
 
-        let repeat = {
-            id: maxId + 1,
-            distance: "",
-            time: "",
-            rest: "",
-        }
+  getRepeat = repeat => {
+    let repeats = this.state.repeats;
+    let idx = -1;
 
-        repeats.push(repeat);
-
-        this.setState({
-            repeats: repeats,
-        });
+    for (var r in repeats) {
+      if (repeats[r].id === repeat.id) {
+        idx = r;
+      }
     }
 
-    deleteRepeat = (repeat) => {
-        let repeats = this.state.repeats;
-        let idx;
+    if (idx > -1) {
+      repeats[idx] = repeat;
+    } else {
+      repeats.push(repeat);
+    }
 
-        for (var i = 0; i < repeats.length; i++) {
-            if (repeats[i].id === repeat) {
-                idx = i;
-            }
+    this.setState({
+      repeats: repeats
+    });
+  };
+
+  setWeather = weather => {
+    this.setState({
+      weather: weather
+    });
+  };
+
+  getGrade = () => {
+    let distance = this.state.distance;
+    let climb = this.state.climb;
+    let grade = Math.round((climb / (distance * 5280)) * 100 * 100) / 100;
+
+    this.setState({
+      grade: grade
+    });
+  };
+
+  getShoes = () => {
+    shoeAPI.getShoesByUserId(this.state.userId).then(res => {
+      this.setState({
+        shoes: res.data
+      });
+    });
+  };
+
+  submitRun = () => {
+    return;
+    this.props.checkValidUser();
+
+    if (this.validateRunForm()) {
+      let runData = {
+        workoutType: "run",
+        userId: this.state.userId,
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        date: this.state.date,
+        time: this.state.time,
+        location: this.state.location,
+        distance: this.state.distance,
+        duration: this.state.duration,
+        ttlMins: this.state.ttlMins,
+        milePace: this.state.milePace,
+        runType: this.state.runType,
+        laps: null,
+        repeats: JSON.stringify(this.state.repeats),
+        race: this.state.race,
+        surface: this.state.surface,
+        weather: this.state.weather,
+        climb: this.state.climb,
+        grade: this.state.grade,
+        shoe: this.state.shoe,
+        bike: null,
+        generator: null,
+        pushups: null,
+        pullups: null,
+        workout: null,
+        muscleGroups: null,
+        notes: this.state.notes,
+        map: this.state.map
+      };
+
+      let runId = this.state.runId;
+
+      workoutAPI.updateWorkout(runId, runData).then(res => {
+        if (res.status === 200) {
+          alert("Run updated!");
+          this.props.setRedirectToHome();
+        } else {
+          alert("Error updating run.");
         }
+      });
+    }
+  };
 
-        repeats.splice(idx, 1);
+  // REPEATS
+  // ==================================
 
-        this.setState({
-            repeats: repeats,
-        });
+  setDist = (id, dist) => {
+    let repeats = this.state.repeats;
+
+    for (var r in repeats) {
+      if (repeats[r].id === id) {
+        repeats[r].distance = dist;
+      }
     }
 
-    getRepeat = (repeat) => {
-        let repeats = this.state.repeats;
-        let idx = -1;
+    this.setState({
+      repeats: repeats
+    });
+  };
 
-        for (var r in repeats) {
-            if (repeats[r].id === repeat.id) {
-                idx = r;
-            }
-        }
+  setTime = (id, time) => {
+    let repeats = this.state.repeats;
 
-        if (idx > -1) {
-            repeats[idx] = repeat;
-        }
-        else {
-            repeats.push(repeat);
-        }
-
-        this.setState({
-            repeats: repeats,
-        });
+    for (var r in repeats) {
+      if (repeats[r].id === id) {
+        repeats[r].time = time;
+      }
     }
 
-    setWeather = (weather) => {
-        this.setState({
-            weather: weather,
-        });
-    }
-    
-    getGrade = () => {
-        let distance = this.state.distance;
-        let climb = this.state.climb;
-        let grade = Math.round(((climb / (distance * 5280)) * 100) * 100) / 100;
+    this.setState({
+      repeats: repeats
+    });
+  };
 
-        this.setState({
-            grade: grade,
-        });
+  setRest = (id, rest) => {
+    let repeats = this.state.repeats;
+
+    for (var r in repeats) {
+      if (repeats[r].id === id) {
+        repeats[r].rest = rest;
+      }
     }
 
-    getShoes = () => {
-        shoeAPI.getShoesByUserId(this.state.userId)
-            .then((res) => {
-                this.setState({
-                    shoes: res.data,
-                });
-            });
-    }
+    this.setState({
+      repeats: repeats
+    });
+  };
 
-    submitRun = () => {
-        this.props.checkValidUser();
-        
-        if (this.validateRunForm()) {
-            let runData = {
-                workoutType: "run",
-                userId: this.state.userId,
-                firstName: this.state.firstName,
-                lastName: this.state.lastName,
-                date: this.state.date,
-                time: this.state.time,
-                location: this.state.location,
-                distance: this.state.distance,
-                duration: this.state.duration,
-                ttlMins: this.state.ttlMins,
-                milePace: this.state.milePace,
-                runType: this.state.runType,
-                laps: null,
-                repeats: JSON.stringify(this.state.repeats),
-                race: this.state.race,
-                surface: this.state.surface,
-                weather: this.state.weather,
-                climb: this.state.climb,
-                grade: this.state.grade,
-                shoe: this.state.shoe,
-                bike: null,
-                generator: null,
-                pushups: null,
-                pullups: null,
-                workout: null,
-                muscleGroups: null,
-                notes: this.state.notes,
-                map: this.state.map,
-            }
+  render() {
+    return (
+      <div className="container pageContainer submitContainer">
+        <div>
+          <div className="titleBar">
+            <h4>Update Run</h4>
+          </div>
 
-            let runId = this.state.runId;
+          <div>
+            {/* DATE */}
+            <div className="input-group input-group-sm mb-3">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="inputGroup-sizing-sm">
+                  Date*
+                </span>
+              </div>
+              <input
+                autoComplete="off"
+                name="date"
+                type="date"
+                className="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm"
+                onChange={this.handleInputChange}
+                defaultValue={this.state.date}
+              />
+            </div>
 
-            workoutAPI.updateWorkout(runId, runData)
-                .then((res) => {
-                    if (res.status === 200) {
-                        alert("Run updated!");
-                        this.props.setRedirectToHome();
-                    }
-                    else {
-                        alert("Error updating run.");
-                    }
-                });
-        }
-    }
+            {/* TIME */}
+            <div className="input-group input-group-sm mb-3">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="inputGroup-sizing-sm">
+                  Time of Day
+                </span>
+              </div>
+              <input
+                autoComplete="off"
+                name="time"
+                type="text"
+                className="form-control"
+                placeholder="3:00pm"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm"
+                onChange={this.handleInputChange}
+                defaultValue={this.state.time}
+              />
+            </div>
 
-    // REPEATS
-    // ==================================
+            {/* LOCATION */}
+            <div className="input-group input-group-sm mb-3">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="inputGroup-sizing-sm">
+                  Location
+                </span>
+              </div>
+              <input
+                autoComplete="off"
+                name="location"
+                type="text"
+                className="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm"
+                onChange={this.handleInputChange}
+                defaultValue={this.state.location}
+              />
+            </div>
 
-    setDist = (id, dist) => {
-        let repeats = this.state.repeats;
+            {/* DISTANCE */}
+            <div className="input-group input-group-sm mb-3">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="inputGroup-sizing-sm">
+                  Miles*
+                </span>
+              </div>
+              <input
+                autoComplete="off"
+                name="distance"
+                type="text"
+                className="form-control"
+                placeholder="Miles"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm"
+                onChange={this.handleInputChange}
+                defaultValue={this.state.distance}
+                onBlur={() => {
+                  this.getMilePace();
+                  this.getGrade();
+                }}
+              />
+            </div>
 
-        for (var r in repeats) {
-            if (repeats[r].id === id) {
-                repeats[r].distance = dist;
-            }
-        }
+            {/* DURATION */}
+            <div className="input-group input-group-sm mb-3">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="inputGroup-sizing-sm">
+                  Duration*
+                </span>
+              </div>
+              <input
+                autoComplete="off"
+                name="duration"
+                type="text"
+                className="form-control"
+                placeholder="hh:mm:ss"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm"
+                onChange={this.handleInputChange}
+                onBlur={this.getMilePace}
+                defaultValue={this.state.duration}
+              />
+              {/* MILE PACE */}
+              <div className="col-md-2 input-group-text milePace">
+                {this.state.milePace}
+              </div>
+            </div>
 
-        this.setState({
-            repeats: repeats,
-        });
-    }
+            {/* RUN TYPE */}
+            <div className="input-group input-group-sm mb-3">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="inputGroup-sizing-sm">
+                  Run Type
+                </span>
+              </div>
+              <select
+                className="browser-default custom-select"
+                autoComplete="off"
+                name="runType"
+                type="text"
+                aria-describedby="inputGroup-sizing-sm"
+                onChange={this.handleInputChange}
+                value={this.state.runType}
+              >
+                <option value=""></option>
+                <option value="Repeats">Repeats</option>
+                <option value="Race">Race</option>
+              </select>
+            </div>
 
-    setTime = (id, time) => {
-        let repeats = this.state.repeats;
+            {/* REPEATS */}
+            {this.state.runType === "Repeats" ? (
+              this.state.repeats.map(repeat => (
+                <RunRepeat
+                  key={repeat.id}
+                  id={repeat.id}
+                  distance={repeat.distance}
+                  time={repeat.time}
+                  rest={repeat.rest}
+                  getRepeat={this.getRepeat}
+                  deleteRepeat={this.deleteRepeat}
+                  setDist={this.setDist}
+                  setTime={this.setTime}
+                  setRest={this.setRest}
+                />
+              ))
+            ) : (
+              <></>
+            )}
 
-        for (var r in repeats) {
-            if (repeats[r].id === id) {
-                repeats[r].time = time;
-            }
-        }
+            {/* ADD REPEAT BUTTON */}
+            {this.state.runType === "Repeats" ? (
+              <div className="addRepeatBtn">
+                <button
+                  className="btn btn-dark btn-sm"
+                  onClick={this.addRepeat}
+                >
+                  Add Repeat
+                </button>
+              </div>
+            ) : (
+              <></>
+            )}
 
-        this.setState({
-            repeats: repeats,
-        });
-    }
+            {/* RACE */}
+            {this.state.runType === "Race" ? (
+              <div className="input-group input-group-sm mb-3">
+                <div className="input-group-prepend">
+                  <span className="input-group-text" id="inputGroup-sizing-sm">
+                    Race Name
+                  </span>
+                </div>
+                <input
+                  autoComplete="off"
+                  name="race"
+                  type="text"
+                  className="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-sm"
+                  onChange={this.handleInputChange}
+                  defaultValue={this.state.race}
+                />
+              </div>
+            ) : (
+              <></>
+            )}
 
-    setRest = (id, rest) => {
-        let repeats = this.state.repeats;
+            {/* SURFACE */}
+            <div className="input-group input-group-sm mb-3">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="inputGroup-sizing-sm">
+                  Surface
+                </span>
+              </div>
+              <select
+                className="browser-default custom-select"
+                autoComplete="off"
+                name="surface"
+                type="text"
+                aria-describedby="inputGroup-sizing-sm"
+                onChange={this.handleInputChange}
+                value={this.state.surface}
+              >
+                <option value=""></option>
+                <option value="Street">Street</option>
+                <option value="Bike Path">Bike Path</option>
+                <option value="Track">Track</option>
+                <option value="Trail">Trail</option>
+                <option value="Dirt Road">Dirt Road</option>
+                <option value="Grass">Grass</option>
+                <option value="Beach">Beach</option>
+                <option value="Treadmill">Treadmill</option>
+              </select>
+            </div>
 
-        for (var r in repeats) {
-            if (repeats[r].id === id) {
-                repeats[r].rest = rest;
-            }
-        }
+            {/* WEATHER */}
+            <div className="input-group input-group-sm mb-3">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="inputGroup-sizing-sm">
+                  Weather
+                </span>
+                <WeatherIcons
+                  setWeather={this.setWeather}
+                  selected={this.state.weather}
+                />
+              </div>
+            </div>
 
-        this.setState({
-            repeats: repeats,
-        });
-    }
+            {/* CLIMB */}
+            <div className="input-group input-group-sm mb-3">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="inputGroup-sizing-sm">
+                  Climb
+                </span>
+              </div>
+              <input
+                autoComplete="off"
+                name="climb"
+                type="text"
+                className="form-control"
+                placeholder="feet"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm"
+                onChange={this.handleInputChange}
+                onBlur={this.getGrade}
+                defaultValue={this.state.climb}
+              />
+              {/* GRADE */}
+              <div className="col-md-2 input-group-text grade">
+                {this.state.grade}%
+              </div>
+            </div>
 
-    render() {
-        return (
-            <div className="container pageContainer submitContainer">
+            {/* SHOE */}
+            {this.state.shoes && this.state.shoes.length > 0 ? (
+              <div className="input-group input-group-sm mb-3">
+                <div className="input-group-prepend">
+                  <span className="input-group-text" id="inputGroup-sizing-sm">
+                    Footwear
+                  </span>
+                </div>
+                <select
+                  className="browser-default custom-select"
+                  autoComplete="off"
+                  name="shoe"
+                  type="text"
+                  aria-describedby="inputGroup-sizing-sm"
+                  onChange={this.handleInputChange}
+                  defaultValue={this.state.shoe}
+                >
+                  <option value=""></option>
+                  {this.state.shoes.map(shoe => (
+                    <option key={Math.random() * 1000000} value={shoe.shoe}>
+                      {shoe.shoe}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            ) : (
+              <div className="input-group input-group-sm mb-3">
+                <div className="input-group-prepend">
+                  <span className="input-group-text" id="inputGroup-sizing-sm">
+                    Footwear
+                  </span>
+                </div>
+                <input
+                  autoComplete="off"
+                  name="shoe"
+                  type="text"
+                  className="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-sm"
+                  onChange={this.handleInputChange}
+                  defaultValue={this.state.shoe}
+                />
+              </div>
+            )}
 
-                <div>
-                    <div className="titleBar">
-                        <h4>Update Run</h4>
-                    </div>
+            {/* NOTES */}
+            <div className="input-group input-group-sm mb-3">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="inputGroup-sizing-sm">
+                  Notes
+                </span>
+              </div>
+              <textarea
+                autoComplete="off"
+                name="notes"
+                type="text"
+                className="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm"
+                onChange={this.handleInputChange}
+                value={this.state.notes}
+              />
+            </div>
 
-                    <div>
-                        {/* DATE */}
-                        <div className="input-group input-group-sm mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-sm">Date*</span>
-                            </div>
-                            <input
-                                autoComplete="off"
-                                name="date"
-                                type="date"
-                                className="form-control"
-                                aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-sm"
-                                onChange={this.handleInputChange}
-                                defaultValue={this.state.date}
-                            />
-                        </div>
+            {/* MAP */}
+            <div className="input-group input-group-sm mb-3">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="inputGroup-sizing-sm">
+                  Link
+                </span>
+              </div>
+              <input
+                autoComplete="off"
+                name="map"
+                type="url"
+                className="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm"
+                onChange={this.handleInputChange}
+                defaultValue={this.state.map}
+              />
+            </div>
 
-                        {/* TIME */}
-                        <div className="input-group input-group-sm mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-sm">Time of Day</span>
-                            </div>
-                            <input
-                                autoComplete="off"
-                                name="time"
-                                type="text"
-                                className="form-control"
-                                placeholder="3:00pm"
-                                aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-sm"
-                                onChange={this.handleInputChange}
-                                defaultValue={this.state.time}
-                            />
-                        </div>
-
-                        {/* LOCATION */}
-                        <div className="input-group input-group-sm mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-sm">Location</span>
-                            </div>
-                            <input
-                                autoComplete="off"
-                                name="location"
-                                type="text"
-                                className="form-control"
-                                aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-sm"
-                                onChange={this.handleInputChange}
-                                defaultValue={this.state.location}
-                            />
-                        </div>
-
-                        {/* DISTANCE */}
-                        <div className="input-group input-group-sm mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-sm">Miles*</span>
-                            </div>
-                            <input
-                                autoComplete="off"
-                                name="distance"
-                                type="text"
-                                className="form-control"
-                                placeholder="Miles"
-                                aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-sm"
-                                onChange={this.handleInputChange}
-                                defaultValue={this.state.distance}
-                                onBlur={() => {
-                                    this.getMilePace();
-                                    this.getGrade();
-                                }}
-                            />
-                        </div>
-
-                        {/* DURATION */}
-                        <div className="input-group input-group-sm mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-sm">Duration*</span>
-                            </div>
-                            <input
-                                autoComplete="off"
-                                name="duration"
-                                type="text"
-                                className="form-control"
-                                placeholder="hh:mm:ss"
-                                aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-sm"
-                                onChange={this.handleInputChange}
-                                onBlur={this.getMilePace}
-                                defaultValue={this.state.duration}
-                            />
-                            {/* MILE PACE */}
-                            <div className="col-md-2 input-group-text milePace">
-                                {this.state.milePace}
-                            </div>
-                        </div>
-
-                        {/* RUN TYPE */}
-                        <div className="input-group input-group-sm mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-sm">Run Type</span>
-                            </div>
-                            <select
-                                className="browser-default custom-select"
-                                autoComplete="off"
-                                name="runType"
-                                type="text"
-                                aria-describedby="inputGroup-sizing-sm"
-                                onChange={this.handleInputChange}
-                                value={this.state.runType}
-                            >
-                                <option value=""></option>
-                                <option value="Repeats">Repeats</option>
-                                <option value="Race">Race</option>
-                            </select>
-                        </div>
-
-                        {/* REPEATS */}
-                        {this.state.runType === "Repeats" ? (
-                            this.state.repeats.map(repeat => (
-                                <RunRepeat
-                                    key={repeat.id}
-                                    id={repeat.id}
-                                    distance={repeat.distance}
-                                    time={repeat.time}
-                                    rest={repeat.rest}
-                                    getRepeat={this.getRepeat}
-                                    deleteRepeat={this.deleteRepeat}
-                                    setDist={this.setDist}
-                                    setTime={this.setTime}
-                                    setRest={this.setRest}
-                                />
-                            ))
-                        ) : (
-                                <></>
-                            )}
-
-                        {/* ADD REPEAT BUTTON */}
-                        {this.state.runType === "Repeats" ? (
-                            <div className="addRepeatBtn">
-                                <button className="btn btn-dark btn-sm" onClick={this.addRepeat}>Add Repeat</button>
-                            </div>
-                        ) : (
-                                <></>
-                            )}
-
-                        {/* RACE */}
-                        {this.state.runType === "Race" ? (
-                            <div className="input-group input-group-sm mb-3">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text" id="inputGroup-sizing-sm">Race Name</span>
-                                </div>
-                                <input
-                                    autoComplete="off"
-                                    name="race"
-                                    type="text"
-                                    className="form-control"
-                                    aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-sm"
-                                    onChange={this.handleInputChange}
-                                    defaultValue={this.state.race}
-                                />
-                            </div>
-                        ) : (
-                                <></>
-                            )}
-
-                        {/* SURFACE */}
-                        <div className="input-group input-group-sm mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-sm">Surface</span>
-                            </div>
-                            <select
-                                className="browser-default custom-select"
-                                autoComplete="off"
-                                name="surface"
-                                type="text"
-                                aria-describedby="inputGroup-sizing-sm"
-                                onChange={this.handleInputChange}
-                                value={this.state.surface}
-                            >
-                                <option value=""></option>
-                                <option value="Street">Street</option>
-                                <option value="Bike Path">Bike Path</option>
-                                <option value="Track">Track</option>
-                                <option value="Trail">Trail</option>
-                                <option value="Dirt Road">Dirt Road</option>
-                                <option value="Grass">Grass</option>
-                                <option value="Beach">Beach</option>
-                                <option value="Treadmill">Treadmill</option>
-                            </select>
-                        </div>
-
-                        {/* WEATHER */}
-                        <div className="input-group input-group-sm mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-sm">Weather</span>
-                                <WeatherIcons
-                                    setWeather={this.setWeather}
-                                    selected={this.state.weather}
-                                />
-                            </div>
-                        </div>
-
-                        {/* CLIMB */}
-                        <div className="input-group input-group-sm mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-sm">Climb</span>
-                            </div>
-                            <input
-                                autoComplete="off"
-                                name="climb"
-                                type="text"
-                                className="form-control"
-                                placeholder="feet"
-                                aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-sm"
-                                onChange={this.handleInputChange}
-                                onBlur={this.getGrade}
-                                defaultValue={this.state.climb}
-                            />
-                            {/* GRADE */}
-                            <div className="col-md-2 input-group-text grade">
-                                {this.state.grade}%
-                            </div>
-                        </div>
-
-                        {/* SHOE */}
-                        {this.state.shoes && this.state.shoes.length > 0 ? (
-                            <div className="input-group input-group-sm mb-3">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text" id="inputGroup-sizing-sm">Footwear</span>
-                                </div>
-                                <select
-                                    className="browser-default custom-select"
-                                    autoComplete="off"
-                                    name="shoe"
-                                    type="text"
-                                    aria-describedby="inputGroup-sizing-sm"
-                                    onChange={this.handleInputChange}
-                                    defaultValue={this.state.shoe}
-                                >
-                                    <option value=""></option>
-                                    {this.state.shoes.map(shoe => (
-                                        <option key={Math.random() * 1000000} value={shoe.shoe}>{shoe.shoe}</option>
-                                    ))}
-                                </select>
-                            </div>
-                        ) : (
-                            <div className="input-group input-group-sm mb-3">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text" id="inputGroup-sizing-sm">Footwear</span>
-                                </div>
-                                <input
-                                    autoComplete="off"
-                                    name="shoe"
-                                    type="text"
-                                    className="form-control"
-                                    aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-sm"
-                                    onChange={this.handleInputChange}
-                                    defaultValue={this.state.shoe}
-                                />
-                            </div>
-                        )}
-
-                        {/* NOTES */}
-                        <div className="input-group input-group-sm mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-sm">Notes</span>
-                            </div>
-                            <textarea
-                                autoComplete="off"
-                                name="notes"
-                                type="text"
-                                className="form-control"
-                                aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-sm"
-                                onChange={this.handleInputChange}
-                                value={this.state.notes}
-                            />
-                        </div>
-
-                        {/* MAP */}
-                        <div className="input-group input-group-sm mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-sm">Link</span>
-                            </div>
-                            <input
-                                autoComplete="off"
-                                name="map"
-                                type="url"
-                                className="form-control"
-                                aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-sm"
-                                onChange={this.handleInputChange}
-                                defaultValue={this.state.map}
-                            />
-                        </div>
-
-                        {localStorage.getItem("userId") === "834292GU" ? (
+            {/* {localStorage.getItem("userId") === "834292GU" ? (
                             <></>
                         ) : (
                             <button className="btn btn-primary" onClick={this.submitRun}>Submit</button>
-                        )}
-                    </div>
-                </div>
-            </div>
-        )
-    }
+                        )} */}
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default UpdateRun;
