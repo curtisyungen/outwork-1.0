@@ -64,8 +64,11 @@ class App extends Component {
       background: "tiles",
       resetEmail: null,
       displayOpt: "Recent",
-      message:
-        "This version of Outwork is obsolete as of 01/01/2020. View the latest version here: https://outwork-cjy.herokuapp.com.",
+      message: `This version of Outwork is obsolete as of 01/01/2020. View the latest version here: ${(
+        <a href="https://outwork-cjy.herokuapp.com" target="_blank">
+          https://outwork-cjy.herokuapp.com
+        </a>
+      )}.`,
       weekWorkouts: null,
       weekTime: null,
       weekUniqueWorkouts: null,
