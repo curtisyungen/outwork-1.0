@@ -1,5 +1,10 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import React, { Component } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
 import Modal from "react-responsive-modal";
 import Navbar from "./components/Navbar/navbar";
 import Banner from "./components/Banner/banner";
@@ -28,14 +33,13 @@ import Error from "./pages/Error";
 import userAPI from "./utils/userAPI";
 import workoutAPI from "./utils/workoutAPI";
 import hofAPI from "./utils/hofAPI";
-import './App.css';
+import "./App.css";
 
 import moment from "moment";
 
 const FIRSTDOW = "2019-12-30";
 
 class App extends Component {
-
   constructor(props) {
     super(props);
 
@@ -55,19 +59,19 @@ class App extends Component {
       background: "tiles",
       resetEmail: null,
       displayOpt: "Recent",
-      message: "",
+      message:
+        "This version of Outwork is obsolete as of 01/01/2020. View the latest version here: https://outwork-cjy.herokuapp.com.",
       weekWorkouts: null,
       weekTime: null,
       weekUniqueWorkouts: null,
-      firstDOW: null,
-    }
+      firstDOW: null
+    };
   }
 
   componentDidMount = () => {
-
     // this.correctMetrics();
 
-    // Check if logged in 
+    // Check if logged in
     let loginStatus = false;
     if (localStorage.getItem("isLoggedIn")) {
       loginStatus = JSON.parse(localStorage.getItem("isLoggedIn"));
@@ -75,10 +79,12 @@ class App extends Component {
 
     // Get background image from local storage or default to Tiles
     let background = "tiles";
-    if (localStorage.getItem("background") && localStorage.getItem("background") !== null) {
+    if (
+      localStorage.getItem("background") &&
+      localStorage.getItem("background") !== null
+    ) {
       background = localStorage.getItem("background");
-    }
-    else {
+    } else {
       localStorage.setItem("background", background);
     }
 
@@ -91,100 +97,102 @@ class App extends Component {
       redirectToHome: false,
       redirectToLanding: false,
       redirectToProfile: false,
-      background: background,
+      background: background
     });
 
     // Get userId from local storage
     let userId;
-    if (localStorage.getItem("userId") && localStorage.getItem("userId") !== null) {
+    if (
+      localStorage.getItem("userId") &&
+      localStorage.getItem("userId") !== null
+    ) {
       userId = localStorage.getItem("userId");
 
       // Verify userId
-      userAPI.getUserById(userId)
-        .then((res) => {
-          if (res.data > 0) {
-            localStorage.setItem("fn", res.data[0].firstName);
-            localStorage.setItem("ln", res.data[0].lastName);
-          }
-        });
+      userAPI.getUserById(userId).then(res => {
+        if (res.data > 0) {
+          localStorage.setItem("fn", res.data[0].firstName);
+          localStorage.setItem("ln", res.data[0].lastName);
+        }
+      });
     }
 
     this.updateHof();
     this.getChamp();
-  }
+  };
 
   // REDIRECTS
   // ==================================
 
   setRedirectToSignUp = () => {
     this.setState({
-      redirectToSignUp: true,
+      redirectToSignUp: true
     });
-  }
+  };
 
   setRedirectToLogin = () => {
     this.setState({
-      redirectToLogin: true,
+      redirectToLogin: true
     });
-  }
+  };
 
   setRedirectToPasswordReset = () => {
     this.setState({
-      redirectToPasswordReset: true,
+      redirectToPasswordReset: true
     });
-  }
+  };
 
   setRedirectToCreatePassword = () => {
     this.setState({
-      redirectToCreatePassword: true,
+      redirectToCreatePassword: true
     });
-  }
+  };
 
   setRedirectToHome = () => {
     this.setState({
-      redirectToHome: true,
+      redirectToHome: true
     });
-  }
+  };
 
   setRedirectToLanding = () => {
     this.setState({
-      redirectToLanding: true,
+      redirectToLanding: true
     });
-  }
+  };
 
   setRedirectToProfile = () => {
     this.setState({
-      redirectToProfile: true,
+      redirectToProfile: true
     });
-  }
+  };
 
   redirectToLanding = () => {
-    return <Redirect to="/" />
-  }
+    return <Redirect to="/" />;
+  };
 
   redirectToSignUp = () => {
-    return <Redirect to="/signUp" />
-  }
+    return <Redirect to="/signUp" />;
+  };
 
   redirectToLogin = () => {
-    return <Redirect to="/login" />
-  }
+    return <Redirect to="/login" />;
+  };
 
   redirectToPasswordReset = () => {
-    return <Redirect to="/reset" />
-  }
+    return <Redirect to="/reset" />;
+  };
 
   redirectToCreatePassword = () => {
-    return <Redirect to="/createPassword" />
-  }
+    return <Redirect to="/createPassword" />;
+  };
 
   redirectToHome = () => {
-    return <Redirect to="/home" />
-  }
+    return <Redirect to="/home" />;
+  };
 
   redirectToProfile = () => {
-    return <Redirect to="/profile" />
-  }
+    return <Redirect to="/profile" />;
+  };
 
   updateParentState = () => {
     this.setState({
@@ -194,70 +202,64 @@ class App extends Component {
       redirectToLanding: false,
       redirectToProfile: false,
       redirectToPasswordReset: false,
-      redirectToCreatePassword: false,
+      redirectToCreatePassword: false
     });
-  }
+  };
 
   // USER
   // ==================================
 
   createUser = (firstName, lastName, email, password) => {
-
     // Check if email already exists in database
-    userAPI.getUser(email)
-      .then((res) => {
-        if (res.data.length === 0) {
-          let weight = 150;
-          let privacy = "public";
+    userAPI.getUser(email).then(res => {
+      if (res.data.length === 0) {
+        let weight = 150;
+        let privacy = "public";
 
-          userAPI.createUser(firstName, lastName, email, password, weight, privacy)
-            .then((res) => {
-              if (res.status === 200) {
-                alert("User created.");
+        userAPI
+          .createUser(firstName, lastName, email, password, weight, privacy)
+          .then(res => {
+            if (res.status === 200) {
+              alert("User created.");
 
-                localStorage.setItem("isLoggedIn", "true");
-                localStorage.setItem("userId", res.data.userId);
+              localStorage.setItem("isLoggedIn", "true");
+              localStorage.setItem("userId", res.data.userId);
 
-                this.getRecentWorkouts();
-                this.setRedirectToHome();
-              }
-            });
-        }
-        else {
-          alert("Account already exists for this email address.");
-          this.setRedirectToLogin();
-        }
-      });
-  }
+              this.getRecentWorkouts();
+              this.setRedirectToHome();
+            }
+          });
+      } else {
+        alert("Account already exists for this email address.");
+        this.setRedirectToLogin();
+      }
+    });
+  };
 
   loginUser = (email, password) => {
     // Check if email exists in database
-    userAPI.getUser(email)
-      .then((res) => {
-        if (res.data.length === 0) {
-          alert("No account exists for this email address.");
-          // this.setRedirectToSignUp();
-        }
-        else {
-          userAPI.loginUser(email, password)
-            .then((res) => {
-              if (res.data === "Incorrect password.") {
-                alert("Incorrect password.");
-              }
-              else {
-                // Store login status and userId in local storage
-                localStorage.setItem("isLoggedIn", "true");
-                localStorage.setItem("userId", res.data.userId);
-                localStorage.setItem("fn", res.data.firstName);
-                localStorage.setItem("ln", res.data.lastName);
+    userAPI.getUser(email).then(res => {
+      if (res.data.length === 0) {
+        alert("No account exists for this email address.");
+        // this.setRedirectToSignUp();
+      } else {
+        userAPI.loginUser(email, password).then(res => {
+          if (res.data === "Incorrect password.") {
+            alert("Incorrect password.");
+          } else {
+            // Store login status and userId in local storage
+            localStorage.setItem("isLoggedIn", "true");
+            localStorage.setItem("userId", res.data.userId);
+            localStorage.setItem("fn", res.data.firstName);
+            localStorage.setItem("ln", res.data.lastName);
 
-                this.getRecentWorkouts();
-                this.setRedirectToHome();
-              }
-            });
-        }
-      });
-  }
+            this.getRecentWorkouts();
+            this.setRedirectToHome();
+          }
+        });
+      }
+    });
+  };
 
   logoutUser = () => {
     localStorage.setItem("isLoggedIn", "false");
@@ -266,13 +268,16 @@ class App extends Component {
     localStorage.setItem("ln", null);
     localStorage.setItem("background", "tiles");
 
-    this.setState({
-      isLoggedIn: "false",
-      userId: null,
-    }, () => {
-      this.setRedirectToLanding();
-    });
-  }
+    this.setState(
+      {
+        isLoggedIn: "false",
+        userId: null
+      },
+      () => {
+        this.setRedirectToLanding();
+      }
+    );
+  };
 
   // Checks userId in local storage to see if it exists in database
   // If it doesn't exist/it is a fake userId, automatically logs out user
@@ -280,224 +285,208 @@ class App extends Component {
     let returnVal = true;
     let userId;
 
-    if (localStorage.getItem("userId") && localStorage.getItem("userId") !== null) {
+    if (
+      localStorage.getItem("userId") &&
+      localStorage.getItem("userId") !== null
+    ) {
       userId = localStorage.getItem("userId");
 
-      return userAPI.getUserById(userId)
-        .then((res) => {
-          if (res.data.length === 0) {
-            returnVal = false;
-            this.logoutUser();
-            return returnVal;
-          }
-        });
-    }
-    else {
+      return userAPI.getUserById(userId).then(res => {
+        if (res.data.length === 0) {
+          returnVal = false;
+          this.logoutUser();
+          return returnVal;
+        }
+      });
+    } else {
       returnVal = false;
       this.logoutUser();
     }
 
     return returnVal;
-  }
+  };
 
   // WORKOUTS
   // ==================================
 
   getAllWorkouts = () => {
-    workoutAPI.getAllWorkouts()
-      .then((res) => {
-        this.sortByDate(res.data);
+    workoutAPI.getAllWorkouts().then(res => {
+      this.sortByDate(res.data);
 
-        this.setState({
-          displayOpt: "All",
-        });
+      this.setState({
+        displayOpt: "All"
       });
-  }
+    });
+  };
 
   getRecentWorkouts = () => {
-    workoutAPI.getRecentWorkouts()
-      .then((res) => {
-
-        this.setState({
-          displayOpt: "Recent",
-        });
-
-        this.sortByDate(res.data);
+    workoutAPI.getRecentWorkouts().then(res => {
+      this.setState({
+        displayOpt: "Recent"
       });
-  }
 
-  sortByDate = (allActivity) => {
+      this.sortByDate(res.data);
+    });
+  };
+
+  sortByDate = allActivity => {
     allActivity.sort(this.compare);
 
     this.setState({
-      allActivity: allActivity,
+      allActivity: allActivity
     });
-  }
+  };
 
   compare = (a, b) => {
     if (a.date === b.date) {
       return 0;
+    } else {
+      return a.date > b.date ? -1 : 1;
     }
-    else {
-      return (a.date > b.date) ? -1 : 1;
-    }
-  }
+  };
 
-  deleteActivity = (workoutId) => {
-
+  deleteActivity = workoutId => {
     let userId = localStorage.getItem("userId");
 
-    workoutAPI.deleteWorkoutById(userId, workoutId)
-      .then((res) => {
-        window.location.reload();
-      });
-  }
+    workoutAPI.deleteWorkoutById(userId, workoutId).then(res => {
+      window.location.reload();
+    });
+  };
 
   loadProfile = (userId, firstName, lastName) => {
-    this.setState({
-      profileId: userId,
-      otherUserFirst: firstName,
-      otherUserLast: lastName,
-    }, () => {
-      this.setRedirectToProfile();
-    });
-  }
+    this.setState(
+      {
+        profileId: userId,
+        otherUserFirst: firstName,
+        otherUserLast: lastName
+      },
+      () => {
+        this.setRedirectToProfile();
+      }
+    );
+  };
 
   // BACKGROUND
   // ==================================
 
   openBackgrounds = () => {
     this.setState({
-      openModal: true,
+      openModal: true
     });
-  }
+  };
 
-  setBackground = (background) => {
-    this.setState({
-      background: background,
-    }, () => {
-      localStorage.setItem("background", background);
-      this.closeBackgrounds();
-    });
-  }
+  setBackground = background => {
+    this.setState(
+      {
+        background: background
+      },
+      () => {
+        localStorage.setItem("background", background);
+        this.closeBackgrounds();
+      }
+    );
+  };
 
   closeBackgrounds = () => {
     this.setState({
-      openModal: false,
+      openModal: false
     });
-  }
+  };
 
   // HALL OF FAME
   // ==================================
 
   updateHof = () => {
-    hofAPI.getMaxWorkouts()
-      .then((res) => {
+    hofAPI.getMaxWorkouts().then(res => {
+      let max = this.getMaximum(res.data);
+      hofAPI.updateHof("mostWorkouts", max[0], max[1]);
+    });
 
-        let max = this.getMaximum(res.data);
-        hofAPI.updateHof("mostWorkouts", max[0], max[1]);
-      });
+    hofAPI.getMaxRestDays().then(res => {
+      let min = this.getMinimum(res.data);
+      let dateNum = moment().dayOfYear();
+      let minVal = dateNum - min[1];
+      hofAPI.updateHof("mostRestDays", min[0], minVal);
+    });
 
-    hofAPI.getMaxRestDays()
-      .then((res) => {
-        let min = this.getMinimum(res.data);
-        let dateNum = moment().dayOfYear();
-        let minVal = dateNum - min[1];
-        hofAPI.updateHof("mostRestDays", min[0], minVal);
-      });
+    hofAPI.getLongestRun().then(res => {
+      let max = this.getMaximum(res.data);
+      hofAPI.updateHof("longestRun", max[0], max[1]);
+    });
 
-    hofAPI.getLongestRun()
-      .then((res) => {
-        let max = this.getMaximum(res.data);
-        hofAPI.updateHof("longestRun", max[0], max[1]);
-      });
+    hofAPI.getMaxMiles().then(res => {
+      let max = this.getMaximum(res.data);
+      hofAPI.updateHof("mostMiles", max[0], max[1]);
+    });
 
-    hofAPI.getMaxMiles()
-      .then((res) => {
-        let max = this.getMaximum(res.data);
-        hofAPI.updateHof("mostMiles", max[0], max[1]);
-      });
+    hofAPI.getMaxClimb().then(res => {
+      let max = this.getMaximum(res.data);
+      hofAPI.updateHof("maxClimb", max[0], max[1]);
+    });
 
-    hofAPI.getMaxClimb()
-      .then((res) => {
-        let max = this.getMaximum(res.data);
-        hofAPI.updateHof("maxClimb", max[0], max[1]);
-      });
+    hofAPI.getMaxPushups().then(res => {
+      let max = this.getMaximum(res.data);
+      hofAPI.updateHof("mostPushups", max[0], max[1]);
+    });
 
-    hofAPI.getMaxPushups()
-      .then((res) => {
-        let max = this.getMaximum(res.data);
-        hofAPI.updateHof("mostPushups", max[0], max[1]);
-      });
+    hofAPI.getMaxPullups().then(res => {
+      let max = this.getMaximum(res.data);
+      hofAPI.updateHof("mostPullups", max[0], max[1]);
+    });
 
-    hofAPI.getMaxPullups()
-      .then((res) => {
-        let max = this.getMaximum(res.data);
-        hofAPI.updateHof("mostPullups", max[0], max[1]);
-      });
+    hofAPI.getMaxGoggins().then(res => {
+      let max = this.getMaximum(res.data);
+      hofAPI.updateHof("mostGoggins", max[0], max[1]);
+    });
 
-    hofAPI.getMaxGoggins()
-      .then((res) => {
-        let max = this.getMaximum(res.data);
-        hofAPI.updateHof("mostGoggins", max[0], max[1]);
-      });
+    hofAPI.getTotalTime().then(res => {
+      let max = this.getMaximum(res.data);
+      hofAPI.updateHof("mostTime", max[0], Math.round(max[1]));
+    });
 
-    hofAPI.getTotalTime()
-      .then((res) => {
-        let max = this.getMaximum(res.data);
-        hofAPI.updateHof("mostTime", max[0], Math.round(max[1]));
-      });
+    hofAPI.getMaxRaces().then(res => {
+      let max = this.getMaximum(res.data);
+      hofAPI.updateHof("mostRaces", max[0], max[1]);
+    });
 
-    hofAPI.getMaxRaces()
-      .then((res) => {
-        let max = this.getMaximum(res.data);
-        hofAPI.updateHof("mostRaces", max[0], max[1]);
-      });
+    hofAPI.getRainyDays().then(res => {
+      let max = this.getMaximum(res.data);
+      hofAPI.updateHof("mostRainyDays", max[0], max[1]);
+    });
 
-    hofAPI.getRainyDays()
-      .then((res) => {
-        let max = this.getMaximum(res.data);
-        hofAPI.updateHof("mostRainyDays", max[0], max[1]);
-      });
+    hofAPI.getSwims().then(res => {
+      let max = this.getMaximum(res.data);
+      hofAPI.updateHof("mostSwims", max[0], max[1]);
+    });
 
-    hofAPI.getSwims()
-      .then((res) => {
-
-        let max = this.getMaximum(res.data);
-        hofAPI.updateHof("mostSwims", max[0], max[1]);
-      });
-
-    hofAPI.getBikes()
-      .then((res) => {
-        let max = this.getMaximum(res.data);
-        hofAPI.updateHof("mostBikes", max[0], max[1]);
-      });
-  }
+    hofAPI.getBikes().then(res => {
+      let max = this.getMaximum(res.data);
+      hofAPI.updateHof("mostBikes", max[0], max[1]);
+    });
+  };
 
   getHotDog = () => {
-    hofAPI.getHotdog()
-      .then((res) => {
+    hofAPI.getHotdog().then(res => {
+      // Remove champ from results -- champ cannot also be weiner
+      let champ = this.state.champ;
 
-        // Remove champ from results -- champ cannot also be weiner
-        let champ = this.state.champ;
-
-        let idx = -1;
-        if (champ) {
-          for (var u in res.data) {
-            if (res.data[u].firstName === champ) {
-              idx = u;
-            }
+      let idx = -1;
+      if (champ) {
+        for (var u in res.data) {
+          if (res.data[u].firstName === champ) {
+            idx = u;
           }
-
-          res.data.splice(idx, 1);
         }
 
-        let min = this.getMinimum(res.data);
-        hofAPI.updateHof("hotdog", min[0], 1);
-      });
-  }
+        res.data.splice(idx, 1);
+      }
 
-  getMaximum = (data) => {
+      let min = this.getMinimum(res.data);
+      hofAPI.updateHof("hotdog", min[0], 1);
+    });
+  };
+
+  getMaximum = data => {
     let max = 0;
     let maxName = null;
 
@@ -511,9 +500,9 @@ class App extends Component {
     max = Math.round(max * 100) / 100;
 
     return [maxName, max];
-  }
+  };
 
-  getMinimum = (data) => {
+  getMinimum = data => {
     let min = 365;
     let minName = null;
 
@@ -525,7 +514,7 @@ class App extends Component {
     }
 
     return [minName, min];
-  }
+  };
 
   // GET OUTWORKER OF THE WEEK
   // ==================================
@@ -555,41 +544,47 @@ class App extends Component {
 
     //let firstDOW = `${year}-${moZero}${month}-${dayZero}${date - currDOW}`;
     let firstDOW = FIRSTDOW;
-    
+
     this.setState({
-      firstDOW: firstDOW,
+      firstDOW: firstDOW
     });
 
     // Gets maximum number of workouts from current week
-    hofAPI.getWeekWorkouts(firstDOW)
-      .then((res) => {
-        this.setState({
-          weekWorkouts: res.data,
-        }, () => {
+    hofAPI.getWeekWorkouts(firstDOW).then(res => {
+      this.setState(
+        {
+          weekWorkouts: res.data
+        },
+        () => {
           this.getScores();
-        });
-      });
+        }
+      );
+    });
 
     // Gets maximum time worked out in current week
-    hofAPI.getWeekTime(firstDOW)
-      .then((res) => {
-        this.setState({
-          weekTime: res.data,
-        }, () => {
+    hofAPI.getWeekTime(firstDOW).then(res => {
+      this.setState(
+        {
+          weekTime: res.data
+        },
+        () => {
           this.getScores();
-        });
-      });
+        }
+      );
+    });
 
     // Gets maximum unique dates worked out in current week
-    hofAPI.getWeekUniqueWorkouts(firstDOW)
-      .then((res) => {
-        this.setState({
-          weekUniqueWorkouts: res.data,
-        }, () => {
+    hofAPI.getWeekUniqueWorkouts(firstDOW).then(res => {
+      this.setState(
+        {
+          weekUniqueWorkouts: res.data
+        },
+        () => {
           this.getScores();
-        });
-      });
-  }
+        }
+      );
+    });
+  };
 
   // Perhaps the most inelegant and clunky algorithm in the history of JavaScript
   getScores = () => {
@@ -621,11 +616,12 @@ class App extends Component {
 
       this.checkMaxes(wwMax, wtMax, wuwMax, ww, wt, wuw);
     }
-  }
+  };
 
   checkMaxes = (wwMax, wtMax, wuwMax, ww, wt, wuw) => {
-
-    let curtis = 0, jason = 0, joseph = 0;
+    let curtis = 0,
+      jason = 0,
+      joseph = 0;
 
     if (ww && wt && wuw) {
       for (var i in ww) {
@@ -673,7 +669,7 @@ class App extends Component {
 
     let champ = [];
     let max = Math.max(curtis, jason, joseph);
-    
+
     if (curtis === max) {
       champ.push("Curtis");
     }
@@ -688,105 +684,92 @@ class App extends Component {
 
     if (champ.length === 1) {
       champ = champ[0];
-    }
-    else {
+    } else {
       champ = "Tie";
     }
 
-    this.setState({
-      champ: champ,
-    }, () => {
-      this.getHotDog();
-    });
+    this.setState(
+      {
+        champ: champ
+      },
+      () => {
+        this.getHotDog();
+      }
+    );
 
     hofAPI.updateHof("champ", champ, 1);
-  }
-
+  };
 
   // PASSWORD RESET
   // ==================================
 
-  setResetEmail = (resetEmail) => {
+  setResetEmail = resetEmail => {
     this.setState({
-      resetEmail: resetEmail,
+      resetEmail: resetEmail
     });
-  }
+  };
 
   render() {
     return (
       <Router>
         <div className={`appClass ${this.state.background}`}>
-
           {/* Redirect To Landing Page */}
 
           {this.state.redirectToLanding === true ? (
             this.redirectToLanding()
           ) : (
-              <></>
-            )}
+            <></>
+          )}
 
           {/* Redirect to Login Page */}
 
-          {this.state.redirectToLogin === true ? (
-            this.redirectToLogin()
-          ) : (
-              <></>
-            )}
+          {this.state.redirectToLogin === true ? this.redirectToLogin() : <></>}
 
           {/* Redirect to Password Reset Page */}
 
           {this.state.redirectToPasswordReset === true ? (
             this.redirectToPasswordReset()
           ) : (
-              <></>
-            )}
+            <></>
+          )}
 
           {/* Redirect to Create Password Page */}
 
           {this.state.redirectToCreatePassword === true ? (
             this.redirectToCreatePassword()
           ) : (
-              <></>
-            )}
+            <></>
+          )}
 
           {/* Redirect to Sign Up Page */}
 
           {this.state.redirectToSignUp === true ? (
             this.redirectToSignUp()
           ) : (
-              <></>
-            )}
+            <></>
+          )}
 
           {/* Redirect to Home */}
 
-          {this.state.redirectToHome === true ? (
-            this.redirectToHome()
-          ) : (
-              <></>
-            )}
+          {this.state.redirectToHome === true ? this.redirectToHome() : <></>}
 
           {/* Redirect To Profile */}
 
           {this.state.redirectToProfile === true ? (
             this.redirectToProfile()
           ) : (
-              <></>
-            )}
+            <></>
+          )}
 
           {/* Set Background Image */}
 
           {this.state.openModal ? (
-            <Modal
-              open={this.state.openModal}
-              onClose={this.closeBackgrounds}
-            >
-              <Backgrounds
-                setBackground={this.setBackground}
-              />
+            <Modal open={this.state.openModal} onClose={this.closeBackgrounds}>
+              <Backgrounds setBackground={this.setBackground} />
             </Modal>
           ) : (
-              <></>
-            )}
+            <></>
+          )}
 
           {/* Navbar */}
           <Navbar
@@ -797,58 +780,76 @@ class App extends Component {
 
           {/* Banner */}
           {this.state.message !== "" ? (
-            <Banner
-              message={this.state.message}
-            />
+            <Banner message={this.state.message} />
           ) : (
-              <></>
-            )}
+            <></>
+          )}
 
           <Switch>
             {/* Landing Page */}
-            <Route exact path="/" render={() =>
-              <Landing
-                setRedirectToSignUp={this.setRedirectToSignUp}
-                setRedirectToLogin={this.setRedirectToLogin}
-                setRedirectToHome={this.setRedirectToHome}
-                checkValidUser={this.checkValidUser}
-                loginUser={this.loginUser}
-                logoutUser={this.logoutUser}
-              />
-            } />
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <Landing
+                  setRedirectToSignUp={this.setRedirectToSignUp}
+                  setRedirectToLogin={this.setRedirectToLogin}
+                  setRedirectToHome={this.setRedirectToHome}
+                  checkValidUser={this.checkValidUser}
+                  loginUser={this.loginUser}
+                  logoutUser={this.logoutUser}
+                />
+              )}
+            />
 
             {/* Login Page */}
-            <Route exact path="/login" render={() =>
-              <Login
-                setRedirectToSignUp={this.setRedirectToSignUp}
-                setRedirectToHome={this.setRedirectToHome}
-                loginUser={this.loginUser}
-              />
-            } />
+            <Route
+              exact
+              path="/login"
+              render={() => (
+                <Login
+                  setRedirectToSignUp={this.setRedirectToSignUp}
+                  setRedirectToHome={this.setRedirectToHome}
+                  loginUser={this.loginUser}
+                />
+              )}
+            />
 
             {/* Forgot Password Page */}
-            <Route exact path="/forgot" render={() =>
-              <ForgotPassword
-                setRedirectToPasswordReset={this.setRedirectToPasswordReset}
-                setResetEmail={this.setResetEmail}
-              />
-            } />
+            <Route
+              exact
+              path="/forgot"
+              render={() => (
+                <ForgotPassword
+                  setRedirectToPasswordReset={this.setRedirectToPasswordReset}
+                  setResetEmail={this.setResetEmail}
+                />
+              )}
+            />
 
             {/* Reset Password Page */}
-            <Route exact path="/reset" render={() =>
-              <Reset
-                email={this.state.resetEmail}
-                setRedirectToCreatePassword={this.setRedirectToCreatePassword}
-              />
-            } />
+            <Route
+              exact
+              path="/reset"
+              render={() => (
+                <Reset
+                  email={this.state.resetEmail}
+                  setRedirectToCreatePassword={this.setRedirectToCreatePassword}
+                />
+              )}
+            />
 
             {/* Create Password Page */}
-            <Route exact path="/createPassword" render={() =>
-              <CreatePassword
-                email={this.state.resetEmail}
-                setRedirectToLogin={this.setRedirectToLogin}
-              />
-            } />
+            <Route
+              exact
+              path="/createPassword"
+              render={() => (
+                <CreatePassword
+                  email={this.state.resetEmail}
+                  setRedirectToLogin={this.setRedirectToLogin}
+                />
+              )}
+            />
 
             {/* Sign Up Page */}
             {/* <Route exact path="/signUp" render={() =>
@@ -860,148 +861,203 @@ class App extends Component {
             } /> */}
 
             {/* Home Page */}
-            <Route exact path="/home" render={() =>
-              <Home
-                updateParentState={this.updateParentState}
-                checkValidUser={this.checkValidUser}
-                getAllWorkouts={this.getAllWorkouts}
-                getRecentWorkouts={this.getRecentWorkouts}
-                allActivity={this.state.allActivity}
-                deleteActivity={this.deleteActivity}
-                background={this.state.background}
-                displayOpt={this.state.displayOpt}
-                weekWorkouts={this.state.weekWorkouts}
-                weekTime={this.state.weekTime}
-                weekUniqueWorkouts={this.state.weekUniqueWorkouts}
-                firstDOW={this.state.firstDOW}
-              />
-            } />
+            <Route
+              exact
+              path="/home"
+              render={() => (
+                <Home
+                  updateParentState={this.updateParentState}
+                  checkValidUser={this.checkValidUser}
+                  getAllWorkouts={this.getAllWorkouts}
+                  getRecentWorkouts={this.getRecentWorkouts}
+                  allActivity={this.state.allActivity}
+                  deleteActivity={this.deleteActivity}
+                  background={this.state.background}
+                  displayOpt={this.state.displayOpt}
+                  weekWorkouts={this.state.weekWorkouts}
+                  weekTime={this.state.weekTime}
+                  weekUniqueWorkouts={this.state.weekUniqueWorkouts}
+                  firstDOW={this.state.firstDOW}
+                />
+              )}
+            />
 
             {/* Profile Page */}
-            <Route exact path="/profile" render={() =>
-              <Profile
-                profileId={this.state.profileId}
-                otherUserFirst={this.state.otherUserFirst}
-                otherUserLast={this.state.otherUserLast}
-                checkValidUser={this.checkValidUser}
-                updateHof={this.updateHof}
-                deleteActivity={this.deleteActivity}
-                background={this.state.background}
-              />
-            } />
+            <Route
+              exact
+              path="/profile"
+              render={() => (
+                <Profile
+                  profileId={this.state.profileId}
+                  otherUserFirst={this.state.otherUserFirst}
+                  otherUserLast={this.state.otherUserLast}
+                  checkValidUser={this.checkValidUser}
+                  updateHof={this.updateHof}
+                  deleteActivity={this.deleteActivity}
+                  background={this.state.background}
+                />
+              )}
+            />
 
             {/* Log Activity Page */}
-            <Route exact path="/logActivity" render={() =>
-              <LogActivity
-                checkValidUser={this.checkValidUser}
-                background={this.state.background}
-              />
-            } />
+            <Route
+              exact
+              path="/logActivity"
+              render={() => (
+                <LogActivity
+                  checkValidUser={this.checkValidUser}
+                  background={this.state.background}
+                />
+              )}
+            />
 
             {/* Log Run Page */}
-            <Route exact path="/run" render={() =>
-              <SubmitRun
-                checkValidUser={this.checkValidUser}
-                background={this.state.background}
-              />
-            } />
+            <Route
+              exact
+              path="/run"
+              render={() => (
+                <SubmitRun
+                  checkValidUser={this.checkValidUser}
+                  background={this.state.background}
+                />
+              )}
+            />
 
             {/* Update Run Page */}
-            <Route exact path="/updateRun" render={() =>
-              <UpdateRun
-                checkValidUser={this.checkValidUser}
-                background={this.state.background}
-                setRedirectToHome={this.setRedirectToHome}
-              />
-            } />
+            <Route
+              exact
+              path="/updateRun"
+              render={() => (
+                <UpdateRun
+                  checkValidUser={this.checkValidUser}
+                  background={this.state.background}
+                  setRedirectToHome={this.setRedirectToHome}
+                />
+              )}
+            />
 
             {/* Log Bike Page */}
-            <Route exact path="/bike" render={() =>
-              <SubmitBike
-                checkValidUser={this.checkValidUser}
-                background={this.state.background}
-              />
-            } />
+            <Route
+              exact
+              path="/bike"
+              render={() => (
+                <SubmitBike
+                  checkValidUser={this.checkValidUser}
+                  background={this.state.background}
+                />
+              )}
+            />
 
             {/* Log Swim Page */}
-            <Route exact path="/swim" render={() =>
-              <SubmitSwim
-                checkValidUser={this.checkValidUser}
-                background={this.state.background}
-              />
-            } />
+            <Route
+              exact
+              path="/swim"
+              render={() => (
+                <SubmitSwim
+                  checkValidUser={this.checkValidUser}
+                  background={this.state.background}
+                />
+              )}
+            />
 
             {/* Log Lift Page */}
-            <Route exact path="/lift" render={() =>
-              <SubmitLift
-                checkValidUser={this.checkValidUser}
-                background={this.state.background}
-              />
-            } />
+            <Route
+              exact
+              path="/lift"
+              render={() => (
+                <SubmitLift
+                  checkValidUser={this.checkValidUser}
+                  background={this.state.background}
+                />
+              )}
+            />
 
             {/* Update Lift Page */}
-            <Route exact path="/updateLift" render={() =>
-              <UpdateLift
-                checkValidUser={this.checkValidUser}
-                background={this.state.background}
-                setRedirectToHome={this.setRedirectToHome}
-              />
-            } />
+            <Route
+              exact
+              path="/updateLift"
+              render={() => (
+                <UpdateLift
+                  checkValidUser={this.checkValidUser}
+                  background={this.state.background}
+                  setRedirectToHome={this.setRedirectToHome}
+                />
+              )}
+            />
 
             {/* Generator Page */}
-            <Route exact path="/generator" render={() =>
-              <Generator
-                checkValidUser={this.checkValidUser}
-                background={this.state.background}
-                difficulty={sessionStorage.getItem("diff")}
-              />
-            } />
+            <Route
+              exact
+              path="/generator"
+              render={() => (
+                <Generator
+                  checkValidUser={this.checkValidUser}
+                  background={this.state.background}
+                  difficulty={sessionStorage.getItem("diff")}
+                />
+              )}
+            />
 
             {/* Update Generator Page */}
             {/* Update Lift Page */}
-            <Route exact path="/updateGen" render={() =>
-              <UpdateGen
-                checkValidUser={this.checkValidUser}
-                background={this.state.background}
-                setRedirectToHome={this.setRedirectToHome}
-              />
-            } />
+            <Route
+              exact
+              path="/updateGen"
+              render={() => (
+                <UpdateGen
+                  checkValidUser={this.checkValidUser}
+                  background={this.state.background}
+                  setRedirectToHome={this.setRedirectToHome}
+                />
+              )}
+            />
 
             {/* Hall Of Fame Page */}
-            <Route exact path="/hallOfFame" render={() =>
-              <HallOfFame
-                checkValidUser={this.checkValidUser}
-                background={this.state.background}
-                updateHof={this.updateHof}
-              />
-            } />
+            <Route
+              exact
+              path="/hallOfFame"
+              render={() => (
+                <HallOfFame
+                  checkValidUser={this.checkValidUser}
+                  background={this.state.background}
+                  updateHof={this.updateHof}
+                />
+              )}
+            />
 
             {/* Find Users Page */}
-            <Route exact path="/allUsers" render={() =>
-              <AllUsers
-                checkValidUser={this.checkValidUser}
-                loadProfile={this.loadProfile}
-                background={this.state.background}
-              />
-            } />
+            <Route
+              exact
+              path="/allUsers"
+              render={() => (
+                <AllUsers
+                  checkValidUser={this.checkValidUser}
+                  loadProfile={this.loadProfile}
+                  background={this.state.background}
+                />
+              )}
+            />
 
             {/* FAQ Page */}
-            <Route exact path="/faq" render={() =>
-              <Faq
-                checkValidUser={this.checkValidUser}
-                background={this.state.background}
-              />
-            } />
+            <Route
+              exact
+              path="/faq"
+              render={() => (
+                <Faq
+                  checkValidUser={this.checkValidUser}
+                  background={this.state.background}
+                />
+              )}
+            />
 
             <Route component={Error} />
           </Switch>
 
           {/* Footer */}
           {/* <Footer /> */}
-
         </div>
-      </Router >
-    )
+      </Router>
+    );
   }
 }
 
