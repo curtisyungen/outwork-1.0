@@ -39,7 +39,7 @@ class Calendar extends Component {
     let numDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
     let today = new Date();
-    let currMonth = moment(today).month();
+    let currMonth = 11;
 
     for (var i = 0; i <= currMonth; i++) {
       let month = [names[i]];
@@ -81,9 +81,6 @@ class Calendar extends Component {
     let year = this.state.year;
 
     let month, day;
-
-    console.log("activity", activity);
-    console.log("year", year);
 
     for (var a in activity) {
       month = moment(activity[a].date).month();
