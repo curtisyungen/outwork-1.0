@@ -7,754 +7,810 @@ import exerAPI from "../../utils/exerAPI";
 import "./workout.css";
 
 class Workout extends Component {
+  constructor(props) {
+    super(props);
 
-    constructor(props) {
-        super(props);
+    this.state = {
+      userId: null,
+      firstName: null,
+      lastName: null,
+      userEquipment: null,
+      date: null,
+      time: null,
+      location: null,
+      duration: null,
+      ttlMins: null,
+      notes: null,
+      difficulty: null,
+      exercises: null,
+      filtered: null,
+      sets: null,
+      workout: null,
+      complete: false,
+      today: null,
+      checkGoggins: false,
+      completeGoggins: true,
+      gogginsRun: null,
+      gogginsRunDist: 0,
+      setRedirectToSubmitRun: false
+    };
+  }
 
-        this.state = {
-            userId: null,
-            firstName: null,
-            lastName: null,
-            userEquipment: null,
-            date: null,
-            time: null,
-            location: null,
-            duration: null,
-            ttlMins: null,
-            notes: null,
-            difficulty: null,
-            exercises: null,
-            filtered: null,
-            sets: null,
-            workout: null,
-            complete: false,
-            today: null,
-            checkGoggins: false,
-            completeGoggins: true,
-            gogginsRun: null,
-            gogginsRunDist: 0,
-            setRedirectToSubmitRun: false,
+  componentDidMount = () => {
+    this.getToday();
+
+    this.setState(
+      {
+        userId: this.props.userId,
+        firstName: this.props.firstName,
+        lastName: this.props.lastName,
+        userEquipment: this.props.userEquipment,
+        difficulty: this.props.difficulty.toString(),
+        checkGoggins: false,
+        completeGoggins: true
+      },
+      () => {
+        if (
+          sessionStorage.getItem("sets") !== null &&
+          sessionStorage.getItem("sets").length > 0
+        ) {
+          this.getSetsFromSessionStorage();
+        } else {
+          this.getExercises();
         }
+      }
+    );
+  };
+
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevProps.generate !== this.props.generate) {
+      this.setState(
+        {
+          userEquipment: this.props.userEquipment,
+          difficulty: this.props.difficulty.toString(),
+          checkGoggins: false,
+          completeGoggins: true
+        },
+        () => {
+          this.getExercises();
+        }
+      );
+    }
+  };
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+
+    this.setState({
+      [name]: value
+    });
+  };
+
+  validateLiftForm = () => {
+    let date = this.state.date;
+    let duration = this.state.duration;
+
+    if (date === null || date === "" || date.length < 10) {
+      alert("Inputted date is not valid.");
+      return false;
     }
 
-    componentDidMount = () => {
-        this.getToday();
-
-        this.setState({
-            userId: this.props.userId,
-            firstName: this.props.firstName,
-            lastName: this.props.lastName,
-            userEquipment: this.props.userEquipment,
-            difficulty: this.props.difficulty.toString(),
-            checkGoggins: false,
-            completeGoggins: true,
-        }, () => {
-            if (sessionStorage.getItem("sets") !== null && sessionStorage.getItem("sets").length > 0) {
-                this.getSetsFromSessionStorage();
-            }
-            else {
-                this.getExercises();
-            } 
-        });
+    if (
+      duration === null ||
+      duration === "" ||
+      duration.length !== 8 ||
+      duration.charAt(2) !== ":" ||
+      duration.charAt(5) !== ":"
+    ) {
+      alert("Duration must be in hh:mm:ss format.");
+      return false;
     }
 
-    componentDidUpdate = (prevProps, prevState) => {
-        if (prevProps.generate !== this.props.generate) {
-            this.setState({
-                userEquipment: this.props.userEquipment,
-                difficulty: this.props.difficulty.toString(),
-                checkGoggins: false,
-                completeGoggins: true,
-            }, () => {
-                this.getExercises();
-            });
+    return true;
+  };
+
+  // Get all exercises from database
+  // Call getWorkout
+  getExercises = () => {
+    exerAPI.getAllExercises().then(res => {
+      this.setState(
+        {
+          exercises: res.data
+        },
+        () => {
+          this.filterExercises();
         }
+      );
+    });
+  };
+
+  filterExercises = () => {
+    let exercises = this.state.exercises;
+    let filtered = [];
+
+    // Look at equipment needed for each exercise in list
+    for (var e in exercises) {
+      // If no equipment needed, add exercise to filtered list
+      if (exercises[e].equipment === "") {
+        filtered.push(exercises[e]);
+      }
+
+      // If equipment is needed, check if user owns equipment
+      else {
+        let valid = this.checkUserEquipment(exercises[e].equipment);
+        if (valid) {
+          filtered.push(exercises[e]);
+        }
+      }
     }
 
-    handleInputChange = (event) => {
-        const { name, value } = event.target;
+    this.setState(
+      {
+        filtered: filtered
+      },
+      () => {
+        this.getSets();
+      }
+    );
+  };
 
-        this.setState({
-            [name]: value,
-        });
-    }
-    
-    validateLiftForm = () => {
-        let date = this.state.date;
-        let duration = this.state.duration;
+  checkUserEquipment = equipment => {
+    let userEquipment = this.state.userEquipment;
 
-        if (date === null || date === "" || date.length < 10) {
-            alert("Inputted date is not valid.");
-            return false;
-        }
-
-        if (duration === null || 
-            duration === "" || 
-            duration.length !== 8 || 
-            duration.charAt(2) !== ":" ||
-            duration.charAt(5) !== ":") {
-                alert("Duration must be in hh:mm:ss format.");
-                return false;
-        }
-
+    for (var ue in userEquipment) {
+      if (equipment.indexOf(userEquipment[ue]) > -1) {
         return true;
+      }
     }
 
-    // Get all exercises from database
-    // Call getWorkout
-    getExercises = () => {
+    return false;
+  };
 
-        exerAPI.getAllExercises()
-            .then((res) => {
-                this.setState({
-                    exercises: res.data,
-                }, () => {
-                    this.filterExercises();
-                });
-            });
+  getSetsFromSessionStorage = () => {
+    let sets = JSON.parse(sessionStorage.getItem("sets"));
+    let workout = JSON.parse(sessionStorage.getItem("sets"));
+    let difficulty = sessionStorage.getItem("diff");
+
+    this.setState({
+      sets: sets,
+      workout: workout,
+      difficulty: difficulty
+    });
+  };
+
+  saveSetsInSessionStorage = () => {
+    let sets = this.state.workout;
+    sessionStorage.setItem("sets", JSON.stringify(sets));
+  };
+
+  getSets = () => {
+    let difficulty = this.state.difficulty;
+    let filtered = this.state.filtered;
+    let sets = [];
+    let workout = [];
+
+    for (var s = 0; s < difficulty; s++) {
+      let set = [];
+      for (var ex = 0; ex < 5; ex++) {
+        // Data is the name and index of the random exercise chosen, returned from .getRand()
+        // Name is the name of the randomly chosen exercise
+        // randEx is used to generate the reps for this particular exercise
+        let data = this.getRand(filtered, set);
+        let name = data.name;
+        let randEx = data.randEx;
+
+        let exercise = {
+          id: s,
+          name: name,
+          superset: s + 1,
+          sets: 1,
+          weight: null,
+          reps: this.getReps(filtered[randEx]),
+          actualReps: null,
+          rest: null,
+          primaryMG: filtered[randEx].primaryMG
+        };
+
+        set.push(exercise);
+      }
+
+      sets.push(set);
+      workout.push(set);
     }
 
-    filterExercises = () => {
-
-        let exercises = this.state.exercises;
-        let filtered = [];
-
-        // Look at equipment needed for each exercise in list
-        for (var e in exercises) {
-
-            // If no equipment needed, add exercise to filtered list
-            if (exercises[e].equipment === "") {
-                filtered.push(exercises[e]);
-            }
-
-            // If equipment is needed, check if user owns equipment
-            else {
-                let valid = this.checkUserEquipment(exercises[e].equipment);
-                if (valid) {
-                    filtered.push(exercises[e]);
-                }
-            }
-        }
-
-        this.setState({
-            filtered: filtered,
-        }, () => {
-            this.getSets();
-        });
-    }
-
-    checkUserEquipment = (equipment) => {
-        let userEquipment = this.state.userEquipment;
-
-        for (var ue in userEquipment) {
-            if (equipment.indexOf(userEquipment[ue]) > -1) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    getSetsFromSessionStorage = () => {
-        let sets = JSON.parse(sessionStorage.getItem("sets"));
-        let workout = JSON.parse(sessionStorage.getItem("sets"));
-        let difficulty = sessionStorage.getItem("diff");
-        
-        this.setState({
-            sets: sets,
-            workout: workout,
-            difficulty: difficulty,
-        });
-    }
-
-    saveSetsInSessionStorage = () => {
-        let sets = this.state.workout;
+    this.setState(
+      {
+        sets: sets,
+        workout: workout
+      },
+      () => {
         sessionStorage.setItem("sets", JSON.stringify(sets));
+        sessionStorage.setItem("diff", difficulty);
+        sessionStorage.setItem("gsr", null);
+      }
+    );
+  };
+
+  // This function takes in the filtered exercise list and the current set as arguments
+  // It chooses a random exercise from the filtered list
+  // Then it ensures that this exercise is not already in the set
+  // It continues looping until it finds an exercise that isn't already in the current set
+  // Once it finds one, it returns the chosen exercise name as well as its index in the filtered list
+  getRand = (filtered, set) => {
+    let validName = false;
+    let randEx, name;
+    let count;
+
+    while (!validName) {
+      randEx = Math.floor(Math.random() * filtered.length);
+      name = filtered[randEx].name;
+      count = 0;
+
+      for (var ex in set) {
+        if (set[ex].name === name) {
+          count += 1;
+        }
+      }
+
+      // Prevents duplicate exercises in single set
+      if (count === 0) {
+        validName = true;
+      }
     }
 
-    getSets = () => {
-        let difficulty = this.state.difficulty;
-        let filtered = this.state.filtered;
-        let sets = [];
-        let workout = [];
+    return { name, randEx };
+  };
 
-        for (var s = 0; s < difficulty; s++) {
+  getReps = exercise => {
+    let repIdx = Math.floor(Math.random() * 4);
+    let reps = 0;
 
-            let set = [];
-            for (var ex = 0; ex < 5; ex++) {
+    switch (repIdx) {
+      case 0:
+        reps = exercise.low;
+        break;
+      case 1:
+        reps = exercise.med;
+        break;
+      case 2:
+        reps = exercise.high;
+        break;
+      case 3:
+        reps = exercise.extreme;
+        break;
+      default:
+        reps = exercise.extreme;
+    }
 
-                // Data is the name and index of the random exercise chosen, returned from .getRand()
-                // Name is the name of the randomly chosen exercise
-                // randEx is used to generate the reps for this particular exercise
-                let data = this.getRand(filtered, set);
-                let name = data.name;
-                let randEx = data.randEx;
+    return reps;
+  };
 
-                let exercise = {
-                    id: s,
-                    name: name,
-                    superset: s + 1,
-                    sets: 1,
-                    weight: null,
-                    reps: this.getReps(filtered[randEx]),
-                    actualReps: null,
-                    rest: null,
-                    primaryMG: filtered[randEx].primaryMG,
-                }
+  getPushUps = () => {
+    let workout = this.state.workout;
+    let pushups = 0;
+    let name;
 
-                set.push(exercise);
+    for (var s in workout) {
+      for (var i = 0; i < 5; i++) {
+        name = workout[s][i].name;
+        if (
+          name &&
+          name.toLowerCase().indexOf("push") > -1 &&
+          name.toLowerCase().indexOf("up") > -1
+        ) {
+          if (parseFloat(workout[s][i].actualReps) > 0) {
+            pushups += parseFloat(workout[s][i].actualReps);
+          } else {
+            if (!isNaN(parseFloat(workout[s][i].reps))) {
+              pushups += parseFloat(workout[s][i].reps);
             }
+          }
+        }
+      }
+    }
 
-            sets.push(set);
-            workout.push(set);
+    this.setState({
+      pushups: pushups
+    });
+  };
+
+  getPullUps = () => {
+    let workout = this.state.workout;
+    let pullups = 0;
+    let name;
+
+    for (var s in workout) {
+      for (var i = 0; i < 5; i++) {
+        name = workout[s][i].name;
+
+        // Get Pull-Ups, exclude static holds
+        if (
+          name &&
+          name.toLowerCase().indexOf("pull") > -1 &&
+          name.toLowerCase().indexOf("up") > -1 &&
+          name.toLowerCase().indexOf("static") === -1
+        ) {
+          if (parseFloat(workout[s][i].actualReps) > 0) {
+            pullups += parseFloat(workout[s][i].actualReps);
+          } else {
+            pullups += parseFloat(workout[s][i].reps);
+          }
         }
 
-        this.setState({
-            sets: sets,
-            workout: workout,
-        }, () => {
-            sessionStorage.setItem("sets", JSON.stringify(sets));
-            sessionStorage.setItem("diff", difficulty);
-            sessionStorage.setItem("gsr", null);
-        });
-    }
-
-    // This function takes in the filtered exercise list and the current set as arguments
-    // It chooses a random exercise from the filtered list
-    // Then it ensures that this exercise is not already in the set
-    // It continues looping until it finds an exercise that isn't already in the current set
-    // Once it finds one, it returns the chosen exercise name as well as its index in the filtered list
-    getRand = (filtered, set) => {
-
-        let validName = false;
-        let randEx, name;
-        let count;
-
-        while (!validName) {
-            randEx = Math.floor(Math.random() * filtered.length);
-            name = filtered[randEx].name;
-            count = 0;
-
-            for (var ex in set) {
-                if (set[ex].name === name) {
-                    count += 1;
-                }
+        // Get Chin-Ups, exclude static holds
+        if (
+          name &&
+          name.toLowerCase().indexOf("chin") > -1 &&
+          name.toLowerCase().indexOf("up") > -1 &&
+          name.toLowerCase().indexOf("static") === -1
+        ) {
+          if (parseFloat(workout[s][i].actualReps) > 0) {
+            pullups += parseFloat(workout[s][i].actualReps);
+          } else {
+            if (!isNaN(parseFloat(workout[s][i].reps))) {
+              pullups += parseFloat(workout[s][i].reps);
             }
-
-            // Prevents duplicate exercises in single set
-            if (count === 0) {
-                validName = true;
-            }
+          }
         }
-
-        return { name, randEx };
+      }
     }
 
-    getReps = (exercise) => {
-        let repIdx = Math.floor(Math.random() * 4);
-        let reps = 0;
+    this.setState({
+      pullups: pullups
+    });
+  };
 
-        switch (repIdx) {
-            case 0: reps = exercise.low; break;
-            case 1: reps = exercise.med; break;
-            case 2: reps = exercise.high; break;
-            case 3: reps = exercise.extreme; break;
-            default: reps = exercise.extreme;
+  getMuscleGroups = () => {
+    let sets = this.state.sets;
+    let muscleGroups = [];
+
+    for (var s in sets) {
+      for (var ex = 0; ex < 5; ex++) {
+        let group = sets[s][ex].primaryMG;
+
+        if (muscleGroups.indexOf(group) === -1) {
+          muscleGroups.push(group);
         }
-
-        return reps;
+      }
     }
 
-    getPushUps = () => {
-        let workout = this.state.workout;
-        let pushups = 0;
-        let name;
+    this.setState({
+      muscleGroups: muscleGroups
+    });
+  };
 
-        for (var s in workout) {
-            for (var i=0; i<5; i++) {
-                name = workout[s][i].name;
-                if (name && name.toLowerCase().indexOf("push") > -1 && name.toLowerCase().indexOf("up") > -1) {
-                    if (parseFloat(workout[s][i].actualReps) > 0) {
-                        pushups += parseFloat(workout[s][i].actualReps);
-                    }
-                    else {
-                        if (!isNaN(parseFloat(workout[s][i].reps))) {
-                            pushups += parseFloat(workout[s][i].reps);
-                        }
-                    }
-                }
-            }
-        }
+  setActualReps = (setId, exName, actualReps) => {
+    let workout = this.state.workout;
 
-        this.setState({
-            pushups: pushups,
-        });
+    let idx;
+    for (var ex in workout[setId]) {
+      if (workout[setId][ex].name === exName) {
+        idx = ex;
+      }
     }
 
-    getPullUps = () => {
-        let workout = this.state.workout;
-        let pullups = 0;
-        let name;
+    workout[setId][idx].actualReps = actualReps;
+  };
 
-        for (var s in workout) {
-            for (var i=0; i<5; i++) {
-                name = workout[s][i].name;
+  setWeight = (setId, exName, weight) => {
+    let workout = this.state.workout;
 
-                // Get Pull-Ups, exclude static holds
-                if (name && name.toLowerCase().indexOf("pull") > -1 
-                        && name.toLowerCase().indexOf("up") > -1
-                        && name.toLowerCase().indexOf("static") === -1) {
-                    if (parseFloat(workout[s][i].actualReps) > 0) {
-                        pullups += parseFloat(workout[s][i].actualReps);
-                    }
-                    else {
-                        pullups += parseFloat(workout[s][i].reps);
-                    }
-                }
-
-                // Get Chin-Ups, exclude static holds
-                if (name && name.toLowerCase().indexOf("chin") > -1 
-                        && name.toLowerCase().indexOf("up") > -1
-                        && name.toLowerCase().indexOf("static") === -1) {
-                    if (parseFloat(workout[s][i].actualReps) > 0) {
-                        pullups += parseFloat(workout[s][i].actualReps);
-                    }
-                    else {
-                        if (!isNaN(parseFloat(workout[s][i].reps))) {
-                            pullups += parseFloat(workout[s][i].reps);
-                        }
-                    }
-                }
-            }
-        }
-
-        this.setState({
-            pullups: pullups,
-        });
+    let idx;
+    for (var ex in workout[setId]) {
+      if (workout[setId][ex].name === exName) {
+        idx = ex;
+      }
     }
 
-    getMuscleGroups = () => {
-        let sets = this.state.sets;
-        let muscleGroups = [];
+    workout[setId][idx].weight = weight;
+  };
 
-        for (var s in sets) {
-            for (var ex=0; ex<5; ex++) {
-                let group = sets[s][ex].primaryMG;
+  setRest = (setId, exName, rest) => {
+    let workout = this.state.workout;
 
-                if (muscleGroups.indexOf(group) === -1) {
-                    muscleGroups.push(group);
-                }
-            }
-        }
-
-        this.setState({
-            muscleGroups: muscleGroups,
-        });
+    let idx;
+    for (var ex in workout[setId]) {
+      if (workout[setId][ex].name === exName) {
+        idx = ex;
+      }
     }
 
-    setActualReps = (setId, exName, actualReps) => {
-        let workout = this.state.workout;
+    workout[setId][idx].rest = rest;
+  };
 
-        let idx;
-        for (var ex in workout[setId]) {
-            if (workout[setId][ex].name === exName) {
-                idx = ex;
-            }
-        }
+  setNotes = (setId, exName, notes) => {
+    let workout = this.state.workout;
 
-        workout[setId][idx].actualReps = actualReps;
+    let idx;
+    for (var ex in workout[setId]) {
+      if (workout[setId][ex].name === exName) {
+        idx = ex;
+      }
     }
 
-    setWeight = (setId, exName, weight) => {
-        let workout = this.state.workout;
+    workout[setId][idx].notes = notes;
+  };
 
-        let idx;
-        for (var ex in workout[setId]) {
-            if (workout[setId][ex].name === exName) {
-                idx = ex;
-            }
-        }
+  completeWorkout = () => {
+    this.setState(
+      {
+        complete: true
+      },
+      () => {
+        this.getPushUps();
+        this.getPullUps();
+        this.getMuscleGroups();
+      }
+    );
+  };
 
-        workout[setId][idx].weight = weight;
+  closeModal = () => {
+    this.setState({
+      complete: false
+    });
+  };
+
+  getTtlMins = () => {
+    let time = this.state.duration;
+    let hours, mins, secs;
+
+    if (time === null || time.length < 8) {
+      alert("Invalid duration format. Must be hh:mm:ss.");
+      return;
     }
 
-    setRest = (setId, exName, rest) => {
-        let workout = this.state.workout;
+    hours = parseFloat(time.split(":")[0]);
+    mins = parseFloat(time.split(":")[1]);
+    secs = parseFloat(time.split(":")[2]);
 
-        let idx;
-        for (var ex in workout[setId]) {
-            if (workout[setId][ex].name === exName) {
-                idx = ex;
-            }
-        }
+    let ttlMins = 0;
 
-        workout[setId][idx].rest = rest;
+    ttlMins = Math.round((hours * 60 + mins + secs / 60) * 100) / 100;
+
+    this.setState(
+      {
+        ttlMins: ttlMins
+      },
+      () => {
+        this.submitWorkout();
+      }
+    );
+  };
+
+  getToday = () => {
+    let today = new Date();
+    let month = today.getMonth() + 1;
+    let date = today.getDate();
+
+    let moZero = "";
+
+    if (month < 10) {
+      moZero = 0;
     }
 
-    setNotes = (setId, exName, notes) => {
-        let workout = this.state.workout;
+    let dateZero = "";
 
-        let idx;
-        for (var ex in workout[setId]) {
-            if (workout[setId][ex].name === exName) {
-                idx = ex;
-            }
-        }
-
-        workout[setId][idx].notes = notes;
+    if (date < 10) {
+      dateZero = 0;
     }
 
-    completeWorkout = () => {
-        this.setState({
-            complete: true,
-        }, () => {
-            this.getPushUps();
-            this.getPullUps();
-            this.getMuscleGroups();
-        });
-    }
+    let defaultDate = `2019-${moZero}${month}-${dateZero}${date}`;
 
-    closeModal = () => {
-        this.setState({
-            complete: false,
-        });
-    }
+    this.setState({
+      today: defaultDate,
+      date: defaultDate
+    });
+  };
 
-    getTtlMins = () => {
-        let time = this.state.duration;
-        let hours, mins, secs;
+  submitWorkout = () => {
+    return;
+    this.props.checkValidUser();
 
-        if (time === null || time.length < 8) {
-            alert("Invalid duration format. Must be hh:mm:ss.");
-            return;
-        }
+    if (this.validateLiftForm()) {
+      let generator = "Standard";
+      switch (this.state.difficulty) {
+        case "1":
+          generator = "Baby";
+          break;
+        case "2":
+          generator = "Easy";
+          break;
+        case "3":
+          generator = "Average";
+          break;
+        case "4":
+          generator = "Superior";
+          break;
+        case "5":
+          generator = "Hero";
+          break;
+        case "6":
+          generator = "Superman";
+          break;
+        case "7":
+          generator = "Rogan";
+          break;
+        case "8":
+          generator = "Goggins";
+          break;
+        default:
+          generator = "Standard";
+      }
 
-        hours = parseFloat(time.split(":")[0]);
-        mins = parseFloat(time.split(":")[1]);
-        secs = parseFloat(time.split(":")[2]);
+      let liftData = {
+        workoutType: "lift",
+        userId: this.props.userId,
+        firstName: this.props.firstName,
+        lastName: this.props.lastName,
+        date: this.state.date,
+        time: this.state.time,
+        location: this.state.location,
+        distance: null,
+        duration: this.state.duration,
+        ttlMins: this.state.ttlMins,
+        milePace: null,
+        runType: null,
+        laps: null,
+        repeats: null,
+        race: null,
+        surface: null,
+        weather: null,
+        climb: null,
+        grade: null,
+        shoe: null,
+        bike: null,
+        generator: generator,
+        pushups: this.state.pushups,
+        pullups: this.state.pullups,
+        workout: JSON.stringify(this.state.workout),
+        muscleGroups: JSON.stringify(this.state.muscleGroups),
+        notes: this.state.notes,
+        map: null
+      };
 
-        let ttlMins = 0;
+      workoutAPI.createWorkout(liftData).then(res => {
+        if (res.status === 200) {
+          alert("Workout submitted!");
+          sessionStorage.setItem("sets", null);
+          sessionStorage.setItem("diff", null);
 
-        ttlMins = Math.round(((hours * 60) + mins + (secs / 60)) * 100) / 100;
-
-        this.setState({
-            ttlMins: ttlMins,
-        }, () => {
-            this.submitWorkout();
-        });
-    }
-
-    getToday = () => {
-        let today = new Date();
-        let month = today.getMonth() + 1;
-        let date = today.getDate();
-
-        let moZero = "";
-
-        if (month < 10) {
-            moZero = 0;
-        }
-
-        let dateZero = "";
-
-        if (date < 10) {
-            dateZero = 0;
-        }
-
-        let defaultDate = `2019-${moZero}${month}-${dateZero}${date}`
-
-        this.setState({
-            today: defaultDate,
-            date: defaultDate,
-        });
-    }
-
-    submitWorkout = () => {
-        this.props.checkValidUser();
-
-        if (this.validateLiftForm()) {
-
-            let generator = "Standard";
-            switch (this.state.difficulty) {
-                case "1": generator = "Baby"; break;
-                case "2": generator = "Easy"; break;
-                case "3": generator = "Average"; break;
-                case "4": generator = "Superior"; break;
-                case "5": generator = "Hero"; break;
-                case "6": generator = "Superman"; break;
-                case "7": generator = "Rogan"; break;
-                case "8": generator = "Goggins"; break;
-                default: generator = "Standard";
-            }
-
-            let liftData = {
-                    workoutType: "lift",
-                    userId: this.props.userId,
-                    firstName: this.props.firstName,
-                    lastName: this.props.lastName,
-                    date: this.state.date,
-                    time: this.state.time,
-                    location: this.state.location,
-                    distance: null,
-                    duration: this.state.duration,
-                    ttlMins: this.state.ttlMins,
-                    milePace: null,
-                    runType: null,
-                    laps: null,
-                    repeats: null,
-                    race: null,
-                    surface: null,
-                    weather: null,
-                    climb: null,
-                    grade: null,
-                    shoe: null,
-                    bike: null,
-                    generator: generator,
-                    pushups: this.state.pushups,
-                    pullups: this.state.pullups,
-                    workout: JSON.stringify(this.state.workout),
-                    muscleGroups: JSON.stringify(this.state.muscleGroups),
-                    notes: this.state.notes,
-                    map: null,
-                };
-
-                workoutAPI.createWorkout(liftData)
-                    .then((res) => {
-                        if (res.status === 200) {
-                            alert("Workout submitted!");
-                            sessionStorage.setItem("sets", null);
-                            sessionStorage.setItem("diff", null);
-                            
-                            if (this.state.completeGoggins === true) {
-                                this.setState({
-                                    redirectToSubmitRun: true,
-                                });
-                            }
-                            else {
-                                window.location.reload();
-                            }
-                        }
-                        else {
-                            alert("Error submitting workout.");
-                        }
-                    });
-            }
-    }
-
-    // If this is a Goggins workout, this adds on a surprise 1-3 mile run at the end
-    checkGoggins = () => {
-        if (this.state.checkGoggins === false && this.state.difficulty === "8") {
-
-            let dist;
-            if (sessionStorage.getItem("gsr") && sessionStorage.getItem("gsr") > 0) {
-                dist = sessionStorage.getItem("gsr");
-            }
-            else {
-                dist = Math.floor(Math.random() * 3) + 1;
-            }
-            
-            let gogginsRun = [{ id: 999, name: "The Goggins Surprise Run", reps: `${dist} miles` }];
-
-            let quotes = [
-                "Lace 'em up!",
-                "It ain't over yet!",
-                "Merry Christmas mothafucka!",
-            ];
-
-            alert(quotes[dist - 1]);
-
+          if (this.state.completeGoggins === true) {
             this.setState({
-                checkGoggins: true,
-                completeGoggins: false,
-                gogginsRun: gogginsRun,
-                gogginsRunDist: dist,
-                notes: `Plus a ${dist} mile run`,
-            }, () => {
-                sessionStorage.setItem("gsr", dist);
+              redirectToSubmitRun: true
             });
+          } else {
+            window.location.reload();
+          }
+        } else {
+          alert("Error submitting workout.");
         }
-        else {
-            this.completeWorkout();
+      });
+    }
+  };
+
+  // If this is a Goggins workout, this adds on a surprise 1-3 mile run at the end
+  checkGoggins = () => {
+    if (this.state.checkGoggins === false && this.state.difficulty === "8") {
+      let dist;
+      if (sessionStorage.getItem("gsr") && sessionStorage.getItem("gsr") > 0) {
+        dist = sessionStorage.getItem("gsr");
+      } else {
+        dist = Math.floor(Math.random() * 3) + 1;
+      }
+
+      let gogginsRun = [
+        { id: 999, name: "The Goggins Surprise Run", reps: `${dist} miles` }
+      ];
+
+      let quotes = [
+        "Lace 'em up!",
+        "It ain't over yet!",
+        "Merry Christmas mothafucka!"
+      ];
+
+      alert(quotes[dist - 1]);
+
+      this.setState(
+        {
+          checkGoggins: true,
+          completeGoggins: false,
+          gogginsRun: gogginsRun,
+          gogginsRunDist: dist,
+          notes: `Plus a ${dist} mile run`
+        },
+        () => {
+          sessionStorage.setItem("gsr", dist);
         }
+      );
+    } else {
+      this.completeWorkout();
     }
+  };
 
-    completeGoggins = () => {
-        this.setState({
-            completeGoggins: true,
-        });
-    }
+  completeGoggins = () => {
+    this.setState({
+      completeGoggins: true
+    });
+  };
 
-    render() {
-        return (
-            <div>
+  render() {
+    return (
+      <div>
+        {/* Redirect to Submit Run -- for Goggins Workouts only */}
+        {this.state.redirectToSubmitRun ? <Redirect to="/run" /> : <></>}
 
-                {/* Redirect to Submit Run -- for Goggins Workouts only */}
-                {this.state.redirectToSubmitRun ? (
-                    <Redirect to="/run" />
-                ) : (
-                    <></>
-                )}
+        {this.state.sets && this.state.sets.length > 0 ? (
+          <span>
+            {this.state.sets.map(set => (
+              <Set
+                key={set[0].id}
+                set={set}
+                setActualReps={this.setActualReps}
+                setWeight={this.setWeight}
+                setRest={this.setRest}
+                setNotes={this.setNotes}
+                difficulty={this.state.difficulty}
+                saveSetsInSessionStorage={this.saveSetsInSessionStorage}
+              />
+            ))}
+          </span>
+        ) : (
+          <></>
+        )}
 
-                {this.state.sets && this.state.sets.length > 0 ? (
-                    <span>
-                        {this.state.sets.map(set => (
-                            <Set
-                                key={set[0].id}
-                                set={set}
-                                setActualReps={this.setActualReps}
-                                setWeight={this.setWeight}
-                                setRest={this.setRest}
-                                setNotes={this.setNotes}
-                                difficulty={this.state.difficulty}
-                                saveSetsInSessionStorage={this.saveSetsInSessionStorage}
-                            />
-                        ))}
-                    </span>
-                ) : (
-                        <></>
-                    )}
+        {this.state.checkGoggins ? (
+          <div className="gogginsRun">
+            <Set
+              set={this.state.gogginsRun}
+              completeGoggins={this.completeGoggins}
+              saveSetsInSessionStorage={this.saveSetsInSessionStorage}
+            />
+          </div>
+        ) : (
+          <></>
+        )}
 
-                {this.state.checkGoggins ? (
-                    <div className="gogginsRun">
-                        <Set 
-                            set={this.state.gogginsRun}
-                            completeGoggins={this.completeGoggins}
-                            saveSetsInSessionStorage={this.saveSetsInSessionStorage}
-                        />
-                    </div>
-                ) : (
-                    <></>
-                )}
+        {/* COMPLETE BUTTON */}
 
-                {/* COMPLETE BUTTON */}
+        {this.state.sets &&
+        this.state.sets.length > 0 &&
+        this.state.completeGoggins ? (
+          <div className="completeBtn">
+            <button className="btn btn-success" onClick={this.checkGoggins}>
+              Complete
+            </button>
+          </div>
+        ) : (
+          <></>
+        )}
 
-                {this.state.sets && this.state.sets.length > 0 && this.state.completeGoggins ? (
-                    <div className="completeBtn">
-                        <button 
-                            className="btn btn-success" 
-                            onClick={this.checkGoggins}
-                        >
-                            Complete
-                        </button>
-                    </div>
-                ) : (
-                    <></>
-                )}
+        {this.state.complete ? (
+          <Modal open={this.state.complete} onClose={this.closeModal}>
+            <h4>Details</h4>
 
-                {this.state.complete ? (
-                    <Modal
-                        open={this.state.complete}
-                        onClose={this.closeModal}
-                    >
-                        <h4>Details</h4>
+            {/* GOGGINS INSTRUCTIONS */}
+            {this.state.completeGoggins === true &&
+            this.state.difficulty === "8" ? (
+              <div className="disclaimer-goggins">
+                Note:{" "}
+                <strong>Do not include Goggins Surprise Run data here.</strong>
+                You will be automatically redirected to the Submit Run page
+                after submitting this form.
+              </div>
+            ) : (
+              <></>
+            )}
 
-                        {/* GOGGINS INSTRUCTIONS */}
-                        {this.state.completeGoggins === true && this.state.difficulty === "8" ? (
-                            <div className="disclaimer-goggins">
-                                Note: <strong>Do not include Goggins Surprise Run data here.</strong>
-                                You will be automatically redirected to the Submit Run page after
-                                submitting this form. 
-                            </div>
-                        ) : (
-                            <></>
-                        )}
-                        
-                        {/* DATE */}
-                        <div className="input-group input-group-sm mb-3 workoutModalForm">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-sm">Date*</span>
-                            </div>
-                            <input
-                                autoComplete="off"
-                                name="date"
-                                type="date"
-                                className="form-control"
-                                aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-sm"
-                                onChange={this.handleInputChange}
-                                defaultValue={this.state.today}
-                            />
-                        </div>
+            {/* DATE */}
+            <div className="input-group input-group-sm mb-3 workoutModalForm">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="inputGroup-sizing-sm">
+                  Date*
+                </span>
+              </div>
+              <input
+                autoComplete="off"
+                name="date"
+                type="date"
+                className="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm"
+                onChange={this.handleInputChange}
+                defaultValue={this.state.today}
+              />
+            </div>
 
-                        {/* TIME */}
-                        <div className="input-group input-group-sm mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-sm">Time of Day</span>
-                            </div>
-                            <input
-                                autoComplete="off"
-                                name="time"
-                                type="text"
-                                className="form-control"
-                                placeholder="3:00pm"
-                                aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-sm"
-                                onChange={this.handleInputChange}
-                            />
-                        </div>
+            {/* TIME */}
+            <div className="input-group input-group-sm mb-3">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="inputGroup-sizing-sm">
+                  Time of Day
+                </span>
+              </div>
+              <input
+                autoComplete="off"
+                name="time"
+                type="text"
+                className="form-control"
+                placeholder="3:00pm"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm"
+                onChange={this.handleInputChange}
+              />
+            </div>
 
-                        {/* LOCATION */}
-                        <div className="input-group input-group-sm mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-sm">Location</span>
-                            </div>
-                            <input
-                                autoComplete="off"
-                                name="location"
-                                type="text"
-                                className="form-control"
-                                aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-sm"
-                                onChange={this.handleInputChange}
-                            />
-                        </div>
+            {/* LOCATION */}
+            <div className="input-group input-group-sm mb-3">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="inputGroup-sizing-sm">
+                  Location
+                </span>
+              </div>
+              <input
+                autoComplete="off"
+                name="location"
+                type="text"
+                className="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm"
+                onChange={this.handleInputChange}
+              />
+            </div>
 
-                        {/* DURATION */}
-                        <div className="input-group input-group-sm mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-sm">Duration*</span>
-                            </div>
-                            <input
-                                autoComplete="off"
-                                name="duration"
-                                type="text"
-                                className="form-control"
-                                placeholder="hh:mm:ss"
-                                aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-sm"
-                                onChange={this.handleInputChange}
-                            />
-                        </div>
+            {/* DURATION */}
+            <div className="input-group input-group-sm mb-3">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="inputGroup-sizing-sm">
+                  Duration*
+                </span>
+              </div>
+              <input
+                autoComplete="off"
+                name="duration"
+                type="text"
+                className="form-control"
+                placeholder="hh:mm:ss"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm"
+                onChange={this.handleInputChange}
+              />
+            </div>
 
-                        {/* NOTES */}
-                        <div className="input-group input-group-sm mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text" id="inputGroup-sizing-sm">Notes</span>
-                            </div>
-                            <input
-                                autoComplete="off"
-                                name="notes"
-                                type="text"
-                                className="form-control"
-                                aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-sm"
-                                onChange={this.handleInputChange}
-                                defaultValue={this.state.gogginsRunDist > 0 && this.state.difficulty === "8" ? (`Plus a ${this.state.gogginsRunDist} mile run`):("")}
-                            />
-                        </div>
+            {/* NOTES */}
+            <div className="input-group input-group-sm mb-3">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="inputGroup-sizing-sm">
+                  Notes
+                </span>
+              </div>
+              <input
+                autoComplete="off"
+                name="notes"
+                type="text"
+                className="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm"
+                onChange={this.handleInputChange}
+                defaultValue={
+                  this.state.gogginsRunDist > 0 && this.state.difficulty === "8"
+                    ? `Plus a ${this.state.gogginsRunDist} mile run`
+                    : ""
+                }
+              />
+            </div>
 
-                        {localStorage.getItem("userId") === "834292GU" ? (
+            {/* {localStorage.getItem("userId") === "834292GU" ? (
                             <></>
                         ) : (
                             <button className="btn btn-success btn-sm submitWorkoutBtn" onClick={this.getTtlMins}>Submit</button>
-                        )}
-                    </Modal>
-                ) : (
-                        <></>
-                    )}
-            </div>
-        )
-    }
+                        )} */}
+          </Modal>
+        ) : (
+          <></>
+        )}
+      </div>
+    );
+  }
 }
 
 export default Workout;
